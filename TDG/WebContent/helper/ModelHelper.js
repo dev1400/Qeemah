@@ -80,9 +80,7 @@ sap.ui.demo.tdg.helper.ModelHelper = {
 		
 		// Call OData read method and get System Detai Collection
 //		this.oODataModel.read("/SystemCollection(DealId='" + sDealId + "',SystemModuleSerial='" +sSystemModuleSerial+ "',SystemModule='"+sSystemModule+"')", null, null , true, 
-		this.oODataModel.read("/Orders(" + iOrderID + ")/Customer", null, null , true, 
-							
-			function(oData, oResponse){		// Call is successful
+		this.oODataModel.read("/Orders(" + iOrderID + ")/Customer", null, null , true, function(oData, oResponse){		// Call is successful
 				oModel.setData({SystemCollection:oData});
 				
 				if(oModel.getData().SystemCollection.length > 0){
@@ -1137,11 +1135,14 @@ sap.ui.demo.tdg.helper.ModelHelper = {
 	 * Read Deal Collection and convert it to JSON Model
 	 */
 
-	readDealsInAmendmentCollection : function (){
+	readDealsInAmendmentCollection : function (oContext, iOrderID){
 
 		var that = this;		
+		var oODataModel = oContext.getView().getModel("ODataModel");
 		
-		this.oODataModel.read("DealInAmendmentCollection", null, null , false, 
+//		oODataModel.read("/Customers( ' " + iOrderID + " ' )/Orders",
+		oODataModel.read("/Customers('"+ iOrderID + "')/ContactName",
+		
 			
 			function(oData, oResponse){
 				that.oDealsInAmendmentCollectionModel.setData({DealsInAmendmentCollection:oData.results});

@@ -25,20 +25,14 @@
 				items="{ODataModel>/Orders}"
 				mode="{device>/listMode}"
 				noDataText="{i18n>masterListNoDataText}"
-				select="handleListSelect"
+				select="onSelect"
 				growing="true"
 				growingScrollToLoad="true">
 				<items>
 					<ObjectListItem
 						type="{device>/listItemType}"
-						press="handleListItemPress"
 						title="{ODataModel>OrderID}"
-						
-						numberUnit="USD">
-						<!-- number="{
-							path: 'EmployeeID',
-							formatter: 'sap.ui.demo.tdg.util.Formatter.currencyValue'
-						}" -->
+						>
 					</ObjectListItem>
 				</items>
 			</List>

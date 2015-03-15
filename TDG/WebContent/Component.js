@@ -20,7 +20,7 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.tdg.Component", {
 			serviceConfig : {
 				name : "Northwind",
 				/*serviceUrl : "proxy/http/services.odata.org/V2/(S(sapuidemotdg))/OData/OData.svc/"*/
-				/*serviceUrl : "proxy/http/services.odata.org/Northwind/Northwind.svc/"*/
+				serviceUrl : "proxy/http/services.odata.org/Northwind/Northwind.svc/"
 			}
 		},
 
@@ -67,9 +67,7 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.tdg.Component", {
 
 	init : function() {
 		sap.ui.core.UIComponent.prototype.init.apply(this, arguments);
-		
-		// Get ODataModel instance
-	    
+
 		var mConfig = this.getMetadata().getConfig();
 
 		// always use absolute paths relative to our own component
@@ -81,28 +79,24 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.tdg.Component", {
 			bundleUrl : [oRootPath, mConfig.resourceBundle].join("/")
 		});
 		this.setModel(i18nModel, "i18n");
-		
-		var oModel = new sap.ui.model.odata.ODataModel("proxy/http/services.odata.org/Northwind/Northwind.svc/", true);
-		this.setModel(oModel,"ODataModel");
-		
-//        var oODataModel = sap.ui.demo.tdg.helper.ModelHelper.getODataModel();
-	    
-		// Set OData Model
-//		this.setModel(oODataModel ,"ODataModel");
 
-
-		/*var sServiceUrl = mConfig.serviceConfig.serviceUrl;
+		var sServiceUrl = mConfig.serviceConfig.serviceUrl;
 
 		//This code is only needed for testing the application when there is no local proxy available, and to have stable test data.
 		var bIsMocked = jQuery.sap.getUriParameters().get("responderOn") === "true";
 		// start the mock server for the domain model
 		if (bIsMocked) {
 			this._startMockServer(sServiceUrl);
-		}*/
+		}
 
 		// Create and set domain model to the component
-		/*var oModel = new sap.ui.model.odata.ODataModel(sServiceUrl, true);
-		this.setModel(oModel);*/
+		var oModel = new sap.ui.model.odata.ODataModel(sServiceUrl, true);
+		this.setModel(oModel,"ODataModel");
+		
+		 // Get ODataModel instance
+        //var oODataModel = dia.cmc.common.helper.ModelHelper.getODataModel();
+        // Set OData Model
+        //this.setModel(oODataModel, "ODataModel");
 
 		// set device model
 		var oDeviceModel = new sap.ui.model.json.JSONModel({

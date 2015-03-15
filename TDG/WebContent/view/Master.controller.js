@@ -118,53 +118,21 @@ sap.ui.demo.tdg.util.Controller.extend("sap.ui.demo.tdg.view.Master", {
 		this.showDetail(oEvent.getParameter("listItem") || oEvent.getSource());
 	},
 
-	showDetail : function(oContext) {
-//		var oContext = oEvent.getSource().getBindingContext();
-		
-		
-		/*// If we're on a phone, include nav in history; if not, don't.
+	showDetail : function(oEvent) {
+		// If we're on a phone, include nav in history; if not, don't.
 		var bReplace = jQuery.device.is.phone ? false : true;
-		var iOrderId = oItem.getBindingContext().getProperty("OrderID");
-		var oContext = oItem.getParameter("listItem").getBindingContext();	
 		
-		var oOrderDealDetail = this.getView().getModel().getProperty(oContext.getPath());
-		
+		var oSelectedProductContext = oEvent.getBindingContext("ODataModel");
+		// Get ODate Model object reference
+    	var oODataModel = this.getView().getModel("ODataModel");    	
+    	// Get selected product record
+    	var oSelectedProduct = oODataModel.getProperty(oSelectedProductContext.getPath()); 	
+
 		  
 		this.getRouter().navTo("orderDetails", {
-			orderID : iOrderId
-		}, bReplace);*/
-		
-		
-        var bReplace = jQuery.device.is.phone ? false : true;
-		
-		var oOrderDealDetail = this.getView().getModel().getProperty(oContext.getPath());
-		
-		this.CommonController.getRouter(this).navTo("orderDetails", {
-			from: "master",
-			orderID: oOrderDealDetail.DealId,
+			OrderID : oSelectedProduct.CustomerID
 		}, bReplace);
-		
-		// Now default detail screen is hidden so set the flag to false
-		this._isDefaultDetailVisi = false;
 	},
-	// Event handler for Deal List item press event - applicabsle for Mobile device
-	handleListItemPress : function (oEvent) {
-
-		var oContext = oEvent.getSource().getBindingContext();
-		
-//		this._displayDealDetail(oContext);
-		this.showDetail(oContext);
-	},
-	// Event handler for Deal List select event
-	handleListSelect : function (oEvent) {
-
-		var oContext = oEvent.getParameter("listItem").getBindingContext().getObject();	
-		
-//		this._displayDealDetail(oContext);
-		this.showDetail(oContext);
-
-	},
-
 
 	onAddProduct : function() {
 		this.getRouter().myNavToWithoutHash({ 

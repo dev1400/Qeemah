@@ -40,9 +40,9 @@ sap.ui.demo.tdg.util.Controller.extend("sap.ui.demo.tdg.view.Detail", {
 
 		jQuery.when(this.oInitialLoadFinishedDeferred).then(jQuery.proxy(function () {
 			
-			this._iOrderId = oEvent.getParameter("arguments").orderId;
+			this._iOrderId = oEvent.getParameter("arguments").OrderID;
 			
-			var oRequestFinishedDeferred = this.ModelHelper.readSystemDetailCollection(this._iOrderId);
+			var oRequestFinishedDeferred = this.ModelHelper.readDealsInAmendmentCollection(this, this._iOrderId);
 
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oOrderDetailModel) {
 				

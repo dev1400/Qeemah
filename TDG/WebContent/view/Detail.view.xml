@@ -9,33 +9,8 @@
 		class="sapUiFioriObjectPage"
 		title="{i18n>detailTitle}">
 		<content>
-			<!-- <ObjectHeader
-				title="{Name}"
-				number="{
-					path: 'Price',
-					formatter: 'sap.ui.demo.tdg.util.Formatter.currencyValue'
-				}"
-				numberUnit="USD">
-				<attributes>
-					<ObjectAttribute text="{i18n>detailFromDate} {
-						path: 'ReleaseDate',
-						type: 'sap.ui.model.type.Date'
-						}" />
-					<ObjectAttribute text="{Description}" />
-				</attributes>
-				<firstStatus>
-					<ObjectStatus
-						text="{
-							path: 'DiscontinuedDate',
-							formatter: 'sap.ui.demo.tdg.util.Formatter.discontinuedStatusValue'
-						}"
-						state="{
-							path: 'DiscontinuedDate',
-							formatter: 'sap.ui.demo.tdg.util.Formatter.discontinuedStatusState'
-						}" />
-				</firstStatus>
-			</ObjectHeader> -->
-			<IconTabBar
+			<Text text="{OrderDetailModel>/ContactName}"></Text>
+			<!-- <IconTabBar
 				select="onDetailSelect"
 				expandable="false"
 				id="idIconTabBar">
@@ -59,7 +34,7 @@
 						</content>
 					</IconTabFilter>
 				</items>
-			</IconTabBar>
+			</IconTabBar> -->
 		</content>
 		<footer>
 			<Toolbar>
