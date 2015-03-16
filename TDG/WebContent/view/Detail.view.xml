@@ -9,7 +9,26 @@
 		class="sapUiFioriObjectPage"
 		title="{i18n>detailTitle}">
 		<content>
-			<Text text="{OrderDetailModel>/ContactName}"></Text>
+		<Label text="{OrderDetailModel>/Address}" design="Bold" />
+		
+		<!-- <Label text="Select Time" design="Bold" />
+		
+			<List
+				id="list"
+				items="{OrderDetailModel>ContactName}"
+				mode="{device>/listMode}"
+				noDataText="{i18n>masterListNoDataText}"
+				select="onSelect"
+				growing="true"
+				growingScrollToLoad="true">
+				<items>
+					<ObjectListItem
+						type="{device>/listItemType}"
+						title="{OrderDetailModel>ContactName}"
+						>
+					</ObjectListItem>
+				</items>
+			</List> -->
 			<!-- <IconTabBar
 				select="onDetailSelect"
 				expandable="false"

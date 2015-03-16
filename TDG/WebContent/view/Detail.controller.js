@@ -42,13 +42,19 @@ sap.ui.demo.tdg.util.Controller.extend("sap.ui.demo.tdg.view.Detail", {
 			
 			this._iOrderId = oEvent.getParameter("arguments").OrderID;
 			
-			var oRequestFinishedDeferred = this.ModelHelper.readDealsInAmendmentCollection(this, this._iOrderId);
+			var oOrderDetailModel = new sap.ui.model.json.JSONModel({});
+			
+			oOrderDetailModel = this.ModelHelper.readDealsInAmendmentCollection(this, this._iOrderId);
+			
+			this.getView().setModel(oOrderDetailModel,"OrderDetailModel");	
+			
+			/*var oRequestFinishedDeferred = this.ModelHelper.readDealsInAmendmentCollection(this, this._iOrderId);
 
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oOrderDetailModel) {
 				
 				this.getView().setModel(oOrderDetailModel,"OrderDetailModel");			
 				
-			}, this));	
+			}, this));	*/
 			
 			
 			/*var oView = this.getView();

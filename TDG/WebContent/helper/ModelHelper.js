@@ -1141,11 +1141,11 @@ sap.ui.demo.tdg.helper.ModelHelper = {
 		var oODataModel = oContext.getView().getModel("ODataModel");
 		
 //		oODataModel.read("/Customers( ' " + iOrderID + " ' )/Orders",
-		oODataModel.read("/Customers('"+ iOrderID + "')/ContactName",
+		oODataModel.read("/Customers('"+ iOrderID + "')",null, null, true,
 		
 			
 			function(oData, oResponse){
-				that.oDealsInAmendmentCollectionModel.setData({DealsInAmendmentCollection:oData.results});
+				that.oDealsInAmendmentCollectionModel.setData(oData);
 			},
 			
 			function(oResponse){
