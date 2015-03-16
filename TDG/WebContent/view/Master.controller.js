@@ -34,7 +34,7 @@ sap.ui.demo.tdg.util.Controller.extend("sap.ui.demo.tdg.view.Master", {
 			targetViewType : "XML"
 		});
 
-		//Wait for the list to be loaded once
+		/*//Wait for the list to be loaded once
 		this.waitForInitialListLoading(function () {
 
 			//On the empty hash select the first item
@@ -52,7 +52,7 @@ sap.ui.demo.tdg.util.Controller.extend("sap.ui.demo.tdg.view.Master", {
 
 			}
 
-		});
+		});*/
 
 	},
 

@@ -2,6 +2,7 @@
 	controllerName="sap.ui.demo.tdg.view.Detail"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
+	xmlns:commons="sap.suite.ui.commons"
 	xmlns="sap.m">
 	<Page
 		showNavButton="{device>/isPhone}"
@@ -9,7 +10,13 @@
 		class="sapUiFioriObjectPage"
 		title="{i18n>detailTitle}">
 		<content>
-		<Label text="{OrderDetailModel>/Address}" design="Bold" />
+		<!-- <Label text="{OrderDetailModel>/ContactName} \n {OrderDetailModel>/Address}" design="Bold" />
+		 -->
+		 <commons:BusinessCard firstTitle="{OrderDetailModel>/ContactName}" secondTitle="{OrderDetailModel>/ContactTitle} at {OrderDetailModel>/CompanyName}">
+		</commons:BusinessCard>
+		
+		<!-- <Label text="{OrderDetailModel>/ContactName}" design="Bold" />
+		 -->
 		
 		<!-- <Label text="Select Time" design="Bold" />
 		
