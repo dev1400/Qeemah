@@ -41,7 +41,7 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.tdg.Component", {
 					targetControl : "idAppControl",
 					subroutes : [
 						{
-							pattern : "OrderID({OrderID})",
+							pattern : "CustomerID({CustomerID})",
 							name : "orderDetails",
 							view : "Detail"
 						}

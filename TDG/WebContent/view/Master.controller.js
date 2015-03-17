@@ -130,7 +130,7 @@ sap.ui.demo.tdg.util.Controller.extend("sap.ui.demo.tdg.view.Master", {
 
 		  
 		this.getRouter().navTo("orderDetails", {
-			OrderID : oSelectedProduct.CustomerID
+			CustomerID : oSelectedProduct.CustomerID
 		}, bReplace);
 	},
 

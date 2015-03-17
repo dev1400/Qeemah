@@ -40,7 +40,7 @@ sap.ui.demo.tdg.util.Controller.extend("sap.ui.demo.tdg.view.Detail", {
 
 		jQuery.when(this.oInitialLoadFinishedDeferred).then(jQuery.proxy(function () {
 			
-			this._iOrderId = oEvent.getParameter("arguments").OrderID;
+			this._iOrderId = oEvent.getParameter("arguments").CustomerID;
 			
 			var oOrderDetailModel = new sap.ui.model.json.JSONModel({});
 			
