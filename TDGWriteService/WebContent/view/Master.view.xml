@@ -31,7 +31,7 @@
 				<items>
 					<ObjectListItem
 						type="{device>/listItemType}"
-						title="{ODataModel>FirstName}"
+						title="{ODataModel>FirstName} {ODataModel>LastName}"
 						>
 					</ObjectListItem>
 				</items>
