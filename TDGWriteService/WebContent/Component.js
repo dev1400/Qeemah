@@ -20,7 +20,9 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.tdg.Component", {
 			serviceConfig : {
 				name : "Northwind",
 				/*serviceUrl : "proxy/http/services.odata.org/V2/(S(sapuidemotdg))/OData/OData.svc/"*/
-				serviceUrl : "proxy/http/services.odata.org/Northwind/Northwind.svc/"
+				/*serviceUrl : "proxy/http/services.odata.org/Northwind/Northwind.svc/"
+			    */
+				serviceUrl : "http://services.odata.org/V3/Northwind/Northwind.svc/"
 			}
 		},
 
@@ -90,7 +92,7 @@ sap.ui.core.UIComponent.extend("sap.ui.demo.tdg.Component", {
 		}
 
 		// Create and set domain model to the component
-		var oModel = new sap.ui.model.odata.ODataModel(sServiceUrl, true);
+		var oModel = new sap.ui.model.odata.ODataModel("https://cors-anywhere.herokuapp.com/services.odata.org/V3/Northwind/Northwind.svc/", true);
 		this.setModel(oModel,"ODataModel");
 		
 		 // Get ODataModel instance
