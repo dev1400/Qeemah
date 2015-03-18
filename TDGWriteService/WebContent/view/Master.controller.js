@@ -116,32 +116,20 @@ sap.ui.demo.tdg.util.Controller.extend("sap.ui.demo.tdg.view.Master", {
 		// Get the list item, either from the listItem parameter or from the event's
 		// source itself (will depend on the device-dependent mode).
 		/*this.showDetail(oEvent.getParameter("listItem") || oEvent.getSource());*/
-		 var oODataModel = new sap.ui.model.odata.ODataModel("https://cors-anywhere.herokuapp.com/services.odata.org/V3/Northwind/Northwind.svc/", true);
+		 var oODataModel = new sap.ui.model.odata.ODataModel("https://cors-anywhere.herokuapp.com/services.odata.org/V2/(S(fdpsc4k1yhawdvbo1edbecqp))/OData/OData.svc/", true);
 		 
 		 var oEntry = {};
 
-		 oEntry.EmployeeID = 1;
-		 oEntry.LastName = "Abdul";
-		 oEntry.FirstName = "Waheed";
-		 oEntry.Title = "Mr";
-		 oEntry.TitleOfCourtesy =  "Mr";
-		 oEntry.BirthDate = "1952-02-19T00:00:00";
-		 oEntry.HireDate = "1952-02-19T00:00:00";
-		 oEntry.Address = "Chennai";
-		 oEntry.City = "Chennai";
-		 oEntry.Region = "TN";
-		 oEntry.PostalCode = 600002;
-		 oEntry.Country = "IND";
-		 oEntry.HomePhone = 123;
-		 oEntry.Extension = 123;
-		 oEntry.Photo = "xyz";
-		 oEntry.Notes = "Hi";
-		 oEntry.ReportsTo = 2;
-		 oEntry.PhotoPath = "http://accweb/emmployees/peacock.bmp";
-         oODataModel.create("/Employees", oEntry, null, function(){
-      		alert("Delete successful");
+		 oEntry.ID = "009000";
+		 oEntry.ReleaseDate = "1952-02-19T00:00:00";
+		 oEntry.DiscontinuedDate = "1952-02-19T00:00:00";
+		 oEntry.Rating = "4";
+		 oEntry.Price = "2.5";
+		 
+         oODataModel.create("/Products", oEntry, null, function(){
+      		alert("successful");
       	},function(){
-     		alert("Delete failed");});
+     		alert("failed");});
 	},
 
 	showDetail : function(oEvent) {
