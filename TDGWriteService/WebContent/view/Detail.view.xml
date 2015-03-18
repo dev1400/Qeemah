@@ -1,0 +1,106 @@
+<mvc:View controllerName="sap.ui.demo.tdg.view.Detail"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:commons="sap.suite.ui.commons"
+	xmlns:layout="sap.ui.commons.layout" xmlns="sap.m">
+	<Page showNavButton="{device>/isPhone}" navButtonPress="onNavBack"
+		class="sapUiFioriObjectPage" title="{i18n>detailTitle}">
+		<content>
+			<!-- <Label text="{OrderDetailModel>/ContactName} \n {OrderDetailModel>/Address}" 
+				design="Bold" /> -->
+			<commons:BusinessCard iconPath="images/female_IngallsB.jpg"
+				secondTitle="{OrderDetailModel>/ContactTitle} at {OrderDetailModel>/CompanyName}">
+				<commons:firstTitle>
+					<Label text="{OrderDetailModel>/ContactName}" design="Bold" />
+				</commons:firstTitle>
+				<commons:content>
+
+					<layout:MatrixLayout id="sap-matrix" columns="3"
+						width="600px">
+						<layout:rows>
+
+							<layout:MatrixLayoutRow >
+								<layout:MatrixLayoutCell>
+								<Label text="Address:"/>
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+								<Label text="{OrderDetailModel>/Address}"/>
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+							
+							<layout:MatrixLayoutRow >
+								<layout:MatrixLayoutCell>
+								<Label text="City:"/>
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+								<Label text="{OrderDetailModel>/City}"/>
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+							<layout:MatrixLayoutRow >
+								<layout:MatrixLayoutCell>
+								<Label text="Region:"/>
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+								<Label text="{OrderDetailModel>/Region}" />
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+							<layout:MatrixLayoutRow >
+								<layout:MatrixLayoutCell>
+								<Label text="PostalCode:"/>
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+								<Label text="{OrderDetailModel>/PostalCode}"  />
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+							<layout:MatrixLayoutRow >
+								<layout:MatrixLayoutCell>
+								<Label text="Country:"/>
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+								<Label text="{OrderDetailModel>/Country}" />
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+							<layout:MatrixLayoutRow >
+								<layout:MatrixLayoutCell>
+								<Label text="Phone:"/>
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+								<Label text="{OrderDetailModel>/Phone}"  />
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+							<layout:MatrixLayoutRow >
+								<layout:MatrixLayoutCell>
+								<Label text="Fax:"/>
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+								<Label text="{OrderDetailModel>/Fax}"  />
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+
+						</layout:rows>
+					</layout:MatrixLayout>
+
+				</commons:content>
+
+
+
+			</commons:BusinessCard>
+
+			<!-- <Label text="{OrderDetailModel>/ContactName}" design="Bold" /> -->
+
+			<!-- <Label text="Select Time" design="Bold" /> <List id="list" items="{OrderDetailModel>ContactName}" 
+				mode="{device>/listMode}" noDataText="{i18n>masterListNoDataText}" select="onSelect" 
+				growing="true" growingScrollToLoad="true"> <items> <ObjectListItem type="{device>/listItemType}" 
+				title="{OrderDetailModel>ContactName}" > </ObjectListItem> </items> </List> -->
+			<!-- <IconTabBar select="onDetailSelect" expandable="false" id="idIconTabBar"> 
+				<items> <IconTabFilter binding="{Supplier}" key="supplier" text="{i18n>iconTabFilterSupplier}" 
+				icon="sap-icon://supplier"> <content> <core:Fragment fragmentName="sap.ui.demo.tdg.view.SupplierAddressForm" 
+				type="XML" /> </content> </IconTabFilter> <IconTabFilter binding="{Category}" 
+				key="category" text="{i18n>iconTabFilterCategory}" icon="sap-icon://hint"> 
+				<content> <core:Fragment fragmentName="sap.ui.demo.tdg.view.CategoryInfoForm" 
+				type="XML" /> </content> </IconTabFilter> </items> </IconTabBar> -->
+		</content>
+		<footer>
+			<Toolbar>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>
