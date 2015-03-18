@@ -22,7 +22,7 @@
 		<content>
 			<List
 				id="list"
-				items="{ODataModel>/Orders}"
+				items="{ODataModel>/Employees}"
 				mode="{device>/listMode}"
 				noDataText="{i18n>masterListNoDataText}"
 				select="onSelect"
@@ -31,7 +31,7 @@
 				<items>
 					<ObjectListItem
 						type="{device>/listItemType}"
-						title="{ODataModel>OrderID}"
+						title="{ODataModel>FirstName}"
 						>
 					</ObjectListItem>
 				</items>
