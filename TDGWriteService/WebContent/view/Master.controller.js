@@ -126,10 +126,14 @@ sap.ui.demo.tdg.util.Controller.extend("sap.ui.demo.tdg.view.Master", {
 		 oEntry.Rating = "4";
 		 oEntry.Price = "2.5";
 		 
-         oODataModel.create("/Products", oEntry, null, function(){
+         oODataModel.create("/Products", oEntry, null, {success: function(oData){
+        	 console.dir(oData);
       		alert("successful");
-      	},function(){
-     		alert("failed");});
+      	}, error: function(oResponse){
+      		console.dir(oResponse);
+     		alert("failed");}, async : true});
+         
+      
 	},
 
 	showDetail : function(oEvent) {
