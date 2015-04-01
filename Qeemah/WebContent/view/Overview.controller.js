@@ -6,6 +6,9 @@ sap.ui.controller("sapui5tutorial1.Overview", {
 * @memberOf sapui5tutorial1.Overview
 */
 	onInit: function() {
+		
+		this._oVboxSignIn = this.getView().byId("idVBoxSignIn");
+		this._oVboxUserInfo = this.getView().byId("idVBoxUserInformation");
 
 	},
 
@@ -37,6 +40,10 @@ sap.ui.controller("sapui5tutorial1.Overview", {
 	goToNextPage:function(){
 		var router = sap.ui.core.UIComponent.getRouterFor(this);
 		router.navTo("SecondPage", {id:1}, false);
+	},
+	handleOkButtonPress: function(){
+		
+		this._oVboxSignIn.setVisible(false);
+		this._oVboxUserInfo.setVisible(true);
 	}
-
 });

@@ -1,9 +1,9 @@
-<mvc:View height="100%" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:layout="sap.ui.commons.layout" xmlns="sap.m" xmlns:c="sap.ui.commons">
+<mvc:View height="100%" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form"
+	xmlns:layout="sap.ui.commons.layout" xmlns="sap.m" xmlns:c="sap.ui.commons" controllerName="sapui5tutorial1.Overview">
 	<IconTabBar class="iconTabBarPaddingTop" id="idIconTabBarNoIcons"
 		expanded="{device>/isNoPhone}">
 		<items>
-			<IconTabFilter text="Why Saudi Arabia">
+			<!-- <IconTabFilter text="Why Saudi Arabia">
 
 				<c:TextView text="Why Saudi Arabia" design="H4"></c:TextView>
 				<VBox>
@@ -20,9 +20,9 @@
 						text="To become the global capital of energy. Up and downstream petrochemicals, minerals, power and water are all vital to the Saudi and global economy." />
 				</HBox>
 
-			</IconTabFilter>
+			</IconTabFilter> -->
 			<IconTabFilter text="Sign in">
-				<VBox alignItems="Center" justifyContent="Center">
+				<VBox id="idVBoxSignIn" alignItems="Center" justifyContent="Center">
 					<Input type="Text" placeholder="Enter Investor ID" />
 					<Input type="Password" placeholder="Enter Password" />
 					<HBox justifyContent="Center">
@@ -30,25 +30,51 @@
 							layoutFixed="false">
 							<layout:MatrixLayoutRow>
 								<layout:MatrixLayoutCell>
-									<Button type="Accept" text="Ok" press="goToNextPage">
+									<Button type="Accept" text="Ok" press="handleOkButtonPress">
 									</Button>
 								</layout:MatrixLayoutCell>
 								<layout:MatrixLayoutCell>
 									<Button type="Reject" text="Cancel" press="onPress">
 									</Button>
 								</layout:MatrixLayoutCell>
+								
 
 							</layout:MatrixLayoutRow>
 						</layout:MatrixLayout>
 					</HBox>
 
 
-				</VBox>
-				<HBox justifyContent="SpaceAround" alignItems="Center">
-					<Link text="Forgot Password" press="handleLinkPress" />
-					<Link text="Reset Password" press="handleLinkPress" />
-					<Link text="Register Organization" press="handleLinkPress" />
+				
+				<HBox justifyContent="Center" alignItems="Center">
+				         <layout:MatrixLayout 
+							layoutFixed="false">
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell>
+									<Link text="Forgot Password" press="handleLinkPress" />									
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+									<Link text="Reset Password" press="handleLinkPress" />									
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+						</layout:MatrixLayout>					
 				</HBox>
+				</VBox>
+				<VBox id="idVBoxUserInformation" visible="false">
+				<form:SimpleForm
+		id="form"
+		minWidth="1024"
+		maxContainerCols="2" >
+		
+		<Label text="Name"/>
+		<Text text="Abdul Waheed"/>
+		<Label text="Street"/>
+		<Text text="Imam Saud"/>
+		<Label text="City"/>
+		<Text text="Riyadh"/>
+		<Label text="Country"/>
+		<Text text="Saudi Ariabia"/>
+	</form:SimpleForm>
+				</VBox>
 			</IconTabFilter>
 			<IconTabFilter text="Register Organization">
 				<VBox class="marginBoxContent">
@@ -84,9 +110,9 @@
 					</items>
 				</VBox>
 			</IconTabFilter>
-			<IconTabFilter text="Success Stories">
+			<!-- <IconTabFilter text="Success Stories">
 				<Text text="People content goes here ..." />
-			</IconTabFilter>
+			</IconTabFilter> -->
 		</items>
 	</IconTabBar>
 
