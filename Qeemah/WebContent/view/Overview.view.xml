@@ -1,5 +1,5 @@
 <mvc:View height="100%" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form"
-	xmlns:layout="sap.ui.commons.layout" xmlns="sap.m" xmlns:c="sap.ui.commons" controllerName="sapui5tutorial1.Overview">
+	xmlns:layout="sap.ui.commons.layout" xmlns="sap.m" xmlns:c="sap.ui.commons" controllerName="view.Overview">
 	<IconTabBar class="iconTabBarPaddingTop" id="idIconTabBarNoIcons"
 		expanded="{device>/isNoPhone}">
 		<items>

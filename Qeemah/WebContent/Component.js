@@ -5,7 +5,7 @@ sap.ui.core.UIComponent.extend("com.tutorial.Component",{
 		routing : {
 			config : { 
 				viewType:"XML",
-				viewPath:"sapui5tutorial1",
+				viewPath:"view",
 				targetControl:"navContainer",
 				targetAggregation:"pages",
 				clearTarget : false
@@ -42,6 +42,6 @@ com.tutorial.Component.prototype.destroy = function(){
 	sap.ui.core.UIComponent.destroy.apply(this,arguments);
 };
 com.tutorial.Component.prototype.createContent = function(){
-	this.view = sap.ui.view({id:"app",viewName:"sapui5tutorial1.App",type:sap.ui.core.mvc.ViewType.JS});
+	this.view = sap.ui.view({id:"app",viewName:"view.App",type:sap.ui.core.mvc.ViewType.JS});
 	return this.view;
 };

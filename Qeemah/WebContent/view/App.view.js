@@ -1,11 +1,11 @@
-sap.ui.jsview("sapui5tutorial1.App", {
+sap.ui.jsview("view.App", {
 
 	/** Specifies the Controller belonging to this View. 
 	* In the case that it is not implemented, or that "null" is returned, this View does not have a Controller.
 	* @memberOf sapui5tutorial1.App
 	*/ 
 	getControllerName : function() {
-		return "sapui5tutorial1.App";
+		return "view.App";
 	},
 
 	/** Is initially called once after the Controller has been instantiated. It is the place where the UI is constructed. 

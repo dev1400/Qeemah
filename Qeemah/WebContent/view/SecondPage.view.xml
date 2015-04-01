@@ -1,5 +1,5 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" controllerName="sapui5tutorial1.SecondPage" xmlns:layout="sap.ui.commons.layout"
+	xmlns="sap.m" controllerName="view.SecondPage" xmlns:layout="sap.ui.commons.layout"
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page title="Special Track">
 		<content>
