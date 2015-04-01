@@ -1,53 +1,93 @@
+<mvc:View height="100%" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.commons.layout" xmlns="sap.m" xmlns:c="sap.ui.commons">
+	<IconTabBar class="iconTabBarPaddingTop" id="idIconTabBarNoIcons"
+		expanded="{device>/isNoPhone}">
+		<items>
+			<IconTabFilter text="Why Saudi Arabia">
 
-<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
-	xmlns="sap.m" controllerName="sapui5tutorial1.Overview" xmlns:layout="sap.ui.commons.layout"
-	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page title="Special Track">
-		<content>
-			<VBox>
-				<Input type="Text" placeholder="Enter User name" />
-				<Input type="Text" placeholder="Enter Password" />
-				<HBox justifyContent="Center">
-					<layout:MatrixLayout id="idMatrixLayout"
-						layoutFixed="false">
-						<layout:MatrixLayoutRow>
-							<layout:MatrixLayoutCell>
-								<Button type="Accept" text="Ok" press="goToNextPage">
-								</Button>
-							</layout:MatrixLayoutCell>
-							<layout:MatrixLayoutCell>
-								<Button type="Reject" text="Cancel" press="onPress">
-								</Button>
-							</layout:MatrixLayoutCell>
-
-						</layout:MatrixLayoutRow>
-					</layout:MatrixLayout>
+				<c:TextView text="Why Saudi Arabia" design="H4"></c:TextView>
+				<VBox>
+					<Text
+						text="Saudi Arabia has long been recognized as a powerhouse of the Middle East. Now’s it’s poised to become one of the world’s top 10 most competitive nations and with that, one of the most lucrative markets for strategic investment." />
+					<Text
+						text="The Kingdom of Saudi Arabia is undergoing an exciting transformation. One of the most enterprising nations in the Middle East, Saudi’s vast natural energy combined with the long-term vision and strategic planning of its rulers has helped to create today’s stable, robust economy. Now, Saudi is looking to the future with an ambitious program of accelerated growth and development that will position it firmly as a new global force." />
+				</VBox>
+				<c:TextView
+					text="To capitalize on these geographic advantages, Saudi has set itself three strategic targets:"
+					design="H4"></c:TextView>
+				<HBox>
+					<Text
+						text="To become the global capital of energy. Up and downstream petrochemicals, minerals, power and water are all vital to the Saudi and global economy." />
 				</HBox>
-			</VBox>
-			<f:SimpleForm id="SimpleFormChange354" minWidth="1024"
-				maxContainerCols="2" editable="true" layout="ResponsiveGridLayout"
-				title="Login" labelSpanL="3" labelSpanM="3" emptySpanL="4"
-				emptySpanM="4" columnsL="1" columnsM="1" class="editableForm">
 
-				<f:content>
-					<Input type="Text" placeholder="Enter User name" />
-					<Input type="Text" placeholder="Enter Password" />
-					<layout:MatrixLayout id="idMatrixLayout2"
-						layoutFixed="false">
-						<layout:MatrixLayoutRow>
-							<layout:MatrixLayoutCell>
-								<Button type="Accept" text="Ok" press="goToNextPage">
-								</Button>
-							</layout:MatrixLayoutCell>
-							<layout:MatrixLayoutCell>
-								<Button type="Reject" text="Cancel" press="onPress">
-								</Button>
-							</layout:MatrixLayoutCell>
+			</IconTabFilter>
+			<IconTabFilter text="Sign in">
+				<VBox alignItems="Center" justifyContent="Center">
+					<Input type="Text" placeholder="Enter Investor ID" />
+					<Input type="Password" placeholder="Enter Password" />
+					<HBox justifyContent="Center">
+						<layout:MatrixLayout id="idMatrixLayout"
+							layoutFixed="false">
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell>
+									<Button type="Accept" text="Ok" press="goToNextPage">
+									</Button>
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+									<Button type="Reject" text="Cancel" press="onPress">
+									</Button>
+								</layout:MatrixLayoutCell>
 
-						</layout:MatrixLayoutRow>
-					</layout:MatrixLayout>
-				</f:content>
-			</f:SimpleForm>
-		</content>
-	</Page>
-</core:View>
+							</layout:MatrixLayoutRow>
+						</layout:MatrixLayout>
+					</HBox>
+
+
+				</VBox>
+				<HBox justifyContent="SpaceAround" alignItems="Center">
+					<Link text="Forgot Password" press="handleLinkPress" />
+					<Link text="Reset Password" press="handleLinkPress" />
+					<Link text="Register Organization" press="handleLinkPress" />
+				</HBox>
+			</IconTabFilter>
+			<IconTabFilter text="Register Organization">
+				<VBox class="marginBoxContent">
+					<items>
+						<Input type="Text" placeholder="Enter First Name ..." />
+
+						<Input type="Text" placeholder="Enter Last Name ..." />
+
+						<Input type="Tel" placeholder="Enter Mobile  Number ..." />
+
+						<Input type="Email" placeholder="Enter Email ..." />
+
+						<Input type="Password" placeholder="Enter Password ..." />
+
+						<Input type="Password" placeholder="Re Enter Password ..." />
+
+						<HBox justifyContent="Center">
+							<layout:MatrixLayout layoutFixed="false">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Button type="Accept" text="Register" press="goToNextPage">
+										</Button>
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Button type="Reject" text="Cancel" press="onPress">
+										</Button>
+									</layout:MatrixLayoutCell>
+
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+						</HBox>
+
+					</items>
+				</VBox>
+			</IconTabFilter>
+			<IconTabFilter text="Success Stories">
+				<Text text="People content goes here ..." />
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
+
+</mvc:View>
