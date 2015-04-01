@@ -1,11 +1,13 @@
-jQuery.sap.declare("com.tutorial.Component");
+jQuery.sap.declare("com.sagia.Component");
+jQuery.sap.require("com.sagia.common.ModelHelper");
 
-sap.ui.core.UIComponent.extend("com.tutorial.Component",{
+
+sap.ui.core.UIComponent.extend("com.sagia.Component",{
 	metadata : {
 		routing : {
 			config : { 
 				viewType:"XML",
-				viewPath:"view",
+				viewPath:"com.sagia.view",
 				targetControl:"navContainer",
 				targetAggregation:"pages",
 				clearTarget : false
@@ -25,7 +27,7 @@ sap.ui.core.UIComponent.extend("com.tutorial.Component",{
 	}
 });
 
-com.tutorial.Component.prototype.init = function(){
+com.sagia.Component.prototype.init = function(){
 	jQuery.sap.require("sap.ui.core.routing.History");
 	jQuery.sap.require("sap.m.routing.RouteMatchedHandler");
 	
@@ -34,14 +36,20 @@ com.tutorial.Component.prototype.init = function(){
 	var router = this.getRouter();
 	this.routeHandler = new sap.m.routing.RouteMatchedHandler(router);
 	router.initialize();
+	
+	// Get i18n model 
+	var i18nModel =	com.sagia.common.ModelHelper.getI18nModel("i18n/messageBundle.properties");
+	
+	// set i18n model
+	this.setModel(i18nModel, "i18n");
 };
-com.tutorial.Component.prototype.destroy = function(){
+com.sagia.Component.prototype.destroy = function(){
 	if(this.routeHandler){
 		this.routeHandler.destroy();
 	}
 	sap.ui.core.UIComponent.destroy.apply(this,arguments);
 };
-com.tutorial.Component.prototype.createContent = function(){
-	this.view = sap.ui.view({id:"app",viewName:"view.App",type:sap.ui.core.mvc.ViewType.JS});
+com.sagia.Component.prototype.createContent = function(){
+	this.view = sap.ui.view({id:"app",viewName:"com.sagia.view.App",type:sap.ui.core.mvc.ViewType.JS});
 	return this.view;
 };

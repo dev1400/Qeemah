@@ -1,4 +1,4 @@
-sap.ui.controller("view.Overview", {
+sap.ui.controller("com.sagia.view.Overview", {
 
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.

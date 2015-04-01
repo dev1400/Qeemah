@@ -9,16 +9,15 @@
 				data-sap-ui-libs="sap.m"
 				data-sap-ui-theme="sap_bluecrystal"
 				data-sap-ui-resourceroots='{
-					"com.tutorial":"./",
-					"view":"./view"}'>
+					"com.sagia":"./"}'>
 		</script>
 		<!-- only load the mobile lib "sap.m" and the "sap_mvi" theme -->
 
 		<script>
 				new sap.m.Shell("Shell",{
-					title:"Tutorial1",
+					title:"SAGIA",
 					app: new sap.ui.core.ComponentContainer({
-						name : 'com.tutorial'
+						name : 'com.sagia'
 					})
 				}).placeAt("content");
 		</script>

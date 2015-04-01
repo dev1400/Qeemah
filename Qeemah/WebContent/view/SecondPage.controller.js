@@ -1,4 +1,4 @@
-sap.ui.controller("view.SecondPage", {
+sap.ui.controller("com.sagia.view.SecondPage", {
 
 	/**
 	* Called when a controller is instantiated and its View controls (if available) are already created.
