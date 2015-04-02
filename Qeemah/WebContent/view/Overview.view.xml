@@ -23,8 +23,8 @@
 			</IconTabFilter> -->
 			<IconTabFilter text="Sign in">
 				<VBox id="idVBoxSignIn" alignItems="Center" justifyContent="Center">
-					<Input type="Text" placeholder="Enter Investor ID" />
-					<Input type="Password" placeholder="Enter Password" />
+					<Input type="Text" placeholder="{i18n>EnterInvestorID}" />
+					<Input type="Password" placeholder="{i18n>EnterPassword}" />
 					<HBox justifyContent="Center">
 						<layout:MatrixLayout id="idMatrixLayout"
 							layoutFixed="false">
@@ -34,7 +34,7 @@
 									</Button>
 								</layout:MatrixLayoutCell>
 								<layout:MatrixLayoutCell>
-									<Button type="Reject" text="Cancel" press="onPress">
+									<Button type="Reject" text="{i18n>Cancel}" press="onPress">
 									</Button>
 								</layout:MatrixLayoutCell>
 								
@@ -50,10 +50,10 @@
 							layoutFixed="false">
 							<layout:MatrixLayoutRow>
 								<layout:MatrixLayoutCell>
-									<Link text="Forgot Password" press="handleLinkPress" />									
+									<Link text="{i18n>ForgotPassword}" press="handleLinkPress" />									
 								</layout:MatrixLayoutCell>
 								<layout:MatrixLayoutCell>
-									<Link text="Reset Password" press="handleLinkPress" />									
+									<Link text="{i18n>ResetPassword}" press="handleLinkPress" />									
 								</layout:MatrixLayoutCell>
 							</layout:MatrixLayoutRow>
 						</layout:MatrixLayout>					
@@ -79,27 +79,27 @@
 			<IconTabFilter text="Register Organization">
 				<VBox class="marginBoxContent">
 					<items>
-						<Input type="Text" placeholder="Enter First Name ..." />
+						<Input type="Text" placeholder="{i18n>EnterFirstName}" />
 
-						<Input type="Text" placeholder="Enter Last Name ..." />
+						<Input type="Text" placeholder="{i18n>EnterLastName}" />
 
-						<Input type="Tel" placeholder="Enter Mobile  Number ..." />
+						<Input type="Tel" placeholder="{i18n>EnterMobileNumber}" />
 
-						<Input type="Email" placeholder="Enter Email ..." />
+						<Input type="Email" placeholder="{i18n>EnterEmail}" />
 
-						<Input type="Password" placeholder="Enter Password ..." />
+						<Input type="Password" placeholder="{i18n>EnterPassword}" />
 
-						<Input type="Password" placeholder="Re Enter Password ..." />
+						<Input type="Password" placeholder="{i18n>ReEnterPassword}" />
 
 						<HBox justifyContent="Center">
 							<layout:MatrixLayout layoutFixed="false">
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
-										<Button type="Accept" text="Register" press="goToNextPage">
+										<Button type="Accept" text="{i18n>Register}" press="goToNextPage">
 										</Button>
 									</layout:MatrixLayoutCell>
 									<layout:MatrixLayoutCell>
-										<Button type="Reject" text="Cancel" press="onPress">
+										<Button type="Reject" text="{i18n>Cancel}" press="onPress">
 										</Button>
 									</layout:MatrixLayoutCell>
 

@@ -4,18 +4,18 @@
 	<Page title="Special Track">
 		<content>
 			<VBox>
-				<Input type="Text" placeholder="Enter User name" />
-				<Input type="Text" placeholder="Enter Password" />
+				<Input type="Text" placeholder="{i18n>EnterUsername}" />
+				<Input type="Text" placeholder="{i18n>EnterPassword}" />
 				<HBox justifyContent="Center">
 					<layout:MatrixLayout id="idMatrixLayout"
 						layoutFixed="false">
 						<layout:MatrixLayoutRow>
 							<layout:MatrixLayoutCell>
-								<Button type="Accept" text="Next Page" press="nextPage">
+								<Button type="Accept" text="{i18n>Next}" press="nextPage">
 								</Button>
 							</layout:MatrixLayoutCell>
 							<layout:MatrixLayoutCell>
-								<Button type="Reject" text="Cancel" press="goBack">
+								<Button type="Reject" text="{i18n>Back}" press="goBack">
 								</Button>
 							</layout:MatrixLayoutCell>
 							
