@@ -1,12 +1,28 @@
-<mvc:View height="100%" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:form="sap.ui.layout.form"
-	xmlns:layout="sap.ui.commons.layout" xmlns="sap.m" xmlns:c="sap.ui.commons" controllerName="com.sagia.view.Overview">
-	<IconTabBar class="iconTabBarPaddingTop" id="idIconTabBarNoIcons"
-		expanded="{device>/isNoPhone}">
+<mvc:View height="100%" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
+	xmlns="sap.m" xmlns:c="sap.ui.commons" controllerName="com.sagia.view.Overview">
+	<IconTabBar class="iconTabBarPaddingTop" id="idIconTabBarBase"
+		expanded="{device>/isNoPhone}" enableScrolling="true" expandable="false"
+		select="handleIconTabBarSelect">
 		<items>
-			
-			<IconTabFilter text="Sign in">
+
+			<IconTabFilter icon="sap-icon://log" text="{i18n>UserLogin}"
+				key="idUserLoginIconTabFilter">
+				<VBox id="idVBoxQuestionsContent" visible="false">
+					<CheckBox text="{i18n>Question1}" change="handleCheckboxQuestion1Change" />
+					<!-- <VBox id="idVBoxQuestion1Content" visible="true"> <Input type="Text" 
+						placeholder="{i18n>EnterInvestorID}" /> <Input type="Password" placeholder="{i18n>EnterPassword}" 
+						/> </VBox> -->
+					<CheckBox text="{i18n>Question2}" />
+					<CheckBox text="{i18n>Question3}" />
+					<CheckBox text="{i18n>Question4}" />
+					<CheckBox text="{i18n>Question5}" />
+					<CheckBox text="{i18n>Question6}" />
+					<CheckBox text="{i18n>Question7}" />
+					<CheckBox text="{i18n>Question8}" />
+				</VBox>
 				<VBox id="idVBoxSignIn" alignItems="Center" justifyContent="Center">
-				    <Input type="Text" placeholder="{i18n>EnterInvestorID}" />
+					<Input type="Text" placeholder="{i18n>EnterInvestorID}" />
 					<Input type="Password" placeholder="{i18n>EnterPassword}" />
 					<HBox justifyContent="Center">
 						<layout:MatrixLayout id="idMatrixLayout"
@@ -20,47 +36,45 @@
 									<Button type="Reject" text="{i18n>Cancel}" press="onPress">
 									</Button>
 								</layout:MatrixLayoutCell>
-								
+
 
 							</layout:MatrixLayoutRow>
 						</layout:MatrixLayout>
 					</HBox>
 
 
-				
-				<HBox justifyContent="Center" alignItems="Center">
-				         <layout:MatrixLayout 
-							layoutFixed="false">
+
+					<HBox justifyContent="Center" alignItems="Center">
+						<layout:MatrixLayout layoutFixed="false">
 							<layout:MatrixLayoutRow>
 								<layout:MatrixLayoutCell>
-									<Link text="{i18n>ForgotPassword}" press="handleLinkPress" />									
+									<Link text="{i18n>ForgotPassword}" press="handleLinkPress" />
 								</layout:MatrixLayoutCell>
 								<layout:MatrixLayoutCell>
-									<Link text="{i18n>ResetPassword}" press="handleLinkPress" />									
+									<Link text="{i18n>ResetPassword}" press="handleLinkPress" />
 								</layout:MatrixLayoutCell>
 							</layout:MatrixLayoutRow>
-						</layout:MatrixLayout>					
-				</HBox>
+						</layout:MatrixLayout>
+					</HBox>
 				</VBox>
 				<VBox id="idVBoxUserInformation" visible="false">
-				<form:SimpleForm
-		id="form"
-		minWidth="1024"
-		maxContainerCols="2" >
-		
-		<Label text="Name"/>
-		<Text text="Abdul Waheed"/>
-		<Label text="Street"/>
-		<Text text="Imam Saud"/>
-		<Label text="City"/>
-		<Text text="Riyadh"/>
-		<Label text="Country"/>
-		<Text text="Saudi Ariabia"/>
-	</form:SimpleForm>
+					<form:SimpleForm id="form" minWidth="1024"
+						maxContainerCols="2">
+
+						<Label text="Name" />
+						<Text text="Abdul Waheed" />
+						<Label text="Street" />
+						<Text text="Imam Saud" />
+						<Label text="City" />
+						<Text text="Riyadh" />
+						<Label text="Country" />
+						<Text text="Saudi Ariabia" />
+					</form:SimpleForm>
 				</VBox>
 			</IconTabFilter>
-			<IconTabFilter text="Register Organization">
-				<VBox class="marginBoxContent">
+			<IconTabFilter icon="sap-icon://add-contact" text="Register User"
+				key="idRegisterUserIconTabFilter">
+				<VBox id="idVBoxRegistration" class="marginBoxContent">
 					<items>
 						<Input type="Text" placeholder="{i18n>EnterFirstName}" />
 
@@ -78,12 +92,16 @@
 							<layout:MatrixLayout layoutFixed="false">
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
-										<Button type="Accept" text="{i18n>Register}" press="handleRegisterOrgButtonPress">
+										<Button type="Accept" text="{i18n>Register}"
+											press="handleRegisterOrgButtonPress">
 										</Button>
 									</layout:MatrixLayoutCell>
 									<layout:MatrixLayoutCell>
 										<Button type="Reject" text="{i18n>Cancel}" press="onPress">
 										</Button>
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+
 									</layout:MatrixLayoutCell>
 
 								</layout:MatrixLayoutRow>
@@ -92,10 +110,37 @@
 
 					</items>
 				</VBox>
+				<VBox id="idHBoxRegistrationSuccessMessage" visible="false" alignItems="Center" justifyContent="Center">
+
+					<!-- <ObjectStatus text="{i18n>RegistrationSuccessMsg}" state="Success" 
+						/> -->
+					<!-- <Label text="{i18n>RegistrationSuccessMsg}" design="Bold" /> -->
+					<HBox>
+						<layout:MatrixLayout layoutFixed="false">
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell>
+									<core:Icon src="sap-icon://message-success" color="#64E4CE" size="5em">
+
+									</core:Icon>
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+									<c:TextView text="{i18n>RegistrationSuccessMsg}"
+										semanticColor="Positive" design="H3"  />
+								</layout:MatrixLayoutCell>
+
+
+							</layout:MatrixLayoutRow>
+						</layout:MatrixLayout>
+
+
+
+					</HBox>
+					<Button type="Default" text="Proceed to Organization Registration">
+					</Button>
+				</VBox>
 			</IconTabFilter>
-			<!-- <IconTabFilter text="Success Stories">
-				<Text text="People content goes here ..." />
-			</IconTabFilter> -->
+			<!-- <IconTabFilter text="Success Stories"> <Text text="People content 
+				goes here ..." /> </IconTabFilter> -->
 		</items>
 	</IconTabBar>
 

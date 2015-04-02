@@ -13,6 +13,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this._oVboxSignIn = this.getView().byId("idVBoxSignIn");
 		this._oVboxUserInfo = this.getView().byId("idVBoxUserInformation");
+		this._oVboxQuestion1 = this.getView().byId("idVBoxQuestion1Content");
+		this._oVboxQuestions = this.getView().byId("idVBoxQuestionsContent");
+		this._oVBoxRegistration = this.getView().byId("idVBoxRegistration");
+		this._oHboxRegistrationSuccessMsg = this.getView().byId("idHBoxRegistrationSuccessMessage");
+
+
 
 	},
 
@@ -48,9 +54,23 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleOkButtonPress: function(){
 		
 		this._oVboxSignIn.setVisible(false);
-		this._oVboxUserInfo.setVisible(true);
+		this._oVboxQuestions.setVisible(true);
+		//this._oVboxUserInfo.setVisible(true);
 	},
 	handleRegisterOrgButtonPress: function(){
+		this._oVBoxRegistration.setVisible(false);
+		this._oHboxRegistrationSuccessMsg.setVisible(true);
 		sap.m.MessageToast.show(this.ModelHelper.getText("RegistrationSuccessful"));
+	},
+	handleCheckboxQuestion1Change: function(){
+		
+		this._oVboxQuestion1.setVisible(true);
+		
+	},
+	handleIconTabBarSelect: function(oEvent){
+		var oPricingTabBar = this.getView().byId("idIconTabBarBase");
+		var sSelectedTab = oPricingTabBar.getSelectedKey();
+		
+		console.log(sSelectedTab);
 	}
 });
