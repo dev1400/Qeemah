@@ -1,6 +1,7 @@
 jQuery.sap.declare("com.sagia.common.ModelHelper");
 
 com.sagia.common.ModelHelper = {
+		oBundle : null,
 		/**
 		 * Build i18n Model instance and return
 		 */

@@ -30,7 +30,7 @@
 							layoutFixed="false">
 							<layout:MatrixLayoutRow>
 								<layout:MatrixLayoutCell>
-									<Button type="Accept" text="Ok" press="handleOkButtonPress">
+									<Button type="Accept" text="{i18n>Ok}" press="handleOkButtonPress">
 									</Button>
 								</layout:MatrixLayoutCell>
 								<layout:MatrixLayoutCell>
