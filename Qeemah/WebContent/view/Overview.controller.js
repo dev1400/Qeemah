@@ -1,3 +1,4 @@
+jQuery.sap.require("com.sagia.common.ModelHelper");
 sap.ui.controller("com.sagia.view.Overview", {
 
 /**
@@ -6,6 +7,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 * @memberOf com.sagia.view.Overview
 */
 	onInit: function() {
+		
+		// Model Helper reference
+		this.ModelHelper = com.sagia.common.ModelHelper;
 		
 		this._oVboxSignIn = this.getView().byId("idVBoxSignIn");
 		this._oVboxUserInfo = this.getView().byId("idVBoxUserInformation");
@@ -45,5 +49,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this._oVboxSignIn.setVisible(false);
 		this._oVboxUserInfo.setVisible(true);
+	},
+	handleRegisterOrgButtonPress: function(){
+		sap.m.MessageToast.show(this.ModelHelper.getText("RegistrationSuccessful"));
 	}
 });

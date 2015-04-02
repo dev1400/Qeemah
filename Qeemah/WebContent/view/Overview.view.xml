@@ -3,27 +3,10 @@
 	<IconTabBar class="iconTabBarPaddingTop" id="idIconTabBarNoIcons"
 		expanded="{device>/isNoPhone}">
 		<items>
-			<!-- <IconTabFilter text="Why Saudi Arabia">
-
-				<c:TextView text="Why Saudi Arabia" design="H4"></c:TextView>
-				<VBox>
-					<Text
-						text="Saudi Arabia has long been recognized as a powerhouse of the Middle East. Now’s it’s poised to become one of the world’s top 10 most competitive nations and with that, one of the most lucrative markets for strategic investment." />
-					<Text
-						text="The Kingdom of Saudi Arabia is undergoing an exciting transformation. One of the most enterprising nations in the Middle East, Saudi’s vast natural energy combined with the long-term vision and strategic planning of its rulers has helped to create today’s stable, robust economy. Now, Saudi is looking to the future with an ambitious program of accelerated growth and development that will position it firmly as a new global force." />
-				</VBox>
-				<c:TextView
-					text="To capitalize on these geographic advantages, Saudi has set itself three strategic targets:"
-					design="H4"></c:TextView>
-				<HBox>
-					<Text
-						text="To become the global capital of energy. Up and downstream petrochemicals, minerals, power and water are all vital to the Saudi and global economy." />
-				</HBox>
-
-			</IconTabFilter> -->
+			
 			<IconTabFilter text="Sign in">
 				<VBox id="idVBoxSignIn" alignItems="Center" justifyContent="Center">
-					<Input type="Text" placeholder="{i18n>EnterInvestorID}" />
+				    <Input type="Text" placeholder="{i18n>EnterInvestorID}" />
 					<Input type="Password" placeholder="{i18n>EnterPassword}" />
 					<HBox justifyContent="Center">
 						<layout:MatrixLayout id="idMatrixLayout"
@@ -95,7 +78,7 @@
 							<layout:MatrixLayout layoutFixed="false">
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
-										<Button type="Accept" text="{i18n>Register}" press="goToNextPage">
+										<Button type="Accept" text="{i18n>Register}" press="handleRegisterOrgButtonPress">
 										</Button>
 									</layout:MatrixLayoutCell>
 									<layout:MatrixLayoutCell>

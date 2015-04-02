@@ -16,4 +16,15 @@ com.sagia.common.ModelHelper = {
 			
 			return i18nModel;
 		},
+		// Return text from i18n model
+		getText : function (sPath, sArg1){
+		
+			var sText = this.oBundle.getText(sPath);
+			
+			if(sArg1){
+				sText = sText.replace("&", sArg1);
+			}
+				
+			return sText;
+		},
 };
