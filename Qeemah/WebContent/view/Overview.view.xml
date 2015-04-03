@@ -1,227 +1,226 @@
 <mvc:View height="100%" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
 	xmlns="sap.m" xmlns:c="sap.ui.commons" controllerName="com.sagia.view.Overview">
-	<c:ApplicationHeader logoSrc="common/mime/logo-en.png" displayLogoff="false" displayWelcome="false"></c:ApplicationHeader>
-	<IconTabBar class="iconTabBarPaddingTop" id="idIconTabBarBase"
-		expanded="{device>/isNoPhone}" enableScrolling="true" expandable="false"
-		select="handleIconTabBarSelect">
-		<items>
+	<Page enableScrolling="true">
+		<c:ApplicationHeader logoSrc="common/mime/logo-en.png"
+			displayLogoff="false" displayWelcome="false"></c:ApplicationHeader>
+		<IconTabBar enableScrolling="true" id="idIconTabBarBase"
+			select="handleIconTabBarSelect">
+			<items>
 
-			<IconTabFilter icon="sap-icon://log" text="{i18n>UserLogin}"
-				key="idUserLoginIconTabFilter">
-				<VBox id="idVBoxSignIn" alignItems="Center" justifyContent="Center">
-					<Input type="Text" placeholder="{i18n>EnterInvestorID}" />
-					<Input type="Password" placeholder="{i18n>EnterPassword}" />
-					<HBox justifyContent="Center">
-						<layout:MatrixLayout id="idMatrixLayout"
-							layoutFixed="false">
-							<layout:MatrixLayoutRow>
-								<layout:MatrixLayoutCell>
-									<Button type="Accept" text="{i18n>Ok}" press="handleOkButtonPress">
-									</Button>
-								</layout:MatrixLayoutCell>
-								<layout:MatrixLayoutCell>
-									<Button type="Reject" text="{i18n>Cancel}" press="onPress">
-									</Button>
-								</layout:MatrixLayoutCell>
-
-
-							</layout:MatrixLayoutRow>
-						</layout:MatrixLayout>
-					</HBox>
-
-
-
-					<HBox justifyContent="Center" alignItems="Center">
-						<layout:MatrixLayout layoutFixed="false">
-							<layout:MatrixLayoutRow>
-								<layout:MatrixLayoutCell>
-									<Link text="{i18n>ForgotPassword}" press="handleLinkPress" />
-								</layout:MatrixLayoutCell>
-								<layout:MatrixLayoutCell>
-									<Link text="{i18n>ResetPassword}" press="handleLinkPress" />
-								</layout:MatrixLayoutCell>
-							</layout:MatrixLayoutRow>
-						</layout:MatrixLayout>
-					</HBox>
-				</VBox>
-
-				<VBox id="idVBoxQuestionsContent" visible="false">
-					<CheckBox text="{i18n>Question1}" select="handleCheckboxQuestion1Change" />
-					<VBox id="idVBoxQuestion1Content" visible="false">
-
-
-						<layout:MatrixLayout layoutFixed="false">
-							<layout:MatrixLayoutRow>
-								<layout:MatrixLayoutCell>
-									<Input type="Number" placeholder="{i18n>TotalBranches}" />
-								</layout:MatrixLayoutCell>
-								<layout:MatrixLayoutCell>
-									<Input type="Number" placeholder="{i18n>NumberOfCountries}" />
-								</layout:MatrixLayoutCell>
-							</layout:MatrixLayoutRow>
-						</layout:MatrixLayout>
-						<Table id="idProductsTable" inset="false">
-							<headerToolbar>
-								<Toolbar>
-									<Button type="Emphasized" icon="sap-icon://sys-add"
-										press="handleTableAddRowButtonPress">
-									</Button>
-									<Button type="Emphasized" icon="sap-icon://delete"
-										press="handleTableDeleteRowButtonPress">
-									</Button>
-								</Toolbar>
-							</headerToolbar>
-							<columns>
-								<Column width="12em">
-									<Text text="Product" />
-								</Column>
-								<Column minScreenWidth="Tablet" demandPopin="true">
-									<Text text="Supplier" />
-								</Column>
-								<Column minScreenWidth="Tablet" demandPopin="true"
-									hAlign="Right">
-									<Text text="Dimensions" />
-								</Column>
-								<Column minScreenWidth="Tablet" demandPopin="true"
-									hAlign="Center">
-									<Text text="Weight" />
-								</Column>
-								<Column hAlign="Right">
-									<Text text="Price" />
-								</Column>
-							</columns>
-							<items>
-								<ColumnListItem>
-									<cells>
-										<!-- <ObjectIdentifier title="{Name}" text="{ProductId}" /> <Text 
-											text="{SupplierName}" /> <Text text="{Width} x {Depth} x {Height} {DimUnit}" 
-											/> <ObjectNumber number="{WeightMeasure}" unit="{WeightUnit}" state="{ path: 
-											'WeightMeasure', formatter: 'sap.m.sample.Table.Formatter.weightState' }" 
-											/> <ObjectNumber number="{Price}" unit="{CurrencyCode}" /> -->
-									</cells>
-								</ColumnListItem>
-							</items>
-						</Table>
-
-					</VBox>
-					<CheckBox text="{i18n>Question2}" />
-					<CheckBox text="{i18n>Question3}" />
-					<CheckBox text="{i18n>Question4}" />
-					<CheckBox text="{i18n>Question5}" />
-					<CheckBox text="{i18n>Question6}" />
-					<CheckBox text="{i18n>Question7}" />
-					<CheckBox text="{i18n>Question8}" />
-				</VBox>
-				<!-- NISTLAF Start-->
-				<VBox>
-				<c:RoadMap>
-				<c:RoadMapStep label="{i18n>Organization}"/>
-				<c:RoadMapStep label="{i18n>ContactInformation}"/>
-				<c:RoadMapStep label="{i18n>ShareHolders}"/>
-				<c:RoadMapStep label="{i18n>Typeoflicense}"/>
-				<c:RoadMapStep label="{i18n>Attachments}"/>
-				<c:RoadMapStep label="{i18n>Submit}"/>
-				</c:RoadMap>
-				
-				<VBox>
-				<HBox><Button type="Default" text="Previous" icon="sap-icon://arrow-left">
-					</Button><Button type="Default" text="Next" icon="sap-icon://arrow-right" iconFirst="false">
-					</Button></HBox>
-				
-				</VBox>
-				
-					<!-- <IconTabBar class="iconTabBarPaddingTop" id="idIconTabBarNewInvestmentSTLForm"
-						expanded="{device>/isNoPhone}">
-						<items>
-							<IconTabFilter text="1">
-								<Text text="Info content goes here ..." />
-							</IconTabFilter>
-							<IconTabFilter text="2">
-								<Text text="Attachments go here ..." />
-							</IconTabFilter>
-							<IconTabFilter text="3">
-								<Text text="Notes go here ..." />
-							</IconTabFilter>
-							<IconTabFilter text="4">
-								<Text text="People content goes here ..." />
-							</IconTabFilter>
-							<IconTabFilter text="5">
-								<Text text="People content goes here ..." />
-							</IconTabFilter>
-							<IconTabFilter text="6">
-								<Text text="People content goes here ..." />
-							</IconTabFilter>
-						</items>
-					</IconTabBar> -->
-
-				</VBox>
-				<!-- NISTLAF End-->
-			</IconTabFilter>
-			<IconTabFilter icon="sap-icon://add-contact" text="Register User"
-				key="idRegisterUserIconTabFilter">
-				<VBox id="idVBoxRegistration" class="marginBoxContent">
-					<items>
-						<Input type="Text" placeholder="{i18n>EnterFirstName}" />
-
-						<Input type="Text" placeholder="{i18n>EnterLastName}" />
-
-						<Input type="Tel" placeholder="{i18n>EnterMobileNumber}" />
-
-						<Input type="Email" placeholder="{i18n>EnterEmail}" />
-
+				<IconTabFilter icon="sap-icon://log" text="{i18n>UserLogin}"
+					key="idUserLoginIconTabFilter">
+					<VBox id="idVBoxSignIn" alignItems="Center" justifyContent="Center">
+						<Input type="Text" placeholder="{i18n>EnterInvestorID}" />
 						<Input type="Password" placeholder="{i18n>EnterPassword}" />
-
-						<Input type="Password" placeholder="{i18n>ReEnterPassword}" />
-
 						<HBox justifyContent="Center">
-							<layout:MatrixLayout layoutFixed="false">
+							<layout:MatrixLayout id="idMatrixLayout"
+								layoutFixed="false">
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
-										<Button type="Accept" text="{i18n>Register}"
-											press="handleRegisterOrgButtonPress">
+										<Button type="Accept" text="{i18n>Ok}" press="handleOkButtonPress">
 										</Button>
 									</layout:MatrixLayoutCell>
 									<layout:MatrixLayoutCell>
 										<Button type="Reject" text="{i18n>Cancel}" press="onPress">
 										</Button>
 									</layout:MatrixLayoutCell>
-									<layout:MatrixLayoutCell>
 
-									</layout:MatrixLayoutCell>
 
 								</layout:MatrixLayoutRow>
 							</layout:MatrixLayout>
 						</HBox>
 
-					</items>
-				</VBox>
-				<VBox id="idHBoxRegistrationSuccessMessage" visible="false"
-					alignItems="Center" justifyContent="Center">
 
-					<!-- <ObjectStatus text="{i18n>RegistrationSuccessMsg}" state="Success" 
-						/> -->
-					<!-- <Label text="{i18n>RegistrationSuccessMsg}" design="Bold" /> -->
-					<HBox>
+
+						<HBox justifyContent="Center" alignItems="Center">
+							<layout:MatrixLayout layoutFixed="false">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Link text="{i18n>ForgotPassword}" press="handleLinkPress" />
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Link text="{i18n>ResetPassword}" press="handleLinkPress" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+						</HBox>
+					</VBox>
+
+					<!-- Questions Start -->
+
+					<VBox id="idVBoxQuestionsContent" visible="false">
+						<CheckBox text="{i18n>Question1}" select="handleCheckboxQuestion1Change" />
+						<VBox id="idVBoxQuestion1Content" visible="false">
+
+
+							<layout:MatrixLayout layoutFixed="false">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Input type="Number" placeholder="{i18n>TotalBranches}" />
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Input type="Number" placeholder="{i18n>NumberOfCountries}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+							<Table id="idProductsTable" inset="false">
+								<headerToolbar>
+									<Toolbar>
+										<Button type="Emphasized" icon="sap-icon://sys-add"
+											press="handleTableAddRowButtonPress">
+										</Button>
+										<Button type="Emphasized" icon="sap-icon://delete"
+											press="handleTableDeleteRowButtonPress">
+										</Button>
+									</Toolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em">
+										<Text text="Product" />
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true">
+										<Text text="Supplier" />
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true"
+										hAlign="Right">
+										<Text text="Dimensions" />
+									</Column>
+									<Column minScreenWidth="Tablet" demandPopin="true"
+										hAlign="Center">
+										<Text text="Weight" />
+									</Column>
+									<Column hAlign="Right">
+										<Text text="Price" />
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<!-- <ObjectIdentifier title="{Name}" text="{ProductId}" /> <Text 
+												text="{SupplierName}" /> <Text text="{Width} x {Depth} x {Height} {DimUnit}" 
+												/> <ObjectNumber number="{WeightMeasure}" unit="{WeightUnit}" state="{ path: 
+												'WeightMeasure', formatter: 'sap.m.sample.Table.Formatter.weightState' }" 
+												/> <ObjectNumber number="{Price}" unit="{CurrencyCode}" /> -->
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+
+						</VBox>
+						<CheckBox text="{i18n>Question2}" />
+						<CheckBox text="{i18n>Question3}" />
+						<CheckBox text="{i18n>Question4}" />
+						<CheckBox text="{i18n>Question5}" />
+						<CheckBox text="{i18n>Question6}" />
+						<CheckBox text="{i18n>Question7}" />
+						<CheckBox text="{i18n>Question8}" />
+						<HBox justifyContent="Center" alignItems="Center">
+							<layout:MatrixLayout layoutFixed="false">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Button type="Default" text="{i18n>Process}" icon="sap-icon://begin" />
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Button type="Default" text="{i18n>Clear}" icon="sap-icon://delete"
+											iconFirst="false" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+						</HBox>
+					</VBox>
+					<!-- Questions End -->
+
+					<!-- NISTLAF Start -->
+
+
+					<VBox>
+						<c:RoadMap>
+							<c:RoadMapStep label="{i18n>Organization}" />
+							<c:RoadMapStep label="{i18n>ContactInformation}" />
+							<c:RoadMapStep label="{i18n>ShareHolders}" />
+							<c:RoadMapStep label="{i18n>Typeoflicense}" />
+							<c:RoadMapStep label="{i18n>Attachments}" />
+							<c:RoadMapStep label="{i18n>Submit}" />
+						</c:RoadMap>
+												
 						<layout:MatrixLayout layoutFixed="false">
 							<layout:MatrixLayoutRow>
 								<layout:MatrixLayoutCell>
-									<core:Icon src="sap-icon://message-success" color="#64E4CE"
-										size="5em">
-									</core:Icon>
+									<Button type="Default" text="{i18n>Previous}" icon="sap-icon://arrow-left" />
 								</layout:MatrixLayoutCell>
 								<layout:MatrixLayoutCell>
-									<c:TextView text="{i18n>RegistrationSuccessMsg}"
-										semanticColor="Positive" design="H3" />
+									<Button type="Default" text="{i18n>Next}" icon="sap-icon://arrow-right"
+										iconFirst="false" />
 								</layout:MatrixLayoutCell>
 							</layout:MatrixLayoutRow>
 						</layout:MatrixLayout>
-					</HBox>
-					<Button type="Default" text="Proceed to Organization Registration">
-					</Button>
-				</VBox>
-			</IconTabFilter>
-		</items>
-	</IconTabBar>
+					</VBox>
+				</IconTabFilter>
+				<IconTabFilter icon="sap-icon://add-contact" text="Register User"
+					key="idRegisterUserIconTabFilter">
+					<VBox id="idVBoxRegistration" class="marginBoxContent">
+						<items>
+							<Input type="Text" placeholder="{i18n>EnterFirstName}" />
 
+							<Input type="Text" placeholder="{i18n>EnterLastName}" />
+
+							<Input type="Tel" placeholder="{i18n>EnterMobileNumber}" />
+
+							<Input type="Email" placeholder="{i18n>EnterEmail}" />
+
+							<Input type="Password" placeholder="{i18n>EnterPassword}" />
+
+							<Input type="Password" placeholder="{i18n>ReEnterPassword}" />
+
+							<HBox justifyContent="Center">
+								<layout:MatrixLayout layoutFixed="false">
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+											<Button type="Accept" text="{i18n>Register}"
+												press="handleRegisterOrgButtonPress">
+											</Button>
+										</layout:MatrixLayoutCell>
+										<layout:MatrixLayoutCell>
+											<Button type="Reject" text="{i18n>Cancel}" press="onPress">
+											</Button>
+										</layout:MatrixLayoutCell>
+										<layout:MatrixLayoutCell>
+
+										</layout:MatrixLayoutCell>
+
+									</layout:MatrixLayoutRow>
+								</layout:MatrixLayout>
+							</HBox>
+
+						</items>
+					</VBox>
+					<VBox id="idHBoxRegistrationSuccessMessage" visible="false"
+						alignItems="Center" justifyContent="Center">
+
+						<!-- <ObjectStatus text="{i18n>RegistrationSuccessMsg}" state="Success" 
+							/> -->
+						<!-- <Label text="{i18n>RegistrationSuccessMsg}" design="Bold" /> -->
+						<HBox>
+							<layout:MatrixLayout layoutFixed="false">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<core:Icon src="sap-icon://message-success" color="#64E4CE"
+											size="5em">
+										</core:Icon>
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<c:TextView text="{i18n>RegistrationSuccessMsg}"
+											semanticColor="Positive" design="H3" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+						</HBox>
+						<Button type="Default" text="Proceed to Organization Registration">
+						</Button>
+					</VBox>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+	</Page>
 </mvc:View>
