@@ -62,9 +62,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oHboxRegistrationSuccessMsg.setVisible(true);
 		sap.m.MessageToast.show(this.ModelHelper.getText("RegistrationSuccessful"));
 	},
-	handleCheckboxQuestion1Change: function(){
+	handleCheckboxQuestion1Change: function(oEvent){
+		if(oEvent.getParameter("selected")){
+			this._oVboxQuestion1.setVisible(true);
+		}else{
+			this._oVboxQuestion1.setVisible(false);
+		}
 		
-		this._oVboxQuestion1.setVisible(true);
 		
 	},
 	handleIconTabBarSelect: function(oEvent){

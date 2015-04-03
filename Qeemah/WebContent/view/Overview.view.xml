@@ -1,6 +1,7 @@
 <mvc:View height="100%" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
 	xmlns="sap.m" xmlns:c="sap.ui.commons" controllerName="com.sagia.view.Overview">
+	<c:ApplicationHeader logoSrc="common/mime/logo-en.png" displayLogoff="false" displayWelcome="false"></c:ApplicationHeader>
 	<IconTabBar class="iconTabBarPaddingTop" id="idIconTabBarBase"
 		expanded="{device>/isNoPhone}" enableScrolling="true" expandable="false"
 		select="handleIconTabBarSelect">
@@ -8,19 +9,6 @@
 
 			<IconTabFilter icon="sap-icon://log" text="{i18n>UserLogin}"
 				key="idUserLoginIconTabFilter">
-				<VBox id="idVBoxQuestionsContent" visible="false">
-					<CheckBox text="{i18n>Question1}" change="handleCheckboxQuestion1Change" />
-					<!-- <VBox id="idVBoxQuestion1Content" visible="true"> <Input type="Text" 
-						placeholder="{i18n>EnterInvestorID}" /> <Input type="Password" placeholder="{i18n>EnterPassword}" 
-						/> </VBox> -->
-					<CheckBox text="{i18n>Question2}" />
-					<CheckBox text="{i18n>Question3}" />
-					<CheckBox text="{i18n>Question4}" />
-					<CheckBox text="{i18n>Question5}" />
-					<CheckBox text="{i18n>Question6}" />
-					<CheckBox text="{i18n>Question7}" />
-					<CheckBox text="{i18n>Question8}" />
-				</VBox>
 				<VBox id="idVBoxSignIn" alignItems="Center" justifyContent="Center">
 					<Input type="Text" placeholder="{i18n>EnterInvestorID}" />
 					<Input type="Password" placeholder="{i18n>EnterPassword}" />
@@ -57,20 +45,118 @@
 						</layout:MatrixLayout>
 					</HBox>
 				</VBox>
-				<VBox id="idVBoxUserInformation" visible="false">
-					<form:SimpleForm id="form" minWidth="1024"
-						maxContainerCols="2">
 
-						<Label text="Name" />
-						<Text text="Abdul Waheed" />
-						<Label text="Street" />
-						<Text text="Imam Saud" />
-						<Label text="City" />
-						<Text text="Riyadh" />
-						<Label text="Country" />
-						<Text text="Saudi Ariabia" />
-					</form:SimpleForm>
+				<VBox id="idVBoxQuestionsContent" visible="false">
+					<CheckBox text="{i18n>Question1}" select="handleCheckboxQuestion1Change" />
+					<VBox id="idVBoxQuestion1Content" visible="false">
+
+
+						<layout:MatrixLayout layoutFixed="false">
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell>
+									<Input type="Number" placeholder="{i18n>TotalBranches}" />
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+									<Input type="Number" placeholder="{i18n>NumberOfCountries}" />
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+						</layout:MatrixLayout>
+						<Table id="idProductsTable" inset="false">
+							<headerToolbar>
+								<Toolbar>
+									<Button type="Emphasized" icon="sap-icon://sys-add"
+										press="handleTableAddRowButtonPress">
+									</Button>
+									<Button type="Emphasized" icon="sap-icon://delete"
+										press="handleTableDeleteRowButtonPress">
+									</Button>
+								</Toolbar>
+							</headerToolbar>
+							<columns>
+								<Column width="12em">
+									<Text text="Product" />
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Supplier" />
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true"
+									hAlign="Right">
+									<Text text="Dimensions" />
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true"
+									hAlign="Center">
+									<Text text="Weight" />
+								</Column>
+								<Column hAlign="Right">
+									<Text text="Price" />
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<!-- <ObjectIdentifier title="{Name}" text="{ProductId}" /> <Text 
+											text="{SupplierName}" /> <Text text="{Width} x {Depth} x {Height} {DimUnit}" 
+											/> <ObjectNumber number="{WeightMeasure}" unit="{WeightUnit}" state="{ path: 
+											'WeightMeasure', formatter: 'sap.m.sample.Table.Formatter.weightState' }" 
+											/> <ObjectNumber number="{Price}" unit="{CurrencyCode}" /> -->
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+
+					</VBox>
+					<CheckBox text="{i18n>Question2}" />
+					<CheckBox text="{i18n>Question3}" />
+					<CheckBox text="{i18n>Question4}" />
+					<CheckBox text="{i18n>Question5}" />
+					<CheckBox text="{i18n>Question6}" />
+					<CheckBox text="{i18n>Question7}" />
+					<CheckBox text="{i18n>Question8}" />
 				</VBox>
+				<!-- NISTLAF Start-->
+				<VBox>
+				<c:RoadMap>
+				<c:RoadMapStep label="{i18n>Organization}"/>
+				<c:RoadMapStep label="{i18n>ContactInformation}"/>
+				<c:RoadMapStep label="{i18n>ShareHolders}"/>
+				<c:RoadMapStep label="{i18n>Typeoflicense}"/>
+				<c:RoadMapStep label="{i18n>Attachments}"/>
+				<c:RoadMapStep label="{i18n>Submit}"/>
+				</c:RoadMap>
+				
+				<VBox>
+				<HBox><Button type="Default" text="Previous" icon="sap-icon://arrow-left">
+					</Button><Button type="Default" text="Next" icon="sap-icon://arrow-right" iconFirst="false">
+					</Button></HBox>
+				
+				</VBox>
+				
+					<!-- <IconTabBar class="iconTabBarPaddingTop" id="idIconTabBarNewInvestmentSTLForm"
+						expanded="{device>/isNoPhone}">
+						<items>
+							<IconTabFilter text="1">
+								<Text text="Info content goes here ..." />
+							</IconTabFilter>
+							<IconTabFilter text="2">
+								<Text text="Attachments go here ..." />
+							</IconTabFilter>
+							<IconTabFilter text="3">
+								<Text text="Notes go here ..." />
+							</IconTabFilter>
+							<IconTabFilter text="4">
+								<Text text="People content goes here ..." />
+							</IconTabFilter>
+							<IconTabFilter text="5">
+								<Text text="People content goes here ..." />
+							</IconTabFilter>
+							<IconTabFilter text="6">
+								<Text text="People content goes here ..." />
+							</IconTabFilter>
+						</items>
+					</IconTabBar> -->
+
+				</VBox>
+				<!-- NISTLAF End-->
 			</IconTabFilter>
 			<IconTabFilter icon="sap-icon://add-contact" text="Register User"
 				key="idRegisterUserIconTabFilter">
@@ -110,7 +196,8 @@
 
 					</items>
 				</VBox>
-				<VBox id="idHBoxRegistrationSuccessMessage" visible="false" alignItems="Center" justifyContent="Center">
+				<VBox id="idHBoxRegistrationSuccessMessage" visible="false"
+					alignItems="Center" justifyContent="Center">
 
 					<!-- <ObjectStatus text="{i18n>RegistrationSuccessMsg}" state="Success" 
 						/> -->
@@ -119,28 +206,21 @@
 						<layout:MatrixLayout layoutFixed="false">
 							<layout:MatrixLayoutRow>
 								<layout:MatrixLayoutCell>
-									<core:Icon src="sap-icon://message-success" color="#64E4CE" size="5em">
-
+									<core:Icon src="sap-icon://message-success" color="#64E4CE"
+										size="5em">
 									</core:Icon>
 								</layout:MatrixLayoutCell>
 								<layout:MatrixLayoutCell>
 									<c:TextView text="{i18n>RegistrationSuccessMsg}"
-										semanticColor="Positive" design="H3"  />
+										semanticColor="Positive" design="H3" />
 								</layout:MatrixLayoutCell>
-
-
 							</layout:MatrixLayoutRow>
 						</layout:MatrixLayout>
-
-
-
 					</HBox>
 					<Button type="Default" text="Proceed to Organization Registration">
 					</Button>
 				</VBox>
 			</IconTabFilter>
-			<!-- <IconTabFilter text="Success Stories"> <Text text="People content 
-				goes here ..." /> </IconTabFilter> -->
 		</items>
 	</IconTabBar>
 
