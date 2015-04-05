@@ -278,13 +278,13 @@
 									</Toolbar>
 								</headerToolbar>
 								<columns>
-									<Column >
+									<Column>
 										<Text text="{i18n>CertificationType}" />
 									</Column>
 									<Column>
 										<Text text="{i18n>CertificationNo}" />
 									</Column>
-									<Column >
+									<Column>
 										<Text text="{i18n>ProductDescription}" />
 									</Column>
 									<Column>
@@ -296,7 +296,7 @@
 									<Column>
 										<Text text="{i18n>IssueDate}" />
 									</Column>
-									<Column >
+									<Column>
 										<Text text="{i18n>ExpiryDate}" />
 									</Column>
 									<Column>
@@ -328,7 +328,61 @@
 						</VBox>
 
 						<!-- Question 4 End -->
-						<CheckBox text="{i18n>Question5}" />
+
+						<!-- Question 5 Start -->
+						<CheckBox text="{i18n>Question5}" select="handleCheckboxQuestion5Change" />
+						<VBox id="idVBoxQuestion5Content" visible="false">
+							<Table>
+								<headerToolbar>
+									<Toolbar>
+										<Button type="Emphasized" icon="sap-icon://sys-add"
+											press="handleTableAddRowButtonPress">
+										</Button>
+										<Button type="Emphasized" icon="sap-icon://delete"
+											press="handleTableDeleteRowButtonPress">
+										</Button>
+									</Toolbar>
+								</headerToolbar>
+								<columns>
+									<Column>
+										<Text text="{i18n>TypeOfOffice}" />
+									</Column>
+									<Column>
+										<Text text="{i18n>Region}" />
+									</Column>
+									<Column>
+										<Text text="{i18n>City}" />
+									</Column>
+									<Column>
+										<Text text="{i18n>NoOfEmployees}" />
+									</Column>
+									<Column>
+										<Text text="{i18n>ServiceRegion}" />
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<ComboBox>
+												<core:Item />
+											</ComboBox>
+											<ComboBox>
+												<core:Item />
+											</ComboBox>
+											<ComboBox>
+												<core:Item />
+											</ComboBox>
+											<Input type="Text" />
+											<ComboBox>
+												<core:Item />
+											</ComboBox>
+
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</VBox>
+						<!-- Question 5 End -->
 						<CheckBox text="{i18n>Question6}" />
 						<CheckBox text="{i18n>Question7}" />
 						<CheckBox text="{i18n>Question8}" />
