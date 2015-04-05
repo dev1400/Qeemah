@@ -1,6 +1,7 @@
 <mvc:View height="100%" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.commons.layout"
-	xmlns="sap.m" xmlns:c="sap.ui.commons" controllerName="com.sagia.view.Overview">
+	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
+	xmlns:layout="sap.ui.commons.layout" xmlns="sap.m" xmlns:c="sap.ui.commons"
+	controllerName="com.sagia.view.Overview">
 	<Page enableScrolling="true">
 		<c:ApplicationHeader logoSrc="common/mime/logo-en.png"
 			displayLogoff="false" displayWelcome="false"></c:ApplicationHeader>
@@ -101,13 +102,13 @@
 								<items>
 									<ColumnListItem>
 										<cells>
-											<Text text=" " />
+										    <Input type="Text"/>
 											<ComboBox>
 												<core:Item />
 											</ComboBox>
-											<Text text=" " />
-											<Text text=" " />
-											<Text text=" " />
+											<Input type="Text"/>
+											<Input type="Text"/>
+											<Input type="Text"/>
 										</cells>
 									</ColumnListItem>
 								</items>
@@ -115,10 +116,10 @@
 
 						</VBox>
 						<!-- Question 1 End -->
-						<CheckBox text="{i18n>Question2}" select="handleCheckboxQuestion2Change"/>
+						<CheckBox text="{i18n>Question2}" select="handleCheckboxQuestion2Change" />
 						<!-- Question 2 Start -->
-						<VBox id="idVBoxQuestion2Content" visible="false">						
-							<Table >
+						<VBox id="idVBoxQuestion2Content" visible="false">
+							<Table>
 								<headerToolbar>
 									<Toolbar>
 										<Button type="Emphasized" icon="sap-icon://sys-add"
@@ -149,23 +150,66 @@
 								<items>
 									<ColumnListItem>
 										<cells>
-											<Text text=" " />											
-											<Text text=" " />
-											<Text text=" " />
+											<Input type="Text"/>
+											<Input type="Text"/>
+											<Input type="Text"/>
 											<ComboBox>
 												<core:Item />
 											</ComboBox>
-											<Text text=" " />
+											<Input type="Text"/>
 										</cells>
 									</ColumnListItem>
 								</items>
 							</Table>
 						</VBox>
 						<!-- Question 2 End -->
-						<CheckBox text="{i18n>Question3}" />
+						<CheckBox text="{i18n>Question3}" select="handleCheckboxQuestion3Change" />
 						<!-- Question 3 Start -->
+						<VBox id="idVBoxQuestion3Content" visible="false">
+							<Table>
+								<columns>
+									<Column width="12em">
+										<Text text="{i18n>ProductID}" />
+									</Column>
+									<Column width="20em">
+										<Text text="{i18n>ProductDescription}" />
+									</Column>
+									<Column width="12em">
+										<Text text="{i18n>CertifiedBy}" />
+									</Column>
+									<Column width="6em">
+										<Text text="{i18n>Capacity}" />
+									</Column>
+									<Column width="6em">
+										<Text text="{i18n>Unit}" />
+									</Column>
+									<Column width="12em">
+										<Text text="{i18n>CertificationAttachment}" />
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Input type="Text"/>
+											<Input type="Text"/>
+											<Input type="Text"/>
+											<Input type="Text"/>
+											<ComboBox>
+												<core:Item />
+											</ComboBox>
+
+											<u:FileUploader id="idQ3FileUploader" name="myFileUpload"
+												uploadUrl="upload/" width="12em"
+												tooltip="{i18n>BrowseCertificationAttachment}"
+												uploadComplete="handleUploadComplete" />
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</VBox>
+						<!-- Question 3 End -->
 						<!-- Question 4 Start -->
-						
+
 						<CheckBox text="{i18n>Question4}" />
 						<CheckBox text="{i18n>Question5}" />
 						<CheckBox text="{i18n>Question6}" />
