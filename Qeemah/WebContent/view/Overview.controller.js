@@ -18,6 +18,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oVboxQuestion3 = this.getView().byId("idVBoxQuestion3Content");
 		this._oVboxQuestion4 = this.getView().byId("idVBoxQuestion4Content");
 		this._oVboxQuestion5 = this.getView().byId("idVBoxQuestion5Content");
+		this._oVboxQuestion6 = this.getView().byId("idVBoxQuestion6Content");
+		this._oVboxQuestion7 = this.getView().byId("idVBoxQuestion7Content");
+		this._oVboxQuestion8 = this.getView().byId("idVBoxQuestion8Content");
 		
 		this._oVboxQuestions = this.getView().byId("idVBoxQuestionsContent");
 		this._oVBoxRegistration = this.getView().byId("idVBoxRegistration");
@@ -100,6 +103,27 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this._oVboxQuestion5.setVisible(true);
 		}else{
 			this._oVboxQuestion5.setVisible(false);
+		}	
+	},
+	handleCheckboxQuestion6Change: function(oEvent){
+		if(oEvent.getParameter("selected")){
+			this._oVboxQuestion6.setVisible(true);
+		}else{
+			this._oVboxQuestion6.setVisible(false);
+		}	
+	},
+	handleCheckboxQuestion7Change: function(oEvent){
+		if(oEvent.getParameter("selected")){
+			this._oVboxQuestion7.setVisible(true);
+		}else{
+			this._oVboxQuestion7.setVisible(false);
+		}	
+	},
+	handleCheckboxQuestion8Change: function(oEvent){
+		if(oEvent.getParameter("selected")){
+			this._oVboxQuestion8.setVisible(true);
+		}else{
+			this._oVboxQuestion8.setVisible(false);
 		}	
 	},
 	handleIconTabBarSelect: function(oEvent){
