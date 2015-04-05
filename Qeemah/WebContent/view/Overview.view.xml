@@ -644,15 +644,30 @@
 									
 									<layout:MatrixLayoutRow>
 										<layout:MatrixLayoutCell>
-											<Input type="Text" placeholder="{i18n>Name2}" />											
+											<Input type="Number" placeholder="{i18n>LabourSize}" />											
 										</layout:MatrixLayoutCell>
 										<layout:MatrixLayoutCell>
-											<HBox justifyContent="SpaceAround" alignItems="Center">
-												<c:TextView text="{i18n>Region}" design="H6" />
-												<ComboBox>
-													<core:Item />
-												</ComboBox>
-											</HBox>											
+											<Input type="Number" placeholder="{i18n>Capitals}" />									
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>
+									
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceBetween" alignItems="Center">
+										<c:TextView text="{i18n>MobilePhone}" design="H6" />
+										<Input type="Number" placeholder="{i18n>CountryCode}" enabled="false" width="5em"/>
+										
+										<!-- <c:TextView text="{i18n>LabourSize}" design="H6" />
+										<c:TextField value="{i18n>CountryCode}" width="5em" editable="false" enabled="false" required="true"/>
+										<c:TextField value="{i18n>CountryCode}" width="5em" editable="false" enabled="false" required="true"/>
+										 -->
+
+										
+										</HBox>	
+																					
+										</layout:MatrixLayoutCell>
+										<layout:MatrixLayoutCell>
+											<Input type="Number" placeholder="{i18n>Capitals}" />									
 										</layout:MatrixLayoutCell>
 									</layout:MatrixLayoutRow>
 								</layout:MatrixLayout>
