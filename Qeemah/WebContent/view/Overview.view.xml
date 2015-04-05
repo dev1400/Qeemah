@@ -102,13 +102,13 @@
 								<items>
 									<ColumnListItem>
 										<cells>
-										    <Input type="Text"/>
+											<Input type="Text" />
 											<ComboBox>
 												<core:Item />
 											</ComboBox>
-											<Input type="Text"/>
-											<Input type="Text"/>
-											<Input type="Text"/>
+											<Input type="Text" />
+											<Input type="Text" />
+											<Input type="Text" />
 										</cells>
 									</ColumnListItem>
 								</items>
@@ -150,13 +150,13 @@
 								<items>
 									<ColumnListItem>
 										<cells>
-											<Input type="Text"/>
-											<Input type="Text"/>
-											<Input type="Text"/>
+											<Input type="Text" />
+											<Input type="Text" />
+											<Input type="Text" />
 											<ComboBox>
 												<core:Item />
 											</ComboBox>
-											<Input type="Text"/>
+											<Input type="Text" />
 										</cells>
 									</ColumnListItem>
 								</items>
@@ -165,8 +165,21 @@
 						<!-- Question 2 End -->
 						<CheckBox text="{i18n>Question3}" select="handleCheckboxQuestion3Change" />
 						<!-- Question 3 Start -->
+
 						<VBox id="idVBoxQuestion3Content" visible="false">
+							<Label text="{i18n>ProductCetificateDetails}" design="Bold" />
+
 							<Table>
+								<headerToolbar>
+									<Toolbar>
+										<Button type="Emphasized" icon="sap-icon://sys-add"
+											press="handleTableAddRowButtonPress">
+										</Button>
+										<Button type="Emphasized" icon="sap-icon://delete"
+											press="handleTableDeleteRowButtonPress">
+										</Button>
+									</Toolbar>
+								</headerToolbar>
 								<columns>
 									<Column width="12em">
 										<Text text="{i18n>ProductID}" />
@@ -190,10 +203,10 @@
 								<items>
 									<ColumnListItem>
 										<cells>
-											<Input type="Text"/>
-											<Input type="Text"/>
-											<Input type="Text"/>
-											<Input type="Text"/>
+											<Input type="Text" />
+											<Input type="Text" />
+											<Input type="Text" />
+											<Input type="Text" />
 											<ComboBox>
 												<core:Item />
 											</ComboBox>
@@ -206,11 +219,54 @@
 									</ColumnListItem>
 								</items>
 							</Table>
+							<Label text="{i18n>ProductionLineCertificateDetails}"
+								design="Bold" />
+
+							<Table>
+								<headerToolbar>
+									<Toolbar>
+										<Button type="Emphasized" icon="sap-icon://sys-add"
+											press="handleTableAddRowButtonPress">
+										</Button>
+										<Button type="Emphasized" icon="sap-icon://delete"
+											press="handleTableDeleteRowButtonPress">
+										</Button>
+									</Toolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="20em">
+										<Text text="{i18n>ProductDescription}" />
+									</Column>
+									<Column width="12em">
+										<Text text="{i18n>CertifiedBy}" />
+									</Column>
+									<Column width="12em">
+										<Text text="{i18n>CertificationAttachment}" />
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Input type="Text" />
+											<Input type="Text" />
+											<ComboBox>
+												<core:Item />
+											</ComboBox>
+
+											<u:FileUploader id="idQ4FileUploader"
+												uploadUrl="upload/" width="12em"
+												tooltip="{i18n>BrowseCertificationAttachment}"
+												uploadComplete="handleUploadComplete" />
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
 						</VBox>
 						<!-- Question 3 End -->
 						<!-- Question 4 Start -->
-
 						<CheckBox text="{i18n>Question4}" />
+
+						<!-- Question 4 End -->
 						<CheckBox text="{i18n>Question5}" />
 						<CheckBox text="{i18n>Question6}" />
 						<CheckBox text="{i18n>Question7}" />
