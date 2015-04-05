@@ -386,11 +386,47 @@
 						<!-- Question 5 End -->
 						<!-- Question 6 Start -->
 						<CheckBox text="{i18n>Question6}" select="handleCheckboxQuestion6Change" />
-						<VBox id="idVBoxQuestion6Content" visible="false"
+						<VBox visible="false" id="idVBoxQuestion6Content"
 							justifyContent="Center" alignItems="Center">
+							<items>
+								<layout:MatrixLayout layoutFixed="false">
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+											<Input type="Text" placeholder="{i18n>ProjectDescription}" />
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>
 
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+											<HBox justifyContent="SpaceAround" alignItems="Center">
+												<c:TextView text="{i18n>CertificationDate}"
+													semanticColor="Default" design="H6" />
+												<Input type="Date" placeholder="{i18n>CertificationDate}" />
+											</HBox>
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+											<Input type="Text" placeholder="{i18n>CertifiedBy}" />
+											<Input type="Text" placeholder="{i18n>Country}" />
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+											<HBox justifyContent="SpaceAround" alignItems="Center">
+												<c:TextView text="{i18n>CertificationAttachment}"
+													semanticColor="Default" design="H6" />
+												<u:FileUploader uploadUrl="upload/" width="12em"
+													tooltip="{i18n>BrowseCertificationAttachment}"
+													uploadComplete="handleUploadComplete" />
+											</HBox>
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>
+								</layout:MatrixLayout>
+							</items>
 						</VBox>
 						<!-- Question 6 End -->
+
 						<!-- Question 7 Start -->
 						<CheckBox text="{i18n>Question7}" select="handleCheckboxQuestion7Change" />
 						<VBox id="idVBoxQuestion7Content" visible="false"
@@ -400,21 +436,32 @@
 									<layout:MatrixLayoutRow>
 										<layout:MatrixLayoutCell>
 											<Input type="Text" placeholder="{i18n>ProjectDescription}" />
-											<Input type="Date" placeholder="{i18n>ProjectCompletionDate}" />
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+											<HBox justifyContent="SpaceAround" alignItems="Center">
+												<c:TextView text="{i18n>ProjectCompletionDate}"
+													semanticColor="Default" design="H6" />
+												<Input type="Date" placeholder="{i18n>ProjectCompletionDate}" />
+											</HBox>
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
 											<Input type="Number" placeholder="{i18n>ProjectValue}" />
 										</layout:MatrixLayoutCell>
 									</layout:MatrixLayoutRow>
-									
+
 									<layout:MatrixLayoutRow>
 										<layout:MatrixLayoutCell>
-										<HBox justifyContent="SpaceAround" alignItems="Center">										
-										<c:TextView text="{i18n>CertificationAttachment}"
-												semanticColor="Default" design="H6" />
-											<u:FileUploader 
-												uploadUrl="upload/" width="12em"
-												tooltip="{i18n>BrowseCertificationAttachment}"
-												uploadComplete="handleUploadComplete" />										
-										</HBox>
+											<HBox justifyContent="SpaceAround" alignItems="Center">
+												<c:TextView text="{i18n>CertificationAttachment}"
+													semanticColor="Default" design="H6" />
+												<u:FileUploader uploadUrl="upload/" width="12em"
+													tooltip="{i18n>BrowseCertificationAttachment}"
+													uploadComplete="handleUploadComplete" />
+											</HBox>
 										</layout:MatrixLayoutCell>
 									</layout:MatrixLayoutRow>
 								</layout:MatrixLayout>
@@ -429,11 +476,11 @@
 								<layout:MatrixLayout layoutFixed="false">
 									<layout:MatrixLayoutRow>
 										<layout:MatrixLayoutCell>
-										<HBox justifyContent="SpaceAround" alignItems="Center">
-										<c:TextView text="{i18n>ContractType}"  design="H6" />
-											<ComboBox>
-												<core:Item />
-											</ComboBox>
+											<HBox justifyContent="SpaceAround" alignItems="Center">
+												<c:TextView text="{i18n>ContractType}" design="H6" />
+												<ComboBox>
+													<core:Item />
+												</ComboBox>
 											</HBox>
 										</layout:MatrixLayoutCell>
 									</layout:MatrixLayoutRow>
@@ -459,13 +506,14 @@
 									</layout:MatrixLayoutRow>
 									<layout:MatrixLayoutRow>
 										<layout:MatrixLayoutCell>
-										<HBox justifyContent="SpaceAround" alignItems="Center">
-										<c:TextView text="{i18n>AgreementAttachment}" design="H6" />
-										<u:FileUploader id="idQ8FileUploader"
-												uploadUrl="upload/" width="12em"
-												tooltip="{i18n>BrowseCertificationAttachment}"
-												uploadComplete="handleUploadComplete" />	
-										</HBox>
+											<HBox justifyContent="SpaceAround" alignItems="Center">
+												<c:TextView text="{i18n>AgreementAttachment}"
+													design="H6" />
+												<u:FileUploader id="idQ8FileUploader"
+													uploadUrl="upload/" width="12em"
+													tooltip="{i18n>BrowseCertificationAttachment}"
+													uploadComplete="handleUploadComplete" />
+											</HBox>
 										</layout:MatrixLayoutCell>
 									</layout:MatrixLayoutRow>
 								</layout:MatrixLayout>
