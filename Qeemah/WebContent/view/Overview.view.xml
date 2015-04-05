@@ -134,14 +134,16 @@
 					<!-- NISTLAF Start -->
 
 
-					<VBox>
+					<VBox >
 						<c:RoadMap>
+						<c:steps>
 							<c:RoadMapStep label="{i18n>Organization}" />
 							<c:RoadMapStep label="{i18n>ContactInformation}" />
 							<c:RoadMapStep label="{i18n>ShareHolders}" />
 							<c:RoadMapStep label="{i18n>Typeoflicense}" />
 							<c:RoadMapStep label="{i18n>Attachments}" />
 							<c:RoadMapStep label="{i18n>Submit}" />
+							</c:steps>
 						</c:RoadMap>
 												
 						<layout:MatrixLayout layoutFixed="false">
