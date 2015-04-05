@@ -498,7 +498,8 @@
 							<layout:MatrixLayout layoutFixed="false">
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
-										<Button id="idProcessButton" press="handleProcessButtonPress" type="Default" text="{i18n>Process}" icon="sap-icon://begin" />
+										<Button id="idProcessButton" press="handleProcessButtonPress"
+											type="Default" text="{i18n>Process}" icon="sap-icon://begin" />
 									</layout:MatrixLayoutCell>
 									<layout:MatrixLayoutCell>
 										<Button type="Default" text="{i18n>Clear}" icon="sap-icon://delete"
@@ -510,47 +511,155 @@
 					</VBox>
 					<!-- Questions End -->
 					<!-- NISTLAF Start -->
-					<VBox id="idVBoxNISTLAF" visible="false">
-						<c:RoadMap>
-							<c:steps>
-								<c:RoadMapStep label="{i18n>Organization}" />
-								<c:RoadMapStep label="{i18n>ContactInformation}" />
-								<c:RoadMapStep label="{i18n>ShareHolders}" />
-								<c:RoadMapStep label="{i18n>Typeoflicense}" />
-								<c:RoadMapStep label="{i18n>Attachments}" />
-								<c:RoadMapStep label="{i18n>Submit}" />
-							</c:steps>
-						</c:RoadMap>
+					<VBox id="idVBoxNISTLAF" visible="false" justifyContent="Center"
+						alignItems="Center">
+						<layout:MatrixLayout layoutFixed="false">
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell>
+									<c:RoadMap>
+										<c:steps>
+											<c:RoadMapStep label="{i18n>Organization}" />
+											<c:RoadMapStep label="{i18n>ContactInformation}" />
+											<c:RoadMapStep label="{i18n>ShareHolders}" />
+											<c:RoadMapStep label="{i18n>Typeoflicense}" />
+											<c:RoadMapStep label="{i18n>Attachments}" />
+											<c:RoadMapStep label="{i18n>Submit}" />
+										</c:steps>
+									</c:RoadMap>
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell>
+									<HBox justifyContent="SpaceBetween" alignItems="Center">
+									<Button type="Default" text="{i18n>Previous}" icon="sap-icon://arrow-left" />
+									<Button type="Default" text="{i18n>Next}" icon="sap-icon://arrow-right"
+										iconFirst="false" />
+									</HBox>									
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+						</layout:MatrixLayout>
+
 						<!-- Road Map Step 1 Views Start -->
-						<VBox>
-							<layout:MatrixLayout layoutFixed="false">
-								<layout:MatrixLayoutRow>
-									<layout:MatrixLayoutCell>
-										<Button type="Default" text="{i18n>Previous}" icon="sap-icon://arrow-left" />
-									</layout:MatrixLayoutCell>
-									<layout:MatrixLayoutCell>
-										<Button type="Default" text="{i18n>Next}" icon="sap-icon://arrow-right"
-											iconFirst="false" />
-									</layout:MatrixLayoutCell>
-								</layout:MatrixLayoutRow>
-							</layout:MatrixLayout>
-							<VBox alignItems="Center" justifyContent="Center">
+							
+							<VBox alignItems="Center" justifyContent="SpaceBetween">
 								<layout:MatrixLayout layoutFixed="false">
+								
 									<layout:MatrixLayoutRow>
 										<layout:MatrixLayoutCell>
-											<Input type="Text" placeholder="{i18n>EnterFirstName}" />
-											<Input type="Text" placeholder="{i18n>EnterFirstName}" />
+											<Input type="Text" placeholder="{i18n>OrganizationName}" />											
 										</layout:MatrixLayoutCell>
 										<layout:MatrixLayoutCell>
-											<Input type="Text" placeholder="{i18n>EnterFirstName}" />
-											<Input type="Text" placeholder="{i18n>EnterFirstName}" />
+											<Input type="Text" placeholder="{i18n>Country}" />											
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>
+									
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+											<Input type="Text" placeholder="{i18n>Name2}" />											
+										</layout:MatrixLayoutCell>
+										<layout:MatrixLayoutCell>
+											<HBox justifyContent="SpaceBetween" alignItems="Center">
+												<c:TextView text="{i18n>Region}" design="H6" />
+												<ComboBox>
+													<core:Item />
+												</ComboBox>
+											</HBox>											
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>
+									
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+											<HBox justifyContent="SpaceBetween" alignItems="Center">
+												<c:TextView text="{i18n>Section}" design="H6" />
+												<ComboBox width="35em">
+													<core:Item />
+												</ComboBox>
+											</HBox>											
+										</layout:MatrixLayoutCell>
+										<layout:MatrixLayoutCell>
+											<HBox justifyContent="SpaceBetween" alignItems="Center">
+												<c:TextView text="{i18n>City}" design="H6" />
+												<ComboBox>
+													<core:Item />
+												</ComboBox>
+											</HBox>											
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>									
+									
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+											<HBox justifyContent="SpaceBetween" alignItems="Center">
+												<c:TextView text="{i18n>Division}" design="H6" />
+												<ComboBox width="35em">
+													<core:Item />
+												</ComboBox>
+											</HBox>
+										</layout:MatrixLayoutCell>
+										<layout:MatrixLayoutCell>
+											<HBox justifyContent="SpaceAround" alignItems="Center">
+												<c:TextView text="{i18n>PostalCode}" design="H6" />
+												<ComboBox>
+													<core:Item />
+												</ComboBox>
+											</HBox>											
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>									
+									
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceBetween" alignItems="Center">
+												<c:TextView text="{i18n>MultinationalCompanyForGccCompanies}" design="H6" />
+												<ComboBox>
+													<core:Item />
+												</ComboBox>
+											</HBox>												
+										</layout:MatrixLayoutCell>
+										<layout:MatrixLayoutCell>														
+											<Input type="Text" placeholder="{i18n>POBox}" />								
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>									
+									
+									<layout:MatrixLayoutRow>										
+										<layout:MatrixLayoutCell>
+											<HBox justifyContent="SpaceBetween" alignItems="Center">
+												<c:TextView text="{i18n>LegalStatus}" design="H6" />
+												<ComboBox width="35em">
+													<core:Item />
+												</ComboBox>
+											</HBox>											
+										</layout:MatrixLayoutCell>
+										<layout:MatrixLayoutCell>
+											<Input type="Text" placeholder="{i18n>Street}" />											
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>
+									
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+											<CheckBox text="{i18n>IndustrialAgriculturalLicence}" />										
+										</layout:MatrixLayoutCell>
+										<layout:MatrixLayoutCell>
+											<Input type="Text" placeholder="{i18n>BuildingNo}" />									
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>
+									
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+											<Input type="Text" placeholder="{i18n>Name2}" />											
+										</layout:MatrixLayoutCell>
+										<layout:MatrixLayoutCell>
+											<HBox justifyContent="SpaceAround" alignItems="Center">
+												<c:TextView text="{i18n>Region}" design="H6" />
+												<ComboBox>
+													<core:Item />
+												</ComboBox>
+											</HBox>											
 										</layout:MatrixLayoutCell>
 									</layout:MatrixLayoutRow>
 								</layout:MatrixLayout>
 							</VBox>
 						</VBox>
 						<!-- Road Map Step 1 Views End -->
-					</VBox>
+					
 				</IconTabFilter>
 				<IconTabFilter icon="sap-icon://add-contact" text="Register User"
 					key="idRegisterUserIconTabFilter">
