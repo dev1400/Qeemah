@@ -22,6 +22,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oVboxQuestion7 = this.getView().byId("idVBoxQuestion7Content");
 		this._oVboxQuestion8 = this.getView().byId("idVBoxQuestion8Content");
 		
+		this._oVboxQuestionsContent = this.getView().byId("idVBoxQuestionsContent");
+		this._oVboxNISTLAF = this.getView().byId("idVBoxNISTLAF");
+		
 		this._oVboxQuestions = this.getView().byId("idVBoxQuestionsContent");
 		this._oVBoxRegistration = this.getView().byId("idVBoxRegistration");
 		this._oHboxRegistrationSuccessMsg = this.getView().byId("idHBoxRegistrationSuccessMessage");
@@ -131,5 +134,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var sSelectedTab = oPricingTabBar.getSelectedKey();
 		
 		console.log(sSelectedTab);
+	},
+	handleProcessButtonPress: function(oEvent){
+		this._oVboxQuestionsContent.setVisible(false);
+		this._oVboxNISTLAF.setVisible(true);
 	}
 });

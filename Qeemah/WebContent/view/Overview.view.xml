@@ -8,7 +8,6 @@
 		<IconTabBar enableScrolling="true" id="idIconTabBarBase"
 			select="handleIconTabBarSelect">
 			<items>
-
 				<IconTabFilter icon="sap-icon://log" text="{i18n>UserLogin}"
 					key="idUserLoginIconTabFilter">
 					<VBox id="idVBoxSignIn" alignItems="Center" justifyContent="Center">
@@ -27,16 +26,9 @@
 										<Button type="Reject" text="{i18n>Cancel}" press="onPress">
 										</Button>
 									</layout:MatrixLayoutCell>
-
-
 								</layout:MatrixLayoutRow>
 							</layout:MatrixLayout>
-
 						</HBox>
-
-
-
-
 						<HBox justifyContent="Center" alignItems="Center">
 							<layout:MatrixLayout layoutFixed="false">
 								<layout:MatrixLayoutRow>
@@ -49,18 +41,12 @@
 								</layout:MatrixLayoutRow>
 							</layout:MatrixLayout>
 						</HBox>
-
-
 					</VBox>
-
 					<!-- Questions Start -->
-
 					<VBox id="idVBoxQuestionsContent" visible="false">
 						<CheckBox text="{i18n>Question1}" select="handleCheckboxQuestion1Change" />
 						<!-- Question 1 Start -->
 						<VBox id="idVBoxQuestion1Content" visible="false">
-
-
 							<layout:MatrixLayout layoutFixed="false">
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
@@ -113,7 +99,6 @@
 									</ColumnListItem>
 								</items>
 							</Table>
-
 						</VBox>
 						<!-- Question 1 End -->
 						<CheckBox text="{i18n>Question2}" select="handleCheckboxQuestion2Change" />
@@ -165,10 +150,8 @@
 						<!-- Question 2 End -->
 						<CheckBox text="{i18n>Question3}" select="handleCheckboxQuestion3Change" />
 						<!-- Question 3 Start -->
-
 						<VBox id="idVBoxQuestion3Content" visible="false">
 							<Label text="{i18n>ProductCetificateDetails}" design="Bold" />
-
 							<Table>
 								<headerToolbar>
 									<Toolbar>
@@ -210,7 +193,6 @@
 											<ComboBox>
 												<core:Item />
 											</ComboBox>
-
 											<u:FileUploader id="idQ31FileUploader" name="myFileUpload"
 												uploadUrl="upload/" width="12em"
 												tooltip="{i18n>BrowseCertificationAttachment}"
@@ -221,7 +203,6 @@
 							</Table>
 							<Label text="{i18n>ProductionLineCertificateDetails}"
 								design="Bold" />
-
 							<Table>
 								<headerToolbar>
 									<Toolbar>
@@ -252,7 +233,6 @@
 											<ComboBox>
 												<core:Item />
 											</ComboBox>
-
 											<u:FileUploader id="idQ32FileUploader"
 												uploadUrl="upload/" width="12em"
 												tooltip="{i18n>BrowseCertificationAttachment}"
@@ -326,9 +306,7 @@
 								</items>
 							</Table>
 						</VBox>
-
 						<!-- Question 4 End -->
-
 						<!-- Question 5 Start -->
 						<CheckBox text="{i18n>Question5}" select="handleCheckboxQuestion5Change" />
 						<VBox id="idVBoxQuestion5Content" visible="false"
@@ -377,7 +355,6 @@
 											<ComboBox>
 												<core:Item />
 											</ComboBox>
-
 										</cells>
 									</ColumnListItem>
 								</items>
@@ -395,7 +372,6 @@
 											<Input type="Text" placeholder="{i18n>ProjectDescription}" />
 										</layout:MatrixLayoutCell>
 									</layout:MatrixLayoutRow>
-
 									<layout:MatrixLayoutRow>
 										<layout:MatrixLayoutCell>
 											<HBox justifyContent="SpaceAround" alignItems="Center">
@@ -426,7 +402,6 @@
 							</items>
 						</VBox>
 						<!-- Question 6 End -->
-
 						<!-- Question 7 Start -->
 						<CheckBox text="{i18n>Question7}" select="handleCheckboxQuestion7Change" />
 						<VBox id="idVBoxQuestion7Content" visible="false"
@@ -452,7 +427,6 @@
 											<Input type="Number" placeholder="{i18n>ProjectValue}" />
 										</layout:MatrixLayoutCell>
 									</layout:MatrixLayoutRow>
-
 									<layout:MatrixLayoutRow>
 										<layout:MatrixLayoutCell>
 											<HBox justifyContent="SpaceAround" alignItems="Center">
@@ -524,7 +498,7 @@
 							<layout:MatrixLayout layoutFixed="false">
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
-										<Button type="Default" text="{i18n>Process}" icon="sap-icon://begin" />
+										<Button id="idProcessButton" press="handleProcessButtonPress" type="Default" text="{i18n>Process}" icon="sap-icon://begin" />
 									</layout:MatrixLayoutCell>
 									<layout:MatrixLayoutCell>
 										<Button type="Default" text="{i18n>Clear}" icon="sap-icon://delete"
@@ -535,11 +509,8 @@
 						</HBox>
 					</VBox>
 					<!-- Questions End -->
-
 					<!-- NISTLAF Start -->
-
-
-					<VBox visible="false">
+					<VBox id="idVBoxNISTLAF" visible="false">
 						<c:RoadMap>
 							<c:steps>
 								<c:RoadMapStep label="{i18n>Organization}" />
@@ -564,25 +535,18 @@
 								</layout:MatrixLayoutRow>
 							</layout:MatrixLayout>
 							<VBox alignItems="Center" justifyContent="Center">
-
 								<layout:MatrixLayout layoutFixed="false">
 									<layout:MatrixLayoutRow>
 										<layout:MatrixLayoutCell>
 											<Input type="Text" placeholder="{i18n>EnterFirstName}" />
-
 											<Input type="Text" placeholder="{i18n>EnterFirstName}" />
-
 										</layout:MatrixLayoutCell>
 										<layout:MatrixLayoutCell>
 											<Input type="Text" placeholder="{i18n>EnterFirstName}" />
-
 											<Input type="Text" placeholder="{i18n>EnterFirstName}" />
-
 										</layout:MatrixLayoutCell>
 									</layout:MatrixLayoutRow>
 								</layout:MatrixLayout>
-
-
 							</VBox>
 						</VBox>
 						<!-- Road Map Step 1 Views End -->
@@ -597,31 +561,16 @@
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
 										<Input type="Text" placeholder="{i18n>EnterFirstName}" />
-
 										<Input type="Text" placeholder="{i18n>EnterLastName}" />
 										<Input type="Tel" placeholder="{i18n>EnterMobileNumber}" />
-
 									</layout:MatrixLayoutCell>
 									<layout:MatrixLayoutCell>
 										<Input type="Email" placeholder="{i18n>EnterEmail}" />
-
 										<Input type="Password" placeholder="{i18n>EnterPassword}" />
 										<Input type="Password" placeholder="{i18n>ReEnterPassword}" />
-
-
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
 							</layout:MatrixLayout>
-
-
-
-
-
-
-
-
-
-
 							<HBox justifyContent="Center">
 								<layout:MatrixLayout layoutFixed="false">
 									<layout:MatrixLayoutRow>
@@ -635,19 +584,15 @@
 											</Button>
 										</layout:MatrixLayoutCell>
 										<layout:MatrixLayoutCell>
-
 										</layout:MatrixLayoutCell>
-
 									</layout:MatrixLayoutRow>
 								</layout:MatrixLayout>
 							</HBox>
-
 						</items>
 					</VBox>
 					<!-- Register User End -->
 					<VBox id="idHBoxRegistrationSuccessMessage" visible="false"
 						alignItems="Center" justifyContent="Center">
-
 						<!-- <ObjectStatus text="{i18n>RegistrationSuccessMsg}" state="Success" 
 							/> -->
 						<!-- <Label text="{i18n>RegistrationSuccessMsg}" design="Bold" /> -->
