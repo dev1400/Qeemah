@@ -14,6 +14,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oVboxSignIn = this.getView().byId("idVBoxSignIn");
 		this._oVboxUserInfo = this.getView().byId("idVBoxUserInformation");
 		this._oVboxQuestion1 = this.getView().byId("idVBoxQuestion1Content");
+		this._oVboxQuestion2 = this.getView().byId("idVBoxQuestion2Content");
 		this._oVboxQuestions = this.getView().byId("idVBoxQuestionsContent");
 		this._oVBoxRegistration = this.getView().byId("idVBoxRegistration");
 		this._oHboxRegistrationSuccessMsg = this.getView().byId("idHBoxRegistrationSuccessMessage");
@@ -67,8 +68,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this._oVboxQuestion1.setVisible(true);
 		}else{
 			this._oVboxQuestion1.setVisible(false);
-		}
+		}		
 		
+	},
+	handleCheckboxQuestion2Change: function(oEvent){
+		if(oEvent.getParameter("selected")){
+			this._oVboxQuestion2.setVisible(true);
+		}else{
+			this._oVboxQuestion2.setVisible(false);
+		}		
 		
 	},
 	handleIconTabBarSelect: function(oEvent){

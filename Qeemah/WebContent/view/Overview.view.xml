@@ -13,6 +13,7 @@
 					<VBox id="idVBoxSignIn" alignItems="Center" justifyContent="Center">
 						<Input type="Text" placeholder="{i18n>EnterInvestorID}" />
 						<Input type="Password" placeholder="{i18n>EnterPassword}" />
+						<CheckBox text="{i18n>RememberMe}" />
 						<HBox justifyContent="Center">
 							<layout:MatrixLayout id="idMatrixLayout"
 								layoutFixed="false">
@@ -29,7 +30,9 @@
 
 								</layout:MatrixLayoutRow>
 							</layout:MatrixLayout>
+
 						</HBox>
+
 
 
 
@@ -45,12 +48,15 @@
 								</layout:MatrixLayoutRow>
 							</layout:MatrixLayout>
 						</HBox>
+
+
 					</VBox>
 
 					<!-- Questions Start -->
 
 					<VBox id="idVBoxQuestionsContent" visible="false">
 						<CheckBox text="{i18n>Question1}" select="handleCheckboxQuestion1Change" />
+						<!-- Question 1 Start -->
 						<VBox id="idVBoxQuestion1Content" visible="false">
 
 
@@ -77,39 +83,89 @@
 								</headerToolbar>
 								<columns>
 									<Column width="12em">
-										<Text text="Product" />
+										<Text text="{i18n>BranchName}" />
 									</Column>
-									<Column minScreenWidth="Tablet" demandPopin="true">
-										<Text text="Supplier" />
+									<Column width="12em">
+										<Text text="{i18n>Country}" />
 									</Column>
-									<Column minScreenWidth="Tablet" demandPopin="true"
-										hAlign="Right">
-										<Text text="Dimensions" />
+									<Column width="12em">
+										<Text text="{i18n>City}" />
 									</Column>
-									<Column minScreenWidth="Tablet" demandPopin="true"
-										hAlign="Center">
-										<Text text="Weight" />
+									<Column width="12em">
+										<Text text="{i18n>Address}" />
 									</Column>
-									<Column hAlign="Right">
-										<Text text="Price" />
+									<Column width="12em">
+										<Text text="{i18n>Telephone}" />
 									</Column>
 								</columns>
 								<items>
 									<ColumnListItem>
 										<cells>
-											<!-- <ObjectIdentifier title="{Name}" text="{ProductId}" /> <Text 
-												text="{SupplierName}" /> <Text text="{Width} x {Depth} x {Height} {DimUnit}" 
-												/> <ObjectNumber number="{WeightMeasure}" unit="{WeightUnit}" state="{ path: 
-												'WeightMeasure', formatter: 'sap.m.sample.Table.Formatter.weightState' }" 
-												/> <ObjectNumber number="{Price}" unit="{CurrencyCode}" /> -->
+											<Text text=" " />
+											<ComboBox>
+												<core:Item />
+											</ComboBox>
+											<Text text=" " />
+											<Text text=" " />
+											<Text text=" " />
 										</cells>
 									</ColumnListItem>
 								</items>
 							</Table>
 
 						</VBox>
-						<CheckBox text="{i18n>Question2}" />
+						<!-- Question 1 End -->
+						<CheckBox text="{i18n>Question2}" select="handleCheckboxQuestion2Change"/>
+						<!-- Question 2 Start -->
+						<VBox id="idVBoxQuestion2Content" visible="false">						
+							<Table >
+								<headerToolbar>
+									<Toolbar>
+										<Button type="Emphasized" icon="sap-icon://sys-add"
+											press="handleTableAddRowButtonPress">
+										</Button>
+										<Button type="Emphasized" icon="sap-icon://delete"
+											press="handleTableDeleteRowButtonPress">
+										</Button>
+									</Toolbar>
+								</headerToolbar>
+								<columns>
+									<Column width="12em">
+										<Text text="{i18n>StockCode}" />
+									</Column>
+									<Column width="12em">
+										<Text text="{i18n>StockMarketName}" />
+									</Column>
+									<Column width="12em">
+										<Text text="{i18n>ISIN}" />
+									</Column>
+									<Column width="12em">
+										<Text text="{i18n>Country}" />
+									</Column>
+									<Column width="12em">
+										<Text text="{i18n>CompanyName}" />
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text=" " />											
+											<Text text=" " />
+											<Text text=" " />
+											<ComboBox>
+												<core:Item />
+											</ComboBox>
+											<Text text=" " />
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</VBox>
+						<!-- Question 2 End -->
 						<CheckBox text="{i18n>Question3}" />
+						<!-- Question 3 Start -->
+						<!-- Question 4 Start -->
+						
 						<CheckBox text="{i18n>Question4}" />
 						<CheckBox text="{i18n>Question5}" />
 						<CheckBox text="{i18n>Question6}" />
@@ -134,46 +190,88 @@
 					<!-- NISTLAF Start -->
 
 
-					<VBox >
+					<VBox visible="false">
 						<c:RoadMap>
-						<c:steps>
-							<c:RoadMapStep label="{i18n>Organization}" />
-							<c:RoadMapStep label="{i18n>ContactInformation}" />
-							<c:RoadMapStep label="{i18n>ShareHolders}" />
-							<c:RoadMapStep label="{i18n>Typeoflicense}" />
-							<c:RoadMapStep label="{i18n>Attachments}" />
-							<c:RoadMapStep label="{i18n>Submit}" />
+							<c:steps>
+								<c:RoadMapStep label="{i18n>Organization}" />
+								<c:RoadMapStep label="{i18n>ContactInformation}" />
+								<c:RoadMapStep label="{i18n>ShareHolders}" />
+								<c:RoadMapStep label="{i18n>Typeoflicense}" />
+								<c:RoadMapStep label="{i18n>Attachments}" />
+								<c:RoadMapStep label="{i18n>Submit}" />
 							</c:steps>
 						</c:RoadMap>
-												
-						<layout:MatrixLayout layoutFixed="false">
-							<layout:MatrixLayoutRow>
-								<layout:MatrixLayoutCell>
-									<Button type="Default" text="{i18n>Previous}" icon="sap-icon://arrow-left" />
-								</layout:MatrixLayoutCell>
-								<layout:MatrixLayoutCell>
-									<Button type="Default" text="{i18n>Next}" icon="sap-icon://arrow-right"
-										iconFirst="false" />
-								</layout:MatrixLayoutCell>
-							</layout:MatrixLayoutRow>
-						</layout:MatrixLayout>
+						<!-- Road Map Step 1 Views Start -->
+						<VBox>
+							<layout:MatrixLayout layoutFixed="false">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Button type="Default" text="{i18n>Previous}" icon="sap-icon://arrow-left" />
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Button type="Default" text="{i18n>Next}" icon="sap-icon://arrow-right"
+											iconFirst="false" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+							<VBox alignItems="Center" justifyContent="Center">
+
+								<layout:MatrixLayout layoutFixed="false">
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+											<Input type="Text" placeholder="{i18n>EnterFirstName}" />
+
+											<Input type="Text" placeholder="{i18n>EnterFirstName}" />
+
+										</layout:MatrixLayoutCell>
+										<layout:MatrixLayoutCell>
+											<Input type="Text" placeholder="{i18n>EnterFirstName}" />
+
+											<Input type="Text" placeholder="{i18n>EnterFirstName}" />
+
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>
+								</layout:MatrixLayout>
+
+
+							</VBox>
+						</VBox>
+						<!-- Road Map Step 1 Views End -->
 					</VBox>
 				</IconTabFilter>
 				<IconTabFilter icon="sap-icon://add-contact" text="Register User"
 					key="idRegisterUserIconTabFilter">
+					<!-- Register User Start -->
 					<VBox id="idVBoxRegistration" class="marginBoxContent">
 						<items>
-							<Input type="Text" placeholder="{i18n>EnterFirstName}" />
+							<layout:MatrixLayout layoutFixed="false">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>EnterFirstName}" />
 
-							<Input type="Text" placeholder="{i18n>EnterLastName}" />
+										<Input type="Text" placeholder="{i18n>EnterLastName}" />
+										<Input type="Tel" placeholder="{i18n>EnterMobileNumber}" />
 
-							<Input type="Tel" placeholder="{i18n>EnterMobileNumber}" />
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Input type="Email" placeholder="{i18n>EnterEmail}" />
 
-							<Input type="Email" placeholder="{i18n>EnterEmail}" />
+										<Input type="Password" placeholder="{i18n>EnterPassword}" />
+										<Input type="Password" placeholder="{i18n>ReEnterPassword}" />
 
-							<Input type="Password" placeholder="{i18n>EnterPassword}" />
 
-							<Input type="Password" placeholder="{i18n>ReEnterPassword}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+
+
+
+
+
+
+
+
+
 
 							<HBox justifyContent="Center">
 								<layout:MatrixLayout layoutFixed="false">
@@ -197,6 +295,7 @@
 
 						</items>
 					</VBox>
+					<!-- Register User End -->
 					<VBox id="idHBoxRegistrationSuccessMessage" visible="false"
 						alignItems="Center" justifyContent="Center">
 
