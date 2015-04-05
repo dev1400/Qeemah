@@ -211,7 +211,7 @@
 												<core:Item />
 											</ComboBox>
 
-											<u:FileUploader id="idQ3FileUploader" name="myFileUpload"
+											<u:FileUploader id="idQ31FileUploader" name="myFileUpload"
 												uploadUrl="upload/" width="12em"
 												tooltip="{i18n>BrowseCertificationAttachment}"
 												uploadComplete="handleUploadComplete" />
@@ -253,7 +253,7 @@
 												<core:Item />
 											</ComboBox>
 
-											<u:FileUploader id="idQ4FileUploader"
+											<u:FileUploader id="idQ32FileUploader"
 												uploadUrl="upload/" width="12em"
 												tooltip="{i18n>BrowseCertificationAttachment}"
 												uploadComplete="handleUploadComplete" />
@@ -264,7 +264,68 @@
 						</VBox>
 						<!-- Question 3 End -->
 						<!-- Question 4 Start -->
-						<CheckBox text="{i18n>Question4}" />
+						<CheckBox text="{i18n>Question4}" select="handleCheckboxQuestion4Change" />
+						<VBox id="idVBoxQuestion4Content" visible="false">
+							<Table>
+								<headerToolbar>
+									<Toolbar>
+										<Button type="Emphasized" icon="sap-icon://sys-add"
+											press="handleTableAddRowButtonPress">
+										</Button>
+										<Button type="Emphasized" icon="sap-icon://delete"
+											press="handleTableDeleteRowButtonPress">
+										</Button>
+									</Toolbar>
+								</headerToolbar>
+								<columns>
+									<Column >
+										<Text text="{i18n>CertificationType}" />
+									</Column>
+									<Column>
+										<Text text="{i18n>CertificationNo}" />
+									</Column>
+									<Column >
+										<Text text="{i18n>ProductDescription}" />
+									</Column>
+									<Column>
+										<Text text="{i18n>CertifiedBy}" />
+									</Column>
+									<Column>
+										<Text text="{i18n>Country}" />
+									</Column>
+									<Column>
+										<Text text="{i18n>IssueDate}" />
+									</Column>
+									<Column >
+										<Text text="{i18n>ExpiryDate}" />
+									</Column>
+									<Column>
+										<Text text="{i18n>CertificationAttachment}" />
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<ComboBox>
+												<core:Item />
+											</ComboBox>
+											<Input type="Text" />
+											<Input type="Text" />
+											<Input type="Text" />
+											<ComboBox>
+												<core:Item />
+											</ComboBox>
+											<Input type="Text" />
+											<Input type="Text" />
+											<u:FileUploader id="idQ4FileUploader"
+												uploadUrl="upload/" width="12em"
+												tooltip="{i18n>BrowseCertificationAttachment}"
+												uploadComplete="handleUploadComplete" />
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</VBox>
 
 						<!-- Question 4 End -->
 						<CheckBox text="{i18n>Question5}" />
