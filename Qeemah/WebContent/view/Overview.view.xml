@@ -820,6 +820,98 @@
 							</layout:MatrixLayout>
 						</VBox>
 						<!-- Road Map Step 2 Views End -->
+						<!-- Road Map Step 3 Views Start -->
+						<VBox alignItems="Center" justifyContent="SpaceBetween">
+
+
+
+
+							<layout:MatrixLayout>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceAround" alignItems="Center">
+											<Label text="{i18n>ShareHoldersInformation}" design="Bold" />
+										</HBox>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceAround" alignItems="Center">
+											<Label text="{i18n>MotherOrganizationDetail}" design="Bold" />
+										</HBox>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceAround" alignItems="Center">
+											<Label text="{i18n>ExistingShareHolderDetails}" design="Bold" />
+										</HBox>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<CheckBox text="{i18n>IsCompanyOwnedByIndividuals}" />
+									</layout:MatrixLayoutCell>
+
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<layout:MatrixLayout>
+											<layout:MatrixLayoutRow>
+												<layout:MatrixLayoutCell>
+													<Input type="Text" placeholder="{i18n>InvestorNo}" />
+												</layout:MatrixLayoutCell>
+												<layout:MatrixLayoutCell>
+													<Button type="Default" text="{i18n>Validate}" />
+												</layout:MatrixLayoutCell>
+												<layout:MatrixLayoutCell>
+													<Input type="Text" placeholder="{i18n>Name}" />
+												</layout:MatrixLayoutCell>
+												<layout:MatrixLayoutCell>
+													<Input type="Text" placeholder="{i18n>Percentage}" />
+												</layout:MatrixLayoutCell>
+											</layout:MatrixLayoutRow>
+										</layout:MatrixLayout>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="Center" alignItems="Center">
+												<Button type="Default" text="{i18n>AddExistingInvestor}" />
+												<Button type="Default" text="{i18n>RemoveExistingShareholder}" />
+											</HBox>
+
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Table inset="false">
+											<columns>
+												<Column width="12em">
+													<Text text="{i18n>InvestorNo}" />
+												</Column>
+												<Column width="12em">
+													<Text text="{i18n>Name}" />
+												</Column>
+												<Column width="12em">
+													<Text text="{i18n>Percentage}" />
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem>
+													<cells>
+														<Input type="Text" />
+														<Input type="Text" />
+														<Input type="Text" />
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+						</VBox>
+						<!-- Road Map Step 3 Views End -->
 					</VBox>
 				</IconTabFilter>
 				<IconTabFilter icon="sap-icon://add-contact" text="Register User"
