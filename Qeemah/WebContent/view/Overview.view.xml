@@ -822,10 +822,6 @@
 						<!-- Road Map Step 2 Views End -->
 						<!-- Road Map Step 3 Views Start -->
 						<VBox alignItems="Center" justifyContent="SpaceBetween">
-
-
-
-
 							<layout:MatrixLayout>
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
@@ -852,7 +848,6 @@
 									<layout:MatrixLayoutCell>
 										<CheckBox text="{i18n>IsCompanyOwnedByIndividuals}" />
 									</layout:MatrixLayoutCell>
-
 								</layout:MatrixLayoutRow>
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
@@ -877,10 +872,9 @@
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
 										<HBox justifyContent="Center" alignItems="Center">
-												<Button type="Default" text="{i18n>AddExistingInvestor}" />
-												<Button type="Default" text="{i18n>RemoveExistingShareholder}" />
-											</HBox>
-
+											<Button type="Default" text="{i18n>AddExistingInvestor}" />
+											<Button type="Default" text="{i18n>RemoveExistingShareholder}" />
+										</HBox>
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
 								<layout:MatrixLayoutRow>
@@ -907,6 +901,194 @@
 												</ColumnListItem>
 											</items>
 										</Table>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+							<layout:MatrixLayout>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceAround" alignItems="Center">
+											<Label text="{i18n>ListOfNewPersonsAsShareholders}"
+												design="Bold" />
+										</HBox>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="Center" alignItems="Center">
+											<Button type="Default" text="{i18n>AddNewPersonAsShareHolder}" />
+											<Button type="Default" text="{i18n>RemoveNewPersonAsShareHolder}" />
+										</HBox>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Table inset="false">
+											<columns>
+												<Column width="12em">
+													<Text text="{i18n>FirstName}" />
+												</Column>
+												<Column width="12em">
+													<Text text="{i18n>SecondName}" />
+												</Column>
+												<Column width="12em">
+													<Text text="{i18n>Percentage}" />
+												</Column>
+												<Column width="12em">
+													<Text text="{i18n>IDCopy}" />
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem>
+													<cells>
+														<Input type="Text" />
+														<Input type="Text" />
+														<Input type="Text" />
+														<Input type="Text" />
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+							<layout:MatrixLayout layoutFixed="false">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>FirstName}" />
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceBetween" alignItems="Center">
+											<c:TextView text="{i18n>Country}" design="H6" />
+											<ComboBox width="32em">
+												<core:Item />
+											</ComboBox>
+										</HBox>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>SecondName}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceBetween" alignItems="Center">
+											<c:TextView text="{i18n>Gender}" design="H6" />
+											<ComboBox width="35em">
+												<core:Item />
+											</ComboBox>
+										</HBox>
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>City}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceBetween" alignItems="Center">
+											<c:TextView text="{i18n>MaritalStatus}" design="H6" />
+											<ComboBox width="35em">
+												<core:Item />
+											</ComboBox>
+										</HBox>
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>PostalCode}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>Telephone}" />
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>POBox}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceBetween" alignItems="Center">
+											<c:TextView text="{i18n>AcademicTitle}" design="H6" />
+											<ComboBox width="32em">
+												<core:Item />
+											</ComboBox>
+										</HBox>
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>Street}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceBetween" alignItems="Center">
+											<c:TextView text="{i18n>CurrentNationality}"
+												design="H6" />
+											<ComboBox width="32em">
+												<core:Item />
+											</ComboBox>
+										</HBox>
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>BuildingNo}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Input type="Number" placeholder="{i18n>MobilePhone}" />
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Input type="Email" placeholder="{i18n>Email}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Input type="Number" placeholder="{i18n>Fax}" />
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceBetween" alignItems="Center">
+											<c:TextView text="{i18n>PreviousNationality}"
+												design="H6" />
+											<ComboBox width="32em">
+												<core:Item />
+											</ComboBox>
+										</HBox>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Input type="Date" placeholder="{i18n>DOB}" />
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>WebsiteURL}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceBetween" alignItems="Center">
+											<c:TextView text="{i18n>CommMethod}" design="H6" />
+											<ComboBox width="25em">
+												<core:Item />
+											</ComboBox>
+										</HBox>
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<c:TextView text="{i18n>PassportCopyIDCopy}"
+											semanticColor="Default" design="H6" />
+										<u:FileUploader uploadUrl="upload/" width="12em"
+											tooltip="{i18n>BrowsePassportCopyIDCopy}" uploadComplete="handleUploadComplete" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>Percentage}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceAround" alignItems="Center">
+											<Button type="Default" text="{i18n>Add}" />
+											<Button type="Default" text="{i18n>Back}" />
+										</HBox>
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
 							</layout:MatrixLayout>
