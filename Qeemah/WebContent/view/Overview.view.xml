@@ -638,7 +638,7 @@
 									<layout:MatrixLayoutCell>
 										<HBox justifyContent="SpaceBetween" alignItems="Center">
 											<CheckBox text="{i18n>IndustrialAgriculturalLicence}" />
-										</HBox>										
+										</HBox>
 									</layout:MatrixLayoutCell>
 									<layout:MatrixLayoutCell>
 										<Input type="Text" placeholder="{i18n>BuildingNo}" />
@@ -671,7 +671,7 @@
 										</HBox>
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
-								
+
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
 										<HBox justifyContent="Start" alignItems="Center">
@@ -681,14 +681,45 @@
 											<Input type="Number" placeholder="{i18n>Extension}" />
 										</HBox>
 									</layout:MatrixLayoutCell>
-									<layout:MatrixLayoutCell>										
+									<layout:MatrixLayoutCell>
 										<Input type="Email" placeholder="{i18n>Email}" />
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
-								
+
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>WebsiteURL}" />
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceBetween" alignItems="Center">
+											<c:TextView text="{i18n>CommMethod}" design="H6" />
+											<ComboBox width="25em">
+												<core:Item />
+											</ComboBox>
+										</HBox>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceBetween" alignItems="Center">
+											<c:TextView text="{i18n>PreApprovalFile}"
+												semanticColor="Default" design="H6" />
+
+											<u:FileUploader uploadUrl="upload/" width="30em"
+												tooltip="{i18n>BrowsePreApprovalFile}" uploadComplete="handleUploadComplete" />
+											
+										</HBox>
+
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell hAlign="Center">
+									<Button type="Default" text="{i18n>Upload}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+
 							</layout:MatrixLayout>
-							
-							
+
+
 						</VBox>
 					</VBox>
 					<!-- Road Map Step 1 Views End -->
