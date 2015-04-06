@@ -2,11 +2,11 @@
 	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
 	xmlns:layout="sap.ui.commons.layout" xmlns="sap.m" xmlns:c="sap.ui.commons"
 	controllerName="com.sagia.view.Overview">
-	<Page enableScrolling="true" backgroundDesign="Transparent">
+	<Page enableScrolling="true"><!-- backgroundDesign="Transparent" -->
 		<c:ApplicationHeader logoSrc="common/mime/logo-en.png"
 			displayLogoff="false" displayWelcome="false"></c:ApplicationHeader>
 		<IconTabBar enableScrolling="true" id="idIconTabBarBase"
-			select="handleIconTabBarSelect" backgroundDesign="Transparent">
+			select="handleIconTabBarSelect"><!-- backgroundDesign="Transparent" -->
 			<items>
 				<IconTabFilter icon="sap-icon://log" text="{i18n>UserLogin}"
 					key="idUserLoginIconTabFilter">
@@ -515,15 +515,23 @@
 						alignItems="Center">
 						<layout:MatrixLayout layoutFixed="false">
 							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell colSpan="2">
+									<HBox justifyContent="Center" alignItems="Center">
+										<Label text="{i18n>NewInvestmentSTLForm}" design="Bold" />
+									</HBox>
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+							<layout:MatrixLayoutRow>
 								<layout:MatrixLayoutCell>
-									<c:RoadMap>
+									<c:RoadMap id="NISTLAFSteps" stepSelected="handleRoadMapSection">
 										<c:steps>
-											<c:RoadMapStep label="{i18n>Organization}" />
-											<c:RoadMapStep label="{i18n>ContactInformation}" />
-											<c:RoadMapStep label="{i18n>ShareHolders}" />
-											<c:RoadMapStep label="{i18n>Typeoflicense}" />
-											<c:RoadMapStep label="{i18n>Attachments}" />
-											<c:RoadMapStep label="{i18n>Submit}" />
+											<c:RoadMapStep label="{i18n>Organization}" id="RoadMapStep1NISTLAF" />
+											<c:RoadMapStep label="{i18n>ContactInformation}"
+												id="RoadMapStep2NISTLAF" />
+											<c:RoadMapStep label="{i18n>ShareHolders}" id="RoadMapStep3NISTLAF" />
+											<c:RoadMapStep label="{i18n>Typeoflicense}" id="RoadMapStep4NISTLAF" />
+											<c:RoadMapStep label="{i18n>Attachments}" id="RoadMapStep5NISTLAF" />
+											<c:RoadMapStep label="{i18n>Submit}" id="RoadMapStep6NISTLAF" />
 										</c:steps>
 									</c:RoadMap>
 								</layout:MatrixLayoutCell>
@@ -537,13 +545,17 @@
 									</HBox>
 								</layout:MatrixLayoutCell>
 							</layout:MatrixLayoutRow>
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell colSpan="2">
+									<HBox justifyContent="Center" alignItems="Center">
+										<Label text="{i18n>OrganizationCompany}" design="Bold" />
+									</HBox>
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
 						</layout:MatrixLayout>
-
 						<!-- Road Map Step 1 Views Start -->
-
 						<VBox alignItems="Center" justifyContent="SpaceBetween">
 							<layout:MatrixLayout layoutFixed="false">
-
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
 										<Input type="Text" placeholder="{i18n>OrganizationName}" />
@@ -552,7 +564,6 @@
 										<Input type="Text" placeholder="{i18n>Country}" />
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
-
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
 										<Input type="Text" placeholder="{i18n>Name2}" />
@@ -566,7 +577,6 @@
 										</HBox>
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
-
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
 										<HBox justifyContent="SpaceBetween" alignItems="Center">
@@ -585,7 +595,6 @@
 										</HBox>
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
-
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
 										<HBox justifyContent="SpaceBetween" alignItems="Center">
@@ -604,7 +613,6 @@
 										</HBox>
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
-
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
 										<HBox justifyContent="SpaceBetween" alignItems="Center">
@@ -619,7 +627,6 @@
 										<Input type="Text" placeholder="{i18n>POBox}" />
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
-
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
 										<HBox justifyContent="SpaceBetween" alignItems="Center">
@@ -633,7 +640,6 @@
 										<Input type="Text" placeholder="{i18n>Street}" />
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
-
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
 										<HBox justifyContent="SpaceBetween" alignItems="Center">
@@ -644,7 +650,6 @@
 										<Input type="Text" placeholder="{i18n>BuildingNo}" />
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
-
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
 										<Input type="Number" placeholder="{i18n>LabourSize}" />
@@ -653,7 +658,6 @@
 										<Input type="Number" placeholder="{i18n>Capitals}" />
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
-
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
 										<HBox justifyContent="Start" alignItems="Center">
@@ -671,7 +675,6 @@
 										</HBox>
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
-
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
 										<HBox justifyContent="Start" alignItems="Center">
@@ -685,7 +688,6 @@
 										<Input type="Email" placeholder="{i18n>Email}" />
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
-
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
 										<Input type="Text" placeholder="{i18n>WebsiteURL}" />
@@ -699,31 +701,126 @@
 										</HBox>
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
-
 								<layout:MatrixLayoutRow>
 									<layout:MatrixLayoutCell>
 										<HBox justifyContent="SpaceBetween" alignItems="Center">
 											<c:TextView text="{i18n>PreApprovalFile}"
 												semanticColor="Default" design="H6" />
-
 											<u:FileUploader uploadUrl="upload/" width="30em"
 												tooltip="{i18n>BrowsePreApprovalFile}" uploadComplete="handleUploadComplete" />
-											
 										</HBox>
-
 									</layout:MatrixLayoutCell>
 									<layout:MatrixLayoutCell hAlign="Center">
-									<Button type="Default" text="{i18n>Upload}" />
+										<Button type="Default" text="{i18n>Upload}" />
 									</layout:MatrixLayoutCell>
 								</layout:MatrixLayoutRow>
-
 							</layout:MatrixLayout>
-
-
 						</VBox>
+						<!-- Road Map Step 1 Views End -->
+						<!-- Road Map Step 2 Views Start -->
+						<VBox alignItems="Center" justifyContent="SpaceBetween">
+							<layout:MatrixLayout layoutFixed="false">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell colSpan="2">
+										<HBox justifyContent="Center" alignItems="Center">
+											<Label text="{i18n>ContactInformation}" design="Bold" />
+										</HBox>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>FirstName}" />
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceBetween" alignItems="Center">
+											<c:TextView text="{i18n>Country}" design="H6" />
+											<ComboBox width="32em">
+												<core:Item />
+											</ComboBox>
+										</HBox>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>LastName}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceBetween" alignItems="Center">
+											<c:TextView text="{i18n>Gender}" design="H6" />
+											<ComboBox width="32em">
+												<core:Item />
+											</ComboBox>
+										</HBox>
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>City}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceBetween" alignItems="Center">
+											<c:TextView text="{i18n>Nationality}" design="H6" />
+											<ComboBox width="32em">
+												<core:Item />
+											</ComboBox>
+										</HBox>
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>PostalCode}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="Start" alignItems="Center">
+											<Input type="Number" placeholder="{i18n>CountryCode}"
+												enabled="false" width="5em" />
+											<Input type="Number" placeholder="{i18n>Telephone}" />
+											<Input type="Number" placeholder="{i18n>Extension}" />
+										</HBox>
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>POBox}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="Start" alignItems="Center">
+											<Input type="Number" placeholder="{i18n>CountryCode}"
+												enabled="false" width="5em" />
+											<Input type="Number" placeholder="{i18n>Fax}" />
+											<Input type="Number" placeholder="{i18n>Extension}" />
+										</HBox>
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="Start" alignItems="Center">
+											<Input type="Number" placeholder="{i18n>CountryCode}"
+												enabled="false" width="5em" />
+											<Input type="Number" placeholder="{i18n>MobilePhone}" />
+										</HBox>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceBetween" alignItems="Center">
+											<ComboBox width="40em">
+												<core:Item />
+											</ComboBox>
+										</HBox>
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell hAlign="Center">
+										<HBox justifyContent="SpaceAround" alignItems="Center">
+											<u:FileUploader uploadUrl="upload/" width="15em"
+												tooltip="{i18n>BrowsePreApprovalFile}" uploadComplete="handleUploadComplete" />
+											<Button type="Default" text="{i18n>Upload}" />
+										</HBox>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+						</VBox>
+						<!-- Road Map Step 2 Views End -->
 					</VBox>
-					<!-- Road Map Step 1 Views End -->
-
 				</IconTabFilter>
 				<IconTabFilter icon="sap-icon://add-contact" text="Register User"
 					key="idRegisterUserIconTabFilter">

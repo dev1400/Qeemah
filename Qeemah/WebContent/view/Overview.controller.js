@@ -24,6 +24,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this._oVboxQuestionsContent = this.getView().byId("idVBoxQuestionsContent");
 		this._oVboxNISTLAF = this.getView().byId("idVBoxNISTLAF");
+		this._oRoadMapNISTLAF = this.getView().byId("NISTLAFSteps");
+		
 		
 		this._oVboxQuestions = this.getView().byId("idVBoxQuestionsContent");
 		this._oVBoxRegistration = this.getView().byId("idVBoxRegistration");
@@ -138,5 +140,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleProcessButtonPress: function(oEvent){
 		this._oVboxQuestionsContent.setVisible(false);
 		this._oVboxNISTLAF.setVisible(true);
+	},
+	handleRoadMapSection: function(oEvent){
+		console.log(oEvent.getParameters.stepId);
 	}
 });
