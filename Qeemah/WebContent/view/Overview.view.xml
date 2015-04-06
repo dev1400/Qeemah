@@ -2,11 +2,11 @@
 	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
 	xmlns:layout="sap.ui.commons.layout" xmlns="sap.m" xmlns:c="sap.ui.commons"
 	controllerName="com.sagia.view.Overview">
-	<Page enableScrolling="true">
+	<Page enableScrolling="true" backgroundDesign="Transparent">
 		<c:ApplicationHeader logoSrc="common/mime/logo-en.png"
 			displayLogoff="false" displayWelcome="false"></c:ApplicationHeader>
 		<IconTabBar enableScrolling="true" id="idIconTabBarBase"
-			select="handleIconTabBarSelect">
+			select="handleIconTabBarSelect" backgroundDesign="Transparent">
 			<items>
 				<IconTabFilter icon="sap-icon://log" text="{i18n>UserLogin}"
 					key="idUserLoginIconTabFilter">

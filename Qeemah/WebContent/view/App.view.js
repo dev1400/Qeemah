@@ -14,7 +14,10 @@ sap.ui.jsview("com.sagia.view.App", {
 	*/ 
 	createContent : function(oController) {
 		this.setDisplayBlock(true);
- 		return new sap.m.App("navContainer");
+		
+		var oMyApp = new sap.m.App("navContainer");
+		oMyApp.setBackgroundImage("common/mime/app-background.jpg");
+ 		return oMyApp;
 	}
 
 });
