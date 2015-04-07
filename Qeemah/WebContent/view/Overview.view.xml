@@ -3,8 +3,16 @@
 	xmlns:layout="sap.ui.commons.layout" xmlns="sap.m" xmlns:c="sap.ui.commons"
 	controllerName="com.sagia.view.Overview">
 	<Page enableScrolling="true"><!-- backgroundDesign="Transparent" -->
-		<c:ApplicationHeader logoSrc="common/mime/logo-en.png"
-			displayLogoff="false" displayWelcome="false"></c:ApplicationHeader>
+		<Toolbar design="Solid">
+
+			<ToolbarSpacer />
+			<SearchField width="15em" />
+			<Link text="English" press="handleLinkPress" />
+			<Link text="العربية" press="handleLinkPress" />
+
+		</Toolbar>
+		<!-- <c:ApplicationHeader logoSrc="common/mime/logo-en.png" displayLogoff="false" 
+			displayWelcome="false"></c:ApplicationHeader> -->
 		<IconTabBar enableScrolling="true" id="idIconTabBarBase"
 			select="handleIconTabBarSelect"><!-- backgroundDesign="Transparent" -->
 			<items>
