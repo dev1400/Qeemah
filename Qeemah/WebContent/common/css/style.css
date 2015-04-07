@@ -1,6 +1,9 @@
 .headertoolbarbg {	
 	background-image: url("mime/headertoolbar.JPG");
 }
+.headertoolbarbgcolor {	
+	background-color: #01456A;
+}
 .textwhitecolor{
 	color: white;
 }

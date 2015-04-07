@@ -3,7 +3,7 @@
 	xmlns:layout="sap.ui.commons.layout" xmlns="sap.m" xmlns:c="sap.ui.commons"
 	controllerName="com.sagia.view.Overview">
 	<Page enableScrolling="true" showHeader="false"><!-- backgroundDesign="Transparent" -->
-		<Toolbar class="headertoolbarbg">
+		<Toolbar class="headertoolbarbgcolor">
 
 			<ToolbarSpacer />
 			<SearchField width="15em" />
@@ -11,8 +11,10 @@
 			<Link class="textwhitecolor" text="العربية" press="handleLinkPress" />
 
 		</Toolbar>
-		<Image
-          src="common/mime/logo.png"></Image>
+		<HBox class="headertoolbarbgcolor"><Image
+          src="common/mime/logo.JPG"></Image>
+          </HBox>
+		
 		<!-- <c:ApplicationHeader logoSrc="common/mime/logo-en.png" displayLogoff="false" 
 			displayWelcome="false"></c:ApplicationHeader> -->
 		<IconTabBar enableScrolling="true" id="idIconTabBarBase"
