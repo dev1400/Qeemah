@@ -511,48 +511,50 @@
 					</VBox>
 					<!-- Questions End -->
 					<!-- NISTLAF Start -->
-					<VBox id="idVBoxNISTLAF" visible="false" justifyContent="Center"
-						alignItems="Center">
-						<layout:MatrixLayout layoutFixed="false">
-							<layout:MatrixLayoutRow>
-								<layout:MatrixLayoutCell colSpan="2">
-									<HBox justifyContent="Center" alignItems="Center">
-										<Label text="{i18n>NewInvestmentSTLForm}" design="Bold" />
-									</HBox>
-								</layout:MatrixLayoutCell>
-							</layout:MatrixLayoutRow>
-							<layout:MatrixLayoutRow>
-								<layout:MatrixLayoutCell>
-									<c:RoadMap id="NISTLAFSteps" stepSelected="handleRoadMapSection">
-										<c:steps>
-											<c:RoadMapStep label="{i18n>Organization}" id="RoadMapStep1NISTLAF" />
-											<c:RoadMapStep label="{i18n>ContactInformation}"
-												id="RoadMapStep2NISTLAF" />
-											<c:RoadMapStep label="{i18n>ShareHolders}" id="RoadMapStep3NISTLAF" />
-											<c:RoadMapStep label="{i18n>Typeoflicense}" id="RoadMapStep4NISTLAF" />
-											<c:RoadMapStep label="{i18n>Attachments}" id="RoadMapStep5NISTLAF" />
-											<c:RoadMapStep label="{i18n>Submit}" id="RoadMapStep6NISTLAF" />
-										</c:steps>
-									</c:RoadMap>
-								</layout:MatrixLayoutCell>
-							</layout:MatrixLayoutRow>
-							<layout:MatrixLayoutRow>
-								<layout:MatrixLayoutCell>
-									<HBox justifyContent="SpaceBetween" alignItems="Center">
-										<Button type="Default" text="{i18n>Previous}" icon="sap-icon://arrow-left" />
-										<Button type="Default" text="{i18n>Next}" icon="sap-icon://arrow-right"
-											iconFirst="false" />
-									</HBox>
-								</layout:MatrixLayoutCell>
-							</layout:MatrixLayoutRow>
-							<layout:MatrixLayoutRow>
-								<layout:MatrixLayoutCell colSpan="2">
-									<HBox justifyContent="Center" alignItems="Center">
-										<Label text="{i18n>OrganizationCompany}" design="Bold" />
-									</HBox>
-								</layout:MatrixLayoutCell>
-							</layout:MatrixLayoutRow>
-						</layout:MatrixLayout>
+					<VBox id="idVBoxNISTLAF" visible="false">
+						<VBox justifyContent="Center" alignItems="Center">
+							<layout:MatrixLayout layoutFixed="false">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell colSpan="2">
+										<HBox justifyContent="Center" alignItems="Center">
+											<Label text="{i18n>NewInvestmentSTLForm}" design="Bold" />
+										</HBox>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<c:RoadMap id="NISTLAFSteps" stepSelected="handleRoadMapSection">
+											<c:steps>
+												<c:RoadMapStep label="{i18n>Organization}" id="RoadMapStep1NISTLAF" />
+												<c:RoadMapStep label="{i18n>ContactInformation}"
+													id="RoadMapStep2NISTLAF" />
+												<c:RoadMapStep label="{i18n>ShareHolders}" id="RoadMapStep3NISTLAF" />
+												<c:RoadMapStep label="{i18n>Typeoflicense}"
+													id="RoadMapStep4NISTLAF" />
+												<c:RoadMapStep label="{i18n>Attachments}" id="RoadMapStep5NISTLAF" />
+												<c:RoadMapStep label="{i18n>Submit}" id="RoadMapStep6NISTLAF" />
+											</c:steps>
+										</c:RoadMap>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<HBox justifyContent="SpaceBetween" alignItems="Center">
+											<Button type="Default" text="{i18n>Previous}" icon="sap-icon://arrow-left" />
+											<Button type="Default" text="{i18n>Next}" icon="sap-icon://arrow-right"
+												iconFirst="false" />
+										</HBox>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell colSpan="2">
+										<HBox justifyContent="Center" alignItems="Center">
+											<Label text="{i18n>OrganizationCompany}" design="Bold" />
+										</HBox>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+						</VBox>
 						<!-- Road Map Step 1 Views Start -->
 						<VBox alignItems="Center" justifyContent="SpaceBetween">
 							<layout:MatrixLayout layoutFixed="false">
@@ -1094,6 +1096,113 @@
 							</layout:MatrixLayout>
 						</VBox>
 						<!-- Road Map Step 3 Views End -->
+
+						<!-- License Information Start -->
+						<VBox alignItems="Center" justifyContent="SpaceBetween">
+							<Label text="{i18n>LicenseInformation}" design="Bold" />
+						</VBox>
+						<layout:MatrixLayout width="50em">
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell vAlign="Middle"
+									hAlign="End">
+									<c:TextView text="{i18n>LicenseType}" semanticColor="Default"
+										design="H6" />
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+									<ComboBox width="25em">
+										<core:Item />
+									</ComboBox>
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell vAlign="Middle"
+									hAlign="End">
+									<c:TextView text="{i18n>LicenseActivity}"
+										semanticColor="Default" design="H6" />
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+									<TextArea value="" rows="8" width="100%" />
+
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+
+						</layout:MatrixLayout>
+						<!-- License Information End -->
+
+						<!-- Attachments Start -->
+						<VBox alignItems="Center" justifyContent="SpaceBetween">
+							<Label text="{i18n>LicenseInformation}" design="Bold" />
+							<Label text="{i18n>PleaseDownloadAndUpload}" />
+						</VBox>
+						<layout:MatrixLayout width="50em">
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell vAlign="Middle"
+									hAlign="End">
+									<c:TextView text="{i18n>CommercialRegistrationCopy}"
+										semanticColor="Default" design="H6" />
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+									<u:FileUploader uploadUrl="upload/" width="12em"
+										tooltip="{i18n>CommercialRegistrationCopy}" uploadComplete="handleUploadComplete" />
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell vAlign="Middle"
+									hAlign="End">
+									<c:TextView text="{i18n>CommercialRegistrationCopy}"
+										semanticColor="Default" design="H6" />
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+									<u:FileUploader uploadUrl="upload/" width="12em"
+										tooltip="{i18n>BoardResolution}" uploadComplete="handleUploadComplete" />
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell vAlign="Middle"
+									hAlign="End">
+									<c:TextView text="{i18n>ArticleOfAssociation}"
+										semanticColor="Default" design="H6" />
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+									<u:FileUploader uploadUrl="upload/" width="12em"
+										tooltip="{i18n>CommercialRegistrationCopy}" uploadComplete="handleUploadComplete" />
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell vAlign="Middle"
+									hAlign="End">
+									<c:TextView text="{i18n>CompanyCV}" semanticColor="Default"
+										design="H6" />
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+									<u:FileUploader uploadUrl="upload/" width="12em"
+										tooltip="{i18n>CommercialRegistrationCopy}" uploadComplete="handleUploadComplete" />
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+
+
+
+						</layout:MatrixLayout>
+						<!-- Attachments End -->
+
+						<!-- Terms and Conditions Start -->
+
+						<layout:MatrixLayout>
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell hAlign="End">
+									<CheckBox text="{i18n>Accept}" />
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+									<Button type="Default" text="{i18n>Submit}" />
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+
+						</layout:MatrixLayout>
+						<!-- Terms and Conditions End -->
 					</VBox>
 				</IconTabFilter>
 				<IconTabFilter icon="sap-icon://add-contact" text="Register User"
