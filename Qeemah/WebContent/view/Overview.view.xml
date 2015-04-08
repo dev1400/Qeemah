@@ -15,53 +15,92 @@
 
 		<HBox class="headertoolbarbgcolor">
 			<Image src="common/mime/slide1.jpg"></Image>
+
+
 		</HBox><!-- displayInline="true" -->
-		<VBox justifyContent="Center" >
-			<layout:MatrixLayout layoutFixed="false" >
-				<layout:MatrixLayoutRow>
-					<layout:MatrixLayoutCell hAlign="Center"
-						vAlign="Top" width="25em" class="btnsbging">
-						<VBox >
-							<Image src="common/mime/support.jpg"></Image>
-							<Button text="{i18n>WhySaudiArabia}" press="onPress"
-								 width="12.3em"/>
-							<Button text="{i18n>RegisterOrganization}" press="onPress"
-								 />
-							<Button text="{i18n>SuccessStories}" press="onPress"
-								width="12.3em" />
-							<Button text="{i18n>ContactUs}" press="onPress" width="12.3em" />
-						</VBox>
-					</layout:MatrixLayoutCell>
-					<layout:MatrixLayoutCell hAlign="Left"
-						vAlign="Top">
-						<IconTabBar enableScrolling="true">
-							<items>
-								<IconTabFilter text="{i18n>WhySaudiArabia}" >
-								<Text text="{i18n>wsap1}" semanticColor="Default" design="H5"></Text>
-								<Text text="{i18n>wsap2}" semanticColor="Default" design="H5"></Text>
-								<c:TextView text="{i18n>wsap3}"  class="textcolor1" design="H3"></c:TextView>
-								<Text text="{i18n>wsap3p1}" semanticColor="Default" design="H5"></Text>
-								<Text text="{i18n>wsap3p2}" semanticColor="Default" design="H5"></Text>
-								<Text text="{i18n>wsap3p3}" semanticColor="Default" design="H5"></Text>
-								
-								<c:TextView text="{i18n>wsap4h}"  class="textcolor1" design="H3"></c:TextView>
-								
-								<Text text="{i18n>wsap4p1}" semanticColor="Default" design="H5"></Text>
-								<Text text="{i18n>wsap4p2}" semanticColor="Default" design="H5"></Text>
-								
-								</IconTabFilter>
-								<IconTabFilter text="{i18n>RegisterOrganization}">
-								</IconTabFilter>
-								<IconTabFilter text="{i18n>SuccessStories}">
-								</IconTabFilter>
-								<IconTabFilter text="{i18n>ContactUs}">
-								</IconTabFilter>
-							</items>
-						</IconTabBar>
-					</layout:MatrixLayoutCell>
-				</layout:MatrixLayoutRow>
-			</layout:MatrixLayout>
-		</VBox>
+
+		<IconTabBar enableScrolling="true" width="100%">
+			<items>
+				<IconTabFilter text="{i18n>WhySaudiArabia}">
+					<Text text="{i18n>wsap1}" semanticColor="Default" design="H5"></Text>
+					<Text text="{i18n>wsap2}" semanticColor="Default" design="H5"></Text>
+					<c:TextView text="{i18n>wsap3}" class="textcolor1"
+						design="H3"></c:TextView>
+					<Text text="{i18n>wsap3p1}" semanticColor="Default" design="H5"></Text>
+					<Text text="{i18n>wsap3p2}" semanticColor="Default" design="H5"></Text>
+					<Text text="{i18n>wsap3p3}" semanticColor="Default" design="H5"></Text>
+
+					<c:TextView text="{i18n>wsap4h}" style="color: #01456A;"
+						design="H3"></c:TextView>
+
+					<Text text="{i18n>wsap4p1}" semanticColor="Default" design="H5"></Text>
+					<Text text="{i18n>wsap4p2}" semanticColor="Default" design="H5"></Text>
+
+				</IconTabFilter>
+				<IconTabFilter text="{i18n>RegisterOrganization}">
+					<VBox id="idVBoxSignIn" alignItems="Center" justifyContent="Center">
+						<Input type="Text" placeholder="{i18n>EnterInvestorID}" />
+						<Input type="Password" placeholder="{i18n>EnterPassword}" />
+						<CheckBox text="{i18n>RememberMe}" />
+						<HBox justifyContent="Center">
+							<layout:MatrixLayout id="idMatrixLayout"
+								layoutFixed="false">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Button type="Accept" text="{i18n>Ok}" press="handleOkButtonPress">
+										</Button>
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Button type="Reject" text="{i18n>Cancel}" press="onPress">
+										</Button>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+						</HBox>
+						<HBox justifyContent="Center" alignItems="Center">
+							<layout:MatrixLayout layoutFixed="false">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Link text="{i18n>ForgotPassword}" press="handleLinkPress" />
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<Link text="{i18n>ResetPassword}" press="handleLinkPress" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+						</HBox>
+					</VBox>
+				</IconTabFilter>
+				<IconTabFilter text="{i18n>SuccessStories}">
+				</IconTabFilter>
+				<IconTabFilter text="{i18n>InvestmentClimate}">
+				</IconTabFilter>
+				<IconTabFilter text="{i18n>InvestmentGuideline}">
+				</IconTabFilter>
+				<IconTabFilter text="{i18n>PressReleases}">
+				</IconTabFilter>
+				<IconTabFilter text="{i18n>News}">
+				</IconTabFilter>
+				<IconTabFilter text="{i18n>Guidelines}">
+				</IconTabFilter>
+				<IconTabFilter text="{i18n>FAQ}">
+				</IconTabFilter>
+				<IconTabFilter text="{i18n>ContactUs}">
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+
+
+
+		<!-- <VBox justifyContent="Center"> <layout:MatrixLayout layoutFixed="false" 
+			width="100%"> <layout:MatrixLayoutRow> <layout:MatrixLayoutCell hAlign="Center" 
+			vAlign="Top"> <VBox> <Image src="common/mime/support.jpg"></Image> <Button 
+			text="{i18n>WhySaudiArabia}" press="onPress" width="12.3em" /> <Button text="{i18n>RegisterOrganization}" 
+			press="onPress" /> <Button text="{i18n>SuccessStories}" press="onPress" width="12.3em" 
+			/> <Button text="{i18n>ContactUs}" press="onPress" width="12.3em" /> </VBox> 
+			</layout:MatrixLayoutCell> <layout:MatrixLayoutCell hAlign="Left" vAlign="Top"> 
+			<VBox> </VBox> </layout:MatrixLayoutCell> </layout:MatrixLayoutRow> </layout:MatrixLayout> 
+			</VBox> -->
 
 		<!-- <c:ApplicationHeader logoSrc="common/mime/logo-en.png" displayLogoff="false" 
 			displayWelcome="false"></c:ApplicationHeader> -->
