@@ -4,8 +4,22 @@
 .headertoolbarbgcolor {	
 	background-color: #01456A;
 }
+
+.background2 {
+	background-color: #007B5F;
+}
 .textwhitecolor{
 	color: white;
+}
+.fsSubmitButton
+{
+	
+	background-repeat:	no-repeat;
+	background-color:	#007B5F;
+	height:			66px;
+	width:			182px;
+	border:			none;
+	text-indent:		-999em;
 }
 
 .invisible {
