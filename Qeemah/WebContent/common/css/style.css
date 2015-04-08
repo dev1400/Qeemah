@@ -1,6 +1,15 @@
-.sapMITBFilterDefault{
+/* .sapMITBFilterDefault{
 	color: #01456A;
+} */
+
+.sapMITBTextOnly .sapMITBFilterDefault>.sapMITBText{color: #FFFFFF;
+  text-shadow: 0 0 0 rgba(255,255,255,255);
 }
+.sapMITBTextOnly .sapMITBFilterDefault.sapMITBSelected>.sapMITBText {
+  color: #FFFFFF;
+}
+
+
 .headertoolbarbg {	
 	background-image: url("mime/headertoolbar.JPG");
 }
