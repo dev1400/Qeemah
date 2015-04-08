@@ -13,38 +13,54 @@
 		</Toolbar>
 
 
-		<!-- <HBox class="headertoolbarbgcolor">displayInline="true"<Image src="common/mime/logo.JPG" 
-			></Image> </HBox> -->
+		<HBox class="headertoolbarbgcolor">
+			<Image src="common/mime/slide1.jpg"></Image>
+		</HBox><!-- displayInline="true" -->
 		<VBox justifyContent="Center" width="100%" displayInline="true">
-		<layout:MatrixLayout layoutFixed="false" width="100%">
-			<layout:MatrixLayoutRow >
-				<layout:MatrixLayoutCell hAlign="Center"
-					vAlign="Middle" width="14em">
-					<VBox fitContainer="true" class="background2" justifyContent="SpaceBetween">
-						<Button text="{i18n>WhySaudiArabia}" press="onPress" width="14em"/>
-						<Button text="{i18n>RegisterOrganization}" press="onPress" width="14em"/>
-						<Button text="{i18n>SuccessStories}" press="onPress" width="14em"/>
-						<Button text="{i18n>ContactUs}" press="onPress" width="14em"/>
-					</VBox>
-				</layout:MatrixLayoutCell>
-				<layout:MatrixLayoutCell hAlign="Left"
-					vAlign="Top">
-					<IconTabBar >
-						<items>
-							<IconTabFilter text="{i18n>WhySaudiArabia}">
-							</IconTabFilter>
-							<IconTabFilter text="{i18n>RegisterOrganization}">
-							</IconTabFilter>
-							<IconTabFilter text="{i18n>SuccessStories}">
-							</IconTabFilter>
-							<IconTabFilter text="{i18n>ContactUs}">
-							</IconTabFilter>
-						</items>
-					</IconTabBar>
-				</layout:MatrixLayoutCell>
-			</layout:MatrixLayoutRow>
-		</layout:MatrixLayout>
-</VBox>
+			<layout:MatrixLayout layoutFixed="false" width="100%">
+				<layout:MatrixLayoutRow>
+					<layout:MatrixLayoutCell hAlign="Center"
+						vAlign="Top" >
+						<VBox fitContainer="true" class="background2" justifyContent="SpaceBetween">
+							<Image src="common/mime/support.jpg"></Image>
+							<Button text="{i18n>WhySaudiArabia}" press="onPress"
+								width="14em" />
+							<Button text="{i18n>RegisterOrganization}" press="onPress"
+								width="14em" />
+							<Button text="{i18n>SuccessStories}" press="onPress"
+								width="14em" />
+							<Button text="{i18n>ContactUs}" press="onPress" width="14em" />
+						</VBox>
+					</layout:MatrixLayoutCell>
+					<layout:MatrixLayoutCell hAlign="Left"
+						vAlign="Top">
+						<IconTabBar>
+							<items>
+								<IconTabFilter text="{i18n>WhySaudiArabia}">
+								<Text text="{i18n>wsap1}" semanticColor="Default" design="H5"></Text>
+								<Text text="{i18n>wsap2}" semanticColor="Default" design="H5"></Text>
+								<c:TextView text="{i18n>wsap3}"  semanticColor="Default" class="textcolor1" design="H3"></c:TextView>
+								<Text text="{i18n>wsap3p1}" semanticColor="Default" design="H5"></Text>
+								<Text text="{i18n>wsap3p2}" semanticColor="Default" design="H5"></Text>
+								<Text text="{i18n>wsap3p3}" semanticColor="Default" design="H5"></Text>
+								
+								<Text text="{i18n>wsap4h}" semanticColor="Default" design="H5"></Text>
+								<Text text="{i18n>wsap4p1}" semanticColor="Default" design="H5"></Text>
+								<Text text="{i18n>wsap4p2}" semanticColor="Default" design="H5"></Text>
+								
+								</IconTabFilter>
+								<IconTabFilter text="{i18n>RegisterOrganization}">
+								</IconTabFilter>
+								<IconTabFilter text="{i18n>SuccessStories}">
+								</IconTabFilter>
+								<IconTabFilter text="{i18n>ContactUs}">
+								</IconTabFilter>
+							</items>
+						</IconTabBar>
+					</layout:MatrixLayoutCell>
+				</layout:MatrixLayoutRow>
+			</layout:MatrixLayout>
+		</VBox>
 
 		<!-- <c:ApplicationHeader logoSrc="common/mime/logo-en.png" displayLogoff="false" 
 			displayWelcome="false"></c:ApplicationHeader> -->
