@@ -19,7 +19,7 @@
 
 		</HBox><!-- displayInline="true" -->
 
-		<IconTabBar enableScrolling="true" width="100%">
+		<IconTabBar enableScrolling="true" width="100%" style="background-color:black">
 			<items>
 				<IconTabFilter text="{i18n>WhySaudiArabia}">
 					<core:HTML content="{i18n>wsap1}">
@@ -39,6 +39,8 @@
 
 				<IconTabFilter text="{i18n>RegisterOrganization}">
 					<VBox id="idVBoxSignIn" alignItems="Center" justifyContent="Center">
+						<core:HTML content="{i18n>linebreak}">
+						</core:HTML>
 						<Input type="Text" placeholder="{i18n>EnterInvestorID}" />
 						<Input type="Password" placeholder="{i18n>EnterPassword}" />
 						<CheckBox text="{i18n>RememberMe}" />
@@ -74,36 +76,28 @@
 				<IconTabFilter text="{i18n>SuccessStories}">
 				</IconTabFilter>
 				<IconTabFilter text="{i18n>InvestmentClimate}">
+					<core:HTML content="{i18n>investmentclimateembed}">
+					</core:HTML>
+				</IconTabFilter>
+				<IconTabFilter text="{i18n>OnlineServices}">
+					<core:HTML content="{i18n>onlineservicesembed}">
+					</core:HTML>
 				</IconTabFilter>
 				<IconTabFilter text="{i18n>InvestmentGuideline}">
 				</IconTabFilter>
-				<IconTabFilter text="{i18n>PressReleases}">
-				</IconTabFilter>
+
 				<IconTabFilter text="{i18n>News}">
-				</IconTabFilter>
-				<IconTabFilter text="{i18n>Guidelines}">
+				<core:HTML content="{i18n>newsembed}">
+					</core:HTML>
 				</IconTabFilter>
 				<IconTabFilter text="{i18n>FAQ}">
+				<core:HTML content="{i18n>faqembed}">
+					</core:HTML>
 				</IconTabFilter>
 				<IconTabFilter text="{i18n>ContactUs}">
 				</IconTabFilter>
 			</items>
 		</IconTabBar>
-
-
-
-		<!-- <VBox justifyContent="Center"> <layout:MatrixLayout layoutFixed="false" 
-			width="100%"> <layout:MatrixLayoutRow> <layout:MatrixLayoutCell hAlign="Center" 
-			vAlign="Top"> <VBox> <Image src="common/mime/support.jpg"></Image> <Button 
-			text="{i18n>WhySaudiArabia}" press="onPress" width="12.3em" /> <Button text="{i18n>RegisterOrganization}" 
-			press="onPress" /> <Button text="{i18n>SuccessStories}" press="onPress" width="12.3em" 
-			/> <Button text="{i18n>ContactUs}" press="onPress" width="12.3em" /> </VBox> 
-			</layout:MatrixLayoutCell> <layout:MatrixLayoutCell hAlign="Left" vAlign="Top"> 
-			<VBox> </VBox> </layout:MatrixLayoutCell> </layout:MatrixLayoutRow> </layout:MatrixLayout> 
-			</VBox> -->
-
-		<!-- <c:ApplicationHeader logoSrc="common/mime/logo-en.png" displayLogoff="false" 
-			displayWelcome="false"></c:ApplicationHeader> -->
 
 	</Page>
 </mvc:View>
