@@ -9,6 +9,10 @@
   color: #FFFFFF;
 }
 
+.sap-desktop .sapMIBar.sapMFooter-CTX {
+  background-color: #01456A;
+}
+
 .sapMShellBrandingBar {
   position: absolute;
   left: 0;

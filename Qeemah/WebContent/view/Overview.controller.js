@@ -27,6 +27,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oRoadMapNISTLAF = this.getView().byId("NISTLAFSteps");
 		
 		
+		this._oCarousel = this.getView().byId("idImageCarousel");
+		
 		this._oVboxQuestions = this.getView().byId("idVBoxQuestionsContent");
 		this._oVBoxRegistration = this.getView().byId("idVBoxRegistration");
 		this._oHboxRegistrationSuccessMsg = this.getView().byId("idHBoxRegistrationSuccessMessage");
@@ -143,5 +145,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleRoadMapSection: function(oEvent){
 		console.log(oEvent.getParameters.stepId);
+	},
+	handleIconTabBarItemSelect: function(oEvent){
+		if(oEvent.getParameters().key == '1'){
+			this._oCarousel.setVisible(true);
+		}else{
+			this._oCarousel.setVisible(false);			
+		}
 	}
 });
