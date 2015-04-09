@@ -13,13 +13,27 @@
 		</Toolbar>
 
 
-		<HBox class="headertoolbarbgcolor">
-			<Image src="common/mime/slide1.jpg"></Image>
+		<!-- <HBox class="headertoolbarbgcolor">
+			<core:HTML content='&lt;div class="carousel"  data-transition="slide"&gt; &lt;div&gt; &lt;img src="common/mime/slide1.jpg"/&gt; &lt;div&gt; &lt;img src="common/mime/slide2.jpg"/&gt; &lt;/div&gt; &lt;/div&gt;' preferDOM="false">
+			</core:HTML> -->
+
+			<Carousel loop="true" animationDuration="0">
+				<pages>
+					<Image src="common/mime/slide1.jpg"></Image>
+					<Image src="common/mime/slide2.jpg"></Image>
+					<Image src="common/mime/slide3.jpg"></Image>
+					<Image src="common/mime/slide4.jpg"></Image>
+					<Image src="common/mime/slide5.jpg"></Image>
+					<Image src="common/mime/slide6.jpg"></Image>
+					<Image src="common/mime/slide7.jpg"></Image>
+				</pages>
+			</Carousel>
 
 
-		</HBox><!-- displayInline="true" -->
+		<!-- </HBox> --><!-- displayInline="true" -->
 
-		<IconTabBar enableScrolling="true" width="100%" style="background-color:black">
+		<IconTabBar enableScrolling="true" width="100%"
+			style="background-color:black">
 			<items>
 				<IconTabFilter text="{i18n>WhySaudiArabia}">
 					<core:HTML content="{i18n>wsap1}">
@@ -87,11 +101,11 @@
 				</IconTabFilter>
 
 				<IconTabFilter text="{i18n>News}">
-				<core:HTML content="{i18n>newsembed}">
+					<core:HTML content="{i18n>newsembed}">
 					</core:HTML>
 				</IconTabFilter>
 				<IconTabFilter text="{i18n>FAQ}">
-				<core:HTML content="{i18n>faqembed}">
+					<core:HTML content="{i18n>faqembed}">
 					</core:HTML>
 				</IconTabFilter>
 				<IconTabFilter text="{i18n>ContactUs}">
