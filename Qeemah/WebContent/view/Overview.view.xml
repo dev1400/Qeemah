@@ -52,8 +52,29 @@
 
 				</IconTabFilter>
 
-				<IconTabFilter key="2" id="idRegisterOrganizationTab"
-					text="{i18n>RegisterOrganization}">
+				<IconTabFilter key="2" text="{i18n>InvestmentClimate}">
+					<core:HTML content="{i18n>investmentclimateembed}">
+					</core:HTML>
+				</IconTabFilter>
+				<IconTabFilter key="3" id="idOnlineServicesTab" text="{i18n>OnlineServices}">
+					<core:HTML content="{i18n>onlineservicesembed}">
+					</core:HTML>
+				</IconTabFilter>
+				<IconTabFilter key="4" id="idInvestmentGuidelineTab"
+					text="{i18n>InvestmentGuideline}">
+					<core:HTML content="{i18n>InvestmentGuidelinesMatter}">
+					</core:HTML>
+				</IconTabFilter>
+
+				<IconTabFilter key="5" id="idNewsTab" text="{i18n>News}">
+					<core:HTML content="{i18n>newsembed}">
+					</core:HTML>
+				</IconTabFilter>
+				<IconTabFilter key="6" id="idFAQTab" text="{i18n>FAQ}">
+					<core:HTML content="{i18n>faqembed}">
+					</core:HTML>
+				</IconTabFilter>
+				<IconTabFilter key="7" text="{i18n>SignIn}">
 					<VBox id="idVBoxSignIn" alignItems="Center" justifyContent="Center">
 						<core:HTML content="{i18n>linebreak}">
 						</core:HTML>
@@ -89,31 +110,88 @@
 						</HBox>
 					</VBox>
 				</IconTabFilter>
-				<IconTabFilter key="3" id="idSuccessStoriesTab" text="{i18n>SuccessStories}">
-				</IconTabFilter>
-				<IconTabFilter key="4" text="{i18n>InvestmentClimate}">
-					<core:HTML content="{i18n>investmentclimateembed}">
+				<IconTabFilter key="8" text="{i18n>RegisterOrganization}">
+					<core:HTML content="{i18n>linebreak}">
 					</core:HTML>
+					<!-- Register User Start -->
+					<VBox id="idVBoxRegistration" justifyContent="Center"
+						alignItems="Center">
+						<items>
+							<layout:MatrixLayout layoutFixed="false">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<core:HTML content="{i18n>RegistrationFormHeading}">
+										</core:HTML>
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Input type="Text" placeholder="{i18n>EnterFirstName}" />
+										<Input type="Text" placeholder="{i18n>EnterLastName}" />
+									</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>
+									
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+											<Input type="Tel" placeholder="{i18n>EnterMobileNumber}" />
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>
+									
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+											<Input type="Email" placeholder="{i18n>EnterEmail}" />
+											<Input type="Password" placeholder="{i18n>EnterPassword}" />
+											<Input type="Password" placeholder="{i18n>ReEnterPassword}" />
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+							<HBox justifyContent="Center">
+								<layout:MatrixLayout layoutFixed="false">
+									<layout:MatrixLayoutRow>
+										<layout:MatrixLayoutCell>
+											<Button type="Accept" text="{i18n>Register}"
+												press="handleRegisterOrgButtonPress">
+											</Button>
+										</layout:MatrixLayoutCell>
+										<layout:MatrixLayoutCell>
+											<Button type="Reject" text="{i18n>Cancel}" press="onPress">
+											</Button>
+										</layout:MatrixLayoutCell>
+										<layout:MatrixLayoutCell>
+										</layout:MatrixLayoutCell>
+									</layout:MatrixLayoutRow>
+								</layout:MatrixLayout>
+							</HBox>
+						</items>
+					</VBox>
+					
+					<VBox id="idHBoxRegistrationSuccessMessage" visible="false"
+						alignItems="Center" justifyContent="Center">
+						<!-- <HBox>
+							<layout:MatrixLayout layoutFixed="false">
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<core:Icon src="sap-icon://message-success" color="#64E4CE"
+											size="5em">
+										</core:Icon>
+									</layout:MatrixLayoutCell>
+									<layout:MatrixLayoutCell>
+										<c:TextView text="{i18n>RegistrationSuccessMsg}"
+											semanticColor="Positive" design="H3" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+							</layout:MatrixLayout>
+						</HBox> -->
+						<core:HTML content="{i18n>RegistrationSuccessMsg}">
+				</core:HTML>
+						<Button type="Emphasized" text="Proceed to Organization Registration">
+						</Button>
+					</VBox>
+					<!-- Register User End -->
 				</IconTabFilter>
-				<IconTabFilter key="5" id="idOnlineServicesTab" text="{i18n>OnlineServices}">
-					<core:HTML content="{i18n>onlineservicesembed}">
-					</core:HTML>
+				<IconTabFilter key="9" id="idSuccessStoriesTab" text="{i18n>SuccessStories}">
 				</IconTabFilter>
-				<IconTabFilter key="6" id="idInvestmentGuidelineTab"
-					text="{i18n>InvestmentGuideline}">
-					<core:HTML content="{i18n>InvestmentGuidelinesMatter}">
-					</core:HTML>
-				</IconTabFilter>
-
-				<IconTabFilter key="7" id="idNewsTab" text="{i18n>News}">
-					<core:HTML content="{i18n>newsembed}">
-					</core:HTML>
-				</IconTabFilter>
-				<IconTabFilter key="8" id="idFAQTab" text="{i18n>FAQ}">
-					<core:HTML content="{i18n>faqembed}">
-					</core:HTML>
-				</IconTabFilter>
-				<IconTabFilter key="9" id="idContactUsTab" text="{i18n>ContactUs}">
+				<IconTabFilter key="10" id="idContactUsTab" text="{i18n>ContactUs}">
 				</IconTabFilter>
 			</items>
 		</IconTabBar>
@@ -121,9 +199,9 @@
 		<footer>
 			<Toolbar class="headertoolbarbgcolor">
 				<ToolbarSpacer />
-				
+
 				<core:HTML content="{i18n>copyright}">
-					</core:HTML>
+				</core:HTML>
 				<ToolbarSpacer />
 
 
