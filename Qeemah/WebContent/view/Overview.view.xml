@@ -181,7 +181,7 @@
 							</layout:MatrixLayoutRow>
 						</layout:MatrixLayout>
 						
-						<Button type="Emphasized" text="Proceed to Organization Registration" press="handleProceedToOrgRegButtonPress">
+						<Button type="Emphasized" text="{i18n>ProceedtoOrganizationRegistration}" press="handleProceedToOrgRegButtonPress">
 									</Button>
 
 

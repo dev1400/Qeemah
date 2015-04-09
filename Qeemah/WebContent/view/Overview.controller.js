@@ -22,6 +22,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oVboxQuestion7 = this.getView().byId("idVBoxQuestion7Content");
 		this._oVboxQuestion8 = this.getView().byId("idVBoxQuestion8Content");
 		
+		this._oVboxInvestmentGuidelinesDialog = this.getView().byId("idInvestmentGuidelines");
+		this._oVboxInvestmentGuidelinesDialogFirstMsg = this.getView().byId("idInvestmentGuidelineMsg");
+		
 		this._oVboxQuestionsContent = this.getView().byId("idVBoxQuestionsContent");
 		this._oVboxNISTLAF = this.getView().byId("idVBoxNISTLAF");
 		this._oRoadMapNISTLAF = this.getView().byId("NISTLAFSteps");
@@ -169,7 +172,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 
         this._popOverFragment.open();
     },
-    handleRegistrationDialogClosePress: function(){
+    handleProceedtoOrganizationRegistrationPress: function(){
     	this._popOverFragment.close();
+    },
+    handleReadInvestmentGuidelinePress: function(){
+    	//this._oVboxInvestmentGuidelinesDialog.setVisible(true);
+    	//this._oVboxInvestmentGuidelinesDialogFirstMsg.setVisible(false);
+    	sap.ui.getCore().byId("idInvestmentGuidelines").setVisible(true);
+    	sap.ui.getCore().byId("idInvestmentGuidelineMsg").setVisible(false);
     }
 });

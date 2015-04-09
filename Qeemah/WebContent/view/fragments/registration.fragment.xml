@@ -3,13 +3,24 @@
   xmlns:core="sap.ui.core"
   xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
   <Dialog
-    title="{Name}"
+    title="{i18n>ReadInvestmentGuideline}"
     class="sapUiPopupWithPadding" >
     <content>
-      
+      <VBox id="idInvestmentGuidelineMsg">
+      <core:HTML content="{i18n>readinvestmentguidelinepopup_embed}">
+					</core:HTML>
+	  </VBox>
+	  <VBox id="idInvestmentGuidelines" visible="false">
+	  <core:HTML content="{i18n>InvestmentGuidelinesMatter}">
+					</core:HTML>
+	  </VBox>
     </content>
+    <beginButton>
+    <Button text="{i18n>ReadInvestmentGuideline}" app:dialogType="Std" press="handleReadInvestmentGuidelinePress" />
+    </beginButton>
     <endButton>
-      <Button text="Cancel" app:dialogType="Std" press="handleRegistrationDialogClosePress" />
+      
+      <Button text="{i18n>ProceedtoOrganizationRegistration}" app:dialogType="Std" press="handleProceedtoOrganizationRegistrationPress" />
     </endButton>
   </Dialog>
 </core:FragmentDefinition>
