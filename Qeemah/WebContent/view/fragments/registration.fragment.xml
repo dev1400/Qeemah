@@ -15,7 +15,7 @@
 					</core:HTML>
 	  </VBox>
     </content>
-    <beginButton>
+    <beginButton><!--  -->
     <Button text="{i18n>ReadInvestmentGuideline}" app:dialogType="Std" press="handleReadInvestmentGuidelinePress" />
     </beginButton>
     <endButton>
