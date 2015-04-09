@@ -1,0 +1,15 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+  <Dialog
+    title="{Name}"
+    class="sapUiPopupWithPadding" >
+    <content>
+      
+    </content>
+    <endButton>
+      <Button text="Cancel" app:dialogType="Std" press="handleRegistrationDialogClosePress" />
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>

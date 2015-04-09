@@ -129,21 +129,21 @@
 										<Input type="Text" placeholder="{i18n>EnterFirstName}" />
 										<Input type="Text" placeholder="{i18n>EnterLastName}" />
 									</layout:MatrixLayoutCell>
-									</layout:MatrixLayoutRow>
-									
-									<layout:MatrixLayoutRow>
-										<layout:MatrixLayoutCell>
-											<Input type="Tel" placeholder="{i18n>EnterMobileNumber}" />
-										</layout:MatrixLayoutCell>
-									</layout:MatrixLayoutRow>
-									
-									<layout:MatrixLayoutRow>
-										<layout:MatrixLayoutCell>
-											<Input type="Email" placeholder="{i18n>EnterEmail}" />
-											<Input type="Password" placeholder="{i18n>EnterPassword}" />
-											<Input type="Password" placeholder="{i18n>ReEnterPassword}" />
-										</layout:MatrixLayoutCell>
-									</layout:MatrixLayoutRow>
+								</layout:MatrixLayoutRow>
+
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Input type="Tel" placeholder="{i18n>EnterMobileNumber}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
+
+								<layout:MatrixLayoutRow>
+									<layout:MatrixLayoutCell>
+										<Input type="Email" placeholder="{i18n>EnterEmail}" />
+										<Input type="Password" placeholder="{i18n>EnterPassword}" />
+										<Input type="Password" placeholder="{i18n>ReEnterPassword}" />
+									</layout:MatrixLayoutCell>
+								</layout:MatrixLayoutRow>
 							</layout:MatrixLayout>
 							<HBox justifyContent="Center">
 								<layout:MatrixLayout layoutFixed="false">
@@ -164,28 +164,27 @@
 							</HBox>
 						</items>
 					</VBox>
-					
+
 					<VBox id="idHBoxRegistrationSuccessMessage" visible="false"
 						alignItems="Center" justifyContent="Center">
-						<!-- <HBox>
-							<layout:MatrixLayout layoutFixed="false">
-								<layout:MatrixLayoutRow>
-									<layout:MatrixLayoutCell>
-										<core:Icon src="sap-icon://message-success" color="#64E4CE"
-											size="5em">
-										</core:Icon>
-									</layout:MatrixLayoutCell>
-									<layout:MatrixLayoutCell>
-										<c:TextView text="{i18n>RegistrationSuccessMsg}"
-											semanticColor="Positive" design="H3" />
-									</layout:MatrixLayoutCell>
-								</layout:MatrixLayoutRow>
-							</layout:MatrixLayout>
-						</HBox> -->
-						<core:HTML content="{i18n>RegistrationSuccessMsg}">
-				</core:HTML>
-						<Button type="Emphasized" text="Proceed to Organization Registration">
-						</Button>
+						
+						<layout:MatrixLayout layoutFixed="false">
+							<layout:MatrixLayoutRow>
+								<layout:MatrixLayoutCell>
+									<core:HTML content="{i18n>SuccessImg}">
+									</core:HTML>
+								</layout:MatrixLayoutCell>
+								<layout:MatrixLayoutCell>
+									<core:HTML content="{i18n>RegistrationSuccessMsg}">
+									</core:HTML>
+								</layout:MatrixLayoutCell>
+							</layout:MatrixLayoutRow>
+						</layout:MatrixLayout>
+						
+						<Button type="Emphasized" text="Proceed to Organization Registration" press="handleProceedToOrgRegButtonPress">
+									</Button>
+
+
 					</VBox>
 					<!-- Register User End -->
 				</IconTabFilter>

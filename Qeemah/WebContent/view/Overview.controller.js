@@ -152,5 +152,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}else{
 			this._oCarousel.setVisible(false);			
 		}
-	}
+	},
+	handleProceedToOrgRegButtonPress: function(oEvent) {
+
+        var oMoreLink = oEvent.getSource();
+
+        // create pop over fragment only once
+        if (!this._popOverFragment) {
+            this._popOverFragment = sap.ui.xmlfragment(
+                "com.sagia.view.fragments.registration", this.getView().getController());
+            this.getView().addDependent(this._popOverFragment);
+        }
+
+        // var fragmentTextView = sap.ui.getCore().byId("idFragmentTextView");
+        //fragmentTextView.setText(oEvent.getSource().getBindingContext().getObject().Description);
+
+        this._popOverFragment.open();
+    },
+    handleRegistrationDialogClosePress: function(){
+    	this._popOverFragment.close();
+    }
 });
