@@ -35,6 +35,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oVboxQuestions = this.getView().byId("idVBoxQuestionsContent");
 		this._oVBoxRegistration = this.getView().byId("idVBoxRegistration");
 		this._oHboxRegistrationSuccessMsg = this.getView().byId("idHBoxRegistrationSuccessMessage");
+		this._oVboxOrgReg = this.getView().byId("idVBoxOrgReg");
 
 
 
@@ -83,7 +84,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	     */
 	   /* _bindDealsInAmendmentCollectionModel: function() {
 */
-	        var oDealsInAmendmentCollectionModel = com.sagia.common.ModelHelper.readDealsInAmendmentCollection();
+	        //var oDealsInAmendmentCollectionModel = com.sagia.common.ModelHelper.readDealsInAmendmentCollection();
 
 	       /* this._oTable.setModel(oDealsInAmendmentCollectionModel);
 	    },*/
@@ -183,6 +184,8 @@ sap.ui.controller("com.sagia.view.Overview", {
     },
     handleProceedtoOrganizationRegistrationPress: function(){
     	this._popOverFragment.close();
+    	this._oHboxRegistrationSuccessMsg.setVisible(false);
+    	this._oVboxOrgReg.setVisible(true);
     },
     handleReadInvestmentGuidelinePress: function(){
     	//this._oVboxInvestmentGuidelinesDialog.setVisible(true);
