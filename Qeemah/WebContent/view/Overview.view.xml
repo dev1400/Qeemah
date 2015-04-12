@@ -201,470 +201,601 @@
 								<IconTabFilter icon="sap-icon://person-placeholder"
 									iconColor="Positive" design="Horizontal" text="{i18n>UserInfo}"
 									key="Ok">
-									<layout:MatrixLayout layoutFixed="false"
-										columns="4" widths="13em,25em,10em,25em">
+									<!-- Org reg layout start -->
+									<VBox id="idVBoxTab1Content" justifyContent="Center">
+										<layout:MatrixLayout layoutFixed="false"
+											columns="4" widths="13em,25em,10em,25em">
 
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell colSpan="4">
-														<layout:content>
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell colSpan="4">
+															<layout:content>
+																<HBox justifyContent="Center">
+																	<core:HTML content="{i18n>OrganizationCompany}">
+																	</core:HTML>
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell colSpan="2">
+															<layout:content>
+																<HBox justifyContent="End">
+																	<Input type="Text" placeholder="{i18n>OrganizationName}"
+																		width="25em" />
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End">
+															<layout:content>
+																<c:TextView text="{i18n>Country}" design="H6" />
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell>
+															<layout:content>
+																<ComboBox width="25em">
+																	<core:Item />
+																</ComboBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End">
+															<layout:content>
+																<c:TextView text="{i18n>LegalStatus}" design="H6" />
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell>
+															<layout:content>
+																<ComboBox width="25em">
+																	<core:Item />
+																</ComboBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End">
+															<layout:content>
+																<c:TextView text="{i18n>Region}" design="H6" />
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell>
+															<layout:content>
+																<ComboBox width="25em">
+																	<core:Item />
+																</ComboBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End">
+															<layout:content>
+																<c:TextView text="{i18n>MultinationalCompany}"
+																	design="H6" />
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell>
+															<layout:content>
+																<ComboBox width="25em">
+																	<core:Item />
+																</ComboBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End">
+															<layout:content>
+																<c:TextView text="{i18n>City}" design="H6" />
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell>
+															<layout:content>
+																<ComboBox width="25em">
+																	<core:Item />
+																</ComboBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell colSpan="2">
+															<layout:content>
+																<HBox justifyContent="End">
+																	<Input type="Text" placeholder="{i18n>LaborSize}"
+																		width="25em" />
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End">
+															<layout:content>
+																<c:TextView text="{i18n>POBox}" design="H6" />
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell>
+															<layout:content>
+																<ComboBox width="25em">
+																	<core:Item />
+																</ComboBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell colSpan="2">
+															<layout:content>
+																<HBox justifyContent="End">
+																	<Input type="Text" placeholder="{i18n>Capital}"
+																		width="25em" />
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End">
+															<layout:content>
+																<c:TextView text="{i18n>PostalCode}" design="H6" />
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell>
+															<layout:content>
+																<ComboBox width="25em">
+																	<core:Item />
+																</ComboBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell colSpan="2">
+															<HBox justifyContent="End" alignItems="Center">
+																<Input type="Number" placeholder="{i18n>CountryCode}"
+																	enabled="false" width="8em" />
+																<Input type="Number" placeholder="{i18n>Telephone}"
+																	width="9em" />
+																<Input type="Number" placeholder="{i18n>Extension}"
+																	width="8em" />
+															</HBox>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End" colSpan="2">
+															<layout:content>
+																<HBox justifyContent="End">
+																	<Input type="Text" placeholder="{i18n>Street}"
+																		width="25em" />
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell colSpan="2">
+															<HBox justifyContent="End" alignItems="Center">
+																<Input type="Number" placeholder="{i18n>CountryCode}"
+																	enabled="false" width="8em" />
+																<Input type="Number" placeholder="{i18n>MobilePhone}"
+																	width="17em" />
+															</HBox>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End" colSpan="2">
+															<layout:content>
+																<HBox justifyContent="End">
+																	<Input type="Text" placeholder="{i18n>BuildingNo}"
+																		width="25em" />
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell colSpan="2">
+															<HBox justifyContent="End" alignItems="Center">
+																<Input type="Number" placeholder="{i18n>CountryCode}"
+																	enabled="false" width="8em" />
+																<Input type="Number" placeholder="{i18n>Fax}"
+																	width="17em" />
+															</HBox>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End" colSpan="2">
+															<layout:content>
+																<HBox justifyContent="End">
+																	<Input type="Text" placeholder="{i18n>Email}"
+																		width="25em" />
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell colSpan="2">
+															<layout:content>
+																<HBox justifyContent="End">
+																	<Input type="Text" placeholder="{i18n>WebsiteURL}"
+																		width="25em" />
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End">
+															<layout:content>
+																<c:TextView text="{i18n>CommMethod}" design="H6" />
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell>
+															<layout:content>
+																<ComboBox width="25em">
+																	<core:Item />
+																</ComboBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell colSpan="2">
+															<layout:content>
+																<HBox justifyContent="SpaceAround" alignItems="Center">
+																	<c:TextView text="{i18n>PreApprovalFile}"
+																		semanticColor="Default" design="H6" />
+
+																	<u:FileUploader uploadUrl="upload/"
+																		width="15em" tooltip="{i18n>BrowsePreApprovalFile}"
+																		uploadComplete="handleUploadComplete" />
+
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+										</layout:MatrixLayout>
+										<!-- Org reg layout end -->
+										<!-- Contact information layout start -->
+
+										<layout:MatrixLayout layoutFixed="false"
+											columns="4" widths="13em,25em,10em,25em">
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell colSpan="4">
+															<layout:content>
+																<HBox justifyContent="Center">
+																	<core:HTML content="{i18n>ContactInformation}">
+																	</core:HTML>
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell colSpan="2">
+															<layout:content>
+																<HBox justifyContent="End">
+																	<Input type="Text" placeholder="{i18n>FirstName}"
+																		width="25em" />
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End">
+															<layout:content>
+																<c:TextView text="{i18n>Nationality}" design="H6" />
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell>
+															<layout:content>
+																<ComboBox width="25em">
+																	<core:Item />
+																</ComboBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+
+														<layout:MatrixLayoutCell colSpan="2">
+															<layout:content>
+																<HBox justifyContent="End">
+																	<Input type="Text" placeholder="{i18n>LastName}"
+																		width="25em" />
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell colSpan="2">
+															<layout:content>
+																<HBox justifyContent="End">
+																	<Input type="Text" placeholder="{i18n>City}"
+																		width="25em" />
+																</HBox>
+															</layout:content>
+
+														</layout:MatrixLayoutCell>
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+
+
+
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End">
+															<layout:content>
+																<c:TextView text="{i18n>Gender}" design="H6" />
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell>
+															<layout:content>
+																<ComboBox width="25em">
+																	<core:Item />
+																</ComboBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+
+														<layout:MatrixLayoutCell colSpan="2">
+															<layout:content>
+																<HBox justifyContent="End">
+																	<Input type="Text" placeholder="{i18n>Street}"
+																		width="25em" />
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+
+
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+
+
+
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End">
+															<layout:content>
+																<c:TextView text="{i18n>Country}" design="H6" />
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell>
+															<layout:content>
+																<ComboBox width="25em">
+																	<core:Item />
+																</ComboBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+
+														<layout:MatrixLayoutCell colSpan="2">
+															<layout:content>
+																<HBox justifyContent="End">
+																	<Input type="Text" placeholder="{i18n>POBox}"
+																		width="25em" />
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+
+
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell colSpan="2">
+															<HBox justifyContent="End" alignItems="Center">
+																<Input type="Number" placeholder="{i18n>CountryCode}"
+																	enabled="false" width="8em" />
+																<Input type="Number" placeholder="{i18n>Telephone}"
+																	width="9em" />
+																<Input type="Number" placeholder="{i18n>Extension}"
+																	width="8em" />
+															</HBox>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End" colSpan="2">
+															<layout:content>
+																<HBox justifyContent="End">
+																	<Input type="Text" placeholder="{i18n>PostalCode}"
+																		width="25em" />
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell colSpan="2">
+															<HBox justifyContent="End" alignItems="Center">
+																<Input type="Number" placeholder="{i18n>CountryCode}"
+																	enabled="false" width="8em" />
+																<Input type="Number" placeholder="{i18n>MobilePhone}"
+																	width="17em" />
+															</HBox>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End">
+															<layout:content>
+																<c:TextView text="{i18n>CommMethod}" design="H6" />
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell>
+															<layout:content>
+																<ComboBox width="25em">
+																	<core:Item />
+																</ComboBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell colSpan="2">
+															<HBox justifyContent="End" alignItems="Center">
+																<Input type="Number" placeholder="{i18n>CountryCode}"
+																	enabled="false" width="8em" />
+																<Input type="Number" placeholder="{i18n>Fax}"
+																	width="17em" />
+															</HBox>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End">
+															<layout:content>
+																<c:TextView text="{i18n>Role}" design="H6" />
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell>
+															<layout:content>
+																<ComboBox width="25em">
+																	<core:Item />
+																</ComboBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell vAlign="Middle"
+															hAlign="End" colSpan="2">
+															<layout:content>
+																<HBox justifyContent="End">
+																	<Input type="Text" placeholder="{i18n>Email}"
+																		width="25em" />
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell colSpan="2">
+															<layout:content>
+																<HBox justifyContent="SpaceAround" alignItems="Center">
+																	<c:TextView text="{i18n>PassportCopyIDCopy}"
+																		semanticColor="Default" design="H6" />
+
+																	<u:FileUploader uploadUrl="upload/"
+																		width="15em" tooltip="{i18n>BrowsePassportCopyIDCopy}"
+																		uploadComplete="handleUploadComplete" />
+
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+														<layout:MatrixLayoutCell colSpan="2">
+															<layout:content>
+																<HBox justifyContent="SpaceAround" alignItems="Center">
+																	<c:TextView text="{i18n>PowerofAttorney}"
+																		semanticColor="Default" design="H6" />
+
+																	<u:FileUploader uploadUrl="upload/"
+																		width="15em" tooltip="{i18n>BrowsePowerofAttorney}"
+																		uploadComplete="handleUploadComplete" />
+
+																</HBox>
+															</layout:content>
+														</layout:MatrixLayoutCell>
+													</layout:cells>
+												</layout:MatrixLayoutRow>
+											</layout:rows>
+											<layout:rows>
+												<layout:MatrixLayoutRow>
+													<layout:cells>
+														<layout:MatrixLayoutCell colSpan="4">
 															<HBox justifyContent="Center">
-																<core:HTML content="{i18n>OrganizationCompany}">
-																</core:HTML>
+																<Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" />
 															</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
+														</layout:MatrixLayoutCell>
+													</layout:cells>
+												</layout:MatrixLayoutRow>
 
 
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell colSpan="2">
-														<layout:content>
-															<HBox justifyContent="End">
-																<Input type="Text" placeholder="{i18n>OrganizationName}"
-																	width="25em" />
-															</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell vAlign="Middle"
-														hAlign="End">
-														<layout:content>
-															<c:TextView text="{i18n>Country}" design="H6" />
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell>
-														<layout:content>
-															<ComboBox width="25em">
-																<core:Item />
-															</ComboBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell vAlign="Middle"
-														hAlign="End">
-														<layout:content>
-															<c:TextView text="{i18n>LegalStatus}" design="H6" />
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell>
-														<layout:content>
-															<ComboBox width="25em">
-																<core:Item />
-															</ComboBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell vAlign="Middle"
-														hAlign="End">
-														<layout:content>
-															<c:TextView text="{i18n>Region}" design="H6" />
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell>
-														<layout:content>
-															<ComboBox width="25em">
-																<core:Item />
-															</ComboBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell vAlign="Middle"
-														hAlign="End">
-														<layout:content>
-															<c:TextView text="{i18n>MultinationalCompany}"
-																design="H6" />
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell>
-														<layout:content>
-															<ComboBox width="25em">
-																<core:Item />
-															</ComboBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell vAlign="Middle"
-														hAlign="End">
-														<layout:content>
-															<c:TextView text="{i18n>City}" design="H6" />
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell>
-														<layout:content>
-															<ComboBox width="25em">
-																<core:Item />
-															</ComboBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell colSpan="2">
-														<layout:content>
-															<HBox justifyContent="End">
-																<Input type="Text" placeholder="{i18n>LaborSize}"
-																	width="25em" />
-															</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell vAlign="Middle"
-														hAlign="End">
-														<layout:content>
-															<c:TextView text="{i18n>POBox}" design="H6" />
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell>
-														<layout:content>
-															<ComboBox width="25em">
-																<core:Item />
-															</ComboBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell colSpan="2">
-														<layout:content>
-															<HBox justifyContent="End">
-																<Input type="Text" placeholder="{i18n>Capital}"
-																	width="25em" />
-															</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell vAlign="Middle"
-														hAlign="End">
-														<layout:content>
-															<c:TextView text="{i18n>PostalCode}" design="H6" />
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell>
-														<layout:content>
-															<ComboBox width="25em">
-																<core:Item />
-															</ComboBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell colSpan="2">
-														<HBox justifyContent="End" alignItems="Center">
-															<Input type="Number" placeholder="{i18n>CountryCode}"
-																enabled="false" width="8em" />
-															<Input type="Number" placeholder="{i18n>Telephone}"
-																width="9em" />
-															<Input type="Number" placeholder="{i18n>Extension}"
-																width="8em" />
-														</HBox>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell vAlign="Middle"
-														hAlign="End" colSpan="2">
-														<layout:content>
-															<HBox justifyContent="End">
-																<Input type="Text" placeholder="{i18n>Street}"
-																	width="25em" />
-															</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell colSpan="2">
-														<HBox justifyContent="End" alignItems="Center">
-															<Input type="Number" placeholder="{i18n>CountryCode}"
-																enabled="false" width="8em" />
-															<Input type="Number" placeholder="{i18n>MobilePhone}"
-																width="17em" />
-														</HBox>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell vAlign="Middle"
-														hAlign="End" colSpan="2">
-														<layout:content>
-															<HBox justifyContent="End">
-																<Input type="Text" placeholder="{i18n>BuildingNo}"
-																	width="25em" />
-															</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell colSpan="2">
-														<HBox justifyContent="End" alignItems="Center">
-															<Input type="Number" placeholder="{i18n>CountryCode}"
-																enabled="false" width="8em" />
-															<Input type="Number" placeholder="{i18n>Fax}"
-																width="17em" />
-														</HBox>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell vAlign="Middle"
-														hAlign="End" colSpan="2">
-														<layout:content>
-															<HBox justifyContent="End">
-																<Input type="Text" placeholder="{i18n>Email}"
-																	width="25em" />
-															</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell colSpan="2">
-														<layout:content>
-															<HBox justifyContent="End">
-																<Input type="Text" placeholder="{i18n>WebsiteURL}"
-																	width="25em" />
-															</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell vAlign="Middle"
-														hAlign="End">
-														<layout:content>
-															<c:TextView text="{i18n>CommMethod}" design="H6" />
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell>
-														<layout:content>
-															<ComboBox width="25em">
-																<core:Item />
-															</ComboBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell colSpan="2">
-														<layout:content>
-															<HBox justifyContent="SpaceAround" alignItems="Center">
-																<c:TextView text="{i18n>PreApprovalFile}"
-																	semanticColor="Default" design="H6" />
-
-																<u:FileUploader uploadUrl="upload/"
-																	width="15em" tooltip="{i18n>BrowsePreApprovalFile}"
-																	uploadComplete="handleUploadComplete" />
-
-															</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell colSpan="4">
-														<layout:content>
-															<HBox justifyContent="Center">
-																<core:HTML content="{i18n>ContactInformation}">
-																</core:HTML>
-															</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
+											</layout:rows>
 
 
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell>
-													<layout:content>
-														<Input type="Text" placeholder="{i18n>FirstName}" />
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell>
-													<layout:content>
-														<HBox justifyContent="SpaceBetween" alignItems="Center">
-															<c:TextView text="{i18n>Country}" design="H6" />
-															<ComboBox width="25em">
-																<core:Item />
-															</ComboBox>
-														</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell>
-													<layout:content>
-														<Input type="Text" placeholder="{i18n>LastName}" />
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell>
-													<layout:content>
-														<HBox justifyContent="SpaceBetween" alignItems="Center">
-															<c:TextView text="{i18n>Gender}" design="H6" />
-															<ComboBox width="25em">
-																<core:Item />
-															</ComboBox>
-														</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell>
-													<layout:content>
-														<Input type="Text" placeholder="{i18n>City}" />
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell>
-													<layout:content>
-														<HBox justifyContent="SpaceBetween" alignItems="Center">
-															<c:TextView text="{i18n>Nationality}" design="H6" />
-															<ComboBox width="25em">
-																<core:Item />
-															</ComboBox>
-														</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell>
-													<layout:content>
-														<Input type="Text" placeholder="{i18n>PostalCode}" />
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell>
-													<layout:content>
-														<HBox justifyContent="Start" alignItems="Center">
-															<Input type="Number" placeholder="{i18n>CountryCode}"
-																enabled="false" width="5em" />
-															<Input type="Number" placeholder="{i18n>Telephone}" />
-															<Input type="Number" placeholder="{i18n>Extension}" />
-														</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell>
-													<layout:content>
-														<Input type="Text" placeholder="{i18n>POBox}" />
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell>
-													<layout:content>
-														<HBox justifyContent="Start" alignItems="Center">
-															<Input type="Number" placeholder="{i18n>CountryCode}"
-																enabled="false" width="5em" />
-															<Input type="Number" placeholder="{i18n>Fax}" />
-															<Input type="Number" placeholder="{i18n>Extension}" />
-														</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell>
-													<layout:content>
-														<HBox justifyContent="Start" alignItems="Center">
-															<Input type="Number" placeholder="{i18n>CountryCode}"
-																enabled="false" width="5em" />
-															<Input type="Number" placeholder="{i18n>MobilePhone}" />
-														</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-										<layout:rows>
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell>
-													<layout:content>
-														<HBox justifyContent="SpaceBetween" alignItems="Center">
-															<ComboBox width="25em">
-																<core:Item />
-															</ComboBox>
-														</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell hAlign="Center">
-													<layout:content>
-														<HBox justifyContent="SpaceAround" alignItems="Center">
-															<u:FileUploader uploadUrl="upload/" width="15em"
-																tooltip="{i18n>BrowsePreApprovalFile}" uploadComplete="handleUploadComplete" />
-															<Button type="Default" text="{i18n>Upload}" />
-														</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-										</layout:rows>
-
-									</layout:MatrixLayout>
+										</layout:MatrixLayout>
+									</VBox>
+									<!-- Contact info layout end -->
 								</IconTabFilter>
 								<IconTabSeparator icon="sap-icon://open-command-field" />
 								<IconTabFilter icon="sap-icon://form" iconColor="Positive"
