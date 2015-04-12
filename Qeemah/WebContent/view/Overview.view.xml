@@ -199,7 +199,10 @@
 									<layout:cells>
 										<layout:MatrixLayoutCell colSpan="2">
 											<layout:content>
-												<Input type="Text" placeholder="{i18n>OrganizationName}" />
+												<HBox justifyContent="End">
+													<Input type="Text" placeholder="{i18n>OrganizationName}"
+														width="25em" />
+												</HBox>
 											</layout:content>
 										</layout:MatrixLayoutCell>
 										<layout:MatrixLayoutCell vAlign="Middle"
@@ -291,7 +294,9 @@
 									<layout:cells>
 										<layout:MatrixLayoutCell colSpan="2">
 											<layout:content>
-												<Input type="Text" placeholder="{i18n>LaborSize}" />
+											<HBox justifyContent="End">
+												<Input type="Text" placeholder="{i18n>LaborSize}" width="25em" />
+												</HBox>
 											</layout:content>
 										</layout:MatrixLayoutCell>
 										<layout:MatrixLayoutCell vAlign="Middle"
@@ -316,7 +321,9 @@
 									<layout:cells>
 										<layout:MatrixLayoutCell colSpan="2">
 											<layout:content>
-												<Input type="Text" placeholder="{i18n>Capital}" />
+											<HBox justifyContent="End">
+												<Input type="Text" placeholder="{i18n>Capital}" width="25em"/>
+												</HBox>
 											</layout:content>
 										</layout:MatrixLayoutCell>
 										<layout:MatrixLayoutCell vAlign="Middle"
@@ -348,7 +355,7 @@
 										<layout:MatrixLayoutCell>
 											<HBox justifyContent="Start" alignItems="Center">
 												<Input type="Number" placeholder="{i18n>CountryCode}"
-													enabled="false" />
+													enabled="false" width="8em"/>
 												<Input type="Number" placeholder="{i18n>Telephone}" />
 												<Input type="Number" placeholder="{i18n>Extension}" />
 											</HBox>
@@ -356,14 +363,16 @@
 										<layout:MatrixLayoutCell vAlign="Middle"
 											hAlign="End" colSpan="2">
 											<layout:content>
-												<Input type="Text" placeholder="{i18n>Street}" />
+											<HBox justifyContent="End">
+												<Input type="Text" placeholder="{i18n>Street}" width="25em" />
+												</HBox>
 											</layout:content>
 										</layout:MatrixLayoutCell>
-										
+
 									</layout:cells>
 								</layout:MatrixLayoutRow>
 							</layout:rows>
-							
+
 							<layout:rows>
 								<layout:MatrixLayoutRow>
 									<layout:cells>
@@ -376,17 +385,19 @@
 										<layout:MatrixLayoutCell>
 											<HBox justifyContent="Start" alignItems="Center">
 												<Input type="Number" placeholder="{i18n>CountryCode}"
-													enabled="false" />
+													enabled="false" width="8em"/>
 												<Input type="Number" placeholder="{i18n>MobilePhone}" />
 											</HBox>
 										</layout:MatrixLayoutCell>
 										<layout:MatrixLayoutCell vAlign="Middle"
 											hAlign="End" colSpan="2">
 											<layout:content>
-												<Input type="Text" placeholder="{i18n>BuildingNo}" />
+											<HBox justifyContent="End">
+												<Input type="Text" placeholder="{i18n>BuildingNo}" width="25em"/>
+												</HBox>
 											</layout:content>
 										</layout:MatrixLayoutCell>
-										
+
 									</layout:cells>
 								</layout:MatrixLayoutRow>
 							</layout:rows>
