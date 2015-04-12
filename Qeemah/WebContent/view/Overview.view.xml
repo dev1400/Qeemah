@@ -346,18 +346,12 @@
 							<layout:rows>
 								<layout:MatrixLayoutRow>
 									<layout:cells>
-										<layout:MatrixLayoutCell vAlign="Middle"
-											hAlign="End">
-											<layout:content>
-												<c:TextView text="{i18n>Telephone}" design="H6" />
-											</layout:content>
-										</layout:MatrixLayoutCell>
-										<layout:MatrixLayoutCell>
-											<HBox justifyContent="Start" alignItems="Center">
+										<layout:MatrixLayoutCell colSpan="2">
+											<HBox justifyContent="End" alignItems="Center">
 												<Input type="Number" placeholder="{i18n>CountryCode}"
 													enabled="false" width="8em"/>
-												<Input type="Number" placeholder="{i18n>Telephone}" />
-												<Input type="Number" placeholder="{i18n>Extension}" />
+												<Input type="Number" placeholder="{i18n>Telephone}" width="9em"/>
+												<Input type="Number" placeholder="{i18n>Extension}" width="8em"/>
 											</HBox>
 										</layout:MatrixLayoutCell>
 										<layout:MatrixLayoutCell vAlign="Middle"
@@ -376,17 +370,11 @@
 							<layout:rows>
 								<layout:MatrixLayoutRow>
 									<layout:cells>
-										<layout:MatrixLayoutCell vAlign="Middle"
-											hAlign="End">
-											<layout:content>
-												<c:TextView text="{i18n>Telephone}" design="H6" />
-											</layout:content>
-										</layout:MatrixLayoutCell>
-										<layout:MatrixLayoutCell>
-											<HBox justifyContent="Start" alignItems="Center">
+										<layout:MatrixLayoutCell colSpan="2">
+											<HBox justifyContent="End" alignItems="Center">
 												<Input type="Number" placeholder="{i18n>CountryCode}"
 													enabled="false" width="8em"/>
-												<Input type="Number" placeholder="{i18n>MobilePhone}" />
+												<Input type="Number" placeholder="{i18n>MobilePhone}" width="17em"/>
 											</HBox>
 										</layout:MatrixLayoutCell>
 										<layout:MatrixLayoutCell vAlign="Middle"

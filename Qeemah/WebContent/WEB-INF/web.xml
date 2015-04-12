@@ -77,6 +77,11 @@
 		<servlet-name>SimpleProxyServlet</servlet-name>
 		<url-pattern>/proxy/*</url-pattern>
 	</servlet-mapping>
+	
+	<context-param>
+		<param-name>com.sap.ui5.proxy.REMOTE_LOCATION</param-name>
+	    <param-value>http://rhocrmdev1.mysagia.gov:8000</param-value>
+	</context-param>
 
 
 	<!-- ============================================================== -->

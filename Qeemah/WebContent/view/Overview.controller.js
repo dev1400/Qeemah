@@ -79,6 +79,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oVBoxRegistration.setVisible(false);
 		this._oHboxRegistrationSuccessMsg.setVisible(true);
 		sap.m.MessageToast.show(this.ModelHelper.getText("RegistrationSuccessful"));
+		/** Read deals in amendment collection and bind model to view
+	     */
+	   /* _bindDealsInAmendmentCollectionModel: function() {
+*/
+	        var oDealsInAmendmentCollectionModel = com.sagia.common.ModelHelper.readDealsInAmendmentCollection();
+
+	       /* this._oTable.setModel(oDealsInAmendmentCollectionModel);
+	    },*/
+		
 	},
 	handleCheckboxQuestion1Change: function(oEvent){
 		if(oEvent.getParameter("selected")){
