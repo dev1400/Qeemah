@@ -18,21 +18,15 @@
 			&lt;div&gt; &lt;img src="common/mime/slide2.jpg"/&gt; &lt;/div&gt; &lt;/div&gt;' 
 			preferDOM="false"> </core:HTML> -->
 
-		<!-- <Carousel id="idImageCarousel" loop="true" animationDuration="0">
-			<pages>
-				<Image src="common/mime/slide1.jpg"></Image>
-				<Image src="common/mime/slide2.jpg"></Image>
-				<Image src="common/mime/slide3.jpg"></Image>
-				<Image src="common/mime/slide4.jpg"></Image>
-				<Image src="common/mime/slide5.jpg"></Image>
-				<Image src="common/mime/slide6.jpg"></Image>
-				<Image src="common/mime/slide7.jpg"></Image>
-			</pages>
-		</Carousel> -->
+		<!-- <Carousel id="idImageCarousel" loop="true" animationDuration="0"> 
+			<pages> <Image src="common/mime/slide1.jpg"></Image> <Image src="common/mime/slide2.jpg"></Image> 
+			<Image src="common/mime/slide3.jpg"></Image> <Image src="common/mime/slide4.jpg"></Image> 
+			<Image src="common/mime/slide5.jpg"></Image> <Image src="common/mime/slide6.jpg"></Image> 
+			<Image src="common/mime/slide7.jpg"></Image> </pages> </Carousel> -->
 		<VBox alignItems="Center">
-		<core:HTML content="{i18n>home_carousel_embed}" id="idImageCarousel">
-					</core:HTML>
-					</VBox>
+			<core:HTML content="{i18n>home_carousel_embed}" id="idImageCarousel">
+			</core:HTML>
+		</VBox>
 
 
 		<!-- </HBox> --><!-- displayInline="true" -->
@@ -306,7 +300,7 @@
 														<layout:MatrixLayoutCell vAlign="Middle"
 															hAlign="End">
 															<layout:content>
-															<core:HTML content="{i18n>CityHTML}"></core:HTML>
+																<core:HTML content="{i18n>CityHTML}"></core:HTML>
 															</layout:content>
 														</layout:MatrixLayoutCell>
 														<layout:MatrixLayoutCell>
@@ -609,7 +603,7 @@
 														<layout:MatrixLayoutCell vAlign="Middle"
 															hAlign="End">
 															<layout:content>
-																
+
 																<core:HTML content="{i18n>CountryHTML}"></core:HTML>
 															</layout:content>
 														</layout:MatrixLayoutCell>
@@ -774,7 +768,8 @@
 														<layout:MatrixLayoutCell colSpan="4">
 															<layout:content>
 																<HBox justifyContent="Center">
-																	<!-- <Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" /> -->
+																	<!-- <Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" 
+																		/> -->
 																</HBox>
 															</layout:content>
 														</layout:MatrixLayoutCell>
@@ -1067,8 +1062,8 @@
 													</layout:MatrixLayoutCell>
 												</layout:cells>
 											</layout:MatrixLayoutRow>
-											
-										
+
+
 											<layout:MatrixLayoutRow>
 												<layout:cells>
 													<layout:MatrixLayoutCell>
@@ -1101,7 +1096,7 @@
 
 									<layout:MatrixLayout>
 										<layout:rows>
-										
+
 											<layout:MatrixLayoutRow>
 												<layout:cells>
 													<layout:MatrixLayoutCell colSpan="2">
@@ -1112,8 +1107,8 @@
 													</layout:MatrixLayoutCell>
 												</layout:cells>
 											</layout:MatrixLayoutRow>
-										
-										
+
+
 											<layout:MatrixLayoutRow>
 												<layout:cells>
 													<layout:MatrixLayoutCell hAlign="End">
@@ -1121,7 +1116,7 @@
 															<VBox justifyContent="Center">
 																<core:HTML content="{i18n>SectionHTML}">
 																</core:HTML>
-															</VBox>															
+															</VBox>
 														</layout:content>
 													</layout:MatrixLayoutCell>
 													<layout:MatrixLayoutCell>
@@ -1250,7 +1245,8 @@
 													<layout:MatrixLayoutCell>
 														<layout:content>
 															<HBox justifyContent="Center">
-																<!-- <Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" /> -->
+																<!-- <Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" 
+																	/> -->
 															</HBox>
 
 														</layout:content>
@@ -1258,7 +1254,8 @@
 													<layout:MatrixLayoutCell>
 														<layout:content>
 															<HBox justifyContent="Center">
-																<!-- <Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" /> -->
+																<!-- <Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" 
+																	/> -->
 															</HBox>
 
 														</layout:content>
@@ -1271,8 +1268,8 @@
 									</layout:MatrixLayout>
 									<layout:MatrixLayout>
 										<layout:rows>
-										
-									<layout:MatrixLayoutRow>
+
+											<layout:MatrixLayoutRow>
 												<layout:cells>
 													<layout:MatrixLayoutCell colSpan="2">
 														<HBox justifyContent="Center">
@@ -1283,141 +1280,141 @@
 												</layout:cells>
 											</layout:MatrixLayoutRow>
 										</layout:rows>
-										
+
 										<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell hAlign="End">
-														<layout:content>
-															<VBox justifyContent="Center">
-																<core:HTML content="{i18n>LicenseActivityHTML}">
-																</core:HTML>
-															</VBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell>
-														<layout:content>
-															<VBox justifyContent="Center">
-																<ComboBox width="25em">
-																	<core:Item />
-																</ComboBox>
-															</VBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-											
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell hAlign="End">
-														<layout:content>
-															<VBox justifyContent="Center">
-																<core:HTML content="{i18n>QuantityHTML}">
-																</core:HTML>
-															</VBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell>
-														<layout:content>
-															<VBox justifyContent="Center">
-																<ComboBox width="25em">
-																	<core:Item />
-																</ComboBox>
-															</VBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-											
-											
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell hAlign="End">
-														<layout:content>
-															<VBox justifyContent="Center">
-																<core:HTML content="{i18n>UnitOfMeasurementHTML}">
-																</core:HTML>
-															</VBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													<layout:MatrixLayoutCell>
-														<layout:content>
-															<VBox justifyContent="Center">
-																<ComboBox width="25em">
-																	<core:Item />
-																</ComboBox>
-															</VBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-											
-												<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell colSpan="2">
-														<layout:content>
+											<layout:cells>
+												<layout:MatrixLayoutCell hAlign="End">
+													<layout:content>
+														<VBox justifyContent="Center">
+															<core:HTML content="{i18n>LicenseActivityHTML}">
+															</core:HTML>
+														</VBox>
+													</layout:content>
+												</layout:MatrixLayoutCell>
+												<layout:MatrixLayoutCell>
+													<layout:content>
+														<VBox justifyContent="Center">
+															<ComboBox width="25em">
+																<core:Item />
+															</ComboBox>
+														</VBox>
+													</layout:content>
+												</layout:MatrixLayoutCell>
+											</layout:cells>
+										</layout:MatrixLayoutRow>
+
+										<layout:MatrixLayoutRow>
+											<layout:cells>
+												<layout:MatrixLayoutCell hAlign="End">
+													<layout:content>
+														<VBox justifyContent="Center">
+															<core:HTML content="{i18n>QuantityHTML}">
+															</core:HTML>
+														</VBox>
+													</layout:content>
+												</layout:MatrixLayoutCell>
+												<layout:MatrixLayoutCell>
+													<layout:content>
+														<VBox justifyContent="Center">
+															<ComboBox width="25em">
+																<core:Item />
+															</ComboBox>
+														</VBox>
+													</layout:content>
+												</layout:MatrixLayoutCell>
+											</layout:cells>
+										</layout:MatrixLayoutRow>
+
+
+										<layout:MatrixLayoutRow>
+											<layout:cells>
+												<layout:MatrixLayoutCell hAlign="End">
+													<layout:content>
+														<VBox justifyContent="Center">
+															<core:HTML content="{i18n>UnitOfMeasurementHTML}">
+															</core:HTML>
+														</VBox>
+													</layout:content>
+												</layout:MatrixLayoutCell>
+												<layout:MatrixLayoutCell>
+													<layout:content>
+														<VBox justifyContent="Center">
+															<ComboBox width="25em">
+																<core:Item />
+															</ComboBox>
+														</VBox>
+													</layout:content>
+												</layout:MatrixLayoutCell>
+
+											</layout:cells>
+										</layout:MatrixLayoutRow>
+
+										<layout:MatrixLayoutRow>
+											<layout:cells>
+												<layout:MatrixLayoutCell colSpan="2">
+													<layout:content>
 														<HBox justifyContent="Center">
-															<Button type="Accept" text="{i18n>Add}"  />
-															</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-											
-											
-											<layout:MatrixLayoutRow>
-												<layout:cells>
-													<layout:MatrixLayoutCell colSpan="2">
-														<layout:content>
+															<Button type="Accept" text="{i18n>Add}" />
+														</HBox>
+													</layout:content>
+												</layout:MatrixLayoutCell>
+
+											</layout:cells>
+										</layout:MatrixLayoutRow>
+
+
+										<layout:MatrixLayoutRow>
+											<layout:cells>
+												<layout:MatrixLayoutCell colSpan="2">
+													<layout:content>
 														<HBox justifyContent="Center">
-															
+
 															<Table>
-								
-								<columns>
-								    <Column width="12em">
-										<Text text="#" />
-									</Column>
-									<Column width="12em">
-										<Text text="{i18n>ProductCode}" />
-									</Column>
-									<Column width="12em">
-										<Text text="{i18n>ProductName}" />
-									</Column>
-									<Column width="12em">
-										<Text text="{i18n>Quantity}" />
-									</Column>
-									<Column width="12em">
-										<Text text="{i18n>UnitOfMeasurement}" />
-									</Column>
-									<Column width="12em">
-										<Text text="{i18n>Delete}" />
-									</Column>
-								</columns>
-								<items>
-									<ColumnListItem>
-										<cells>
-											<Input type="Text" />
-											<Input type="Text" />
-											<Input type="Text" />
-											<Input type="Text" />
-											<Input type="Text" />
-											<Input type="Text" />
-										</cells>
-									</ColumnListItem>
-								</items>
-							</Table>
-															
-															
-															</HBox>
-														</layout:content>
-													</layout:MatrixLayoutCell>
-													
-												</layout:cells>
-											</layout:MatrixLayoutRow>
-											
-											
-										</layout:MatrixLayout>
+
+																<columns>
+																	<Column width="12em">
+																		<Text text="#" />
+																	</Column>
+																	<Column width="12em">
+																		<Text text="{i18n>ProductCode}" />
+																	</Column>
+																	<Column width="12em">
+																		<Text text="{i18n>ProductName}" />
+																	</Column>
+																	<Column width="12em">
+																		<Text text="{i18n>Quantity}" />
+																	</Column>
+																	<Column width="12em">
+																		<Text text="{i18n>UnitOfMeasurement}" />
+																	</Column>
+																	<Column width="12em">
+																		<Text text="{i18n>Delete}" />
+																	</Column>
+																</columns>
+																<items>
+																	<ColumnListItem>
+																		<cells>
+																			<Input type="Text" />
+																			<Input type="Text" />
+																			<Input type="Text" />
+																			<Input type="Text" />
+																			<Input type="Text" />
+																			<Input type="Text" />
+																		</cells>
+																	</ColumnListItem>
+																</items>
+															</Table>
+
+
+														</HBox>
+													</layout:content>
+												</layout:MatrixLayoutCell>
+
+											</layout:cells>
+										</layout:MatrixLayoutRow>
+
+
+									</layout:MatrixLayout>
 									<!-- Child license activity Q end -->
 									<!-- License info end -->
 
@@ -1425,22 +1422,41 @@
 								<IconTabSeparator icon="sap-icon://open-command-field" />
 								<IconTabFilter icon="sap-icon://citizen-connect"
 									iconColor="Positive" design="Horizontal" text="{i18n>Shareholder}"
-									key="Overweight"></IconTabFilter>
-								<IconTabSeparator icon="sap-icon://open-command-field" />
-								<IconTabFilter icon="sap-icon://personnel-view"
-									iconColor="Positive" design="Horizontal" text="{i18n>Preview}"
-									key="Overweight"></IconTabFilter>
-								<IconTabSeparator icon="sap-icon://open-command-field" />
-								<IconTabFilter icon="sap-icon://activity-items"
-									iconColor="Positive" design="Horizontal" text="{i18n>TermsnCond}"
-									key="Overweight"></IconTabFilter>
-								<IconTabSeparator icon="sap-icon://open-command-field" />
-								<IconTabFilter icon="sap-icon://accept" iconColor="Positive"
-									design="Horizontal" text="{i18n>Submit}" key="Overweight"></IconTabFilter>
+									key="Overweight">
+									<!-- share holders sub tabs start -->
+									<IconTabBar enableScrolling="true" width="100%"
+										select="handleIconTabBarItemSelect" expandable="false">
+										<items>
+											<IconTabFilter 	text="{i18n>WhySaudiArabia}">
+											</IconTabFilter>
+											<IconTabFilter 	text="{i18n>WhySaudiArabia}">
+											</IconTabFilter>
+										</items>
+									</IconTabBar>
+												<!-- existing share holder start -->
+												<!-- existing share holder end -->
+												<!-- new share holder start -->
+												<!-- new share holder end -->
+												<!-- share holders sub tabs end -->
 
-							</items>
-						</IconTabBar>
-						<!-- Registration process IcontabBar end -->
+
+											</IconTabFilter>
+											<IconTabSeparator icon="sap-icon://open-command-field" />
+											<IconTabFilter icon="sap-icon://personnel-view"
+												iconColor="Positive" design="Horizontal" text="{i18n>Preview}"
+												key="Overweight"></IconTabFilter>
+											<IconTabSeparator icon="sap-icon://open-command-field" />
+											<IconTabFilter icon="sap-icon://activity-items"
+												iconColor="Positive" design="Horizontal" text="{i18n>TermsnCond}"
+												key="Overweight"></IconTabFilter>
+											<IconTabSeparator icon="sap-icon://open-command-field" />
+											<IconTabFilter icon="sap-icon://accept"
+												iconColor="Positive" design="Horizontal" text="{i18n>Submit}"
+												key="Overweight"></IconTabFilter>
+
+										</items>
+									</IconTabBar>
+									<!-- Registration process IcontabBar end -->
 
 
 
