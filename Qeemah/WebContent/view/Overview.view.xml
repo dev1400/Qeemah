@@ -1274,7 +1274,7 @@
 										
 									<layout:MatrixLayoutRow>
 												<layout:cells>
-													<layout:MatrixLayoutCell>
+													<layout:MatrixLayoutCell colSpan="2">
 														<HBox justifyContent="Center">
 															<core:HTML content="{i18n>ProductsforIndustrialLicenseType}">
 															</core:HTML>
@@ -1283,6 +1283,140 @@
 												</layout:cells>
 											</layout:MatrixLayoutRow>
 										</layout:rows>
+										
+										<layout:MatrixLayoutRow>
+												<layout:cells>
+													<layout:MatrixLayoutCell hAlign="End">
+														<layout:content>
+															<VBox justifyContent="Center">
+																<core:HTML content="{i18n>LicenseActivityHTML}">
+																</core:HTML>
+															</VBox>
+														</layout:content>
+													</layout:MatrixLayoutCell>
+													<layout:MatrixLayoutCell>
+														<layout:content>
+															<VBox justifyContent="Center">
+																<ComboBox width="25em">
+																	<core:Item />
+																</ComboBox>
+															</VBox>
+														</layout:content>
+													</layout:MatrixLayoutCell>
+												</layout:cells>
+											</layout:MatrixLayoutRow>
+											
+											<layout:MatrixLayoutRow>
+												<layout:cells>
+													<layout:MatrixLayoutCell hAlign="End">
+														<layout:content>
+															<VBox justifyContent="Center">
+																<core:HTML content="{i18n>QuantityHTML}">
+																</core:HTML>
+															</VBox>
+														</layout:content>
+													</layout:MatrixLayoutCell>
+													<layout:MatrixLayoutCell>
+														<layout:content>
+															<VBox justifyContent="Center">
+																<ComboBox width="25em">
+																	<core:Item />
+																</ComboBox>
+															</VBox>
+														</layout:content>
+													</layout:MatrixLayoutCell>
+												</layout:cells>
+											</layout:MatrixLayoutRow>
+											
+											
+											<layout:MatrixLayoutRow>
+												<layout:cells>
+													<layout:MatrixLayoutCell hAlign="End">
+														<layout:content>
+															<VBox justifyContent="Center">
+																<core:HTML content="{i18n>UnitOfMeasurementHTML}">
+																</core:HTML>
+															</VBox>
+														</layout:content>
+													</layout:MatrixLayoutCell>
+													<layout:MatrixLayoutCell>
+														<layout:content>
+															<VBox justifyContent="Center">
+																<ComboBox width="25em">
+																	<core:Item />
+																</ComboBox>
+															</VBox>
+														</layout:content>
+													</layout:MatrixLayoutCell>
+													
+												</layout:cells>
+											</layout:MatrixLayoutRow>
+											
+												<layout:MatrixLayoutRow>
+												<layout:cells>
+													<layout:MatrixLayoutCell colSpan="2">
+														<layout:content>
+														<HBox justifyContent="Center">
+															<Button type="Accept" text="{i18n>Add}"  />
+															</HBox>
+														</layout:content>
+													</layout:MatrixLayoutCell>
+													
+												</layout:cells>
+											</layout:MatrixLayoutRow>
+											
+											
+											<layout:MatrixLayoutRow>
+												<layout:cells>
+													<layout:MatrixLayoutCell colSpan="2">
+														<layout:content>
+														<HBox justifyContent="Center">
+															
+															<Table>
+								
+								<columns>
+								    <Column width="12em">
+										<Text text="#" />
+									</Column>
+									<Column width="12em">
+										<Text text="{i18n>ProductCode}" />
+									</Column>
+									<Column width="12em">
+										<Text text="{i18n>ProductName}" />
+									</Column>
+									<Column width="12em">
+										<Text text="{i18n>Quantity}" />
+									</Column>
+									<Column width="12em">
+										<Text text="{i18n>UnitOfMeasurement}" />
+									</Column>
+									<Column width="12em">
+										<Text text="{i18n>Delete}" />
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Input type="Text" />
+											<Input type="Text" />
+											<Input type="Text" />
+											<Input type="Text" />
+											<Input type="Text" />
+											<Input type="Text" />
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+															
+															
+															</HBox>
+														</layout:content>
+													</layout:MatrixLayoutCell>
+													
+												</layout:cells>
+											</layout:MatrixLayoutRow>
+											
+											
 										</layout:MatrixLayout>
 									<!-- Child license activity Q end -->
 									<!-- License info end -->
