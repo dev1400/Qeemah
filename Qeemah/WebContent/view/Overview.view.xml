@@ -34,7 +34,7 @@
 		<!-- </HBox> --><!-- displayInline="true" -->
 
 		<IconTabBar enableScrolling="true" width="100%"
-			select="handleIconTabBarItemSelect">
+			select="handleIconTabBarItemSelect" expandable="false">
 			<items>
 				<IconTabFilter key="1" id="idWhySaudiArabiaTab" text="{i18n>WhySaudiArabia}">
 					<core:HTML content="{i18n>wsap1}">
@@ -191,12 +191,12 @@
 
 
 
-					<VBox id="idVBoxOrgReg" alignItems="Center" justifyContent="Center"
-						visible="false">
+					<VBox id="idVBoxOrgReg" visible="false" width="100%">
 
 
 						<!-- Registration process icontabbar Start -->
-						<IconTabBar id="idIconTabBar">
+						<IconTabBar id="idIconTabBar" enableScrolling="true"
+							width="100%" expandable="false">
 							<items>
 
 								<IconTabFilter icon="sap-icon://form" iconColor="Positive"
@@ -1130,7 +1130,7 @@
 													</layout:MatrixLayoutCell>
 												</layout:cells>
 											</layout:MatrixLayoutRow>
-											
+
 											<layout:MatrixLayoutRow>
 												<layout:cells>
 													<layout:MatrixLayoutCell hAlign="End">
@@ -1152,7 +1152,7 @@
 													</layout:MatrixLayoutCell>
 												</layout:cells>
 											</layout:MatrixLayoutRow>
-											
+
 											<layout:MatrixLayoutRow>
 												<layout:cells>
 													<layout:MatrixLayoutCell hAlign="End">
@@ -1174,7 +1174,7 @@
 													</layout:MatrixLayoutCell>
 												</layout:cells>
 											</layout:MatrixLayoutRow>
-											
+
 											<layout:MatrixLayoutRow>
 												<layout:cells>
 													<layout:MatrixLayoutCell hAlign="End">
@@ -1196,7 +1196,7 @@
 													</layout:MatrixLayoutCell>
 												</layout:cells>
 											</layout:MatrixLayoutRow>
-											
+
 											<layout:MatrixLayoutRow>
 												<layout:cells>
 													<layout:MatrixLayoutCell hAlign="End">
@@ -1218,7 +1218,7 @@
 													</layout:MatrixLayoutCell>
 												</layout:cells>
 											</layout:MatrixLayoutRow>
-											
+
 											<layout:MatrixLayoutRow>
 												<layout:cells>
 													<layout:MatrixLayoutCell hAlign="End">
@@ -1232,36 +1232,36 @@
 													<layout:MatrixLayoutCell>
 														<layout:content>
 															<VBox justifyContent="Center">
-																
-																<TextArea width="25em"/>
+
+																<TextArea width="25em" />
 															</VBox>
 														</layout:content>
 													</layout:MatrixLayoutCell>
 												</layout:cells>
 											</layout:MatrixLayoutRow>
-											
-												<layout:MatrixLayoutRow>
+
+											<layout:MatrixLayoutRow>
 												<layout:cells>
 													<layout:MatrixLayoutCell>
 														<layout:content>
 															<HBox justifyContent="Center">
-																	<Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" />
-																</HBox>
-										
+																<Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" />
+															</HBox>
+
 														</layout:content>
 													</layout:MatrixLayoutCell>
 													<layout:MatrixLayoutCell>
 														<layout:content>
 															<HBox justifyContent="Center">
-																	<Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" />
-																</HBox>
-										
+																<Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" />
+															</HBox>
+
 														</layout:content>
 													</layout:MatrixLayoutCell>
-													
+
 												</layout:cells>
 											</layout:MatrixLayoutRow>
-											
+
 										</layout:rows>
 									</layout:MatrixLayout>
 									<!-- Child license activity Q end -->
