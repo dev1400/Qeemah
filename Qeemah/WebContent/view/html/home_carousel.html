@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="js/jssor.slider.mini.js"></script>
+<script>
+	jssor_slider1_starter = function(containerId) {
+		var options = {
+			$AutoPlay : true
+		};
+		var jssor_slider1 = new $JssorSlider$(containerId, options);
+	};
+</script>
+</head>
+<body>
+	<div id="slider1_container"
+		style="position: relative; top: 0px; left: 0px; width: 1300px; height: 620px;">
+		<!-- Slides Container -->
+		<div u="slides"
+			style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 1300px; height: 620px;">
+			<div>
+				<img u="image" src="mime/slide1.jpg" />
+			</div>
+			<div>
+				<img u="image" src="mime/slide2.jpg" />
+			</div>
+			<div>
+				<img u="image" src="mime/slide3.jpg" />
+			</div>
+			<div>
+				<img u="image" src="mime/slide4.jpg" />
+			</div>
+			<div>
+				<img u="image" src="mime/slide5.jpg" />
+			</div>
+			<div>
+				<img u="image" src="mime/slide6.jpg" />
+			</div>
+			<div>
+				<img u="image" src="mime/slide7.jpg" />
+			</div>
+		</div>
+		<!-- Trigger -->
+		<script>
+			jssor_slider1_starter('slider1_container');
+		</script>
+	</div>
+
+</body>
+</html>
