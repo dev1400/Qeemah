@@ -240,7 +240,7 @@
 														<layout:MatrixLayoutCell vAlign="Middle"
 															hAlign="End">
 															<layout:content>
-																<c:TextView text="{i18n>Country}" design="H6" />
+																<core:HTML content="{i18n>CountryHTML}"></core:HTML>
 															</layout:content>
 														</layout:MatrixLayoutCell>
 														<layout:MatrixLayoutCell>
@@ -260,7 +260,7 @@
 														<layout:MatrixLayoutCell vAlign="Middle"
 															hAlign="End">
 															<layout:content>
-																<c:TextView text="{i18n>LegalStatus}" design="H6" />
+																<core:HTML content="{i18n>LegalStatusHTML}"></core:HTML>
 															</layout:content>
 														</layout:MatrixLayoutCell>
 														<layout:MatrixLayoutCell>
@@ -273,7 +273,7 @@
 														<layout:MatrixLayoutCell vAlign="Middle"
 															hAlign="End">
 															<layout:content>
-																<c:TextView text="{i18n>Region}" design="H6" />
+																<core:HTML content="{i18n>RegionHTML}"></core:HTML>
 															</layout:content>
 														</layout:MatrixLayoutCell>
 														<layout:MatrixLayoutCell>
@@ -293,8 +293,7 @@
 														<layout:MatrixLayoutCell vAlign="Middle"
 															hAlign="End">
 															<layout:content>
-																<c:TextView text="{i18n>MultinationalCompany}"
-																	design="H6" />
+																<core:HTML content="{i18n>MultinationalCompanyHTML}"></core:HTML>
 															</layout:content>
 														</layout:MatrixLayoutCell>
 														<layout:MatrixLayoutCell>
@@ -307,7 +306,7 @@
 														<layout:MatrixLayoutCell vAlign="Middle"
 															hAlign="End">
 															<layout:content>
-																<c:TextView text="{i18n>City}" design="H6" />
+															<core:HTML content="{i18n>CityHTML}"></core:HTML>
 															</layout:content>
 														</layout:MatrixLayoutCell>
 														<layout:MatrixLayoutCell>
@@ -332,17 +331,12 @@
 																</HBox>
 															</layout:content>
 														</layout:MatrixLayoutCell>
-														<layout:MatrixLayoutCell vAlign="Middle"
-															hAlign="End">
+														<layout:MatrixLayoutCell colSpan="2">
 															<layout:content>
-																<c:TextView text="{i18n>POBox}" design="H6" />
-															</layout:content>
-														</layout:MatrixLayoutCell>
-														<layout:MatrixLayoutCell>
-															<layout:content>
-																<ComboBox width="25em">
-																	<core:Item />
-																</ComboBox>
+																<HBox justifyContent="End">
+																	<Input type="Text" placeholder="{i18n>POBox}"
+																		width="25em" />
+																</HBox>
 															</layout:content>
 														</layout:MatrixLayoutCell>
 													</layout:cells>
@@ -360,17 +354,12 @@
 																</HBox>
 															</layout:content>
 														</layout:MatrixLayoutCell>
-														<layout:MatrixLayoutCell vAlign="Middle"
-															hAlign="End">
+														<layout:MatrixLayoutCell colSpan="2">
 															<layout:content>
-																<c:TextView text="{i18n>PostalCode}" design="H6" />
-															</layout:content>
-														</layout:MatrixLayoutCell>
-														<layout:MatrixLayoutCell>
-															<layout:content>
-																<ComboBox width="25em">
-																	<core:Item />
-																</ComboBox>
+																<HBox justifyContent="End">
+																	<Input type="Text" placeholder="{i18n>PostalCode}"
+																		width="25em" />
+																</HBox>
 															</layout:content>
 														</layout:MatrixLayoutCell>
 													</layout:cells>
@@ -468,7 +457,7 @@
 														<layout:MatrixLayoutCell vAlign="Middle"
 															hAlign="End">
 															<layout:content>
-																<c:TextView text="{i18n>CommMethod}" design="H6" />
+																<core:HTML content="{i18n>CommMethod}"></core:HTML>
 															</layout:content>
 														</layout:MatrixLayoutCell>
 														<layout:MatrixLayoutCell>
@@ -488,8 +477,7 @@
 														<layout:MatrixLayoutCell colSpan="2">
 															<layout:content>
 																<HBox justifyContent="SpaceAround" alignItems="Center">
-																	<c:TextView text="{i18n>PreApprovalFile}"
-																		semanticColor="Default" design="H6" />
+																	<core:HTML content="{i18n>PreApprovalFileHTML}"></core:HTML>
 
 																	<u:FileUploader uploadUrl="upload/"
 																		width="15em" tooltip="{i18n>BrowsePreApprovalFile}"
@@ -539,7 +527,7 @@
 														<layout:MatrixLayoutCell vAlign="Middle"
 															hAlign="End">
 															<layout:content>
-																<c:TextView text="{i18n>Nationality}" design="H6" />
+																<core:HTML content="{i18n>NationalityHTML}"></core:HTML>
 															</layout:content>
 														</layout:MatrixLayoutCell>
 														<layout:MatrixLayoutCell>
@@ -587,7 +575,7 @@
 														<layout:MatrixLayoutCell vAlign="Middle"
 															hAlign="End">
 															<layout:content>
-																<c:TextView text="{i18n>Gender}" design="H6" />
+																<core:HTML content="{i18n>GenderHTML}"></core:HTML>
 															</layout:content>
 														</layout:MatrixLayoutCell>
 														<layout:MatrixLayoutCell>
@@ -621,7 +609,8 @@
 														<layout:MatrixLayoutCell vAlign="Middle"
 															hAlign="End">
 															<layout:content>
-																<c:TextView text="{i18n>Country}" design="H6" />
+																
+																<core:HTML content="{i18n>CountryHTML}"></core:HTML>
 															</layout:content>
 														</layout:MatrixLayoutCell>
 														<layout:MatrixLayoutCell>
@@ -689,7 +678,7 @@
 														<layout:MatrixLayoutCell vAlign="Middle"
 															hAlign="End">
 															<layout:content>
-																<c:TextView text="{i18n>CommMethod}" design="H6" />
+																<core:HTML content="{i18n>CommMethod}"></core:HTML>
 															</layout:content>
 														</layout:MatrixLayoutCell>
 														<layout:MatrixLayoutCell>
@@ -718,7 +707,7 @@
 														<layout:MatrixLayoutCell vAlign="Middle"
 															hAlign="End">
 															<layout:content>
-																<c:TextView text="{i18n>Role}" design="H6" />
+																<core:HTML content="{i18n>RoleHTML}"></core:HTML>
 															</layout:content>
 														</layout:MatrixLayoutCell>
 														<layout:MatrixLayoutCell>
@@ -755,8 +744,7 @@
 														<layout:MatrixLayoutCell colSpan="2">
 															<layout:content>
 																<HBox justifyContent="SpaceAround" alignItems="Center">
-																	<c:TextView text="{i18n>PassportCopyIDCopy}"
-																		semanticColor="Default" design="H6" />
+																	<core:HTML content="{i18n>PassportCopyIDCopyHTML}"></core:HTML>
 
 																	<u:FileUploader uploadUrl="upload/"
 																		width="15em" tooltip="{i18n>BrowsePassportCopyIDCopy}"
@@ -768,8 +756,7 @@
 														<layout:MatrixLayoutCell colSpan="2">
 															<layout:content>
 																<HBox justifyContent="SpaceAround" alignItems="Center">
-																	<c:TextView text="{i18n>PowerofAttorney}"
-																		semanticColor="Default" design="H6" />
+																	<core:HTML content="{i18n>PowerofAttorneyHTML}"></core:HTML>
 
 																	<u:FileUploader uploadUrl="upload/"
 																		width="15em" tooltip="{i18n>BrowsePowerofAttorney}"
@@ -787,7 +774,7 @@
 														<layout:MatrixLayoutCell colSpan="4">
 															<layout:content>
 																<HBox justifyContent="Center">
-																	<Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" />
+																	<!-- <Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" /> -->
 																</HBox>
 															</layout:content>
 														</layout:MatrixLayoutCell>
@@ -1080,7 +1067,8 @@
 													</layout:MatrixLayoutCell>
 												</layout:cells>
 											</layout:MatrixLayoutRow>
-
+											
+										
 											<layout:MatrixLayoutRow>
 												<layout:cells>
 													<layout:MatrixLayoutCell>
@@ -1113,6 +1101,19 @@
 
 									<layout:MatrixLayout>
 										<layout:rows>
+										
+											<layout:MatrixLayoutRow>
+												<layout:cells>
+													<layout:MatrixLayoutCell colSpan="2">
+														<HBox justifyContent="Center">
+															<core:HTML content="{i18n>LicenseInformationHTML}">
+															</core:HTML>
+														</HBox>
+													</layout:MatrixLayoutCell>
+												</layout:cells>
+											</layout:MatrixLayoutRow>
+										
+										
 											<layout:MatrixLayoutRow>
 												<layout:cells>
 													<layout:MatrixLayoutCell hAlign="End">
@@ -1120,7 +1121,7 @@
 															<VBox justifyContent="Center">
 																<core:HTML content="{i18n>SectionHTML}">
 																</core:HTML>
-															</VBox>
+															</VBox>															
 														</layout:content>
 													</layout:MatrixLayoutCell>
 													<layout:MatrixLayoutCell>
@@ -1249,7 +1250,7 @@
 													<layout:MatrixLayoutCell>
 														<layout:content>
 															<HBox justifyContent="Center">
-																<Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" />
+																<!-- <Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" /> -->
 															</HBox>
 
 														</layout:content>
@@ -1257,7 +1258,7 @@
 													<layout:MatrixLayoutCell>
 														<layout:content>
 															<HBox justifyContent="Center">
-																<Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" />
+																<!-- <Button type="Accept" text="{i18n>Next}" press="handleOkButtonPress" /> -->
 															</HBox>
 
 														</layout:content>
@@ -1268,6 +1269,21 @@
 
 										</layout:rows>
 									</layout:MatrixLayout>
+									<layout:MatrixLayout>
+										<layout:rows>
+										
+									<layout:MatrixLayoutRow>
+												<layout:cells>
+													<layout:MatrixLayoutCell>
+														<HBox justifyContent="Center">
+															<core:HTML content="{i18n>ProductsforIndustrialLicenseType}">
+															</core:HTML>
+														</HBox>
+													</layout:MatrixLayoutCell>
+												</layout:cells>
+											</layout:MatrixLayoutRow>
+										</layout:rows>
+										</layout:MatrixLayout>
 									<!-- Child license activity Q end -->
 									<!-- License info end -->
 
