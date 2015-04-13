@@ -29,9 +29,10 @@
 				<Image src="common/mime/slide7.jpg"></Image>
 			</pages>
 		</Carousel> -->
-		
+		<VBox alignItems="Center">
 		<core:HTML content="{i18n>home_carousel_embed}" id="idImageCarousel">
 					</core:HTML>
+					</VBox>
 
 
 		<!-- </HBox> --><!-- displayInline="true" -->
