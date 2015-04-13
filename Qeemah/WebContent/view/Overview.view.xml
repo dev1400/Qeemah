@@ -191,7 +191,7 @@
 
 
 
-					<VBox id="idVBoxOrgReg" alignItems="Center" justifyContent="SpaceAround"
+					<VBox id="idVBoxOrgReg" alignItems="Center" justifyContent="Center"
 						visible="false">
 
 
