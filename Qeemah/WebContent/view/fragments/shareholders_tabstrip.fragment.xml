@@ -158,7 +158,7 @@
 														</ColumnListItem>
 													</items>
 												</Table>
-
+<!--  -->
 												<sap.ui.commons:TabStrip>
 													<sap.ui.commons:tabs>
 														<sap.ui.commons:Tab id="idNewShareHolderCreationTab"
