@@ -36,6 +36,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oVBoxRegistration = this.getView().byId("idVBoxRegistration");
 		this._oHboxRegistrationSuccessMsg = this.getView().byId("idHBoxRegistrationSuccessMessage");
 		this._oVboxOrgReg = this.getView().byId("idVBoxOrgReg");
+		
+		this._oPage = this.getView().byId("idPage");
 
 
 
