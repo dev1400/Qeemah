@@ -2,21 +2,14 @@
 	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
 	xmlns:layout="sap.ui.commons.layout" xmlns="sap.m" xmlns:c="sap.ui.commons"
 	controllerName="com.sagia.view.Overview" xmlns:html="http://www.w3.org/1999/xhtml">
-
 	<Page id="idPage" enableScrolling="true" showHeader="false"><!-- backgroundDesign="Transparent" -->
-
 		<Toolbar class="headertoolbarbgcolor">
-
 			<ToolbarSpacer />
 			<SearchField width="15em" />
 			<Link class="textwhitecolor" text="English" press="handleLinkPress" />
 			<Link class="textwhitecolor" text="العربية" press="handleLinkPress" />
-
 		</Toolbar>
-
 		<VBox alignItems="Center" justifyContent="Center">
-
-
 			<VBox alignItems="Center">
 				<core:HTML content="{i18n>home_carousel_embed}" id="idImageCarousel">
 				</core:HTML>
@@ -40,7 +33,6 @@
 							<core:HTML content="{i18n>wsap4p1}">
 							</core:HTML>
 						</IconTabFilter>
-
 						<IconTabFilter key="2" text="{i18n>InvestmentClimate}">
 							<core:HTML content="{i18n>investmentclimateembed}">
 							</core:HTML>
@@ -55,7 +47,6 @@
 							<core:HTML content="{i18n>InvestmentGuidelinesMatter}">
 							</core:HTML>
 						</IconTabFilter>
-
 						<IconTabFilter key="5" id="idNewsTab" text="{i18n>News}">
 							<core:HTML content="{i18n>newsembed}">
 							</core:HTML>
@@ -121,13 +112,11 @@
 													<Input type="Text" placeholder="{i18n>EnterLastName}" />
 												</layout:MatrixLayoutCell>
 											</layout:MatrixLayoutRow>
-
 											<layout:MatrixLayoutRow>
 												<layout:MatrixLayoutCell>
 													<Input type="Tel" placeholder="{i18n>EnterMobileNumber}" />
 												</layout:MatrixLayoutCell>
 											</layout:MatrixLayoutRow>
-
 											<layout:MatrixLayoutRow>
 												<layout:MatrixLayoutCell>
 													<Input type="Email" placeholder="{i18n>EnterEmail}" />
@@ -155,10 +144,8 @@
 										</HBox>
 									</items>
 								</VBox>
-
 								<VBox id="idHBoxRegistrationSuccessMessage" visible="false"
 									alignItems="Center" justifyContent="Center">
-
 									<layout:MatrixLayout layoutFixed="false">
 										<layout:MatrixLayoutRow>
 											<layout:MatrixLayoutCell>
@@ -171,39 +158,28 @@
 											</layout:MatrixLayoutCell>
 										</layout:MatrixLayoutRow>
 									</layout:MatrixLayout>
-
 									<Button type="Emphasized" text="{i18n>ProceedtoOrganizationRegistration}"
 										press="handleProceedToOrgRegButtonPress">
 									</Button>
-
-
 								</VBox>
-
-
-
-
 								<VBox id="idVBoxOrgReg" visible="false">
-
-
 									<!-- Registration process icontabbar Start -->
 									<IconTabBar id="idIconTabBar" enableScrolling="true"
 										expandable="false">
 										<items>
-
 											<IconTabFilter icon="sap-icon://form"
 												iconColor="Positive" design="Horizontal" text="{i18n>BasicInfo}"
 												key="Heavy">
 												<VBox id="idVBoxTab1Content" justifyContent="Center">
 													<layout:MatrixLayout layoutFixed="false"
 														columns="4" widths="13em,25em,10em,25em">
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
 																	<layout:MatrixLayoutCell
 																		colSpan="4">
 																		<layout:content>
-																			<HBox >
+																			<HBox>
 																				<core:HTML content="{i18n>OrganizationCompany}">
 																				</core:HTML>
 																			</HBox>
@@ -212,9 +188,6 @@
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
-
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -243,7 +216,6 @@
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -276,7 +248,6 @@
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -309,7 +280,6 @@
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -334,7 +304,6 @@
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -359,7 +328,6 @@
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -383,11 +351,9 @@
 																			</HBox>
 																		</layout:content>
 																	</layout:MatrixLayoutCell>
-
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -409,11 +375,9 @@
 																			</HBox>
 																		</layout:content>
 																	</layout:MatrixLayoutCell>
-
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -435,11 +399,9 @@
 																			</HBox>
 																		</layout:content>
 																	</layout:MatrixLayoutCell>
-
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -468,7 +430,6 @@
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -477,25 +438,20 @@
 																		<layout:content>
 																			<HBox justifyContent="SpaceAround" alignItems="Center">
 																				<core:HTML content="{i18n>PreApprovalFileHTML}"></core:HTML>
-
 																				<u:FileUploader uploadUrl="upload/"
 																					width="15em" tooltip="{i18n>BrowsePreApprovalFile}"
 																					uploadComplete="handleUploadComplete" />
-
 																			</HBox>
 																		</layout:content>
 																	</layout:MatrixLayoutCell>
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 													</layout:MatrixLayout>
 													<!-- Org reg layout end -->
 													<!-- Contact information layout start -->
-
 													<layout:MatrixLayout layoutFixed="false"
 														columns="4" widths="13em,25em,10em,25em">
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -511,8 +467,6 @@
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -541,11 +495,9 @@
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
-
 																	<layout:MatrixLayoutCell
 																		colSpan="2">
 																		<layout:content>
@@ -563,18 +515,13 @@
 																					width="25em" />
 																			</HBox>
 																		</layout:content>
-
 																	</layout:MatrixLayoutCell>
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
-
-
-
 																	<layout:MatrixLayoutCell
 																		vAlign="Middle" hAlign="End">
 																		<layout:content>
@@ -588,7 +535,6 @@
 																			</ComboBox>
 																		</layout:content>
 																	</layout:MatrixLayoutCell>
-
 																	<layout:MatrixLayoutCell
 																		colSpan="2">
 																		<layout:content>
@@ -598,22 +544,15 @@
 																			</HBox>
 																		</layout:content>
 																	</layout:MatrixLayoutCell>
-
-
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
-
-
-
 																	<layout:MatrixLayoutCell
 																		vAlign="Middle" hAlign="End">
 																		<layout:content>
-
 																			<core:HTML content="{i18n>CountryHTML}"></core:HTML>
 																		</layout:content>
 																	</layout:MatrixLayoutCell>
@@ -624,7 +563,6 @@
 																			</ComboBox>
 																		</layout:content>
 																	</layout:MatrixLayoutCell>
-
 																	<layout:MatrixLayoutCell
 																		colSpan="2">
 																		<layout:content>
@@ -634,14 +572,9 @@
 																			</HBox>
 																		</layout:content>
 																	</layout:MatrixLayoutCell>
-
-
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
-
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -665,11 +598,9 @@
 																			</HBox>
 																		</layout:content>
 																	</layout:MatrixLayoutCell>
-
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -695,11 +626,9 @@
 																			</ComboBox>
 																		</layout:content>
 																	</layout:MatrixLayoutCell>
-
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -725,11 +654,9 @@
 																			</ComboBox>
 																		</layout:content>
 																	</layout:MatrixLayoutCell>
-
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -745,7 +672,6 @@
 																</layout:cells>
 															</layout:MatrixLayoutRow>
 														</layout:rows>
-
 														<layout:rows>
 															<layout:MatrixLayoutRow>
 																<layout:cells>
@@ -754,11 +680,9 @@
 																		<layout:content>
 																			<HBox justifyContent="SpaceAround" alignItems="Center">
 																				<core:HTML content="{i18n>PassportCopyIDCopyHTML}"></core:HTML>
-
 																				<u:FileUploader uploadUrl="upload/"
 																					width="15em" tooltip="{i18n>BrowsePassportCopyIDCopy}"
 																					uploadComplete="handleUploadComplete" />
-
 																			</HBox>
 																		</layout:content>
 																	</layout:MatrixLayoutCell>
@@ -767,11 +691,9 @@
 																		<layout:content>
 																			<HBox justifyContent="SpaceAround" alignItems="Center">
 																				<core:HTML content="{i18n>PowerofAttorneyHTML}"></core:HTML>
-
 																				<u:FileUploader uploadUrl="upload/"
 																					width="15em" tooltip="{i18n>BrowsePowerofAttorney}"
 																					uploadComplete="handleUploadComplete" />
-
 																			</HBox>
 																		</layout:content>
 																	</layout:MatrixLayoutCell>
@@ -792,23 +714,16 @@
 																	</layout:MatrixLayoutCell>
 																</layout:cells>
 															</layout:MatrixLayoutRow>
-
-
 														</layout:rows>
-
-
 													</layout:MatrixLayout>
 												</VBox>
 												<!-- Contact info layout end -->
-
-
 											</IconTabFilter>
 											<IconTabSeparator icon="sap-icon://open-command-field" />
 											<IconTabFilter icon="sap-icon://badge"
 												iconColor="Positive" key="bbb" design="Horizontal" text="{i18n>LicenseInfo}">
 												<!-- License info start -->
 												<!-- Business Activity Quastions Start -->
-
 												<layout:MatrixLayout layoutFixed="false">
 													<layout:rows>
 														<layout:MatrixLayoutRow>
@@ -821,7 +736,6 @@
 																</layout:MatrixLayoutCell>
 															</layout:cells>
 														</layout:MatrixLayoutRow>
-
 														<layout:MatrixLayoutRow>
 															<layout:cells>
 																<layout:MatrixLayoutCell>
@@ -847,14 +761,12 @@
 																					<u:FileUploader uploadUrl="upload/"
 																						width="15em" uploadComplete="handleUploadComplete" />
 																				</layout:MatrixLayoutCell>
-
 																			</layout:MatrixLayoutRow>
 																		</layout:MatrixLayout>
 																	</layout:content>
 																</layout:MatrixLayoutCell>
 															</layout:cells>
 														</layout:MatrixLayoutRow>
-
 														<layout:MatrixLayoutRow>
 															<layout:cells>
 																<layout:MatrixLayoutCell>
@@ -880,15 +792,12 @@
 																					<u:FileUploader uploadUrl="upload/"
 																						width="15em" uploadComplete="handleUploadComplete" />
 																				</layout:MatrixLayoutCell>
-
 																			</layout:MatrixLayoutRow>
 																		</layout:MatrixLayout>
 																	</layout:content>
 																</layout:MatrixLayoutCell>
 															</layout:cells>
 														</layout:MatrixLayoutRow>
-
-
 														<layout:MatrixLayoutRow>
 															<layout:cells>
 																<layout:MatrixLayoutCell>
@@ -915,14 +824,12 @@
 																					<u:FileUploader uploadUrl="upload/"
 																						width="15em" uploadComplete="handleUploadComplete" />
 																				</layout:MatrixLayoutCell>
-
 																			</layout:MatrixLayoutRow>
 																		</layout:MatrixLayout>
 																	</layout:content>
 																</layout:MatrixLayoutCell>
 															</layout:cells>
 														</layout:MatrixLayoutRow>
-
 														<layout:MatrixLayoutRow>
 															<layout:cells>
 																<layout:MatrixLayoutCell>
@@ -945,7 +852,6 @@
 																</layout:MatrixLayoutCell>
 															</layout:cells>
 														</layout:MatrixLayoutRow>
-
 														<layout:MatrixLayoutRow>
 															<layout:cells>
 																<layout:MatrixLayoutCell>
@@ -971,14 +877,12 @@
 																					<u:FileUploader uploadUrl="upload/"
 																						width="15em" uploadComplete="handleUploadComplete" />
 																				</layout:MatrixLayoutCell>
-
 																			</layout:MatrixLayoutRow>
 																		</layout:MatrixLayout>
 																	</layout:content>
 																</layout:MatrixLayoutCell>
 															</layout:cells>
 														</layout:MatrixLayoutRow>
-
 														<layout:MatrixLayoutRow>
 															<layout:cells>
 																<layout:MatrixLayoutCell>
@@ -994,15 +898,12 @@
 																						<core:Item />
 																					</ComboBox>
 																				</layout:MatrixLayoutCell>
-
-
 																			</layout:MatrixLayoutRow>
 																		</layout:MatrixLayout>
 																	</layout:content>
 																</layout:MatrixLayoutCell>
 															</layout:cells>
 														</layout:MatrixLayoutRow>
-
 														<layout:MatrixLayoutRow>
 															<layout:cells>
 																<layout:MatrixLayoutCell>
@@ -1028,14 +929,12 @@
 																					<u:FileUploader uploadUrl="upload/"
 																						width="15em" uploadComplete="handleUploadComplete" />
 																				</layout:MatrixLayoutCell>
-
 																			</layout:MatrixLayoutRow>
 																		</layout:MatrixLayout>
 																	</layout:content>
 																</layout:MatrixLayoutCell>
 															</layout:cells>
 														</layout:MatrixLayoutRow>
-
 														<layout:MatrixLayoutRow>
 															<layout:cells>
 																<layout:MatrixLayoutCell>
@@ -1058,7 +957,6 @@
 																</layout:MatrixLayoutCell>
 															</layout:cells>
 														</layout:MatrixLayoutRow>
-
 														<layout:MatrixLayoutRow>
 															<layout:cells>
 																<layout:MatrixLayoutCell>
@@ -1081,8 +979,6 @@
 																</layout:MatrixLayoutCell>
 															</layout:cells>
 														</layout:MatrixLayoutRow>
-
-
 														<layout:MatrixLayoutRow>
 															<layout:cells>
 																<layout:MatrixLayoutCell>
@@ -1105,18 +1001,12 @@
 																</layout:MatrixLayoutCell>
 															</layout:cells>
 														</layout:MatrixLayoutRow>
-
-
-
 													</layout:rows>
 												</layout:MatrixLayout>
 												<!-- Business Activity Questions End -->
 												<!-- Child license activity Q start -->
-
-
 												<layout:MatrixLayout layoutFixed="false">
 													<layout:rows>
-
 														<layout:MatrixLayoutRow>
 															<layout:cells>
 																<layout:MatrixLayoutCell>
@@ -1132,15 +1022,12 @@
 																						<core:HTML content="{i18n>SectionHTML}">
 																						</core:HTML>
 																					</HBox>
-
 																				</layout:MatrixLayoutCell>
 																				<layout:MatrixLayoutCell>
-
 																					<ComboBox width="25em">
 																						<core:Item />
 																					</ComboBox>
 																				</layout:MatrixLayoutCell>
-
 																			</layout:MatrixLayoutRow>
 																			<layout:MatrixLayoutRow>
 																				<layout:MatrixLayoutCell>
@@ -1148,123 +1035,87 @@
 																						<core:HTML content="{i18n>DivisionHTML}">
 																						</core:HTML>
 																					</HBox>
-
 																				</layout:MatrixLayoutCell>
 																				<layout:MatrixLayoutCell>
-
 																					<ComboBox width="25em">
 																						<core:Item />
 																					</ComboBox>
 																				</layout:MatrixLayoutCell>
-
 																			</layout:MatrixLayoutRow>
-
 																			<layout:MatrixLayoutRow>
 																				<layout:MatrixLayoutCell>
 																					<HBox justifyContent="End">
 																						<core:HTML content="{i18n>GroupHTML}">
 																						</core:HTML>
 																					</HBox>
-
 																				</layout:MatrixLayoutCell>
 																				<layout:MatrixLayoutCell>
-
 																					<ComboBox width="25em">
 																						<core:Item />
 																					</ComboBox>
 																				</layout:MatrixLayoutCell>
-
 																			</layout:MatrixLayoutRow>
-
 																			<layout:MatrixLayoutRow>
 																				<layout:MatrixLayoutCell>
 																					<HBox justifyContent="End">
 																						<core:HTML content="{i18n>ClassHTML}">
 																						</core:HTML>
 																					</HBox>
-
 																				</layout:MatrixLayoutCell>
 																				<layout:MatrixLayoutCell>
-
 																					<ComboBox width="25em">
 																						<core:Item />
 																					</ComboBox>
 																				</layout:MatrixLayoutCell>
-
 																			</layout:MatrixLayoutRow>
-
 																			<layout:MatrixLayoutRow>
 																				<layout:MatrixLayoutCell>
 																					<HBox justifyContent="End">
 																						<core:HTML content="{i18n>LicenseActivityHTML}">
 																						</core:HTML>
 																					</HBox>
-
 																				</layout:MatrixLayoutCell>
 																				<layout:MatrixLayoutCell>
-
 																					<ComboBox width="25em">
 																						<core:Item />
 																					</ComboBox>
 																				</layout:MatrixLayoutCell>
-
 																			</layout:MatrixLayoutRow>
-
 																			<layout:MatrixLayoutRow>
 																				<layout:MatrixLayoutCell>
 																					<HBox justifyContent="End">
 																						<core:HTML content="{i18n>ActivityDescriptionHTML}">
 																						</core:HTML>
 																					</HBox>
-
 																				</layout:MatrixLayoutCell>
 																				<layout:MatrixLayoutCell>
-
 																					<layout:content>
 																						<TextArea width="25em" />
 																					</layout:content>
 																				</layout:MatrixLayoutCell>
 																			</layout:MatrixLayoutRow>
 																		</layout:MatrixLayout>
-
 																	</layout:content>
 																</layout:MatrixLayoutCell>
 															</layout:cells>
 														</layout:MatrixLayoutRow>
-
-
-
-
-
-
-
-
-
 													</layout:rows>
 												</layout:MatrixLayout>
 												<layout:MatrixLayout layoutFixed="false">
 													<layout:rows>
-
-
 														<layout:MatrixLayoutRow>
 															<layout:cells>
 																<layout:MatrixLayoutCell
 																	colSpan="2">
-
 																	<core:HTML content="{i18n>ProductsforIndustrialLicenseType}">
 																	</core:HTML>
-
 																</layout:MatrixLayoutCell>
 															</layout:cells>
 														</layout:MatrixLayoutRow>
-
-
-
 														<layout:MatrixLayoutRow>
 															<layout:cells>
 																<layout:MatrixLayoutCell>
 																	<layout:content>
-
 																		<layout:MatrixLayout layoutFixed="false">
 																			<layout:MatrixLayoutRow>
 																				<layout:MatrixLayoutCell>
@@ -1272,15 +1123,12 @@
 																						<core:HTML content="{i18n>LicenseActivityHTML}">
 																						</core:HTML>
 																					</HBox>
-
 																				</layout:MatrixLayoutCell>
 																				<layout:MatrixLayoutCell>
-
 																					<ComboBox width="25em">
 																						<core:Item />
 																					</ComboBox>
 																				</layout:MatrixLayoutCell>
-
 																			</layout:MatrixLayoutRow>
 																			<layout:MatrixLayoutRow>
 																				<layout:MatrixLayoutCell>
@@ -1288,121 +1136,95 @@
 																						<core:HTML content="{i18n>QuantityHTML}">
 																						</core:HTML>
 																					</HBox>
-
 																				</layout:MatrixLayoutCell>
 																				<layout:MatrixLayoutCell>
-
 																					<ComboBox width="25em">
 																						<core:Item />
 																					</ComboBox>
 																				</layout:MatrixLayoutCell>
-
 																			</layout:MatrixLayoutRow>
-
 																			<layout:MatrixLayoutRow>
 																				<layout:MatrixLayoutCell>
 																					<HBox justifyContent="End">
 																						<core:HTML content="{i18n>UnitOfMeasurementHTML}">
 																						</core:HTML>
 																					</HBox>
-
 																				</layout:MatrixLayoutCell>
 																				<layout:MatrixLayoutCell>
-
 																					<ComboBox width="25em">
 																						<core:Item />
 																					</ComboBox>
 																				</layout:MatrixLayoutCell>
-
 																			</layout:MatrixLayoutRow>
-
 																			<layout:MatrixLayoutRow>
 																				<layout:MatrixLayoutCell>
 																					<Button type="Accept" text="{i18n>Add}" />
 																				</layout:MatrixLayoutCell>
 																			</layout:MatrixLayoutRow>
-
-
 																		</layout:MatrixLayout>
-
 																	</layout:content>
 																</layout:MatrixLayoutCell>
 															</layout:cells>
 														</layout:MatrixLayoutRow>
-
-
 														<layout:MatrixLayoutRow>
 															<layout:cells>
 																<layout:MatrixLayoutCell
 																	colSpan="2">
 																	<layout:content>
-																			<Table width="60em">
-																				<columns>
-																					<Column width="2em">
-																						<Text text="#" />
-																					</Column>
-																					<Column width="5em">
-																						<Text text="{i18n>ProductCode}" />
-																					</Column>
-																					<Column width="5em">
-																						<Text text="{i18n>ProductName}" />
-																					</Column>
-																					<Column width="5em">
-																						<Text text="{i18n>Quantity}" />
-																					</Column>
-																					<Column width="5em">
-																						<Text text="{i18n>UnitOfMeasurement}" />
-																					</Column>
-																					<Column width="5em">
-																						<Text text="{i18n>Delete}" />
-																					</Column>
-																				</columns>
-																				<items>
-																					<ColumnListItem>
-																						<cells>
-																							<Input type="Text" />
-																							<Input type="Text" />
-																							<Input type="Text" />
-																							<Input type="Text" />
-																							<Input type="Text" />
-																							<Input type="Text" />
-																						</cells>
-																					</ColumnListItem>
-																				</items>
-																			</Table>
+																		<Table width="60em">
+																			<columns>
+																				<Column width="2em">
+																					<Text text="#" />
+																				</Column>
+																				<Column width="5em">
+																					<Text text="{i18n>ProductCode}" />
+																				</Column>
+																				<Column width="5em">
+																					<Text text="{i18n>ProductName}" />
+																				</Column>
+																				<Column width="5em">
+																					<Text text="{i18n>Quantity}" />
+																				</Column>
+																				<Column width="5em">
+																					<Text text="{i18n>UnitOfMeasurement}" />
+																				</Column>
+																				<Column width="5em">
+																					<Text text="{i18n>Delete}" />
+																				</Column>
+																			</columns>
+																			<items>
+																				<ColumnListItem>
+																					<cells>
+																						<Input type="Text" />
+																						<Input type="Text" />
+																						<Input type="Text" />
+																						<Input type="Text" />
+																						<Input type="Text" />
+																						<Input type="Text" />
+																					</cells>
+																				</ColumnListItem>
+																			</items>
+																		</Table>
 																	</layout:content>
 																</layout:MatrixLayoutCell>
 															</layout:cells>
 														</layout:MatrixLayoutRow>
-
-
-
-
 													</layout:rows>
 												</layout:MatrixLayout>
-
-
-
-
-
 												<!-- Business Activity Questions End -->
 												<!-- Child license activity Q end -->
 												<!-- License info end -->
-
 											</IconTabFilter>
 											<IconTabSeparator icon="sap-icon://open-command-field" />
 											<IconTabFilter icon="sap-icon://citizen-connect"
 												iconColor="Positive" design="Horizontal" text="{i18n>Shareholder}"
 												key="Overweight">
 												<!-- share holders sub tabs start -->
-
 												<!-- existing share holder start -->
 												<!-- existing share holder end -->
 												<!-- new share holder start -->
 												<!-- new share holder end -->
 												<!-- share holders sub tabs end -->
-
-
 											</IconTabFilter>
 											<IconTabSeparator icon="sap-icon://open-command-field" />
 											<IconTabFilter icon="sap-icon://personnel-view"
@@ -1416,13 +1238,9 @@
 											<IconTabFilter icon="sap-icon://accept"
 												iconColor="Positive" design="Horizontal" text="{i18n>Submit}"
 												key="Overweight"></IconTabFilter>
-
 										</items>
 									</IconTabBar>
 									<!-- Registration process IcontabBar end -->
-
-
-
 								</VBox>
 								<!-- Register User End -->
 							</VBox>
@@ -1435,21 +1253,14 @@
 					</items>
 				</IconTabBar>
 			</VBox>
-
-
 		</VBox>
-
 		<footer>
 			<Toolbar class="headertoolbarbgcolor">
 				<ToolbarSpacer />
-
 				<core:HTML content="{i18n>copyright}">
 				</core:HTML>
 				<ToolbarSpacer />
-
-
 			</Toolbar>
 		</footer>
-
 	</Page>
 </mvc:View>
