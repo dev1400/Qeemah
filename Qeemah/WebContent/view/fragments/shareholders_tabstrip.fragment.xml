@@ -1,0 +1,188 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:sap.ui.commons="sap.ui.commons"
+    xmlns:sap.ui.core="sap.ui.core"
+    xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
+    xmlns:sap.ui.core.mvc="sap.ui.core.mvc">
+	<sap.ui.commons:TabStrip id="TabStrip1" height="200px"
+		width="400px">
+		<sap.ui.commons:customData>
+			<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
+				value="true" writeToDom="true"></sap.ui.core:CustomData>
+		</sap.ui.commons:customData>
+		<sap.ui.commons:tabs>
+			<sap.ui.commons:Tab id="TabStrip1-0" text="General Data">
+				<sap.ui.commons:content>
+					<sap.ui.commons.layout:MatrixLayout
+						id="Matrix1" width="100%" columns="2" widths="150px">
+						<sap.ui.commons.layout:rows>
+							<sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:cells>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:content>
+											<sap.ui.commons:Label id="Label-Name"
+												labelFor="TextField-Name" text="Name" requiredAtBegin="false"></sap.ui.commons:Label>
+										</sap.ui.commons.layout:content>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:content>
+											<sap.ui.commons:TextField id="TextField-Name"
+												value="Mustermann" editable="false" width="200px" tooltip="Name"></sap.ui.commons:TextField>
+										</sap.ui.commons.layout:content>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:cells>
+							</sap.ui.commons.layout:MatrixLayoutRow>
+							<sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:cells>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:content>
+											<sap.ui.commons:Label id="Label-FirstName"
+												labelFor="TextField-FirstName" text="First name"
+												requiredAtBegin="false"></sap.ui.commons:Label>
+										</sap.ui.commons.layout:content>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:content>
+											<sap.ui.commons:TextField id="TextField-FirstName"
+												value="Max" editable="false" width="200px" tooltip="First name"></sap.ui.commons:TextField>
+										</sap.ui.commons.layout:content>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:cells>
+							</sap.ui.commons.layout:MatrixLayoutRow>
+							<sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:cells>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:content>
+											<sap.ui.commons:Label id="Label-Birth"
+												labelFor="DatePicker-Birth" text="Date of Birth"
+												requiredAtBegin="false"></sap.ui.commons:Label>
+										</sap.ui.commons.layout:content>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:content>
+											<sap.ui.commons:DatePicker id="DatePicker-Birth"
+												value="Aug 8, 1980" editable="false" yyyymmdd="19800808"
+												tooltip="Date of Birth"></sap.ui.commons:DatePicker>
+										</sap.ui.commons.layout:content>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:cells>
+							</sap.ui.commons.layout:MatrixLayoutRow>
+							<sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:cells>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:content>
+											<sap.ui.commons:Label id="Label-Gender"
+												labelFor="RadioGroup-Gender" text="Gender" requiredAtBegin="false"></sap.ui.commons:Label>
+										</sap.ui.commons.layout:content>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:content>
+											<sap.ui.commons:RadioButtonGroup
+												id="RadioGroup-Gender" columns="2" editable="false" tooltip="Gender">
+												<sap.ui.commons:items>
+													<sap.ui.core:Item id="RB-Male" text="Male"
+														key="male" tooltip="Gender: male"></sap.ui.core:Item>
+													<sap.ui.core:Item id="RB-Female" text="Female"
+														key="female" tooltip="Gender: female"></sap.ui.core:Item>
+												</sap.ui.commons:items>
+											</sap.ui.commons:RadioButtonGroup>
+										</sap.ui.commons.layout:content>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:cells>
+							</sap.ui.commons.layout:MatrixLayoutRow>
+						</sap.ui.commons.layout:rows>
+					</sap.ui.commons.layout:MatrixLayout>
+				</sap.ui.commons:content>
+				<sap.ui.commons:title>
+					<sap.ui.core:Title id="TabStrip1-0-title" text="General Data"></sap.ui.core:Title>
+				</sap.ui.commons:title>
+			</sap.ui.commons:Tab>
+			<sap.ui.commons:Tab id="tab2" text="Address"
+				tooltip="address data">
+				<sap.ui.commons:content>
+					<sap.ui.commons.layout:MatrixLayout
+						id="Matrix2" width="100%" columns="2" widths="150px">
+						<sap.ui.commons.layout:rows>
+							<sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:cells>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:content>
+											<sap.ui.commons:Label id="Label-Street"
+												labelFor="TextField-Street" text="Street, Housenumber"
+												requiredAtBegin="false"></sap.ui.commons:Label>
+										</sap.ui.commons.layout:content>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:content>
+											<sap.ui.commons:TextField id="TextField-Street"
+												value="Hauptstraße" editable="false" width="150px" tooltip="Street"></sap.ui.commons:TextField>
+											<sap.ui.commons:TextField id="TextField-Number"
+												value="10" editable="false" width="50px" tooltip="Housenumber"></sap.ui.commons:TextField>
+										</sap.ui.commons.layout:content>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:cells>
+							</sap.ui.commons.layout:MatrixLayoutRow>
+							<sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:cells>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:content>
+											<sap.ui.commons:Label id="Label-City"
+												labelFor="TextField-City" text="City" requiredAtBegin="false"></sap.ui.commons:Label>
+										</sap.ui.commons.layout:content>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:content>
+											<sap.ui.commons:TextField id="TextField-City"
+												value="Musterstadt" editable="false" width="200px" tooltip="City"></sap.ui.commons:TextField>
+										</sap.ui.commons.layout:content>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:cells>
+							</sap.ui.commons.layout:MatrixLayoutRow>
+							<sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:cells>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:content>
+											<sap.ui.commons:Label id="Label-Country"
+												labelFor="TextField-Country" text="Country" requiredAtBegin="false"></sap.ui.commons:Label>
+										</sap.ui.commons.layout:content>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:content>
+											<sap.ui.commons:TextField id="TextField-Country"
+												value="Deutschland" editable="false" width="200px" tooltip="Country"></sap.ui.commons:TextField>
+										</sap.ui.commons.layout:content>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:cells>
+							</sap.ui.commons.layout:MatrixLayoutRow>
+						</sap.ui.commons.layout:rows>
+					</sap.ui.commons.layout:MatrixLayout>
+				</sap.ui.commons:content>
+				<sap.ui.commons:title>
+					<sap.ui.core:Title id="Title2" text="Address"
+						icon="images/address.gif"></sap.ui.core:Title>
+				</sap.ui.commons:title>
+			</sap.ui.commons:Tab>
+			<sap.ui.commons:Tab id="tab3" text="Long Text"
+				closable="true">
+				<sap.ui.commons:content>
+					<sap.ui.commons:TextArea id="TA-Text"
+						value="Max Mustermann is a very nice guy. He is very well known.
+Everybody loves him.
+You would be lucky to meet him."
+						editable="false" width="100%" height="100%" cols="0" rows="0"
+						wrapping="Off" cursorPos="0" tooltip="Remarks"></sap.ui.commons:TextArea>
+				</sap.ui.commons:content>
+				<sap.ui.commons:title>
+					<sap.ui.core:Title id="Title3" text="Long Text"></sap.ui.core:Title>
+				</sap.ui.commons:title>
+			</sap.ui.commons:Tab>
+			<sap.ui.commons:Tab id="tab4" enabled="false"
+				text="Top Secret">
+				<sap.ui.commons:title>
+					<sap.ui.core:Title id="Title4" text="Top Secret"></sap.ui.core:Title>
+				</sap.ui.commons:title>
+			</sap.ui.commons:Tab>
+		</sap.ui.commons:tabs>
+	</sap.ui.commons:TabStrip>
+</core:FragmentDefinition>

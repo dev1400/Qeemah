@@ -162,12 +162,12 @@
 										press="handleProceedToOrgRegButtonPress">
 									</Button>
 								</VBox>
-								<VBox id="idVBoxOrgReg" visible="false" >
-								<VBox  justifyContent="Center" alignItems="Center">
-								<ProgressIndicator width="60em" percentValue="30"
-										displayValue="30%" showValue="true" state="None" />
-								</VBox>
-									
+								<VBox id="idVBoxOrgReg" visible="false">
+									<VBox justifyContent="Center" alignItems="Center">
+										<ProgressIndicator width="60em"
+											percentValue="30" displayValue="30%" showValue="true" state="None" />
+									</VBox>
+
 									<!-- Registration process icontabbar Start -->
 									<IconTabBar id="idIconTabBar" enableScrolling="true"
 										expandable="false">
@@ -1224,9 +1224,14 @@
 											<IconTabFilter icon="sap-icon://citizen-connect"
 												iconColor="Positive" design="Horizontal" text="{i18n>Shareholder}"
 												key="Overweight">
-												<!-- share holders sub tabs start -->
-												<!-- existing share holder start -->
+												<!-- existing share holder start -->												
+												
+												<core:Fragment fragmentName="com.sagia.view.fragments.shareholders_tabstrip" type="XML" />
+
 												<!-- existing share holder end -->
+
+												<!-- share holders sub tabs start -->
+
 												<!-- new share holder start -->
 												<!-- new share holder end -->
 												<!-- share holders sub tabs end -->
