@@ -162,7 +162,12 @@
 										press="handleProceedToOrgRegButtonPress">
 									</Button>
 								</VBox>
-								<VBox id="idVBoxOrgReg" visible="false">
+								<VBox id="idVBoxOrgReg" visible="false" >
+								<VBox  justifyContent="Center" alignItems="Center">
+								<ProgressIndicator width="60em" percentValue="30"
+										displayValue="30%" showValue="true" state="None" />
+								</VBox>
+									
 									<!-- Registration process icontabbar Start -->
 									<IconTabBar id="idIconTabBar" enableScrolling="true"
 										expandable="false">
