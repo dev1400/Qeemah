@@ -1336,24 +1336,24 @@
 																<layout:MatrixLayoutCell
 																	colSpan="2">
 																	<layout:content>
-																			<Table width="80em">
+																			<Table width="60em">
 																				<columns>
-																					<Column width="5em">
+																					<Column width="2em">
 																						<Text text="#" />
 																					</Column>
-																					<Column width="12em">
+																					<Column width="5em">
 																						<Text text="{i18n>ProductCode}" />
 																					</Column>
-																					<Column width="12em">
+																					<Column width="5em">
 																						<Text text="{i18n>ProductName}" />
 																					</Column>
-																					<Column width="12em">
+																					<Column width="5em">
 																						<Text text="{i18n>Quantity}" />
 																					</Column>
-																					<Column width="12em">
+																					<Column width="5em">
 																						<Text text="{i18n>UnitOfMeasurement}" />
 																					</Column>
-																					<Column width="12em">
+																					<Column width="5em">
 																						<Text text="{i18n>Delete}" />
 																					</Column>
 																				</columns>
