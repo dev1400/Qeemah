@@ -550,5 +550,6 @@
 															</sap.ui.commons.layout:MatrixLayoutRow>
 														</sap.ui.commons.layout:rows>
 													</sap.ui.commons.layout:MatrixLayout>
+													<!-- contact information layout end -->
 												</VBox>
  </core:FragmentDefinition>

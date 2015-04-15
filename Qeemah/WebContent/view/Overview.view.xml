@@ -87,8 +87,8 @@
 									</Button>
 								</VBox>
 								<VBox id="idVBoxOrgReg" visible="false">
-									<VBox justifyContent="Center" alignItems="Center">
-										<ProgressIndicator width="60em"
+									<VBox justifyContent="Center" alignItems="End">
+										<ProgressIndicator width="20em"
 											percentValue="30" displayValue="30% Completed" showValue="true" state="None" />
 									</VBox>
 
