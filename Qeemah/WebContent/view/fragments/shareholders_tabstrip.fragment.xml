@@ -158,16 +158,30 @@
 														</ColumnListItem>
 													</items>
 												</Table>
-<!--  -->
+												
+												<!-- New Share holders tab start -->
+
 												<sap.ui.commons:TabStrip>
 													<sap.ui.commons:tabs>
-														<sap.ui.commons:Tab id="idNewShareHolderCreationTab"
+													<!-- Person tab start -->
+														<sap.ui.commons:Tab id="idNewShareHolderPersonCreationTab"
 															text="{i18n>Person}" tooltip="{i18n>Person}">
 															<sap.ui.commons:content>
 															</sap.ui.commons:content>
 														</sap.ui.commons:Tab>
+														<!-- Person tab end -->
+														
+														<!-- Organization tab start -->
+														<sap.ui.commons:Tab id="idNewShareHolderOrganizationCreationTab"
+															text="{i18n>Organization}" tooltip="{i18n>Organization}">
+															<sap.ui.commons:content>
+															</sap.ui.commons:content>
+														</sap.ui.commons:Tab>
+														<!-- Organization tab start -->
 													</sap.ui.commons:tabs>
 												</sap.ui.commons:TabStrip>
+												<!-- New share holders tab end -->
+												
 											</sap.ui.commons.layout:content>
 										</sap.ui.commons.layout:MatrixLayoutCell>
 									</sap.ui.commons.layout:cells>

@@ -89,7 +89,7 @@
 								<VBox id="idVBoxOrgReg" visible="false">
 									<VBox justifyContent="Center" alignItems="Center">
 										<ProgressIndicator width="60em"
-											percentValue="30" displayValue="30%" showValue="true" state="None" />
+											percentValue="30" displayValue="30% Completed" showValue="true" state="None" />
 									</VBox>
 
 									<!-- Registration process icontabbar Start -->
