@@ -34,14 +34,15 @@ com.sagia.common.ModelHelper = {
 		getServiceUrl : function () {
 			
 			// OData Service URL
-			var sServiceUrl = "/sap/opu/odata/sap/ZSAMPLE1_SRV/";
+			var sServiceUrl = "proxy/http://rhocrmdev1.mysagia.gov:8000/sap/opu/odata/sap/ZSAMPLE1_SRV/";
 			
 			//for local testing prefix with proxy
-			  if (window.location.hostname == "localhost") {
+			 /* if (window.location.hostname == "localhost") {
 			      return "proxy" + sServiceUrl;
 			  } else {
 			      return sServiceUrl;
-			  }
+			  }*/
+			return sServiceUrl;
 		},
 		/**
 		 * Build ODataModel instance and return
