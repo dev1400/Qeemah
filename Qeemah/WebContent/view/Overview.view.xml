@@ -82,9 +82,9 @@
 											</layout:MatrixLayoutCell>
 										</layout:MatrixLayoutRow>
 									</layout:MatrixLayout>
-									<Button type="Emphasized" text="{i18n>ProceedtoOrganizationRegistration}"
+									<c:Button style="Emph" text="{i18n>ProceedtoOrganizationRegistration}"
 										press="handleProceedToOrgRegButtonPress">
-									</Button>
+									</c:Button>
 								</VBox>
 								<VBox id="idVBoxOrgReg" visible="false">
 									<VBox justifyContent="Center" alignItems="End">

@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m"
-	xmlns:core="sap.ui.core" xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
+	xmlns:core="sap.ui.core" xmlns:sap.ui.commons.layout="sap.ui.commons.layout" xmlns:sap.ui.commons="sap.ui.commons"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<VBox id="idVBoxRegistration" justifyContent="Center" alignItems="Center">
@@ -21,7 +21,7 @@
 							<Label text="{i18n>EnterFirstName}"></Label>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" />
+						<sap.ui.commons:TextField required="true"/>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:MatrixLayoutRow>
@@ -30,7 +30,7 @@
 							<Label text="{i18n>EnterLastName}"></Label>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" />
+						<sap.ui.commons:TextField required="true"/>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:MatrixLayoutRow>
@@ -39,7 +39,7 @@
 							<Label text="{i18n>EnterMobileNumber}"></Label>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" />
+						<sap.ui.commons:TextField required="true"/>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:MatrixLayoutRow>
@@ -48,7 +48,7 @@
 							<Label text="{i18n>EnterEmail}"></Label>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" />
+						<sap.ui.commons:TextField required="true"/>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:MatrixLayoutRow>
@@ -57,7 +57,7 @@
 							<Label text="{i18n>EnterPassword}"></Label>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" />
+						<sap.ui.commons:TextField required="true"/>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:MatrixLayoutRow>
@@ -66,7 +66,7 @@
 							<Label text="{i18n>ReEnterPassword}"></Label>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" />
+						<sap.ui.commons:TextField required="true"/>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 			</sap.ui.commons.layout:MatrixLayout>
@@ -75,12 +75,12 @@
 					layoutFixed="false">
 					<sap.ui.commons.layout:MatrixLayoutRow>
 						<sap.ui.commons.layout:MatrixLayoutCell>
-							<Button type="Accept" text="{i18n>Register}" press="handleRegisterOrgButtonPress">
-							</Button>
+							<sap.ui.commons:Button style="Accept" text="{i18n>Register}" press="handleRegisterOrgButtonPress">
+							</sap.ui.commons:Button>
 						</sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:MatrixLayoutCell>
-							<Button type="Reject" text="{i18n>Cancel}" press="onPress">
-							</Button>
+							<sap.ui.commons:Button style="Reject" text="{i18n>Cancel}" press="onPress">
+							</sap.ui.commons:Button>
 						</sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:MatrixLayoutCell>
 						</sap.ui.commons.layout:MatrixLayoutCell>
