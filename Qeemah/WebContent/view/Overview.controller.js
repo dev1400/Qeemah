@@ -9,7 +9,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	onInit: function() {
 		
 		// Model Helper reference
-		this.ModelHelper = com.sagia.common.ModelHelper;
+		this.oModelHelper = com.sagia.common.ModelHelper;
 		
 		this._oVboxSignIn = this.getView().byId("idVBoxSignIn");
 		this._oVboxUserInfo = this.getView().byId("idVBoxUserInformation");
@@ -78,10 +78,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oVboxQuestions.setVisible(true);
 		//this._oVboxUserInfo.setVisible(true);
 	},
-	handleRegisterOrgButtonPress: function(){
+	handleRegisterUserButtonPress: function(){
+		
 		this._oVBoxRegistration.setVisible(false);
 		this._oHboxRegistrationSuccessMsg.setVisible(true);
-		sap.m.MessageToast.show(this.ModelHelper.getText("RegistrationSuccessful"));
+		sap.m.MessageToast.show(this.oModelHelper.getText("RegistrationSuccessful"));
+		this.oModelHelper.registerUser();
 		/** Read deals in amendment collection and bind model to view
 	     */
 	   /* _bindDealsInAmendmentCollectionModel: function() {

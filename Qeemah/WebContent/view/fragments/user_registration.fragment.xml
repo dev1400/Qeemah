@@ -75,7 +75,7 @@
 					layoutFixed="false">
 					<sap.ui.commons.layout:MatrixLayoutRow>
 						<sap.ui.commons.layout:MatrixLayoutCell>
-							<sap.ui.commons:Button style="Accept" text="{i18n>Register}" press="handleRegisterOrgButtonPress">
+							<sap.ui.commons:Button style="Accept" text="{i18n>Register}" press="handleRegisterUserButtonPress">
 							</sap.ui.commons:Button>
 						</sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:MatrixLayoutCell>
