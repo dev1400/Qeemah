@@ -34,8 +34,7 @@ com.sagia.common.ModelHelper = {
 	getServiceUrl : function() {
 
 		// OData Service URL
-		// var sServiceUrl =
-		// "proxy/http://rhocrmdev1.mysagia.gov:8000/sap/opu/odata/sap/ZSAMPLE1_SRV/";
+		// var sServiceUrl = "proxy/http://rhocrmdev1.mysagia.gov:8000/sap/opu/odata/sap/ZSAMPLE1_SRV/";
 		var sServiceUrl = "/sap/opu/odata/sap/ZSAMPLE1_SRV/";
 
 		// for local testing prefix with proxy
@@ -55,9 +54,16 @@ com.sagia.common.ModelHelper = {
 		// var sUrl = dia.cmc.model.Config.getServiceUrl();
 		var sUrl = this.getServiceUrl();
 		this.oODataModel = new sap.ui.model.odata.ODataModel(sUrl, true,
-				"nkumar", "sap123");
-		this.oODataModel.refreshSecurityToken();
+				"nkumar", "sap123",{
+			"X-Requested-With" : "XMLHttpRequest",/*
+					"Content-Type" : "application/xml",
+					"DataServiceVersion" : "2.0",*/
+					/*"Accept" : "application/atom+xml,application/xml,application/atomsvc+xml",
+					"xmlns" : "http://www.w3.org/2005/Atom"*/
 
+				},true,true);/*
+		this.oODataModel.refreshSecurityToken();
+*/
 		// this.oODataModel.setSizeLimit(300);
 
 		return this.oODataModel;
@@ -101,42 +107,30 @@ com.sagia.common.ModelHelper = {
 	registerUser : function() {
 
 		var oEntry = {};
-		oEntry.MobileNo = '';
-		oEntry.Email = '';
-		oEntry.Password = '123456';
-		oEntry.Userid = '4000000087';
-		oEntry.Flag = '';
+		
+		
+		
+		oEntry.MobileNo="0009990003";
+		oEntry.Email="abdul_waheedE@sagia.gov.sa"
+		oEntry.Password="WE";
+		oEntry.Userid="Waheed14E";
+		oEntry.Flag="R";
+		
 
-		/*
-		 * var oEntry = {}; oEntry.Flag = "R"; oEntry.Userid = "4000000123";
-		 * oEntry.Password = "123111"; oEntry.MobileNo = 12311; oEntry.Email =
-		 * "you1@sagia1.com";
-		 */
-
-		this.oODataModel.setDefaultBindingMode("TwoWay");
-		this.oODataModel.setTokenHandlingEnabled(false);
-		/*
-		 * this.oODataModel.attachRequestFailed(function(evt) {
-		 * console.dir(evt); });
-		 */
-		/*
-		 * this.oODataModel.setHeaders({ "X-Requested-With" : "XMLHttpRequest",
-		 * "Content-Type" : "application/atom+xml", "DataServiceVersion" :
-		 * "2.0", "X-CSRF-Token" : "Fetch" });
-		 */
-		/*
-		 * this.oODataModel.refreshSecurityToken(function() { console.log("Ok");
-		 *  }, function() { console.log("NotOK"); }, true);
-		 */
-		/* console.log(this.oODataModel.getSecurityToken() + " <"); */
-
-		/* console.log(this.oODataModel.getSecurityToken()); */
+		/*this.oODataModel.setDefaultBindingMode("TwoWay");
+		this.oODataModel.setTokenHandlingEnabled(false);*/
 
 		this.oODataModel.attachRequestFailed(function(evt) {
 			alert("Server error: " + evt.getParameter("message") + " - "
 					+ evt.getParameter("statusText"));
 		});
-		this.oODataModel.setHeaders(
+		this.oODataModel.attachRequestSent(function (oEvent) {
+		    console.log("request sent");
+		});
+		this.oODataModel.attachRequestSent(function (oEvent) {
+		    console.log("request completed");
+		});
+		/*this.oODataModel.setHeaders(
 
 		{
 			"X-Requested-With" : "XMLHttpRequest",
@@ -146,9 +140,11 @@ com.sagia.common.ModelHelper = {
 
 		}
 
-		);
+		);*/
 
-		this.oODataModel.create('/USER_REGISTRATION_ENT', oEntry, {
+		//this.oODataModel.create('/USER_REGISTRATION_ENT', oEntry, {
+		/*this.oODataModel.create("/USER_REGISTRATION_ENT",oEntry,null,
+				{
 			success : function(oData) {
 				console.log(oData);
 			},
@@ -156,17 +152,25 @@ com.sagia.common.ModelHelper = {
 				console.log(oResponse);
 			},
 			async : true
-		});
-
-		/*
-		 * oEntry.Flag = "R"; oEntry.Userid = "4000000089"; oEntry.Password =
-		 * "12311"; oEntry.MobileNo = "1231"; oEntry.Email = "you@sagia1.com";
-		 * this.oODataModel.setHeaders({ "X-CSRF-Token": "Fetch" // auth });
-		 * 
-		 * this.oODataModel.create("/USER_REGISTRATION_ENT", oEntry, null,
-		 * {success: function(oData){ console.log(oData); }, error:
-		 * function(oResponse){ console.log(oResponse); }, async : true});
-		 */
+		});*/
+		/*this.oODataModel.createEntry("/USER_REGISTRATION_ENT",oEntry);
+		this.oODataModel.submitChanges({
+			fnSuccess : function(oData) {
+				console.log(oData);
+			},
+			fnError : function(oResponse) {
+				console.log(oResponse);
+			}});*/
+		
+		this.oODataModel.read("/USER_REGISTRATION_ENT(Flag='L',Userid='4000000087',Password='123456',MobileNo='',Email='')",{
+			success : function(oData) {
+				console.log(oData);
+			},
+			error : function(oResponse) {
+				console.log(oResponse);
+			}});
+		
+	
 
 	}
 };
