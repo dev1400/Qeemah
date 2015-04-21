@@ -16,8 +16,7 @@ sap.ui.jsview("com.sagia.view.App", {
 		this.setDisplayBlock(true);
 		
 		var oMyApp = new sap.m.App("navContainer");
-//		oMyApp.setBackgroundImage("common/mime/app-background.jpg");
-		oMyApp.setBackgroundColor("#007B5F");
+		oMyApp.setBackgroundImage("common/mime/bgimage.jpg");
  		return oMyApp;
 	}
 
