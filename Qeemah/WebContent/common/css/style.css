@@ -1,0 +1,39 @@
+/*Start Set Font style*/
+@font-face {
+    font-family: SEGOEUI-Italic;
+    src: url(font/SEGOEUIZ_0.TTF);
+}
+
+@font-face {
+    font-family: SEGOEUI-Normal;
+    src: url(font/SEGOEUI_0.TTF);
+}
+
+@font-face {
+    font-family: SEGOEUI-thin;
+    src: url(font/segoeuil_0.ttf);
+}
+/*Main page content start*/
+.maindiv { 
+   position: relative; 
+   width: 100%; /* for IE 6 */
+}
+
+.fontinmaindiv { 
+   position: absolute; 
+   left: 0; 
+   width: 100%; 
+   display:block;
+}
+/*Main page content end*/
+
+.image { 
+   position: relative; 
+}
+
+h2 { 
+   position: absolute; 
+   top: 20em; 
+   left: 0; 
+   width: 100%; 
+}

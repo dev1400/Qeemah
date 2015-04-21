@@ -2,7 +2,23 @@
 	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
 	xmlns:layout="sap.ui.commons.layout" xmlns="sap.m" xmlns:c="sap.ui.commons"
 	controllerName="com.sagia.view.Overview" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page id="idPage" enableScrolling="true" showHeader="false" backgroundDesign="Transparent"><!-- backgroundDesign="Transparent" -->
-		
+	<Page id="idPage" enableScrolling="true" showHeader="false" ><!-- backgroundDesign="Transparent" -->
+	
+	<!-- HTML UI starts -->
+	
+	<html:br/>
+	<!-- HTML UI ends -->
+	<html:div style="width: 29em; margin: 0px auto;">
+	<html:img src="common/mime/bg_blue.png" alt="" > </html:img>
+	<html:p style="position: absolute; top: 10em; left:30em">
+	<core:HTML content="{i18n>Welcometo}"></core:HTML>
+	<core:HTML content="{i18n>linebreak}"></core:HTML>
+	<core:HTML content="{i18n>SAGIAOnlineServices}"></core:HTML>
+	
+	</html:p>
+         
+</html:div>
+
+
 	</Page>
 </mvc:View>
