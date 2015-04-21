@@ -1,40 +1,59 @@
-<core:FragmentDefinition
-  xmlns="sap.m"
-  xmlns:core="sap.ui.core"
-  xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
-  xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
- <VBox id="idVBoxSignIn" alignItems="Center" justifyContent="Center">
-								<core:HTML content="{i18n>linebreak}">
-								</core:HTML>
-								<Input type="Text" placeholder="{i18n>EnterInvestorID}" />
-								<Input type="Password" placeholder="{i18n>EnterPassword}" />
-								<CheckBox text="{i18n>RememberMe}" />
-								<HBox justifyContent="Center">
-									<sap.ui.commons.layout:MatrixLayout id="idMatrixLayout"
-										layoutFixed="false">
-										<sap.ui.commons.layout:MatrixLayoutRow>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<Button type="Accept" text="{i18n>Ok}" press="handleOkButtonPress">
-												</Button>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<Button type="Reject" text="{i18n>Cancel}" press="onPress">
-												</Button>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-										</sap.ui.commons.layout:MatrixLayoutRow>
-									</sap.ui.commons.layout:MatrixLayout>
-								</HBox>
-								<HBox justifyContent="Center" alignItems="Center">
-									<sap.ui.commons.layout:MatrixLayout layoutFixed="false">
-										<sap.ui.commons.layout:MatrixLayoutRow>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<Link text="{i18n>ForgotPassword}" press="handleLinkPress" />
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<Link text="{i18n>ResetPassword}" press="handleLinkPress" />
-											</sap.ui.commons.layout:MatrixLayoutCell>
-										</sap.ui.commons.layout:MatrixLayoutRow>
-									</sap.ui.commons.layout:MatrixLayout>
-								</HBox>
-							</VBox>
- </core:FragmentDefinition>
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:sap.ui.commons="sap.ui.commons"
+	xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<VBox id="idVBoxSignIn" alignItems="Center" justifyContent="Center">
+		<core:HTML content="{i18n>linebreak}">
+		</core:HTML>
+		<sap.ui.commons.layout:MatrixLayout
+				layoutFixed="false" columns="2">
+		<sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:MatrixLayoutCell
+				hAlign="End">
+				<Label text="{i18n>EnterUsername}"></Label>
+			</sap.ui.commons.layout:MatrixLayoutCell>
+			<sap.ui.commons.layout:MatrixLayoutCell>
+				<sap.ui.commons:TextField required="true" id="idUserIDTextField"/>
+			</sap.ui.commons.layout:MatrixLayoutCell>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+		<sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:MatrixLayoutCell
+				hAlign="End">
+				<Label text="{i18n>EnterPassword}"></Label>
+			</sap.ui.commons.layout:MatrixLayoutCell>
+			<sap.ui.commons.layout:MatrixLayoutCell>
+				<sap.ui.commons:PasswordField required="true" id="idPasswordTextField"/>
+			</sap.ui.commons.layout:MatrixLayoutCell>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:MatrixLayout>
+		<sap.ui.commons:CheckBox checked="false" text="{i18n>RememberMe}" tooltip="{i18n>RememberMe}"></sap.ui.commons:CheckBox>
+		<HBox justifyContent="Center">
+			<sap.ui.commons.layout:MatrixLayout
+				id="idMatrixLayout" layoutFixed="false">
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons:Button style="Accept" text="{i18n>SignIn}" press="handleSignInButtonPress">
+							</sap.ui.commons:Button>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons:Button style="Reject" text="{i18n>Cancel}" press="onPress">
+							</sap.ui.commons:Button>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:MatrixLayout>
+		</HBox>
+		<HBox justifyContent="Center" alignItems="Center">
+			<sap.ui.commons.layout:MatrixLayout
+				layoutFixed="false">
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<Link text="{i18n>ForgotPassword}" press="handleLinkPress" />
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<Link text="{i18n>ResetPassword}" press="handleLinkPress" />
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:MatrixLayout>
+		</HBox>
+	</VBox>
+</core:FragmentDefinition>

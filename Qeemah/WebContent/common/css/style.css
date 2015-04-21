@@ -1,20 +1,8 @@
-/* .sapMITBFilterDefault{
-	color: #01456A;
-} */
-/*class to change height of input box*/
-/* .sapMInputBaseInner {
-  color: #000000;
-  background-color: #ffffff;
-  border: 1px solid #bfbfbf;
-  margin: 0;
-  font-size: 0.875rem;
-  font-family: Arial,Helvetica,sans-serif;
-  line-height: normal;
-  height: 2rem;
-  vertical-align: top;
-  padding: 0 0.75rem;
-  -moz-appearance: textfield;
-} */
+.sapUiBtnS {  
+  padding: 0 7px 1px;
+  height: 3em; 
+  outline: none;
+}
 
 .preventscrolling {
     overflow: hidden;

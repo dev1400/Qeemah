@@ -3,6 +3,7 @@ jQuery.sap.declare("com.sagia.common.ModelHelper");
 com.sagia.common.ModelHelper = {
 	oBundle : null,
 	oODataModel : null,
+	oRequestFinishedDeferred:null,
 	/**
 	 * Build i18n Model instance and return
 	 */
@@ -102,6 +103,40 @@ com.sagia.common.ModelHelper = {
 
 		return this.oDealsInAmendmentCollectionModel;
 	},
+	
+	/**
+	 * SignInUser
+	 */
+	signInUser : function(userid, password) {
+		var that = this;		
+		that.signinSuccess = false;
+
+		// Create deferred object so that calling program can wait till asynchronous call is finished
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+		this.oODataModel.attachRequestSent(function (oEvent) {
+			console.log("Sent");
+		});
+
+		this.oODataModel.attachRequestCompleted(function (oEvent) {
+			console.log("Completeds");
+		});
+
+		this.oODataModel.attachRequestFailed(function (oEvent) {
+			console.log("success");
+		});
+		
+		this.oODataModel.read("/USER_REGISTRATION_ENT(Flag='L',Userid='"+userid+"',Password='"+password+"',MobileNo='',Email='')",{
+			success : function(oData) {
+				console.dir(oData);
+				sap.m.MessageToast.show(that.getText("SignInSuccessful"));
+			},
+			error : function(oResponse) {
+				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
+			}});
+	},
+	
+
 
 	// //////////////////////////////////////////////////////////////////////////////////////////////
 	registerUser : function() {

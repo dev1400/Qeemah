@@ -38,6 +38,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oVboxOrgReg = this.getView().byId("idVBoxOrgReg");
 		
 		this._oPage = this.getView().byId("idPage");
+		
+		this._userSignFragment = sap.ui.xmlfragment("idUserSignInFragment","com.sagia.view.fragments.signin", this.getView().getController());
 
 
 
@@ -196,5 +198,17 @@ sap.ui.controller("com.sagia.view.Overview", {
     	//this._oVboxInvestmentGuidelinesDialogFirstMsg.setVisible(false);
     	sap.ui.getCore().byId("idInvestmentGuidelines").setVisible(true);
     	sap.ui.getCore().byId("idInvestmentGuidelineMsg").setVisible(false);
+    },
+    handleSignInButtonPress: function(oEvent){
+    	var userID = this.getView().byId("idUserIDTextField").getValue();
+    	var password = this.getView().byId("idPasswordTextField").getValue();
+    	this.oModelHelper.signInUser(userID,password);
+    	/*var credentialsStatus=this.oModelHelper.signInUser(userID,password);
+    	console.log(credentialsStatus);*/
+    	/*if(credentialsStatus){
+    		sap.m.MessageToast.show(this.oModelHelper.getText("SignInSuccessful"));
+    	}els{    		
+    		sap.m.MessageToast.show(this.oModelHelper.getText("InvalidCredentials"));
+    	}*/
     }
 });
