@@ -9,26 +9,33 @@
 
 
 			<sap.ui.commons.layout:MatrixLayout
-				layoutFixed="false" columns="4" class="MainVBoxBGIMG">
+				layoutFixed="false" columns="2" class="MainVBoxBGIMG">
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						colSpan="4">
+						colSpan="2">
 						<VBox alignItems="Center">
-							<core:HTML content="{i18n>RegistrationFormHeading}"></core:HTML>
+							<core:HTML content="{i18n>Welcometo}"></core:HTML>
+							<core:HTML content="{i18n>linebreak}"></core:HTML>
+							<core:HTML content="{i18n>SAGIAOnlineServices}"></core:HTML>
 						</VBox>
+
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 				</sap.ui.commons.layout:MatrixLayoutRow>
 
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						colSpan="4">
+						colSpan="2">
 						<VBox justifyContent="Inherit" alignItems="Stretch">
-							<SegmentedButton selectedButton="idGetStarted" width="100%" >
-								<Button text="{i18n>NewRegistration}" id="idGetStarted"  />
-								<Button text="{i18n>Login}" />
+							<SegmentedButton selectedButton="idGetStarted"
+								width="100%">
+								<Button text="{i18n>NewRegistration}" id="idGetStarted" icon="sap-icon://down"/>
+								<Button text="{i18n>Login}"  icon="sap-icon://down"/>
+
 							</SegmentedButton>
+
 						</VBox>
+
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 				</sap.ui.commons.layout:MatrixLayoutRow>
@@ -41,70 +48,85 @@
 
 
 				<sap.ui.commons.layout:MatrixLayoutRow>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="End">
-						<Label text="{i18n>EnterFirstName}" class="textcolorwhite"></Label>
-					</sap.ui.commons.layout:MatrixLayoutCell>
+
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" />
+						<Input placeholder="{i18n>EnterFirstName}" type="Text"
+							required="true" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="End">
-						<Label text="{i18n>EnterLastName}" class="textcolorwhite"></Label>
-					</sap.ui.commons.layout:MatrixLayoutCell>
+
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" />
+						<Input placeholder="{i18n>EnterLastName}" type="Text"
+							required="true" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
-				
+
 				<sap.ui.commons.layout:MatrixLayoutRow>
+
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="End">
-						<Label text="{i18n>EnterMobileNumber}" class="textcolorwhite"></Label>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" />
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="End">
-						<Label text="{i18n>EnterEmail}" class="textcolorwhite"></Label>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" />
+						colSpan="2">
+						<Input placeholder="{i18n>EnterMobileNumber}" type="Text"
+							required="true" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
-				
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="End">
-						<Label text="{i18n>EnterPassword}" class="textcolorwhite"></Label>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" />
-					</sap.ui.commons.layout:MatrixLayoutCell>
-						<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="End">
-						<Label text="{i18n>ReEnterPassword}" class="textcolorwhite"></Label>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" />
+						colSpan="2">
+						<Input placeholder="{i18n>EnterEmail}" type="Text" required="true" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
-				
+
 				<sap.ui.commons.layout:MatrixLayoutRow>
-						<sap.ui.commons.layout:MatrixLayoutCell colSpan="4" hAlign="Center">
+
+					<sap.ui.commons.layout:MatrixLayoutCell
+						colSpan="2">
+						<Input placeholder="{i18n>EnterPassword}" type="Text"
+							required="true" />
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						colSpan="2">
+						<Input placeholder="{i18n>ReEnterPassword}" type="Text"
+							required="true" />
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						colSpan="2" hAlign="Center">
 						<VBox justifyContent="Inherit" alignItems="Stretch" width="100%">
-						<Button style="Accept"
-								text="{i18n>Register}" press="handleRegisterUserButtonPress" width="100%" class="buttonsBackGround">
+							<Button style="Accept" text="{i18n>Register}"
+								press="handleRegisterUserButtonPress" width="100%" class="buttonsBackGround">
 							</Button>
 						</VBox>
-							
-						</sap.ui.commons.layout:MatrixLayoutCell>
-						
-					</sap.ui.commons.layout:MatrixLayoutRow>
-				
+
+					</sap.ui.commons.layout:MatrixLayoutCell>
+
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+
+
 			</sap.ui.commons.layout:MatrixLayout>
-			
+
+			<sap.ui.commons.layout:MatrixLayout>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<Link text="{i18n>ServiceGuide}" class="linkColor" />
+
+
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+
+						<Link text="{i18n>DownloadForms}" class="linkColor" />
+					</sap.ui.commons.layout:MatrixLayoutCell>
+
+
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+			</sap.ui.commons.layout:MatrixLayout>
+
 		</items>
 	</VBox>
 </core:FragmentDefinition>

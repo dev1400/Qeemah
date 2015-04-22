@@ -21,18 +21,13 @@
 	left: 36em !important; #00A19C #E0E0E0
 } */
 .MainVBoxBGIMG{
-	/* background-image: url("mime/bg_blue.png") !important;
-	background-repeat: no-repeat !important; */
-	background-color: #0A76B3 !important;
+	background-image: url("mime/bg_blue.png") !important ;
+	background-repeat: no-repeat; 
+	background-size:100%;
+	/* background-color: #0A76B3 !important;
 	-moz-border-radius: 1em;
     -webkit-border-radius: 1em;
-    -khtml-border-radius: 1em;
-    /* border:#ffffff solid 1px ; */
-    /* border-radius: 25px;
-    border: 2px solid #8AC007;
-    padding: 20px;  */
-	
-	/* background: rgba(255, 0, 0, 0) !important; */
+    -khtml-border-radius: 1em; */
 }
 .textcolorwhite{
 	color: #ffffff !important;
@@ -40,10 +35,11 @@
 /*Segmented Button BG Colour Start*/
 .sapMSegBBtn.sapMSegBBtnSel {
   background: #00A19C;
+  background-image: url("mime/bg_button.png") !important ;
   color: #ffffff;
   border-color: #FFFFFF;
 }
-.sapMSegBBtn {
+/* .sapMSegBBtn {
   font-size: 0.875rem;
   height: 2.375rem;
   line-height: 2.375rem;
@@ -55,7 +51,7 @@
   border: 1px solid #dedede;
   border-right: 0;
   background-color: #E0E0E0;
-}
+} */
 /*Segmented Button BG Colour End*/
 
 /*Button Background color*/
@@ -64,3 +60,7 @@
   background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#00A19C),color-stop(1,#00A19C))!important;
 }
 /*Button Background Color*/
+
+.linkColor{
+	color: white !important;
+}
