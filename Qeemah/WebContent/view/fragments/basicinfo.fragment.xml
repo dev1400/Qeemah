@@ -4,7 +4,7 @@
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<VBox id="idVBoxTab1Content" justifyContent="Center" alignItems="Center">
 
-		<sap.ui.commons:Accordion id="accordionA"
+		<!-- <sap.ui.commons:Accordion id="accordionA"
 			openedSectionsId="section1" width="80em">
 			<sap.ui.commons:sections>
 				<sap.ui.commons:AccordionSection id="section1"
@@ -709,6 +709,6 @@
 				</sap.ui.commons:AccordionSection>
 
 			</sap.ui.commons:sections>
-		</sap.ui.commons:Accordion>
+		</sap.ui.commons:Accordion> -->
 	</VBox>
 </sap.ui.core:FragmentDefinition>

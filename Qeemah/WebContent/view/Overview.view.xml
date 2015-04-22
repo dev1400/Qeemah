@@ -16,6 +16,7 @@
 		<!-- <SegmentedButton id="idHomeSegmentedButton" selectedButton="home" 
 			class="HomeSegmentedButton"> <Button text="{i18n>GetStarted}" /> <Button 
 			text="{i18n>Login}" /> </SegmentedButton> -->
+		<VBox id="idMainPageContent">
 		<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
 			<html:br />
 			<html:br />
@@ -47,6 +48,13 @@
 			</sap.ui.commons.layout:MatrixLayoutRow>
 
 		</sap.ui.commons.layout:MatrixLayout>
+		</VBox>
+		
+		<VBox id="idBasicInfoContent" visible="false">
+		
+		   <core:Fragment fragmentName="com.sagia.view.fragments.basicinfo"
+				type="XML" />
+		</VBox>
 
 
 
