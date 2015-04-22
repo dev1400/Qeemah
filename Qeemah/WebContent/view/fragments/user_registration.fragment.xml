@@ -3,14 +3,14 @@
 	xmlns:sap.ui.commons="sap.ui.commons"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	
+
 	<VBox id="idVBoxRegistration" justifyContent="Center" alignItems="Center">
 		<items>
 
 
 
 			<sap.ui.commons.layout:MatrixLayout
-				layoutFixed="false" columns="2" >
+				layoutFixed="false" columns="2">
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						colSpan="2">
@@ -26,11 +26,11 @@
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						colSpan="2">
-						<VBox justifyContent="Inherit" alignItems="Stretch">
-							<SegmentedButton selectedButton="idLoginButton"
-								width="100%">
-								<Button text="{i18n>NewRegistration}" id="idGetStartedButton" class="segBtnCustomWidth1"/><!-- icon="sap-icon://down" -->
-								<Button text="{i18n>Login}"  id="idLoginButton" icon="sap-icon://down" class="segBtnCustomWidth2" style="width:43% !important"/>
+						<VBox alignItems="Center">
+							<SegmentedButton selectedButton="idLoginButton">
+								<Button text="{i18n>NewRegistration}" id="idNewRegistrationButton"
+									style="20em !important" press="handleNewRegistrationButtonPress"/><!-- icon="sap-icon://down" -->
+								<Button text="{i18n>Login}" id="idLoginButton" press="handleLoginButtonPress" />
 
 							</SegmentedButton>
 
@@ -39,14 +39,15 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 				</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:MatrixLayout>
 
 
 
 
 
 
-
-
+			<sap.ui.commons.layout:MatrixLayout
+				layoutFixed="false" columns="2" id="idRegistrationMatrixLayout" visible="false">
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -108,8 +109,31 @@
 
 
 			</sap.ui.commons.layout:MatrixLayout>
-
 			
+			<VBox id="idLoginVBoxLayout" justifyContent="Center" alignItems="Center" width="100%">
+			<Input placeholder="{i18n>EnterUsername}" required="true" width="25rem" />
+			
+			<Input placeholder="{i18n>EnterPassword}" required="true" width="25rem" />
+			
+
+			<sap.ui.commons.layout:MatrixLayout
+				layoutFixed="false" columns="2"  >
+				
+				<sap.ui.commons.layout:MatrixLayoutRow>
+						<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+							<Button style="Accept"
+								text="{i18n>SignIn}" press="handleSignInButtonPress"></Button>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+
+						<sap.ui.commons.layout:MatrixLayoutCell>
+							<Button style="Reject" text="{i18n>Cancel}" press="onPress"></Button>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+
+				</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:MatrixLayout>
+			</VBox>
+
+
 
 		</items>
 	</VBox>

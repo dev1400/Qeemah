@@ -22,6 +22,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oVboxQuestion7 = this.getView().byId("idVBoxQuestion7Content");
 		this._oVboxQuestion8 = this.getView().byId("idVBoxQuestion8Content");
 		
+		this._oNewRegistrationMatrixLayout = this.getView().byId("idRegistrationMatrixLayout");
+		this._oLoginVBoxLayout = this.getView().byId("idLoginVBoxLayout");
+		
 		this._oVboxInvestmentGuidelinesDialog = this.getView().byId("idInvestmentGuidelines");
 		this._oVboxInvestmentGuidelinesDialogFirstMsg = this.getView().byId("idInvestmentGuidelineMsg");
 		
@@ -210,5 +213,19 @@ sap.ui.controller("com.sagia.view.Overview", {
     	}els{    		
     		sap.m.MessageToast.show(this.oModelHelper.getText("InvalidCredentials"));
     	}*/
+    },
+    /**
+     * home page registration button press
+     */
+    handleNewRegistrationButtonPress: function(){
+    	this._oLoginVBoxLayout.setVisible(false);
+    	this._oNewRegistrationMatrixLayout.setVisible(true);
+    },
+    /**
+     * home page registration button press
+     */
+    handleLoginButtonPress: function(){    	
+    	this._oNewRegistrationMatrixLayout.setVisible(false);
+    	this._oLoginVBoxLayout.setVisible(true);
     }
 });
