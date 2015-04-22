@@ -18,14 +18,46 @@
 /* .HomeSegmentedButton {
 	position: absolute !important; 
 	top: 14em !important; 
-	left: 36em !important;
+	left: 36em !important; #00A19C #E0E0E0
 } */
 .MainVBoxBGIMG{
 	/* background-image: url("mime/bg_blue.png") !important;
 	background-repeat: no-repeat !important; */
-	background-color: #1288CB !important;
+	background-color: #0A76B3 !important;
+	-moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    border-radius:15px;
+	
 	/* background: rgba(255, 0, 0, 0) !important; */
 }
 .textcolorwhite{
 	color: #ffffff !important;
 }
+/*Segmented Button BG Colour Start*/
+.sapMSegBBtn.sapMSegBBtnSel {
+  background: #00A19C;
+  color: #ffffff;
+  border-color: #FFFFFF;
+}
+.sapMSegBBtn {
+  font-size: 0.875rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: center;
+  text-shadow: none;
+  color: #00679e;
+  border: 1px solid #dedede;
+  border-right: 0;
+  background-color: #E0E0E0;
+}
+/*Segmented Button BG Colour End*/
+
+/*Button Background color*/
+.sapMBtnInner  {
+  color: #FFFFFF;
+  background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#00A19C),color-stop(1,#00A19C))!important;
+}
+/*Button Background Color*/

@@ -95,7 +95,7 @@
 						<sap.ui.commons.layout:MatrixLayoutCell colSpan="4" hAlign="Center">
 						<VBox justifyContent="Inherit" alignItems="Stretch" width="100%">
 						<Button style="Accept"
-								text="{i18n>Register}" press="handleRegisterUserButtonPress" width="100%">
+								text="{i18n>Register}" press="handleRegisterUserButtonPress" width="100%" class="buttonsBackGround">
 							</Button>
 						</VBox>
 							
