@@ -14,26 +14,18 @@
     src: url(font/segoeuil_0.ttf);
 }
 /*Main page content start*/
-.maindiv { 
-   position: relative; 
-   width: 100%; /* for IE 6 */
-}
 
-.fontinmaindiv { 
-   position: absolute; 
-   left: 0; 
-   width: 100%; 
-   display:block;
+/* .HomeSegmentedButton {
+	position: absolute !important; 
+	top: 14em !important; 
+	left: 36em !important;
+} */
+.MainVBoxBGIMG{
+	/* background-image: url("mime/bg_blue.png") !important;
+	background-repeat: no-repeat !important; */
+	background-color: #1288CB !important;
+	/* background: rgba(255, 0, 0, 0) !important; */
 }
-/*Main page content end*/
-
-.image { 
-   position: relative; 
-}
-
-h2 { 
-   position: absolute; 
-   top: 20em; 
-   left: 0; 
-   width: 100%; 
+.textcolorwhite{
+	color: #ffffff !important;
 }
