@@ -27,10 +27,10 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						colSpan="2">
 						<VBox justifyContent="Inherit" alignItems="Stretch">
-							<SegmentedButton selectedButton="idGetStarted"
+							<SegmentedButton selectedButton="idLoginButton"
 								width="100%">
-								<Button text="{i18n>NewRegistration}" id="idGetStarted" icon="sap-icon://down"/>
-								<Button text="{i18n>Login}"  icon="sap-icon://down"/>
+								<Button text="{i18n>NewRegistration}" id="idGetStartedButton" class="segBtnCustomWidth1"/><!-- icon="sap-icon://down" -->
+								<Button text="{i18n>Login}"  id="idLoginButton" icon="sap-icon://down" class="segBtnCustomWidth2" style="width:43% !important"/>
 
 							</SegmentedButton>
 

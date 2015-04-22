@@ -40,6 +40,13 @@
   background-image: url("mime/bg_button.png") !important ;
   color: #ffffff;
   border-color: #FFFFFF;
+  
+}
+.segBtnCustomWidth1{
+	width: 44% !important;
+}
+.segBtnCustomWidth2{
+	width: 43% !important;
 }
 /* .sapMSegBBtn {
   font-size: 0.875rem;
