@@ -3,19 +3,19 @@
 	xmlns:sap.ui.commons="sap.ui.commons"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns:html="http://www.w3.org/1999/xhtml">
+	
 	<VBox id="idVBoxRegistration" justifyContent="Center" alignItems="Center">
 		<items>
 
 
 
 			<sap.ui.commons.layout:MatrixLayout
-				layoutFixed="false" columns="2" class="MainVBoxBGIMG">
+				layoutFixed="false" columns="2" >
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						colSpan="2">
 						<VBox alignItems="Center">
 							<core:HTML content="{i18n>Welcometo}"></core:HTML>
-							<core:HTML content="{i18n>linebreak}"></core:HTML>
 							<core:HTML content="{i18n>SAGIAOnlineServices}"></core:HTML>
 						</VBox>
 
@@ -109,23 +109,7 @@
 
 			</sap.ui.commons.layout:MatrixLayout>
 
-			<sap.ui.commons.layout:MatrixLayout>
-				<sap.ui.commons.layout:MatrixLayoutRow>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="End">
-						<Link text="{i18n>ServiceGuide}" class="linkColor" />
-
-
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
-
-						<Link text="{i18n>DownloadForms}" class="linkColor" />
-					</sap.ui.commons.layout:MatrixLayoutCell>
-
-
-				</sap.ui.commons.layout:MatrixLayoutRow>
-
-			</sap.ui.commons.layout:MatrixLayout>
+			
 
 		</items>
 	</VBox>

@@ -23,7 +23,9 @@
 .MainVBoxBGIMG{
 	background-image: url("mime/bg_blue.png") !important ;
 	background-repeat: no-repeat; 
-	background-size:100%;
+	background-size:35em 43em;
+	background-position: center;
+	height:45em;
 	/* background-color: #0A76B3 !important;
 	-moz-border-radius: 1em;
     -webkit-border-radius: 1em;
