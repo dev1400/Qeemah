@@ -1,52 +1,53 @@
 <mvc:View height="100%" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
-	xmlns:sap.ui.commons.layout="sap.ui.commons.layout" xmlns="sap.m" xmlns:sap.ui.commons="sap.ui.commons"
-	controllerName="com.sagia.view.Overview" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page id="idPage" enableScrolling="true" showHeader="false" ><!-- backgroundDesign="Transparent" -->
-	
-	<!-- HTML UI starts -->
-	<!-- HTML UI ends -->
-	<!-- <html:div style="width: 29em; margin: 0px auto;">
-	<html:img src="common/mime/bg_blue.png" alt="" > </html:img>
-	<html:p style="position: absolute; top: 10em; left:30em">
-	<core:HTML content="{i18n>Welcometo}"></core:HTML>
-	<core:HTML content="{i18n>linebreak}"></core:HTML>
-	<core:HTML content="{i18n>SAGIAOnlineServices}"></core:HTML>
-	</html:p>
-	
-         
-</html:div> -->
-									
-	 
-        <!-- <SegmentedButton id="idHomeSegmentedButton" selectedButton="home" class="HomeSegmentedButton">
-          <Button text="{i18n>GetStarted}" />
-          <Button text="{i18n>Login}" />
-        </SegmentedButton> -->
-        <VBox  justifyContent="Center" alignItems="Center"  class="MainVBoxBGIMG" >
-        <html:br/><html:br/>
-        <core:Fragment fragmentName="com.sagia.view.fragments.user_registration"
-								type="XML"/>
-		
-	   </VBox>
-	   
-	   <sap.ui.commons.layout:MatrixLayout>
-				<sap.ui.commons.layout:MatrixLayoutRow>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="End">
+	xmlns:sap.ui.commons.layout="sap.ui.commons.layout" xmlns="sap.m"
+	xmlns:sap.ui.commons="sap.ui.commons" controllerName="com.sagia.view.Overview"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="idPage" enableScrolling="true" showHeader="false"><!-- backgroundDesign="Transparent" -->
+
+		<!-- HTML UI starts -->
+		<!-- HTML UI ends -->
+		<!-- <html:div style="width: 29em; margin: 0px auto;"> <html:img src="common/mime/bg_blue.png" 
+			alt="" > </html:img> <html:p style="position: absolute; top: 10em; left:30em"> 
+			<core:HTML content="{i18n>Welcometo}"></core:HTML> <core:HTML content="{i18n>linebreak}"></core:HTML> 
+			<core:HTML content="{i18n>SAGIAOnlineServices}"></core:HTML> </html:p> </html:div> -->
+
+
+		<!-- <SegmentedButton id="idHomeSegmentedButton" selectedButton="home" 
+			class="HomeSegmentedButton"> <Button text="{i18n>GetStarted}" /> <Button 
+			text="{i18n>Login}" /> </SegmentedButton> -->
+		<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
+			<html:br />
+			<html:br />
+			<core:Fragment fragmentName="com.sagia.view.fragments.user_registration"
+				type="XML" />
+
+		</VBox>
+
+		<sap.ui.commons.layout:MatrixLayout>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutCell
+					hAlign="End">
+					<HBox justifyContent="End" alignItems="Center">
+						<Image src="common/mime/dot.png"></Image>
 						<Link text="{i18n>ServiceGuide}" class="linkColor" />
+					</HBox>
 
 
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
-
+				</sap.ui.commons.layout:MatrixLayoutCell>
+				<sap.ui.commons.layout:MatrixLayoutCell
+					hAlign="Begin">
+					<HBox justifyContent="Start" alignItems="Center">
+						<Image src="common/mime/dot.png"></Image>
 						<Link text="{i18n>DownloadForms}" class="linkColor" />
-					</sap.ui.commons.layout:MatrixLayoutCell>
+					</HBox>
+				</sap.ui.commons.layout:MatrixLayoutCell>
 
 
-				</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:MatrixLayoutRow>
 
-			</sap.ui.commons.layout:MatrixLayout>
-     
+		</sap.ui.commons.layout:MatrixLayout>
+
 
 
 	</Page>

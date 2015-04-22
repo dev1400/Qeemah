@@ -85,10 +85,23 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleRegisterUserButtonPress: function(){
 		
-		this._oVBoxRegistration.setVisible(false);
+		var  oInputFirstName = this.getView().byId("idInputFirstName").getValue();
+    	var  oInputLastName = this.getView().byId("idInputLastName").getValue();
+    	var  oInputMobileNumber = this.getView().byId("idInputMobileNumber").getValue();
+    	var  oInputEmail = this.getView().byId("idInputEmail").getValue();
+    	var  oPassword = this.getView().byId("idInputPassword").getValue();
+    	var  oReEntryPassword = this.getView().byId("idInputRePassword").getValue();
+    	if(oInputFirstName.length > 0 && oInputLastName.length >0 && oInputMobileNumber.length > 0 && oInputEmail.length >0
+    			&& oPassword.length > 0 && oReEntryPassword.length >0){
+    		sap.m.MessageToast.show(this.oModelHelper.getText("RegistrationSuccessful"));
+    	}else{    		
+    		sap.m.MessageToast.show(this.oModelHelper.getText("PleaseEnterRequiredFields"));
+    	}
+		
+		/*this._oVBoxRegistration.setVisible(false);
 		this._oHboxRegistrationSuccessMsg.setVisible(true);
 		sap.m.MessageToast.show(this.oModelHelper.getText("RegistrationSuccessful"));
-		this.oModelHelper.registerUser();
+		this.oModelHelper.registerUser();*/
 		/** Read deals in amendment collection and bind model to view
 	     */
 	   /* _bindDealsInAmendmentCollectionModel: function() {
@@ -203,9 +216,15 @@ sap.ui.controller("com.sagia.view.Overview", {
     	sap.ui.getCore().byId("idInvestmentGuidelineMsg").setVisible(false);
     },
     handleSignInButtonPress: function(oEvent){
-    	var userID = this.getView().byId("idUserIDTextField").getValue();
-    	var password = this.getView().byId("idPasswordTextField").getValue();
-    	this.oModelHelper.signInUser(userID,password);
+    	
+    	var userID = this.getView().byId("idSignInUsernameInput").getValue();
+    	var password = this.getView().byId("idSignInPasswordInput").getValue();
+    	if(userID.length > 0 && password.length >0){
+    		sap.m.MessageToast.show(this.oModelHelper.getText("SignInSuccessful"));
+    	}else{    		
+    		sap.m.MessageToast.show(this.oModelHelper.getText("PleaseEnterRequiredFields"));
+    	}
+    	//this.oModelHelper.signInUser(userID,password);
     	/*var credentialsStatus=this.oModelHelper.signInUser(userID,password);
     	console.log(credentialsStatus);*/
     	/*if(credentialsStatus){
@@ -214,6 +233,9 @@ sap.ui.controller("com.sagia.view.Overview", {
     		sap.m.MessageToast.show(this.oModelHelper.getText("InvalidCredentials"));
     	}*/
     },
+    handleCancelButtonPress: function(oEvent){
+    },
+    
     /**
      * home page registration button press
      */

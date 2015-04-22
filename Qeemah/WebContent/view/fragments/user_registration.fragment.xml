@@ -52,12 +52,12 @@
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<Input placeholder="{i18n>EnterFirstName}" type="Text"
-							required="true" />
+							required="true" id="idInputFirstName"/>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<Input placeholder="{i18n>EnterLastName}" type="Text"
-							required="true" />
+							required="true" id="idInputLastName"/>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 
@@ -66,13 +66,13 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						colSpan="2">
 						<Input placeholder="{i18n>EnterMobileNumber}" type="Text"
-							required="true" />
+							required="true" id="idInputMobileNumber"/>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						colSpan="2">
-						<Input placeholder="{i18n>EnterEmail}" type="Text" required="true" />
+						<Input placeholder="{i18n>EnterEmail}" type="Text" required="true" id="idInputEmail"/>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 
@@ -81,7 +81,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						colSpan="2">
 						<Input placeholder="{i18n>EnterPassword}" type="Text"
-							required="true" />
+							required="true" id="idInputPassword"/>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 
@@ -89,7 +89,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						colSpan="2">
 						<Input placeholder="{i18n>ReEnterPassword}" type="Text"
-							required="true" />
+							required="true" id="idInputRePassword"/>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 
@@ -111,9 +111,9 @@
 			</sap.ui.commons.layout:MatrixLayout>
 			
 			<VBox id="idLoginVBoxLayout" justifyContent="Center" alignItems="Center" width="100%">
-			<Input placeholder="{i18n>EnterSignInUsername}" required="true" width="25rem" />
+			<Input placeholder="{i18n>EnterSignInUsername}" id="idSignInUsernameInput" required="true" width="25rem" />
 			
-			<Input placeholder="{i18n>EnterSignInPassword}" required="true" width="25rem" />
+			<Input placeholder="{i18n>EnterSignInPassword}" id="idSignInPasswordInput" required="true" width="25rem" />
 			
 
 			<sap.ui.commons.layout:MatrixLayout
@@ -126,7 +126,7 @@
 						</sap.ui.commons.layout:MatrixLayoutCell>
 
 						<sap.ui.commons.layout:MatrixLayoutCell>
-							<Button style="Reject" text="{i18n>Cancel}" press="onPress"></Button>
+							<Button style="Reject" text="{i18n>Cancel}" press="handleCancelButtonPress"></Button>
 						</sap.ui.commons.layout:MatrixLayoutCell>
 
 				</sap.ui.commons.layout:MatrixLayoutRow>
