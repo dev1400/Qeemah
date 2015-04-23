@@ -53,6 +53,7 @@
 padding-left: 2.8rem;
   padding-right: 2.8rem;
  }
+ 
 /* .sapMSegBBtn {
   font-size: 0.875rem;
   height: 2.375rem;
@@ -69,10 +70,10 @@ padding-left: 2.8rem;
 /*Segmented Button BG Colour End*/
 
 /*Button Background color*/
-/* .sapMBtnInner  {
-  color: #FFFFFF;
-  background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#00A19C),color-stop(1,#00A19C))!important;
-} */
+.sapMBtnInner  {
+	color: white;
+	background: -webkit-linear-gradient(top,#00A19C 0,#00A19C 100%);
+}
 /*Button Background Color*/
 
 .linkColor{
