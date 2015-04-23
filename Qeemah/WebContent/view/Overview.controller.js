@@ -59,6 +59,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oidBasicInfoContent = this.getView().byId("idBasicInfoContent");
 		//License registration page content
 		this._oidLicenseButtonsHBox = this.getView().byId("idLicenseButtonsHBox");
+		
+		
 
 	},
 
@@ -260,6 +262,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this._oidMainPageContent.setVisible(false);
 			//this._oidBasicInfoContent.setVisible(true);
 			this._oidLicenseButtonsHBox.setVisible(true);
+			
 		} else {
 			sap.m.MessageToast.show(this.oModelHelper
 					.getText("PleaseEnterRequiredFields"));
@@ -292,5 +295,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleLoginButtonPress : function() {
 		this._oNewRegistrationMatrixLayout.setVisible(false);
 		this._oLoginVBoxLayout.setVisible(true);
+	},
+	handleBasicInfoButtonClick : function(){
+		console.log("Clcik");
 	}
 });

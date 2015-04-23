@@ -82,13 +82,17 @@
 	color: #074568 !important;
 }
 .BasicInfoButtonBGVBOX{
-	padding-left: 1.3em;
+	padding-left: 1.7em;
 }
 .BasicInfoButtonBG {
 	/* padding: 0; */
 	
 	border: none;
 	background: #E3E2E2;
+}
+.BasicInfoButtonBGT {
+	width:5em;
+	height:5em;
 }
 .MainLicenseRegBGIMG {
 	background-image: url("mime/topbg.png") !important;

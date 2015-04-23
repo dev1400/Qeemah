@@ -97,25 +97,33 @@
 			</HBox>
 			<HBox>
 				<VBox class="BasicInfoButtonBGVBOX">
-
-					<html:button class="BasicInfoButtonBG">
+				<VBox class="BasicInfoButtonBG">
+				<Image src="common/mime/basicinfo.png" />
+				<Image src="common/mime/license.png" />
+				<Image src="common/mime/shareholder.png" />
+				<Image src="common/mime/preview.png" />
+				<Image src="common/mime/terms.png" />
+				<Image src="common/mime/basicinfo.png" />
+				</VBox>
+				
+					<!-- <html:button class="BasicInfoButtonBG" id="idBasicInfoButton" onClick="handleBasicInfoButtonClick">
 						<html:img src="common/mime/basicinfo.png" />
 					</html:button>
-					<html:button class="BasicInfoButtonBG">
+					<html:button class="BasicInfoButtonBG" id="idLicenseInfoButton">
 						<html:img src="common/mime/license.png" />
 					</html:button>
-					<html:button class="BasicInfoButtonBG">
+					<html:button class="BasicInfoButtonBG" id="idShareholderInfoButton">
 						<html:img src="common/mime/shareholder.png" />
 					</html:button>
-					<html:button class="BasicInfoButtonBG">
+					<html:button class="BasicInfoButtonBG" id="idPreviewInfoButton">
 						<html:img src="common/mime/preview.png" />
 					</html:button>
-					<html:button class="BasicInfoButtonBG">
+					<html:button class="BasicInfoButtonBG" id="idTermsInfoButton">
 						<html:img src="common/mime/terms.png" />
 					</html:button>
-					<html:button class="BasicInfoButtonBG">
+					<html:button class="BasicInfoButtonBG" id="idSubmitInfoButton">
 						<html:img src="common/mime/submit.png" />
-					</html:button>
+					</html:button> -->
 				</VBox>
 
 
