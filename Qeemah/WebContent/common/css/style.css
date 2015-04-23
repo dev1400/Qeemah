@@ -78,6 +78,9 @@
 .linkColor {
 	color: white !important;
 }
+.linkColorBlue {
+	color: #074568 !important;
+}
 
 .BasicInfoButtonBG {
 	/* padding: 0; */

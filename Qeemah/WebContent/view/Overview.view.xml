@@ -1,7 +1,7 @@
 <mvc:View height="100%" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified" xmlns:sap.ui.core="sap.ui.core" xmlns:form="sap.ui.layout.form"
 	xmlns:sap.ui.commons.layout="sap.ui.commons.layout" xmlns="sap.m"
-	xmlns:sap.ui.commons="sap.ui.commons" controllerName="com.sagia.view.Overview"
+	xmlns:sap.ui.commons="sap.ui.commons" controllerName="com.sagia.view.Overview" xmlns:sap.ui.layout="sap.ui.layout"
 	xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page id="idPage" enableScrolling="true" showHeader="false"><!-- backgroundDesign="Transparent" -->
 
@@ -9,8 +9,8 @@
 		<!-- HTML UI ends -->
 		<!-- <html:div style="width: 29em; margin: 0px auto;"> <html:img src="common/mime/bg_blue.png" 
 			alt="" > </html:img> <html:p style="position: absolute; top: 10em; left:30em"> 
-			<core:HTML content="{i18n>Welcometo}"></core:HTML> <core:HTML content="{i18n>linebreak}"></core:HTML> 
-			<core:HTML content="{i18n>SAGIAOnlineServices}"></core:HTML> </html:p> </html:div> -->
+			<sap.ui.core:HTML content="{i18n>Welcometo}"></sap.ui.core:HTML> <sap.ui.core:HTML content="{i18n>linebreak}"></sap.ui.core:HTML> 
+			<sap.ui.core:HTML content="{i18n>SAGIAOnlineServices}"></sap.ui.core:HTML> </html:p> </html:div> -->
 
 
 		<!-- <SegmentedButton id="idHomeSegmentedButton" selectedButton="home" 
@@ -20,7 +20,7 @@
 		<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
 			<html:br />
 			<html:br />
-			<core:Fragment fragmentName="com.sagia.view.fragments.user_registration"
+			<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.user_registration"
 				type="XML" />
 
 		</VBox>
@@ -61,12 +61,37 @@
 			</html:button>
 			<VBox width="100%">
 			
-			<HBox width="100%" justifyContent="End">
-			<SearchField width="15em" />
-			</HBox>
-			<HBox>
+			<HBox width="100%" justifyContent="End" alignItems="Center">	
+			<sap.ui.commons.layout:MatrixLayout
+				layoutFixed="false" columns="3" >
+				<sap.ui.commons.layout:rows>
+					<sap.ui.commons.layout:MatrixLayoutRow>
+						<sap.ui.commons.layout:cells>
+							<sap.ui.commons.layout:MatrixLayoutCell
+								>
+								<sap.ui.commons.layout:content>
+								<SearchField width="15em" />
+								</sap.ui.commons.layout:content>
+								</sap.ui.commons.layout:MatrixLayoutCell>
+								<sap.ui.commons.layout:MatrixLayoutCell>
+								 <sap.ui.core:Icon src="sap-icon://log"></sap.ui.core:Icon>
+								</sap.ui.commons.layout:MatrixLayoutCell>
+								<sap.ui.commons.layout:MatrixLayoutCell>
+								<Link text="{i18n>Logout}" class="linkColorBlue" />
+								</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:cells>
+								</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+								</sap.ui.commons.layout:MatrixLayout>
+								
+										
+			 			 
 			
+			 
 			</HBox>
+			
+			
+			
 			
 			</VBox>
 		</HBox>
@@ -96,7 +121,7 @@
 			 
 			<VBox id="idBasicInfoContent" width="100%">
 		
-		   <core:Fragment fragmentName="com.sagia.view.fragments.basicinfo"
+		   <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.basicinfo"
 				type="XML" />
 		   </VBox>
 		   </HBox>
