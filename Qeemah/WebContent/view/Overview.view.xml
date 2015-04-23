@@ -96,25 +96,25 @@
 				</VBox>
 			</HBox>
 			<HBox>
-				<VBox>
+				<VBox class="BasicInfoButtonBGVBOX">
 
 					<html:button class="BasicInfoButtonBG">
-						<html:img src="common/mime/basicinfo_hover.png" />
+						<html:img src="common/mime/basicinfo.png" />
 					</html:button>
 					<html:button class="BasicInfoButtonBG">
-						<html:img src="common/mime/license_hover.png" />
+						<html:img src="common/mime/license.png" />
 					</html:button>
 					<html:button class="BasicInfoButtonBG">
-						<html:img src="common/mime/shareholder_hover.png" />
+						<html:img src="common/mime/shareholder.png" />
 					</html:button>
 					<html:button class="BasicInfoButtonBG">
-						<html:img src="common/mime/preview_hover.png" />
+						<html:img src="common/mime/preview.png" />
 					</html:button>
 					<html:button class="BasicInfoButtonBG">
-						<html:img src="common/mime/terms_hover.png" />
+						<html:img src="common/mime/terms.png" />
 					</html:button>
 					<html:button class="BasicInfoButtonBG">
-						<html:img src="common/mime/submit_hover.png" />
+						<html:img src="common/mime/submit.png" />
 					</html:button>
 				</VBox>
 

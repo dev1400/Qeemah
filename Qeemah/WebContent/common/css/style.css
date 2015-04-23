@@ -81,12 +81,14 @@
 .linkColorBlue {
 	color: #074568 !important;
 }
-
+.BasicInfoButtonBGVBOX{
+	padding-left: 1.3em;
+}
 .BasicInfoButtonBG {
 	/* padding: 0; */
-	padding-left: 2em;
+	
 	border: none;
-	background: none;
+	background: #E3E2E2;
 }
 .MainLicenseRegBGIMG {
 	background-image: url("mime/topbg.png") !important;
