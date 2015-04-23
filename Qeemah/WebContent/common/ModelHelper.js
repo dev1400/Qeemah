@@ -73,21 +73,50 @@ com.sagia.common.ModelHelper = {
 	 * SignInUser
 	 */
 	signInUser : function(userid, password) {
+		// Open busy dialog
+		this.openBusyDialog();
+		
 		var that = this;		
 		// Create deferred object so that calling program can wait till asynchronous call is finished
 		var oRequestFinishedDeferred = jQuery.Deferred();	
 		
 		this.oODataModel.read("/USER_REGISTRATION_ENT(Flag='L',Userid='"+userid+"',Password='"+password+"',MobileNo='',Email='')",{
 			success : function(oData) {
-				oRequestFinishedDeferred.resolve(oData);				
+				oRequestFinishedDeferred.resolve(oData);
+				
+				// close busy dialog 
+				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				// Reject deferred object
 				oRequestFinishedDeferred.resolve();
 				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
+				
+				// close busy dialog 
+				that.closeBusyDialog();
 			}});
 		
 		return oRequestFinishedDeferred;
+	},
+	/**
+	 * Open busy dialog
+	 */
+	openBusyDialog: function (){
+		
+		if (!this._busyDialog) {
+			this._busyDialog = new sap.ui.xmlfragment(
+					"idBusydialog", "com.sagia.view.fragments.busydialog",
+					this);
+		}
+		this._busyDialog.open();		
+	},
+	
+	/**
+	 * Close busy dialog
+	 */
+	closeBusyDialog: function(){
+		this._busyDialog.close();
+		
 	},
 	
 
