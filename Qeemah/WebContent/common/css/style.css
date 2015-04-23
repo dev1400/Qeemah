@@ -84,7 +84,7 @@
 
 .BasicInfoButtonBG {
 	/* padding: 0; */
-	padding-left: 1em;
+	padding-left: 2em;
 	border: none;
 	background: none;
 }
@@ -109,4 +109,7 @@
 	padding-right: 1em !important;
 	width: 2rem;
 	padding-top: 0.5em;
+}
+.BasicInfoTextxPaddingLeft{
+	padding-left: 1em !important;
 }

@@ -5,18 +5,7 @@
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page id="idPage" enableScrolling="true" showHeader="false"><!-- backgroundDesign="Transparent" -->
 
-		<!-- HTML UI starts -->
-		<!-- HTML UI ends -->
-		<!-- <html:div style="width: 29em; margin: 0px auto;"> <html:img src="common/mime/bg_blue.png" 
-			alt="" > </html:img> <html:p style="position: absolute; top: 10em; left:30em"> 
-			<sap.ui.core:HTML content="{i18n>Welcometo}"></sap.ui.core:HTML> <sap.ui.core:HTML 
-			content="{i18n>linebreak}"></sap.ui.core:HTML> <sap.ui.core:HTML content="{i18n>SAGIAOnlineServices}"></sap.ui.core:HTML> 
-			</html:p> </html:div> -->
-
-
-		<!-- <SegmentedButton id="idHomeSegmentedButton" selectedButton="home" 
-			class="HomeSegmentedButton"> <Button text="{i18n>GetStarted}" /> <Button 
-			text="{i18n>Login}" /> </SegmentedButton> -->
+		
 		<VBox id="idMainPageContent">
 			<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
 				<html:br />
@@ -59,7 +48,7 @@
 			width="100%">
 			<HBox class="MainLicenseRegBGIMG" width="100%" justifyContent="Start">
 				<html:button class="BasicInfoButtonBGLogo">
-					<html:img src="common/mime/logo.png" style="vertical-align:middle;" />
+					<html:img src="common/mime/innerlogo.png" style="vertical-align:middle;" />
 				</html:button>
 				<VBox width="100%">
 
@@ -92,7 +81,9 @@
 					</HBox>
 					<html:br />
 					<HBox width="100%" justifyContent="SpaceBetween">
-						<sap.ui.core:HTML content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
+					<HBox alignItems="Center" class="BasicInfoTextxPaddingLeft">
+						<sap.ui.core:HTML content="{i18n>BasicInformationHTML}" ></sap.ui.core:HTML>
+						</HBox>
 						<HBox alignItems="Center">
 							<Image src="common/mime/pin_logo.png" class="CompanyLogoPaddingRightIMG"></Image>
 							<ComboBox width="9em" class="LanguageComboBoxPaddingRight">

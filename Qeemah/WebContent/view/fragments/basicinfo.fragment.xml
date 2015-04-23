@@ -3,46 +3,9 @@
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.commons="sap.ui.commons"
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-	
-<!-- 	<VBox justifyContent="Center" class="MainLicenseRegBGIMG"> -->
-
-		<!-- <sap.ui.commons.layout:MatrixLayout
-			layoutFixed="false" columns="3">widths="13em,25em,10em,25em"
-			<sap.ui.commons.layout:rows>
-				<sap.ui.commons.layout:MatrixLayoutRow>
-					<sap.ui.commons.layout:cells>
-						<sap.ui.commons.layout:MatrixLayoutCell >
-							<sap.ui.commons.layout:content>
-							<html:br/>
-							<Image src="common/mime/logo.png" ></Image>
-							</sap.ui.commons.layout:content>
-						</sap.ui.commons.layout:MatrixLayoutCell>
-						<sap.ui.commons.layout:MatrixLayoutCell rowSpan="2" vAlign="Bottom">
-							<sap.ui.commons.layout:content>
-							<sap.ui.core:HTML content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
-							</sap.ui.commons.layout:content>
-						</sap.ui.commons.layout:MatrixLayoutCell>
-						<sap.ui.commons.layout:MatrixLayoutCell vAlign="Top">
-							<sap.ui.commons.layout:content>
-							<VBox>
-							<sap.ui.layout:HorizontalLayout><SearchField width="15em" /></sap.ui.layout:HorizontalLayout>
-							</VBox>
-							</sap.ui.commons.layout:content>
-						</sap.ui.commons.layout:MatrixLayoutCell>
-					</sap.ui.commons.layout:cells>
-				</sap.ui.commons.layout:MatrixLayoutRow>
-			</sap.ui.commons.layout:rows>
-		</sap.ui.commons.layout:MatrixLayout> -->
 
 
-	<!-- </VBox> -->
-	<HBox id="idBasicInfoBoxContent" justifyContent="Center"
-		>
-		
-		
-
-
-
+	<HBox id="idBasicInfoBoxContent" justifyContent="Center">
 		<VBox justifyContent="Center">
 			<sap.ui.commons.layout:MatrixLayout
 				layoutFixed="false" columns="4" widths="13em,25em,10em,25em">
