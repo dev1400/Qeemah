@@ -59,6 +59,16 @@
 		<html:button class="BasicInfoButtonBGLogo">
 				<html:img src="common/mime/logo.png" style="vertical-align:middle;" />
 			</html:button>
+			<VBox width="100%">
+			
+			<HBox width="100%" justifyContent="End">
+			<SearchField width="15em" />
+			</HBox>
+			<HBox>
+			
+			</HBox>
+			
+			</VBox>
 		</HBox>
 		<HBox>
 		<VBox >
