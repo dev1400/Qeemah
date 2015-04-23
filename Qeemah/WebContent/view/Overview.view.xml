@@ -54,34 +54,43 @@
 		
 		<!-- Left hand buttons start -->
 
-		<HBox id="idLicenseButtonsHBox" visible="false">
-		<VBox>
+		<VBox id="idLicenseButtonsHBox" visible="false" justifyContent="Center" width="100%">
+		<HBox class="MainLicenseRegBGIMG" width="100%"  justifyContent="Center"> 
+		<html:button class="BasicInfoButtonBG">
+				<html:img src="common/mime/logo.png" />
+			</html:button>
+		</HBox>
+		<HBox>
+		<VBox >
+		   
 			<html:button class="BasicInfoButtonBG">
-				<html:img src="common/mime/basicinfo.png" />
+				<html:img src="common/mime/basicinfo_hover.png" />
 			</html:button>
 			<html:button class="BasicInfoButtonBG">
-				<html:img src="common/mime/license.png" />
+				<html:img src="common/mime/license_hover.png" />
 			</html:button>
 			<html:button class="BasicInfoButtonBG">
-				<html:img src="common/mime/shareholder.png" />
+				<html:img src="common/mime/shareholder_hover.png" />
 			</html:button>
 			<html:button class="BasicInfoButtonBG">
-				<html:img src="common/mime/preview.png" />
+				<html:img src="common/mime/preview_hover.png" />
 			</html:button>
 			<html:button class="BasicInfoButtonBG">
-				<html:img src="common/mime/terms.png" />
+				<html:img src="common/mime/terms_hover.png" />
 			</html:button>
 			<html:button class="BasicInfoButtonBG">
-				<html:img src="common/mime/submit.png" />
+				<html:img src="common/mime/submit_hover.png" />
 			</html:button>
 			 </VBox>
+		
 			 
-			<VBox id="idBasicInfoContent" >
+			<VBox id="idBasicInfoContent" width="100%">
 		
 		   <core:Fragment fragmentName="com.sagia.view.fragments.basicinfo"
 				type="XML" />
+		   </VBox>
+		   </HBox>
 		</VBox>
-		</HBox>
 		
 		<!-- Left hand buttons end -->
 

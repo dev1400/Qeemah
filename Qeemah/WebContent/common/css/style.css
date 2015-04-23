@@ -84,4 +84,7 @@
 	border: none;
 	background: none;
 }
+.MainLicenseRegBGIMG {
+	background-image: url("mime/topbg.png") !important;
+	background-repeat: no-repeat;	
 }
