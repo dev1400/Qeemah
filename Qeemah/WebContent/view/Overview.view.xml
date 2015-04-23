@@ -1,132 +1,154 @@
 <mvc:View height="100%" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:u="sap.ui.unified" xmlns:sap.ui.core="sap.ui.core" xmlns:form="sap.ui.layout.form"
 	xmlns:sap.ui.commons.layout="sap.ui.commons.layout" xmlns="sap.m"
-	xmlns:sap.ui.commons="sap.ui.commons" controllerName="com.sagia.view.Overview" xmlns:sap.ui.layout="sap.ui.layout"
-	xmlns:html="http://www.w3.org/1999/xhtml">
+	xmlns:sap.ui.commons="sap.ui.commons" controllerName="com.sagia.view.Overview"
+	xmlns:sap.ui.layout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page id="idPage" enableScrolling="true" showHeader="false"><!-- backgroundDesign="Transparent" -->
 
 		<!-- HTML UI starts -->
 		<!-- HTML UI ends -->
 		<!-- <html:div style="width: 29em; margin: 0px auto;"> <html:img src="common/mime/bg_blue.png" 
 			alt="" > </html:img> <html:p style="position: absolute; top: 10em; left:30em"> 
-			<sap.ui.core:HTML content="{i18n>Welcometo}"></sap.ui.core:HTML> <sap.ui.core:HTML content="{i18n>linebreak}"></sap.ui.core:HTML> 
-			<sap.ui.core:HTML content="{i18n>SAGIAOnlineServices}"></sap.ui.core:HTML> </html:p> </html:div> -->
+			<sap.ui.core:HTML content="{i18n>Welcometo}"></sap.ui.core:HTML> <sap.ui.core:HTML 
+			content="{i18n>linebreak}"></sap.ui.core:HTML> <sap.ui.core:HTML content="{i18n>SAGIAOnlineServices}"></sap.ui.core:HTML> 
+			</html:p> </html:div> -->
 
 
 		<!-- <SegmentedButton id="idHomeSegmentedButton" selectedButton="home" 
 			class="HomeSegmentedButton"> <Button text="{i18n>GetStarted}" /> <Button 
 			text="{i18n>Login}" /> </SegmentedButton> -->
 		<VBox id="idMainPageContent">
-		<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
-			<html:br />
-			<html:br />
-			<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.user_registration"
-				type="XML" />
+			<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
+				<html:br />
+				<html:br />
+				<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.user_registration"
+					type="XML" />
 
+			</VBox>
+
+			<sap.ui.commons.layout:MatrixLayout>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<HBox justifyContent="End" alignItems="Center">
+							<Image src="common/mime/dot.png"></Image>
+							<Link text="{i18n>ServiceGuide}" class="linkColor" />
+						</HBox>
+
+
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="Begin">
+						<HBox justifyContent="Start" alignItems="Center">
+							<Image src="common/mime/dot.png"></Image>
+							<Link text="{i18n>DownloadForms}" class="linkColor" />
+						</HBox>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+
+
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+			</sap.ui.commons.layout:MatrixLayout>
 		</VBox>
 
-		<sap.ui.commons.layout:MatrixLayout>
-			<sap.ui.commons.layout:MatrixLayoutRow>
-				<sap.ui.commons.layout:MatrixLayoutCell
-					hAlign="End">
-					<HBox justifyContent="End" alignItems="Center">
-						<Image src="common/mime/dot.png"></Image>
-						<Link text="{i18n>ServiceGuide}" class="linkColor" />
-					</HBox>
 
 
-				</sap.ui.commons.layout:MatrixLayoutCell>
-				<sap.ui.commons.layout:MatrixLayoutCell
-					hAlign="Begin">
-					<HBox justifyContent="Start" alignItems="Center">
-						<Image src="common/mime/dot.png"></Image>
-						<Link text="{i18n>DownloadForms}" class="linkColor" />
-					</HBox>
-				</sap.ui.commons.layout:MatrixLayoutCell>
-
-
-			</sap.ui.commons.layout:MatrixLayoutRow>
-
-		</sap.ui.commons.layout:MatrixLayout>
-		</VBox>
-		
-		
-		
 		<!-- Left hand buttons start -->
 
-		<VBox id="idLicenseButtonsHBox" visible="false" justifyContent="Center" width="100%">
-		<HBox class="MainLicenseRegBGIMG" width="100%"  justifyContent="Start" > 
-		<html:button class="BasicInfoButtonBGLogo">
-				<html:img src="common/mime/logo.png" style="vertical-align:middle;" />
-			</html:button>
-			<VBox width="100%">
-			
-			<HBox width="100%" justifyContent="End" alignItems="Center">	
-			<sap.ui.commons.layout:MatrixLayout
-				layoutFixed="false" columns="3" >
-				<sap.ui.commons.layout:rows>
-					<sap.ui.commons.layout:MatrixLayoutRow>
-						<sap.ui.commons.layout:cells>
-							<sap.ui.commons.layout:MatrixLayoutCell
-								>
-								<sap.ui.commons.layout:content>
-								<SearchField width="15em" />
-								</sap.ui.commons.layout:content>
-								</sap.ui.commons.layout:MatrixLayoutCell>
-								<sap.ui.commons.layout:MatrixLayoutCell>
-								 <sap.ui.core:Icon src="sap-icon://log"></sap.ui.core:Icon>
-								</sap.ui.commons.layout:MatrixLayoutCell>
-								<sap.ui.commons.layout:MatrixLayoutCell>
-								<Link text="{i18n>Logout}" class="linkColorBlue" />
-								</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:cells>
+		<VBox id="idLicenseButtonsHBox" visible="false" justifyContent="Center"
+			width="100%">
+			<HBox class="MainLicenseRegBGIMG" width="100%" justifyContent="Start">
+				<html:button class="BasicInfoButtonBGLogo">
+					<html:img src="common/mime/logo.png" style="vertical-align:middle;" />
+				</html:button>
+				<VBox width="100%">
+
+					<HBox width="100%" justifyContent="End" alignItems="Center">
+						<sap.ui.commons.layout:MatrixLayout
+							layoutFixed="false" columns="3">
+							<sap.ui.commons.layout:rows>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:cells>
+										<sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:content>
+												<SearchField width="15em" />
+											</sap.ui.commons.layout:content>
+										</sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.core:Icon src="sap-icon://log"></sap.ui.core:Icon>
+										</sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:MatrixLayoutCell>
+											<Link text="{i18n>Logout}" class="linkColorBlue" />
+										</sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:cells>
 								</sap.ui.commons.layout:MatrixLayoutRow>
-								</sap.ui.commons.layout:rows>
-								</sap.ui.commons.layout:MatrixLayout>
-								
-										
-			 			 
-			
-			 
+							</sap.ui.commons.layout:rows>
+						</sap.ui.commons.layout:MatrixLayout>
+
+
+
+
+
+					</HBox>
+					<html:br/>
+					<HBox width="100%" >
+						<sap.ui.commons.layout:MatrixLayout
+							layoutFixed="false" columns="3">
+							<sap.ui.commons.layout:rows>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:cells>
+										<sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:content>
+												<sap.ui.core:HTML content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
+											</sap.ui.commons.layout:content>
+										</sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:MatrixLayoutCell>
+										<ComboBox width="9em">
+										<sap.ui.core:Item />
+									</ComboBox>
+
+										</sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:cells>
+								</sap.ui.commons.layout:MatrixLayoutRow>
+							</sap.ui.commons.layout:rows>
+						</sap.ui.commons.layout:MatrixLayout>
+					</HBox>
+				</VBox>
 			</HBox>
-			
-			
-			
-			
-			</VBox>
-		</HBox>
-		<HBox>
-		<VBox >
-		   
-			<html:button class="BasicInfoButtonBG">
-				<html:img src="common/mime/basicinfo_hover.png" />
-			</html:button>
-			<html:button class="BasicInfoButtonBG">
-				<html:img src="common/mime/license_hover.png" />
-			</html:button>
-			<html:button class="BasicInfoButtonBG">
-				<html:img src="common/mime/shareholder_hover.png" />
-			</html:button>
-			<html:button class="BasicInfoButtonBG">
-				<html:img src="common/mime/preview_hover.png" />
-			</html:button>
-			<html:button class="BasicInfoButtonBG">
-				<html:img src="common/mime/terms_hover.png" />
-			</html:button>
-			<html:button class="BasicInfoButtonBG">
-				<html:img src="common/mime/submit_hover.png" />
-			</html:button>
-			 </VBox>
-		
-			 
-			<VBox id="idBasicInfoContent" width="100%">
-		
-		   <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.basicinfo"
-				type="XML" />
-		   </VBox>
-		   </HBox>
+			<HBox>
+				<VBox>
+
+					<html:button class="BasicInfoButtonBG">
+						<html:img src="common/mime/basicinfo_hover.png" />
+					</html:button>
+					<html:button class="BasicInfoButtonBG">
+						<html:img src="common/mime/license_hover.png" />
+					</html:button>
+					<html:button class="BasicInfoButtonBG">
+						<html:img src="common/mime/shareholder_hover.png" />
+					</html:button>
+					<html:button class="BasicInfoButtonBG">
+						<html:img src="common/mime/preview_hover.png" />
+					</html:button>
+					<html:button class="BasicInfoButtonBG">
+						<html:img src="common/mime/terms_hover.png" />
+					</html:button>
+					<html:button class="BasicInfoButtonBG">
+						<html:img src="common/mime/submit_hover.png" />
+					</html:button>
+				</VBox>
+
+
+				<VBox id="idBasicInfoContent" width="100%">
+
+					<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.basicinfo"
+						type="XML" />
+				</VBox>
+			</HBox>
 		</VBox>
-		
+
 		<!-- Left hand buttons end -->
 
 
