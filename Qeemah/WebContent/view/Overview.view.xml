@@ -97,13 +97,13 @@
 			</HBox>
 			<HBox>
 				<VBox class="BasicInfoButtonBGVBOX">
-				<VBox class="BasicInfoButtonBG">
-				<Image src="common/mime/basicinfo.png" />
-				<Image src="common/mime/license.png" />
-				<Image src="common/mime/shareholder.png" />
-				<Image src="common/mime/preview.png" />
-				<Image src="common/mime/terms.png" />
-				<Image src="common/mime/basicinfo.png" />
+				<VBox class="BasicInfoButtonBG" justifyContent="Center">
+				<Image src="common/mime/basicinfo.png" id="idBasicInfoButton" press="handleBasicInfoButtonClick"/>
+				<Image src="common/mime/license.png" id="idLicenseInfoButton" press="handleLicenseButtonClick"/>
+				<Image src="common/mime/shareholder.png" id="idShareholderInfoButton" press="handleShareholderInfoButtonClick"/>
+				<Image src="common/mime/preview.png" id="idPreviewInfoButton" press="handlePreviewInfoButtonClick"/>
+				<Image src="common/mime/terms.png" id="idTermsInfoButton" press="handleTermsInfoButtonClick"/>
+				<Image src="common/mime/submit.png" id="idSubmitInfoButton" press="handleSubmitInfoButtonClick"/>
 				</VBox>
 				
 					<!-- <html:button class="BasicInfoButtonBG" id="idBasicInfoButton" onClick="handleBasicInfoButtonClick">

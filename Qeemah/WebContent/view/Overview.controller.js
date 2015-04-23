@@ -15,7 +15,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oModelHelper = com.sagia.common.ModelHelper;
 
 		this._oVboxSignIn = this.getView().byId("idVBoxSignIn");
-		this._oVboxUserInfo = this.getView().byId("idVBoxUserInformation");
+		/*this._oVboxUserInfo = this.getView().byId("idVBoxUserInformation");
 		this._oVboxQuestion1 = this.getView().byId("idVBoxQuestion1Content");
 		this._oVboxQuestion2 = this.getView().byId("idVBoxQuestion2Content");
 		this._oVboxQuestion3 = this.getView().byId("idVBoxQuestion3Content");
@@ -24,7 +24,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oVboxQuestion6 = this.getView().byId("idVBoxQuestion6Content");
 		this._oVboxQuestion7 = this.getView().byId("idVBoxQuestion7Content");
 		this._oVboxQuestion8 = this.getView().byId("idVBoxQuestion8Content");
-
+*/
 		this._oNewRegistrationMatrixLayout = this.getView().byId(
 				"idRegistrationMatrixLayout");
 		this._oLoginVBoxLayout = this.getView().byId("idLoginVBoxLayout");
@@ -59,6 +59,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oidBasicInfoContent = this.getView().byId("idBasicInfoContent");
 		//License registration page content
 		this._oidLicenseButtonsHBox = this.getView().byId("idLicenseButtonsHBox");
+		
+		this._oBasicInfoButton = this.getView().byId("idBasicInfoButton");
+		this._oLicenseInfoButton = this.getView().byId("idLicenseInfoButton");
+		this._oShareholderInfoButton = this.getView().byId("idShareholderInfoButton");
+		this._oPreviewInfoButton = this.getView().byId("idPreviewInfoButton");
+		this._oTermsInfoButton = this.getView().byId("idTermsInfoButton");
+		this._oSubmitInfoButton = this.getView().byId("idSubmitInfoButton");
 		
 		
 
@@ -296,7 +303,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oNewRegistrationMatrixLayout.setVisible(false);
 		this._oLoginVBoxLayout.setVisible(true);
 	},
+	
 	handleBasicInfoButtonClick : function(){
-		console.log("Clcik");
-	}
+		this._oBasicInfoButton.setSrc("common/mime/basicinfo_hover.png");
+	},
+	handleLicenseButtonClick : function(){
+		this._oLicenseInfoButton.setSrc("common/mime/license_hover.png");
+	},
+	handleShareholderInfoButtonClick : function(){
+		this._oShareholderInfoButton.setSrc("common/mime/shareholder_hover.png");
+	},
+	handlePreviewInfoButtonClick : function(){
+		this._oPreviewInfoButton.setSrc("common/mime/preview_hover.png");
+	},
+	handleTermsInfoButtonClick : function(){
+		this._oTermsInfoButton.setSrc("common/mime/terms_hover.png");
+	},
+	handleSubmitInfoButtonClick : function(){
+		this._oSubmitInfoButton.setSrc("common/mime/submit_hover.png");
+	},
+	
 });
