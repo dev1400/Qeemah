@@ -55,9 +55,9 @@
 		<!-- Left hand buttons start -->
 
 		<VBox id="idLicenseButtonsHBox" visible="false" justifyContent="Center" width="100%">
-		<HBox class="MainLicenseRegBGIMG" width="100%"  justifyContent="Center"> 
-		<html:button class="BasicInfoButtonBG">
-				<html:img src="common/mime/logo.png" />
+		<HBox class="MainLicenseRegBGIMG" width="100%"  justifyContent="Start" > 
+		<html:button class="BasicInfoButtonBGLogo">
+				<html:img src="common/mime/logo.png" style="vertical-align:middle;" />
 			</html:button>
 		</HBox>
 		<HBox>
