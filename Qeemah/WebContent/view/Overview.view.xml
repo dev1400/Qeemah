@@ -50,11 +50,40 @@
 		</sap.ui.commons.layout:MatrixLayout>
 		</VBox>
 		
-		<VBox id="idBasicInfoContent" visible="false">
+		
+		
+		<!-- Left hand buttons start -->
+
+		<HBox id="idLicenseButtonsHBox" visible="false">
+		<VBox>
+			<html:button class="BasicInfoButtonBG">
+				<html:img src="common/mime/basicinfo.png" />
+			</html:button>
+			<html:button class="BasicInfoButtonBG">
+				<html:img src="common/mime/license.png" />
+			</html:button>
+			<html:button class="BasicInfoButtonBG">
+				<html:img src="common/mime/shareholder.png" />
+			</html:button>
+			<html:button class="BasicInfoButtonBG">
+				<html:img src="common/mime/preview.png" />
+			</html:button>
+			<html:button class="BasicInfoButtonBG">
+				<html:img src="common/mime/terms.png" />
+			</html:button>
+			<html:button class="BasicInfoButtonBG">
+				<html:img src="common/mime/submit.png" />
+			</html:button>
+			 </VBox>
+			 
+			<VBox id="idBasicInfoContent" >
 		
 		   <core:Fragment fragmentName="com.sagia.view.fragments.basicinfo"
 				type="XML" />
 		</VBox>
+		</HBox>
+		
+		<!-- Left hand buttons end -->
 
 
 

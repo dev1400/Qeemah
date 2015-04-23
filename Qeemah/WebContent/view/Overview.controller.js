@@ -57,6 +57,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oidMainPageContent = this.getView().byId("idMainPageContent");
 		// Basic page content VBOX
 		this._oidBasicInfoContent = this.getView().byId("idBasicInfoContent");
+		//License registration page content
+		this._oidLicenseButtonsHBox = this.getView().byId("idLicenseButtonsHBox");
 
 	},
 
@@ -256,7 +258,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 					.getText("SignInSuccessful"));
 			
 			this._oidMainPageContent.setVisible(false);
-			this._oidBasicInfoContent.setVisible(true);
+			//this._oidBasicInfoContent.setVisible(true);
+			this._oidLicenseButtonsHBox.setVisible(true);
 		} else {
 			sap.m.MessageToast.show(this.oModelHelper
 					.getText("PleaseEnterRequiredFields"));
