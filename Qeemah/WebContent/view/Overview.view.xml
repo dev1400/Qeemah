@@ -90,13 +90,17 @@
 
 
 					</HBox>
-					<html:br/>
-					<HBox width="100%" justifyContent="SpaceBetween" >
-					<sap.ui.core:HTML content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
-					<ComboBox width="9em" class="ComboBoxPadding">
-										<sap.ui.core:Item />
-									</ComboBox>
-						
+					<html:br />
+					<HBox width="100%" justifyContent="SpaceBetween">
+						<sap.ui.core:HTML content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
+						<HBox alignItems="Center">
+							<Image src="common/mime/pin_logo.png" class="CompanyLogoPaddingRightIMG"></Image>
+							<ComboBox width="9em" class="LanguageComboBoxPaddingRight">
+								<sap.ui.core:Item />
+							</ComboBox>
+						</HBox>
+
+
 					</HBox>
 				</VBox>
 			</HBox>
