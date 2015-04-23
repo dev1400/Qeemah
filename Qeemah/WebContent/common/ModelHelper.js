@@ -36,7 +36,7 @@ com.sagia.common.ModelHelper = {
 
 		// OData Service URL
 		// var sServiceUrl = "proxy/http://rhocrmdev1.mysagia.gov:8000/sap/opu/odata/sap/ZSAMPLE1_SRV/";
-		var sServiceUrl = "/sap/opu/odata/sap/ZSAMPLE1_SRV/";
+		var sServiceUrl = "/sap/opu/odata/sap/ZQEEMAH_SRV/";
 
 		// for local testing prefix with proxy
 		if (window.location.hostname == "localhost") {
@@ -81,8 +81,7 @@ com.sagia.common.ModelHelper = {
 		var that = this;
 
 		this.oODataModel
-				.read(
-						"/USER_REGISTRATION_ENT(Flag='L',Userid='4000000087',Password='123456',MobileNo='',Email='')",
+				.read("USER_REGISTRATION_ENT(Flag='L',Userid='4000000087',Password='123456',MobileNo='',Email='')",
 						null, null, false,
 
 						function(oData, oResponse) {
@@ -114,22 +113,12 @@ com.sagia.common.ModelHelper = {
 		// Create deferred object so that calling program can wait till asynchronous call is finished
 		var oRequestFinishedDeferred = jQuery.Deferred();
 		
-		this.oODataModel.attachRequestSent(function (oEvent) {
-			console.log("Sent");
-		});
-
-		this.oODataModel.attachRequestCompleted(function (oEvent) {
-			console.log("Completeds");
-		});
-
-		this.oODataModel.attachRequestFailed(function (oEvent) {
-			console.log("success");
-		});
+		
 		
 		this.oODataModel.read("/USER_REGISTRATION_ENT(Flag='L',Userid='"+userid+"',Password='"+password+"',MobileNo='',Email='')",{
 			success : function(oData) {
 				console.dir(oData);
-				sap.m.MessageToast.show(that.getText("SignInSuccessful"));
+				//sap.m.MessageToast.show(that.getText("SignInSuccessful"));
 			},
 			error : function(oResponse) {
 				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
