@@ -4,6 +4,7 @@ com.sagia.common.ModelHelper = {
 	oBundle : null,
 	oODataModel : null,
 	oRequestFinishedDeferred:null,
+	signinSuccess:false,
 	/**
 	 * Build i18n Model instance and return
 	 */
@@ -69,46 +70,13 @@ com.sagia.common.ModelHelper = {
 
 		return this.oODataModel;
 	},
-
-	oDealsInAmendmentCollectionModel : new sap.ui.model.json.JSONModel(),
-
-	/**
-	 * Read Deal Collection and convert it to JSON Model
-	 */
-
-	readDealsInAmendmentCollection : function() {
-
-		var that = this;
-
-		this.oODataModel
-				.read("USER_REGISTRATION_ENT(Flag='L',Userid='4000000087',Password='123456',MobileNo='',Email='')",
-						null, null, false,
-
-						function(oData, oResponse) {
-							that.oDealsInAmendmentCollectionModel.setData({
-								DealsInAmendmentCollection : oData.results
-							});
-						},
-
-						function(oResponse) {
-							oResponse = jQuery
-									.parseJSON(oResponse.response.body);
-
-							sap.m.MessageBox.alert(
-									oResponse.error.message.value, {
-										title : "Result"
-									});
-						});
-
-		return this.oDealsInAmendmentCollectionModel;
-	},
 	
 	/**
 	 * SignInUser
 	 */
 	signInUser : function(userid, password) {
 		var that = this;		
-		that.signinSuccess = false;
+		//var signinSuccess = false;
 
 		// Create deferred object so that calling program can wait till asynchronous call is finished
 		var oRequestFinishedDeferred = jQuery.Deferred();
@@ -117,8 +85,15 @@ com.sagia.common.ModelHelper = {
 		
 		this.oODataModel.read("/USER_REGISTRATION_ENT(Flag='L',Userid='"+userid+"',Password='"+password+"',MobileNo='',Email='')",{
 			success : function(oData) {
-				console.dir(oData);
-				//sap.m.MessageToast.show(that.getText("SignInSuccessful"));
+				
+				if(oData.InvestorId === "0000000000"){
+					sap.m.MessageToast.show(that.getText("AuthenticationFailedMessage"));
+				}else{
+					console.log(oData.InvestorId);
+					that.signinSuccess = true;
+
+					return that.signinSuccess;
+				}
 			},
 			error : function(oResponse) {
 				sap.m.MessageToast.show(that.getText("InvalidCredentials"));

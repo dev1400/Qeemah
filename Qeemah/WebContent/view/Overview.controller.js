@@ -263,7 +263,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var userID = this.getView().byId("idSignInUsernameInput").getValue();
 		var password = this.getView().byId("idSignInPasswordInput").getValue();
 		if (userID.length > 0 && password.length > 0) {
-			this.oModelHelper.signInUser(userID,password);
+			var i = this.oModelHelper.signInUser(userID,password);
+			console.log(i);
 			sap.m.MessageToast.show(this.oModelHelper
 					.getText("SignInSuccessful"));
 			
