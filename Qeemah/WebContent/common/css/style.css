@@ -101,3 +101,6 @@
 .sapMShellBrandingBar {
   background-color: transparent !important;
 }
+.ComboBoxPadding{
+	padding-right: 0.2em !important;
+}

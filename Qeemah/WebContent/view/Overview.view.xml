@@ -91,29 +91,12 @@
 
 					</HBox>
 					<html:br/>
-					<HBox width="100%" >
-						<sap.ui.commons.layout:MatrixLayout
-							layoutFixed="false" columns="3">
-							<sap.ui.commons.layout:rows>
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:cells>
-										<sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:content>
-												<sap.ui.core:HTML content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
-											</sap.ui.commons.layout:content>
-										</sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:MatrixLayoutCell>
-										</sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="9em">
+					<HBox width="100%" justifyContent="SpaceBetween" >
+					<sap.ui.core:HTML content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
+					<ComboBox width="9em" class="ComboBoxPadding">
 										<sap.ui.core:Item />
 									</ComboBox>
-
-										</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:cells>
-								</sap.ui.commons.layout:MatrixLayoutRow>
-							</sap.ui.commons.layout:rows>
-						</sap.ui.commons.layout:MatrixLayout>
+						
 					</HBox>
 				</VBox>
 			</HBox>
