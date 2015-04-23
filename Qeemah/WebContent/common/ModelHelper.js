@@ -3,8 +3,6 @@ jQuery.sap.declare("com.sagia.common.ModelHelper");
 com.sagia.common.ModelHelper = {
 	oBundle : null,
 	oODataModel : null,
-	oRequestFinishedDeferred:null,
-	signinSuccess:false,
 	/**
 	 * Build i18n Model instance and return
 	 */
@@ -76,28 +74,20 @@ com.sagia.common.ModelHelper = {
 	 */
 	signInUser : function(userid, password) {
 		var that = this;		
-		//var signinSuccess = false;
-
 		// Create deferred object so that calling program can wait till asynchronous call is finished
-		var oRequestFinishedDeferred = jQuery.Deferred();
-		
-		
+		var oRequestFinishedDeferred = jQuery.Deferred();	
 		
 		this.oODataModel.read("/USER_REGISTRATION_ENT(Flag='L',Userid='"+userid+"',Password='"+password+"',MobileNo='',Email='')",{
 			success : function(oData) {
-				
-				if(oData.InvestorId === "0000000000"){
-					sap.m.MessageToast.show(that.getText("AuthenticationFailedMessage"));
-				}else{
-					console.log(oData.InvestorId);
-					that.signinSuccess = true;
-
-					return that.signinSuccess;
-				}
+				oRequestFinishedDeferred.resolve(oData);				
 			},
 			error : function(oResponse) {
+				// Reject deferred object
+				oRequestFinishedDeferred.resolve();
 				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
 			}});
+		
+		return oRequestFinishedDeferred;
 	},
 	
 

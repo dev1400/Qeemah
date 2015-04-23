@@ -263,30 +263,25 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var userID = this.getView().byId("idSignInUsernameInput").getValue();
 		var password = this.getView().byId("idSignInPasswordInput").getValue();
 		if (userID.length > 0 && password.length > 0) {
-			var i = this.oModelHelper.signInUser(userID,password);
-			console.log(i);
-			sap.m.MessageToast.show(this.oModelHelper
-					.getText("SignInSuccessful"));
-			
-			this._oidMainPageContent.setVisible(false);
-			//this._oidBasicInfoContent.setVisible(true);
-			this._oidLicenseButtonsHBox.setVisible(true);
+			var oRequestFinishedDeferred = this.oModelHelper.signInUser(userID,password);
+
+			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {	
+				
+				if(oResponse.InvestorId === "0000000000"){
+					sap.m.MessageToast.show(this.oModelHelper.getText("AuthenticationFailedMessage"));
+				}else{
+					sap.m.MessageToast.show(this.oModelHelper
+							.getText("SignInSuccessful"));
+					this._oidMainPageContent.setVisible(false);
+					this._oidLicenseButtonsHBox.setVisible(true);
+				}
+				
+			}, this));				
 			
 		} else {
 			sap.m.MessageToast.show(this.oModelHelper
 					.getText("PleaseEnterRequiredFields"));
-		}
-		// this.oModelHelper.signInUser(userID,password);
-		/*
-		 * var credentialsStatus=this.oModelHelper.signInUser(userID,password);
-		 * console.log(credentialsStatus);
-		 */
-		/*
-		 * if(credentialsStatus){
-		 * sap.m.MessageToast.show(this.oModelHelper.getText("SignInSuccessful"));
-		 * }els{
-		 * sap.m.MessageToast.show(this.oModelHelper.getText("InvalidCredentials")); }
-		 */
+		}		
 	},
 	handleCancelButtonPress : function(oEvent) {
 	},
