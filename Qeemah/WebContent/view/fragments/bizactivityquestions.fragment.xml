@@ -1,0 +1,288 @@
+<sap.ui.core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:sap.ui.core="sap.ui.core"  
+  xmlns:sap.ui.unified="sap.ui.unified"
+  xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
+  xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+  	<!-- Business Activity Quastions Start -->
+												<sap.ui.commons.layout:MatrixLayout layoutFixed="false">
+													<sap.ui.commons.layout:rows>
+														<sap.ui.commons.layout:MatrixLayoutRow>
+															<sap.ui.commons.layout:cells>
+																<sap.ui.commons.layout:MatrixLayoutCell>
+																	<VBox>
+																		<sap.ui.core:HTML content="{i18n>BusinessActivityQuestions}">
+																		</sap.ui.core:HTML>
+																	</VBox>
+																</sap.ui.commons.layout:MatrixLayoutCell>
+															</sap.ui.commons.layout:cells>
+														</sap.ui.commons.layout:MatrixLayoutRow>
+														<sap.ui.commons.layout:MatrixLayoutRow>
+															<sap.ui.commons.layout:cells>
+																<sap.ui.commons.layout:MatrixLayoutCell>
+																	<sap.ui.commons.layout:content>
+																		<VBox justifyContent="Center">
+																			<sap.ui.core:HTML content="{i18n>BAQ1}">
+																			</sap.ui.core:HTML>
+																		</VBox>
+																		<sap.ui.commons.layout:MatrixLayout layoutFixed="false">
+																			<sap.ui.commons.layout:MatrixLayoutRow>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<ComboBox width="25em">
+																						<sap.ui.core:Item />
+																					</ComboBox>
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<HBox justifyContent="End">
+																						<sap.ui.core:HTML content="{i18n>SupportingDocuments}">
+																						</sap.ui.core:HTML>
+																					</HBox>
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<sap.ui.unified:FileUploader uploadUrl="upload/"
+																						width="15em" uploadComplete="handleUploadComplete" />
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																			</sap.ui.commons.layout:MatrixLayoutRow>
+																		</sap.ui.commons.layout:MatrixLayout>
+																	</sap.ui.commons.layout:content>
+																</sap.ui.commons.layout:MatrixLayoutCell>
+															</sap.ui.commons.layout:cells>
+														</sap.ui.commons.layout:MatrixLayoutRow>
+														<sap.ui.commons.layout:MatrixLayoutRow>
+															<sap.ui.commons.layout:cells>
+																<sap.ui.commons.layout:MatrixLayoutCell>
+																	<sap.ui.commons.layout:content>
+																		<VBox justifyContent="Center">
+																			<sap.ui.core:HTML content="{i18n>BAQ2}">
+																			</sap.ui.core:HTML>
+																		</VBox>
+																		<sap.ui.commons.layout:MatrixLayout layoutFixed="false">
+																			<sap.ui.commons.layout:MatrixLayoutRow>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<ComboBox width="25em">
+																						<sap.ui.core:Item />
+																					</ComboBox>
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<HBox justifyContent="End">
+																						<sap.ui.core:HTML content="{i18n>SupportingDocuments}">
+																						</sap.ui.core:HTML>
+																					</HBox>
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<sap.ui.unified:FileUploader uploadUrl="upload/"
+																						width="15em" uploadComplete="handleUploadComplete" />
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																			</sap.ui.commons.layout:MatrixLayoutRow>
+																		</sap.ui.commons.layout:MatrixLayout>
+																	</sap.ui.commons.layout:content>
+																</sap.ui.commons.layout:MatrixLayoutCell>
+															</sap.ui.commons.layout:cells>
+														</sap.ui.commons.layout:MatrixLayoutRow>
+														<sap.ui.commons.layout:MatrixLayoutRow>
+															<sap.ui.commons.layout:cells>
+																<sap.ui.commons.layout:MatrixLayoutCell>
+																	<sap.ui.commons.layout:content>
+																		<VBox justifyContent="Center">
+																			<sap.ui.core:HTML content="{i18n>BAQ3}">
+																			</sap.ui.core:HTML>
+																		</VBox>
+																		<sap.ui.commons.layout:MatrixLayout layoutFixed="false">
+																			<sap.ui.commons.layout:MatrixLayoutRow>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<ComboBox width="25em">
+																						<sap.ui.core:Item />
+																					</ComboBox>
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<HBox justifyContent="End">
+																						<sap.ui.core:HTML content="{i18n>SupportingDocuments}">
+																						</sap.ui.core:HTML>
+																					</HBox>
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																				<sap.ui.commons.layout:MatrixLayoutCell
+																					justifyContent="End">
+																					<sap.ui.unified:FileUploader uploadUrl="upload/"
+																						width="15em" uploadComplete="handleUploadComplete" />
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																			</sap.ui.commons.layout:MatrixLayoutRow>
+																		</sap.ui.commons.layout:MatrixLayout>
+																	</sap.ui.commons.layout:content>
+																</sap.ui.commons.layout:MatrixLayoutCell>
+															</sap.ui.commons.layout:cells>
+														</sap.ui.commons.layout:MatrixLayoutRow>
+														<sap.ui.commons.layout:MatrixLayoutRow>
+															<sap.ui.commons.layout:cells>
+																<sap.ui.commons.layout:MatrixLayoutCell>
+																	<sap.ui.commons.layout:content>
+																		<VBox justifyContent="Center">
+																			<sap.ui.core:HTML content="{i18n>BAQ4}">
+																			</sap.ui.core:HTML>
+																		</VBox>
+																		<sap.ui.commons.layout:MatrixLayout layoutFixed="false">
+																			<sap.ui.commons.layout:MatrixLayoutRow>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<VBox>
+																						<RadioButton groupName="GroupA" text="{i18n>Yes}" />
+																						<RadioButton groupName="GroupA" text="{i18n>No}" />
+																					</VBox>
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																			</sap.ui.commons.layout:MatrixLayoutRow>
+																		</sap.ui.commons.layout:MatrixLayout>
+																	</sap.ui.commons.layout:content>
+																</sap.ui.commons.layout:MatrixLayoutCell>
+															</sap.ui.commons.layout:cells>
+														</sap.ui.commons.layout:MatrixLayoutRow>
+														<sap.ui.commons.layout:MatrixLayoutRow>
+															<sap.ui.commons.layout:cells>
+																<sap.ui.commons.layout:MatrixLayoutCell>
+																	<sap.ui.commons.layout:content>
+																		<VBox justifyContent="Center">
+																			<sap.ui.core:HTML content="{i18n>BAQ5}">
+																			</sap.ui.core:HTML>
+																		</VBox>
+																		<sap.ui.commons.layout:MatrixLayout layoutFixed="false">
+																			<sap.ui.commons.layout:MatrixLayoutRow>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<ComboBox width="25em">
+																						<sap.ui.core:Item />
+																					</ComboBox>
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<HBox justifyContent="End">
+																						<sap.ui.core:HTML content="{i18n>SupportingDocuments}">
+																						</sap.ui.core:HTML>
+																					</HBox>
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<sap.ui.unified:FileUploader uploadUrl="upload/"
+																						width="15em" uploadComplete="handleUploadComplete" />
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																			</sap.ui.commons.layout:MatrixLayoutRow>
+																		</sap.ui.commons.layout:MatrixLayout>
+																	</sap.ui.commons.layout:content>
+																</sap.ui.commons.layout:MatrixLayoutCell>
+															</sap.ui.commons.layout:cells>
+														</sap.ui.commons.layout:MatrixLayoutRow>
+														<sap.ui.commons.layout:MatrixLayoutRow>
+															<sap.ui.commons.layout:cells>
+																<sap.ui.commons.layout:MatrixLayoutCell>
+																	<sap.ui.commons.layout:content>
+																		<VBox justifyContent="Center">
+																			<sap.ui.core:HTML content="{i18n>BAQ6}">
+																			</sap.ui.core:HTML>
+																		</VBox>
+																		<sap.ui.commons.layout:MatrixLayout layoutFixed="false">
+																			<sap.ui.commons.layout:MatrixLayoutRow>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<ComboBox width="25em">
+																						<sap.ui.core:Item />
+																					</ComboBox>
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																			</sap.ui.commons.layout:MatrixLayoutRow>
+																		</sap.ui.commons.layout:MatrixLayout>
+																	</sap.ui.commons.layout:content>
+																</sap.ui.commons.layout:MatrixLayoutCell>
+															</sap.ui.commons.layout:cells>
+														</sap.ui.commons.layout:MatrixLayoutRow>
+														<sap.ui.commons.layout:MatrixLayoutRow>
+															<sap.ui.commons.layout:cells>
+																<sap.ui.commons.layout:MatrixLayoutCell>
+																	<sap.ui.commons.layout:content>
+																		<VBox justifyContent="Center">
+																			<sap.ui.core:HTML content="{i18n>BAQ7}">
+																			</sap.ui.core:HTML>
+																		</VBox>
+																		<sap.ui.commons.layout:MatrixLayout layoutFixed="false">
+																			<sap.ui.commons.layout:MatrixLayoutRow>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<ComboBox width="25em">
+																						<sap.ui.core:Item />
+																					</ComboBox>
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<HBox justifyContent="End">
+																						<sap.ui.core:HTML content="{i18n>SupportingDocuments}">
+																						</sap.ui.core:HTML>
+																					</HBox>
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<sap.ui.unified:FileUploader uploadUrl="upload/"
+																						width="15em" uploadComplete="handleUploadComplete" />
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																			</sap.ui.commons.layout:MatrixLayoutRow>
+																		</sap.ui.commons.layout:MatrixLayout>
+																	</sap.ui.commons.layout:content>
+																</sap.ui.commons.layout:MatrixLayoutCell>
+															</sap.ui.commons.layout:cells>
+														</sap.ui.commons.layout:MatrixLayoutRow>
+														<sap.ui.commons.layout:MatrixLayoutRow>
+															<sap.ui.commons.layout:cells>
+																<sap.ui.commons.layout:MatrixLayoutCell>
+																	<sap.ui.commons.layout:content>
+																		<VBox justifyContent="Center">
+																			<sap.ui.core:HTML content="{i18n>BAQ9}">
+																			</sap.ui.core:HTML>
+																		</VBox>
+																		<sap.ui.commons.layout:MatrixLayout layoutFixed="false">
+																			<sap.ui.commons.layout:MatrixLayoutRow>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<VBox>
+																						<RadioButton groupName="GroupA" text="{i18n>Yes}" />
+																						<RadioButton groupName="GroupA" text="{i18n>No}" />
+																					</VBox>
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																			</sap.ui.commons.layout:MatrixLayoutRow>
+																		</sap.ui.commons.layout:MatrixLayout>
+																	</sap.ui.commons.layout:content>
+																</sap.ui.commons.layout:MatrixLayoutCell>
+															</sap.ui.commons.layout:cells>
+														</sap.ui.commons.layout:MatrixLayoutRow>
+														<sap.ui.commons.layout:MatrixLayoutRow>
+															<sap.ui.commons.layout:cells>
+																<sap.ui.commons.layout:MatrixLayoutCell>
+																	<sap.ui.commons.layout:content>
+																		<VBox justifyContent="Center">
+																			<sap.ui.core:HTML content="{i18n>BAQ8}">
+																			</sap.ui.core:HTML>
+																		</VBox>
+																		<sap.ui.commons.layout:MatrixLayout layoutFixed="false">
+																			<sap.ui.commons.layout:MatrixLayoutRow>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<VBox>
+																						<RadioButton groupName="GroupA" text="{i18n>Yes}" />
+																						<RadioButton groupName="GroupA" text="{i18n>No}" />
+																					</VBox>
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																			</sap.ui.commons.layout:MatrixLayoutRow>
+																		</sap.ui.commons.layout:MatrixLayout>
+																	</sap.ui.commons.layout:content>
+																</sap.ui.commons.layout:MatrixLayoutCell>
+															</sap.ui.commons.layout:cells>
+														</sap.ui.commons.layout:MatrixLayoutRow>
+														<sap.ui.commons.layout:MatrixLayoutRow>
+															<sap.ui.commons.layout:cells>
+																<sap.ui.commons.layout:MatrixLayoutCell>
+																	<sap.ui.commons.layout:content>
+																		<VBox justifyContent="Center">
+																			<sap.ui.core:HTML content="{i18n>BAQ10}">
+																			</sap.ui.core:HTML>
+																		</VBox>
+																		<sap.ui.commons.layout:MatrixLayout layoutFixed="false">
+																			<sap.ui.commons.layout:MatrixLayoutRow>
+																				<sap.ui.commons.layout:MatrixLayoutCell>
+																					<VBox>
+																						<RadioButton groupName="GroupA" text="{i18n>Yes}" />
+																						<RadioButton groupName="GroupA" text="{i18n>No}" />
+																					</VBox>
+																				</sap.ui.commons.layout:MatrixLayoutCell>
+																			</sap.ui.commons.layout:MatrixLayoutRow>
+																		</sap.ui.commons.layout:MatrixLayout>
+																	</sap.ui.commons.layout:content>
+																</sap.ui.commons.layout:MatrixLayoutCell>
+															</sap.ui.commons.layout:cells>
+														</sap.ui.commons.layout:MatrixLayoutRow>
+													</sap.ui.commons.layout:rows>
+												</sap.ui.commons.layout:MatrixLayout>
+												<!-- Business Activity Questions End -->
+  </sap.ui.core:FragmentDefinition>

@@ -56,7 +56,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		// Main page content VBOX
 		this._oidMainPageContent = this.getView().byId("idMainPageContent");
 		// Basic page content VBOX
-		this._oidBasicInfoContent = this.getView().byId("idBasicInfoContent");
+		this._oBasicInfoContent = this.getView().byId("idBasicInfoContent");
 		//License registration page content
 		this._oidLicenseButtonsHBox = this.getView().byId("idLicenseButtonsHBox");
 		
@@ -67,7 +67,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oTermsInfoButton = this.getView().byId("idTermsInfoButton");
 		this._oSubmitInfoButton = this.getView().byId("idSubmitInfoButton");
 		
-		
+		this._oLicenseInfoContent = this.getView().byId("idLicenseInfoContent");
 
 	},
 
@@ -307,8 +307,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 	
 	handleBasicInfoButtonClick : function(){
 		this._oBasicInfoButton.setSrc("common/mime/basicinfo_hover.png");
+
+		this._oBasicInfoContent.setVisible(true);
+		this._oLicenseInfoContent.setVisible(false);
 	},
 	handleLicenseButtonClick : function(){
+		this._oLicenseInfoContent.setVisible(true);
+		this._oBasicInfoContent.setVisible(false);
 		this._oLicenseInfoButton.setSrc("common/mime/license_hover.png");
 	},
 	handleShareholderInfoButtonClick : function(){

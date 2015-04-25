@@ -1,0 +1,218 @@
+<sap.ui.core:FragmentDefinition xmlns="sap.m"
+	xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.unified="sap.ui.unified"
+	xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<!-- Child license activity Q start -->
+	<sap.ui.commons.layout:MatrixLayout
+		layoutFixed="false">
+		<sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<VBox justifyContent="Center">
+								<sap.ui.core:HTML content="{i18n>LicenseInformationHTML}">
+								</sap.ui.core:HTML>
+							</VBox>
+							<sap.ui.commons.layout:MatrixLayout
+								layoutFixed="false">
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<HBox justifyContent="End">
+											<sap.ui.core:HTML content="{i18n>SectionHTML}">
+											</sap.ui.core:HTML>
+										</HBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<ComboBox width="25em">
+											<sap.ui.core:Item />
+										</ComboBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<HBox justifyContent="End">
+											<sap.ui.core:HTML content="{i18n>DivisionHTML}">
+											</sap.ui.core:HTML>
+										</HBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<ComboBox width="25em">
+											<sap.ui.core:Item />
+										</ComboBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<HBox justifyContent="End">
+											<sap.ui.core:HTML content="{i18n>GroupHTML}">
+											</sap.ui.core:HTML>
+										</HBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<ComboBox width="25em">
+											<sap.ui.core:Item />
+										</ComboBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<HBox justifyContent="End">
+											<sap.ui.core:HTML content="{i18n>ClassHTML}">
+											</sap.ui.core:HTML>
+										</HBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<ComboBox width="25em">
+											<sap.ui.core:Item />
+										</ComboBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<HBox justifyContent="End">
+											<sap.ui.core:HTML content="{i18n>LicenseActivityHTML}">
+											</sap.ui.core:HTML>
+										</HBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<ComboBox width="25em">
+											<sap.ui.core:Item />
+										</ComboBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<HBox justifyContent="End">
+											<sap.ui.core:HTML content="{i18n>ActivityDescriptionHTML}">
+											</sap.ui.core:HTML>
+										</HBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:content>
+											<TextArea width="25em" />
+										</sap.ui.commons.layout:content>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:MatrixLayoutRow>
+							</sap.ui.commons.layout:MatrixLayout>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:rows>
+	</sap.ui.commons.layout:MatrixLayout>
+	<sap.ui.commons.layout:MatrixLayout
+		layoutFixed="false">
+		<sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						colSpan="2">
+						<sap.ui.core:HTML content="{i18n>ProductsforIndustrialLicenseType}">
+						</sap.ui.core:HTML>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons.layout:MatrixLayout
+								layoutFixed="false">
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<HBox justifyContent="End">
+											<sap.ui.core:HTML content="{i18n>LicenseActivityHTML}">
+											</sap.ui.core:HTML>
+										</HBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<ComboBox width="25em">
+											<sap.ui.core:Item />
+										</ComboBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<HBox justifyContent="End">
+											<sap.ui.core:HTML content="{i18n>QuantityHTML}">
+											</sap.ui.core:HTML>
+										</HBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<ComboBox width="25em">
+											<sap.ui.core:Item />
+										</ComboBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<HBox justifyContent="End">
+											<sap.ui.core:HTML content="{i18n>UnitOfMeasurementHTML}">
+											</sap.ui.core:HTML>
+										</HBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<ComboBox width="25em">
+											<sap.ui.core:Item />
+										</ComboBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<Button type="Accept" text="{i18n>Add}" />
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:MatrixLayoutRow>
+							</sap.ui.commons.layout:MatrixLayout>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						colSpan="2">
+						<sap.ui.commons.layout:content>
+							<Table width="60em">
+								<columns>
+									<Column width="2em">
+										<Text text="#" />
+									</Column>
+									<Column width="5em">
+										<Text text="{i18n>ProductCode}" />
+									</Column>
+									<Column width="5em">
+										<Text text="{i18n>ProductName}" />
+									</Column>
+									<Column width="5em">
+										<Text text="{i18n>Quantity}" />
+									</Column>
+									<Column width="5em">
+										<Text text="{i18n>UnitOfMeasurement}" />
+									</Column>
+									<Column width="5em">
+										<Text text="{i18n>Delete}" />
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Input type="Text" />
+											<Input type="Text" />
+											<Input type="Text" />
+											<Input type="Text" />
+											<Input type="Text" />
+											<Input type="Text" />
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:rows>
+	</sap.ui.commons.layout:MatrixLayout>
+	<!-- Business Activity Questions End -->
+	<!-- Child license activity Q end -->
+</sap.ui.core:FragmentDefinition>
