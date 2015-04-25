@@ -1,14 +1,36 @@
-<sap.ui.core:FragmentDefinition
-  xmlns="sap.m"
-  xmlns:sap.ui.core="sap.ui.core"  
-  xmlns:sap.ui.unified="sap.ui.unified"
-  xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
-  xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
- <!-- License info start -->
-											<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bizactivityquestions"
-						type="XML" />
-						<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bizactivityquestions_licenseinfo"
-						type="XML" />
-										
-												<!-- License info end -->
- </sap.ui.core:FragmentDefinition>
+<sap.ui.core:FragmentDefinition xmlns="sap.m"
+	xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.unified="sap.ui.unified"
+	xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
+	xmlns:sap.ui.commons="sap.ui.commons"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<HBox justifyContent="Center">
+	<!-- License info start -->
+	<sap.ui.commons:TabStrip height="40em"
+		width="80em">
+		<sap.ui.commons:customData>
+			<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
+				value="true" writeToDom="true"></sap.ui.core:CustomData>
+		</sap.ui.commons:customData>
+		<sap.ui.commons:tabs>
+			<sap.ui.commons:Tab text="{i18n>BusinessActivityQuestions}">
+				<sap.ui.commons:content>
+				<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bizactivityquestions"
+		type="XML" />
+				</sap.ui.commons:content>
+			</sap.ui.commons:Tab>
+			<sap.ui.commons:Tab text="{i18n>LicenseInfo}">
+				<sap.ui.commons:content>
+				<sap.ui.core:Fragment
+		fragmentName="com.sagia.view.fragments.bizactivityquestions_licenseinfo"
+		type="XML" />
+				</sap.ui.commons:content>
+			</sap.ui.commons:Tab>
+		</sap.ui.commons:tabs>
+	</sap.ui.commons:TabStrip>
+	
+	
+	
+
+	<!-- License info end -->
+	</HBox>
+</sap.ui.core:FragmentDefinition>

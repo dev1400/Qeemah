@@ -10,10 +10,6 @@
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<VBox justifyContent="Center">
-								<sap.ui.core:HTML content="{i18n>LicenseInformationHTML}">
-								</sap.ui.core:HTML>
-							</VBox>
 							<sap.ui.commons.layout:MatrixLayout
 								layoutFixed="false">
 								<sap.ui.commons.layout:MatrixLayoutRow>
