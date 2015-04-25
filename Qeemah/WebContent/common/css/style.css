@@ -119,3 +119,10 @@
 .BasicInfoTextxPaddingLeft{
 	padding-left: 1em !important;
 }
+.sapUiTabSel{
+	background-color: #00A19C !important;
+	color: white !important;
+}
+.sapUiTabStrip {
+  font-family: SEGOEUI-Normal;
+}

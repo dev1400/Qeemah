@@ -111,9 +111,9 @@
 			</sap.ui.commons.layout:MatrixLayout>
 			
 			<VBox id="idLoginVBoxLayout" justifyContent="Center" alignItems="Center" width="100%">
-			<Input placeholder="{i18n>EnterSignInUsername}" id="idSignInUsernameInput" required="true" width="25rem" />
+			<Input placeholder="{i18n>EnterInvestorID}" id="idSignInUsernameInput" required="true" width="25rem" />
 			
-			<Input placeholder="{i18n>EnterSignInPassword}" id="idSignInPasswordInput" required="true" width="25rem" />
+			<Input type="Password" placeholder="{i18n>EnterSignInPassword}" id="idSignInPasswordInput" required="true" width="25rem" />
 			
 
 			<sap.ui.commons.layout:MatrixLayout
