@@ -15,8 +15,7 @@
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
-											<sap.ui.core:HTML content="{i18n>SectionHTML}">
-											</sap.ui.core:HTML>
+											<Label text="{i18n>Section}"></Label>
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
@@ -28,8 +27,7 @@
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
-											<sap.ui.core:HTML content="{i18n>DivisionHTML}">
-											</sap.ui.core:HTML>
+											<Label text="{i18n>Division}"></Label>
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
@@ -41,8 +39,7 @@
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
-											<sap.ui.core:HTML content="{i18n>GroupHTML}">
-											</sap.ui.core:HTML>
+											<Label text="{i18n>Group}"></Label>
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
@@ -54,8 +51,7 @@
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
-											<sap.ui.core:HTML content="{i18n>ClassHTML}">
-											</sap.ui.core:HTML>
+											<Label text="{i18n>Class}"></Label>
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
@@ -67,8 +63,7 @@
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
-											<sap.ui.core:HTML content="{i18n>LicenseActivityHTML}">
-											</sap.ui.core:HTML>
+											<Label text="{i18n>LicenseActivity}"></Label>
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
@@ -80,8 +75,7 @@
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
-											<sap.ui.core:HTML content="{i18n>ActivityDescriptionHTML}">
-											</sap.ui.core:HTML>
+											<Label text="{i18n>ActivityDescription}"></Label>
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
@@ -100,15 +94,7 @@
 	<sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false">
 		<sap.ui.commons.layout:rows>
-			<sap.ui.commons.layout:MatrixLayoutRow>
-				<sap.ui.commons.layout:cells>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						colSpan="2">
-						<sap.ui.core:HTML content="{i18n>ProductsforIndustrialLicenseType}">
-						</sap.ui.core:HTML>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-				</sap.ui.commons.layout:cells>
-			</sap.ui.commons.layout:MatrixLayoutRow>
+			
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -118,8 +104,7 @@
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
-											<sap.ui.core:HTML content="{i18n>LicenseActivityHTML}">
-											</sap.ui.core:HTML>
+											<Label text="{i18n>LicenseActivity}"></Label>
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
@@ -131,8 +116,7 @@
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
-											<sap.ui.core:HTML content="{i18n>QuantityHTML}">
-											</sap.ui.core:HTML>
+											<Label text="{i18n>Quantity}"></Label>
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
@@ -144,8 +128,7 @@
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
-											<sap.ui.core:HTML content="{i18n>UnitOfMeasurementHTML}">
-											</sap.ui.core:HTML>
+											<Label text="{i18n>UnitOfMeasurement}"></Label>
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
@@ -175,19 +158,20 @@
 										<Text text="#" />
 									</Column>
 									<Column width="5em">
-										<Text text="{i18n>ProductCode}" />
+										<Label text="{i18n>ProductCode}"></Label>
 									</Column>
 									<Column width="5em">
-										<Text text="{i18n>ProductName}" />
+										
+										<Label text="{i18n>ProductName}"></Label>
 									</Column>
 									<Column width="5em">
-										<Text text="{i18n>Quantity}" />
+										<Label text="{i18n>Quantity}"></Label>
 									</Column>
 									<Column width="5em">
-										<Text text="{i18n>UnitOfMeasurement}" />
+										<Label text="{i18n>UnitOfMeasurement}"></Label>
 									</Column>
 									<Column width="5em">
-										<Text text="{i18n>Delete}" />
+										<Label text="{i18n>Delete}"></Label>
 									</Column>
 								</columns>
 								<items>

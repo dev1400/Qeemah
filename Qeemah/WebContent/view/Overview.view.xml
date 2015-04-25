@@ -5,7 +5,7 @@
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page id="idPage" enableScrolling="true" showHeader="false"><!-- backgroundDesign="Transparent" -->
 
-		
+
 		<VBox id="idMainPageContent">
 			<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
 				<html:br />
@@ -81,8 +81,8 @@
 					</HBox>
 					<html:br />
 					<HBox width="100%" justifyContent="SpaceBetween">
-					<HBox alignItems="Center" class="BasicInfoTextxPaddingLeft">
-						<sap.ui.core:HTML content="{i18n>BasicInformationHTML}" ></sap.ui.core:HTML>
+						<HBox alignItems="Center" class="BasicInfoTextxPaddingLeft">
+							<sap.ui.core:HTML id="idSectionLabel" content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
 						</HBox>
 						<HBox alignItems="Center">
 							<Image src="common/mime/pin_logo.png" class="CompanyLogoPaddingRightIMG"></Image>
@@ -97,33 +97,22 @@
 			</HBox>
 			<HBox>
 				<VBox class="BasicInfoButtonBGVBOX">
-				<VBox class="BasicInfoButtonBG" justifyContent="Center">
-				<Image src="common/mime/basicinfo_hover.png" id="idBasicInfoButton" press="handleBasicInfoButtonClick"/>
-				<Image src="common/mime/license.png" id="idLicenseInfoButton" press="handleLicenseButtonClick"/>
-				<Image src="common/mime/shareholder.png" id="idShareholderInfoButton" press="handleShareholderInfoButtonClick"/>
-				<Image src="common/mime/preview.png" id="idPreviewInfoButton" press="handlePreviewInfoButtonClick"/>
-				<Image src="common/mime/terms.png" id="idTermsInfoButton" press="handleTermsInfoButtonClick"/>
-				<Image src="common/mime/submit.png" id="idSubmitInfoButton" press="handleSubmitInfoButtonClick"/>
-				</VBox>
+					<VBox class="BasicInfoButtonBG" justifyContent="Center">
+						<Image src="common/mime/basicinfo_hover.png" id="idBasicInfoButton"
+							press="handleBasicInfoButtonClick" />
+						<Image src="common/mime/license.png" id="idLicenseInfoButton"
+							press="handleLicenseButtonClick" />
+						<Image src="common/mime/shareholder.png" id="idShareholderInfoButton"
+							press="handleShareholderInfoButtonClick" />
+						<Image src="common/mime/preview.png" id="idPreviewInfoButton"
+							press="handlePreviewInfoButtonClick" />
+						<Image src="common/mime/terms.png" id="idTermsInfoButton"
+							press="handleTermsInfoButtonClick" />
+						<Image src="common/mime/submit.png" id="idSubmitInfoButton"
+							press="handleSubmitInfoButtonClick" />
+					</VBox>
+
 				
-					<!-- <html:button class="BasicInfoButtonBG" id="idBasicInfoButton" onClick="handleBasicInfoButtonClick">
-						<html:img src="common/mime/basicinfo.png" />
-					</html:button>
-					<html:button class="BasicInfoButtonBG" id="idLicenseInfoButton">
-						<html:img src="common/mime/license.png" />
-					</html:button>
-					<html:button class="BasicInfoButtonBG" id="idShareholderInfoButton">
-						<html:img src="common/mime/shareholder.png" />
-					</html:button>
-					<html:button class="BasicInfoButtonBG" id="idPreviewInfoButton">
-						<html:img src="common/mime/preview.png" />
-					</html:button>
-					<html:button class="BasicInfoButtonBG" id="idTermsInfoButton">
-						<html:img src="common/mime/terms.png" />
-					</html:button>
-					<html:button class="BasicInfoButtonBG" id="idSubmitInfoButton">
-						<html:img src="common/mime/submit.png" />
-					</html:button> -->
 				</VBox>
 
 
@@ -131,13 +120,15 @@
 
 					<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.basicinfo"
 						type="XML" />
-					
+
 				</VBox>
 				<VBox id="idLicenseInfoContent" width="100%" visible="false">
-				<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.licenseinfo"
+					<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.licenseinfo"
 						type="XML" />
 				</VBox>
+				
 			</HBox>
+			
 		</VBox>
 
 		<!-- Left hand buttons end -->

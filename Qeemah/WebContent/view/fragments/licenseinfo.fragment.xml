@@ -5,7 +5,7 @@
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<HBox justifyContent="Center">
 	<!-- License info start -->
-	<sap.ui.commons:TabStrip height="40em"
+	<sap.ui.commons:TabStrip height="64em"
 		width="80em">
 		<sap.ui.commons:customData>
 			<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
