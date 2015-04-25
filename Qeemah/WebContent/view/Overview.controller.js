@@ -262,7 +262,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		var userID = this.getView().byId("idSignInUsernameInput").getValue();
 		var password = this.getView().byId("idSignInPasswordInput").getValue();
-		if (userID.length > 0 && password.length > 0) {
+		
+		this._oidMainPageContent.setVisible(false);
+		this._oidLicenseButtonsHBox.setVisible(true);
+		
+		/*if (userID.length > 0 && password.length > 0) {
 			var oRequestFinishedDeferred = this.oModelHelper.signInUser(userID,password);
 
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {	
@@ -281,7 +285,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		} else {
 			sap.m.MessageToast.show(this.oModelHelper
 					.getText("PleaseEnterRequiredFields"));
-		}		
+		}		*/
 	},
 	handleCancelButtonPress : function(oEvent) {
 	},

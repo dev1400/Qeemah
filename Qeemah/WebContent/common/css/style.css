@@ -124,5 +124,9 @@
 	color: white !important;
 }
 .sapUiTabStrip {
-  font-family: SEGOEUI-Normal;
+  font-family: SEGOEUI-Normal !important;
+} 
+.sapMLabel {
+  color: black;
+  font-family: SEGOEUI-Normal !important;
 }
