@@ -130,3 +130,6 @@
   color: black;
   font-family: SEGOEUI-Normal !important;
 }
+.sapMInputBaseInner {
+  background-color: #E3E2E2;
+ }

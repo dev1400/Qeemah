@@ -699,4 +699,8 @@
 
 
 	</HBox>
+	<VBox alignItems="Center">
+	<Button style="Accept" text="{i18n>Next}" press="" >
+							</Button>
+	</VBox>
 </sap.ui.core:FragmentDefinition>
