@@ -12,10 +12,7 @@
 				<html:br />
 				<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.user_registration"
 					type="XML" />
-
-			</VBox>
-
-			<sap.ui.commons.layout:MatrixLayout>
+				<sap.ui.commons.layout:MatrixLayout>
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
@@ -38,6 +35,10 @@
 				</sap.ui.commons.layout:MatrixLayoutRow>
 
 			</sap.ui.commons.layout:MatrixLayout>
+
+			</VBox>
+
+			
 		</VBox>
 
 
@@ -81,6 +82,9 @@
 							<sap.ui.commons.layout:rows>
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:cells>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+									<Button text="{i18n>Save}" id="idSaveButton"  />
+										</sap.ui.commons.layout:MatrixLayoutCell>
 										<sap.ui.commons.layout:MatrixLayoutCell>
 											<Image src="common/mime/logout.png"></Image>
 										</sap.ui.commons.layout:MatrixLayoutCell>
