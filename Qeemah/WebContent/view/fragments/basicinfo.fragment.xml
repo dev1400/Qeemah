@@ -695,7 +695,7 @@
 							<sap.ui.commons.layout:MatrixLayoutCell
 								colSpan="4">
 								<sap.ui.commons.layout:content>
-									<Button style="Accept" text="{i18n>Previous}" press="" >
+									<Button style="Accept" text="{i18n>Back}" press="" >
 							</Button>
 								</sap.ui.commons.layout:content>
 							</sap.ui.commons.layout:MatrixLayoutCell>
