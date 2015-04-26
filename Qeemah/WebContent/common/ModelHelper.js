@@ -57,22 +57,9 @@ com.sagia.common.ModelHelper = {
 		var sUrl = this.getServiceUrl();
 		this.oODataModel = new sap.ui.model.odata.ODataModel(sUrl, true,
 				"nkumar", "sap123", {
-					"X-Requested-With" : "XMLHttpRequest",/*
-															 * "Content-Type" :
-															 * "application/xml",
-															 * "DataServiceVersion" :
-															 * "2.0",
-															 */
-				/*
-				 * "Accept" :
-				 * "application/atom+xml,application/xml,application/atomsvc+xml",
-				 * "xmlns" : "http://www.w3.org/2005/Atom"
-				 */
+					"X-Requested-With" : "XMLHttpRequest",
 
-				}, true, true);/*
-								 * this.oODataModel.refreshSecurityToken();
-								 */
-		// this.oODataModel.setSizeLimit(300);
+				}, true, true);
 		this.oODataModel.refreshSecurityToken();
 
 		return this.oODataModel;
@@ -142,7 +129,7 @@ com.sagia.common.ModelHelper = {
 		
 		
 		
-		oEntry.Flag = "R";
+		oEntry.Flag = 'R';
 		oEntry.Userid = oInputUserID;
 		oEntry.Password = oPassword;
 		oEntry.Email = oInputEmail;
@@ -153,10 +140,10 @@ com.sagia.common.ModelHelper = {
 
 		this.oODataModel.create("USER_REGISTRATION_ENT", oEntry, {
 			success : function(oData) {
-				console.log(oData);
+				console.log("success"+oData);
 			},
 			error : function(oResponse) {
-				console.log(oResponse);
+				console.log("error"+oResponse);
 			},
 			async : true
 		});
