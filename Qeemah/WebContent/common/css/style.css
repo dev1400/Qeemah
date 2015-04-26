@@ -78,8 +78,8 @@
 .linkColor {
 	color: white !important;
 }
-.linkColorBlue {
-	color: #074568 !important;
+.linkColorWhite {
+	color: White !important;
 }
 .BasicInfoButtonBGVBOX{
 	padding-left: 1.7em;
@@ -93,6 +93,14 @@
 .BasicInfoButtonBGT {
 	width:5em;
 	height:5em;
+}
+.MainLicenseRegBGIMG1 {
+	background-image: url("mime/topbg1.png") !important;
+	background-repeat: no-repeat;	
+}
+.MainLicenseRegBGIMG2 {
+	background-image: url("mime/topbg_blue.png") !important;
+	background-repeat: no-repeat;	
 }
 .MainLicenseRegBGIMG {
 	background-image: url("mime/topbg.png") !important;
@@ -132,4 +140,9 @@
 }
 .sapMInputBaseInner {
   background-color: #E3E2E2;
+ }
+ 
+ .LogoWidth {
+  width: 3.1em !important;
+ 
  }

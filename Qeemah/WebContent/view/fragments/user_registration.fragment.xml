@@ -17,6 +17,7 @@
 						<VBox alignItems="Center">
 							<core:HTML content="{i18n>Welcometo}"></core:HTML>
 							<core:HTML content="{i18n>SAGIAOnlineServices}"></core:HTML>
+							<core:HTML content="{i18n>HomePageMessage}"></core:HTML>
 						</VBox>
 
 					</sap.ui.commons.layout:MatrixLayoutCell>
