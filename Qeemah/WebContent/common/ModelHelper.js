@@ -132,34 +132,26 @@ com.sagia.common.ModelHelper = {
 	},
 
 	// //////////////////////////////////////////////////////////////////////////////////////////////
-	registerUser : function(oInputFirstName, oInputLastName,
-			oInputMobileNumber, oInputEmail, oPassword, oReEntryPassword) {
+	registerUser : function(oInputMobileNumber, oInputEmail, oPassword , oInputUserID) {
 
 		var oEntry = {};
 
 		// oInputFirstName,oInputLastName,oInputMobileNumber, oInputEmail,
 		// oPassword, oReEntryPassword
 
-		oEntry.MobileNo = oInputMobileNumber;
-		oEntry.Email = oInputEmail;
-		oEntry.Password = oPassword;
-		oEntry.Userid = oInputFirstName;
+		
+		
+		
 		oEntry.Flag = "R";
+		oEntry.Userid = oInputUserID;
+		oEntry.Password = oPassword;
+		oEntry.Email = oInputEmail;
+		oEntry.MobileNo = oInputMobileNumber;
+		
 
-		this.oODataModel.setHeaders(
+		
 
-		{
-			"X-Requested-With" : "XMLHttpRequest",
-			"Content-Type" : "application/atom+xml",
-			"DataServiceVersion" : "2.0",
-			"X-CSRF-Token" : "Fetch",
-			"xmlns" : "http://www.w3.org/2005/Atom"
-
-		}
-
-		);
-
-		this.oODataModel.create("/USER_REGISTRATION_ENT", oEntry, null, {
+		this.oODataModel.create("USER_REGISTRATION_ENT", oEntry, {
 			success : function(oData) {
 				console.log(oData);
 			},
@@ -172,7 +164,7 @@ com.sagia.common.ModelHelper = {
 		
 		/*OData.request
         ({
-             requestUri: "http://rhocrmdev1.mysagia.gov:8000/sap/opu/odata/sap/ZQEEMAH_SRV//USER_REGISTRATION_ENT",
+             requestUri: "http://rhocrmdev1.mysagia.gov:8000/sap/opu/odata/sap/ZQEEMAH_SRV/USER_REGISTRATION_ENT",
                    method: "GET",
                    headers:
                        {     
