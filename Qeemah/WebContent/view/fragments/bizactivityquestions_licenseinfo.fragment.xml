@@ -124,7 +124,8 @@
 								</sap.ui.commons.layout:MatrixLayoutRow>
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<Button type="Accept" text="{i18n>Add}" />
+										<Button style="Accept" text="{i18n>Add}" press="" >
+							</Button>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:MatrixLayoutRow>
 							
@@ -185,6 +186,12 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:MatrixLayoutRow><sap.ui.commons.layout:cells>
+			<sap.ui.commons.layout:MatrixLayoutCell colSpan="2">
+			<Button style="Accept" text="{i18n>BackToBAQ}" press="" >
+							</Button>
+			</sap.ui.commons.layout:MatrixLayoutCell>
+			</sap.ui.commons.layout:cells></sap.ui.commons.layout:MatrixLayoutRow>
 		</sap.ui.commons.layout:rows>
 	</sap.ui.commons.layout:MatrixLayout>
 	<!-- Business Activity Questions End -->
