@@ -60,6 +60,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//License registration page content
 		this._oidLicenseButtonsHBox = this.getView().byId("idLicenseButtonsHBox");
 		
+		this._oTopHeaderVBox = this.getView().byId("idTopHeaderVBox");
+		
+		
 		this._oBasicInfoButton = this.getView().byId("idBasicInfoButton");
 		this._oLicenseInfoButton = this.getView().byId("idLicenseInfoButton");
 		this._oShareholderInfoButton = this.getView().byId("idShareholderInfoButton");
@@ -267,6 +270,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var password = this.getView().byId("idSignInPasswordInput").getValue();
 		
 		this._oidMainPageContent.setVisible(false);
+		this._oTopHeaderVBox.setVisible(true);
 		this._oidLicenseButtonsHBox.setVisible(true);
 		
 		/*if (userID.length > 0 && password.length > 0) {

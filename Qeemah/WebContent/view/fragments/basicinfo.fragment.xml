@@ -689,6 +689,20 @@
 						</sap.ui.commons.layout:cells>
 					</sap.ui.commons.layout:MatrixLayoutRow>
 				</sap.ui.commons.layout:rows> -->
+				<sap.ui.commons.layout:rows>
+					<sap.ui.commons.layout:MatrixLayoutRow>
+						<sap.ui.commons.layout:cells>
+							<sap.ui.commons.layout:MatrixLayoutCell
+								colSpan="4">
+								<sap.ui.commons.layout:content>
+									<Button style="Accept" text="{i18n>Previous}" press="" >
+							</Button>
+								</sap.ui.commons.layout:content>
+							</sap.ui.commons.layout:MatrixLayoutCell>
+						</sap.ui.commons.layout:cells>
+					</sap.ui.commons.layout:MatrixLayoutRow>
+				</sap.ui.commons.layout:rows>
+							
 			</sap.ui.commons.layout:MatrixLayout>
 				</sap.ui.commons:content>
 				</sap.ui.commons:Tab>

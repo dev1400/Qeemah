@@ -143,6 +143,23 @@
  }
  
  .LogoWidth {
-  width: 3.1em !important;
- 
+  width: 3.1em !important; 
  }
+ .sapMComboBoxBaseArrow {
+  line-height: 2rem;
+}
+.sapMInputBaseInner {
+  height: 2rem;
+}
+.sapMSFF {
+  height: 2rem;
+}
+.sapMSFI {
+  height: 2rem;
+}
+.sapMSFB {
+  line-height: 2rem;
+}  
+.redcolortext{
+	color:red !important;
+}

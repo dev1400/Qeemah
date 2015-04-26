@@ -43,37 +43,44 @@
 
 
 		<!-- Left hand buttons start -->
-		
-		
-		<HBox  class="MainLicenseRegBGIMG1" justifyContent="SpaceBetween">
-		<VBox alignItems="Center">
-		<sap.ui.core:HTML content="{i18n>eServicesHTML}"></sap.ui.core:HTML>
-		<Image src="common/mime/innerlogo.png" class="LogoWidth"></Image>
-		
-		</VBox>
-		
-		<VBox justifyContent="SpaceBetween">
-		
-		<HBox>
-		<ComboBox width="12em">
+
+
+
+
+		<VBox id="idLicenseButtonsHBox" visible="false" justifyContent="Center"
+			width="100%">
+
+			<VBox id="idTopHeaderVBox" visible="false">
+				<HBox class="MainLicenseRegBGIMG1" justifyContent="SpaceBetween">
+					<VBox alignItems="Center">
+						<sap.ui.core:HTML content="{i18n>eServicesHTML}"></sap.ui.core:HTML>
+						<Image src="common/mime/innerlogo.png" class="LogoWidth"></Image>
+
+					</VBox>
+
+					<VBox justifyContent="SpaceBetween">
+
+						<HBox>
+							<ComboBox width="12em">
 								<sap.ui.core:Item />
 							</ComboBox>
-		<SearchField width="12em" /> 
-		<ComboBox width="9em">
+							<SearchField width="12em" />
+							<ComboBox width="9em">
 								<sap.ui.core:Item />
 							</ComboBox>
-		</HBox>
-		</VBox>
-		</HBox>
-		
-		<HBox class="MainLicenseRegBGIMG2" justifyContent="SpaceBetween" alignItems="Center">
-		<sap.ui.core:HTML content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
-		<HBox>
-		<sap.ui.commons.layout:MatrixLayout
+						</HBox>
+					</VBox>
+				</HBox>
+
+				<HBox class="MainLicenseRegBGIMG2" justifyContent="SpaceBetween"
+					alignItems="Center">
+					<sap.ui.core:HTML content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
+					<HBox>
+						<sap.ui.commons.layout:MatrixLayout
 							layoutFixed="false">
 							<sap.ui.commons.layout:rows>
 								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:cells>										
+									<sap.ui.commons.layout:cells>
 										<sap.ui.commons.layout:MatrixLayoutCell>
 											<Image src="common/mime/logout.png"></Image>
 										</sap.ui.commons.layout:MatrixLayoutCell>
@@ -84,15 +91,11 @@
 								</sap.ui.commons.layout:MatrixLayoutRow>
 							</sap.ui.commons.layout:rows>
 						</sap.ui.commons.layout:MatrixLayout>
-		</HBox>
-		</HBox>
+					</HBox>
+				</HBox>
 
-		<VBox id="idLicenseButtonsHBox" visible="false" justifyContent="Center"
-			width="100%">
-			
-		
-			
-			
+			</VBox>
+
 			<HBox>
 				<VBox class="BasicInfoButtonBGVBOX">
 					<VBox class="BasicInfoButtonBG" justifyContent="Center">
@@ -110,11 +113,14 @@
 							press="handleSubmitInfoButtonClick" />
 					</VBox>
 
-				
+
 				</VBox>
 
 
+
 				<VBox id="idBasicInfoContent" width="100%">
+
+
 
 					<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.basicinfo"
 						type="XML" />
@@ -124,9 +130,9 @@
 					<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.licenseinfo"
 						type="XML" />
 				</VBox>
-				
+
 			</HBox>
-			
+
 		</VBox>
 
 		<!-- Left hand buttons end -->
