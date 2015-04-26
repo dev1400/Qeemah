@@ -128,13 +128,15 @@ com.sagia.common.ModelHelper = {
 		oEntry.Password = oPassword;
 		oEntry.Email = oInputEmail;
 		oEntry.MobileNo = oInputMobileNumber;
-		
-		this.oODataModel.create("USER_REGISTRATION_ENT", oEntry, {
+		console.log(oEntry);
+		//this.oODataModel.create("/USER_REGISTRATION_ENT", oEntry, {
+		this.oODataModel.create("/USER_REGISTRATION_ENT", oEntry , {
+
 			success : function(oData) {
-				console.log("success"+oData);
+				console.log(oData);
 			},
 			error : function(oResponse) {
-				console.log("error"+oResponse);
+				console.log(oResponse);
 			},
 			async : true
 		});		
