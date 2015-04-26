@@ -128,6 +128,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		if (oInputFirstName.length > 0 && oInputLastName.length > 0
 				&& oInputMobileNumber.length > 0 && oInputEmail.length > 0
 				&& oPassword.length > 0 && oReEntryPassword.length > 0) {
+			
+			this.oModelHelper.registerUser(oInputFirstName,oInputLastName,oInputMobileNumber, oInputEmail, oPassword, oReEntryPassword);
+			
 			sap.m.MessageToast.show(this.oModelHelper
 					.getText("RegistrationSuccessful"));
 		} else {

@@ -1,4 +1,5 @@
 jQuery.sap.declare("com.sagia.common.ModelHelper");
+jQuery.sap.require("sap.ui.model.odata.datajs");
 
 com.sagia.common.ModelHelper = {
 	oBundle : null,
@@ -34,7 +35,8 @@ com.sagia.common.ModelHelper = {
 	getServiceUrl : function() {
 
 		// OData Service URL
-		// var sServiceUrl = "proxy/http://rhocrmdev1.mysagia.gov:8000/sap/opu/odata/sap/ZSAMPLE1_SRV/";
+		// var sServiceUrl =
+		// "proxy/http://rhocrmdev1.mysagia.gov:8000/sap/opu/odata/sap/ZSAMPLE1_SRV/";
 		var sServiceUrl = "/sap/opu/odata/sap/ZQEEMAH_SRV/";
 
 		// for local testing prefix with proxy
@@ -54,115 +56,110 @@ com.sagia.common.ModelHelper = {
 		// var sUrl = dia.cmc.model.Config.getServiceUrl();
 		var sUrl = this.getServiceUrl();
 		this.oODataModel = new sap.ui.model.odata.ODataModel(sUrl, true,
-				"nkumar", "sap123",{
-			"X-Requested-With" : "XMLHttpRequest",/*
-					"Content-Type" : "application/xml",
-					"DataServiceVersion" : "2.0",*/
-					/*"Accept" : "application/atom+xml,application/xml,application/atomsvc+xml",
-					"xmlns" : "http://www.w3.org/2005/Atom"*/
+				"nkumar", "sap123", {
+					"X-Requested-With" : "XMLHttpRequest",/*
+															 * "Content-Type" :
+															 * "application/xml",
+															 * "DataServiceVersion" :
+															 * "2.0",
+															 */
+				/*
+				 * "Accept" :
+				 * "application/atom+xml,application/xml,application/atomsvc+xml",
+				 * "xmlns" : "http://www.w3.org/2005/Atom"
+				 */
 
-				},true,true);/*
-		this.oODataModel.refreshSecurityToken();
-*/
+				}, true, true);/*
+								 * this.oODataModel.refreshSecurityToken();
+								 */
 		// this.oODataModel.setSizeLimit(300);
+		this.oODataModel.refreshSecurityToken();
 
 		return this.oODataModel;
 	},
-	
+
 	/**
 	 * SignInUser
 	 */
 	signInUser : function(userid, password) {
 		// Open busy dialog
 		this.openBusyDialog();
-		
-		var that = this;		
-		// Create deferred object so that calling program can wait till asynchronous call is finished
-		var oRequestFinishedDeferred = jQuery.Deferred();	
-		
-		this.oODataModel.read("/USER_REGISTRATION_ENT(Flag='L',Userid='"+userid+"',Password='"+password+"',MobileNo='',Email='')",{
+
+		var that = this;
+		// Create deferred object so that calling program can wait till
+		// asynchronous call is finished
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		this.oODataModel.read("/USER_REGISTRATION_ENT(Flag='L',Userid='"
+				+ userid + "',Password='" + password
+				+ "',MobileNo='',Email='')", {
 			success : function(oData) {
 				oRequestFinishedDeferred.resolve(oData);
-				
-				// close busy dialog 
+
+				// close busy dialog
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				// Reject deferred object
 				oRequestFinishedDeferred.resolve();
 				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
-				
-				// close busy dialog 
+
+				// close busy dialog
 				that.closeBusyDialog();
-			}});
-		
+			}
+		});
+
 		return oRequestFinishedDeferred;
 	},
 	/**
 	 * Open busy dialog
 	 */
-	openBusyDialog: function (){
-		
+	openBusyDialog : function() {
+
 		if (!this._busyDialog) {
-			this._busyDialog = new sap.ui.xmlfragment(
-					"idBusydialog", "com.sagia.view.fragments.busydialog",
-					this);
+			this._busyDialog = new sap.ui.xmlfragment("idBusydialog",
+					"com.sagia.view.fragments.busydialog", this);
 		}
-		this._busyDialog.open();		
+		this._busyDialog.open();
 	},
-	
+
 	/**
 	 * Close busy dialog
 	 */
-	closeBusyDialog: function(){
+	closeBusyDialog : function() {
 		this._busyDialog.close();
-		
-	},
-	
 
+	},
 
 	// //////////////////////////////////////////////////////////////////////////////////////////////
-	registerUser : function() {
+	registerUser : function(oInputFirstName, oInputLastName,
+			oInputMobileNumber, oInputEmail, oPassword, oReEntryPassword) {
 
 		var oEntry = {};
-		
-		
-		
-		oEntry.MobileNo="0009990003";
-		oEntry.Email="abdul_waheedE@sagia.gov.sa"
-		oEntry.Password="WE";
-		oEntry.Userid="Waheed14E";
-		oEntry.Flag="R";
-		
 
-		/*this.oODataModel.setDefaultBindingMode("TwoWay");
-		this.oODataModel.setTokenHandlingEnabled(false);*/
+		// oInputFirstName,oInputLastName,oInputMobileNumber, oInputEmail,
+		// oPassword, oReEntryPassword
 
-		this.oODataModel.attachRequestFailed(function(evt) {
-			alert("Server error: " + evt.getParameter("message") + " - "
-					+ evt.getParameter("statusText"));
-		});
-		this.oODataModel.attachRequestSent(function (oEvent) {
-		    console.log("request sent");
-		});
-		this.oODataModel.attachRequestSent(function (oEvent) {
-		    console.log("request completed");
-		});
-		/*this.oODataModel.setHeaders(
+		oEntry.MobileNo = oInputMobileNumber;
+		oEntry.Email = oInputEmail;
+		oEntry.Password = oPassword;
+		oEntry.Userid = oInputFirstName;
+		oEntry.Flag = "R";
+
+		this.oODataModel.setHeaders(
 
 		{
 			"X-Requested-With" : "XMLHttpRequest",
 			"Content-Type" : "application/atom+xml",
 			"DataServiceVersion" : "2.0",
-			"X-CSRF-Token" : "Fetch"
+			"X-CSRF-Token" : "Fetch",
+			"xmlns" : "http://www.w3.org/2005/Atom"
 
 		}
 
-		);*/
+		);
 
-		//this.oODataModel.create('/USER_REGISTRATION_ENT', oEntry, {
-		/*this.oODataModel.create("/USER_REGISTRATION_ENT",oEntry,null,
-				{
+		this.oODataModel.create("/USER_REGISTRATION_ENT", oEntry, null, {
 			success : function(oData) {
 				console.log(oData);
 			},
@@ -170,25 +167,29 @@ com.sagia.common.ModelHelper = {
 				console.log(oResponse);
 			},
 			async : true
-		});*/
-		/*this.oODataModel.createEntry("/USER_REGISTRATION_ENT",oEntry);
-		this.oODataModel.submitChanges({
-			fnSuccess : function(oData) {
-				console.log(oData);
-			},
-			fnError : function(oResponse) {
-				console.log(oResponse);
-			}});*/
+		});
+
 		
-		this.oODataModel.read("/USER_REGISTRATION_ENT(Flag='L',Userid='4000000087',Password='123456',MobileNo='',Email='')",{
-			success : function(oData) {
-				console.log(oData);
-			},
-			error : function(oResponse) {
-				console.log(oResponse);
-			}});
+		/*OData.request
+        ({
+             requestUri: "http://rhocrmdev1.mysagia.gov:8000/sap/opu/odata/sap/ZQEEMAH_SRV//USER_REGISTRATION_ENT",
+                   method: "GET",
+                   headers:
+                       {     
+                                      "X-Requested-With": "XMLHttpRequest",
+                                      "Content-Type": "application/atom+xml",
+                                      "DataServiceVersion": "2.0",       
+                                      "X-CSRF-Token":"Fetch"   
+                       }           
+                },
+                 function (data, response)
+                 {
+                      var header_xcsrf_token = response.headers['x-csrf-token'];
+                      console.log(header_xcsrf_token);
+                 }
+          );*/
 		
-	
+		
 
 	}
 };

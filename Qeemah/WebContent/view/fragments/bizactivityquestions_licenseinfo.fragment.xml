@@ -146,7 +146,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						colSpan="2">
 						<sap.ui.commons.layout:content>
-							<Table width="60em">
+							<Table width="78em">
 								<columns>
 									<Column width="2em">
 										<Text text="#" />
@@ -161,7 +161,7 @@
 									<Column width="5em">
 										<Label text="{i18n>Quantity}"></Label>
 									</Column>
-									<Column width="5em">
+									<Column width="10em">
 										<Label text="{i18n>UnitOfMeasurement}"></Label>
 									</Column>
 									<Column width="5em">
