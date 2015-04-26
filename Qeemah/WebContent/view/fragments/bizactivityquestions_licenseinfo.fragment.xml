@@ -84,23 +84,8 @@
 										</sap.ui.commons.layout:content>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:MatrixLayoutRow>
-							</sap.ui.commons.layout:MatrixLayout>
-						</sap.ui.commons.layout:content>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-				</sap.ui.commons.layout:cells>
-			</sap.ui.commons.layout:MatrixLayoutRow>
-		</sap.ui.commons.layout:rows>
-	</sap.ui.commons.layout:MatrixLayout>
-	<sap.ui.commons.layout:MatrixLayout
-		layoutFixed="false">
-		<sap.ui.commons.layout:rows>
-			
-			<sap.ui.commons.layout:MatrixLayoutRow>
-				<sap.ui.commons.layout:cells>
-					<sap.ui.commons.layout:MatrixLayoutCell>
-						<sap.ui.commons.layout:content>
-							<sap.ui.commons.layout:MatrixLayout
-								layoutFixed="false">
+								
+								
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
@@ -142,11 +127,20 @@
 										<Button type="Accept" text="{i18n>Add}" />
 									</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:MatrixLayoutRow>
+							
 							</sap.ui.commons.layout:MatrixLayout>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow>
+			
+		</sap.ui.commons.layout:rows>
+	</sap.ui.commons.layout:MatrixLayout>
+	<sap.ui.commons.layout:MatrixLayout
+		layoutFixed="false">
+		<sap.ui.commons.layout:rows>
+			
+			
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
@@ -195,4 +189,8 @@
 	</sap.ui.commons.layout:MatrixLayout>
 	<!-- Business Activity Questions End -->
 	<!-- Child license activity Q end -->
+	<!-- <VBox alignItems="Center">
+	<Button style="Accept" text="{i18n>Next}" press="" >
+							</Button>
+	</VBox> -->
 </sap.ui.core:FragmentDefinition>
