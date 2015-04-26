@@ -120,14 +120,8 @@ com.sagia.common.ModelHelper = {
 
 	// //////////////////////////////////////////////////////////////////////////////////////////////
 	registerUser : function(oInputMobileNumber, oInputEmail, oPassword , oInputUserID) {
-
+		
 		var oEntry = {};
-
-		// oInputFirstName,oInputLastName,oInputMobileNumber, oInputEmail,
-		// oPassword, oReEntryPassword
-
-		
-		
 		
 		oEntry.Flag = 'R';
 		oEntry.Userid = oInputUserID;
@@ -135,9 +129,6 @@ com.sagia.common.ModelHelper = {
 		oEntry.Email = oInputEmail;
 		oEntry.MobileNo = oInputMobileNumber;
 		
-
-		
-
 		this.oODataModel.create("USER_REGISTRATION_ENT", oEntry, {
 			success : function(oData) {
 				console.log("success"+oData);
@@ -146,29 +137,6 @@ com.sagia.common.ModelHelper = {
 				console.log("error"+oResponse);
 			},
 			async : true
-		});
-
-		
-		/*OData.request
-        ({
-             requestUri: "http://rhocrmdev1.mysagia.gov:8000/sap/opu/odata/sap/ZQEEMAH_SRV/USER_REGISTRATION_ENT",
-                   method: "GET",
-                   headers:
-                       {     
-                                      "X-Requested-With": "XMLHttpRequest",
-                                      "Content-Type": "application/atom+xml",
-                                      "DataServiceVersion": "2.0",       
-                                      "X-CSRF-Token":"Fetch"   
-                       }           
-                },
-                 function (data, response)
-                 {
-                      var header_xcsrf_token = response.headers['x-csrf-token'];
-                      console.log(header_xcsrf_token);
-                 }
-          );*/
-		
-		
-
+		});		
 	}
 };
