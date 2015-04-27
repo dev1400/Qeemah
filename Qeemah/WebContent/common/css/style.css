@@ -144,10 +144,7 @@
   font-family: SEGOEUI-Normal !important;
   font-size: 1rem;
 }
-.sapMInputBaseInner {
-  background-color: #E3E2E2;
- }
- 
+
  .LogoWidth {
   width: 3.1em !important; 
  }
@@ -156,6 +153,7 @@
 }
 .sapMInputBaseInner {
   height: 2rem;
+  background-color: #E3E2E2;
 }
 .sapMSFF {
   height: 2rem;
