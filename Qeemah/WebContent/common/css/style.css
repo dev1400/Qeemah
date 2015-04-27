@@ -179,7 +179,11 @@
 }
 .sapMListTbl th {
   background: #00A19C;
+  
 }
 .sapMPI {
   height: 1rem;
+}
+.sapMListTbl .sapMText{
+  color: #ffffff !important;
 }
