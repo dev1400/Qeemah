@@ -10,6 +10,7 @@
 			<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
 				<html:br />
 				<html:br />
+				<html:br />
 				<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.user_registration"
 					type="XML" />
 				<sap.ui.commons.layout:MatrixLayout>
