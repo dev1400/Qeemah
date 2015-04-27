@@ -118,17 +118,20 @@ sap.ui.controller("com.sagia.view.Overview", {
 		// this._oVboxUserInfo.setVisible(true);
 	},
 	handleRegisterUserButtonPress : function() {
-
-		var oInputUserID = this.getView().byId("idUserID")
-				.getValue();
+		
+		var oInputFirstName = this.getView().byId("idFirstNameInputText")
+		.getValue();
+		var oInputLastName = this.getView().byId("idLastNameInputText")
+		.getValue();
+		
 		var oInputMobileNumber = this.getView().byId("idInputMobileNumber")
 				.getValue();
 		var oInputEmail = this.getView().byId("idInputEmail").getValue();
 		var oPassword = this.getView().byId("idInputPassword").getValue();
 		if (oInputMobileNumber.length > 0 && oInputEmail.length > 0
-				&& oPassword.length > 0 && oInputUserID.length > 0) {
+				&& oPassword.length > 0 && oInputFirstName.length > 0 && oInputLastName.length > 0) {
 			
-			this.oModelHelper.registerUser(oInputMobileNumber, oInputEmail, oPassword, oInputUserID);
+			this.oModelHelper.registerUser(oInputMobileNumber, oInputEmail, oPassword, oInputFirstName, oInputLastName);
 			
 			sap.m.MessageToast.show(this.oModelHelper
 					.getText("RegistrationSuccessful"));

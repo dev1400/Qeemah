@@ -51,20 +51,34 @@
 			<sap.ui.commons.layout:MatrixLayout
 				layoutFixed="false" columns="2" id="idRegistrationMatrixLayout"
 				visible="false">
+				
+				 <sap.ui.commons.layout:MatrixLayoutRow>
 
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<Label text="*" class="redcolortext"></Label>
+						<Label text="{i18n>PleaseEnterFirstName}" class="textcolorwhite"></Label>
+					</sap.ui.commons.layout:MatrixLayoutCell>
 
-
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<Input type="Text" required="true" id="idFirstNameInputText" />
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<Label text="*" class="redcolortext"></Label>
-						<Label text="{i18n>PleaseEnterUserID}" class="textcolorwhite"></Label>
+						<Label text="{i18n>PleaseEnterLastName}" class="textcolorwhite"></Label>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" id="idUserID" />
+						<Input type="Text" required="true" id="idLastNameInputText" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
+
+
+
+				
 
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
@@ -75,6 +89,18 @@
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<Input type="Text" required="true" id="idInputPassword" />
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				
+				<sap.ui.commons.layout:MatrixLayoutRow>
+
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<Label text="*" class="redcolortext"></Label>
+						<Label text="{i18n>PleaseReEnterPassword}" class="textcolorwhite"></Label>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<Input type="Text" required="true" id="idInputRePassword" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 

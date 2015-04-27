@@ -18,7 +18,9 @@ com.sagia.common.ModelHelper = {
 
 		return i18nModel;
 	},
-	// Return text from i18n model
+	/**
+	 * Return text from i18n model
+	 */
 	getText : function(sPath, sArg1) {
 
 		var sText = this.oBundle.getText(sPath);
@@ -35,7 +37,6 @@ com.sagia.common.ModelHelper = {
 	getServiceUrl : function() {
 
 		// OData Service URL
-		// var sServiceUrl =
 		// "proxy/http://rhocrmdev1.mysagia.gov:8000/sap/opu/odata/sap/ZSAMPLE1_SRV/";
 		var sServiceUrl = "/sap/opu/odata/sap/ZQEEMAH_SRV/";
 
@@ -118,18 +119,12 @@ com.sagia.common.ModelHelper = {
 
 	},
 
-	// //////////////////////////////////////////////////////////////////////////////////////////////
-	registerUser : function(oInputMobileNumber, oInputEmail, oPassword , oInputUserID) {
+	/**
+	 * Register new user.
+	 * @author Abdul Waheed
+	 */
+	registerUser : function(oInputMobileNumber, oInputEmail, oPassword, oInputFirstName, oInputLastName) {		
 		
-		/*var oEntry = {};
-		
-		oEntry.Flag = 'R';
-		oEntry.Userid = oInputUserID;
-		oEntry.Password = oPassword;
-		oEntry.Email = oInputEmail;
-		oEntry.MobileNo = oInputMobileNumber;*/
-		/*oEntry.Userid = '';
-		oEntry.Password = '';*/
         var oEntry = {};
         oEntry.Flag = 'R';
         oEntry.Userid = '';
@@ -137,15 +132,6 @@ com.sagia.common.ModelHelper = {
 		oEntry.MobileNo = '1231223';
 		oEntry.Email = 'email@email.com';
 		
-		/*oEntry.Flag = 'R';
-		oEntry.Userid = '';
-		oEntry.Password = '';
-		oEntry.MobileNo = oInputMobileNumber;
-		oEntry.Email = oInputEmail;*/
-		
-		//USER_REGISTRATION_ENT(Flag='R',Userid='',Password='',Email='swwwwf',MobileNo='swwwwf')
-		
-		//this.oODataModel.create("/USER_REGISTRATION_ENT", oEntry, {
 		this.oODataModel.create("/USER_REGISTRATION_ENT", oEntry , {
 		
 			success : function(oData) {
