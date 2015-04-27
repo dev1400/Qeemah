@@ -14,32 +14,32 @@
 				<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.user_registration"
 					type="XML" />
 				<sap.ui.commons.layout:MatrixLayout>
-				<sap.ui.commons.layout:MatrixLayoutRow>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="End">
-						<HBox justifyContent="End" alignItems="Center">
-							<Image src="common/mime/dot.png"></Image>
-							<Link text="{i18n>ServiceGuide}" class="linkColor" />
-						</HBox>
+					<sap.ui.commons.layout:MatrixLayoutRow>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							hAlign="End">
+							<HBox justifyContent="End" alignItems="Center">
+								<Image src="common/mime/dot.png"></Image>
+								<Link text="{i18n>ServiceGuide}" class="linkColor" />
+							</HBox>
 
 
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
-						<HBox justifyContent="Start" alignItems="Center">
-							<Image src="common/mime/dot.png"></Image>
-							<Link text="{i18n>DownloadForms}" class="linkColor" />
-						</HBox>
-					</sap.ui.commons.layout:MatrixLayoutCell>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							hAlign="Begin">
+							<HBox justifyContent="Start" alignItems="Center">
+								<Image src="common/mime/dot.png"></Image>
+								<Link text="{i18n>DownloadForms}" class="linkColor" />
+							</HBox>
+						</sap.ui.commons.layout:MatrixLayoutCell>
 
 
-				</sap.ui.commons.layout:MatrixLayoutRow>
+					</sap.ui.commons.layout:MatrixLayoutRow>
 
-			</sap.ui.commons.layout:MatrixLayout>
+				</sap.ui.commons.layout:MatrixLayout>
 
 			</VBox>
 
-			
+
 		</VBox>
 
 
@@ -55,21 +55,57 @@
 			<VBox id="idTopHeaderVBox" visible="false">
 				<HBox class="MainLicenseRegBGIMG1" justifyContent="SpaceBetween">
 					<VBox alignItems="Center">
-						<sap.ui.core:HTML content="{i18n>eServicesHTML}"></sap.ui.core:HTML>
-						<Image src="common/mime/innerlogo.png" class="LogoWidth"></Image>
+
+
+
+						<sap.ui.commons.layout:MatrixLayout
+							layoutFixed="false">
+							<sap.ui.commons.layout:rows>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:cells>
+										<sap.ui.commons.layout:MatrixLayoutCell
+											vAlign="Middle">
+											<Image src="common/mime/innerlogo.png" class="LogoWidth"></Image>
+										</sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:MatrixLayoutCell
+											vAlign="Middle">
+											<sap.ui.core:HTML content="{i18n>eServicesHTML}"></sap.ui.core:HTML>
+										</sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:cells>
+								</sap.ui.commons.layout:MatrixLayoutRow>
+							</sap.ui.commons.layout:rows>
+						</sap.ui.commons.layout:MatrixLayout>
 
 					</VBox>
 
 					<VBox justifyContent="SpaceBetween">
 
 						<HBox>
-							<ComboBox width="12em">
-								<sap.ui.core:Item />
-							</ComboBox>
-							<SearchField width="12em" />
-							<ComboBox width="9em">
-								<sap.ui.core:Item />
-							</ComboBox>
+							<sap.ui.commons.layout:MatrixLayout
+								layoutFixed="false">
+								<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												vAlign="Middle">
+												<ComboBox width="10em">
+													<sap.ui.core:Item />
+												</ComboBox>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												vAlign="Middle">
+												<SearchField width="12em" />
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<ComboBox width="7em">
+													<sap.ui.core:Item />
+												</ComboBox>
+
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+							</sap.ui.commons.layout:MatrixLayout>
 						</HBox>
 					</VBox>
 				</HBox>
@@ -83,8 +119,8 @@
 							<sap.ui.commons.layout:rows>
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:cells>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-									<Button text="{i18n>Save}" id="idSaveButton"  />
+										<sap.ui.commons.layout:MatrixLayoutCell>
+											<Button text="{i18n>Save}" id="idSaveButton" />
 										</sap.ui.commons.layout:MatrixLayoutCell>
 										<sap.ui.commons.layout:MatrixLayoutCell>
 											<Image src="common/mime/logout.png"></Image>
@@ -135,9 +171,10 @@
 					<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.licenseinfo"
 						type="XML" />
 				</VBox>
-				
+
 				<VBox id="idShareHoldersInfoContent" width="100%" visible="false">
-					<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.shareholders_tabstrip"
+					<sap.ui.core:Fragment
+						fragmentName="com.sagia.view.fragments.shareholders_tabstrip"
 						type="XML" />
 				</VBox>
 
