@@ -3,11 +3,11 @@
 	xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
 	xmlns:sap.ui.commons="sap.ui.commons"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
- <VBox width="74rem" class="BasicInfoButtonHeadingBGVBOX">
+ <VBox width="74.44rem" class="HeadingBGVBOX">
 	    <sap.ui.core:HTML content="{i18n>LicenseInformationHTML}"></sap.ui.core:HTML>
 	<!-- License info start -->
 	<sap.ui.commons:TabStrip height="64em"
-		width="80em">
+		width="65rem">
 		<sap.ui.commons:customData>
 			<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
 				value="true" writeToDom="true"></sap.ui.core:CustomData>

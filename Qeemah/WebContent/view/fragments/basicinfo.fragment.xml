@@ -3,34 +3,9 @@
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.commons="sap.ui.commons"
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-	    <VBox width="72.44rem" class="BasicInfoButtonHeadingBGVBOX">
+	    <VBox width="72.44rem" class="HeadingBGVBOX">
 	    <sap.ui.core:HTML content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
-		<!-- <HBox class="MainLicenseRegBGIMG2" 
-					alignItems="Center"  justifyContent="SpaceBetween" width="72.44rem">
-					<sap.ui.core:HTML content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
-					<HBox>
-						<sap.ui.commons.layout:MatrixLayout
-							layoutFixed="false">
-							<sap.ui.commons.layout:rows>
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:cells>
-										<sap.ui.commons.layout:MatrixLayoutCell>
-											<Button text="{i18n>Save}" id="idSaveButton" />
-										</sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:MatrixLayoutCell
-											vAlign="Bottom">
-											<Image src="common/mime/logout.png"></Image>
-										</sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:MatrixLayoutCell
-											vAlign="Bottom">
-											<Link text="{i18n>Logout}" class="linkColorWhite" />
-										</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:cells>
-								</sap.ui.commons.layout:MatrixLayoutRow>
-							</sap.ui.commons.layout:rows>
-						</sap.ui.commons.layout:MatrixLayout>
-					</HBox>
-				</HBox> -->
+		
 	
 
 

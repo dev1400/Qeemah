@@ -4,9 +4,21 @@
 	xmlns:sap.ui.commons="sap.ui.commons" xmlns:sap.ui.core="sap.ui.core"
 	xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
 	xmlns:sap.ui.core.mvc="sap.ui.core.mvc" xmlns:sap.ui.unified="sap.ui.unified">
-	<VBox id="idShareHoldersContentVBox" justifyContent="Center"
-		alignItems="Center">
-		<sap.ui.commons.layout:MatrixLayout
+	<VBox width="72.44rem" id="idShareHoldersContentVBox" justifyContent="Center"
+		alignItems="Center" class="HeadingBGVBOX">
+		<sap.ui.core:HTML content="{i18n>ShareHolderInformationHTML}"></sap.ui.core:HTML>
+
+		<sap.ui.commons:TabStrip id="idShareHoldersTabStrip"
+			height="60em" width="80em">
+			<sap.ui.commons:customData>
+				<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
+					value="true" writeToDom="true"></sap.ui.core:CustomData>
+			</sap.ui.commons:customData>
+			<sap.ui.commons:tabs>
+				<sap.ui.commons:Tab id="idShareHoldersTabStrip1"
+					text="{i18n>ExistingShareHolder}">
+					<sap.ui.commons:content>
+					<sap.ui.commons.layout:MatrixLayout
 			layoutFixed="false">
 			<sap.ui.commons.layout:rows>
 
@@ -15,7 +27,7 @@
 						<sap.ui.commons.layout:MatrixLayoutCell
 							vAlign="Middle">
 							<sap.ui.commons.layout:content>
-								<Label text="{i18n>ShareHolderCompletion}" class="textcolorwhite"></Label>
+								<Label text="{i18n>ShareHolderCompletion}"></Label>
 							</sap.ui.commons.layout:content>
 						</sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:MatrixLayoutCell
@@ -29,18 +41,8 @@
 				</sap.ui.commons.layout:MatrixLayoutRow>
 			</sap.ui.commons.layout:rows>
 		</sap.ui.commons.layout:MatrixLayout>
-
-
-		<sap.ui.commons:TabStrip id="idShareHoldersTabStrip"
-			height="60em" width="80em">
-			<sap.ui.commons:customData>
-				<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
-					value="true" writeToDom="true"></sap.ui.core:CustomData>
-			</sap.ui.commons:customData>
-			<sap.ui.commons:tabs>
-				<sap.ui.commons:Tab id="idShareHoldersTabStrip1"
-					text="{i18n>ExistingShareHolder}">
-					<sap.ui.commons:content>
+					
+					
 						<VBox justifyContent="Center" alignItems="Center">
 
 							<sap.ui.commons.layout:MatrixLayout
