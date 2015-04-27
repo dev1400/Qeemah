@@ -122,10 +122,10 @@
 										<sap.ui.commons.layout:MatrixLayoutCell>
 											<Button text="{i18n>Save}" id="idSaveButton" />
 										</sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:MatrixLayoutCell vAlign="Bottom">
 											<Image src="common/mime/logout.png"></Image>
 										</sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:MatrixLayoutCell vAlign="Bottom">
 											<Link text="{i18n>Logout}" class="linkColorWhite" />
 										</sap.ui.commons.layout:MatrixLayoutCell>
 									</sap.ui.commons.layout:cells>
