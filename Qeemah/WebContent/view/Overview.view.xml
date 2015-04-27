@@ -121,10 +121,11 @@
 						</HBox>
 					</VBox>
 				</HBox>
-
-				<HBox class="MainLicenseRegBGIMG2" justifyContent="SpaceBetween"
-					alignItems="Center">
-					<sap.ui.core:HTML content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
+				
+				
+				<HBox class="MainLicenseRegBGIMG2" 
+					alignItems="Center"  justifyContent="End" >
+					<!-- <sap.ui.core:HTML content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML> -->
 					<HBox>
 						<sap.ui.commons.layout:MatrixLayout
 							layoutFixed="false">
@@ -152,45 +153,57 @@
 			</VBox>
 
 			<HBox>
-				<VBox class="BasicInfoButtonBGVBOX">
-					<VBox class="BasicInfoButtonBG" justifyContent="Center">
-						<Image src="common/mime/basicinfo_hover.png" id="idBasicInfoButton"
-							press="handleBasicInfoButtonClick" />
-						<Image src="common/mime/license.png" id="idLicenseInfoButton"
-							press="handleLicenseButtonClick" />
-						<Image src="common/mime/shareholder.png" id="idShareholderInfoButton"
-							press="handleShareholderInfoButtonClick" />
-						<Image src="common/mime/preview.png" id="idPreviewInfoButton"
-							press="handlePreviewInfoButtonClick" />
-						<Image src="common/mime/terms.png" id="idTermsInfoButton"
-							press="handleTermsInfoButtonClick" />
-						<Image src="common/mime/submit.png" id="idSubmitInfoButton"
-							press="handleSubmitInfoButtonClick" />
-					</VBox>
+
+				<sap.ui.commons.layout:MatrixLayout
+					layoutFixed="false">
+					<sap.ui.commons.layout:rows>
+						<sap.ui.commons.layout:MatrixLayoutRow>
+							<sap.ui.commons.layout:cells>
+								<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center" vAlign="Top">
+									<VBox class="BasicInfoButtonBGVBOX">
+										<VBox class="BasicInfoButtonBG" justifyContent="Center">
+											<Image src="common/mime/basicinfo_hover.png" id="idBasicInfoButton"
+												press="handleBasicInfoButtonClick" />
+											<Image src="common/mime/license.png" id="idLicenseInfoButton"
+												press="handleLicenseButtonClick" />
+											<Image src="common/mime/shareholder.png" id="idShareholderInfoButton"
+												press="handleShareholderInfoButtonClick" />
+											<Image src="common/mime/preview.png" id="idPreviewInfoButton"
+												press="handlePreviewInfoButtonClick" />
+											<Image src="common/mime/terms.png" id="idTermsInfoButton"
+												press="handleTermsInfoButtonClick" />
+											<Image src="common/mime/submit.png" id="idSubmitInfoButton"
+												press="handleSubmitInfoButtonClick" />
+										</VBox>
 
 
-				</VBox>
-
-
-
-				<VBox id="idBasicInfoContent" width="100%">
-
-
-
+									</VBox>
+								</sap.ui.commons.layout:MatrixLayoutCell>
+								<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center" vAlign="Top">
+								
+				<VBox id="idBasicInfoContent" alignItems="Center">
 					<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.basicinfo"
-						type="XML" />
-
+						type="XML"  />
 				</VBox>
-				<VBox id="idLicenseInfoContent" width="100%" visible="false">
+				<VBox id="idLicenseInfoContent" alignItems="Center" visible="false">
 					<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.licenseinfo"
 						type="XML" />
 				</VBox>
-
-				<VBox id="idShareHoldersInfoContent" width="100%" visible="false">
+				<VBox id="idShareHoldersInfoContent" alignItems="Center" visible="false">
 					<sap.ui.core:Fragment
 						fragmentName="com.sagia.view.fragments.shareholders_tabstrip"
 						type="XML" />
 				</VBox>
+								</sap.ui.commons.layout:MatrixLayoutCell>
+							</sap.ui.commons.layout:cells>
+						</sap.ui.commons.layout:MatrixLayoutRow>
+					</sap.ui.commons.layout:rows>
+				</sap.ui.commons.layout:MatrixLayout>
+
+
+
+
+
 
 			</HBox>
 

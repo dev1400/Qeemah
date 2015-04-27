@@ -82,14 +82,18 @@
 .linkColorWhite {
 	color: White !important;
 }
-.BasicInfoButtonBGVBOX{
-	padding-left: 1.7em;
+.BasicInfoButtonBGVBOX {
+  padding-left: 1.7em;
+  padding-top: 1.7em;
+}
+.BasicInfoButtonHeadingBGVBOX {
+  padding-top: 1.7em;
 }
 .BasicInfoButtonBG {
 	/* padding: 0; */
-	width: 10.21em;
+	/* width: 10.21em;
 	border: none;
-	background: #01A19C;/*#E3E2E2;*/
+	background: #E3E2E2; *//* #01A19C; */
 }
 .BasicInfoButtonBGT {
 	width:5em;
