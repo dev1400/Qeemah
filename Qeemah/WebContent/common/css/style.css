@@ -72,6 +72,7 @@
 /*Button Background color*/
 .sapMBtnInner {
 	color: white;
+	height: 2rem;
 	background: -webkit-linear-gradient(top, #00A19C 0, #00A19C 100%);
 }
 /*Button Background Color*/
@@ -165,4 +166,17 @@
 }
 .sapMComboBoxBaseArrow { 
   height: 1.8rem;
+}
+
+.sapMBtnContent {
+  line-height: 2rem;
+}
+.sapMBtn {
+  height: 2rem;
+}
+.sapMText {
+  font-family: SEGOEUI-Normal;
+}
+.sapMListTbl th {
+  background: #00A19C;
 }
