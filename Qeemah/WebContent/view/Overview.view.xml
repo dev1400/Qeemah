@@ -11,31 +11,43 @@
 				<html:br />
 				<html:br />
 				<html:br />
-				<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.user_registration"
-					type="XML" />
 				<sap.ui.commons.layout:MatrixLayout>
 					<sap.ui.commons.layout:MatrixLayoutRow>
-						<sap.ui.commons.layout:MatrixLayoutCell
-							hAlign="End">
-							<HBox justifyContent="End" alignItems="Center">
-								<Image src="common/mime/dot.png"></Image>
-								<Link text="{i18n>ServiceGuide}" class="linkColor" />
-							</HBox>
-
-
+						<sap.ui.commons.layout:MatrixLayoutCell>
+							<sap.ui.core:Fragment
+								fragmentName="com.sagia.view.fragments.user_registration" type="XML" />
 						</sap.ui.commons.layout:MatrixLayoutCell>
-						<sap.ui.commons.layout:MatrixLayoutCell
-							hAlign="Begin">
-							<HBox justifyContent="Start" alignItems="Center">
-								<Image src="common/mime/dot.png"></Image>
-								<Link text="{i18n>DownloadForms}" class="linkColor" />
-							</HBox>
-						</sap.ui.commons.layout:MatrixLayoutCell>
-
-
 					</sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutRow>
+						<sap.ui.commons.layout:MatrixLayoutCell>
+							<sap.ui.commons.layout:MatrixLayout>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutCell
+										hAlign="End" vAlign="Bottom">
+										<HBox justifyContent="End" alignItems="Center">
+											<Image src="common/mime/dot.png"></Image>
+											<Link text="{i18n>ServiceGuide}" class="linkColor" />
+										</HBox>
 
+
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell
+										hAlign="Begin" vAlign="Bottom">
+										<HBox justifyContent="Start" alignItems="Center">
+											<Image src="common/mime/dot.png"></Image>
+											<Link text="{i18n>DownloadForms}" class="linkColor" />
+										</HBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+
+
+								</sap.ui.commons.layout:MatrixLayoutRow>
+
+							</sap.ui.commons.layout:MatrixLayout>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:MatrixLayoutRow>
 				</sap.ui.commons.layout:MatrixLayout>
+
+
 
 			</VBox>
 
@@ -122,10 +134,12 @@
 										<sap.ui.commons.layout:MatrixLayoutCell>
 											<Button text="{i18n>Save}" id="idSaveButton" />
 										</sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:MatrixLayoutCell vAlign="Bottom">
+										<sap.ui.commons.layout:MatrixLayoutCell
+											vAlign="Bottom">
 											<Image src="common/mime/logout.png"></Image>
 										</sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:MatrixLayoutCell vAlign="Bottom">
+										<sap.ui.commons.layout:MatrixLayoutCell
+											vAlign="Bottom">
 											<Link text="{i18n>Logout}" class="linkColorWhite" />
 										</sap.ui.commons.layout:MatrixLayoutCell>
 									</sap.ui.commons.layout:cells>
