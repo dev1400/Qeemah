@@ -121,24 +121,41 @@ com.sagia.common.ModelHelper = {
 	// //////////////////////////////////////////////////////////////////////////////////////////////
 	registerUser : function(oInputMobileNumber, oInputEmail, oPassword , oInputUserID) {
 		
-		var oEntry = {};
+		/*var oEntry = {};
 		
 		oEntry.Flag = 'R';
 		oEntry.Userid = oInputUserID;
 		oEntry.Password = oPassword;
 		oEntry.Email = oInputEmail;
+		oEntry.MobileNo = oInputMobileNumber;*/
+		/*oEntry.Userid = '';
+		oEntry.Password = '';*/
+        var oEntry = {};
+        oEntry.Flag = 'R';
+        oEntry.Userid = '';
+		oEntry.Password = '';
+		oEntry.MobileNo = '1231223';
+		oEntry.Email = 'email@email.com';
+		
+		/*oEntry.Flag = 'R';
+		oEntry.Userid = '';
+		oEntry.Password = '';
 		oEntry.MobileNo = oInputMobileNumber;
-		console.log(oEntry);
+		oEntry.Email = oInputEmail;*/
+		
+		//USER_REGISTRATION_ENT(Flag='R',Userid='',Password='',Email='swwwwf',MobileNo='swwwwf')
+		
 		//this.oODataModel.create("/USER_REGISTRATION_ENT", oEntry, {
 		this.oODataModel.create("/USER_REGISTRATION_ENT", oEntry , {
-
+		
 			success : function(oData) {
 				console.log(oData);
 			},
 			error : function(oResponse) {
 				console.log(oResponse);
 			},
-			async : true
+			async : true,
+			urlParameters : oEntry
 		});		
 	}
 };
