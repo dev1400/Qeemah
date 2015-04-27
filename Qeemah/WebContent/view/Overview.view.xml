@@ -126,13 +126,13 @@
 				<HBox class="MainLicenseRegBGIMG2" 
 					alignItems="Center"  justifyContent="End" >
 					<!-- <sap.ui.core:HTML content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML> -->
-					<HBox>
+					<HBox alignItems="Center" justifyContent="Center">
 						<sap.ui.commons.layout:MatrixLayout
 							layoutFixed="false">
 							<sap.ui.commons.layout:rows>
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:cells>
-										<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:MatrixLayoutCell vAlign="Top">
 											<Button text="{i18n>Save}" id="idSaveButton" />
 										</sap.ui.commons.layout:MatrixLayoutCell>
 										<sap.ui.commons.layout:MatrixLayoutCell
