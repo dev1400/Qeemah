@@ -71,6 +71,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oSubmitInfoButton = this.getView().byId("idSubmitInfoButton");
 		
 		this._oLicenseInfoContent = this.getView().byId("idLicenseInfoContent");
+		this._oShareHoldersInfoContent = this.getView().byId("idShareHoldersInfoContent");
 
 	},
 
@@ -316,14 +317,20 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		this._oBasicInfoContent.setVisible(true);
 		this._oLicenseInfoContent.setVisible(false);
+		this._oShareHoldersInfoContent.setVisible(false);
 	},
 	handleLicenseButtonClick : function(){
 		this._oLicenseInfoContent.setVisible(true);
 		this._oBasicInfoContent.setVisible(false);
+		this._oShareHoldersInfoContent.setVisible(false);
 		this._oLicenseInfoButton.setSrc("common/mime/license_hover.png");
 	},
 	handleShareholderInfoButtonClick : function(){
 		this._oShareholderInfoButton.setSrc("common/mime/shareholder_hover.png");
+		
+		this._oShareHoldersInfoContent.setVisible(true);
+		this._oLicenseInfoContent.setVisible(false);
+		this._oBasicInfoContent.setVisible(false);
 	},
 	handlePreviewInfoButtonClick : function(){
 		this._oPreviewInfoButton.setSrc("common/mime/preview_hover.png");

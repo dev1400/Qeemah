@@ -135,6 +135,11 @@
 					<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.licenseinfo"
 						type="XML" />
 				</VBox>
+				
+				<VBox id="idShareHoldersInfoContent" width="100%" visible="false">
+					<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.shareholders_tabstrip"
+						type="XML" />
+				</VBox>
 
 			</HBox>
 

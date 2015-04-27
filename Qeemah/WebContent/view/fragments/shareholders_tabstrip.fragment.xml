@@ -4,14 +4,15 @@
 	xmlns:sap.ui.commons="sap.ui.commons" xmlns:sap.ui.core="sap.ui.core"
 	xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
 	xmlns:sap.ui.core.mvc="sap.ui.core.mvc" xmlns:sap.ui.unified="sap.ui.unified">
-	<sap.ui.commons:TabStrip id="TabStrip1" height="60em"
+	<VBox id="idShareHoldersContentVBox" justifyContent="Center" alignItems="Center">
+	<sap.ui.commons:TabStrip id="idShareHoldersTabStrip" height="60em"
 		width="80em">
 		<sap.ui.commons:customData>
 			<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
 				value="true" writeToDom="true"></sap.ui.core:CustomData>
 		</sap.ui.commons:customData>
 		<sap.ui.commons:tabs>
-			<sap.ui.commons:Tab id="TabStrip1-0"
+			<sap.ui.commons:Tab id="idShareHoldersTabStrip1"
 				text="{i18n>ExistingShareHolder}">
 				<sap.ui.commons:content>
 
@@ -541,4 +542,5 @@
 
 		</sap.ui.commons:tabs>
 	</sap.ui.commons:TabStrip>
+	</VBox>
 </core:FragmentDefinition>

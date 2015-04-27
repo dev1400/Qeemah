@@ -163,3 +163,6 @@
 .redcolortext{
 	color:red !important;
 }
+.sapMComboBoxBaseArrow { 
+  height: 1.8rem;
+}
