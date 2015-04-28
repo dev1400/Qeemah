@@ -72,6 +72,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this._oLicenseInfoContent = this.getView().byId("idLicenseInfoContent");
 		this._oShareHoldersInfoContent = this.getView().byId("idShareHoldersInfoContent");
+		
+		this._oStagesHeading = this.getView().byId("idStagesHeading");
 
 	},
 
@@ -318,12 +320,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oBasicInfoContent.setVisible(true);
 		this._oLicenseInfoContent.setVisible(false);
 		this._oShareHoldersInfoContent.setVisible(false);
+		
+		this._oStagesHeading.setContent(this.oModelHelper
+				.getText("BasicInformationHTML"));
 	},
 	handleLicenseButtonClick : function(){
 		this._oLicenseInfoContent.setVisible(true);
 		this._oBasicInfoContent.setVisible(false);
 		this._oShareHoldersInfoContent.setVisible(false);
 		this._oLicenseInfoButton.setSrc("common/mime/license_hover.png");
+		this._oStagesHeading.setContent(this.oModelHelper
+				.getText("LicenseInformationHTML"));
 	},
 	handleShareholderInfoButtonClick : function(){
 		this._oShareholderInfoButton.setSrc("common/mime/shareholder_hover.png");
@@ -331,15 +338,23 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oShareHoldersInfoContent.setVisible(true);
 		this._oLicenseInfoContent.setVisible(false);
 		this._oBasicInfoContent.setVisible(false);
+		this._oStagesHeading.setContent(this.oModelHelper
+				.getText("ShareHolderInformationHTML"));
 	},
 	handlePreviewInfoButtonClick : function(){
 		this._oPreviewInfoButton.setSrc("common/mime/preview_hover.png");
+		this._oStagesHeading.setContent(this.oModelHelper
+				.getText("PreviewInformationHTML"));
 	},
 	handleTermsInfoButtonClick : function(){
 		this._oTermsInfoButton.setSrc("common/mime/terms_hover.png");
+		this._oStagesHeading.setContent(this.oModelHelper
+				.getText("TermsnCondInformationHTML"));
 	},
 	handleSubmitInfoButtonClick : function(){
 		this._oSubmitInfoButton.setSrc("common/mime/submit_hover.png");
+		this._oStagesHeading.setContent(this.oModelHelper
+				.getText("SubmitInformationHTML"));
 	},
 	
 });

@@ -124,8 +124,8 @@
 				
 				
 				<HBox class="MainLicenseRegBGIMG2" 
-					alignItems="Center"  justifyContent="End" >
-					<!-- <sap.ui.core:HTML content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML> -->
+					alignItems="Center"  justifyContent="SpaceBetween" >
+					<sap.ui.core:HTML id="idStagesHeading" content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
 					<HBox alignItems="Center" justifyContent="Center">
 						<sap.ui.commons.layout:MatrixLayout
 							layoutFixed="false">

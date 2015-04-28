@@ -4,12 +4,36 @@
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	    <VBox width="72.44rem" class="HeadingBGVBOX">
-	    <sap.ui.core:HTML content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
+	   
 		
-	
+		<!-- <IconTabBar
+    class="iconTabBarPaddingTop"
+    id="idIconTabBarNoIcons"
+    expanded="true" expandable="false">
+    <items>
+      <IconTabFilter
+        text="Info">
+        <Text text="Info content goes here ..." />
+      </IconTabFilter>
+      <IconTabFilter
+        text="Attachments">
+        <Text text="Attachments go here ..." />
+      </IconTabFilter>
+      <IconTabFilter
+        text="Notes">
+        <Text text="Notes go here ..." />
+      </IconTabFilter>
+      <IconTabFilter
+        text="People">
+        <Text text="People content goes here ..." />
+      </IconTabFilter>
+    </items>
+  </IconTabBar>
+ -->	
 
 
 	<HBox id="idBasicInfoBoxContent" justifyContent="Center">
+	
 	<sap.ui.commons:TabStrip id="TabStrip1" height="47.5em"
 		width="65rem">
 		<sap.ui.commons:customData>
@@ -17,8 +41,11 @@
 				value="true" writeToDom="true"></sap.ui.core:CustomData>
 		</sap.ui.commons:customData>
 		<sap.ui.commons:tabs >
-			<sap.ui.commons:Tab id="TabStrip1-0"
-				text="{i18n>Person}" >
+			<sap.ui.commons:Tab id="TabStrip1-0" 
+				>
+				<sap.ui.commons:title>
+                    <sap.ui.core:Title id="TabStrip1-0-titlel" text="{i18n>Person}" level="Auto"></sap.ui.core:Title>
+                </sap.ui.commons:title>
 				<sap.ui.commons:content>
 				<VBox justifyContent="Center">
 			<sap.ui.commons.layout:MatrixLayout
@@ -272,7 +299,7 @@
 								vAlign="Middle" hAlign="End" >
 								<sap.ui.commons.layout:content>
 									<HBox justifyContent="End">
-										<Input type="Text" placeholder="{i18n>BuildingNo}"
+										<Input type="Text"
 											width="25em" />
 									</HBox>
 								</sap.ui.commons.layout:content>
@@ -307,7 +334,7 @@
 								vAlign="Middle" hAlign="End" >
 								<sap.ui.commons.layout:content>
 									<HBox justifyContent="End">
-										<Input type="Text" placeholder="{i18n>Email}" width="25em" />
+										<Input type="Text" width="25em" />
 									</HBox>
 								</sap.ui.commons.layout:content>
 							</sap.ui.commons.layout:MatrixLayoutCell>
@@ -643,7 +670,7 @@
 								vAlign="Middle" hAlign="End" >
 								<sap.ui.commons.layout:content>
 									<HBox justifyContent="End">
-										<Input type="Text" placeholder="{i18n>Email}" width="25em" />
+										<Input type="Text" width="25em" />
 									</HBox>
 								</sap.ui.commons.layout:content>
 							</sap.ui.commons.layout:MatrixLayoutCell>

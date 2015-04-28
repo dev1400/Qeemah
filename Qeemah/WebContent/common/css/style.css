@@ -187,6 +187,12 @@
 .sapMPI {
   height: 1rem;
 }
-.sapMListTbl .sapMText{
+/* .sapMListTbl .sapMText{
   color: #ffffff !important;
 }
+.sapMITBTextOnly .sapMITBFilterDefault.sapMITBSelected>.sapMITBText {
+  color: white;
+}
+.sapMITBSelected>.sapMITBContentArrow {
+  border-bottom-color: #00A19C;
+} */
