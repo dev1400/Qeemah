@@ -217,11 +217,11 @@
   margin: 0rem 0rem 0rem 0rem;
   font-size: 0.875rem;
   text-align: left;
-  line-height: 1rem;
+  line-height: rem;
   width: auto;
 }
 .sapMITBTextOnly>.sapMITBVertical {
-  height: 4rem;
+  height: 2rem;
 }
 
 .sapMITBHead {
@@ -246,4 +246,7 @@
   border-bottom-color: transparent;
  
   
+}
+.sapMITBTextOnly .sapMITBTab {
+	height: 0rem;
 }
