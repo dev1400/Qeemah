@@ -271,9 +271,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var userID = this.getView().byId("idSignInUsernameInput").getValue();
 		var password = this.getView().byId("idSignInPasswordInput").getValue();
 		
-		this._oidMainPageContent.setVisible(false);
-		this._oTopHeaderVBox.setVisible(true);
-		this._oidLicenseButtonsHBox.setVisible(true);
+		
 		
 		if (userID.length > 0 && password.length > 0) {
 			var oRequestFinishedDeferred = this.oModelHelper.signInUser(userID,password);
@@ -286,6 +284,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					sap.m.MessageToast.show(this.oModelHelper
 							.getText("SignInSuccessful"));
 					this._oidMainPageContent.setVisible(false);
+					this._oTopHeaderVBox.setVisible(true);
 					this._oidLicenseButtonsHBox.setVisible(true);
 				}
 				

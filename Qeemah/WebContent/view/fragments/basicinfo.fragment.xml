@@ -3,7 +3,7 @@
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.commons="sap.ui.commons"
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-	    <VBox width="72.44rem" class="HeadingBGVBOX">
+	    <VBox width="72.44rem" >
 	   
 		<HBox id="idBasicInfoBoxContent" justifyContent="Center">
 		<IconTabBar

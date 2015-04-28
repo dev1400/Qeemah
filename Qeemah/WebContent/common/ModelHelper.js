@@ -129,8 +129,8 @@ com.sagia.common.ModelHelper = {
         oEntry.Flag = 'R';
         oEntry.Userid = '';
 		oEntry.Password = '';
-		oEntry.MobileNo = '1231223';
-		oEntry.Email = 'email@email.com';
+		oEntry.MobileNo = oInputMobileNumber;
+		oEntry.Email = oInputEmail;
 		
 		this.oODataModel.create("/USER_REGISTRATION_ENT", oEntry , {
 		

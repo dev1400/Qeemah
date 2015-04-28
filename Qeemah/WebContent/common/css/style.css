@@ -208,3 +208,9 @@
 .sapMITBHead {
   margin: 0 0 0 0;
 }
+.LoginButtonWidth{
+	width : 8rem;
+}
+.RegisterButtonWidth{
+	width : 11rem;
+}

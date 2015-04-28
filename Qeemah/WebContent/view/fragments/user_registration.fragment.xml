@@ -10,7 +10,7 @@
 
 
 			<sap.ui.commons.layout:MatrixLayout
-				layoutFixed="false" columns="2">
+				layoutFixed="false" >
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						colSpan="2">
@@ -24,20 +24,25 @@
 
 				</sap.ui.commons.layout:MatrixLayoutRow>
 
+				<!-- <sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell colSpan="2">
+					<HBox justifyContent="Center"><Button text="{i18n>NewRegistration}" id="idNewRegistrationButton"
+							press="handleNewRegistrationButtonPress" class="RegisterButtonWidth"/>
+							<Button text="{i18n>Login}" id="idLoginButton" class="LoginButtonWidth" press="handleLoginButtonPress" />
+							</HBox>					
+					</sap.ui.commons.layout:MatrixLayoutCell>
+
+				</sap.ui.commons.layout:MatrixLayoutRow> -->
+				
 				<sap.ui.commons.layout:MatrixLayoutRow>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						colSpan="2">
-						<VBox alignItems="Center">
-							<SegmentedButton selectedButton="idLoginButton">
-								<Button text="{i18n>NewRegistration}" id="idNewRegistrationButton"
-									style="20em !important" press="handleNewRegistrationButtonPress" /><!-- 
-									icon="sap-icon://down" -->
-								<Button text="{i18n>Login}" id="idLoginButton" press="handleLoginButtonPress" />
-
-							</SegmentedButton>
-
-						</VBox>
-
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+					<Button text="{i18n>NewRegistration}" id="idNewRegistrationButton"
+							press="handleNewRegistrationButtonPress" width="11rem" />
+							
+							
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+					<Button text="{i18n>Login}" id="idLoginButton" width="11rem" press="handleLoginButtonPress" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 				</sap.ui.commons.layout:MatrixLayoutRow>
@@ -52,7 +57,8 @@
 				layoutFixed="false" columns="2" id="idRegistrationMatrixLayout"
 				visible="false">
 				
-				 <sap.ui.commons.layout:MatrixLayoutRow>
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<Label text="*" class="redcolortext"></Label>
@@ -63,7 +69,7 @@
 						<Input type="Text" required="true" id="idFirstNameInputText" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
-				
+
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -78,7 +84,7 @@
 
 
 
-				
+
 
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
@@ -91,7 +97,7 @@
 						<Input type="Text" required="true" id="idInputPassword" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
-				
+
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>

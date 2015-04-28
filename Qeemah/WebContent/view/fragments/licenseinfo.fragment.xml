@@ -5,7 +5,7 @@
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	
 	
- <VBox width="74.44rem" class="HeadingBGVBOX">
+ <VBox width="74.44rem" id="idLicenseInfoParentVBox">
  <HBox justifyContent="Center">
  <IconTabBar
     class="iconTabBarPaddingTop"
