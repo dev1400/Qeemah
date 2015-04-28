@@ -5,7 +5,7 @@
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	
 	
- <VBox width="74.44rem" id="idLicenseInfoParentVBox" class="HeadingBGVBOX">
+ <VBox width="72.44rem" id="idLicenseInfoParentVBox" class="HeadingBGVBOX">
  <HBox justifyContent="Center">
  <IconTabBar
     class="iconTabBarPaddingTop IconTabBarHeadingBGCOlor"
@@ -17,7 +17,7 @@
 		type="XML" />
       </IconTabFilter>
       <IconTabFilter
-        text="{i18n>LicenseInfo}">
+        text="{i18n>LicenseInformation}">
         <sap.ui.core:Fragment
 		fragmentName="com.sagia.view.fragments.bizactivityquestions_licenseinfo"
 		type="XML" />
@@ -25,33 +25,9 @@
     </items>
   </IconTabBar>
   
-	<!-- License info start -->
-	<!-- <sap.ui.commons:TabStrip height="64em"
-		width="65rem">
-		<sap.ui.commons:customData>
-			<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
-				value="true" writeToDom="true"></sap.ui.core:CustomData>
-		</sap.ui.commons:customData>
-		<sap.ui.commons:tabs>
-			<sap.ui.commons:Tab text="{i18n>BusinessActivityQuestions}">
-				<sap.ui.commons:content>
-				<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bizactivityquestions"
-		type="XML" />
-				</sap.ui.commons:content>
-			</sap.ui.commons:Tab>
-			<sap.ui.commons:Tab text="{i18n>LicenseInfo}">
-				<sap.ui.commons:content>
-				<sap.ui.core:Fragment
-		fragmentName="com.sagia.view.fragments.bizactivityquestions_licenseinfo"
-		type="XML" />
-				</sap.ui.commons:content>
-			</sap.ui.commons:Tab>
-		</sap.ui.commons:tabs>
-	</sap.ui.commons:TabStrip> -->
+	
 	
 	
 	</HBox>
-
-	<!-- License info end -->
 	</VBox>
 </sap.ui.core:FragmentDefinition>
