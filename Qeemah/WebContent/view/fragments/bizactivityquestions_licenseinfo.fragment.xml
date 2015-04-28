@@ -1,7 +1,8 @@
 <sap.ui.core:FragmentDefinition xmlns="sap.m"
 	xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.unified="sap.ui.unified"
 	xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
-	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	xmlns:html="http://www.w3.org/1999/xhtml">
 	<!-- Child license activity Q start -->
 	<sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false">
@@ -122,12 +123,12 @@
 										</ComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:MatrixLayoutRow>
-								<sap.ui.commons.layout:MatrixLayoutRow>
+								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<Button style="Accept" text="{i18n>Add}" press="" >
 							</Button>
 									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:MatrixLayoutRow> -->
 							
 							</sap.ui.commons.layout:MatrixLayout>
 						</sap.ui.commons.layout:content>
@@ -137,6 +138,9 @@
 			
 		</sap.ui.commons.layout:rows>
 	</sap.ui.commons.layout:MatrixLayout>
+	<VBox><Button style="Accept" text="{i18n>Add}" press="" >
+							</Button><html:br/></VBox>
+							
 	<sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false">
 		<sap.ui.commons.layout:rows>
