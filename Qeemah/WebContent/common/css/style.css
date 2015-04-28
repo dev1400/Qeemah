@@ -103,10 +103,12 @@
 .MainLicenseRegBGIMG1 {
 	background-image: url("mime/topbg1.png") !important;
 	background-repeat: no-repeat;	
+	background-size: 100% 100%;
 }
 .MainLicenseRegBGIMG2 {
 	background-image: url("mime/topbg_blue.png") !important;
-	background-repeat: no-repeat;	
+	background-repeat: no-repeat;
+	background-size: 100% 100%;	
 }
 .MainLicenseRegBGIMG {
 	background-image: url("mime/topbg.png") !important;
