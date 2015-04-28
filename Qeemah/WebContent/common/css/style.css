@@ -201,13 +201,13 @@
 } */
 .sapMITBTextOnly .sapMITBFilterDefault.sapMITBSelected>.sapMITBText {
   color: white;
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-shadow: none;
   outline: none;
 }
 .sapMITBTextOnly .sapMITBFilterDefault>.sapMITBText {
   color: white;
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-shadow: none;
   outline: none;
 }
