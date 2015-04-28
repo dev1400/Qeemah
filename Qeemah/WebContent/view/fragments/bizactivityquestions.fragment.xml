@@ -12,26 +12,18 @@
 						<sap.ui.commons.layout:content>
 							<VBox justifyContent="Center">
 								<Label text="{i18n>BAQ1}"></Label>
-							</VBox>
-							<sap.ui.commons.layout:MatrixLayout
-								layoutFixed="false">
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em">
+								<HBox justifyContent="SpaceBetween">
+								<ComboBox width="25em">
 											<sap.ui.core:Item />
 										</ComboBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<HBox justifyContent="End">
-											<Label text="{i18n>SupportingDocuments}"></Label>
-										</HBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.unified:FileUploader
+								<HBox>
+								<Label text="{i18n>SupportingDocuments}"></Label>
+								<sap.ui.unified:FileUploader
 											uploadUrl="upload/" width="15em" uploadComplete="handleUploadComplete" />
-									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow>
-							</sap.ui.commons.layout:MatrixLayout>
+								</HBox>
+								</HBox>
+							</VBox>
+							
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -43,26 +35,19 @@
 							<VBox justifyContent="Center">
 							<Label text="{i18n>BAQ2}"></Label>
 							<Label text="{i18n>BAQ2-1}"></Label>
-							</VBox>
-							<sap.ui.commons.layout:MatrixLayout
-								layoutFixed="false">
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em">
+							<HBox justifyContent="SpaceBetween">
+								<ComboBox width="25em">
 											<sap.ui.core:Item />
 										</ComboBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<HBox justifyContent="End">
-											<Label text="{i18n>SupportingDocuments}"></Label>
-										</HBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.unified:FileUploader
+								<HBox>
+								<Label text="{i18n>SupportingDocuments}"></Label>
+								<sap.ui.unified:FileUploader
 											uploadUrl="upload/" width="15em" uploadComplete="handleUploadComplete" />
-									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow>
-							</sap.ui.commons.layout:MatrixLayout>
+								</HBox>
+								</HBox>
+								
+							</VBox>
+							
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -74,27 +59,19 @@
 							<VBox justifyContent="Center">
 								<Label text="{i18n>BAQ3}"></Label>
 								<Label text="{i18n>BAQ3-1}"></Label>
-							</VBox>
-							<sap.ui.commons.layout:MatrixLayout
-								layoutFixed="false">
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em">
+								
+								<HBox justifyContent="SpaceBetween">
+								<ComboBox width="25em">
 											<sap.ui.core:Item />
 										</ComboBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<HBox justifyContent="End">
-											<Label text="{i18n>SupportingDocuments}"></Label>
-										</HBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell
-										justifyContent="End">
-										<sap.ui.unified:FileUploader
+								<HBox>
+								<Label text="{i18n>SupportingDocuments}"></Label>
+								<sap.ui.unified:FileUploader
 											uploadUrl="upload/" width="15em" uploadComplete="handleUploadComplete" />
-									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow>
-							</sap.ui.commons.layout:MatrixLayout>
+								</HBox>
+								</HBox>
+							</VBox>
+							
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -127,26 +104,20 @@
 						<sap.ui.commons.layout:content>
 							<VBox justifyContent="Center">
 								<Label text="{i18n>BAQ5}"></Label>
-							</VBox>
-							<sap.ui.commons.layout:MatrixLayout
-								layoutFixed="false">
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em">
+								
+								<HBox justifyContent="SpaceBetween">
+								<ComboBox width="25em">
 											<sap.ui.core:Item />
 										</ComboBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<HBox justifyContent="End">
-											<Label text="{i18n>SupportingDocuments}"></Label>
-										</HBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.unified:FileUploader
+								<HBox>
+								<Label text="{i18n>SupportingDocuments}"></Label>
+								<sap.ui.unified:FileUploader
 											uploadUrl="upload/" width="15em" uploadComplete="handleUploadComplete" />
-									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow>
-							</sap.ui.commons.layout:MatrixLayout>
+								</HBox>
+								</HBox>
+								
+							</VBox>
+							
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -178,26 +149,18 @@
 						<sap.ui.commons.layout:content>
 							<VBox justifyContent="Center">
 								<Label text="{i18n>BAQ7}"></Label>
-							</VBox>
-							<sap.ui.commons.layout:MatrixLayout
-								layoutFixed="false">
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em">
+								<HBox justifyContent="SpaceBetween">
+								<ComboBox width="25em">
 											<sap.ui.core:Item />
 										</ComboBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<HBox justifyContent="End">
-											<Label text="{i18n>SupportingDocuments}"></Label>
-										</HBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.unified:FileUploader
+								<HBox>
+								<Label text="{i18n>SupportingDocuments}"></Label>
+								<sap.ui.unified:FileUploader
 											uploadUrl="upload/" width="15em" uploadComplete="handleUploadComplete" />
-									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow>
-							</sap.ui.commons.layout:MatrixLayout>
+								</HBox>
+								</HBox>
+							</VBox>
+							
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
