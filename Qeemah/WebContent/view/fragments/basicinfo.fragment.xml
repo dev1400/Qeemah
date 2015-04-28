@@ -3,15 +3,15 @@
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.commons="sap.ui.commons"
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-	    <VBox width="72.44rem" >
+	    <VBox width="72.44rem" class="HeadingBGVBOX">
 	   
 		<HBox id="idBasicInfoBoxContent" justifyContent="Center">
 		<IconTabBar
-    class="iconTabBarPaddingTop"
-    expanded="true" expandable="false">
+    class="iconTabBarPaddingTop IconTabBarHeadingBGCOlor"
+    expanded="true" expandable="false"  select="handleBasicInfoIconTabBarSelect">
     <items>
       <IconTabFilter
-        text="{i18n>Organization}">
+        text="{i18n>Organization}" id="idIconTabFilterOrg" key="BasicInfoIconTabKey">
         	<VBox justifyContent="Center">
 			<sap.ui.commons.layout:MatrixLayout
 				layoutFixed="false" columns="4" widths="13em,25em,10em,25em">

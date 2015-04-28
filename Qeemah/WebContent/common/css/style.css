@@ -87,9 +87,9 @@
   padding-left: 1.7em;
   padding-top: 1em;
 }
-/* .HeadingBGVBOX {
+.HeadingBGVBOX {
   padding-top: 1em;
-} */
+}
 .BasicInfoButtonBG {
 	/* padding: 0; */
 	/* width: 10.21em;
@@ -200,11 +200,25 @@
 .sapMITBTextOnly .sapMITBFilterDefault.sapMITBSelected>.sapMITBText {
   color: white;
   font-size: 1.5rem;
+  text-shadow: none;
+  outline: none;
 }
 .sapMITBTextOnly .sapMITBFilterDefault>.sapMITBText {
   color: white;
   font-size: 1.5rem;
+  text-shadow: none;
+  outline: none;
 }
+
+.sapMITBTextOnly .sapMITBText {
+  padding: 0.25rem 1rem 0.6rem 1rem;
+  margin: 0rem 0rem 0rem 0rem;
+  font-size: 0.875rem;
+  text-align: left;
+  line-height: 1rem;
+  width: auto;
+}
+
 .sapMITBHead {
   margin: 0 0 0 0;
 }
@@ -213,4 +227,17 @@
 }
 .RegisterButtonWidth{
 	width : 11rem;
+}
+.IconTabBarHeadingBGCOlor{
+	background-color: #00A19C;
+}
+.sapMITBSelected{
+	background-color: #1573A6;
+	margin: none;
+	
+}
+.sapMITBSelected>.sapMITBContentArrow {
+  border-bottom-color: transparent;
+ 
+  
 }

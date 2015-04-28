@@ -6,12 +6,12 @@
 	xmlns:sap.ui.core.mvc="sap.ui.core.mvc" xmlns:sap.ui.unified="sap.ui.unified">
 	
 	
-	<VBox width="72.44rem" id="idShareHoldersContentVBox" justifyContent="Center"
+	<VBox width="72.44rem" id="idShareHoldersContentVBox" justifyContent="Center" class="HeadingBGVBOX"
 		>
 		<HBox justifyContent="Center">
 		
 		<IconTabBar
-    class="iconTabBarPaddingTop"
+    class="iconTabBarPaddingTop IconTabBarHeadingBGCOlor"
     expanded="true" expandable="false">
     <items>
       <IconTabFilter

@@ -74,7 +74,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oShareHoldersInfoContent = this.getView().byId("idShareHoldersInfoContent");
 		
 		this._oStagesHeading = this.getView().byId("idStagesHeading");
+		this._oBasicInfoIconTab = this.getView().byId("idBasicInfoIconTab");
+		this._oOrgTabFilter = this.getView().byId("idIconTabFilterOrg");
 
+	},
+	
+	handleBasicInfoIconTabBarSelect : function(oEvent){
+		console.log(oEvent.getParameters().key);
+		/*if( oEvent.getParameters().key === "BasicInfoIconTabKey"){
+			this._oOrgTabFilter.addStyleClass("BackgroundRed");
+		}*/
 	},
 
 	/**
@@ -271,9 +280,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var userID = this.getView().byId("idSignInUsernameInput").getValue();
 		var password = this.getView().byId("idSignInPasswordInput").getValue();
 		
+		this._oidMainPageContent.setVisible(false);
+		this._oTopHeaderVBox.setVisible(true);
+		this._oidLicenseButtonsHBox.setVisible(true);
 		
-		
-		if (userID.length > 0 && password.length > 0) {
+		/*if (userID.length > 0 && password.length > 0) {
 			var oRequestFinishedDeferred = this.oModelHelper.signInUser(userID,password);
 
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {	
@@ -293,7 +304,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		} else {
 			sap.m.MessageToast.show(this.oModelHelper
 					.getText("PleaseEnterRequiredFields"));
-		}		
+		}		*/
 	},
 	handleCancelButtonPress : function(oEvent) {
 	},
