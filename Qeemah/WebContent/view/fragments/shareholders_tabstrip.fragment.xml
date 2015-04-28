@@ -4,21 +4,19 @@
 	xmlns:sap.ui.commons="sap.ui.commons" xmlns:sap.ui.core="sap.ui.core"
 	xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
 	xmlns:sap.ui.core.mvc="sap.ui.core.mvc" xmlns:sap.ui.unified="sap.ui.unified">
+	
+	
 	<VBox width="72.44rem" id="idShareHoldersContentVBox" justifyContent="Center"
-		alignItems="Center" class="HeadingBGVBOX">
-		<sap.ui.core:HTML content="{i18n>ShareHolderInformationHTML}"></sap.ui.core:HTML>
-
-		<sap.ui.commons:TabStrip id="idShareHoldersTabStrip"
-			height="60em" width="80em">
-			<sap.ui.commons:customData>
-				<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
-					value="true" writeToDom="true"></sap.ui.core:CustomData>
-			</sap.ui.commons:customData>
-			<sap.ui.commons:tabs>
-				<sap.ui.commons:Tab id="idShareHoldersTabStrip1"
-					text="{i18n>ExistingShareHolder}">
-					<sap.ui.commons:content>
-					<sap.ui.commons.layout:MatrixLayout
+		>
+		<HBox justifyContent="Center">
+		
+		<IconTabBar
+    class="iconTabBarPaddingTop"
+    expanded="true" expandable="false">
+    <items>
+      <IconTabFilter
+        text="{i18n>ExistingShareHolder}">
+        			<sap.ui.commons.layout:MatrixLayout
 			layoutFixed="false">
 			<sap.ui.commons.layout:rows>
 
@@ -163,16 +161,10 @@
 							</sap.ui.commons.layout:MatrixLayout>
 
 						</VBox>
-					</sap.ui.commons:content>
-					<sap.ui.commons:title>
-						<sap.ui.core:Title id="TabStrip1-0-title"
-							text="{i18n>ExistingShareHolder}"></sap.ui.core:Title>
-					</sap.ui.commons:title>
-				</sap.ui.commons:Tab>
-				<sap.ui.commons:Tab id="tab2" text="{i18n>NewShareHolder}"
-					tooltip="{i18n>NewShareHolder}">
-					<sap.ui.commons:content>
-						<VBox alignItems="Center">
+      </IconTabFilter>
+      <IconTabFilter
+        text="{i18n>NewShareHolder}">
+        <VBox alignItems="Center">
 							<sap.ui.commons.layout:MatrixLayout
 								layoutFixed="false">
 								<sap.ui.commons.layout:rows>
@@ -323,6 +315,26 @@
 								</sap.ui.commons.layout:rows>
 							</sap.ui.commons.layout:MatrixLayout>
 						</VBox>
+      </IconTabFilter>
+    </items>
+  </IconTabBar>
+
+		<!-- <sap.ui.commons:TabStrip id="idShareHoldersTabStrip"
+			height="60em" width="80em">
+			<sap.ui.commons:customData>
+				<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
+					value="true" writeToDom="true"></sap.ui.core:CustomData>
+			</sap.ui.commons:customData>
+			<sap.ui.commons:tabs>
+				<sap.ui.commons:Tab id="idShareHoldersTabStrip1"
+					text="{i18n>ExistingShareHolder}">
+					<sap.ui.commons:content>
+		</sap.ui.commons:content>
+				</sap.ui.commons:Tab>
+				<sap.ui.commons:Tab id="tab2" text="{i18n>NewShareHolder}"
+					tooltip="{i18n>NewShareHolder}">
+					<sap.ui.commons:content>
+						
 					</sap.ui.commons:content>
 					<sap.ui.commons:title>
 						<sap.ui.core:Title id="Title2" text="{i18n>NewShareHolder}"></sap.ui.core:Title>
@@ -330,6 +342,7 @@
 				</sap.ui.commons:Tab>
 
 			</sap.ui.commons:tabs>
-		</sap.ui.commons:TabStrip>
+		</sap.ui.commons:TabStrip> -->
+		</HBox>
 	</VBox>
 </core:FragmentDefinition>

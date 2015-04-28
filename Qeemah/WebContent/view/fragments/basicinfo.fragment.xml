@@ -5,49 +5,14 @@
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	    <VBox width="72.44rem" class="HeadingBGVBOX">
 	   
-		
-		<!-- <IconTabBar
+		<HBox id="idBasicInfoBoxContent" justifyContent="Center">
+		<IconTabBar
     class="iconTabBarPaddingTop"
-    id="idIconTabBarNoIcons"
     expanded="true" expandable="false">
     <items>
       <IconTabFilter
-        text="Info">
-        <Text text="Info content goes here ..." />
-      </IconTabFilter>
-      <IconTabFilter
-        text="Attachments">
-        <Text text="Attachments go here ..." />
-      </IconTabFilter>
-      <IconTabFilter
-        text="Notes">
-        <Text text="Notes go here ..." />
-      </IconTabFilter>
-      <IconTabFilter
-        text="People">
-        <Text text="People content goes here ..." />
-      </IconTabFilter>
-    </items>
-  </IconTabBar>
- -->	
-
-
-	<HBox id="idBasicInfoBoxContent" justifyContent="Center">
-	
-	<sap.ui.commons:TabStrip id="TabStrip1" height="47.5em"
-		width="65rem">
-		<sap.ui.commons:customData>
-			<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
-				value="true" writeToDom="true"></sap.ui.core:CustomData>
-		</sap.ui.commons:customData>
-		<sap.ui.commons:tabs >
-			<sap.ui.commons:Tab id="TabStrip1-0" 
-				>
-				<sap.ui.commons:title>
-                    <sap.ui.core:Title id="TabStrip1-0-titlel" text="{i18n>Person}" level="Auto"></sap.ui.core:Title>
-                </sap.ui.commons:title>
-				<sap.ui.commons:content>
-				<VBox justifyContent="Center">
+        text="{i18n>Organization}">
+        	<VBox justifyContent="Center">
 			<sap.ui.commons.layout:MatrixLayout
 				layoutFixed="false" columns="4" widths="13em,25em,10em,25em">
 				<sap.ui.commons.layout:rows>
@@ -397,18 +362,10 @@
 			<!-- Org reg layout end -->
 			
 		</VBox>
-	</sap.ui.commons:content>
-				
-	</sap.ui.commons:Tab>
-	
-	
-	
-	
-	
-	<sap.ui.commons:Tab id="TabStrip2"
-				text="{i18n>ContactInformation}" >
-				<sap.ui.commons:content>
-				<!-- Contact information layout start -->
+      </IconTabFilter>
+      <IconTabFilter
+        text="{i18n>ContactInformation}">
+        <!-- Contact information layout start -->
 			<sap.ui.commons.layout:MatrixLayout
 				layoutFixed="false" columns="4" widths="13em,25em,10em,25em">
 				<sap.ui.commons.layout:rows>
@@ -735,10 +692,44 @@
 				</sap.ui.commons.layout:rows>
 							
 			</sap.ui.commons.layout:MatrixLayout>
+      </IconTabFilter>
+    </items>
+  </IconTabBar>
+	
+
+
+	
+	
+<!-- 	<sap.ui.commons:TabStrip id="TabStrip1" height="47.5em"
+		width="65rem">
+		<sap.ui.commons:customData>
+			<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
+				value="true" writeToDom="true"></sap.ui.core:CustomData>
+		</sap.ui.commons:customData>
+		<sap.ui.commons:tabs >
+			<sap.ui.commons:Tab id="TabStrip1-0" 
+				>
+				<sap.ui.commons:title>
+                    <sap.ui.core:Title id="TabStrip1-0-titlel" text="{i18n>Person}" level="Auto"></sap.ui.core:Title>
+                </sap.ui.commons:title>
+				<sap.ui.commons:content>
+			
+	</sap.ui.commons:content>
+				
+	</sap.ui.commons:Tab>
+	
+	
+	
+	
+	
+	<sap.ui.commons:Tab id="TabStrip2"
+				text="{i18n>ContactInformation}" >
+				<sap.ui.commons:content>
+				
 				</sap.ui.commons:content>
 				</sap.ui.commons:Tab>
 				
-	</sap.ui.commons:tabs></sap.ui.commons:TabStrip>
+	</sap.ui.commons:tabs></sap.ui.commons:TabStrip> -->
 	
 		
 

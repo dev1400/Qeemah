@@ -74,6 +74,7 @@
 	color: white;
 	height: 2rem;
 	background: -webkit-linear-gradient(top, #00A19C 0, #00A19C 100%);
+	text-shadow: 0 0 0 #ffffff;
 }
 /*Button Background Color*/
 .linkColor {
@@ -84,11 +85,11 @@
 }
 .BasicInfoButtonBGVBOX {
   padding-left: 1.7em;
-  padding-top: 1.7em;
+  padding-top: 1em;
 }
-.HeadingBGVBOX {
-  padding-top: 1.7em;
-}
+/* .HeadingBGVBOX {
+  padding-top: 1em;
+} */
 .BasicInfoButtonBG {
 	/* padding: 0; */
 	/* width: 10.21em;
@@ -196,3 +197,14 @@
 .sapMITBSelected>.sapMITBContentArrow {
   border-bottom-color: #00A19C;
 } */
+.sapMITBTextOnly .sapMITBFilterDefault.sapMITBSelected>.sapMITBText {
+  color: white;
+  font-size: 1.5rem;
+}
+.sapMITBTextOnly .sapMITBFilterDefault>.sapMITBText {
+  color: white;
+  font-size: 1.5rem;
+}
+.sapMITBHead {
+  margin: 0 0 0 0;
+}

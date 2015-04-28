@@ -3,10 +3,30 @@
 	xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
 	xmlns:sap.ui.commons="sap.ui.commons"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	
+	
  <VBox width="74.44rem" class="HeadingBGVBOX">
-	    <sap.ui.core:HTML content="{i18n>LicenseInformationHTML}"></sap.ui.core:HTML>
+ <HBox justifyContent="Center">
+ <IconTabBar
+    class="iconTabBarPaddingTop"
+    expanded="true" expandable="false">
+    <items>
+      <IconTabFilter
+        text="{i18n>BusinessActivityQuestions}">
+        <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bizactivityquestions"
+		type="XML" />
+      </IconTabFilter>
+      <IconTabFilter
+        text="{i18n>LicenseInfo}">
+        <sap.ui.core:Fragment
+		fragmentName="com.sagia.view.fragments.bizactivityquestions_licenseinfo"
+		type="XML" />
+      </IconTabFilter>
+    </items>
+  </IconTabBar>
+  
 	<!-- License info start -->
-	<sap.ui.commons:TabStrip height="64em"
+	<!-- <sap.ui.commons:TabStrip height="64em"
 		width="65rem">
 		<sap.ui.commons:customData>
 			<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
@@ -27,10 +47,10 @@
 				</sap.ui.commons:content>
 			</sap.ui.commons:Tab>
 		</sap.ui.commons:tabs>
-	</sap.ui.commons:TabStrip>
+	</sap.ui.commons:TabStrip> -->
 	
 	
-	
+	</HBox>
 
 	<!-- License info end -->
 	</VBox>
