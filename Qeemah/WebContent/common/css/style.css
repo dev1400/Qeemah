@@ -218,9 +218,13 @@
   line-height: 1rem;
   width: auto;
 }
+.sapMITBTextOnly>.sapMITBVertical {
+  height: 4rem;
+}
 
 .sapMITBHead {
   margin: 0 0 0 0;
+  padding: 0 0 0 0;
 }
 .LoginButtonWidth{
 	width : 8rem;

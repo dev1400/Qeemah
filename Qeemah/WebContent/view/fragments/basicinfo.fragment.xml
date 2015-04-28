@@ -318,7 +318,7 @@
 							<sap.ui.commons.layout:MatrixLayoutCell>
 								<sap.ui.commons.layout:content>
 									<HBox justifyContent="End">
-										<Input type="Text" placeholder="{i18n>Website}"
+										<Input type="Text" 
 											width="25em" />
 									</HBox>
 								</sap.ui.commons.layout:content>
