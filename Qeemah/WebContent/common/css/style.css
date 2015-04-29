@@ -204,12 +204,14 @@
   font-size: 1rem;
   text-shadow: none;
   outline: none;
+  font-family: SEGOEUI-Normal;
 }
 .sapMITBTextOnly .sapMITBFilterDefault>.sapMITBText {
   color: white;
   font-size: 1rem;
   text-shadow: none;
   outline: none;
+  font-family: SEGOEUI-Normal;
 }
 
 .sapMITBTextOnly .sapMITBText {
@@ -235,7 +237,7 @@
 	width : 11rem;
 }
 .IconTabBarHeadingBGCOlor{
-	background-color: #00A19C;
+	background-color: #4ABDB9;
 }
 .sapMITBSelected{
 	background-color: #1573A6;
