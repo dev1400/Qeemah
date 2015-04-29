@@ -22,8 +22,6 @@
 					<sap.ui.commons:AccordionSection
 						id="idShareHolderDetails" maxHeight="30rem" collapsed="true"
 						title="{i18n>ShareHolderDetails}" tooltip="{i18n>ShareHolderDetails}">
-						<!-- <sap.ui.commons:customData> <sap.ui.core:CustomData key="sap-ui-fastnavgroup" 
-							value="true" writeToDom="true"></sap.ui.core:CustomData> </sap.ui.commons:customData> -->
 						<sap.ui.commons:content>
 							<sap.ui.core:Fragment
 								fragmentName="com.sagia.view.fragments.ns_shareholderdetails"
@@ -31,7 +29,7 @@
 						</sap.ui.commons:content>
 					</sap.ui.commons:AccordionSection>
 					<sap.ui.commons:AccordionSection
-						id="idNewShareHolderAttachments" maxHeight="17rem" collapsed="true"
+						id="idNewShareHolderAttachments" maxHeight="17.3rem" collapsed="true"
 						title="{i18n>Attachments}" tooltip="{i18n>Attachments}">
 
 						<sap.ui.commons:content>
@@ -77,15 +75,6 @@
 				</sap.ui.commons:sections>
 			</sap.ui.commons:Accordion>
 			<html:br />
-
-
-
-
-
-
-
-
-
 
 			<sap.ui.commons.layout:MatrixLayout
 				layoutFixed="false">

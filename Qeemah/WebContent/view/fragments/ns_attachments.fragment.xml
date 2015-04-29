@@ -10,6 +10,7 @@
 										<sap.ui.commons.layout:cells>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
+												<Label text="{i18n>PassportCopyIDCopy}"></Label>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
@@ -27,6 +28,7 @@
 										<sap.ui.commons.layout:cells>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
+												<Label text="{i18n>CommercialRegistration}"></Label>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
@@ -44,6 +46,7 @@
 										<sap.ui.commons.layout:cells>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
+												<Label text="{i18n>BankStatement}"></Label>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
@@ -61,6 +64,7 @@
 										<sap.ui.commons.layout:cells>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
+												<Label text="{i18n>ThreeYearsBalanceSheet}"></Label>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
@@ -78,6 +82,7 @@
 										<sap.ui.commons.layout:cells>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
+												<Label text="{i18n>Other}"></Label>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
@@ -91,20 +96,25 @@
 								</sap.ui.commons.layout:rows>
 								
 								<sap.ui.commons.layout:rows>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-										<sap.ui.commons.layout:cells>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:content>
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:content>
-												<sap.ui.unified:FileUploader
-											     width="15em" icon="common/mime/attachment.png" iconOnly="true" />
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-										</sap.ui.commons.layout:cells>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-								</sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End"
+						>
+						<sap.ui.commons.layout:content>
+							<Button style="Accept" text="{i18n>Save}" press="">
+							</Button>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						>
+						<sap.ui.commons.layout:content>
+							<Button style="Accept" text="{i18n>GoToActivityQuestions}" press="">
+							</Button>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:rows>
 							</sap.ui.commons.layout:MatrixLayout>
 </sap.ui.core:FragmentDefinition>
