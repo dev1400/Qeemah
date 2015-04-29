@@ -9,6 +9,7 @@
     height="40rem"
     width="69rem"
     vertical="true" >
+    <html:br/>
 	<sap.ui.commons.layout:MatrixLayout
 			layoutFixed="false">
 			<sap.ui.commons.layout:rows>
@@ -33,7 +34,7 @@
 			</sap.ui.commons.layout:rows>
 		</sap.ui.commons.layout:MatrixLayout>
 					
-					
+					<html:br/>
 						<VBox justifyContent="Center" alignItems="Center">
 
 							<sap.ui.commons.layout:MatrixLayout

@@ -237,7 +237,7 @@
 	width : 11rem;
 }
 .IconTabBarStyling{
-	background-color: #4ABDB9;
+	background-color: #00A19C;
 	width:70rem;
 }
 .sapMITBSelected{
@@ -262,4 +262,12 @@
 .sapUiTf {
   font-family: SEGOEUI-Normal !important;
   font-size: .8rem !important;
+}
+
+.sapUiAcdSectionHdr {
+  color: white !important;
+  background-color: #00A19C !important ;
+  border-bottom: 2px solid #bfbfbf !important;
+  font-family: SEGOEUI-Normal !important;
+  font-size: 1rem !important;
 }
