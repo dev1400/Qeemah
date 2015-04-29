@@ -27,8 +27,8 @@
 									<HBox>
 										
 										<sap.ui.unified:FileUploader
-											width="20rem" placeholder="{i18n>SupportingDocuments}"/>
-<!-- icon="common/mime/attachment.png"											buttonText="Hi" -->
+											id="idBAQ1FU" width="20rem" placeholder="{i18n>SupportingDocuments}" />
+<!-- icon="common/mime/attachment.png" iconOnly="true" -->
 									</HBox>
 								</HBox>
 							</VBox>
@@ -51,7 +51,7 @@
 									<HBox>
 										
 										<sap.ui.unified:FileUploader
-											width="20rem" placeholder="{i18n>SupportingDocuments}" />
+											id="idBAQ2FU" width="20rem" placeholder="{i18n>SupportingDocuments}" />
 									</HBox>
 								</HBox>
 
@@ -76,7 +76,7 @@
 									<HBox>
 										
 										<sap.ui.unified:FileUploader
-											width="20rem" placeholder="{i18n>SupportingDocuments}" />
+											id="idBAQ3FU" width="20rem" placeholder="{i18n>SupportingDocuments}" />
 									</HBox>
 								</HBox>
 							</VBox>
@@ -121,7 +121,7 @@
 									<HBox>
 										
 										<sap.ui.unified:FileUploader
-											width="20rem" placeholder="{i18n>SupportingDocuments}" />
+											id="idBAQ4FU" width="20rem" placeholder="{i18n>SupportingDocuments}" />
 									</HBox>
 								</HBox>
 
@@ -165,7 +165,7 @@
 									<HBox>
 										
 										<sap.ui.unified:FileUploader
-											width="20rem" placeholder="{i18n>SupportingDocuments}"  />
+											id="idBAQ5FU" width="20rem" placeholder="{i18n>SupportingDocuments}"  />
 									</HBox>
 								</HBox>
 							</VBox>

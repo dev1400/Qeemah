@@ -250,3 +250,13 @@
 .sapMITBTextOnly .sapMITBTab {
 	height: 0rem;
 }
+.sapUiTfBrd {
+  height: 2rem !important;
+}
+.sapUiBtnS {
+  height: 2rem !important;
+}
+.sapUiTf {
+  font-family: SEGOEUI-Normal !important;
+  font-size: .8rem !important;
+}
