@@ -42,6 +42,13 @@
 	color: #ffffff;
 	background-position: 50% 50%;
 }
+/* .SegmentedRegisterButtonStyling{
+	width: 9.5rem !important;
+}
+.SegmentedLoginButtonStyling{
+	width: 9rem !important;
+} */
+
 
 /* .segBtnCustomWidth1{
 	width: 44% !important;
@@ -49,10 +56,10 @@
 .segBtnCustomWidth2{
 	width: 43% !important;
 } */
-.sapMSegBBtn {
+/* .sapMSegBBtn {
 	padding-left: 2.8rem;
 	padding-right: 2.8rem;
-}
+} */
 
 /* .sapMSegBBtn {
   font-size: 0.875rem;

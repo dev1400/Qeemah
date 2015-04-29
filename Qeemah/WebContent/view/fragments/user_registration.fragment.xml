@@ -35,7 +35,7 @@
 				</sap.ui.commons.layout:MatrixLayoutRow> -->
 				
 				<sap.ui.commons.layout:MatrixLayoutRow>
-					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+					<!-- <sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 					<Button text="{i18n>NewRegistration}" id="idNewRegistrationButton"
 							press="handleNewRegistrationButtonPress" width="11rem" />
 							
@@ -43,6 +43,18 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 					<Button text="{i18n>Login}" id="idLoginButton" width="11rem" press="handleLoginButtonPress" />
+					</sap.ui.commons.layout:MatrixLayoutCell> -->
+					
+					<sap.ui.commons.layout:MatrixLayoutCell>
+					<VBox alignItems="Center">
+							<SegmentedButton selectedButton="idLoginButton">
+								<Button class="SegmentedRegisterButtonStyling" width="9.5rem" text="{i18n>NewRegistration}" id="idNewRegistrationButton"
+									press="handleNewRegistrationButtonPress" />
+								<Button class="SegmentedLoginButtonStyling" width="9rem" text="{i18n>Login}" id="idLoginButton" press="handleLoginButtonPress" />
+
+							</SegmentedButton>
+
+						</VBox>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 				</sap.ui.commons.layout:MatrixLayoutRow>
