@@ -76,6 +76,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oStagesHeading = this.getView().byId("idStagesHeading");
 		this._oBasicInfoIconTab = this.getView().byId("idBasicInfoIconTab");
 		this._oOrgTabFilter = this.getView().byId("idIconTabFilterOrg");
+		
 
 	},
 	
@@ -288,6 +289,24 @@ handleRegisterUserButtonPress : function() {
 				if(oResponse.InvestorId === "0000000000"){
 					sap.m.MessageToast.show(oResponse.Return);
 				}else{
+					
+					// create pop over fragment only once
+					if (!this._popOverFragment) {
+						this._popOverFragment = sap.ui.xmlfragment(
+								"com.sagia.view.fragments.show_investorid_dialog", this.getView()
+										.getController());
+						this.getView().addDependent(this._popOverFragment);
+					}
+					
+					
+
+					this._popOverFragment.open();
+					
+					this._oInvestorIDLabel = sap.ui.getCore().byId("idInvestIDText");
+					this._oInvestorIDLabel.setText(oResponse.InvestorId);
+					
+					
+					
 					/*sap.m.MessageToast.show(this.oModelHelper
 							.getText("SignInSuccessful"));
 					this._oidMainPageContent.setVisible(false);
@@ -303,6 +322,9 @@ handleRegisterUserButtonPress : function() {
 			sap.m.MessageToast.show(this.oModelHelper
 					.getText("PleaseEnterRequiredFields"));
 		}
+	},
+	handleShowInvestorIDDialogCloseButton : function(oEvent) {
+		this._popOverFragment.close();
 	},
 	handleCancelButtonPress : function(oEvent) {
 	},
