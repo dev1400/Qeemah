@@ -80,7 +80,7 @@ com.sagia.common.ModelHelper = {
 
 		this.oODataModel.read("/USER_REGISTRATION_ENT(Flag='L',Userid='"
 				+ userid + "',Password='" + password
-				+ "',MobileNo='',Email='')", {
+				+ "',MobileNo='',Email='',NameFirst='',NameLast='')", {
 			success : function(oData) {
 				oRequestFinishedDeferred.resolve(oData);
 
