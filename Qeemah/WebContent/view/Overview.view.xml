@@ -53,18 +53,8 @@
 
 
 		</VBox>
-
-
-
-		<!-- Left hand buttons start -->
-
-
-
-
-		<VBox id="idLicenseButtonsHBox" visible="false" justifyContent="Center"
-			width="100%">
-
-			<VBox id="idTopHeaderVBox" visible="false">
+		
+		<VBox id="idTopHeaderVBox" visible="false">
 				<HBox class="MainLicenseRegBGIMG1" justifyContent="SpaceBetween">
 					<VBox alignItems="Center">
 
@@ -151,6 +141,18 @@
 				</HBox>
 
 			</VBox>
+
+
+
+		<!-- Left hand buttons start -->
+
+
+
+
+		<VBox id="idLicenseButtonsHBox" visible="false" 
+			width="100%">
+
+			
 
 			<HBox>
 

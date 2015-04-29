@@ -4,13 +4,17 @@
 	xmlns:sap.ui.commons="sap.ui.commons" xmlns:sap.ui.core="sap.ui.core"
 	xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
 	xmlns:sap.ui.core.mvc="sap.ui.core.mvc" xmlns:sap.ui.unified="sap.ui.unified">
+	<ScrollContainer
+    height="40rem"
+    width="70rem"
+    vertical="true" >
 	
-	
-	<VBox justifyContent="Center" alignItems="Center" id="idShareHoldersContentVBox" class="HeadingBGVBOX ShareHoldesParentVBox"
+	<VBox id="idShareHoldersContentVBox" class="HeadingBGVBOX"
 		>
+		<HBox justifyContent="Center">
 		<IconTabBar
     class="iconTabBarPaddingTop IconTabBarHeadingBGCOlor"
-    expanded="true" expandable="false">
+    expanded="true" expandable="false" >
     <items>
       <IconTabFilter
         text="{i18n>ExistingShareHolder}">
@@ -31,6 +35,7 @@
         
       </IconTabFilter>
     </items>
-  </IconTabBar>
+  </IconTabBar></HBox>
 	</VBox>
+	</ScrollContainer>
 </core:FragmentDefinition>

@@ -5,7 +5,7 @@
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	
 	
- <VBox width="72.44rem" id="idLicenseInfoParentVBox" class="HeadingBGVBOX">
+ <VBox  id="idLicenseInfoParentVBox" class="HeadingBGVBOX">
  <HBox justifyContent="Center">
  <IconTabBar
     class="iconTabBarPaddingTop IconTabBarHeadingBGCOlor"
@@ -13,14 +13,24 @@
     <items>
       <IconTabFilter
         text="{i18n>BusinessActivityQuestions}">
+        <ScrollContainer
+    height="40rem"
+    width="70rem"
+    vertical="true" >
         <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bizactivityquestions"
 		type="XML" />
+		</ScrollContainer>
       </IconTabFilter>
       <IconTabFilter
         text="{i18n>LicenseInformation}">
+        <ScrollContainer
+    height="40rem"
+    width="70rem"
+    vertical="true" >
         <sap.ui.core:Fragment
 		fragmentName="com.sagia.view.fragments.bizactivityquestions_licenseinfo"
 		type="XML" />
+		</ScrollContainer>
       </IconTabFilter>
     </items>
   </IconTabBar>
