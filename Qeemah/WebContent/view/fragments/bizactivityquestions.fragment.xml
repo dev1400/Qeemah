@@ -3,8 +3,16 @@
 	xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<!-- Business Activity Quastions Start -->
-	<sap.ui.commons.layout:MatrixLayout
-		layoutFixed="false">
+	
+	<ScrollContainer
+    height="40rem"
+    width="65rem"
+    vertical="true" >
+    
+  
+
+    <sap.ui.commons.layout:MatrixLayout
+		id="idBizActivityQuestionsMatrixLayout" layoutFixed="false">
 		<sap.ui.commons.layout:rows>
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
@@ -237,5 +245,7 @@
 			</sap.ui.commons.layout:MatrixLayoutRow>
 		</sap.ui.commons.layout:rows>
 	</sap.ui.commons.layout:MatrixLayout>
+    
+</ScrollContainer>
 	<!-- Business Activity Questions End -->
 </sap.ui.core:FragmentDefinition>

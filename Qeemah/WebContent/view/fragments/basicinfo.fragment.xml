@@ -3,9 +3,14 @@
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.commons="sap.ui.commons"
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-	    <VBox width="72.44rem" class="HeadingBGVBOX">
-	   
-		<HBox id="idBasicInfoBoxContent" justifyContent="Center">
+	
+	<ScrollContainer
+    height="40rem"
+    width="70rem"
+    vertical="true" >
+	    <VBox  class="HeadingBGVBOX">
+	   <!-- 
+		<HBox id="idBasicInfoBoxContent" justifyContent="Center"> -->
 		<IconTabBar
     class="iconTabBarPaddingTop IconTabBarHeadingBGCOlor"
     expanded="true" expandable="false"  select="handleBasicInfoIconTabBarSelect">
@@ -14,7 +19,7 @@
         text="{i18n>Organization}" id="idIconTabFilterOrg" key="BasicInfoIconTabKey">
         	<VBox justifyContent="Center">
 			<sap.ui.commons.layout:MatrixLayout
-				layoutFixed="false" columns="4" widths="13em,25em,10em,25em">
+				layoutFixed="false" columns="4" >
 				<sap.ui.commons.layout:rows>
 					<sap.ui.commons.layout:MatrixLayoutRow>
 						<sap.ui.commons.layout:cells>
@@ -700,45 +705,16 @@
 
 	
 	
-<!-- 	<sap.ui.commons:TabStrip id="TabStrip1" height="47.5em"
-		width="65rem">
-		<sap.ui.commons:customData>
-			<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
-				value="true" writeToDom="true"></sap.ui.core:CustomData>
-		</sap.ui.commons:customData>
-		<sap.ui.commons:tabs >
-			<sap.ui.commons:Tab id="TabStrip1-0" 
-				>
-				<sap.ui.commons:title>
-                    <sap.ui.core:Title id="TabStrip1-0-titlel" text="{i18n>Person}" level="Auto"></sap.ui.core:Title>
-                </sap.ui.commons:title>
-				<sap.ui.commons:content>
-			
-	</sap.ui.commons:content>
-				
-	</sap.ui.commons:Tab>
-	
-	
-	
-	
-	
-	<sap.ui.commons:Tab id="TabStrip2"
-				text="{i18n>ContactInformation}" >
-				<sap.ui.commons:content>
-				
-				</sap.ui.commons:content>
-				</sap.ui.commons:Tab>
-				
-	</sap.ui.commons:tabs></sap.ui.commons:TabStrip> -->
-	
+
 		
 
 
-	</HBox>
+	<!-- </HBox> -->
 	</VBox>
 	
 	<VBox alignItems="Center">
 	<Button style="Accept" text="{i18n>Next}" id="idBasicInfoNextButton" press="" >
 							</Button>
 	</VBox>
+	</ScrollContainer>
 </sap.ui.core:FragmentDefinition>

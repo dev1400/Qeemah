@@ -3,6 +3,10 @@
 	xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns:html="http://www.w3.org/1999/xhtml">
+	<ScrollContainer
+    height="40rem"
+    width="65rem"
+    vertical="true" >
 	<!-- Child license activity Q start -->
 	<sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false">
@@ -204,4 +208,5 @@
 	<Button style="Accept" text="{i18n>Next}" press="" >
 							</Button>
 	</VBox> -->
+	</ScrollContainer>
 </sap.ui.core:FragmentDefinition>
