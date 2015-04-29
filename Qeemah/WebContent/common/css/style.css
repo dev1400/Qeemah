@@ -236,8 +236,9 @@
 .RegisterButtonWidth{
 	width : 11rem;
 }
-.IconTabBarHeadingBGCOlor{
+.IconTabBarStyling{
 	background-color: #4ABDB9;
+	width:70rem;
 }
 .sapMITBSelected{
 	background-color: #1573A6;

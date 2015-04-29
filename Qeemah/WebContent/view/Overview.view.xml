@@ -53,13 +53,36 @@
 
 
 		</VBox>
-		
+
 		<VBox id="idTopHeaderVBox" visible="false">
-				<HBox class="MainLicenseRegBGIMG1" justifyContent="SpaceBetween">
-					<VBox alignItems="Center">
+			<HBox class="MainLicenseRegBGIMG1" justifyContent="SpaceBetween">
+				<VBox alignItems="Center">
 
 
 
+					<sap.ui.commons.layout:MatrixLayout
+						layoutFixed="false">
+						<sap.ui.commons.layout:rows>
+							<sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:cells>
+									<sap.ui.commons.layout:MatrixLayoutCell
+										vAlign="Middle">
+										<Image src="common/mime/innerlogo.png" class="LogoWidth"></Image>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell
+										vAlign="Middle">
+										<sap.ui.core:HTML content="{i18n>eServicesHTML}"></sap.ui.core:HTML>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:cells>
+							</sap.ui.commons.layout:MatrixLayoutRow>
+						</sap.ui.commons.layout:rows>
+					</sap.ui.commons.layout:MatrixLayout>
+
+				</VBox>
+
+				<VBox justifyContent="SpaceBetween">
+
+					<HBox>
 						<sap.ui.commons.layout:MatrixLayout
 							layoutFixed="false">
 							<sap.ui.commons.layout:rows>
@@ -67,80 +90,58 @@
 									<sap.ui.commons.layout:cells>
 										<sap.ui.commons.layout:MatrixLayoutCell
 											vAlign="Middle">
-											<Image src="common/mime/innerlogo.png" class="LogoWidth"></Image>
+											<ComboBox width="10em">
+												<sap.ui.core:Item />
+											</ComboBox>
 										</sap.ui.commons.layout:MatrixLayoutCell>
 										<sap.ui.commons.layout:MatrixLayoutCell
 											vAlign="Middle">
-											<sap.ui.core:HTML content="{i18n>eServicesHTML}"></sap.ui.core:HTML>
+											<SearchField width="12em" />
 										</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:cells>
-								</sap.ui.commons.layout:MatrixLayoutRow>
-							</sap.ui.commons.layout:rows>
-						</sap.ui.commons.layout:MatrixLayout>
+										<sap.ui.commons.layout:MatrixLayoutCell>
+											<ComboBox width="7em">
+												<sap.ui.core:Item />
+											</ComboBox>
 
-					</VBox>
-
-					<VBox justifyContent="SpaceBetween">
-
-						<HBox>
-							<sap.ui.commons.layout:MatrixLayout
-								layoutFixed="false">
-								<sap.ui.commons.layout:rows>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-										<sap.ui.commons.layout:cells>
-											<sap.ui.commons.layout:MatrixLayoutCell
-												vAlign="Middle">
-												<ComboBox width="10em">
-													<sap.ui.core:Item />
-												</ComboBox>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell
-												vAlign="Middle">
-												<SearchField width="12em" />
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<ComboBox width="7em">
-													<sap.ui.core:Item />
-												</ComboBox>
-
-											</sap.ui.commons.layout:MatrixLayoutCell>
-										</sap.ui.commons.layout:cells>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-								</sap.ui.commons.layout:rows>
-							</sap.ui.commons.layout:MatrixLayout>
-						</HBox>
-					</VBox>
-				</HBox>
-				
-				
-				<HBox class="MainLicenseRegBGIMG2" 
-					alignItems="Center"  justifyContent="SpaceBetween" >
-					<sap.ui.core:HTML id="idStagesHeading" content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
-					<HBox alignItems="Center" justifyContent="Center">
-						<sap.ui.commons.layout:MatrixLayout
-							layoutFixed="false">
-							<sap.ui.commons.layout:rows>
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:cells>
-										<sap.ui.commons.layout:MatrixLayoutCell vAlign="Top">
-											<Button text="{i18n>Save}" id="idSaveButton" />
-										</sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:MatrixLayoutCell
-											vAlign="Bottom">
-											<Image src="common/mime/logout.png"></Image>
-										</sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:MatrixLayoutCell
-											vAlign="Bottom">
-											<Link text="{i18n>Logout}" class="linkColorWhite" />
 										</sap.ui.commons.layout:MatrixLayoutCell>
 									</sap.ui.commons.layout:cells>
 								</sap.ui.commons.layout:MatrixLayoutRow>
 							</sap.ui.commons.layout:rows>
 						</sap.ui.commons.layout:MatrixLayout>
 					</HBox>
-				</HBox>
+				</VBox>
+			</HBox>
 
-			</VBox>
+
+			<HBox class="MainLicenseRegBGIMG2" alignItems="Center"
+				justifyContent="SpaceBetween">
+				<sap.ui.core:HTML id="idStagesHeading" content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
+				<HBox alignItems="Center" justifyContent="Center">
+					<sap.ui.commons.layout:MatrixLayout
+						layoutFixed="false">
+						<sap.ui.commons.layout:rows>
+							<sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:cells>
+									<sap.ui.commons.layout:MatrixLayoutCell
+										vAlign="Top">
+										<Button text="{i18n>Save}" id="idSaveButton" />
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell
+										vAlign="Bottom">
+										<Image src="common/mime/logout.png"></Image>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell
+										vAlign="Bottom">
+										<Link text="{i18n>Logout}" class="linkColorWhite" />
+									</sap.ui.commons.layout:MatrixLayoutCell>
+								</sap.ui.commons.layout:cells>
+							</sap.ui.commons.layout:MatrixLayoutRow>
+						</sap.ui.commons.layout:rows>
+					</sap.ui.commons.layout:MatrixLayout>
+				</HBox>
+			</HBox>
+
+		</VBox>
 
 
 
@@ -149,10 +150,9 @@
 
 
 
-		<VBox id="idLicenseButtonsHBox" visible="false" 
-			width="100%">
+		<VBox id="idLicenseButtonsHBox" visible="false" width="100%">
 
-			
+
 
 			<HBox>
 
@@ -161,7 +161,8 @@
 					<sap.ui.commons.layout:rows>
 						<sap.ui.commons.layout:MatrixLayoutRow>
 							<sap.ui.commons.layout:cells>
-								<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center" vAlign="Top">
+								<sap.ui.commons.layout:MatrixLayoutCell
+									hAlign="Center" vAlign="Top">
 									<VBox class="BasicInfoButtonBGVBOX">
 										<VBox class="BasicInfoButtonBG" justifyContent="Center">
 											<Image src="common/mime/basicinfo_hover.png" id="idBasicInfoButton"
@@ -181,21 +182,26 @@
 
 									</VBox>
 								</sap.ui.commons.layout:MatrixLayoutCell>
-								<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center" vAlign="Top">
-								
-				<VBox id="idBasicInfoContent" alignItems="Center">
-					<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.basicinfo"
-						type="XML"  />
-				</VBox>
-				<VBox id="idLicenseInfoContent" alignItems="Center" visible="false">
-					<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.licenseinfo"
-						type="XML" />
-				</VBox>
-				<VBox id="idShareHoldersInfoContent" alignItems="Center" visible="false">
-					<sap.ui.core:Fragment
-						fragmentName="com.sagia.view.fragments.shareholders_tabstrip"
-						type="XML" />
-				</VBox>
+								<sap.ui.commons.layout:MatrixLayoutCell
+									hAlign="Center" vAlign="Top">
+
+									<VBox id="idBasicInfoContent" alignItems="Center">
+										
+											<sap.ui.core:Fragment width="70rem" fragmentName="com.sagia.view.fragments.basicinfo"
+												type="XML" />
+										
+									</VBox>
+									<VBox id="idLicenseInfoContent" alignItems="Center"
+										visible="false">
+										<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.licenseinfo"
+											type="XML" />
+									</VBox>
+									<VBox id="idShareHoldersInfoContent" alignItems="Center"
+										visible="false">
+										<sap.ui.core:Fragment
+											fragmentName="com.sagia.view.fragments.shareholders_tabstrip"
+											type="XML" />
+									</VBox>
 								</sap.ui.commons.layout:MatrixLayoutCell>
 							</sap.ui.commons.layout:cells>
 						</sap.ui.commons.layout:MatrixLayoutRow>

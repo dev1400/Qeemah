@@ -5,7 +5,10 @@
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 
-	<ScrollContainer height="40rem"  vertical="true">
+	<ScrollContainer
+    height="40rem"
+    width="69rem"
+    vertical="true" >
 	<sap.ui.commons.layout:MatrixLayout
 			layoutFixed="false">
 			<sap.ui.commons.layout:rows>

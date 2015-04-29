@@ -7,9 +7,9 @@
 	
 	    <VBox  class="HeadingBGVBOX">
 	   
-		<HBox id="idBasicInfoBoxContent" justifyContent="Center">
+		<HBox id="idBasicInfoBoxContent" alignItems="Stretch">
 		<IconTabBar
-    class="iconTabBarPaddingTop IconTabBarHeadingBGCOlor"
+    class="iconTabBarPaddingTop IconTabBarStyling"
     expanded="true" expandable="false"  select="handleBasicInfoIconTabBarSelect">
     <items>
       <IconTabFilter
