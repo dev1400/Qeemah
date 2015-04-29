@@ -129,48 +129,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oVboxQuestions.setVisible(true);
 		// this._oVboxUserInfo.setVisible(true);
 	},
-	handleRegisterUserButtonPress : function() {
-		
-		var oInputFirstName = this.getView().byId("idFirstNameInputText")
-		.getValue();
-		var oInputLastName = this.getView().byId("idLastNameInputText")
-		.getValue();
-		
-		var oInputMobileNumber = this.getView().byId("idInputMobileNumber")
-				.getValue();
-		var oInputEmail = this.getView().byId("idInputEmail").getValue();
-		var oPassword = this.getView().byId("idInputPassword").getValue();
-		if (oInputMobileNumber.length > 0 && oInputEmail.length > 0
-				&& oPassword.length > 0 && oInputFirstName.length > 0 && oInputLastName.length > 0) {
-			
-			this.oModelHelper.registerUser(oInputMobileNumber, oInputEmail, oPassword, oInputFirstName, oInputLastName);
-			
-			sap.m.MessageToast.show(this.oModelHelper
-					.getText("RegistrationSuccessful"));
-		} else {
-			sap.m.MessageToast.show(this.oModelHelper
-					.getText("PleaseEnterRequiredFields"));
-		}
-
-		/*
-		 * this._oVBoxRegistration.setVisible(false);
-		 * this._oHboxRegistrationSuccessMsg.setVisible(true);
-		 * sap.m.MessageToast.show(this.oModelHelper.getText("RegistrationSuccessful"));
-		 * this.oModelHelper.registerUser();
-		 */
-		/**
-		 * Read deals in amendment collection and bind model to view
-		 */
-		/*
-		 * _bindDealsInAmendmentCollectionModel: function() {
-		 */
-		// var oDealsInAmendmentCollectionModel =
-		// com.sagia.common.ModelHelper.readDealsInAmendmentCollection();
-		/*
-		 * this._oTable.setModel(oDealsInAmendmentCollectionModel); },
-		 */
-
-	},
+	
 	handleCheckboxQuestion1Change : function(oEvent) {
 		if (oEvent.getParameter("selected")) {
 			this._oVboxQuestion1.setVisible(true);
@@ -284,7 +243,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oTopHeaderVBox.setVisible(true);
 		this._oidLicenseButtonsHBox.setVisible(true);
 		
-		/*if (userID.length > 0 && password.length > 0) {
+		if (userID.length > 0 && password.length > 0) {
 			var oRequestFinishedDeferred = this.oModelHelper.signInUser(userID,password);
 
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {	
@@ -304,7 +263,46 @@ sap.ui.controller("com.sagia.view.Overview", {
 		} else {
 			sap.m.MessageToast.show(this.oModelHelper
 					.getText("PleaseEnterRequiredFields"));
-		}		*/
+		}		
+	},
+handleRegisterUserButtonPress : function() {
+		
+		var oInputFirstName = this.getView().byId("idFirstNameInputText")
+		.getValue();
+		var oInputLastName = this.getView().byId("idLastNameInputText")
+		.getValue();
+		
+		var oInputMobileNumber = this.getView().byId("idInputMobileNumber")
+				.getValue();
+		var oInputEmail = this.getView().byId("idInputEmail").getValue();
+		var oPassword = this.getView().byId("idInputPassword").getValue();
+		if (oInputMobileNumber.length > 0 && oInputEmail.length > 0
+				&& oPassword.length > 0 && oInputFirstName.length > 0 && oInputLastName.length > 0) {
+			
+			var oRequestFinishedDeferred = this.oModelHelper.registerUser(oInputMobileNumber, oInputEmail, oPassword, oInputFirstName, oInputLastName);
+			
+			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+				
+				console.log(oResponse);
+				
+				if(oResponse.InvestorId === "0000000000"){
+					sap.m.MessageToast.show(oResponse.Return);
+				}else{
+					/*sap.m.MessageToast.show(this.oModelHelper
+							.getText("SignInSuccessful"));
+					this._oidMainPageContent.setVisible(false);
+					this._oTopHeaderVBox.setVisible(true);
+					this._oidLicenseButtonsHBox.setVisible(true);*/
+				}
+				
+			}, this));	
+			
+			/*sap.m.MessageToast.show(this.oModelHelper
+					.getText("RegistrationSuccessful"));*/
+		} else {
+			sap.m.MessageToast.show(this.oModelHelper
+					.getText("PleaseEnterRequiredFields"));
+		}
 	},
 	handleCancelButtonPress : function(oEvent) {
 	},
