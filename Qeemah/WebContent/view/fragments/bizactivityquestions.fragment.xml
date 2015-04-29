@@ -20,7 +20,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							<VBox justifyContent="Center">
-								<Label text="{i18n>BAQ1}"></Label>
+								<sap.ui.commons:TextView text="{i18n>BAQ1}"></sap.ui.commons:TextView>
 								<HBox justifyContent="SpaceBetween">
 									<ComboBox width="25em">
 										<sap.ui.core:Item />
@@ -43,8 +43,8 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							<VBox justifyContent="Center">
-								<Label text="{i18n>BAQ2}"></Label>
-								<Label text="{i18n>BAQ2-1}"></Label>
+								<sap.ui.commons:TextView text="{i18n>BAQ2}"></sap.ui.commons:TextView>
+								
 								<HBox justifyContent="SpaceBetween">
 									<ComboBox width="25em">
 										<sap.ui.core:Item />
@@ -67,8 +67,8 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							<VBox justifyContent="Center">
-								<Label text="{i18n>BAQ3}"></Label>
-								<Label text="{i18n>BAQ3-1}"></Label>
+								<sap.ui.commons:TextView text="{i18n>BAQ3}"></sap.ui.commons:TextView>
+								
 
 								<HBox justifyContent="SpaceBetween">
 									<ComboBox width="25em">
@@ -91,7 +91,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							<VBox justifyContent="Center">
-								<Label text="{i18n>BAQ4}"></Label>
+								<sap.ui.commons:TextView text="{i18n>BAQ4}"></sap.ui.commons:TextView>
 							</VBox>
 							<sap.ui.commons.layout:MatrixLayout
 								layoutFixed="false">
@@ -114,7 +114,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							<VBox justifyContent="Center">
-								<Label text="{i18n>BAQ5}"></Label>
+								<sap.ui.commons:TextView text="{i18n>BAQ5}"></sap.ui.commons:TextView>
 
 								<HBox justifyContent="SpaceBetween">
 									<ComboBox width="25em">
@@ -138,7 +138,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							<VBox justifyContent="Center">
-								<Label text="{i18n>BAQ6}"></Label>
+								<sap.ui.commons:TextView text="{i18n>BAQ6}"></sap.ui.commons:TextView>
 							</VBox>
 							<sap.ui.commons.layout:MatrixLayout
 								layoutFixed="false">
@@ -160,7 +160,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							<VBox justifyContent="Center">
-								<Label text="{i18n>BAQ7}"></Label>
+								<sap.ui.commons:TextView text="{i18n>BAQ7}"></sap.ui.commons:TextView>
 								<HBox justifyContent="SpaceBetween">
 									<ComboBox width="25em">
 										<sap.ui.core:Item />
@@ -182,8 +182,8 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							<VBox justifyContent="Center">
-								<Label text="{i18n>BAQ8}"></Label>
-								<Label text="{i18n>BAQ8-1}"></Label>
+								<sap.ui.commons:TextView text="{i18n>BAQ8}"></sap.ui.commons:TextView>
+								
 							</VBox>
 							<sap.ui.commons.layout:MatrixLayout
 								layoutFixed="false">
@@ -206,8 +206,8 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							<VBox justifyContent="Center">
-								<Label text="{i18n>BAQ9}"></Label>
-								<Label text="{i18n>BAQ9-1}"></Label>
+								<sap.ui.commons:TextView text="{i18n>BAQ9}"></sap.ui.commons:TextView>
+							
 							</VBox>
 							<sap.ui.commons.layout:MatrixLayout
 								layoutFixed="false">
@@ -231,7 +231,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							<VBox justifyContent="Center">
-								<Label text="{i18n>BAQ10}"></Label>
+								<sap.ui.commons:TextView text="{i18n>BAQ10}"></sap.ui.commons:TextView>
 							</VBox>
 							<sap.ui.commons.layout:MatrixLayout
 								layoutFixed="false">
