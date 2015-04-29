@@ -355,8 +355,7 @@
 												<HBox justifyContent="SpaceBetween" alignItems="Center">
 												<Label text="{i18n>PreApprovalFile}"></Label>
 										<sap.ui.unified:FileUploader
-											uploadUrl="upload/" width="15em" tooltip="{i18n>BrowsePreApprovalFile}"
-											uploadComplete="handleUploadComplete" />
+											uploadUrl="upload/" width="15em" icon="common/mime/attachment.png" iconOnly="true" />
 									</HBox>
 											</sap.ui.commons.layout:content>
 							</sap.ui.commons.layout:MatrixLayoutCell>
@@ -648,20 +647,22 @@
 									<HBox justifyContent="SpaceBetween" alignItems="Start">
 										<Label text="{i18n>PassportCopyIDCopy}"></Label>
 										<sap.ui.unified:FileUploader
-											uploadUrl="upload/" width="15em" tooltip="{i18n>BrowsePassportCopyIDCopy}"
-											uploadComplete="handleUploadComplete" />
+											uploadUrl="upload/" width="15em" icon="common/mime/attachment.png" iconOnly="true" />
 									</HBox>
 								</sap.ui.commons.layout:content>
 							</sap.ui.commons.layout:MatrixLayoutCell>
-							<sap.ui.commons.layout:MatrixLayoutCell
-								colSpan="2">
+							<sap.ui.commons.layout:MatrixLayoutCell hAlign="End"
+								>
 								<sap.ui.commons.layout:content>
-									<HBox justifyContent="SpaceBetween" alignItems="Center">
 										<Label text="{i18n>PowerofAttorney}"></Label>
+								</sap.ui.commons.layout:content>
+							</sap.ui.commons.layout:MatrixLayoutCell>
+							<sap.ui.commons.layout:MatrixLayoutCell hAlign="End"
+								>
+								<sap.ui.commons.layout:content>
 										<sap.ui.unified:FileUploader
-											uploadUrl="upload/" width="15em" tooltip="{i18n>BrowsePowerofAttorney}"
-											uploadComplete="handleUploadComplete" />
-									</HBox>
+											uploadUrl="upload/" width="15em" icon="common/mime/attachment.png" iconOnly="true" />
+									
 								</sap.ui.commons.layout:content>
 							</sap.ui.commons.layout:MatrixLayoutCell>
 						</sap.ui.commons.layout:cells>
