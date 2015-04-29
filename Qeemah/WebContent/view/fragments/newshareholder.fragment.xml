@@ -41,12 +41,13 @@
 						</sap.ui.commons:content>
 					</sap.ui.commons:AccordionSection>
 					<sap.ui.commons:AccordionSection
-						id="idActivityQuestions" collapsed="true" title="{i18n>ActivityQuestions}">
-						<sap.ui.commons:customData>
-							<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
-								value="true" writeToDom="true"></sap.ui.core:CustomData>
-						</sap.ui.commons:customData>
+						maxHeight="17.3rem" id="idActivityQuestions" collapsed="true" title="{i18n>ActivityQuestions}">
+						
 						<sap.ui.commons:content>
+						
+						<sap.ui.core:Fragment
+								fragmentName="com.sagia.view.fragments.ns_activityquestions"
+								type="XML" />	
 
 						</sap.ui.commons:content>
 					</sap.ui.commons:AccordionSection>
