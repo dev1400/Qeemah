@@ -14,66 +14,79 @@
 
 
 		<VBox alignItems="Center">
-		
-		
-		 <sap.ui.commons:Accordion id="accordionA" openedSectionsId="section1" width="60rem">
-        <sap.ui.commons:sections>
-            <sap.ui.commons:AccordionSection id="idShareHolderDetails" maxHeight="30rem" collapsed="true" title="{i18n>ShareHolderDetails}" tooltip="{i18n>ShareHolderDetails}">
-               <!--  <sap.ui.commons:customData>
-                    <sap.ui.core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true"></sap.ui.core:CustomData>
-                </sap.ui.commons:customData> -->
-                <sap.ui.commons:content>
-                    <sap.ui.core:Fragment
-		fragmentName="com.sagia.view.fragments.ns_shareholderdetails"
-		type="XML" />
-                </sap.ui.commons:content>
-            </sap.ui.commons:AccordionSection>
-             <sap.ui.commons:AccordionSection id="idNewShareHolderAttachments" maxHeight="100px" collapsed="true" title="{i18n>Attachments}" tooltip="{i18n>Attachments}">
-                <sap.ui.commons:customData>
-                    <sap.ui.core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true"></sap.ui.core:CustomData>
-                </sap.ui.commons:customData>
-                <sap.ui.commons:content>
-                    
-                </sap.ui.commons:content>
-            </sap.ui.commons:AccordionSection>
-            <sap.ui.commons:AccordionSection id="idActivityQuestions" collapsed="true" title="{i18n>ActivityQuestions}">
-                <sap.ui.commons:customData>
-                    <sap.ui.core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true"></sap.ui.core:CustomData>
-                </sap.ui.commons:customData>
-                <sap.ui.commons:content>
-                   
-                </sap.ui.commons:content>
-            </sap.ui.commons:AccordionSection>
-           
-            <sap.ui.commons:AccordionSection id="idExperienceQuestions" collapsed="true" title="{i18n>ExperienceQuestions}">
-                <sap.ui.commons:customData>
-                    <sap.ui.core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true"></sap.ui.core:CustomData>
-                </sap.ui.commons:customData>
-                <sap.ui.commons:content>
-                   
-                </sap.ui.commons:content>
-            </sap.ui.commons:AccordionSection>
-              <sap.ui.commons:AccordionSection id="idNewShareholderFinancialQuestions" collapsed="true" title="{i18n>FinancialQuestions}">
-                <sap.ui.commons:customData>
-                    <sap.ui.core:CustomData key="sap-ui-fastnavgroup" value="true" writeToDom="true"></sap.ui.core:CustomData>
-                </sap.ui.commons:customData>
-                <sap.ui.commons:content>
-                   
-                </sap.ui.commons:content>
-            </sap.ui.commons:AccordionSection>
-        </sap.ui.commons:sections>
-    </sap.ui.commons:Accordion>
-    <html:br/>
-    
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+			<sap.ui.commons:Accordion id="accordionA"
+				openedSectionsId="section1" width="60rem">
+				<sap.ui.commons:sections>
+					<sap.ui.commons:AccordionSection
+						id="idShareHolderDetails" maxHeight="30rem" collapsed="true"
+						title="{i18n>ShareHolderDetails}" tooltip="{i18n>ShareHolderDetails}">
+						<!-- <sap.ui.commons:customData> <sap.ui.core:CustomData key="sap-ui-fastnavgroup" 
+							value="true" writeToDom="true"></sap.ui.core:CustomData> </sap.ui.commons:customData> -->
+						<sap.ui.commons:content>
+							<sap.ui.core:Fragment
+								fragmentName="com.sagia.view.fragments.ns_shareholderdetails"
+								type="XML" />
+						</sap.ui.commons:content>
+					</sap.ui.commons:AccordionSection>
+					<sap.ui.commons:AccordionSection
+						id="idNewShareHolderAttachments" maxHeight="17rem" collapsed="true"
+						title="{i18n>Attachments}" tooltip="{i18n>Attachments}">
+
+						<sap.ui.commons:content>
+						
+						<sap.ui.core:Fragment
+								fragmentName="com.sagia.view.fragments.ns_attachments"
+								type="XML" />							
+
+						</sap.ui.commons:content>
+					</sap.ui.commons:AccordionSection>
+					<sap.ui.commons:AccordionSection
+						id="idActivityQuestions" collapsed="true" title="{i18n>ActivityQuestions}">
+						<sap.ui.commons:customData>
+							<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
+								value="true" writeToDom="true"></sap.ui.core:CustomData>
+						</sap.ui.commons:customData>
+						<sap.ui.commons:content>
+
+						</sap.ui.commons:content>
+					</sap.ui.commons:AccordionSection>
+
+					<sap.ui.commons:AccordionSection
+						id="idExperienceQuestions" collapsed="true" title="{i18n>ExperienceQuestions}">
+						<sap.ui.commons:customData>
+							<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
+								value="true" writeToDom="true"></sap.ui.core:CustomData>
+						</sap.ui.commons:customData>
+						<sap.ui.commons:content>
+
+						</sap.ui.commons:content>
+					</sap.ui.commons:AccordionSection>
+					<sap.ui.commons:AccordionSection
+						id="idNewShareholderFinancialQuestions" collapsed="true"
+						title="{i18n>FinancialQuestions}">
+						<sap.ui.commons:customData>
+							<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
+								value="true" writeToDom="true"></sap.ui.core:CustomData>
+						</sap.ui.commons:customData>
+						<sap.ui.commons:content>
+
+						</sap.ui.commons:content>
+					</sap.ui.commons:AccordionSection>
+				</sap.ui.commons:sections>
+			</sap.ui.commons:Accordion>
+			<html:br />
+
+
+
+
+
+
+
+
+
+
 			<sap.ui.commons.layout:MatrixLayout
 				layoutFixed="false">
 				<sap.ui.commons.layout:rows>
