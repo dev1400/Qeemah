@@ -262,3 +262,7 @@
   font-family: SEGOEUI-Normal !important;
   font-size: .8rem !important;
 }
+.ShareHoldesParentVBox{
+  width: 65rem;
+  height: 40rem;
+}
