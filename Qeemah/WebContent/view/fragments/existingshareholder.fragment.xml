@@ -1,0 +1,154 @@
+
+<sap.ui.core:FragmentDefinition xmlns="sap.m"
+	xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
+	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.commons="sap.ui.commons"
+	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
+	<ScrollContainer height="40rem"  vertical="true">
+	<sap.ui.commons.layout:MatrixLayout
+			layoutFixed="false">
+			<sap.ui.commons.layout:rows>
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							vAlign="Middle">
+							<sap.ui.commons.layout:content>
+								<Label text="{i18n>ShareHolderCompletion}"></Label>
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							vAlign="Middle">
+							<sap.ui.commons.layout:content>
+								<ProgressIndicator width="10rem" percentValue="50"
+									showValue="true" state="Warning" />
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:rows>
+		</sap.ui.commons.layout:MatrixLayout>
+					
+					
+						<VBox justifyContent="Center" alignItems="Center">
+
+							<sap.ui.commons.layout:MatrixLayout
+								layoutFixed="false" columns="5">
+								<sap.ui.commons.layout:rows>
+
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												colSpan="2">
+												<sap.ui.commons.layout:content>
+													<Label text="{i18n>EnterShareholderEntityNo}"></Label>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:content>
+													<Label text="{i18n>Name}"></Label>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												colSpan="2">
+												<sap.ui.commons.layout:content>
+													<Label text="{i18n>Percentage}"></Label>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												vAlign="Top">
+												<sap.ui.commons.layout:content>
+													<Input type="Text"></Input>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+
+											<sap.ui.commons.layout:MatrixLayoutCell
+												vAlign="Top">
+												<sap.ui.commons.layout:content>
+													<Button text="{i18n>Validate}"></Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:content>
+													<Input type="Text"></Input>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:content>
+													<Input type="Text"></Input>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+
+											<sap.ui.commons.layout:MatrixLayoutCell
+												vAlign="Top">
+												<sap.ui.commons.layout:content>
+													<Button text="{i18n>Add}"></Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+
+								</sap.ui.commons.layout:rows>
+							</sap.ui.commons.layout:MatrixLayout>
+						</VBox>
+
+
+						<VBox alignItems="Center">
+
+							<sap.ui.commons.layout:MatrixLayout
+								layoutFixed="false">
+								<sap.ui.commons.layout:rows>
+
+
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												colSpan="2">
+												<sap.ui.commons.layout:content>
+													<Table width="60em">
+														<columns>
+															<Column width="2em">
+																<Text text="#" />
+															</Column>
+															<Column width="5em">
+																<Text text="{i18n>ShareholderEntityNo}" />
+															</Column>
+															<Column width="5em">
+																<Text text="{i18n>ShareHolderName}" />
+															</Column>
+															<Column width="5em">
+																<Text text="{i18n>Percentage}" />
+															</Column>
+															<Column width="5em">
+																<Text text="{i18n>Delete}" />
+															</Column>
+														</columns>
+														<items>
+															<ColumnListItem>
+																<cells>
+																	<Input type="Text" />
+																	<Input type="Text" />
+																	<Input type="Text" />
+																	<Input type="Text" />
+																	<Input type="Text" />
+																</cells>
+															</ColumnListItem>
+														</items>
+													</Table>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+							</sap.ui.commons.layout:MatrixLayout>
+							</VBox>
+	</ScrollContainer>
+</sap.ui.core:FragmentDefinition>
