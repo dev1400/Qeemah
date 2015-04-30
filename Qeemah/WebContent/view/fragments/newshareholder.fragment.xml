@@ -41,7 +41,7 @@
 						</sap.ui.commons:content>
 					</sap.ui.commons:AccordionSection>
 					<sap.ui.commons:AccordionSection
-						maxHeight="17.3rem" id="idActivityQuestions" collapsed="true" title="{i18n>ActivityQuestions}">
+						maxHeight="15rem" id="idActivityQuestions" collapsed="true" title="{i18n>ActivityQuestions}">
 						
 						<sap.ui.commons:content>
 						

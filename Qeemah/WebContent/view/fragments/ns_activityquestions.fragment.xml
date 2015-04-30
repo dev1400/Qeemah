@@ -57,7 +57,22 @@
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow>
 			
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell colSpan="2" hAlign="End">
+						<sap.ui.commons.layout:content>
+						<sap.ui.unified:FileUploader id="idActivityQuestionsFU" width="18.7rem" 
+						placeholder="{i18n>SupportingDocuments}" icon="common/mime/attachment.png" iconOnly="true"/>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			
 		</sap.ui.commons.layout:rows>
+		
+		
+											
+											
 	</sap.ui.commons.layout:MatrixLayout>
 
 </sap.ui.core:FragmentDefinition>
