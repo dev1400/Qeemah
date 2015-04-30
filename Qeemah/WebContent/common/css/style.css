@@ -216,9 +216,10 @@
 .IconTabBarStyling{
 	/* background-color: #00A19C; */
 	background-image: transperent; /* url("mime/icontabbar_bg.jpg") !important;; */
-	width:70rem;
+	/* width:70rem; */
 	
 }
+
 .sapMITBTextOnly .sapMITBFilter:first-child {
   margin: 0 0 0 0;
 }

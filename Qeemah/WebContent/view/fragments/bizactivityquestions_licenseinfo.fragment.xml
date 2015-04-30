@@ -162,7 +162,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						colSpan="2">
 						<sap.ui.commons.layout:content>
-							<Table width="78em">
+							<Table width="66rem">
 								<columns>
 									<Column width="2em">
 										<Text text="#" />
