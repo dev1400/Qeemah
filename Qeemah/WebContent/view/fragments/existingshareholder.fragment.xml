@@ -6,7 +6,7 @@
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 
 	<ScrollContainer
-    height="40rem"
+    height="36rem"
     width="69rem"
     vertical="true" >
     <html:br/>

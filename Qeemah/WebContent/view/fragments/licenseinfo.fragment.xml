@@ -9,17 +9,17 @@
  <HBox justifyContent="Center">
  <IconTabBar
     class="iconTabBarPaddingTop IconTabBarStyling"
-    expanded="true" expandable="false">
+    expanded="true" expandable="false" idd="idLicenseInfoIconTabBar">
     <items>
       <IconTabFilter
-        text="{i18n>BusinessActivityQuestions}">
+        text="{i18n>BusinessActivityQuestions}" id="idLicenseInfo_BizActivityQ">
         
         <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bizactivityquestions"
 		type="XML" />
 		
       </IconTabFilter>
       <IconTabFilter
-        text="{i18n>LicenseInformation}">
+        text="{i18n>LicenseInformation}" id="idLicenseInfo_LicenseInfo">
         
         <sap.ui.core:Fragment
 		fragmentName="com.sagia.view.fragments.bizactivityquestions_licenseinfo"

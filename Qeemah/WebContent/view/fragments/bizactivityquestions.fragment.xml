@@ -6,9 +6,9 @@
 	<!-- Business Activity Quastions Start -->
 	
 	<ScrollContainer
-    height="40rem"
+    height="36rem"
     width="69rem"
-    vertical="true" >
+    vertical="true" id="idBizActivityQScrollContainer" >
     
   
 

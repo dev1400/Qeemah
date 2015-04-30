@@ -14,6 +14,14 @@
     <items>
       <IconTabFilter
         text="{i18n>Organization}" id="idIconTabFilterOrg" key="BasicInfoIconTabKey">
+        
+        <ScrollContainer
+    height="36rem"
+    width="69rem"
+    vertical="true" >
+    <html:br/>
+    
+    
         	<VBox justifyContent="Center">
 			<sap.ui.commons.layout:MatrixLayout
 				layoutFixed="false" columns="4" >
@@ -363,9 +371,16 @@
 			<!-- Org reg layout end -->
 			
 		</VBox>
+		</ScrollContainer>
       </IconTabFilter>
       <IconTabFilter
         text="{i18n>ContactInformation}">
+        
+        <ScrollContainer
+    height="36rem"
+    width="69rem"
+    vertical="true" >
+    <html:br/>
         <!-- Contact information layout start -->
 			<sap.ui.commons.layout:MatrixLayout
 				layoutFixed="false" columns="4" widths="13em,25em,10em,25em">
@@ -681,6 +696,7 @@
 				</sap.ui.commons.layout:rows>
 							
 			</sap.ui.commons.layout:MatrixLayout>
+			</ScrollContainer>
       </IconTabFilter>
     </items>
   </IconTabBar>
