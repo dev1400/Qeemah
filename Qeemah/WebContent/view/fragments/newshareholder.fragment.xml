@@ -41,7 +41,7 @@
 						</sap.ui.commons:content>
 					</sap.ui.commons:AccordionSection>
 					<sap.ui.commons:AccordionSection
-						maxHeight="15rem" id="idActivityQuestions" collapsed="true" title="{i18n>ActivityQuestions}">
+						maxHeight="17.4rem" id="idActivityQuestions" collapsed="true" title="{i18n>ActivityQuestions}">
 						
 						<sap.ui.commons:content>
 						
@@ -53,7 +53,7 @@
 					</sap.ui.commons:AccordionSection>
 
 					<sap.ui.commons:AccordionSection
-						id="idExperienceQuestions" maxHeight="16rem" collapsed="true" title="{i18n>ExperienceQuestions}">
+						id="idExperienceQuestions" maxHeight="18.4rem" collapsed="true" title="{i18n>ExperienceQuestions}">
 						<sap.ui.commons:content>
 						<sap.ui.core:Fragment
 								fragmentName="com.sagia.view.fragments.ns_p_experiencequestions"
@@ -62,13 +62,12 @@
 						</sap.ui.commons:content>
 					</sap.ui.commons:AccordionSection>
 					<sap.ui.commons:AccordionSection
-						id="idNewShareholderFinancialQuestions" collapsed="true"
-						title="{i18n>FinancialQuestions}">
-						<sap.ui.commons:customData>
-							<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
-								value="true" writeToDom="true"></sap.ui.core:CustomData>
-						</sap.ui.commons:customData>
+						id="idNewShareholderFinancialQuestions" collapsed="true" maxHeight="18.4rem"
+						title="{i18n>FinancialQuestions}">						
 						<sap.ui.commons:content>
+						<sap.ui.core:Fragment
+								fragmentName="com.sagia.view.fragments.ns_p_financialquestions"
+								type="XML" />	
 
 						</sap.ui.commons:content>
 					</sap.ui.commons:AccordionSection>
