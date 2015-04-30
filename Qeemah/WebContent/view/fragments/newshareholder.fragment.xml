@@ -53,12 +53,11 @@
 					</sap.ui.commons:AccordionSection>
 
 					<sap.ui.commons:AccordionSection
-						id="idExperienceQuestions" collapsed="true" title="{i18n>ExperienceQuestions}">
-						<sap.ui.commons:customData>
-							<sap.ui.core:CustomData key="sap-ui-fastnavgroup"
-								value="true" writeToDom="true"></sap.ui.core:CustomData>
-						</sap.ui.commons:customData>
+						id="idExperienceQuestions" maxHeight="16rem" collapsed="true" title="{i18n>ExperienceQuestions}">
 						<sap.ui.commons:content>
+						<sap.ui.core:Fragment
+								fragmentName="com.sagia.view.fragments.ns_p_experiencequestions"
+								type="XML" />	
 
 						</sap.ui.commons:content>
 					</sap.ui.commons:AccordionSection>
