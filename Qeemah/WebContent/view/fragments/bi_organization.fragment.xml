@@ -7,24 +7,11 @@
     height="39.88rem"
     width="69rem"
     vertical="true" id="idBI_OrganizationScrollContainer" >
+    <html:br />
 			
 								<sap.ui.commons.layout:MatrixLayout
-									layoutFixed="false" columns="4">
-									<sap.ui.commons.layout:rows>
-										<sap.ui.commons.layout:MatrixLayoutRow>
-											<sap.ui.commons.layout:cells>
-												<sap.ui.commons.layout:MatrixLayoutCell
-													colSpan="4">
-													<sap.ui.commons.layout:content>
-														<HBox>
-															<sap.ui.core:HTML content="{i18n>OrganizationCompany}">
-															</sap.ui.core:HTML>
-														</HBox>
-													</sap.ui.commons.layout:content>
-												</sap.ui.commons.layout:MatrixLayoutCell>
-											</sap.ui.commons.layout:cells>
-										</sap.ui.commons.layout:MatrixLayoutRow>
-									</sap.ui.commons.layout:rows>
+									layoutFixed="false" >
+									
 									<sap.ui.commons.layout:rows>
 										<sap.ui.commons.layout:MatrixLayoutRow>
 											<sap.ui.commons.layout:cells>

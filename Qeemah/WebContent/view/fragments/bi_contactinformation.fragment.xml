@@ -11,24 +11,9 @@
 								
 							<html:br />
 							<!-- Contact information layout start -->
-							<sap.ui.commons.layout:MatrixLayout
-								layoutFixed="false" columns="4" widths="13em,25em,10em,25em">
-								<sap.ui.commons.layout:rows>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-										<sap.ui.commons.layout:cells>
-											<sap.ui.commons.layout:MatrixLayoutCell
-												colSpan="4">
-												<sap.ui.commons.layout:content>
-													<HBox>
-														<sap.ui.core:HTML content="{i18n>ContactInformation}">
-														</sap.ui.core:HTML>
-													</HBox>
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-										</sap.ui.commons.layout:cells>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-								</sap.ui.commons.layout:rows>
-								<sap.ui.commons.layout:rows>
+							
+							<sap.ui.commons.layout:MatrixLayout layoutFixed="false">
+							<sap.ui.commons.layout:rows>
 									<sap.ui.commons.layout:MatrixLayoutRow>
 										<sap.ui.commons.layout:cells>
 											<sap.ui.commons.layout:MatrixLayoutCell
@@ -60,6 +45,7 @@
 										</sap.ui.commons.layout:cells>
 									</sap.ui.commons.layout:MatrixLayoutRow>
 								</sap.ui.commons.layout:rows>
+								
 								<sap.ui.commons.layout:rows>
 									<sap.ui.commons.layout:MatrixLayoutRow>
 										<sap.ui.commons.layout:cells>
@@ -156,6 +142,7 @@
 										</sap.ui.commons.layout:cells>
 									</sap.ui.commons.layout:MatrixLayoutRow>
 								</sap.ui.commons.layout:rows>
+								
 								<sap.ui.commons.layout:rows>
 									<sap.ui.commons.layout:MatrixLayoutRow>
 										<sap.ui.commons.layout:cells>
@@ -258,7 +245,8 @@
 										</sap.ui.commons.layout:cells>
 									</sap.ui.commons.layout:MatrixLayoutRow>
 								</sap.ui.commons.layout:rows>
-								<sap.ui.commons.layout:rows>
+								
+									<sap.ui.commons.layout:rows>
 									<sap.ui.commons.layout:MatrixLayoutRow>
 										<sap.ui.commons.layout:cells>
 											<sap.ui.commons.layout:MatrixLayoutCell
@@ -275,53 +263,23 @@
 													</HBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
-										</sap.ui.commons.layout:cells>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-								</sap.ui.commons.layout:rows>
-								<sap.ui.commons.layout:rows>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-										<sap.ui.commons.layout:cells>
+											
+											
 											<sap.ui.commons.layout:MatrixLayoutCell
-												colSpan="2">
+												hAlign="Begin">
 												<sap.ui.commons.layout:content>
-													<HBox justifyContent="SpaceBetween" alignItems="Start">
-														<sap.ui.commons:TextView text="{i18n>PassportCopyIDCopy}"></sap.ui.commons:TextView>
-														<sap.ui.unified:FileUploader
-															uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
-															iconOnly="true" />
-													</HBox>
+													<sap.ui.commons:TextView text="{i18n>PassportCopyIDCopy}"></sap.ui.commons:TextView>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell
-												hAlign="End">
-												<sap.ui.commons.layout:content>
-													<sap.ui.commons:TextView text="{i18n>PowerofAttorney}"></sap.ui.commons:TextView>
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell
-												hAlign="End">
+												vAlign="Middle" hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<sap.ui.unified:FileUploader
-														uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
-														iconOnly="true" />
-
+															uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
+															iconOnly="true" />
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
-										</sap.ui.commons.layout:cells>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-								</sap.ui.commons.layout:rows>
-
-								<sap.ui.commons.layout:rows>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-										<sap.ui.commons.layout:cells>
-											<sap.ui.commons.layout:MatrixLayoutCell
-												colSpan="4" hAlign="Begin">
-												<sap.ui.commons.layout:content>
-													<Button style="Accept" text="{i18n>BackToPerson}"
-														press="" icon="sap-icon://navigation-up-arrow">
-													</Button>
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
+											
 										</sap.ui.commons.layout:cells>
 									</sap.ui.commons.layout:MatrixLayoutRow>
 								</sap.ui.commons.layout:rows>
@@ -329,8 +287,34 @@
 								<sap.ui.commons.layout:rows>
 									<sap.ui.commons.layout:MatrixLayoutRow>
 										<sap.ui.commons.layout:cells>
+										<sap.ui.commons.layout:MatrixLayoutCell><sap.ui.commons:TextView text="{i18n>PowerofAttorney}"></sap.ui.commons:TextView>
+										</sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.unified:FileUploader
+														uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
+														iconOnly="true" />
+										</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+								</sap.ui.commons.layout:rows>
+								
+								
+								
+							<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+										<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<Button style="Accept" text="{i18n>BackToPerson}"
+														press="" icon="sap-icon://navigation-up-arrow">
+													</Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											
 											<sap.ui.commons.layout:MatrixLayoutCell
-												colSpan="2" hAlign="End">
+												hAlign="End">
 												<sap.ui.commons.layout:content>
 												<Button style="Accept" text="{i18n>Previous}" id="idBasicInfoPreviousButton"
 									press="" icon="sap-icon://navigation-left-arrow">
@@ -338,7 +322,7 @@
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell
-												colSpan="2" hAlign="Center">
+												hAlign="Center">
 												<sap.ui.commons.layout:content>
 												<Button style="Accept" text="{i18n>Next}" id="idBasicInfoNextButton"
 									press="" icon="sap-icon://navigation-right-arrow" iconFirst="false"></Button>
@@ -348,7 +332,12 @@
 									</sap.ui.commons.layout:MatrixLayoutRow>
 									
 								</sap.ui.commons.layout:rows>
-
+								
+								
+								
+							
+							
+							
 							</sap.ui.commons.layout:MatrixLayout>
 							
 						</ScrollContainer>
