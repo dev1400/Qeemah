@@ -5,7 +5,7 @@
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	
 	
-	    <VBox  class="HeadingBGVBOX">
+	    <VBox  class="HeadingBGVBOX" >
 	   
 		<HBox id="idBasicInfoBoxContent" alignItems="Stretch">
 		<IconTabBar
@@ -712,7 +712,7 @@
 	</HBox>
 	</VBox>
 	
-	<VBox alignItems="Center">
+	<VBox justifyContent="Center" alignItems="End" class="BottomVBoxForNEXtPrevious">
 	<Button style="Accept" text="{i18n>Next}" id="idBasicInfoNextButton" press="" >
 							</Button>
 	</VBox>
