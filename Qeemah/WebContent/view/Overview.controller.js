@@ -76,6 +76,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oStagesHeading = this.getView().byId("idStagesHeading");
 		this._oBasicInfoIconTab = this.getView().byId("idBasicInfoIconTab");
 		this._oOrgTabFilter = this.getView().byId("idIconTabFilterOrg");
+		this._oTermsAndConditionsInfoContent = this.getView().byId("idTermsAndConditionsInfoContent");
 		
 
 	},
@@ -240,9 +241,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var userID = this.getView().byId("idSignInUsernameInput").getValue();
 		var password = this.getView().byId("idSignInPasswordInput").getValue();
 		
-		/*this._oidMainPageContent.setVisible(false);
+		this._oidMainPageContent.setVisible(false);
 		this._oTopHeaderVBox.setVisible(true);
-		this._oidLicenseButtonsHBox.setVisible(true);*/
+		this._oidLicenseButtonsHBox.setVisible(true);
 		
 		if (userID.length > 0 && password.length > 0) {
 			var oRequestFinishedDeferred = this.oModelHelper.signInUser(userID,password);
@@ -254,9 +255,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 				}else{
 					sap.m.MessageToast.show(this.oModelHelper
 							.getText("SignInSuccessful"));
-					this._oidMainPageContent.setVisible(false);
+					/*this._oidMainPageContent.setVisible(false);
 					this._oTopHeaderVBox.setVisible(true);
-					this._oidLicenseButtonsHBox.setVisible(true);
+					this._oidLicenseButtonsHBox.setVisible(true);*/
 				}
 				
 			}, this));				
@@ -362,6 +363,7 @@ handleRegisterUserButtonPress : function() {
 		this._oBasicInfoContent.setVisible(true);
 		this._oLicenseInfoContent.setVisible(false);
 		this._oShareHoldersInfoContent.setVisible(false);
+		this._oTermsAndConditionsInfoContent.setVisible(false);
 		
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("BasicInformationHTML"));
@@ -370,6 +372,7 @@ handleRegisterUserButtonPress : function() {
 		this._oLicenseInfoContent.setVisible(true);
 		this._oBasicInfoContent.setVisible(false);
 		this._oShareHoldersInfoContent.setVisible(false);
+		this._oTermsAndConditionsInfoContent.setVisible(false);
 		this._oLicenseInfoButton.setSrc("common/mime/license_hover.png");
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("LicenseInformationHTML"));
@@ -380,15 +383,22 @@ handleRegisterUserButtonPress : function() {
 		this._oShareHoldersInfoContent.setVisible(true);
 		this._oLicenseInfoContent.setVisible(false);
 		this._oBasicInfoContent.setVisible(false);
+		this._oTermsAndConditionsInfoContent.setVisible(false);
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("ShareHolderInformationHTML"));
 	},
 	handlePreviewInfoButtonClick : function(){
 		this._oPreviewInfoButton.setSrc("common/mime/preview_hover.png");
+		this._oTermsAndConditionsInfoContent.setVisible(false);
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("PreviewInformationHTML"));
 	},
 	handleTermsInfoButtonClick : function(){
+		this._oShareHoldersInfoContent.setVisible(false);
+		this._oLicenseInfoContent.setVisible(false);
+		this._oBasicInfoContent.setVisible(false);
+		this._oTermsAndConditionsInfoContent.setVisible(true);
+		
 		this._oTermsInfoButton.setSrc("common/mime/terms_hover.png");
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("TermsnCondInformationHTML"));

@@ -183,7 +183,7 @@
 									</VBox>
 								</sap.ui.commons.layout:MatrixLayoutCell>
 								<sap.ui.commons.layout:MatrixLayoutCell
-									hAlign="Center" vAlign="Top">
+									 vAlign="Top">
 
 									<VBox id="idBasicInfoContent" ><!-- alignItems="Center" -->
 										
@@ -200,6 +200,13 @@
 										visible="false">
 										<sap.ui.core:Fragment
 											fragmentName="com.sagia.view.fragments.shareholders_tabstrip"
+											type="XML" />
+									</VBox>
+									
+									<VBox id="idTermsAndConditionsInfoContent" 
+										visible="false">
+										<sap.ui.core:Fragment
+											fragmentName="com.sagia.view.fragments.terms_and_conditions"
 											type="XML" />
 									</VBox>
 								</sap.ui.commons.layout:MatrixLayoutCell>

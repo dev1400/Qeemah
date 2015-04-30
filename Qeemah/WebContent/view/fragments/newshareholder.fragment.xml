@@ -75,7 +75,7 @@
 			</sap.ui.commons:Accordion>
 			<html:br />
 			
-			<sap.ui.commons:Accordion id="idOrganizationRegistrationAccordation"
+			<!-- <sap.ui.commons:Accordion id="idOrganizationRegistrationAccordation"
 				openedSectionsId="section1" width="62rem">
 				<sap.ui.commons:sections>
 					<sap.ui.commons:AccordionSection
@@ -132,7 +132,7 @@
 					</sap.ui.commons:AccordionSection>
 				</sap.ui.commons:sections>
 			</sap.ui.commons:Accordion>
-			<html:br />
+			<html:br /> -->
 
 			<sap.ui.commons.layout:MatrixLayout
 				layoutFixed="false">
