@@ -12,6 +12,7 @@
     height="39.88rem"
     width="69rem"
     vertical="true" >
+    <VBox justifyContent="Center" alignItems="Center">
 	<!-- Child license activity Q start -->
 	<sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false">
@@ -149,6 +150,7 @@
 	</sap.ui.commons.layout:MatrixLayout>
 	<VBox><Button style="Accept" text="{i18n>Add}" press="" >
 							</Button><html:br/></VBox>
+	
 							
 	<sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false">
@@ -199,14 +201,57 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow>
-			<sap.ui.commons.layout:MatrixLayoutRow><sap.ui.commons.layout:cells>
+			<!-- <sap.ui.commons.layout:MatrixLayoutRow><sap.ui.commons.layout:cells>
 			<sap.ui.commons.layout:MatrixLayoutCell colSpan="2">
 			<Button style="Accept" text="{i18n>BackToBAQ}" press="" >
 							</Button>
 			</sap.ui.commons.layout:MatrixLayoutCell>
-			</sap.ui.commons.layout:cells></sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:cells></sap.ui.commons.layout:MatrixLayoutRow> -->
 		</sap.ui.commons.layout:rows>
+		
 	</sap.ui.commons.layout:MatrixLayout>
+	<sap.ui.commons.layout:MatrixLayout>
+	
+		<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												colSpan="2" hAlign="Center">
+												<sap.ui.commons.layout:content>
+													<Button style="Accept" text="{i18n>BackToBAQ}"
+														press="" icon="sap-icon://navigation-up-arrow">
+													</Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+								
+								<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
+												<Button style="Accept" text="{i18n>Previous}" id="idLicenseInfoPreviousButton"
+									press="" icon="sap-icon://navigation-left-arrow">
+								</Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
+												<Button style="Accept" text="{i18n>Next}" id="idLicenseInfoNextButton"
+									press="" icon="sap-icon://navigation-right-arrow" iconFirst="false"></Button>
+												</sap.ui.commons.layout:content>
+												</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+								</sap.ui.commons.layout:rows>
+	
+	</sap.ui.commons.layout:MatrixLayout>
+	</VBox>
 	<!-- Business Activity Questions End -->
 	<!-- Child license activity Q end -->
 	<!-- <VBox alignItems="Center">
