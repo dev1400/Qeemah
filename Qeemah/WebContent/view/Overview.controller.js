@@ -82,7 +82,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	
 	handleBasicInfoIconTabBarSelect : function(oEvent){
-		console.log(oEvent.getParameters().key);
+		/*console.log(oEvent.getParameters().key);*/
 		/*if( oEvent.getParameters().key === "BasicInfoIconTabKey"){
 			this._oOrgTabFilter.addStyleClass("BackgroundRed");
 		}*/
@@ -192,7 +192,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var oPricingTabBar = this.getView().byId("idIconTabBarBase");
 		var sSelectedTab = oPricingTabBar.getSelectedKey();
 
-		console.log(sSelectedTab);
+		/*console.log(sSelectedTab);*/
 	},
 	handleProcessButtonPress : function(oEvent) {
 		this._oVboxQuestionsContent.setVisible(false);

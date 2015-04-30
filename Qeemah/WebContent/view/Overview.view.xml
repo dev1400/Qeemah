@@ -123,8 +123,12 @@
 							<sap.ui.commons.layout:MatrixLayoutRow>
 								<sap.ui.commons.layout:cells>
 									<sap.ui.commons.layout:MatrixLayoutCell
-										vAlign="Top">
-										<Button text="{i18n>Save}" id="idSaveButton" />
+										vAlign="Top" hAlign="Begin">
+										<!-- <Button text="{i18n>Save}" id="idSaveButton" /> -->
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell
+										hAlign="Begin" vAlign="Bottom">
+										<Link text="{i18n>Save}" class="linkColorWhite" />
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell
 										vAlign="Bottom">

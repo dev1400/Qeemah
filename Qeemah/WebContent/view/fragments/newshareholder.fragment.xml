@@ -4,7 +4,7 @@
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 
-	<ScrollContainer height="36rem" width="69rem" vertical="true">
+	<ScrollContainer height="39.88rem" width="69rem" vertical="true">
 
 		<HBox alignItems="Center">
 			<Label text="{i18n>SelectShareHolderType}"></Label>
