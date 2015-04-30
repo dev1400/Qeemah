@@ -38,4 +38,33 @@
   </IconTabBar></HBox>
 	</VBox>
 	<!-- </ScrollContainer> -->
+	<HBox justifyContent="End" alignItems="Center" class="BottomVBoxForNEXtPrevious">
+
+		<sap.ui.commons.layout:MatrixLayout
+			layoutFixed="false">
+			<sap.ui.commons.layout:rows>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell>
+							<sap.ui.commons.layout:content>
+								<Button style="Accept" text="{i18n>Previous}" id="idShareHolderInfoPreviousButton"
+									press="" class="PreviousButtonStyling">
+								</Button>
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:MatrixLayoutCell>
+							<sap.ui.commons.layout:content>
+								<Button style="Accept" text="{i18n>Next}" id="idShareHolderInfoNextButton"
+									press="" ></Button>
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:rows>
+		</sap.ui.commons.layout:MatrixLayout>
+
+
+
+	
+	</HBox>
 </core:FragmentDefinition>
