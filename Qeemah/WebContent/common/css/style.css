@@ -214,12 +214,14 @@
 	width : 11rem;
 }
 .IconTabBarStyling{
-	background-color: #00A19C;
+	/* background-color: #00A19C; */
+	background-image: url("mime/icontabbar_bg.jpg") !important;;
 	width:70rem;
 	
 }
 .sapMITBSelected{
-	background-color: #1573A6;
+	/* background-color: #1573A6; */
+	background-image: url("mime/icontabbar_selected_button.jpg") !important;;
 	margin: none;
 	
 }
