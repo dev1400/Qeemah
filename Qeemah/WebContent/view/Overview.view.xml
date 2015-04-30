@@ -191,7 +191,7 @@
 
 									<VBox id="idBasicInfoContent" justifyContent="Center" alignItems="Center"><!-- alignItems="Center" -->
 										
-											<sap.ui.core:Fragment id="idBasicInfoContentFragment" fragmentName="com.sagia.view.fragments.basicinfo"
+											<sap.ui.core:Fragment  id="idBasicInfoContentFragment" fragmentName="com.sagia.view.fragments.basicinfo"
 												type="XML" />
 										
 									</VBox>

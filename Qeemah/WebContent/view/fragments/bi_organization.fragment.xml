@@ -10,7 +10,7 @@
     <html:br />
 			
 								<sap.ui.commons.layout:MatrixLayout
-									layoutFixed="false" >
+									layoutFixed="false" width="100%">
 									
 									<sap.ui.commons.layout:rows>
 										<sap.ui.commons.layout:MatrixLayoutRow>
@@ -21,9 +21,9 @@
 														<sap.ui.commons:TextView text="{i18n>OrganizationName}"></sap.ui.commons:TextView>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<sap.ui.commons.layout:content>
-														<HBox justifyContent="End">
+														<HBox justifyContent="Start">
 															<Input type="Text" width="25em" />
 														</HBox>
 													</sap.ui.commons.layout:content>
@@ -118,9 +118,9 @@
 														<sap.ui.commons:TextView text="{i18n>LaborSize}"></sap.ui.commons:TextView>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<sap.ui.commons.layout:content>
-														<HBox justifyContent="End">
+														<HBox justifyContent="Start">
 															<Input type="Text" width="25em" />
 														</HBox>
 													</sap.ui.commons.layout:content>
@@ -131,9 +131,9 @@
 														<sap.ui.commons:TextView text="{i18n>POBox}"></sap.ui.commons:TextView>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<sap.ui.commons.layout:content>
-														<HBox justifyContent="End">
+														<HBox justifyContent="Start">
 															<Input type="Text" width="25em" />
 														</HBox>
 													</sap.ui.commons.layout:content>
@@ -150,9 +150,9 @@
 														<sap.ui.commons:TextView text="{i18n>Capital}"></sap.ui.commons:TextView>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<sap.ui.commons.layout:content>
-														<HBox justifyContent="End">
+														<HBox justifyContent="Start">
 															<Input type="Text" width="25em" />
 														</HBox>
 													</sap.ui.commons.layout:content>
@@ -164,9 +164,9 @@
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 
-												<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<sap.ui.commons.layout:content>
-														<HBox justifyContent="End">
+														<HBox justifyContent="Start">
 															<Input type="Text" width="25em" />
 														</HBox>
 													</sap.ui.commons.layout:content>
@@ -183,8 +183,8 @@
 														<sap.ui.commons:TextView text="{i18n>Telephone}"></sap.ui.commons:TextView>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:MatrixLayoutCell>
-													<HBox justifyContent="End" alignItems="Center">
+												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+													<HBox justifyContent="Start" alignItems="Center">
 														<Input type="Number" placeholder="{i18n>CountryCode}"
 															enabled="false" width="8em" />
 														<Input type="Number" placeholder="{i18n>Telephone}"
@@ -202,7 +202,7 @@
 												<sap.ui.commons.layout:MatrixLayoutCell
 													vAlign="Middle" hAlign="End">
 													<sap.ui.commons.layout:content>
-														<HBox justifyContent="End">
+														<HBox justifyContent="Start">
 															<Input type="Text" width="25em" />
 														</HBox>
 													</sap.ui.commons.layout:content>
@@ -219,8 +219,8 @@
 														<sap.ui.commons:TextView text="{i18n>MobilePhone}"></sap.ui.commons:TextView>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:MatrixLayoutCell>
-													<HBox justifyContent="End" alignItems="Center">
+												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+													<HBox justifyContent="Start" alignItems="Center">
 														<Input type="Number" placeholder="{i18n>CountryCode}"
 															enabled="false" width="8em" />
 														<Input type="Number" placeholder="{i18n>MobilePhone}"
@@ -234,9 +234,9 @@
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell
-													vAlign="Middle" hAlign="End">
+													vAlign="Middle" hAlign="Begin">
 													<sap.ui.commons.layout:content>
-														<HBox justifyContent="End">
+														<HBox justifyContent="Start">
 															<Input type="Text" width="25em" />
 														</HBox>
 													</sap.ui.commons.layout:content>
@@ -253,8 +253,8 @@
 														<sap.ui.commons:TextView text="{i18n>Fax}"></sap.ui.commons:TextView>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:MatrixLayoutCell>
-													<HBox justifyContent="End" alignItems="Center">
+												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+													<HBox justifyContent="Start" alignItems="Center">
 														<Input type="Number" placeholder="{i18n>CountryCode}"
 															enabled="false" width="8em" />
 														<Input type="Number" placeholder="{i18n>Fax}" width="17em" />
@@ -267,9 +267,9 @@
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell
-													vAlign="Middle" hAlign="End">
+													vAlign="Middle" hAlign="Begin">
 													<sap.ui.commons.layout:content>
-														<HBox justifyContent="End">
+														<HBox justifyContent="Start">
 															<Input type="Text" width="25em" />
 														</HBox>
 													</sap.ui.commons.layout:content>
@@ -286,9 +286,9 @@
 														<sap.ui.commons:TextView text="{i18n>Website}"></sap.ui.commons:TextView>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<sap.ui.commons.layout:content>
-														<HBox justifyContent="End">
+														<HBox justifyContent="Start">
 															<Input type="Text" width="25em" />
 														</HBox>
 													</sap.ui.commons.layout:content>
@@ -314,15 +314,21 @@
 										<sap.ui.commons.layout:MatrixLayoutRow>
 											<sap.ui.commons.layout:cells>
 												<sap.ui.commons.layout:MatrixLayoutCell
-													colSpan="2">
+													>
 													<sap.ui.commons.layout:content>
 
-														<HBox justifyContent="SpaceBetween" alignItems="Center">
+														
 															<sap.ui.commons:TextView text="{i18n>PreApprovalFile}"></sap.ui.commons:TextView>
+															
+													</sap.ui.commons.layout:content>
+												</sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:MatrixLayoutCell
+													>
+													<sap.ui.commons.layout:content>
+
 															<sap.ui.unified:FileUploader
 																uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
 																iconOnly="true" />
-														</HBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 											</sap.ui.commons.layout:cells>

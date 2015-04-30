@@ -268,3 +268,6 @@
 .sapMBtnIcon {
   line-height: 1.9rem;
 }
+.sapMScrollContScroll {
+  width: 100%;
+}

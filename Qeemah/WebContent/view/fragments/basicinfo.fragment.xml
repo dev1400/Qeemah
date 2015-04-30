@@ -7,7 +7,7 @@
 
 	<VBox class="HeadingBGVBOX">
 
-		<HBox id="idBasicInfoBoxContent" justifyContent="Center">
+		<HBox id="idBasicInfoBoxContent" justifyContent="Center" width="100%">
 			<IconTabBar class="iconTabBarPaddingTop IconTabBarStyling"
 				expanded="true" expandable="false" select="handleBasicInfoIconTabBarSelect">
 				<items>
