@@ -75,7 +75,7 @@
 			</sap.ui.commons:Accordion>
 			<html:br />
 			
-			<!-- <sap.ui.commons:Accordion id="idOrganizationRegistrationAccordation"
+			<sap.ui.commons:Accordion id="idOrganizationRegistrationAccordation"
 				openedSectionsId="section1" width="62rem">
 				<sap.ui.commons:sections>
 					<sap.ui.commons:AccordionSection
@@ -93,9 +93,9 @@
 
 						<sap.ui.commons:content>
 						
-						<sap.ui.core:Fragment
+						<!-- <sap.ui.core:Fragment
 								fragmentName="com.sagia.view.fragments.ns_attachments"
-								type="XML" />							
+								type="XML" />	 -->						
 
 						</sap.ui.commons:content>
 					</sap.ui.commons:AccordionSection>
@@ -104,9 +104,9 @@
 						
 						<sap.ui.commons:content>
 						
-						<sap.ui.core:Fragment
+						<!-- <sap.ui.core:Fragment
 								fragmentName="com.sagia.view.fragments.ns_activityquestions"
-								type="XML" />	
+								type="XML" />	 -->
 
 						</sap.ui.commons:content>
 					</sap.ui.commons:AccordionSection>
@@ -114,9 +114,9 @@
 					<sap.ui.commons:AccordionSection
 						id="idOrganizationExperienceQuestionsAS" maxHeight="18.4rem" collapsed="true" title="{i18n>ExperienceQuestions}">
 						<sap.ui.commons:content>
-						<sap.ui.core:Fragment
+						<!-- <sap.ui.core:Fragment
 								fragmentName="com.sagia.view.fragments.ns_p_experiencequestions"
-								type="XML" />	
+								type="XML" />	 -->
 
 						</sap.ui.commons:content>
 					</sap.ui.commons:AccordionSection>
@@ -124,15 +124,15 @@
 						id="idOrganizationNewShareholderFinancialQuestionsAS" collapsed="true" maxHeight="18.4rem"
 						title="{i18n>FinancialQuestions}">						
 						<sap.ui.commons:content>
-						<sap.ui.core:Fragment
+						<!-- <sap.ui.core:Fragment
 								fragmentName="com.sagia.view.fragments.ns_p_financialquestions"
-								type="XML" />	
+								type="XML" />	 -->
 
 						</sap.ui.commons:content>
 					</sap.ui.commons:AccordionSection>
 				</sap.ui.commons:sections>
 			</sap.ui.commons:Accordion>
-			<html:br /> -->
+			<html:br />
 
 			<sap.ui.commons.layout:MatrixLayout
 				layoutFixed="false">
