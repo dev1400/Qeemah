@@ -106,7 +106,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" id="idInputPassword" />
+						<Input type="Password" required="true" id="idInputPassword" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 
@@ -118,7 +118,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" id="idInputRePassword" />
+						<Input type="Password" required="true" id="idInputRePassword" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 

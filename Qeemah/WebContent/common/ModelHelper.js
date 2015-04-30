@@ -138,7 +138,7 @@ com.sagia.common.ModelHelper = {
         oEntry.NameFirst = oInputFirstName;
         oEntry.NameLast = oInputLastName;
         oEntry.Userid = '';
-		oEntry.Password = '';
+		oEntry.Password = oPassword;
 		oEntry.MobileNo = oInputMobileNumber;
 		oEntry.Email = oInputEmail;
 		

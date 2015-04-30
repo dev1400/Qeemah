@@ -240,9 +240,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var userID = this.getView().byId("idSignInUsernameInput").getValue();
 		var password = this.getView().byId("idSignInPasswordInput").getValue();
 		
-		this._oidMainPageContent.setVisible(false);
+		/*this._oidMainPageContent.setVisible(false);
 		this._oTopHeaderVBox.setVisible(true);
-		this._oidLicenseButtonsHBox.setVisible(true);
+		this._oidLicenseButtonsHBox.setVisible(true);*/
 		
 		if (userID.length > 0 && password.length > 0) {
 			var oRequestFinishedDeferred = this.oModelHelper.signInUser(userID,password);
@@ -267,7 +267,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}		
 	},
 handleRegisterUserButtonPress : function() {
-		
+		var that = this;
 		var oInputFirstName = this.getView().byId("idFirstNameInputText")
 		.getValue();
 		var oInputLastName = this.getView().byId("idLastNameInputText")
@@ -277,6 +277,7 @@ handleRegisterUserButtonPress : function() {
 				.getValue();
 		var oInputEmail = this.getView().byId("idInputEmail").getValue();
 		var oPassword = this.getView().byId("idInputPassword").getValue();
+		
 		if (oInputMobileNumber.length > 0 && oInputEmail.length > 0
 				&& oPassword.length > 0 && oInputFirstName.length > 0 && oInputLastName.length > 0) {
 			
@@ -305,7 +306,10 @@ handleRegisterUserButtonPress : function() {
 					this._oInvestorIDLabel = sap.ui.getCore().byId("idInvestIDText");
 					this._oInvestorIDLabel.setText(oResponse.InvestorId);
 					
+					that.handleLoginButtonPress();
 					
+					
+					this.getView().byId("idSignInUsernameInput").setValue(oResponse.InvestorId);
 					
 					/*sap.m.MessageToast.show(this.oModelHelper
 							.getText("SignInSuccessful"));
@@ -318,6 +322,14 @@ handleRegisterUserButtonPress : function() {
 			
 			/*sap.m.MessageToast.show(this.oModelHelper
 					.getText("RegistrationSuccessful"));*/
+			this.getView().byId("idFirstNameInputText").setValue("");
+			this.getView().byId("idLastNameInputText").setValue("");
+			this.getView().byId("idInputMobileNumber").setValue("");
+			this.getView().byId("idInputEmail").setValue("");
+			this.getView().byId("idInputPassword").setValue("");
+			this.getView().byId("idInputRePassword").setValue("");
+			
+			
 		} else {
 			sap.m.MessageToast.show(this.oModelHelper
 					.getText("PleaseEnterRequiredFields"));
