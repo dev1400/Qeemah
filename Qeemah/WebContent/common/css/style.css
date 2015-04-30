@@ -224,8 +224,8 @@
   margin: 0 0 0 0;
 }
 .sapMITBSelected{
-	/* background-color: #1573A6; */
-	background-image: url("mime/icontabbar_bg.jpg") !important; /* icontabbar_selected_button.jpg */
+	background-color: #4CBDB9;
+	/* background-image: url("mime/icontabbar_bg.jpg") !important; icontabbar_selected_button.jpg */
 	margin: none;
 	
 }

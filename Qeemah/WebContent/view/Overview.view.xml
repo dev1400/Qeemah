@@ -187,11 +187,11 @@
 									</VBox>
 								</sap.ui.commons.layout:MatrixLayoutCell>
 								<sap.ui.commons.layout:MatrixLayoutCell
-									hAlign="Center" vAlign="Top">
+									 hAlign="Begin" vAlign="Top" ><!-- hAlign="Begin" -->
 
 									<VBox id="idBasicInfoContent" justifyContent="Center" alignItems="Center"><!-- alignItems="Center" -->
 										
-											<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.basicinfo"
+											<sap.ui.core:Fragment id="idBasicInfoContentFragment" fragmentName="com.sagia.view.fragments.basicinfo"
 												type="XML" />
 										
 									</VBox>
