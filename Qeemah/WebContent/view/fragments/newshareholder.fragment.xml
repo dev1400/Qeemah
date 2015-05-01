@@ -63,7 +63,7 @@
 		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
 		<sap.ui.commons.layout:content>
 		<Button width="15rem" style="Accept" text="{i18n>AnswerFinancialQuestions}" id="idCreateNewShareHolderAnswerFinancialQuestionsButton"
-									press=""></Button>		
+									press="handleCreateNewShareHolderAnswerFinancialQuestionsButtonPress"></Button>		
 		</sap.ui.commons.layout:content>
 		</sap.ui.commons.layout:MatrixLayoutCell>
 		</sap.ui.commons.layout:cells>
@@ -200,6 +200,8 @@
 				</sap.ui.commons:sections>
 			</sap.ui.commons:Accordion>
 			<html:br /> -->
+			
+			<html:br />
 
 			<sap.ui.commons.layout:MatrixLayout
 				layoutFixed="false">

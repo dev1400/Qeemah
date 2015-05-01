@@ -101,6 +101,23 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._popOverNewShareHolderDetailsFragment.close();
 	},
 	/**
+	 * Financial Questions Dialog
+	 * @Author Abdul Waheed
+	 */
+	handleCreateNewShareHolderAnswerFinancialQuestionsButtonPress : function(){
+		if (!this._popOverNewShareHolderDetailsFinancialQuestionsFragment) {
+			this._popOverNewShareHolderDetailsFinancialQuestionsFragment = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.ns_financialquestions_dialog", this.getView()
+							.getController());
+			this.getView().addDependent(this._popOverNewShareHolderDetailsFinancialQuestionsFragment);
+		}		
+
+		this._popOverNewShareHolderDetailsFinancialQuestionsFragment.open();
+	},
+	handleCreateFinancialQuestionsDialogSaveAndClosePress : function(){
+		this._popOverNewShareHolderDetailsFinancialQuestionsFragment.close();
+	},
+	/**
 	 * Experience Questions Dialog
 	 * @Author Abdul Waheed
 	 */
