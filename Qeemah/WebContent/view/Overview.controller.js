@@ -101,7 +101,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._popOverNewShareHolderDetailsFragment.close();
 	},
 	/**
-	 * Activity Questions
+	 * Experience Questions Dialog
+	 * @Author Abdul Waheed
+	 */
+	handleCreateNewShareHolderAnswerExperienceQuestionsButtonPress : function(){
+		if (!this._popOverNewShareHolderDetailsExperienceQuestionsFragment) {
+			this._popOverNewShareHolderDetailsExperienceQuestionsFragment = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.ns_experiencequestions_dialog", this.getView()
+							.getController());
+			this.getView().addDependent(this._popOverNewShareHolderDetailsExperienceQuestionsFragment);
+		}		
+
+		this._popOverNewShareHolderDetailsExperienceQuestionsFragment.open();
+	},
+	handleCreateExperienceQuestionsDialogSaveAndClosePress : function(){
+		this._popOverNewShareHolderDetailsExperienceQuestionsFragment.close();
+	},
+	/**
+	 * Activity Questions Dialog
 	 * @Author Abdul Waheed
 	 */
 	handleCreateNewShareHolderAnswerActivityQuestionsButtonPress : function(){

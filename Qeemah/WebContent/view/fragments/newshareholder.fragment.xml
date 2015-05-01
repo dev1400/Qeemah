@@ -52,7 +52,7 @@
 		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
 		<sap.ui.commons.layout:content>
 		<Button width="15rem" style="Accept" text="{i18n>AnswerExperienceQuestions}" id="idCreateNewShareHolderAnswerExperienceQuestionsButton"
-									press=""></Button>
+									press="handleCreateNewShareHolderAnswerExperienceQuestionsButtonPress"></Button>
 		</sap.ui.commons.layout:content>
 		</sap.ui.commons.layout:MatrixLayoutCell>
 		</sap.ui.commons.layout:cells>
