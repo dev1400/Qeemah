@@ -4,7 +4,7 @@
 	xmlns:sap.ui.commons="sap.ui.commons" xmlns:sap.ui.core="sap.ui.core"
 	xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.core.mvc="sap.ui.core.mvc"
-	xmlns:sap.ui.unified="sap.ui.unified">
+	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml">
 	<!-- <ScrollContainer height="40rem" width="70rem" vertical="true" > -->
 
 	<VBox id="idShareHoldersContentVBox" class="HeadingBGVBOX">
@@ -13,36 +13,7 @@
 				expanded="true" expandable="false">
 				<items>
 					<IconTabFilter text="{i18n>ShareHolder}">
-						<sap.ui.commons.layout:MatrixLayout
-							layoutFixed="false">
-							<sap.ui.commons.layout:rows>
-
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:cells>
-										<sap.ui.commons.layout:MatrixLayoutCell
-											hAlign="Center">
-											<sap.ui.commons.layout:content>
-												<sap.ui.commons:TextView text="{i18n>ShareHolderCompletion}"></sap.ui.commons:TextView>
-											</sap.ui.commons.layout:content>
-										</sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:MatrixLayoutCell
-											hAlign="Begin" vAlign="Middle">
-											<sap.ui.commons.layout:content>
-
-
-												<ProgressIndicator width="15rem"
-													percentValue="30" showValue="true" state="None" />
-
-
-											</sap.ui.commons.layout:content>
-										</sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons:TextView text="30%"></sap.ui.commons:TextView>
-										</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:cells>
-								</sap.ui.commons.layout:MatrixLayoutRow>
-							</sap.ui.commons.layout:rows>
-						</sap.ui.commons.layout:MatrixLayout>
+						
 						<VBox justifyContent="Center" alignItems="Center">
 
 							<sap.ui.core:Fragment
@@ -58,34 +29,5 @@
 		</HBox>
 	</VBox>
 	<!-- </ScrollContainer> -->
-	<HBox justifyContent="End" alignItems="Center" class="BottomVBoxForNEXtPrevious">
-
-		<sap.ui.commons.layout:MatrixLayout
-			layoutFixed="false">
-			<sap.ui.commons.layout:rows>
-				<sap.ui.commons.layout:MatrixLayoutRow>
-					<sap.ui.commons.layout:cells>
-						<sap.ui.commons.layout:MatrixLayoutCell>
-							<sap.ui.commons.layout:content>
-								<Button style="Accept" text="{i18n>Previous}"
-									id="idShareHolderInfoPreviousButton" press=""
-									class="PreviousButtonStyling">
-								</Button>
-							</sap.ui.commons.layout:content>
-						</sap.ui.commons.layout:MatrixLayoutCell>
-						<sap.ui.commons.layout:MatrixLayoutCell>
-							<sap.ui.commons.layout:content>
-								<Button style="Accept" text="{i18n>Next}" id="idShareHolderInfoNextButton"
-									press=""></Button>
-							</sap.ui.commons.layout:content>
-						</sap.ui.commons.layout:MatrixLayoutCell>
-					</sap.ui.commons.layout:cells>
-				</sap.ui.commons.layout:MatrixLayoutRow>
-			</sap.ui.commons.layout:rows>
-		</sap.ui.commons.layout:MatrixLayout>
-
-
-
-
-	</HBox>
+	
 </core:FragmentDefinition>
