@@ -10,29 +10,7 @@
     width="69rem"
     vertical="true" >
     <html:br/>
-	<sap.ui.commons.layout:MatrixLayout
-			layoutFixed="false">
-			<sap.ui.commons.layout:rows>
-
-				<sap.ui.commons.layout:MatrixLayoutRow>
-					<sap.ui.commons.layout:cells>
-						<sap.ui.commons.layout:MatrixLayoutCell
-							vAlign="Middle">
-							<sap.ui.commons.layout:content>
-								<Label text="{i18n>ShareHolderCompletion}"></Label>
-							</sap.ui.commons.layout:content>
-						</sap.ui.commons.layout:MatrixLayoutCell>
-						<sap.ui.commons.layout:MatrixLayoutCell
-							vAlign="Middle">
-							<sap.ui.commons.layout:content>
-								<ProgressIndicator width="10rem" percentValue="50"
-									showValue="true" state="Warning" />
-							</sap.ui.commons.layout:content>
-						</sap.ui.commons.layout:MatrixLayoutCell>
-					</sap.ui.commons.layout:cells>
-				</sap.ui.commons.layout:MatrixLayoutRow>
-			</sap.ui.commons.layout:rows>
-		</sap.ui.commons.layout:MatrixLayout>
+	
 					
 					<html:br/>
 						<VBox justifyContent="Center" alignItems="Center">
