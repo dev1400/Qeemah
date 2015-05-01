@@ -4,13 +4,80 @@
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 
-	<ScrollContainer height="39.88rem" width="69rem" vertical="true">
+	<!-- <ScrollContainer height="39.88rem" width="69rem" vertical="true"> -->
 <VBox justifyContent="Center" alignItems="Center">
 		<HBox alignItems="Center">
 			<Label text="{i18n>SelectShareHolderType}"></Label>
 			<RadioButton groupName="NewShareHolderGroup" text="{i18n>Person}" />
 			<RadioButton groupName="NewShareHolderGroup" text="{i18n>Organization}" />
 		</HBox>
+		<sap.ui.commons.layout:MatrixLayout>
+		<sap.ui.commons.layout:rows>
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
+		<sap.ui.commons.layout:cells >
+		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
+		<sap.ui.commons.layout:content>
+		<Button width="15rem" style="Accept" text="{i18n>AddShareHolderDetails}" id="idCreateNewShareHolderAddShareHolderDetailsButton"
+									press=""></Button>
+		</sap.ui.commons.layout:content>
+		</sap.ui.commons.layout:MatrixLayoutCell>
+		</sap.ui.commons.layout:cells>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
+		<sap.ui.commons.layout:cells>
+		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
+		<sap.ui.commons.layout:content>
+		<Button width="15rem" style="Accept" text="{i18n>AddAttachments}" id="idCreateNewShareHolderAddAttachmentsButton"
+									press=""></Button>
+		</sap.ui.commons.layout:content>
+		</sap.ui.commons.layout:MatrixLayoutCell>
+		</sap.ui.commons.layout:cells>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
+		<sap.ui.commons.layout:cells>
+		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
+		<sap.ui.commons.layout:content>
+		<Button width="15rem" style="Accept" text="{i18n>AnswerActivityQuestions}" id="idCreateNewShareHolderAnswerActivityQuestionsButton"
+									press=""></Button>
+		</sap.ui.commons.layout:content>
+		</sap.ui.commons.layout:MatrixLayoutCell>
+		</sap.ui.commons.layout:cells>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
+		<sap.ui.commons.layout:cells>
+		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
+		<sap.ui.commons.layout:content>
+		<Button width="15rem" style="Accept" text="{i18n>AnswerExperienceQuestions}" id="idCreateNewShareHolderAnswerExperienceQuestionsButton"
+									press=""></Button>
+		</sap.ui.commons.layout:content>
+		</sap.ui.commons.layout:MatrixLayoutCell>
+		</sap.ui.commons.layout:cells>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
+		<sap.ui.commons.layout:cells>
+		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
+		<sap.ui.commons.layout:content>
+		<Button width="15rem" style="Accept" text="{i18n>AnswerFinancialQuestions}" id="idCreateNewShareHolderAnswerFinancialQuestionsButton"
+									press=""></Button>		
+		</sap.ui.commons.layout:content>
+		</sap.ui.commons.layout:MatrixLayoutCell>
+		</sap.ui.commons.layout:cells>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+		
+		</sap.ui.commons.layout:rows>
+		</sap.ui.commons.layout:MatrixLayout>
+		
+		
+		
+		
+		
+									
+		
 
 
 		
@@ -188,6 +255,6 @@
 		</VBox>
 
 
-	</ScrollContainer>
+	<!-- </ScrollContainer> -->
 </sap.ui.core:FragmentDefinition>
 
