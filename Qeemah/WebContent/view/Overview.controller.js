@@ -87,6 +87,19 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 
 	},
+	handleCreateNewShareHolderAddShareHolderDetailsButtonPress : function(){
+		if (!this._popOverNewShareHolderDetailsFragment) {
+			this._popOverNewShareHolderDetailsFragment = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.ns_shareholderdetails_dialog", this.getView()
+							.getController());
+			this.getView().addDependent(this._popOverNewShareHolderDetailsFragment);
+		}		
+
+		this._popOverNewShareHolderDetailsFragment.open();
+	},
+	handleCreateAddShareHolderDetailsDialogSaveAndClosePress : function(){
+		this._popOverNewShareHolderDetailsFragment.close();
+	},
 	handleAddExistingShareHolderButtonPress : function(){
 		this._oCREATE_NewShareHolderVBox.setVisible(false);
 		this._oADD_ExistingShareHolderVBox.setVisible(true);

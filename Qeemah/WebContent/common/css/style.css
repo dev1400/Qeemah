@@ -271,3 +271,12 @@
 .sapMScrollContScroll {
   width: 100%;
 }
+.sap-desktop .sapMIBar.sapMFooter-CTX {
+  background-color: #00A19C;
+}
+.sapMIBarDialog .sapMBarChildDialog {
+  margin-left: 0 !important;
+}
+.sapMBtnDialog {
+  height: none !important;
+}
