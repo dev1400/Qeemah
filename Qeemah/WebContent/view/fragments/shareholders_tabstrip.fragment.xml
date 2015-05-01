@@ -5,29 +5,27 @@
 	xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.core.mvc="sap.ui.core.mvc"
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml">
-	<!-- <ScrollContainer height="40rem" width="70rem" vertical="true" > -->
-
+	
 	<VBox id="idShareHoldersContentVBox" class="HeadingBGVBOX">
 		<HBox justifyContent="Center">
 			<IconTabBar class="iconTabBarPaddingTop IconTabBarStyling"
 				expanded="true" expandable="false">
 				<items>
 					<IconTabFilter text="{i18n>ShareHolder}">
-						
+
 						<VBox justifyContent="Center" alignItems="Center">
 
 							<sap.ui.core:Fragment
 								fragmentName="com.sagia.view.fragments.existingshareholder"
 								type="XML" />
 						</VBox>
+						
 					</IconTabFilter>
-					<!-- <IconTabFilter text="{i18n>NewShareHolder}"> <VBox justifyContent="Center" 
-						alignItems="Center"> <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.newshareholder" 
-						type="XML" /> </VBox> </IconTabFilter> -->
+					
 				</items>
 			</IconTabBar>
 		</HBox>
 	</VBox>
 	<!-- </ScrollContainer> -->
-	
+
 </core:FragmentDefinition>

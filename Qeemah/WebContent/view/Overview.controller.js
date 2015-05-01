@@ -81,15 +81,19 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oLI_BAQ_7_to_10 = this.getView().byId("idLI_BAQ_7_to_10MatrixLayout");
 		
 		this._oADD_ExistingShareHolderVBox = this.getView().byId("idADD_ExistingShareHolderVBox");
+		this._oCREATE_NewShareHolderVBox = this.getView().byId("idCREATE_NewShareHolderVBox");
+		
 		
 		
 
 	},
 	handleAddExistingShareHolderButtonPress : function(){
+		this._oCREATE_NewShareHolderVBox.setVisible(false);
 		this._oADD_ExistingShareHolderVBox.setVisible(true);
 	},
-	handleAddNewShareHolderButtonPress : function(){
+	handleCreateNewShareHolderButtonPress : function(){
 		this._oADD_ExistingShareHolderVBox.setVisible(false);
+		this._oCREATE_NewShareHolderVBox.setVisible(true);
 	},
 	handleAddExistingShareHolderCancelButtonPress: function(){
 		this._oADD_ExistingShareHolderVBox.setVisible(false);
