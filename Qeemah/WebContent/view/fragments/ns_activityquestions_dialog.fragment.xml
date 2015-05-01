@@ -1,0 +1,108 @@
+<sap.ui.core:FragmentDefinition xmlns="sap.m"
+	xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
+	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.commons="sap.ui.commons"
+	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog
+    class="sapUiPopupWithPadding" showHeader="false">
+    <content>
+    <sap.ui.commons.layout:MatrixLayout id="idNewShareHolderActivityQuestionsMLAyout"
+		layoutFixed="false">
+		<sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+						<sap.ui.commons.layout:content>
+						<sap.ui.commons:TextView text="{i18n>AgeOfParentCompany}"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+						<sap.ui.commons.layout:content>
+						<ComboBox width="25em">
+										<sap.ui.core:Item />
+									</ComboBox>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+						<sap.ui.commons.layout:content>
+						<sap.ui.commons:TextView text="{i18n>HowManyBranches}"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+						<sap.ui.commons.layout:content>
+						<ComboBox width="25em">
+										<sap.ui.core:Item />
+									</ComboBox>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+						<sap.ui.commons.layout:content>
+						<sap.ui.commons:TextView text="{i18n>HowManyEmployees}"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+						<sap.ui.commons.layout:content>
+						<ComboBox width="25em">
+										<sap.ui.core:Item />
+									</ComboBox>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell colSpan="2" hAlign="End">
+						<sap.ui.commons.layout:content>
+						<sap.ui.unified:FileUploader id="idActivityQuestionsFU" width="17.2rem" 
+						placeholder="{i18n>SupportingDocuments}" icon="common/mime/attachment.png" iconOnly="true"/>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			
+			
+			<!-- <sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End"
+						>
+						<sap.ui.commons.layout:content>
+							<Button style="Accept" text="{i18n>Save}" press="">
+							</Button>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						>
+						<sap.ui.commons.layout:content>
+							<Button style="Accept" text="{i18n>GoToExperienceQuestions}" press="">
+							</Button>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow> -->
+		
+			
+		</sap.ui.commons.layout:rows>
+		
+		
+											
+											
+	</sap.ui.commons.layout:MatrixLayout>
+    
+    </content>
+    <endButton>      
+      <Button text="{i18n>SaveAndClose}"  press="handleCreateActivityQuestionsDialogSaveAndClosePress" />
+    </endButton>
+  </Dialog>
+</sap.ui.core:FragmentDefinition>

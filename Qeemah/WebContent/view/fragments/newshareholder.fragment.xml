@@ -30,7 +30,7 @@
 		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
 		<sap.ui.commons.layout:content>
 		<Button width="15rem" style="Accept" text="{i18n>AddAttachments}" id="idCreateNewShareHolderAddAttachmentsButton"
-									press=""></Button>
+									press="handleCreateNewShareHolderAddAttachmentssButtonPress"></Button>
 		</sap.ui.commons.layout:content>
 		</sap.ui.commons.layout:MatrixLayoutCell>
 		</sap.ui.commons.layout:cells>
@@ -41,7 +41,7 @@
 		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
 		<sap.ui.commons.layout:content>
 		<Button width="15rem" style="Accept" text="{i18n>AnswerActivityQuestions}" id="idCreateNewShareHolderAnswerActivityQuestionsButton"
-									press=""></Button>
+									press="handleCreateNewShareHolderAnswerActivityQuestionsButtonPress"></Button>
 		</sap.ui.commons.layout:content>
 		</sap.ui.commons.layout:MatrixLayoutCell>
 		</sap.ui.commons.layout:cells>
@@ -83,7 +83,7 @@
 		
 
 
-			<sap.ui.commons:Accordion id="accordionA"
+			<!-- <sap.ui.commons:Accordion id="accordionA"
 				openedSectionsId="section1" width="62rem">
 				<sap.ui.commons:sections>
 					<sap.ui.commons:AccordionSection
@@ -140,7 +140,7 @@
 					</sap.ui.commons:AccordionSection>
 				</sap.ui.commons:sections>
 			</sap.ui.commons:Accordion>
-			<html:br />
+			<html:br /> -->
 			
 			<!-- <sap.ui.commons:Accordion id="idOrganizationRegistrationAccordation"
 				openedSectionsId="section1" width="62rem">

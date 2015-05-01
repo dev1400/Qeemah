@@ -100,6 +100,36 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleCreateAddShareHolderDetailsDialogSaveAndClosePress : function(){
 		this._popOverNewShareHolderDetailsFragment.close();
 	},
+	/**
+	 * Activity Questions
+	 * @Author Abdul Waheed
+	 */
+	handleCreateNewShareHolderAnswerActivityQuestionsButtonPress : function(){
+		if (!this._popOverNewShareHolderDetailsActivityQuestionsFragment) {
+			this._popOverNewShareHolderDetailsActivityQuestionsFragment = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.ns_activityquestions_dialog", this.getView()
+							.getController());
+			this.getView().addDependent(this._popOverNewShareHolderDetailsActivityQuestionsFragment);
+		}		
+
+		this._popOverNewShareHolderDetailsActivityQuestionsFragment.open();
+	},
+	handleCreateActivityQuestionsDialogSaveAndClosePress : function(){
+		this._popOverNewShareHolderDetailsActivityQuestionsFragment.close();
+	},
+	handleCreateNewShareHolderAddAttachmentssButtonPress : function(){
+		if (!this._popOverNewShareHolderDetailsAddAttachmentsFragment) {
+			this._popOverNewShareHolderDetailsAddAttachmentsFragment = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.ns_attachments_dialog", this.getView()
+							.getController());
+			this.getView().addDependent(this._popOverNewShareHolderDetailsAddAttachmentsFragment);
+		}		
+
+		this._popOverNewShareHolderDetailsAddAttachmentsFragment.open();
+	},
+	handleCreateAddAttachmentsDialogSaveAndClosePress : function(){
+		this._popOverNewShareHolderDetailsAddAttachmentsFragment.close();
+	},
 	handleAddExistingShareHolderButtonPress : function(){
 		this._oCREATE_NewShareHolderVBox.setVisible(false);
 		this._oADD_ExistingShareHolderVBox.setVisible(true);
