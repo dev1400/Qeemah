@@ -77,8 +77,19 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oBasicInfoIconTab = this.getView().byId("idBasicInfoIconTab");
 		this._oOrgTabFilter = this.getView().byId("idIconTabFilterOrg");
 		this._oTermsAndConditionsInfoContent = this.getView().byId("idTermsAndConditionsInfoContent");
+		this._oLI_BAQ_1_to_6 = this.getView().byId("idLI_BAQ_1_to_6MAtrixLayoutz");
+		this._oLI_BAQ_7_to_10 = this.getView().byId("idLI_BAQ_7_to_10MatrixLayout");
 		
 
+	},
+	
+	handleLI_BAQ_MoreButtonPress : function(){
+		this._oLI_BAQ_1_to_6.setVisible(false);
+		this._oLI_BAQ_7_to_10.setVisible(true);
+	},
+	handleLI_BAQ_PReviousButtonPress : function(){		
+		this._oLI_BAQ_7_to_10.setVisible(false);
+		this._oLI_BAQ_1_to_6.setVisible(true);
 	},
 	
 	handleBasicInfoIconTabBarSelect : function(oEvent){
