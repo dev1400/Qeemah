@@ -1,0 +1,74 @@
+<sap.ui.core:FragmentDefinition xmlns="sap.m"
+	xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
+	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.commons="sap.ui.commons"
+	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
+
+	<VBox class="HeadingBGVBOX">
+
+		<IconTabBar class="iconTabBarPaddingTop IconTabBarStyling"
+			expanded="true" expandable="false">
+			<items>
+				<IconTabFilter text="{i18n>TermsnCond}">
+					<ScrollContainer height="39.88rem" width="69rem"
+						vertical="true">
+						<html:br />
+						<VBox justifyContent="Center" alignItems="Center">
+
+							<sap.ui.commons.layout:MatrixLayout>
+								<sap.ui.commons.layout:rows>
+
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
+													<Button width="15rem" style="Accept"
+														text="{i18n>PreviewBasicInfo}"  press=""></Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
+													<Button width="15rem" style="Accept" text="{i18n>PreviewLicenseInfo}"
+														 press=""></Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
+													<Button width="15rem" style="Accept"
+														text="{i18n>PreviewShareHolderInfo}"  press=""></Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+
+
+								</sap.ui.commons.layout:rows>
+							</sap.ui.commons.layout:MatrixLayout>
+						</VBox>
+
+					</ScrollContainer>
+
+				</IconTabFilter>
+
+			</items>
+		</IconTabBar>
+
+
+	</VBox>
+
+
+</sap.ui.core:FragmentDefinition>

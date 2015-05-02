@@ -77,6 +77,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oBasicInfoIconTab = this.getView().byId("idBasicInfoIconTab");
 		this._oOrgTabFilter = this.getView().byId("idIconTabFilterOrg");
 		this._oTermsAndConditionsInfoContent = this.getView().byId("idTermsAndConditionsInfoContent");
+		this._oPreviewInfoContent = this.getView().byId("idPreviewInfoContent");
 		this._oLI_BAQ_1_to_6 = this.getView().byId("idLI_BAQ_1_to_6MAtrixLayoutz");
 		this._oLI_BAQ_7_to_10 = this.getView().byId("idLI_BAQ_7_to_10MatrixLayout");
 		
@@ -468,6 +469,7 @@ handleRegisterUserButtonPress : function() {
 		this._oLicenseInfoContent.setVisible(false);
 		this._oShareHoldersInfoContent.setVisible(false);
 		this._oTermsAndConditionsInfoContent.setVisible(false);
+		this._oPreviewInfoContent.setVisible(false);
 		
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("BasicInformationHTML"));
@@ -477,6 +479,7 @@ handleRegisterUserButtonPress : function() {
 		this._oBasicInfoContent.setVisible(false);
 		this._oShareHoldersInfoContent.setVisible(false);
 		this._oTermsAndConditionsInfoContent.setVisible(false);
+		this._oPreviewInfoContent.setVisible(false);
 		this._oLicenseInfoButton.setSrc("common/mime/license_hover.png");
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("LicenseInformationHTML"));
@@ -488,11 +491,16 @@ handleRegisterUserButtonPress : function() {
 		this._oLicenseInfoContent.setVisible(false);
 		this._oBasicInfoContent.setVisible(false);
 		this._oTermsAndConditionsInfoContent.setVisible(false);
+		this._oPreviewInfoContent.setVisible(false);
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("ShareHolderInformationHTML"));
 	},
 	handlePreviewInfoButtonClick : function(){
 		this._oPreviewInfoButton.setSrc("common/mime/preview_hover.png");
+		this._oPreviewInfoContent.setVisible(true);
+		this._oShareHoldersInfoContent.setVisible(false);
+		this._oLicenseInfoContent.setVisible(false);
+		this._oBasicInfoContent.setVisible(false);
 		this._oTermsAndConditionsInfoContent.setVisible(false);
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("PreviewInformationHTML"));
@@ -502,6 +510,7 @@ handleRegisterUserButtonPress : function() {
 		this._oLicenseInfoContent.setVisible(false);
 		this._oBasicInfoContent.setVisible(false);
 		this._oTermsAndConditionsInfoContent.setVisible(true);
+		this._oPreviewInfoContent.setVisible(false);
 		
 		this._oTermsInfoButton.setSrc("common/mime/terms_hover.png");
 		this._oStagesHeading.setContent(this.oModelHelper
