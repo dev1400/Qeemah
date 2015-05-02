@@ -19,7 +19,7 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
-												<sap.ui.unified:FileUploader
+												<sap.ui.unified:FileUploader enabled="false"
 											     width="15em" icon="common/mime/attachment.png" iconOnly="true" />
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -37,7 +37,7 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
-												<sap.ui.unified:FileUploader
+												<sap.ui.unified:FileUploader enabled="false"
 											     width="15em" icon="common/mime/attachment.png" iconOnly="true" />
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -55,7 +55,7 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
-												<sap.ui.unified:FileUploader
+												<sap.ui.unified:FileUploader enabled="false"
 											     width="15em" icon="common/mime/attachment.png" iconOnly="true" />
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -73,7 +73,7 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
-												<sap.ui.unified:FileUploader
+												<sap.ui.unified:FileUploader enabled="false"
 											     width="15em" icon="common/mime/attachment.png" iconOnly="true" />
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -91,7 +91,7 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
-												<sap.ui.unified:FileUploader
+												<sap.ui.unified:FileUploader enabled="false"
 											     width="15em" icon="common/mime/attachment.png" iconOnly="true" />
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>

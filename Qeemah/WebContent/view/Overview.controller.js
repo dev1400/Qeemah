@@ -93,6 +93,23 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * Preview Share holder attachments Dialog
 	 * @Author Abdul Waheed
 	 */
+	handlePreviewShareHolderActivityAnswersButtonPress : function(){
+		if (!this._popOverPreviewShareHolderActivityAnswersFragment) {
+			this._popOverPreviewShareHolderActivityAnswersFragment = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.preview_shareholderactivityanswers_dialog", this.getView()
+							.getController());
+			this.getView().addDependent(this._popOverPreviewShareHolderActivityAnswersFragment);
+		}		
+
+		this._popOverPreviewShareHolderActivityAnswersFragment.open();
+	},
+	handlePreview_ShareHolderActivityAnswers_ClosePress : function(){
+		this._popOverPreviewShareHolderActivityAnswersFragment.close();
+	},
+	/**
+	 * Preview Share holder attachments Dialog
+	 * @Author Abdul Waheed
+	 */
 	handlePreviewShareHolderAttachmentsButtonPress : function(){
 		if (!this._popOverPreviewShareHolderAttachmentsFragment) {
 			this._popOverPreviewShareHolderAttachmentsFragment = sap.ui.xmlfragment(

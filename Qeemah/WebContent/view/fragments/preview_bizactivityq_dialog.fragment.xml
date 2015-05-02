@@ -18,13 +18,13 @@
 							<VBox justifyContent="Center">
 								<sap.ui.commons:TextView text="{i18n>BAQ1}"></sap.ui.commons:TextView>
 								<HBox justifyContent="SpaceBetween">
-									<ComboBox width="25em">
+									<ComboBox enabled="false" width="25em">
 										<sap.ui.core:Item />
 									</ComboBox>
 									<HBox>
 										
-										<sap.ui.unified:FileUploader
-											id="idPreview_BAQ1FU" width="20rem" placeholder="{i18n>SupportingDocuments}" icon="common/mime/attachment.png" iconOnly="true"/>
+										<sap.ui.unified:FileUploader enabled="false"
+											id="idPreview_BAQ1FU" width="20rem"  icon="common/mime/attachment.png" iconOnly="true"/>
 <!-- icon="common/mime/attachment.png" iconOnly="true" -->
 									</HBox>
 								</HBox>
@@ -42,13 +42,13 @@
 								<sap.ui.commons:TextView text="{i18n>BAQ2}"></sap.ui.commons:TextView>
 								
 								<HBox justifyContent="SpaceBetween">
-									<ComboBox width="25em">
+									<ComboBox enabled="false" width="25em">
 										<sap.ui.core:Item />
 									</ComboBox>
 									<HBox>
 										
-										<sap.ui.unified:FileUploader
-											id="idPreview_BAQ2FU" width="20rem" placeholder="{i18n>SupportingDocuments}" icon="common/mime/attachment.png" iconOnly="true"/>
+										<sap.ui.unified:FileUploader enabled="false"
+											id="idPreview_BAQ2FU" width="20rem"  icon="common/mime/attachment.png" iconOnly="true"/>
 									</HBox>
 								</HBox>
 
@@ -67,13 +67,13 @@
 								
 
 								<HBox justifyContent="SpaceBetween">
-									<ComboBox width="25em">
+									<ComboBox enabled="false" width="25em">
 										<sap.ui.core:Item />
 									</ComboBox>
 									<HBox>
 										
-										<sap.ui.unified:FileUploader
-											id="idPreview_BAQ3FU" width="20rem" placeholder="{i18n>SupportingDocuments}" icon="common/mime/attachment.png" iconOnly="true"/>
+										<sap.ui.unified:FileUploader enabled="false"
+											id="idPreview_BAQ3FU" width="20rem"  icon="common/mime/attachment.png" iconOnly="true"/>
 									</HBox>
 								</HBox>
 							</VBox>
@@ -94,8 +94,8 @@
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<VBox>
-											<RadioButton groupName="GroupA" text="{i18n>Yes}" />
-											<RadioButton groupName="GroupA" text="{i18n>No}" />
+											<RadioButton enabled="false" groupName="GroupA" text="{i18n>Yes}" />
+											<RadioButton enabled="false" groupName="GroupA" text="{i18n>No}" />
 										</VBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:MatrixLayoutRow>
@@ -113,13 +113,13 @@
 								<sap.ui.commons:TextView text="{i18n>BAQ5}"></sap.ui.commons:TextView>
 
 								<HBox justifyContent="SpaceBetween">
-									<ComboBox width="25em">
+									<ComboBox enabled="false" width="25em">
 										<sap.ui.core:Item />
 									</ComboBox>
 									<HBox>
 										
-										<sap.ui.unified:FileUploader
-											id="idPreview_BAQ4FU" width="20rem" placeholder="{i18n>SupportingDocuments}" icon="common/mime/attachment.png" iconOnly="true"/>
+										<sap.ui.unified:FileUploader enabled="false"
+											id="idPreview_BAQ4FU" width="20rem"  icon="common/mime/attachment.png" iconOnly="true"/>
 									</HBox>
 								</HBox>
 
@@ -172,7 +172,7 @@
 								layoutFixed="false">
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em">
+										<ComboBox enabled="false" width="25em">
 											<sap.ui.core:Item />
 										</ComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
@@ -203,13 +203,13 @@
 							<VBox justifyContent="Center">
 								<sap.ui.commons:TextView text="{i18n>BAQ7}"></sap.ui.commons:TextView>
 								<HBox justifyContent="SpaceBetween">
-									<ComboBox width="25em">
+									<ComboBox enabled="false" width="25em">
 										<sap.ui.core:Item />
 									</ComboBox>
 									<HBox>
 										
-										<sap.ui.unified:FileUploader
-											id="idPreview_BAQ5FU" width="20rem" placeholder="{i18n>SupportingDocuments}"  icon="common/mime/attachment.png" iconOnly="true"/>
+										<sap.ui.unified:FileUploader enabled="false"
+											id="idPreview_BAQ5FU" width="20rem"   icon="common/mime/attachment.png" iconOnly="true"/>
 									</HBox>
 								</HBox>
 							</VBox>
@@ -231,8 +231,8 @@
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<VBox>
-											<RadioButton groupName="GroupA" text="{i18n>Yes}" />
-											<RadioButton groupName="GroupA" text="{i18n>No}" />
+											<RadioButton enabled="false" groupName="GroupA" text="{i18n>Yes}" />
+											<RadioButton enabled="false" groupName="GroupA" text="{i18n>No}" />
 										</VBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:MatrixLayoutRow>
@@ -255,8 +255,8 @@
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<VBox>
-											<RadioButton groupName="GroupA" text="{i18n>Yes}" />
-											<RadioButton groupName="GroupA" text="{i18n>No}" />
+											<RadioButton enabled="false" groupName="GroupA" text="{i18n>Yes}" />
+											<RadioButton enabled="false" groupName="GroupA" text="{i18n>No}" />
 										</VBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:MatrixLayoutRow>
@@ -279,8 +279,8 @@
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<VBox>
-											<RadioButton groupName="GroupA" text="{i18n>Yes}" />
-											<RadioButton groupName="GroupA" text="{i18n>No}" />
+											<RadioButton enabled="false" groupName="GroupA" text="{i18n>Yes}" />
+											<RadioButton enabled="false" groupName="GroupA" text="{i18n>No}" />
 										</VBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:MatrixLayoutRow>
