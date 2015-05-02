@@ -81,12 +81,53 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oLI_BAQ_1_to_6 = this.getView().byId("idLI_BAQ_1_to_6MAtrixLayoutz");
 		this._oLI_BAQ_7_to_10 = this.getView().byId("idLI_BAQ_7_to_10MatrixLayout");
 		
+			
 		this._oADD_ExistingShareHolderVBox = this.getView().byId("idADD_ExistingShareHolderVBox");
 		this._oCREATE_NewShareHolderVBox = this.getView().byId("idCREATE_NewShareHolderVBox");
 		
 		
 		
 
+	},
+	/**
+	 * Biz Activity Preview Questions navigations 6 - 10
+	 * @Author Abdul Waheed
+	 */
+	handlePreview_LI_BAQ_MoreButtonPress : function(){
+		this._oPreview_LI_BAQ_1_to_6 = sap.ui.getCore().byId("idPreview_LI_BAQ_1_to_6MAtrixLayout");
+		this._oPreviewLI_BAQ_7_to_10 = sap.ui.getCore().byId("idPreview_LI_BAQ_6_to_10MatrixLayout");
+		
+		this._oPreview_LI_BAQ_1_to_6.setVisible(false);
+		this._oPreviewLI_BAQ_7_to_10.setVisible(true);
+	},
+	/**
+	 * Biz Activity Preview Questions navigations 1 - 5
+	 * @Author Abdul Waheed
+	 */
+	handlePreview_LI_BAQ_PReviousButtonPress: function(){
+		
+		this._oPreview_LI_BAQ_1_to_6 = sap.ui.getCore().byId("idPreview_LI_BAQ_1_to_6MAtrixLayout");
+		this._oPreviewLI_BAQ_7_to_10 = sap.ui.getCore().byId("idPreview_LI_BAQ_6_to_10MatrixLayout");
+			
+		this._oPreview_LI_BAQ_1_to_6.setVisible(true);
+		this._oPreviewLI_BAQ_7_to_10.setVisible(false);
+	},
+	/**
+	 * Preview Biz Activity Questions Dialog
+	 * @Author Abdul Waheed
+	 */
+	handlePreviewBusinessActivityQButtonPress : function(){
+		if (!this._popOverBizActivityQInfoFragment) {
+			this._popOverBizActivityQInfoFragment = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.preview_bizactivityq_dialog", this.getView()
+							.getController());
+			this.getView().addDependent(this._popOverBizActivityQInfoFragment);
+		}		
+
+		this._popOverBizActivityQInfoFragment.open();
+	},
+	handlePreview_BizActivityQuestionsInfo_ClosePress : function(){
+		this._popOverBizActivityQInfoFragment.close();
 	},
 	
 	/**
