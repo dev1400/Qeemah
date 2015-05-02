@@ -24,7 +24,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
-													<Button width="17rem" style="Accept"
+													<Button width="19rem" style="Accept"
 														text="{i18n>PreviewOrganizationInfo}"  press="handlePreviewOrganizationInfoButtonPress"></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -36,7 +36,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
-													<Button width="17rem" style="Accept" text="{i18n>PreviewContactInfo}"
+													<Button width="19rem" style="Accept" text="{i18n>PreviewContactInfo}"
 														 press="handlePreviewContactInfoButtonPress"></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -48,7 +48,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
-													<Button width="17rem" style="Accept"
+													<Button width="19rem" style="Accept"
 														text="{i18n>PreviewBusinessActivityAnswers}"  press="handlePreviewBusinessActivityQButtonPress"></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -60,7 +60,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
-													<Button width="17rem" style="Accept"
+													<Button width="19rem" style="Accept"
 														text="{i18n>PreviewLicenseInfo}"  press="handlePreviewLicenseInfoButtonPress"></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -72,8 +72,56 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
-													<Button width="17rem" style="Accept"
+													<Button width="19rem" style="Accept"
 														text="{i18n>PreviewShareHolderInfo}"  press=""></Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
+													<Button width="19rem" style="Accept"
+														text="{i18n>PreviewShareHolderAttachments}"  press=""></Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
+													<Button width="19rem" style="Accept"
+														text="{i18n>PreviewShareHolderActivityAnswers}"  press=""></Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
+													<Button width="19rem" style="Accept"
+														text="{i18n>PreviewShareHolderExperienceAnswers}"  press=""></Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
+													<Button width="19rem" style="Accept"
+														text="{i18n>PreviewShareHolderFinancialAnswers}"  press=""></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
