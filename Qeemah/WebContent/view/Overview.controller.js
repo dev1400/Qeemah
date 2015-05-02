@@ -88,6 +88,25 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 
 	},
+	
+	/**
+	 * Preview Organization Information Dialog
+	 * @Author Abdul Waheed
+	 */
+	handlePreviewContactInfoButtonPress : function(){
+		if (!this._popOverPreviewContactInfoFragment) {
+			this._popOverPreviewContactInfoFragment = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.preview_contactinfo_dialog", this.getView()
+							.getController());
+			this.getView().addDependent(this._popOverPreviewContactInfoFragment);
+		}		
+
+		this._popOverPreviewContactInfoFragment.open();
+	},
+	handlePreview_ContactInfo_ClosePress : function(){
+		this._popOverPreviewContactInfoFragment.close();
+	},
+	
 	/**
 	 * Preview Organization Information Dialog
 	 * @Author Abdul Waheed

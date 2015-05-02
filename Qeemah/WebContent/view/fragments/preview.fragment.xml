@@ -37,7 +37,7 @@
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<Button width="17rem" style="Accept" text="{i18n>PreviewContactInfo}"
-														 press=""></Button>
+														 press="handlePreviewContactInfoButtonPress"></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>

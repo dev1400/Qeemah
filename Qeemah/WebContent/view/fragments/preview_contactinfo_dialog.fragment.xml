@@ -1,0 +1,310 @@
+<sap.ui.core:FragmentDefinition xmlns="sap.m"
+	xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
+	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.commons="sap.ui.commons"
+	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog
+    class="sapUiPopupWithPadding" showHeader="false">
+    <content>
+    
+    
+    <sap.ui.commons.layout:MatrixLayout layoutFixed="false" width="100%">
+							<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>FirstName}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<HBox justifyContent="Start">
+														<Input enabled="false" type="Text" width="25em" />
+													</HBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												vAlign="Middle" hAlign="End">
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>Nationality}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:content>
+													<ComboBox enabled="false" width="25em">
+														<sap.ui.core:Item />
+													</ComboBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+								
+								<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>LastName}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<HBox justifyContent="Start">
+														<Input enabled="false" type="Text" width="25em" />
+													</HBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="End">
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>City}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<HBox justifyContent="Start">
+														<Input enabled="false" type="Text" width="25em" />
+													</HBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+								<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												vAlign="Middle" hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>Gender}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<ComboBox enabled="false" width="25em">
+														<sap.ui.core:Item />
+													</ComboBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="End">
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>Street}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<HBox justifyContent="Start">
+														<Input enabled="false" type="Text" width="25em" />
+													</HBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+								<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												vAlign="Middle" hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>Country}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:content>
+													<ComboBox enabled="false" width="25em">
+														<sap.ui.core:Item />
+													</ComboBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="End">
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>POBox}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<HBox justifyContent="Start">
+														<Input enabled="false" type="Text" width="25em" />
+													</HBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+								
+								<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>Telephone}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+												<HBox justifyContent="Start" alignItems="Center">
+													<Input enabled="false" type="Number" placeholder="{i18n>CountryCode}"
+														 width="8em" />
+													<Input enabled="false" type="Number" placeholder="{i18n>Telephone}"
+														width="9em" />
+													<Input enabled="false" type="Number" placeholder="{i18n>Extension}"
+														width="8em" />
+												</HBox>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="End">
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>PostalCode}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												vAlign="Middle" hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<HBox justifyContent="Start">
+														<Input enabled="false" type="Text" width="25em" />
+													</HBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+								<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>MobilePhone}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+												<HBox justifyContent="Start" alignItems="Center">
+													<Input enabled="false" type="Number" placeholder="{i18n>CountryCode}"
+														width="8em" />
+													<Input enabled="false" type="Number" placeholder="{i18n>MobilePhone}"
+														width="17em" />
+												</HBox>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												vAlign="Middle" hAlign="End">
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>CommMethod}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<ComboBox enabled="false" width="25em">
+														<sap.ui.core:Item />
+													</ComboBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+								<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>Fax}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+												<HBox justifyContent="Start" alignItems="Center">
+													<Input enabled="false" type="Number" placeholder="{i18n>CountryCode}"
+														 width="8em" />
+													<Input enabled="false" type="Number" placeholder="{i18n>Fax}" width="17em" />
+												</HBox>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+
+											<sap.ui.commons.layout:MatrixLayoutCell
+												vAlign="Middle" hAlign="End">
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>Role}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<ComboBox enabled="false" width="25em">
+														<sap.ui.core:Item />
+													</ComboBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+								
+									<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>Email}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												vAlign="Middle" hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<HBox justifyContent="Start">
+														<Input enabled="false" type="Text" width="25em" />
+													</HBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											
+											
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>PassportCopyIDCopy}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												vAlign="Middle" hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<sap.ui.unified:FileUploader enabled="false"
+															uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
+															iconOnly="true" />
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+								
+								<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+										<sap.ui.commons.layout:MatrixLayoutCell><sap.ui.commons:TextView text="{i18n>PowerofAttorney}"></sap.ui.commons:TextView>
+										</sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.unified:FileUploader enabled="false"
+														uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
+														iconOnly="true" />
+										</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+								</sap.ui.commons.layout:rows>
+								
+								
+							
+							
+							</sap.ui.commons.layout:MatrixLayout>
+    
+    
+    
+    </content>
+    <endButton>      
+      <Button text="{i18n>Close}"  press="handlePreview_ContactInfo_ClosePress" />
+    </endButton>
+  </Dialog>
+</sap.ui.core:FragmentDefinition>
