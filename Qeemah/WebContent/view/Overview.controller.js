@@ -89,6 +89,19 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 
 	},
+	handleReadTermsandConditionsPress : function(){
+		if (!this._popOverReadTermsAndConditionsFragment) {
+			this._popOverReadTermsAndConditionsFragment = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.read_termsandconditions_pdf_dialog", this.getView()
+							.getController());
+			this.getView().addDependent(this._popOverReadTermsAndConditionsFragment);
+		}		
+
+		this._popOverReadTermsAndConditionsFragment.open();
+	},
+	handleReadTermsandConditionsPress_ClosePress : function(){
+		this._popOverReadTermsAndConditionsFragment.close();
+	},
 	/**
 	 * Preview Share holder financial answers Dialog
 	 * @Author Abdul Waheed
