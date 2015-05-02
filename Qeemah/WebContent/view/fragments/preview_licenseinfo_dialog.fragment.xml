@@ -148,7 +148,7 @@
    
     </content>
     <endButton>      
-      <Button text="{i18n>SaveAndClose}"  press="handlePreview_LicenseInfo_ClosePress" />
+      <Button text="{i18n>Close}"  press="handlePreview_LicenseInfo_ClosePress" />
     </endButton>
   </Dialog>
 </sap.ui.core:FragmentDefinition>

@@ -90,6 +90,40 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 	},
 	/**
+	 * Preview Share holder attachments Dialog
+	 * @Author Abdul Waheed
+	 */
+	handlePreviewShareHolderAttachmentsButtonPress : function(){
+		if (!this._popOverPreviewShareHolderAttachmentsFragment) {
+			this._popOverPreviewShareHolderAttachmentsFragment = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.preview_shareholderattachments_dialog", this.getView()
+							.getController());
+			this.getView().addDependent(this._popOverPreviewShareHolderAttachmentsFragment);
+		}		
+
+		this._popOverPreviewShareHolderAttachmentsFragment.open();
+	},
+	handlePreview_ShareHolderAttachments_ClosePress : function(){
+		this._popOverPreviewShareHolderAttachmentsFragment.close();
+	},
+	/**
+	 * Preview Share holder details Dialog
+	 * @Author Abdul Waheed
+	 */
+	handlePreviewShareHolderDetailsButtonPress : function(){
+		if (!this._popOverPreviewShareHolderDetailsFragment) {
+			this._popOverPreviewShareHolderDetailsFragment = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.preview_shareholderdetails_dialog", this.getView()
+							.getController());
+			this.getView().addDependent(this._popOverPreviewShareHolderDetailsFragment);
+		}		
+
+		this._popOverPreviewShareHolderDetailsFragment.open();
+	},
+	handlePreview_ShareHolderDetails_ClosePress : function(){
+		this._popOverPreviewShareHolderDetailsFragment.close();
+	},
+	/**
 	 * Preview License Info Dialog
 	 * @Author Abdul Waheed
 	 */

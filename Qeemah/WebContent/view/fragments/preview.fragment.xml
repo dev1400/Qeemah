@@ -73,7 +73,7 @@
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<Button width="19rem" style="Accept"
-														text="{i18n>PreviewShareHolderInfo}"  press=""></Button>
+														text="{i18n>PreviewShareHolderInfo}"  press="handlePreviewShareHolderDetailsButtonPress"></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -85,7 +85,7 @@
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<Button width="19rem" style="Accept"
-														text="{i18n>PreviewShareHolderAttachments}"  press=""></Button>
+														text="{i18n>PreviewShareHolderAttachments}"  press="handlePreviewShareHolderAttachmentsButtonPress"></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
