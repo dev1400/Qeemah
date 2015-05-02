@@ -90,7 +90,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 	},
 	/**
-	 * Preview Share holder experience Dialog
+	 * Preview Share holder financial answers Dialog
+	 * @Author Abdul Waheed
+	 */
+	handlePreviewShareHolderFinancialAnswersButtonPress : function(){
+		if (!this._popOverPreviewShareHolderFinancialAnswersFragment) {
+			this._popOverPreviewShareHolderFinancialAnswersFragment = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.preview_shareholderfinancialanswers_dialog", this.getView()
+							.getController());
+			this.getView().addDependent(this._popOverPreviewShareHolderFinancialAnswersFragment);
+		}		
+
+		this._popOverPreviewShareHolderFinancialAnswersFragment.open();
+	},
+	handlePreview_ShareHolderFinancialAnswers_ClosePress : function(){
+		this._popOverPreviewShareHolderFinancialAnswersFragment.close();
+	},
+	/**
+	 * Preview Share holder experience answers Dialog
 	 * @Author Abdul Waheed
 	 */
 	handlePreviewShareHolderExperienceAnswersButtonPress : function(){
