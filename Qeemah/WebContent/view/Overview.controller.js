@@ -90,6 +90,23 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 	},
 	/**
+	 * Preview License Info Dialog
+	 * @Author Abdul Waheed
+	 */
+	handlePreviewLicenseInfoButtonPress : function(){
+		if (!this._popOverPreviewLicenseInfoFragment) {
+			this._popOverPreviewLicenseInfoFragment = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.preview_licenseinfo_dialog", this.getView()
+							.getController());
+			this.getView().addDependent(this._popOverPreviewLicenseInfoFragment);
+		}		
+
+		this._popOverPreviewLicenseInfoFragment.open();
+	},
+	handlePreview_LicenseInfo_ClosePress : function(){
+		this._popOverPreviewLicenseInfoFragment.close();
+	},
+	/**
 	 * Biz Activity Preview Questions navigations 6 - 10
 	 * @Author Abdul Waheed
 	 */

@@ -61,7 +61,7 @@
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<Button width="17rem" style="Accept"
-														text="{i18n>PreviewLicenseInfo}"  press=""></Button>
+														text="{i18n>PreviewLicenseInfo}"  press="handlePreviewLicenseInfoButtonPress"></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
