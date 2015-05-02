@@ -88,6 +88,23 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 
 	},
+	/**
+	 * Preview Organization Information Dialog
+	 * @Author Abdul Waheed
+	 */
+	handlePreviewOrganizationInfoButtonPress : function(){
+		if (!this._popOverPreviewOrganizationInfoFragment) {
+			this._popOverPreviewOrganizationInfoFragment = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.preview_orginfo_dialog", this.getView()
+							.getController());
+			this.getView().addDependent(this._popOverPreviewOrganizationInfoFragment);
+		}		
+
+		this._popOverPreviewOrganizationInfoFragment.open();
+	},
+	handlePreview_OrgInfo_ClosePress : function(){
+		this._popOverPreviewOrganizationInfoFragment.close();
+	},
 	handleCreateNewShareHolderAddShareHolderDetailsButtonPress : function(){
 		if (!this._popOverNewShareHolderDetailsFragment) {
 			this._popOverNewShareHolderDetailsFragment = sap.ui.xmlfragment(
