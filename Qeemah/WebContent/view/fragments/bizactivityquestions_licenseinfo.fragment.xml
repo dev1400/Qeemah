@@ -10,9 +10,9 @@
     vertical="true" > -->
    
     <ScrollContainer
-    height="39.88rem"
+    
     width="69rem"
-    vertical="true" >
+    vertical="true" ><!-- height="39.88rem" -->
      <html:br/>
     <VBox justifyContent="Center" alignItems="Center">
 	<!-- Child license activity Q start -->
@@ -35,7 +35,10 @@
 										<ComboBox width="25em">
 											<sap.ui.core:Item />
 										</ComboBox>
+									
 									</sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>Division}"></sap.ui.commons:TextView>
@@ -61,6 +64,8 @@
 											<sap.ui.core:Item />
 										</ComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>Class}"></sap.ui.commons:TextView>
@@ -86,6 +91,8 @@
 											<sap.ui.core:Item />
 										</ComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>ActivityDescription}"></sap.ui.commons:TextView>
@@ -103,7 +110,7 @@
 								
 								
 								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
+									<!-- <sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>LicenseActivity}"></sap.ui.commons:TextView>
 										</HBox>
@@ -112,7 +119,7 @@
 										<ComboBox width="25em">
 											<sap.ui.core:Item />
 										</ComboBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:MatrixLayoutCell> -->
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>Quantity}"></sap.ui.commons:TextView>
@@ -171,23 +178,23 @@
 							<Table width="66rem">
 								<columns>
 									<Column width="2em">
-										<Text text="#" />
+										<sap.ui.commons:TextView text="#" class="textcolorwhite"></sap.ui.commons:TextView>
 									</Column>
 									<Column width="5em">
-										<sap.ui.commons:TextView text="{i18n>ProductCode}"></sap.ui.commons:TextView>
+										<sap.ui.commons:TextView text="{i18n>ProductCode}" class="textcolorwhite"></sap.ui.commons:TextView>
 									</Column>
 									<Column width="5em">
 										
-										<sap.ui.commons:TextView text="{i18n>ProductName}"></sap.ui.commons:TextView>
+										<sap.ui.commons:TextView text="{i18n>ProductName}" class="textcolorwhite"></sap.ui.commons:TextView>
 									</Column>
 									<Column width="5em">
-										<sap.ui.commons:TextView text="{i18n>Quantity}"></sap.ui.commons:TextView>
+										<sap.ui.commons:TextView text="{i18n>Quantity}" class="textcolorwhite"></sap.ui.commons:TextView>
 									</Column>
 									<Column width="10em">
-										<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}"></sap.ui.commons:TextView>
+										<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}" class="textcolorwhite"></sap.ui.commons:TextView>
 									</Column>
 									<Column width="5em">
-										<sap.ui.commons:TextView text="{i18n>Delete}"></sap.ui.commons:TextView>
+										<sap.ui.commons:TextView text="{i18n>Delete}" class="textcolorwhite"></sap.ui.commons:TextView>
 									</Column>
 								</columns>
 								<items>
