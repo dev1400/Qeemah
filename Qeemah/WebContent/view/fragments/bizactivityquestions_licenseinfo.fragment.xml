@@ -224,9 +224,9 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												colSpan="2" hAlign="Center">
 												<sap.ui.commons.layout:content>
-													<Button style="Accept" text="{i18n>BackToBAQ}"
+													<!-- <Button style="Accept" text="{i18n>BackToBAQ}"
 														press="" icon="sap-icon://navigation-up-arrow">
-													</Button>
+													</Button> -->
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
