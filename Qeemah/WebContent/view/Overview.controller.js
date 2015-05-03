@@ -91,7 +91,27 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oAddShareHolderExperienceAnswersVBoxFragment = this.getView().byId("idAddShareHolderExperienceAnswersVBoxFragment");
 		this._oAddShareHolderFinancialAnswersVBoxFragment = this.getView().byId("idAddShareHolderFinancialAnswersVBoxFragment");
 		
+		this._oPreviewOranizationInfoVBox = this.getView().byId("idPreviewOranizationInfoVBox");
+		this._oPreviewContactInfoVBox = this.getView().byId("idPreviewContactInfoVBox");
+		this._oPreviewBAAInfoVBox = this.getView().byId("idPreviewBAAInfoVBox");
+		this._oPreviewLicenseInfoVBox = this.getView().byId("idPreviewLicenseInfoVBox");
+		this._oPreviewShareHolderDetailsVBox = this.getView().byId("idPreviewShareHolderDetailsInfoVBox");
+		this._oPreviewAttachmentsVBox = this.getView().byId("idPreviewAttachmentsVBox");
+		this._oPreviewActivityAnswersVBox = this.getView().byId("idPreviewActivityAnswersVBox");
+		this._oPreviewExperienceAnswersVBox = this.getView().byId("idPreviewExperienceAnswersVBox");
+		this._oPreviewFinancialAnswersVBox = this.getView().byId("idPreviewFinancialAnswersVBox");
 		
+
+		/*this._oPreviewOranizationInfoVBox.setVisible(false);
+
+				this._oPreviewContactInfoVBox.setVisible(false);
+				this._oPreviewBAAInfoVBox.setVisible(false);
+				this._oPreviewLicenseInfoVBox.setVisible(false);
+				this._oPreviewShareHolderDetailsVBox.setVisible(false);
+				this._oPreviewAttachmentsVBox.setVisible(false);
+				this._oPreviewActivityAnswersVBox.setVisible(false);
+				this._oPreviewExperienceAnswersVBox.setVisible(false);
+				this._oPreviewFinancialAnswersVBox.setVisible(false);*/
 		
 
 	},
@@ -113,14 +133,25 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * @Author Abdul Waheed
 	 */
 	handlePreviewShareHolderFinancialAnswersButtonPress : function(){
-		if (!this._popOverPreviewShareHolderFinancialAnswersFragment) {
+		this._oPreviewFinancialAnswersVBox.setVisible(true);
+		this._oPreviewOranizationInfoVBox.setVisible(false);
+
+		this._oPreviewContactInfoVBox.setVisible(false);
+		this._oPreviewBAAInfoVBox.setVisible(false);
+		this._oPreviewLicenseInfoVBox.setVisible(false);
+		this._oPreviewShareHolderDetailsVBox.setVisible(false);
+		this._oPreviewAttachmentsVBox.setVisible(false);
+		this._oPreviewActivityAnswersVBox.setVisible(false);
+		this._oPreviewExperienceAnswersVBox.setVisible(false);
+		
+		/*if (!this._popOverPreviewShareHolderFinancialAnswersFragment) {
 			this._popOverPreviewShareHolderFinancialAnswersFragment = sap.ui.xmlfragment(
 					"com.sagia.view.fragments.preview_shareholderfinancialanswers_dialog", this.getView()
 							.getController());
 			this.getView().addDependent(this._popOverPreviewShareHolderFinancialAnswersFragment);
 		}		
 
-		this._popOverPreviewShareHolderFinancialAnswersFragment.open();
+		this._popOverPreviewShareHolderFinancialAnswersFragment.open();*/
 	},
 	handlePreview_ShareHolderFinancialAnswers_ClosePress : function(){
 		this._popOverPreviewShareHolderFinancialAnswersFragment.close();
@@ -130,14 +161,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * @Author Abdul Waheed
 	 */
 	handlePreviewShareHolderExperienceAnswersButtonPress : function(){
-		if (!this._popOverPreviewShareHolderExperienceAnswersFragment) {
+		this._oPreviewExperienceAnswersVBox.setVisible(true);
+		this._oPreviewOranizationInfoVBox.setVisible(false);
+
+		this._oPreviewContactInfoVBox.setVisible(false);
+		this._oPreviewBAAInfoVBox.setVisible(false);
+		this._oPreviewLicenseInfoVBox.setVisible(false);
+		this._oPreviewShareHolderDetailsVBox.setVisible(false);
+		this._oPreviewAttachmentsVBox.setVisible(false);
+		this._oPreviewActivityAnswersVBox.setVisible(false);
+		this._oPreviewFinancialAnswersVBox.setVisible(false);
+		/*if (!this._popOverPreviewShareHolderExperienceAnswersFragment) {
 			this._popOverPreviewShareHolderExperienceAnswersFragment = sap.ui.xmlfragment(
 					"com.sagia.view.fragments.preview_shareholderexperienceanswers_dialog", this.getView()
 							.getController());
 			this.getView().addDependent(this._popOverPreviewShareHolderExperienceAnswersFragment);
 		}		
 
-		this._popOverPreviewShareHolderExperienceAnswersFragment.open();
+		this._popOverPreviewShareHolderExperienceAnswersFragment.open();*/
 	},
 	handlePreview_ShareHolderExperienceAnswers_ClosePress : function(){
 		this._popOverPreviewShareHolderExperienceAnswersFragment.close();
@@ -147,14 +188,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * @Author Abdul Waheed
 	 */
 	handlePreviewShareHolderActivityAnswersButtonPress : function(){
-		if (!this._popOverPreviewShareHolderActivityAnswersFragment) {
+		this._oPreviewActivityAnswersVBox.setVisible(true);
+		this._oPreviewOranizationInfoVBox.setVisible(false);
+
+		this._oPreviewContactInfoVBox.setVisible(false);
+		this._oPreviewBAAInfoVBox.setVisible(false);
+		this._oPreviewLicenseInfoVBox.setVisible(false);
+		this._oPreviewShareHolderDetailsVBox.setVisible(false);
+		this._oPreviewAttachmentsVBox.setVisible(false);
+		this._oPreviewExperienceAnswersVBox.setVisible(false);
+		this._oPreviewFinancialAnswersVBox.setVisible(false);
+		/*if (!this._popOverPreviewShareHolderActivityAnswersFragment) {
 			this._popOverPreviewShareHolderActivityAnswersFragment = sap.ui.xmlfragment(
 					"com.sagia.view.fragments.preview_shareholderactivityanswers_dialog", this.getView()
 							.getController());
 			this.getView().addDependent(this._popOverPreviewShareHolderActivityAnswersFragment);
 		}		
 
-		this._popOverPreviewShareHolderActivityAnswersFragment.open();
+		this._popOverPreviewShareHolderActivityAnswersFragment.open();*/
 	},
 	handlePreview_ShareHolderActivityAnswers_ClosePress : function(){
 		this._popOverPreviewShareHolderActivityAnswersFragment.close();
@@ -164,14 +215,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * @Author Abdul Waheed
 	 */
 	handlePreviewShareHolderAttachmentsButtonPress : function(){
-		if (!this._popOverPreviewShareHolderAttachmentsFragment) {
+		this._oPreviewAttachmentsVBox.setVisible(true);
+		this._oPreviewOranizationInfoVBox.setVisible(false);
+
+		this._oPreviewContactInfoVBox.setVisible(false);
+		this._oPreviewBAAInfoVBox.setVisible(false);
+		this._oPreviewLicenseInfoVBox.setVisible(false);
+		this._oPreviewShareHolderDetailsVBox.setVisible(false);
+		this._oPreviewActivityAnswersVBox.setVisible(false);
+		this._oPreviewExperienceAnswersVBox.setVisible(false);
+		this._oPreviewFinancialAnswersVBox.setVisible(false);
+		/*if (!this._popOverPreviewShareHolderAttachmentsFragment) {
 			this._popOverPreviewShareHolderAttachmentsFragment = sap.ui.xmlfragment(
 					"com.sagia.view.fragments.preview_shareholderattachments_dialog", this.getView()
 							.getController());
 			this.getView().addDependent(this._popOverPreviewShareHolderAttachmentsFragment);
 		}		
 
-		this._popOverPreviewShareHolderAttachmentsFragment.open();
+		this._popOverPreviewShareHolderAttachmentsFragment.open();*/
 	},
 	handlePreview_ShareHolderAttachments_ClosePress : function(){
 		this._popOverPreviewShareHolderAttachmentsFragment.close();
@@ -181,14 +242,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * @Author Abdul Waheed
 	 */
 	handlePreviewShareHolderDetailsButtonPress : function(){
-		if (!this._popOverPreviewShareHolderDetailsFragment) {
+		this._oPreviewShareHolderDetailsVBox.setVisible(true);
+		this._oPreviewOranizationInfoVBox.setVisible(false);
+
+		this._oPreviewContactInfoVBox.setVisible(false);
+		this._oPreviewBAAInfoVBox.setVisible(false);
+		this._oPreviewLicenseInfoVBox.setVisible(false);
+		this._oPreviewAttachmentsVBox.setVisible(false);
+		this._oPreviewActivityAnswersVBox.setVisible(false);
+		this._oPreviewExperienceAnswersVBox.setVisible(false);
+		this._oPreviewFinancialAnswersVBox.setVisible(false);
+		/*if (!this._popOverPreviewShareHolderDetailsFragment) {
 			this._popOverPreviewShareHolderDetailsFragment = sap.ui.xmlfragment(
 					"com.sagia.view.fragments.preview_shareholderdetails_dialog", this.getView()
 							.getController());
 			this.getView().addDependent(this._popOverPreviewShareHolderDetailsFragment);
 		}		
 
-		this._popOverPreviewShareHolderDetailsFragment.open();
+		this._popOverPreviewShareHolderDetailsFragment.open();*/
 	},
 	handlePreview_ShareHolderDetails_ClosePress : function(){
 		this._popOverPreviewShareHolderDetailsFragment.close();
@@ -198,14 +269,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * @Author Abdul Waheed
 	 */
 	handlePreviewLicenseInfoButtonPress : function(){
-		if (!this._popOverPreviewLicenseInfoFragment) {
+		this._oPreviewLicenseInfoVBox.setVisible(true);
+		this._oPreviewOranizationInfoVBox.setVisible(false);
+
+		this._oPreviewContactInfoVBox.setVisible(false);
+		this._oPreviewBAAInfoVBox.setVisible(false);
+		this._oPreviewShareHolderDetailsVBox.setVisible(false);
+		this._oPreviewAttachmentsVBox.setVisible(false);
+		this._oPreviewActivityAnswersVBox.setVisible(false);
+		this._oPreviewExperienceAnswersVBox.setVisible(false);
+		this._oPreviewFinancialAnswersVBox.setVisible(false);
+		/*if (!this._popOverPreviewLicenseInfoFragment) {
 			this._popOverPreviewLicenseInfoFragment = sap.ui.xmlfragment(
 					"com.sagia.view.fragments.preview_licenseinfo_dialog", this.getView()
 							.getController());
 			this.getView().addDependent(this._popOverPreviewLicenseInfoFragment);
 		}		
 
-		this._popOverPreviewLicenseInfoFragment.open();
+		this._popOverPreviewLicenseInfoFragment.open();*/
 	},
 	handlePreview_LicenseInfo_ClosePress : function(){
 		this._popOverPreviewLicenseInfoFragment.close();
@@ -238,14 +319,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * @Author Abdul Waheed
 	 */
 	handlePreviewBusinessActivityQButtonPress : function(){
-		if (!this._popOverBizActivityQInfoFragment) {
+		this._oPreviewBAAInfoVBox.setVisible(true);
+		this._oPreviewOranizationInfoVBox.setVisible(false);
+
+		this._oPreviewContactInfoVBox.setVisible(false);
+		this._oPreviewLicenseInfoVBox.setVisible(false);
+		this._oPreviewShareHolderDetailsVBox.setVisible(false);
+		this._oPreviewAttachmentsVBox.setVisible(false);
+		this._oPreviewActivityAnswersVBox.setVisible(false);
+		this._oPreviewExperienceAnswersVBox.setVisible(false);
+		this._oPreviewFinancialAnswersVBox.setVisible(false);
+		/*if (!this._popOverBizActivityQInfoFragment) {
 			this._popOverBizActivityQInfoFragment = sap.ui.xmlfragment(
 					"com.sagia.view.fragments.preview_bizactivityq_dialog", this.getView()
 							.getController());
 			this.getView().addDependent(this._popOverBizActivityQInfoFragment);
 		}		
 
-		this._popOverBizActivityQInfoFragment.open();
+		this._popOverBizActivityQInfoFragment.open();*/
 	},
 	handlePreview_BizActivityQuestionsInfo_ClosePress : function(){
 		this._popOverBizActivityQInfoFragment.close();
@@ -256,14 +347,23 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * @Author Abdul Waheed
 	 */
 	handlePreviewContactInfoButtonPress : function(){
-		if (!this._popOverPreviewContactInfoFragment) {
+		this._oPreviewContactInfoVBox.setVisible(true);
+		this._oPreviewOranizationInfoVBox.setVisible(false);
+		this._oPreviewBAAInfoVBox.setVisible(false);
+		this._oPreviewLicenseInfoVBox.setVisible(false);
+		this._oPreviewShareHolderDetailsVBox.setVisible(false);
+		this._oPreviewAttachmentsVBox.setVisible(false);
+		this._oPreviewActivityAnswersVBox.setVisible(false);
+		this._oPreviewExperienceAnswersVBox.setVisible(false);
+		this._oPreviewFinancialAnswersVBox.setVisible(false);
+		/*if (!this._popOverPreviewContactInfoFragment) {
 			this._popOverPreviewContactInfoFragment = sap.ui.xmlfragment(
 					"com.sagia.view.fragments.preview_contactinfo_dialog", this.getView()
 							.getController());
 			this.getView().addDependent(this._popOverPreviewContactInfoFragment);
 		}		
 
-		this._popOverPreviewContactInfoFragment.open();
+		this._popOverPreviewContactInfoFragment.open();*/
 	},
 	handlePreview_ContactInfo_ClosePress : function(){
 		this._popOverPreviewContactInfoFragment.close();
@@ -274,14 +374,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * @Author Abdul Waheed
 	 */
 	handlePreviewOrganizationInfoButtonPress : function(){
-		if (!this._popOverPreviewOrganizationInfoFragment) {
+		this._oPreviewOranizationInfoVBox.setVisible(true);
+
+		this._oPreviewContactInfoVBox.setVisible(false);
+		this._oPreviewBAAInfoVBox.setVisible(false);
+		this._oPreviewLicenseInfoVBox.setVisible(false);
+		this._oPreviewShareHolderDetailsVBox.setVisible(false);
+		this._oPreviewAttachmentsVBox.setVisible(false);
+		this._oPreviewActivityAnswersVBox.setVisible(false);
+		this._oPreviewExperienceAnswersVBox.setVisible(false);
+		this._oPreviewFinancialAnswersVBox.setVisible(false);
+		/*if (!this._popOverPreviewOrganizationInfoFragment) {
 			this._popOverPreviewOrganizationInfoFragment = sap.ui.xmlfragment(
 					"com.sagia.view.fragments.preview_orginfo_dialog", this.getView()
 							.getController());
 			this.getView().addDependent(this._popOverPreviewOrganizationInfoFragment);
 		}		
 
-		this._popOverPreviewOrganizationInfoFragment.open();
+		this._popOverPreviewOrganizationInfoFragment.open();*/
 	},
 	handlePreview_OrgInfo_ClosePress : function(){
 		this._popOverPreviewOrganizationInfoFragment.close();

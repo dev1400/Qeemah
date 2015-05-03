@@ -3,9 +3,9 @@
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.commons="sap.ui.commons"
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-	<Dialog
+	<!-- <Dialog
     class="sapUiPopupWithPadding" showHeader="false">
-    <content>
+    <content> -->
     
     
     <sap.ui.commons.layout:MatrixLayout layoutFixed="false" width="100%">
@@ -302,9 +302,9 @@
     
     
     
-    </content>
+   <!--  </content>
     <endButton>      
       <Button text="{i18n>Close}"  press="handlePreview_ContactInfo_ClosePress" />
     </endButton>
-  </Dialog>
+  </Dialog> -->
 </sap.ui.core:FragmentDefinition>

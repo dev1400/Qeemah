@@ -11,8 +11,8 @@
 			expanded="true" expandable="false">
 			<items>
 				<IconTabFilter text="{i18n>TermsnCond}">
-					<ScrollContainer height="39.88rem" width="69rem"
-						vertical="true">
+					<ScrollContainer  width="69rem"
+						vertical="true"><!-- height="39.88rem" -->
 						<html:br />
 						<VBox justifyContent="Center" alignItems="Center">
 
@@ -25,7 +25,7 @@
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<Button width="19rem" style="Accept"
-														text="{i18n>PreviewOrganizationInfo}"  press="handlePreviewOrganizationInfoButtonPress"></Button>
+														text="{i18n>PreviewOrganizationInfo}" press="handlePreviewOrganizationInfoButtonPress"></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -36,8 +36,11 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
-													<Button width="19rem" style="Accept" text="{i18n>PreviewContactInfo}"
-														 press="handlePreviewContactInfoButtonPress"></Button>
+													<VBox id="idPreviewOranizationInfoVBox" visible="false">
+														<sap.ui.core:Fragment
+															fragmentName="com.sagia.view.fragments.preview_orginfo_dialog"
+															type="XML" />
+													</VBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -49,7 +52,7 @@
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<Button width="19rem" style="Accept"
-														text="{i18n>PreviewBusinessActivityAnswers}"  press="handlePreviewBusinessActivityQButtonPress"></Button>
+														text="{i18n>PreviewContactInfo}" press="handlePreviewContactInfoButtonPress"></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -60,8 +63,23 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
+													<VBox id="idPreviewContactInfoVBox" visible="false">
+														<sap.ui.core:Fragment
+															fragmentName="com.sagia.view.fragments.preview_contactinfo_dialog"
+															type="XML" />
+													</VBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
 													<Button width="19rem" style="Accept"
-														text="{i18n>PreviewLicenseInfo}"  press="handlePreviewLicenseInfoButtonPress"></Button>
+														text="{i18n>PreviewBusinessActivityAnswers}" press="handlePreviewBusinessActivityQButtonPress"></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -72,8 +90,51 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
+													<VBox id="idPreviewBAAInfoVBox" visible="false">
+														<sap.ui.core:Fragment
+															fragmentName="com.sagia.view.fragments.preview_bizactivityq_dialog"
+															type="XML" />
+													</VBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
 													<Button width="19rem" style="Accept"
-														text="{i18n>PreviewShareHolderInfo}"  press="handlePreviewShareHolderDetailsButtonPress"></Button>
+														text="{i18n>PreviewLicenseInfo}" press="handlePreviewLicenseInfoButtonPress"></Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+										<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
+													<VBox id="idPreviewLicenseInfoVBox" visible="false">
+														<sap.ui.core:Fragment
+															fragmentName="com.sagia.view.fragments.preview_licenseinfo_dialog"
+															type="XML" />
+													</VBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
+													<Button width="19rem" style="Accept"
+														text="{i18n>PreviewShareHolderInfo}" press="handlePreviewShareHolderDetailsButtonPress"></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -84,8 +145,23 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
+													<VBox id="idPreviewShareHolderDetailsInfoVBox" visible="false">
+														<sap.ui.core:Fragment
+															fragmentName="com.sagia.view.fragments.preview_shareholderdetails_dialog"
+															type="XML" />
+													</VBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
 													<Button width="19rem" style="Accept"
-														text="{i18n>PreviewShareHolderAttachments}"  press="handlePreviewShareHolderAttachmentsButtonPress"></Button>
+														text="{i18n>PreviewShareHolderAttachments}" press="handlePreviewShareHolderAttachmentsButtonPress"></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -96,8 +172,23 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
+													<VBox id="idPreviewAttachmentsVBox" visible="false">
+														<sap.ui.core:Fragment
+															fragmentName="com.sagia.view.fragments.preview_shareholderattachments_dialog"
+															type="XML" />
+													</VBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
 													<Button width="19rem" style="Accept"
-														text="{i18n>PreviewShareHolderActivityAnswers}"  press="handlePreviewShareHolderActivityAnswersButtonPress"></Button>
+														text="{i18n>PreviewShareHolderActivityAnswers}" press="handlePreviewShareHolderActivityAnswersButtonPress"></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -108,8 +199,24 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
+													<VBox id="idPreviewActivityAnswersVBox" visible="false">
+														<sap.ui.core:Fragment
+															fragmentName="com.sagia.view.fragments.preview_shareholderactivityanswers_dialog"
+															type="XML" />
+													</VBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
 													<Button width="19rem" style="Accept"
-														text="{i18n>PreviewShareHolderExperienceAnswers}"  press="handlePreviewShareHolderExperienceAnswersButtonPress"></Button>
+														text="{i18n>PreviewShareHolderExperienceAnswers}"
+														press="handlePreviewShareHolderExperienceAnswersButtonPress"></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -120,8 +227,39 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
+													<VBox id="idPreviewExperienceAnswersVBox" visible="false">
+														<sap.ui.core:Fragment
+															fragmentName="com.sagia.view.fragments.preview_shareholderexperienceanswers_dialog"
+															type="XML" />
+													</VBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
 													<Button width="19rem" style="Accept"
-														text="{i18n>PreviewShareHolderFinancialAnswers}"  press="handlePreviewShareHolderFinancialAnswersButtonPress"></Button>
+														text="{i18n>PreviewShareHolderFinancialAnswers}" press="handlePreviewShareHolderFinancialAnswersButtonPress"></Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
+													<VBox id="idPreviewFinancialAnswersVBox" visible="false">
+														<sap.ui.core:Fragment
+															fragmentName="com.sagia.view.fragments.preview_shareholderfinancialanswers_dialog"
+															type="XML" />
+													</VBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>

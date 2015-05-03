@@ -3,10 +3,10 @@
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.commons="sap.ui.commons"
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-	<Dialog
+	<!-- <Dialog
     class="sapUiPopupWithPadding" showHeader="false">
-    <content>
-    <sap.ui.commons.layout:MatrixLayout id="idNewShareHolderActivityQuestionsMLAyout"
+    <content> -->
+    <sap.ui.commons.layout:MatrixLayout id="idPreviewNewShareHolderActivityQuestionsMLAyout"
 		layoutFixed="false">
 		<sap.ui.commons.layout:rows>
 			<sap.ui.commons.layout:MatrixLayoutRow>
@@ -64,7 +64,7 @@
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell colSpan="2" hAlign="End">
 						<sap.ui.commons.layout:content>
-						<sap.ui.unified:FileUploader enabled="false" id="idActivityQuestionsFU" width="17rem" 
+						<sap.ui.unified:FileUploader enabled="false" id="idPReviewActivityQuestionsFU" width="17rem" 
 						 icon="common/mime/attachment.png" iconOnly="true"/>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -84,9 +84,9 @@
    
     
    
-    </content>
+   <!--  </content>
     <endButton>      
       <Button text="{i18n>Close}"  press="handlePreview_ShareHolderActivityAnswers_ClosePress" />
     </endButton>
-  </Dialog>
+  </Dialog> -->
 </sap.ui.core:FragmentDefinition>

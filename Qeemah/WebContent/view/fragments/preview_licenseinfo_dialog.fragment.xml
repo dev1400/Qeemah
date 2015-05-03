@@ -3,9 +3,9 @@
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.commons="sap.ui.commons"
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-	<Dialog
+	<!-- <Dialog
     class="sapUiPopupWithPadding" showHeader="false">
-    <content>
+    <content> -->
     
     	<sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false">
@@ -27,7 +27,10 @@
 											<sap.ui.core:Item />
 										</ComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
+									
+								</sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>Division}"></sap.ui.commons:TextView>
 										</HBox>
@@ -37,10 +40,8 @@
 											<sap.ui.core:Item />
 										</ComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow>
-								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 									
-								</sap.ui.commons.layout:MatrixLayoutRow> -->
+								</sap.ui.commons.layout:MatrixLayoutRow>
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
@@ -52,7 +53,10 @@
 											<sap.ui.core:Item />
 										</ComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
+									
+								</sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>Class}"></sap.ui.commons:TextView>
 										</HBox>
@@ -62,10 +66,8 @@
 											<sap.ui.core:Item />
 										</ComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow>
-							<!-- 	<sap.ui.commons.layout:MatrixLayoutRow>
 									
-								</sap.ui.commons.layout:MatrixLayoutRow> -->
+								</sap.ui.commons.layout:MatrixLayoutRow>
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
@@ -77,7 +79,10 @@
 											<sap.ui.core:Item />
 										</ComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
+									
+								</sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>ActivityDescription}"></sap.ui.commons:TextView>
 										</HBox>
@@ -87,10 +92,8 @@
 											<TextArea enabled="false" width="25em" />
 										</sap.ui.commons.layout:content>
 									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow>
-								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 									
-								</sap.ui.commons.layout:MatrixLayoutRow> -->
+								</sap.ui.commons.layout:MatrixLayoutRow>
 								
 								
 								<sap.ui.commons.layout:MatrixLayoutRow>
@@ -104,7 +107,10 @@
 											<sap.ui.core:Item />
 										</ComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
+									
+								</sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>Quantity}"></sap.ui.commons:TextView>
 										</HBox>
@@ -114,10 +120,8 @@
 											<sap.ui.core:Item />
 										</ComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow>
-								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 									
-								</sap.ui.commons.layout:MatrixLayoutRow> -->
+								</sap.ui.commons.layout:MatrixLayoutRow>
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
@@ -146,9 +150,9 @@
 		</sap.ui.commons.layout:rows>
 	</sap.ui.commons.layout:MatrixLayout>
    
-    </content>
+    <!-- </content>
     <endButton>      
       <Button text="{i18n>Close}"  press="handlePreview_LicenseInfo_ClosePress" />
     </endButton>
-  </Dialog>
+  </Dialog> -->
 </sap.ui.core:FragmentDefinition>
