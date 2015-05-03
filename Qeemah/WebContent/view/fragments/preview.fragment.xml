@@ -37,6 +37,7 @@
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<VBox id="idPreviewOranizationInfoVBox" visible="false">
+													 <html:br/>
 														<sap.ui.core:Fragment
 															fragmentName="com.sagia.view.fragments.preview_orginfo_dialog"
 															type="XML" />
@@ -64,6 +65,7 @@
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<VBox id="idPreviewContactInfoVBox" visible="false">
+													 <html:br/>
 														<sap.ui.core:Fragment
 															fragmentName="com.sagia.view.fragments.preview_contactinfo_dialog"
 															type="XML" />
@@ -91,6 +93,7 @@
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<VBox id="idPreviewBAAInfoVBox" visible="false">
+													 <html:br/>
 														<sap.ui.core:Fragment
 															fragmentName="com.sagia.view.fragments.preview_bizactivityq_dialog"
 															type="XML" />
@@ -118,6 +121,7 @@
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<VBox id="idPreviewLicenseInfoVBox" visible="false">
+													 <html:br/>
 														<sap.ui.core:Fragment
 															fragmentName="com.sagia.view.fragments.preview_licenseinfo_dialog"
 															type="XML" />
@@ -146,6 +150,7 @@
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<VBox id="idPreviewShareHolderDetailsInfoVBox" visible="false">
+													 <html:br/>
 														<sap.ui.core:Fragment
 															fragmentName="com.sagia.view.fragments.preview_shareholderdetails_dialog"
 															type="XML" />
@@ -173,6 +178,7 @@
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<VBox id="idPreviewAttachmentsVBox" visible="false">
+													 <html:br/>
 														<sap.ui.core:Fragment
 															fragmentName="com.sagia.view.fragments.preview_shareholderattachments_dialog"
 															type="XML" />
@@ -200,6 +206,7 @@
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<VBox id="idPreviewActivityAnswersVBox" visible="false">
+													 <html:br/>
 														<sap.ui.core:Fragment
 															fragmentName="com.sagia.view.fragments.preview_shareholderactivityanswers_dialog"
 															type="XML" />
@@ -228,6 +235,7 @@
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<VBox id="idPreviewExperienceAnswersVBox" visible="false">
+													 <html:br/>
 														<sap.ui.core:Fragment
 															fragmentName="com.sagia.view.fragments.preview_shareholderexperienceanswers_dialog"
 															type="XML" />
@@ -256,6 +264,7 @@
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<VBox id="idPreviewFinancialAnswersVBox" visible="false">
+													 <html:br/>
 														<sap.ui.core:Fragment
 															fragmentName="com.sagia.view.fragments.preview_shareholderfinancialanswers_dialog"
 															type="XML" />
