@@ -88,22 +88,27 @@
 							<sap.ui.commons.layout:rows>
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:cells>
+									
+									<sap.ui.commons.layout:MatrixLayoutCell>
+											<ComboBox width="7em">
+												<sap.ui.core:Item />
+											</ComboBox>
+
+										</sap.ui.commons.layout:MatrixLayoutCell>
+										
+										
+										<sap.ui.commons.layout:MatrixLayoutCell
+											vAlign="Middle">
+											<SearchField width="12em" />
+										</sap.ui.commons.layout:MatrixLayoutCell>
+										
 										<sap.ui.commons.layout:MatrixLayoutCell
 											vAlign="Middle">
 											<ComboBox width="10em">
 												<sap.ui.core:Item />
 											</ComboBox>
 										</sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:MatrixLayoutCell
-											vAlign="Middle">
-											<SearchField width="12em" />
-										</sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:MatrixLayoutCell>
-											<ComboBox width="7em">
-												<sap.ui.core:Item />
-											</ComboBox>
-
-										</sap.ui.commons.layout:MatrixLayoutCell>
+										
 									</sap.ui.commons.layout:cells>
 								</sap.ui.commons.layout:MatrixLayoutRow>
 							</sap.ui.commons.layout:rows>
@@ -118,7 +123,7 @@
 				<sap.ui.core:HTML id="idStagesHeading" content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
 				<HBox alignItems="Center" justifyContent="Center">
 					<sap.ui.commons.layout:MatrixLayout
-						layoutFixed="false">
+						layoutFixed="false" >
 						<sap.ui.commons.layout:rows>
 							<sap.ui.commons.layout:MatrixLayoutRow>
 								<sap.ui.commons.layout:cells>
@@ -128,8 +133,9 @@
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell
 										hAlign="Begin" vAlign="Bottom">
-										<Link text="{i18n>Save}" class="linkColorWhite" />
+										<Link text="{i18n>Save}" class="linkColorWhite" /><html:span>&#160;&#160;</html:span>
 									</sap.ui.commons.layout:MatrixLayoutCell>
+									
 									<sap.ui.commons.layout:MatrixLayoutCell
 										vAlign="Bottom">
 										<Image src="common/mime/logout.png"></Image>
