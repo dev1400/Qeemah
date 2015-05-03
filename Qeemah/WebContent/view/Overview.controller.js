@@ -85,6 +85,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oADD_ExistingShareHolderVBox = this.getView().byId("idADD_ExistingShareHolderVBox");
 		this._oCREATE_NewShareHolderVBox = this.getView().byId("idCREATE_NewShareHolderVBox");
 		
+		this._oAddShareHolderDetailsVBoxFragment = this.getView().byId("idAddShareHolderDetailsVBoxFragment");
+		this._oAddShareHolderAttachmentsVBoxFragment = this.getView().byId("idAddShareHolderAttachmentssVBoxFragment");
+		this._oAddShareHolderActivityAnswersVBoxFragment = this.getView().byId("idAddShareHolderActivityAnswersVBoxFragment");
+		this._oAddShareHolderExperienceAnswersVBoxFragment = this.getView().byId("idAddShareHolderExperienceAnswersVBoxFragment");
+		this._oAddShareHolderFinancialAnswersVBoxFragment = this.getView().byId("idAddShareHolderFinancialAnswersVBoxFragment");
+		
 		
 		
 
@@ -281,14 +287,19 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._popOverPreviewOrganizationInfoFragment.close();
 	},
 	handleCreateNewShareHolderAddShareHolderDetailsButtonPress : function(){
-		if (!this._popOverNewShareHolderDetailsFragment) {
+		this._oAddShareHolderDetailsVBoxFragment.setVisible(true);
+		this._oAddShareHolderFinancialAnswersVBoxFragment.setVisible(false);
+		this._oAddShareHolderActivityAnswersVBoxFragment.setVisible(false);
+		this._oAddShareHolderExperienceAnswersVBoxFragment.setVisible(false);
+		this._oAddShareHolderAttachmentsVBoxFragment.setVisible(false);
+		/*if (!this._popOverNewShareHolderDetailsFragment) {
 			this._popOverNewShareHolderDetailsFragment = sap.ui.xmlfragment(
 					"com.sagia.view.fragments.ns_shareholderdetails_dialog", this.getView()
 							.getController());
 			this.getView().addDependent(this._popOverNewShareHolderDetailsFragment);
 		}		
 
-		this._popOverNewShareHolderDetailsFragment.open();
+		this._popOverNewShareHolderDetailsFragment.open();*/
 	},
 	handleCreateAddShareHolderDetailsDialogSaveAndClosePress : function(){
 		this._popOverNewShareHolderDetailsFragment.close();
@@ -298,14 +309,20 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * @Author Abdul Waheed
 	 */
 	handleCreateNewShareHolderAnswerFinancialQuestionsButtonPress : function(){
-		if (!this._popOverNewShareHolderDetailsFinancialQuestionsFragment) {
+		this._oAddShareHolderFinancialAnswersVBoxFragment.setVisible(true);
+		this._oAddShareHolderDetailsVBoxFragment.setVisible(false);
+		this._oAddShareHolderActivityAnswersVBoxFragment.setVisible(false);
+		this._oAddShareHolderExperienceAnswersVBoxFragment.setVisible(false);
+		this._oAddShareHolderAttachmentsVBoxFragment.setVisible(false);
+				
+		/*if (!this._popOverNewShareHolderDetailsFinancialQuestionsFragment) {
 			this._popOverNewShareHolderDetailsFinancialQuestionsFragment = sap.ui.xmlfragment(
 					"com.sagia.view.fragments.ns_financialquestions_dialog", this.getView()
 							.getController());
 			this.getView().addDependent(this._popOverNewShareHolderDetailsFinancialQuestionsFragment);
 		}		
 
-		this._popOverNewShareHolderDetailsFinancialQuestionsFragment.open();
+		this._popOverNewShareHolderDetailsFinancialQuestionsFragment.open();*/
 	},
 	handleCreateFinancialQuestionsDialogSaveAndClosePress : function(){
 		this._popOverNewShareHolderDetailsFinancialQuestionsFragment.close();
@@ -315,14 +332,20 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * @Author Abdul Waheed
 	 */
 	handleCreateNewShareHolderAnswerExperienceQuestionsButtonPress : function(){
-		if (!this._popOverNewShareHolderDetailsExperienceQuestionsFragment) {
+		this._oAddShareHolderExperienceAnswersVBoxFragment.setVisible(true);
+		this._oAddShareHolderDetailsVBoxFragment.setVisible(false);
+		this._oAddShareHolderActivityAnswersVBoxFragment.setVisible(false);
+		this._oAddShareHolderFinancialAnswersVBoxFragment.setVisible(false);
+		this._oAddShareHolderAttachmentsVBoxFragment.setVisible(false);
+				
+		/*if (!this._popOverNewShareHolderDetailsExperienceQuestionsFragment) {
 			this._popOverNewShareHolderDetailsExperienceQuestionsFragment = sap.ui.xmlfragment(
 					"com.sagia.view.fragments.ns_experiencequestions_dialog", this.getView()
 							.getController());
 			this.getView().addDependent(this._popOverNewShareHolderDetailsExperienceQuestionsFragment);
 		}		
 
-		this._popOverNewShareHolderDetailsExperienceQuestionsFragment.open();
+		this._popOverNewShareHolderDetailsExperienceQuestionsFragment.open();*/
 	},
 	handleCreateExperienceQuestionsDialogSaveAndClosePress : function(){
 		this._popOverNewShareHolderDetailsExperienceQuestionsFragment.close();
@@ -332,27 +355,39 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * @Author Abdul Waheed
 	 */
 	handleCreateNewShareHolderAnswerActivityQuestionsButtonPress : function(){
-		if (!this._popOverNewShareHolderDetailsActivityQuestionsFragment) {
+		this._oAddShareHolderActivityAnswersVBoxFragment.setVisible(true);
+		this._oAddShareHolderDetailsVBoxFragment.setVisible(false);
+		this._oAddShareHolderExperienceAnswersVBoxFragment.setVisible(false);
+		this._oAddShareHolderFinancialAnswersVBoxFragment.setVisible(false);
+		this._oAddShareHolderAttachmentsVBoxFragment.setVisible(false);
+				
+		/*if (!this._popOverNewShareHolderDetailsActivityQuestionsFragment) {
 			this._popOverNewShareHolderDetailsActivityQuestionsFragment = sap.ui.xmlfragment(
 					"com.sagia.view.fragments.ns_activityquestions_dialog", this.getView()
 							.getController());
 			this.getView().addDependent(this._popOverNewShareHolderDetailsActivityQuestionsFragment);
 		}		
 
-		this._popOverNewShareHolderDetailsActivityQuestionsFragment.open();
+		this._popOverNewShareHolderDetailsActivityQuestionsFragment.open();*/
 	},
 	handleCreateActivityQuestionsDialogSaveAndClosePress : function(){
 		this._popOverNewShareHolderDetailsActivityQuestionsFragment.close();
 	},
 	handleCreateNewShareHolderAddAttachmentssButtonPress : function(){
-		if (!this._popOverNewShareHolderDetailsAddAttachmentsFragment) {
+		this._oAddShareHolderAttachmentsVBoxFragment.setVisible(true);
+		this._oAddShareHolderDetailsVBoxFragment.setVisible(false);
+		this._oAddShareHolderActivityAnswersVBoxFragment.setVisible(false);
+		this._oAddShareHolderExperienceAnswersVBoxFragment.setVisible(false);
+		this._oAddShareHolderFinancialAnswersVBoxFragment.setVisible(false);
+				
+		/*if (!this._popOverNewShareHolderDetailsAddAttachmentsFragment) {
 			this._popOverNewShareHolderDetailsAddAttachmentsFragment = sap.ui.xmlfragment(
 					"com.sagia.view.fragments.ns_attachments_dialog", this.getView()
 							.getController());
 			this.getView().addDependent(this._popOverNewShareHolderDetailsAddAttachmentsFragment);
 		}		
 
-		this._popOverNewShareHolderDetailsAddAttachmentsFragment.open();
+		this._popOverNewShareHolderDetailsAddAttachmentsFragment.open();*/
 	},
 	handleCreateAddAttachmentsDialogSaveAndClosePress : function(){
 		this._popOverNewShareHolderDetailsAddAttachmentsFragment.close();

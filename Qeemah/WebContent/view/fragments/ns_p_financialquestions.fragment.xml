@@ -333,7 +333,7 @@
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow>
 			
-			<sap.ui.commons.layout:MatrixLayoutRow>
+			<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center" colSpan="4"
 						>
@@ -345,7 +345,7 @@
 					
 					
 				</sap.ui.commons.layout:cells>
-			</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:MatrixLayoutRow> -->
 			
 			
 			

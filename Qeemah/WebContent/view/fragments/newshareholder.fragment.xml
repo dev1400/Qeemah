@@ -26,11 +26,40 @@
 		</sap.ui.commons.layout:MatrixLayoutRow>
 		
 		<sap.ui.commons.layout:MatrixLayoutRow>
+		<sap.ui.commons.layout:cells >
+		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
+		<sap.ui.commons.layout:content>
+		<VBox id="idAddShareHolderDetailsVBoxFragment" visible="false">
+		<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.ns_shareholderdetails" 
+								type="XML" />
+		</VBox>
+								
+		</sap.ui.commons.layout:content>
+		</sap.ui.commons.layout:MatrixLayoutCell>
+		</sap.ui.commons.layout:cells>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+		
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
 		<sap.ui.commons.layout:cells>
 		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
 		<sap.ui.commons.layout:content>
 		<Button width="15rem" style="Accept" text="{i18n>AddAttachments}" id="idCreateNewShareHolderAddAttachmentsButton"
 									press="handleCreateNewShareHolderAddAttachmentssButtonPress"></Button>
+		</sap.ui.commons.layout:content>
+		</sap.ui.commons.layout:MatrixLayoutCell>
+		</sap.ui.commons.layout:cells>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
+		<sap.ui.commons.layout:cells >
+		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
+		<sap.ui.commons.layout:content>
+		<VBox id="idAddShareHolderAttachmentssVBoxFragment" visible="false">
+		<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.ns_attachments" 
+								type="XML" />
+		</VBox>
+								
 		</sap.ui.commons.layout:content>
 		</sap.ui.commons.layout:MatrixLayoutCell>
 		</sap.ui.commons.layout:cells>
@@ -48,6 +77,20 @@
 		</sap.ui.commons.layout:MatrixLayoutRow>
 		
 		<sap.ui.commons.layout:MatrixLayoutRow>
+		<sap.ui.commons.layout:cells >
+		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
+		<sap.ui.commons.layout:content>
+		<VBox id="idAddShareHolderActivityAnswersVBoxFragment" visible="false">
+		<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.ns_activityquestions" 
+								type="XML" />
+		</VBox>
+								
+		</sap.ui.commons.layout:content>
+		</sap.ui.commons.layout:MatrixLayoutCell>
+		</sap.ui.commons.layout:cells>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
 		<sap.ui.commons.layout:cells>
 		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
 		<sap.ui.commons.layout:content>
@@ -58,12 +101,42 @@
 		</sap.ui.commons.layout:cells>
 		</sap.ui.commons.layout:MatrixLayoutRow>
 		
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
+		<sap.ui.commons.layout:cells >
+		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
+		<sap.ui.commons.layout:content>
+		<VBox id="idAddShareHolderExperienceAnswersVBoxFragment" visible="false">
+		<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.ns_p_experiencequestions" 
+								type="XML" />
+		</VBox>
+								
+		</sap.ui.commons.layout:content>
+		</sap.ui.commons.layout:MatrixLayoutCell>
+		</sap.ui.commons.layout:cells>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+		
+		
 		<sap.ui.commons.layout:MatrixLayoutRow>
 		<sap.ui.commons.layout:cells>
 		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
 		<sap.ui.commons.layout:content>
 		<Button width="15rem" style="Accept" text="{i18n>AnswerFinancialQuestions}" id="idCreateNewShareHolderAnswerFinancialQuestionsButton"
 									press="handleCreateNewShareHolderAnswerFinancialQuestionsButtonPress"></Button>		
+		</sap.ui.commons.layout:content>
+		</sap.ui.commons.layout:MatrixLayoutCell>
+		</sap.ui.commons.layout:cells>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
+		<sap.ui.commons.layout:cells >
+		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
+		<sap.ui.commons.layout:content>
+		<VBox id="idAddShareHolderFinancialAnswersVBoxFragment" visible="false">
+		<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.ns_p_financialquestions" 
+								type="XML" />
+		</VBox>
+								
 		</sap.ui.commons.layout:content>
 		</sap.ui.commons.layout:MatrixLayoutCell>
 		</sap.ui.commons.layout:cells>
