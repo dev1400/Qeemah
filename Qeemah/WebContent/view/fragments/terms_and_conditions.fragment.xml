@@ -25,6 +25,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
 													<sap.ui.commons:TextView text="{i18n>Name}"></sap.ui.commons:TextView>
+													<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
@@ -40,6 +41,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
 													<sap.ui.commons:TextView text="{i18n>Role}"></sap.ui.commons:TextView>
+													<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>

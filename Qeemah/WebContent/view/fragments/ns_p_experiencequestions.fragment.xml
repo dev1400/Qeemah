@@ -11,6 +11,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons.layout:content>
 						<sap.ui.commons:TextView text="{i18n>FinanceStabilityQ}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
@@ -28,6 +29,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons.layout:content>
 						<sap.ui.commons:TextView text="{i18n>AreaOfCompanyCultivatedLandsQ}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
@@ -45,6 +47,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons.layout:content>
 						<sap.ui.commons:TextView text="{i18n>NumberOfGreenHousesQ}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
@@ -62,6 +65,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons.layout:content>
 						<sap.ui.commons:TextView text="{i18n>ApprovaloftheMinistryofAgricultureQ}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">

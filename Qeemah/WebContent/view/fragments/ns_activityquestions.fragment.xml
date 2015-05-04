@@ -11,6 +11,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons.layout:content>
 						<sap.ui.commons:TextView text="{i18n>AgeOfParentCompany}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
@@ -28,6 +29,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons.layout:content>
 						<sap.ui.commons:TextView text="{i18n>HowManyBranches}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
@@ -45,6 +47,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons.layout:content>
 						<sap.ui.commons:TextView text="{i18n>HowManyEmployees}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
