@@ -6,8 +6,101 @@
 
 	
 		<VBox class="HeadingBGVBOX">
+		
+		<sap.ui.commons:TabStrip class="IconTabBarStyling"
+				>
+				<sap.ui.commons:tabs>
+					<sap.ui.commons:Tab  text="{i18n>TermsnCond}">
+						<sap.ui.commons:content>
+						<ScrollContainer height="39.88rem" width="69rem"
+		vertical="true">
+<html:br/>
+						<VBox justifyContent="Center" alignItems="Center">
 
-			<IconTabBar class="iconTabBarPaddingTop IconTabBarStyling"
+							<sap.ui.commons.layout:MatrixLayout
+								layoutFixed="false">
+								<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>Name}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:content>
+													<Input type="Text" width="25em" />
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>Role}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:content>
+													<ComboBox width="25em">
+														<sap.ui.core:Item />
+													</ComboBox>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:content>
+													<sap.ui.commons:TextView text="{i18n>Date}"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:content>
+													<Input type="Text" width="25em" enabled="false" />
+
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell colSpan="2" hAlign="Center">
+												<sap.ui.commons.layout:content>
+													<Button text="{i18n>ReadTermsAndConditions}" press="handleReadTermsandConditionsPress" />
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell colSpan="2" hAlign="Center">
+												<sap.ui.commons.layout:content>
+													<CheckBox text="{i18n>AgreeToAllTermsandConditions}" />
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											
+											
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+							</sap.ui.commons.layout:MatrixLayout>
+						</VBox>
+						</ScrollContainer>
+						</sap.ui.commons:content>
+					</sap.ui.commons:Tab>
+					
+				</sap.ui.commons:tabs>
+			</sap.ui.commons:TabStrip>
+
+			<!-- <IconTabBar class="iconTabBarPaddingTop IconTabBarStyling"
 				expanded="true" expandable="false">
 				<items>
 					<IconTabFilter text="{i18n>TermsnCond}">
@@ -98,7 +191,7 @@
 					</IconTabFilter>
 
 				</items>
-			</IconTabBar>
+			</IconTabBar> -->
 
 
 		</VBox>
