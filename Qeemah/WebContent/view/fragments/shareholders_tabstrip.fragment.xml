@@ -8,7 +8,23 @@
 	
 	<VBox id="idShareHoldersContentVBox" class="HeadingBGVBOX">
 		<HBox justifyContent="Center">
-			<IconTabBar class="iconTabBarPaddingTop IconTabBarStyling"
+		<sap.ui.commons:TabStrip class="IconTabBarStyling"
+				>
+				<sap.ui.commons:tabs>
+					<sap.ui.commons:Tab  text="{i18n>Shareholder}">
+						<sap.ui.commons:content>
+						<VBox justifyContent="Center" alignItems="Center">
+
+							<sap.ui.core:Fragment
+								fragmentName="com.sagia.view.fragments.existingshareholder"
+								type="XML" />
+						</VBox>
+						</sap.ui.commons:content>
+					</sap.ui.commons:Tab>
+					
+				</sap.ui.commons:tabs>
+			</sap.ui.commons:TabStrip>
+			<!-- <IconTabBar class="iconTabBarPaddingTop IconTabBarStyling"
 				expanded="true" expandable="false">
 				<items>
 					<IconTabFilter text="{i18n>ShareHolder}">
@@ -23,7 +39,7 @@
 					</IconTabFilter>
 					
 				</items>
-			</IconTabBar>
+			</IconTabBar> -->
 		</HBox>
 	</VBox>
 	<!-- </ScrollContainer> -->
