@@ -102,18 +102,78 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oPreviewFinancialAnswersVBox = this.getView().byId("idPreviewFinancialAnswersVBox");
 		
 
-		/*this._oPreviewOranizationInfoVBox.setVisible(false);
-
-				this._oPreviewContactInfoVBox.setVisible(false);
-				this._oPreviewBAAInfoVBox.setVisible(false);
-				this._oPreviewLicenseInfoVBox.setVisible(false);
-				this._oPreviewShareHolderDetailsVBox.setVisible(false);
-				this._oPreviewAttachmentsVBox.setVisible(false);
-				this._oPreviewActivityAnswersVBox.setVisible(false);
-				this._oPreviewExperienceAnswersVBox.setVisible(false);
-				this._oPreviewFinancialAnswersVBox.setVisible(false);*/
+		this._oFirstNameInputText = this.getView().byId("idFirstNameInputText");
+		this._oFirstNameErrorMsg = this.getView().byId("idRegFirstNameErrorMsg");
+		
+		this._oLastNameInputText = this.getView().byId("idLastNameInputText");
+		this._oLastNameErrorMsg = this.getView().byId("idRegLastNameErrorMsg");
+		
+		this._oPasswordInputText = this.getView().byId("idInputPassword");
+		this._oPasswordErrorMsg = this.getView().byId("idRegPasswordErrorMsg");
+		
+		this._oRePasswordInputText = this.getView().byId("idInputRePassword");
+		this._oRePasswordErrorMsg = this.getView().byId("idRegRePasswordErrorMsg");
 		
 
+	},
+	handleRePasswordEntryLive : function(){
+		var password = this._oRePasswordInputText.getValue();
+		this.handleRePasswordValidation(password);		
+	},
+	handleRePasswordValidation : function(password){
+		if(password.length>10){
+			this._oRePasswordErrorMsg.setText(this.oModelHelper.getText("PasswordMoreThan10Chars"));
+			this._oRePasswordErrorMsg.setVisible(true);
+		}else if(this._oPasswordInputText.getValue() !== this._oRePasswordInputText.getValue()){
+			/*console.log(this._oPasswordInputText.getValue()+" "+this._oRePasswordInputText.getValue());*/
+			this._oRePasswordErrorMsg.setText(this.oModelHelper.getText("PasswordsNotMatched"));
+			this._oRePasswordErrorMsg.setVisible(true);
+		}		
+		else{
+			this._oRePasswordErrorMsg.setVisible(false);
+		}
+	},
+	handlePasswordEntryLive : function(){
+		var password = this._oPasswordInputText.getValue();
+		this.handlePasswordValidation(password);		
+	},
+	handlePasswordValidation : function(password){
+		if(password.length>10){
+			this._oPasswordErrorMsg.setText(this.oModelHelper.getText("PasswordMoreThan10Chars"));
+			this._oPasswordErrorMsg.setVisible(true);
+		}else{
+			this._oPasswordErrorMsg.setVisible(false);
+		}
+	},
+	handleFirstNameEntryLive : function(){
+		var firstName = this._oFirstNameInputText.getValue();
+		this.handleFirstNameValidation(firstName);		
+	},
+	handleLastNameEntryLive : function(){
+		var lastName = this._oLastNameInputText.getValue();
+		this.handleLastNameValidation(lastName);		
+	},
+	handleLastNameValidation : function(name){
+		if(name.length>40){
+			this._oLastNameErrorMsg.setText(this.oModelHelper.getText("LastNameTextMoreThan40Chars"));
+			this._oLastNameErrorMsg.setVisible(true);
+		}else if(/[^a-zA-Z]/.test( name )){
+			this._oLastNameErrorMsg.setText(this.oModelHelper.getText("LastNameTextOnlyAlphabets"));
+			this._oLastNameErrorMsg.setVisible(true);
+		}else{
+			this._oLastNameErrorMsg.setVisible(false);
+		}
+	},
+	handleFirstNameValidation : function(name){
+		if(name.length>40){
+			this._oFirstNameErrorMsg.setText(this.oModelHelper.getText("FirstNameTextMoreThan40Chars"));
+			this._oFirstNameErrorMsg.setVisible(true);
+		}else if(/[^a-zA-Z]/.test( name )){
+			this._oFirstNameErrorMsg.setText(this.oModelHelper.getText("FirstNameTextOnlyAlphabets"));
+			this._oFirstNameErrorMsg.setVisible(true);
+		}else{
+			this._oFirstNameErrorMsg.setVisible(false);
+		}
 	},
 	handleReadTermsandConditionsPress : function(){
 		if (!this._popOverReadTermsAndConditionsFragment) {
