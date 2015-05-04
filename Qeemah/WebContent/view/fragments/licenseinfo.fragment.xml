@@ -7,7 +7,25 @@
 	
  <VBox  id="idLicenseInfoParentVBox" class="HeadingBGVBOX">
  <HBox justifyContent="Center">
- <IconTabBar
+ <sap.ui.commons:TabStrip class="IconTabBarStyling"
+				>
+				<sap.ui.commons:tabs>
+					<sap.ui.commons:Tab  text="{i18n>BusinessActivityQuestions}">
+						<sap.ui.commons:content>
+						 <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bizactivityquestions"
+		type="XML" />
+						</sap.ui.commons:content>
+					</sap.ui.commons:Tab>
+					<sap.ui.commons:Tab  text="{i18n>LicenseInformation}">
+						<sap.ui.commons:content>
+						 <sap.ui.core:Fragment
+		fragmentName="com.sagia.view.fragments.bizactivityquestions_licenseinfo"
+		type="XML" />
+						</sap.ui.commons:content>
+					</sap.ui.commons:Tab>
+				</sap.ui.commons:tabs>
+			</sap.ui.commons:TabStrip>
+ <!-- <IconTabBar
     class="iconTabBarPaddingTop IconTabBarStyling"
     expanded="true" expandable="false" idd="idLicenseInfoIconTabBar">
     <items>
@@ -27,7 +45,7 @@
 		
       </IconTabFilter>
     </items>
-  </IconTabBar>
+  </IconTabBar> -->
   
 	
 	
