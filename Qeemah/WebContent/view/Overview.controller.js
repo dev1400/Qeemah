@@ -117,8 +117,32 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oMobileNumberInputText = this.getView().byId("idInputMobileNumber");
 		this._oRegMobileErrorMsg = this.getView().byId("idRegMobileErrorMsg");
 		
+		this._oEmailInputText = this.getView().byId("idInputEmail");
+		this._oRegEmailErrorMsg = this.getView().byId("idRegEmailErrorMsg");
+		
 
 	},
+	handleEmailEntryLive : function(){
+		var email = this._oEmailInputText.getValue();
+		this.handleEmailValidation(email);		
+	},
+	handleEmailValidation : function(email){
+		if(email.length>20){
+			this._oRegEmailErrorMsg.setText(this.oModelHelper.getText("EmailMoreThan20Chars"));
+			this._oRegEmailErrorMsg.setVisible(true);
+		}else if(!(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test( email ))){
+			console.log(email.length);
+			this._oRegEmailErrorMsg.setText(this.oModelHelper.getText("InvalidEmailFormat"));
+			if(email.length > 0){
+			this._oRegEmailErrorMsg.setVisible(true);
+			}else{
+				this._oRegEmailErrorMsg.setVisible(false);
+			}
+		}else{
+			this._oRegEmailErrorMsg.setVisible(false);
+		}
+	},
+	
 	handleMobileEntryLive : function(){
 		var mobile = this._oMobileNumberInputText.getValue();
 		this.handleMobileValidation(mobile);		

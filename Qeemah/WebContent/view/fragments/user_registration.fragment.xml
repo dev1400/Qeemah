@@ -192,7 +192,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" id="idInputEmail" />
+						<Input type="Text" required="true" id="idInputEmail" liveChange="handleEmailEntryLive"/>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				
