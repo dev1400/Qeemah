@@ -73,8 +73,8 @@
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Label text="*" class="redcolortext"></Label>
-						<Label text="{i18n>PleaseEnterFirstName}" class="textcolorwhite"></Label>
+						<sap.ui.commons:TextView text="*" class="redcolortext"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="{i18n>PleaseEnterFirstName}" class="textcolorwhite"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -85,8 +85,8 @@
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Label text="*" class="redcolortext"></Label>
-						<Label text="{i18n>PleaseEnterLastName}" class="textcolorwhite"></Label>
+						<sap.ui.commons:TextView text="*" class="redcolortext"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="{i18n>PleaseEnterLastName}" class="textcolorwhite"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -101,8 +101,8 @@
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Label text="*" class="redcolortext"></Label>
-						<Label text="{i18n>PleaseEnterPassword}" class="textcolorwhite"></Label>
+						<sap.ui.commons:TextView text="*" class="redcolortext"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="{i18n>PleaseEnterPassword}" class="textcolorwhite"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -113,8 +113,8 @@
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Label text="*" class="redcolortext"></Label>
-						<Label text="{i18n>PleaseReEnterPassword}" class="textcolorwhite"></Label>
+						<sap.ui.commons:TextView text="*" class="redcolortext"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="{i18n>PleaseReEnterPassword}" class="textcolorwhite"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -125,8 +125,8 @@
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Label text="*" class="redcolortext"></Label>
-						<Label text="{i18n>PleaseEnterMobileNumber}" class="textcolorwhite"></Label>
+						<sap.ui.commons:TextView text="*" class="redcolortext"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="{i18n>PleaseEnterMobileNumber}" class="textcolorwhite"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -137,8 +137,8 @@
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Label text="*" class="redcolortext"></Label>
-						<Label text="{i18n>PleaseEnterEmail}" class="textcolorwhite"></Label>
+						<sap.ui.commons:TextView text="*" class="redcolortext"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="{i18n>PleaseEnterEmail}" class="textcolorwhite"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -179,8 +179,8 @@
 					<sap.ui.commons.layout:MatrixLayoutRow>
 
 						<sap.ui.commons.layout:MatrixLayoutCell>
-							<Label text="*" class="redcolortext"></Label>
-							<Label text="{i18n>PleaseEnterInvestorID}" class="textcolorwhite"></Label>
+							<sap.ui.commons:TextView text="*" class="redcolortext"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="{i18n>PleaseEnterInvestorID}" class="textcolorwhite"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:MatrixLayoutCell>
 							<Input id="idSignInUsernameInput" required="true" width="14rem" />
@@ -188,8 +188,8 @@
 					</sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutRow>
 						<sap.ui.commons.layout:MatrixLayoutCell>
-							<Label text="*" class="redcolortext"></Label>
-							<Label text="{i18n>PleaseEnterPassword}" class="textcolorwhite"></Label>
+							<sap.ui.commons:TextView text="*" class="redcolortext"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="{i18n>PleaseEnterPassword}" class="textcolorwhite"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:MatrixLayoutCell>
 							<Input type="Password" id="idSignInPasswordInput" required="true" width="14rem"/>
