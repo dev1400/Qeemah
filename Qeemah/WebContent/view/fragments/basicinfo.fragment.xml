@@ -8,23 +8,44 @@
 	<VBox class="HeadingBGVBOX">
 
 		<HBox id="idBasicInfoBoxContent" justifyContent="Center" width="100%">
-			<IconTabBar class="iconTabBarPaddingTop IconTabBarStyling"
+			<sap.ui.commons:TabStrip class="IconTabBarStyling"
+				>
+				<sap.ui.commons:tabs>
+					<sap.ui.commons:Tab  text="{i18n>Organization}">
+						<sap.ui.commons:content>
+						<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bi_organization"
+							type="XML" />
+						</sap.ui.commons:content>
+					</sap.ui.commons:Tab>
+					<sap.ui.commons:Tab  text="{i18n>ContactInformation}">
+						<sap.ui.commons:content>
+						<sap.ui.core:Fragment
+							fragmentName="com.sagia.view.fragments.bi_contactinformation"
+							type="XML" />
+
+						</sap.ui.commons:content>
+					</sap.ui.commons:Tab>
+				</sap.ui.commons:tabs>
+			</sap.ui.commons:TabStrip>
+			
+			<!-- <IconTabBar id="idBasicInfoIconTabBar" class="iconTabBarPaddingTop IconTabBarStyling"
 				expanded="true" expandable="false" select="handleBasicInfoIconTabBarSelect">
 				<items>
 					<IconTabFilter text="{i18n>Organization}" id="idIconTabFilterOrg"
 						key="BasicInfoIconTabKey">
-						 <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bi_organization"
-		type="XML" />
+						<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bi_organization"
+							type="XML" />
 
-					
+
 					</IconTabFilter>
 					<IconTabFilter text="{i18n>ContactInformation}">
- <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bi_contactinformation"
-		type="XML" />
-					
+						<sap.ui.core:Fragment
+							fragmentName="com.sagia.view.fragments.bi_contactinformation"
+							type="XML" />
+
 					</IconTabFilter>
 				</items>
-			</IconTabBar>
+			</IconTabBar> -->
 
 
 
@@ -37,5 +58,5 @@
 		</HBox>
 	</VBox>
 
-	
+
 </sap.ui.core:FragmentDefinition>
