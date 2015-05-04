@@ -167,9 +167,20 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" id="idInputMobileNumber" />
+						<Input type="Text" required="true" id="idInputMobileNumber" liveChange="handleMobileEntryLive"/>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
+				
+				
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						colSpan="2" vAlign="Middle" hAlign="Center">
+						<sap.ui.commons:TextView visible="false"
+							id="idRegMobileErrorMsg" class="textcolorred"></sap.ui.commons:TextView>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				
+				
 
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
@@ -182,6 +193,14 @@
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<Input type="Text" required="true" id="idInputEmail" />
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						colSpan="2" vAlign="Middle" hAlign="Center">
+						<sap.ui.commons:TextView visible="false"
+							id="idRegEmailErrorMsg" class="textcolorred"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 

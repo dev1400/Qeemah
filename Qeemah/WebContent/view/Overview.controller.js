@@ -114,8 +114,28 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oRePasswordInputText = this.getView().byId("idInputRePassword");
 		this._oRePasswordErrorMsg = this.getView().byId("idRegRePasswordErrorMsg");
 		
+		this._oMobileNumberInputText = this.getView().byId("idInputMobileNumber");
+		this._oRegMobileErrorMsg = this.getView().byId("idRegMobileErrorMsg");
+		
 
 	},
+	handleMobileEntryLive : function(){
+		var mobile = this._oMobileNumberInputText.getValue();
+		this.handleMobileValidation(mobile);		
+	},
+	handleMobileValidation : function(mobile){
+		if(mobile.length>10){
+			this._oRegMobileErrorMsg.setText(this.oModelHelper.getText("MobileMoreThan10Chars"));
+			this._oRegMobileErrorMsg.setVisible(true);
+		}else if(!(/^\d*$/.test( mobile ))){
+			this._oRegMobileErrorMsg.setText(this.oModelHelper.getText("MobileNumberCanContainOnlyDigits"));
+			this._oRegMobileErrorMsg.setVisible(true);
+		}	
+		else{
+			this._oRegMobileErrorMsg.setVisible(false);
+		}
+	},
+	
 	handleRePasswordEntryLive : function(){
 		var password = this._oRePasswordInputText.getValue();
 		this.handleRePasswordValidation(password);		
