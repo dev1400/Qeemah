@@ -119,7 +119,8 @@
 	padding-left: 1em !important;
 }
 .sapUiTabSel{
-	background-color: #00A19C !important;
+	/* background-color: #00A19C !important; */
+	background-image: url("mime/icontabbar_bg.jpg") !important;
 	color: white !important;
 	font-size: 1rem;
 }
