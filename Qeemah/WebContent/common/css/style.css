@@ -115,6 +115,24 @@
 .sapUiTabSel{
 	background-color: #00A19C !important;
 	color: white !important;
+	font-size: 1rem;
+}
+.sapUiTab, .sapUiTabSel, .sapUiTabDsbl {
+  font-size: 1rem;
+ 
+}
+ 
+.sapUiTabSel{
+	height: 2rem !important;
+}
+.sapUiTab{
+	height: 2rem !important;
+}
+.sapUiTabBarCnt {
+  height: 2.2rem !important;
+}
+.sapUiTabBar {
+  padding-bottom: .5rem;
 }
 .sapUiTabStrip {
   font-family: SEGOEUI-Normal !important;
