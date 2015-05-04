@@ -21,8 +21,9 @@
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<VBox justifyContent="Center">
+							<!-- <VBox justifyContent="Center"> -->
 								<sap.ui.commons:TextView text="{i18n>BAQ1}"></sap.ui.commons:TextView>
+								<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 								<HBox justifyContent="SpaceBetween">
 									<ComboBox width="25em">
 										<sap.ui.core:Item />
@@ -34,7 +35,7 @@
 <!-- icon="common/mime/attachment.png" iconOnly="true" -->
 									</HBox>
 								</HBox>
-							</VBox>
+							<!-- </VBox> -->
 <sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -44,8 +45,9 @@
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<VBox justifyContent="Center">
+							<!-- <VBox justifyContent="Center"> -->
 								<sap.ui.commons:TextView text="{i18n>BAQ2}"></sap.ui.commons:TextView>
+								<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 								
 								<HBox justifyContent="SpaceBetween">
 									<ComboBox width="25em">
@@ -58,7 +60,7 @@
 									</HBox>
 								</HBox>
 
-							</VBox>
+							<!-- </VBox> -->
 <sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -68,9 +70,9 @@
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<VBox justifyContent="Center">
+							<!-- <VBox justifyContent="Center"> -->
 								<sap.ui.commons:TextView text="{i18n>BAQ3}"></sap.ui.commons:TextView>
-								
+								<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 
 								<HBox justifyContent="SpaceBetween">
 									<ComboBox width="25em">
@@ -82,7 +84,7 @@
 											id="idBAQ3FU" width="20rem" placeholder="{i18n>SupportingDocuments}" icon="common/mime/attachment.png" iconOnly="true"/>
 									</HBox>
 								</HBox>
-							</VBox>
+							<!-- </VBox> -->
 <sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -92,9 +94,10 @@
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<VBox justifyContent="Center">
+							<!-- <VBox justifyContent="Center"> -->
 								<sap.ui.commons:TextView text="{i18n>BAQ4}"></sap.ui.commons:TextView>
-							</VBox>
+								<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+							<!-- </VBox> -->
 							<sap.ui.commons.layout:MatrixLayout
 								layoutFixed="false">
 								<sap.ui.commons.layout:MatrixLayoutRow>
@@ -115,8 +118,9 @@
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<VBox justifyContent="Center">
+							<!-- <VBox justifyContent="Center"> -->
 								<sap.ui.commons:TextView text="{i18n>BAQ5}"></sap.ui.commons:TextView>
+								<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 
 								<HBox justifyContent="SpaceBetween">
 									<ComboBox width="25em">
@@ -129,7 +133,7 @@
 									</HBox>
 								</HBox>
 
-							</VBox>
+							<!-- </VBox> -->
 <sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -139,9 +143,10 @@
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<VBox justifyContent="Center">
+							<!-- <VBox justifyContent="Center"> -->
 								<sap.ui.commons:TextView text="{i18n>BAQ6}"></sap.ui.commons:TextView>
-							</VBox>
+								<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+							<!-- </VBox> -->
 							<sap.ui.commons.layout:MatrixLayout
 								layoutFixed="false">
 								<sap.ui.commons.layout:MatrixLayoutRow>
@@ -280,8 +285,9 @@
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<VBox justifyContent="Center">
+							<!-- <VBox justifyContent="Center"> -->
 								<sap.ui.commons:TextView text="{i18n>BAQ7}"></sap.ui.commons:TextView>
+								<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 								<HBox justifyContent="SpaceBetween">
 									<ComboBox width="25em">
 										<sap.ui.core:Item />
@@ -292,7 +298,7 @@
 											id="idBAQ5FU" width="20rem" placeholder="{i18n>SupportingDocuments}"  icon="common/mime/attachment.png" iconOnly="true"/>
 									</HBox>
 								</HBox>
-							</VBox>
+							<!-- </VBox> -->
 <sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -302,10 +308,11 @@
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<VBox justifyContent="Center">
+							<!-- <VBox justifyContent="Center"> -->
 								<sap.ui.commons:TextView text="{i18n>BAQ8}"></sap.ui.commons:TextView>
+								<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 								
-							</VBox>
+							<!-- </VBox> -->
 							<sap.ui.commons.layout:MatrixLayout
 								layoutFixed="false">
 								<sap.ui.commons.layout:MatrixLayoutRow>
@@ -326,10 +333,11 @@
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<VBox justifyContent="Center">
+							<!-- <VBox justifyContent="Center"> -->
 								<sap.ui.commons:TextView text="{i18n>BAQ9}"></sap.ui.commons:TextView>
+								<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 							
-							</VBox>
+							<!-- </VBox> -->
 							<sap.ui.commons.layout:MatrixLayout
 								layoutFixed="false">
 								<sap.ui.commons.layout:MatrixLayoutRow>
@@ -351,9 +359,10 @@
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<VBox justifyContent="Center">
+							<!-- <VBox justifyContent="Center"> -->
 								<sap.ui.commons:TextView text="{i18n>BAQ10}"></sap.ui.commons:TextView>
-							</VBox>
+								<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+							<!-- </VBox> -->
 							<sap.ui.commons.layout:MatrixLayout
 								layoutFixed="false">
 								<sap.ui.commons.layout:MatrixLayoutRow>

@@ -29,6 +29,7 @@
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>Section}"></sap.ui.commons:TextView>
+											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
@@ -42,6 +43,7 @@
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>Division}"></sap.ui.commons:TextView>
+											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
@@ -57,6 +59,7 @@
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>Group}"></sap.ui.commons:TextView>
+											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
@@ -69,6 +72,7 @@
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>Class}"></sap.ui.commons:TextView>
+											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
@@ -84,6 +88,7 @@
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>LicenseActivity}"></sap.ui.commons:TextView>
+											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
@@ -120,7 +125,7 @@
 											<sap.ui.core:Item />
 										</ComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell> -->
-									<sap.ui.commons.layout:MatrixLayoutCell>
+									<!-- <sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>Quantity}"></sap.ui.commons:TextView>
 										</HBox>
@@ -129,13 +134,13 @@
 										<ComboBox width="25em">
 											<sap.ui.core:Item />
 										</ComboBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:MatrixLayoutCell> -->
 								</sap.ui.commons.layout:MatrixLayoutRow>
 								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 									
 								</sap.ui.commons.layout:MatrixLayoutRow> -->
 								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
+									<!-- <sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}"></sap.ui.commons:TextView>
 										</HBox>
@@ -144,7 +149,7 @@
 										<ComboBox width="25em">
 											<sap.ui.core:Item />
 										</ComboBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:MatrixLayoutCell> -->
 								</sap.ui.commons.layout:MatrixLayoutRow>
 								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
@@ -161,8 +166,8 @@
 			
 		</sap.ui.commons.layout:rows>
 	</sap.ui.commons.layout:MatrixLayout>
-	<VBox><Button style="Accept" text="{i18n>Add}" press="" >
-							</Button><html:br/></VBox>
+	<!-- <VBox><Button style="Accept" text="{i18n>Add}" press="" >
+							</Button><html:br/></VBox> -->
 	
 							
 	<sap.ui.commons.layout:MatrixLayout
@@ -170,7 +175,7 @@
 		<sap.ui.commons.layout:rows>
 			
 			
-			<sap.ui.commons.layout:MatrixLayoutRow>
+			<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						colSpan="2">
@@ -213,7 +218,7 @@
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
-			</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:MatrixLayoutRow> -->
 			<!-- <sap.ui.commons.layout:MatrixLayoutRow><sap.ui.commons.layout:cells>
 			<sap.ui.commons.layout:MatrixLayoutCell colSpan="2">
 			<Button style="Accept" text="{i18n>BackToBAQ}" press="" >
