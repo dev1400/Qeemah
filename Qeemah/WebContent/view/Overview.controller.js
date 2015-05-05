@@ -132,6 +132,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		/*console.log(oControlEvent.getParameters('selectedItem'));*/
 		console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
 		
+		var i18nModel =	com.sagia.common.ModelHelper.getI18nModel("i18n/messageBundle.properties","ar");
+		
+		// set i18n model
+		sap.ui.getCore().setModel(i18nModel, "i18n");
+		
 	},
 	handleEmailEntryLive : function(){
 		var email = this._oEmailInputText.getValue();

@@ -7,11 +7,11 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Build i18n Model instance and return
 	 */
-	getI18nModel : function(sPath) {
+	getI18nModel : function(sPath, lang) {
 
 		// set i18n model
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
-			bundleUrl : sPath
+			bundleUrl : sPath, bundleLocale: lang
 		});
 
 		this.oBundle = i18nModel.getResourceBundle();
