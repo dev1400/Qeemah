@@ -125,17 +125,26 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		
 		
+		
+		
+		
 
 	},
 	handleLanguageChange : function(oControlEvent){
-		//console.log(oControlEvent.getParameter("mProperties"));
-		/*console.log(oControlEvent.getParameters('selectedItem'));*/
-		console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
 		
-		var i18nModel =	com.sagia.common.ModelHelper.getI18nModel("i18n/messageBundle.properties","ar");
+		console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);		
 		
-		// set i18n model
-		sap.ui.getCore().setModel(i18nModel, "i18n");
+		if(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key === "E"){
+			var i18nModel =	com.sagia.common.ModelHelper.getI18nModel("i18n/messageBundle.properties","en");
+			
+			// set i18n model
+			this.getView().setModel(i18nModel, "i18n");
+		}else{
+			var i18nModel =	com.sagia.common.ModelHelper.getI18nModel("i18n/messageBundle.properties","ar");
+			
+			// set i18n model
+			this.getView().setModel(i18nModel, "i18n");
+		}
 		
 	},
 	handleEmailEntryLive : function(){
