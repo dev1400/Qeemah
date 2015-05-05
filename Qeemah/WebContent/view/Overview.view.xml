@@ -145,7 +145,7 @@
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell
 										vAlign="Bottom">
-										<Link text="{i18n>Logout}" class="linkColorWhite" />
+										<Link text="{i18n>Logout}" class="linkColorWhite" press="handleLogoutLinkPress"/>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:cells>
 							</sap.ui.commons.layout:MatrixLayoutRow>

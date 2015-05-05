@@ -122,13 +122,21 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		
 		this._oLanguageSelectionComboBox = this.getView().byId("idLanguageSelectionComboBox");
+	},
+	handleLogoutLinkPress : function(){
+		/*this._oidLicenseButtonsHBox.setVisible(false);
+		this._oTopHeaderVBox.setVisible(false);*/
+		/*this._oidLicenseButtonsHBox.destroyItems();
+		this._oTopHeaderVBox.destroyItems();*/
 		
 		
 		
 		
+		/*this._oidMainPageContent.setVisible(true);*/
+		
+		location.reload(true);
 		
 		
-
 	},
 	handleLanguageChange : function(oControlEvent){
 		
