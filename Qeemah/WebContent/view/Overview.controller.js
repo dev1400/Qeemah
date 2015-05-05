@@ -120,7 +120,18 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oEmailInputText = this.getView().byId("idInputEmail");
 		this._oRegEmailErrorMsg = this.getView().byId("idRegEmailErrorMsg");
 		
+		
+		this._oLanguageSelectionComboBox = this.getView().byId("idLanguageSelectionComboBox");
+		
+		
+		
 
+	},
+	handleLanguageChange : function(oControlEvent){
+		//console.log(oControlEvent.getParameter("mProperties"));
+		/*console.log(oControlEvent.getParameters('selectedItem'));*/
+		console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
+		
 	},
 	handleEmailEntryLive : function(){
 		var email = this._oEmailInputText.getValue();
@@ -642,6 +653,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * @memberOf com.sagia.view.Overview
 	 */
 	onBeforeRendering : function() {
+		/*this._oLanguageSelectionComboBox.setSelectedKey("E");*/
+		
 
 	},
 
@@ -653,6 +666,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * @memberOf com.sagia.view.Overview
 	 */
 	onAfterRendering : function() {
+		this._oLanguageSelectionComboBox.setSelectedKey("E");
 		
 		
 
