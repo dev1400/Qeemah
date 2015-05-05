@@ -38,7 +38,7 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-														<ComboBox width="25em">
+														<ComboBox width="25em" value="{/DetailsCollection}">
 															<sap.ui.core:Item />
 														</ComboBox>
 													</sap.ui.commons.layout:content>

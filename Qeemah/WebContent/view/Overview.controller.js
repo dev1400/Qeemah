@@ -855,7 +855,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					.getText("PleaseEnterRequiredFields"));
 			
 			//Read City
-			this.oModelHelper.readCity();
+			this.oModelHelper.readCountry();
 		}		
 	},
 handleRegisterUserButtonPress : function() {

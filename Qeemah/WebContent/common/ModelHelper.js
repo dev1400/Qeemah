@@ -67,9 +67,10 @@ com.sagia.common.ModelHelper = {
 	},
 	
 	/**
-	 * SignInUser
+	 * Read Country 
 	 */
-	readCity : function() {
+	oCountryCollectionModel : new sap.ui.model.json.JSONModel(),
+	readCountry : function() {
 		// Open busy dialog
 		this.openBusyDialog();
 
@@ -78,12 +79,20 @@ com.sagia.common.ModelHelper = {
 		// asynchronous call is finished
 		var oRequestFinishedDeferred = jQuery.Deferred();
 
-		this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN", {
-			success : function(oData) {
+		this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27", {
+			success : function(oData, response) {
 				oRequestFinishedDeferred.resolve(oData);
 				
-				console.log(oData);
-
+				console.dir(response);
+				console.dir(oData);
+				
+				
+				that.oCountryCollectionModel.setData({DetailsCollection:oData.results});
+				/*console.log(that.oCountryCollectionModel.oData.DetailsCollection[0].Landx);*/
+				for(var i = 0; i < that.oCountryCollectionModel.oData.DetailsCollection.length ; i++){
+					console.log(that.oCountryCollectionModel.oData.DetailsCollection[i].Landx);
+				}
+				
 				// close busy dialog
 				that.closeBusyDialog();
 			},
