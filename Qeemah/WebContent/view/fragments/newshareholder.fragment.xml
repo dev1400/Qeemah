@@ -21,25 +21,25 @@
 								<sap.ui.commons.layout:content>
 									<Table width="62rem">
 										<columns>
-											<Column width="2em">
+											<Column width="2em" hAlign = "Center">
 												<Text text="#" />
 											</Column>
-											<Column width="5em">
+											<Column width="5em" hAlign = "Center">
 												<Text text="{i18n>FirstName}" />
 											</Column>
-											<Column width="5em">
+											<Column width="5em" hAlign = "Center">
 												<Text text="{i18n>LastName}" />
 											</Column>
-											<Column width="7em">
+											<Column width="7em" hAlign = "Center">
 												<Text text="{i18n>ShareholderType}" />
 											</Column>
-											<Column width="5em">
+											<Column width="5em" hAlign = "Center">
 												<Text text="{i18n>Percentage}" />
 											</Column>
-											<Column width="5em">
+											<Column width="5em" hAlign = "Center">
 												<Text text="{i18n>Edit}" />
 											</Column>
-											<Column width="5em">
+											<Column width="5em" hAlign = "Center">
 												<Text text="{i18n>Delete}" />
 											</Column>
 										</columns>

@@ -305,3 +305,10 @@
 .sapMBtnDialog {
   height: none !important;
 }
+.sapMListTbl .sapMText, .sapMListTbl .sapMLabel {
+  font-size: 1rem;
+  color: white;
+}
+.sapMBtnContent {
+  font-family: SEGOEUI-Normal;
+}
