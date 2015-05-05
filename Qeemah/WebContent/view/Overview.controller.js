@@ -844,11 +844,18 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this._oidLicenseButtonsHBox.setVisible(true);*/
 				}
 				
-			}, this));				
+			}, this));	
+			
+			
+			
+			
 			
 		} else {
 			sap.m.MessageToast.show(this.oModelHelper
 					.getText("PleaseEnterRequiredFields"));
+			
+			//Read City
+			this.oModelHelper.readCity();
 		}		
 	},
 handleRegisterUserButtonPress : function() {

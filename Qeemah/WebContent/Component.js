@@ -37,10 +37,10 @@ com.sagia.Component.prototype.init = function(){
 	this.routeHandler = new sap.m.routing.RouteMatchedHandler(router);
 	router.initialize();
 	
-	/*// Get ODataModel instance
+	// Get ODataModel instance
     var oODataModel = com.sagia.common.ModelHelper.getODataModel();
     // Set OData Model
-    this.setModel(oODataModel, "ODataModel");*/
+    this.setModel(oODataModel, "ODataModel");
 	
 	// Get i18n model 
 	var i18nModel =	com.sagia.common.ModelHelper.getI18nModel("i18n/messageBundle.properties","en");

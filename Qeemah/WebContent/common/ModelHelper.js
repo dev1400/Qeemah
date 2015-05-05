@@ -65,6 +65,42 @@ com.sagia.common.ModelHelper = {
 
 		return this.oODataModel;
 	},
+	
+	/**
+	 * SignInUser
+	 */
+	readCity : function() {
+		// Open busy dialog
+		this.openBusyDialog();
+
+		var that = this;
+		// Create deferred object so that calling program can wait till
+		// asynchronous call is finished
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN", {
+			success : function(oData) {
+				oRequestFinishedDeferred.resolve(oData);
+				
+				console.log(oData);
+
+				// close busy dialog
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				console.log(oResponse);
+				
+				// Reject deferred object
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
+
+				// close busy dialog
+				that.closeBusyDialog();
+			}
+		});
+
+		return oRequestFinishedDeferred;
+	},
 
 	/**
 	 * SignInUser
