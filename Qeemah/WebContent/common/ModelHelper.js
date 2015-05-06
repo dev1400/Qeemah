@@ -65,6 +65,46 @@ com.sagia.common.ModelHelper = {
 
 		return this.oODataModel;
 	},
+	/**
+	 * Read Country Code
+	 */
+	//,
+	readCountryCode : function(countryTelCode) {
+		// Open busy dialog
+		this.openBusyDialog();
+		
+		var that = this;
+		// Create deferred object so that calling program can wait till
+		// asynchronous call is finished
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		this.oODataModel.read("ZCRM_TELECODE_ENT(CounKey='"+countryTelCode+"')", {
+			success : function(oData, response) {
+				
+				that.oCountryCodeCollectionModel = new sap.ui.model.json.JSONModel();
+				that.oCountryCodeCollectionModel.setData({CountryCodeCollection:oData});
+				oRequestFinishedDeferred.resolve(that.oCountryCodeCollectionModel);
+				//console.dir(oData.TelNo)
+				//oRequestFinishedDeferred.resolve(oData.TelNo);
+
+				// close busy dialog
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				console.log(oResponse);
+				
+				// Reject deferred object
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
+
+				// close busy dialog
+				that.closeBusyDialog();
+			}
+		});
+
+		//return oRequestFinishedDeferred;
+		return oRequestFinishedDeferred;
+	},
 	
 	/**
 	 * Read Country 

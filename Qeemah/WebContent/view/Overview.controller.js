@@ -121,6 +121,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oRegEmailErrorMsg = this.getView().byId("idRegEmailErrorMsg");
 		
 		
+		
 		this._oLanguageSelectionComboBox = this.getView().byId("idLanguageSelectionComboBox");
 		
 		//need to add this to bind controller to fragment
@@ -129,6 +130,25 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		
 		
+		
+	},
+	handleCountrySelectionComboBox : function(oControlEvent){
+		
+		
+		console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
+		
+		var oRequestFinishedDeferred = this.oModelHelper.readCountryCode(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
+
+		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+			//console.log(oResponse.getData());
+			//this.getView().setModel(oResponse);
+			//console.log(oResponse);
+			//this._oBI_TCountryCode = sap.ui.getCore().byId("idbi_TCountryCode");
+			//this._oBI_TCountryCode.setModel(oResponse);
+			//this._oBI_TCountryCode.setValue(oResponse);
+			this.getView().setModel(oResponse,"CCModel");
+			
+		}, this));	
 	},
 	handleSaveLinkPress : function(){
 		this._oCountryComboBox = sap.ui.getCore().byId("idCountryComboBox1400");
@@ -145,9 +165,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 			console.log(oResponse.getData());
 			this.getView().setModel(oResponse);
 			//console.log(oResponse.oData.DetailsCollection[0].Natio50);
-			for(var i = 0; i < oResponse.oData.DetailsCollection.length ; i++){
+			/*for(var i = 0; i < oResponse.oData.DetailsCollection.length ; i++){
 				console.log(oResponse.oData.DetailsCollection[i].Landx);
-			}
+			}*/
 			
 			//this._oCountryComboBox.setModel(JSON.stringify(oResponse));
 			//this._oCountryComboBox.setModel(oResponse);		
@@ -746,6 +766,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oLanguageSelectionComboBox.setSelectedKey("E");
 		
 		this.handleSaveLinkPress();
+		
+		//this.handleCountrySelectionComboBox();
 
 
 	},

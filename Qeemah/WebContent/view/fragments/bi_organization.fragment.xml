@@ -32,7 +32,7 @@
 												<sap.ui.commons.layout:MatrixLayoutCell
 													vAlign="Middle" hAlign="End">
 													<sap.ui.commons.layout:content>
-														<sap.ui.commons:TextView text="{AmendmentDetailModel>/DetailsCollection/0/0Landx50}"></sap.ui.commons:TextView>
+														<sap.ui.commons:TextView text="{i18n>Country}"></sap.ui.commons:TextView>
 														<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -42,8 +42,8 @@
 														value="{}" {AmendmentDetailModel>/DetailsCollection/0} items="{AmendmentDetailModel>/DetailsCollection}"
 															<sap.ui.core:Item text="{Landx50}" />
 														</ComboBox> -->
-														<ComboBox width="25em" items="{/DetailsCollection}" id="idCountryComboBox1400">
-															<sap.ui.core:Item id="idCountryComboBox1400Item" text="{Landx50}"/>
+														<ComboBox width="25em" items="{/DetailsCollection}" id="idCountryComboBox1400" selectionChange="handleCountrySelectionComboBox">
+															<sap.ui.core:Item id="idCountryComboBox1400Item" key="{Land1}" text="{Landx50}"/>
 														</ComboBox>
 														
 													</sap.ui.commons.layout:content>
@@ -198,8 +198,8 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<HBox justifyContent="Start" alignItems="Center">
-														<Input type="Number" placeholder="{i18n>CountryCode}"
-															enabled="false" width="8em" />
+														<Input type="Number" placeholder="{CCModel>/CountryCodeCollection/TelNo}"
+															 width="8em" enabled="false" id="idbi_TCountryCode"/>
 														<Input type="Number" placeholder="{i18n>Telephone}"
 															width="9em" />
 														<Input type="Number" placeholder="{i18n>Extension}"
