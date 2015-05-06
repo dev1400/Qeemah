@@ -235,7 +235,7 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<HBox justifyContent="Start" alignItems="Center">
-														<Input type="Number" placeholder="{i18n>CountryCode}"
+														<Input type="Number" placeholder="{CCModel>/CountryCodeCollection/TelNo}"
 															enabled="false" width="8em" />
 														<Input type="Number" placeholder="{i18n>MobilePhone}"
 															width="17em" />
@@ -270,7 +270,7 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<HBox justifyContent="Start" alignItems="Center">
-														<Input type="Number" placeholder="{i18n>CountryCode}"
+														<Input type="Number" placeholder="{CCModel>/CountryCodeCollection/TelNo}"
 															enabled="false" width="8em" />
 														<Input type="Number" placeholder="{i18n>Fax}" width="17em" />
 													</HBox>
