@@ -122,17 +122,72 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		
 		this._oLanguageSelectionComboBox = this.getView().byId("idLanguageSelectionComboBox");
+		
+		//need to add this to bind controller to fragment
+		this._basicInfo_OrganizationFragment = sap.ui.xmlfragment("com.sagia.view.fragments.bi_organization", this.getView()
+						.getController());
+		
+		
+		
+	},
+	handleSaveLinkPress : function(){
+		this._oCountryComboBox = sap.ui.getCore().byId("idCountryComboBox1400");
+		
+		//Read City
+		//this.oModelHelper.readCountry();
+		
+		/*var oAmendmentDetailModel = this.oModelHelper.readCountry();
+		this.getView().setModel(oAmendmentDetailModel, "AmendmentDetailModel");*/
+		
+		var oRequestFinishedDeferred = this.oModelHelper.readCountry();
+
+		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+			console.log(oResponse.getData());
+			this.getView().setModel(oResponse);
+			//console.log(oResponse.oData.DetailsCollection[0].Natio50);
+			for(var i = 0; i < oResponse.oData.DetailsCollection.length ; i++){
+				console.log(oResponse.oData.DetailsCollection[i].Landx);
+			}
+			
+			//this._oCountryComboBox.setModel(JSON.stringify(oResponse));
+			//this._oCountryComboBox.setModel(oResponse);		
+			
+			//this._oCountryComboBox.setModel(sap.ui.getCore().getModel("AmendmentDetailModel"));
+			//this.getView().setModel(sap.ui.getCore().getModel("AmendmentDetailModel"));
+			//sap.ui.getCore().setModel(sap.ui.getCore().getModel("AmendmentDetailModel"));
+			
+			
+			
+			
+			
+			
+			//this._oCountryComboBox.setModel(sap.ui.getCore().getModel("AmendmentDetailModel"));
+			//this.getView().setModel(sap.ui.getCore().getModel("AmendmentDetailModel"));
+			
+			//this.getView().setModel(oResponse, "AmendmentDetailModel");
+			/*sap.ui.getCore().setModel(oResponse, "AmendmentDetailModel");*/
+			//console.log("response= ");
+			//console.log(JSON.stringify(oResponse));
+			
+			// JSON sample data
+			/*var data = {
+			    firstName: "John",
+			    lastName: "Doe",
+			    birthday: {day:01,month:05,year:1982},
+			    address:[{city:"Heidelberg"}],
+			    enabled: true
+			};
+			
+			// create JSON model instance
+			var oModel = new sap.ui.model.json.JSONModel();
+			// set the data for the model
+			oModel.setData(data);
+			// set the model to the core
+			sap.ui.getCore().setModel(oModel);*/
+			
+		}, this));	
 	},
 	handleLogoutLinkPress : function(){
-		/*this._oidLicenseButtonsHBox.setVisible(false);
-		this._oTopHeaderVBox.setVisible(false);*/
-		/*this._oidLicenseButtonsHBox.destroyItems();
-		this._oTopHeaderVBox.destroyItems();*/
-		
-		
-		
-		
-		/*this._oidMainPageContent.setVisible(true);*/
 		
 		location.reload(true);
 		
@@ -690,7 +745,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 	onAfterRendering : function() {
 		this._oLanguageSelectionComboBox.setSelectedKey("E");
 		
-		
+		this.handleSaveLinkPress();
+
 
 	},
 
@@ -854,8 +910,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			sap.m.MessageToast.show(this.oModelHelper
 					.getText("PleaseEnterRequiredFields"));
 			
-			//Read City
-			this.oModelHelper.readCountry();
+			
+			
 		}		
 	},
 handleRegisterUserButtonPress : function() {

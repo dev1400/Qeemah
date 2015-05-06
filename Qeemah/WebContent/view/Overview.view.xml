@@ -136,7 +136,7 @@
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell
 										hAlign="Begin" vAlign="Bottom">
-										<Link text="{i18n>Save}" class="linkColorWhite" /><html:span>&#160;&#160;</html:span>
+										<Link text="{i18n>Save}" class="linkColorWhite" press="handleSaveLinkPress"/><html:span>&#160;&#160;</html:span>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									
 									<sap.ui.commons.layout:MatrixLayoutCell

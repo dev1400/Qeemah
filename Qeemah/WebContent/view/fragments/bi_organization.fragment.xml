@@ -32,15 +32,20 @@
 												<sap.ui.commons.layout:MatrixLayoutCell
 													vAlign="Middle" hAlign="End">
 													<sap.ui.commons.layout:content>
-														<sap.ui.commons:TextView text="{i18n>Country}"></sap.ui.commons:TextView>
+														<sap.ui.commons:TextView text="{AmendmentDetailModel>/DetailsCollection/0/0Landx50}"></sap.ui.commons:TextView>
 														<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-														<ComboBox width="25em" value="{/DetailsCollection}">
-															<sap.ui.core:Item />
+													<!-- 	<ComboBox width="25em" id="idCountryComboBox1400" items="{AmendmentDetailModel>/DetailsCollection/0/0/}" >
+														value="{}" {AmendmentDetailModel>/DetailsCollection/0} items="{AmendmentDetailModel>/DetailsCollection}"
+															<sap.ui.core:Item text="{Landx50}" />
+														</ComboBox> -->
+														<ComboBox width="25em" items="{/DetailsCollection}" id="idCountryComboBox1400">
+															<sap.ui.core:Item id="idCountryComboBox1400Item"/>
 														</ComboBox>
+														
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 											</sap.ui.commons.layout:cells>
@@ -53,7 +58,7 @@
 												<sap.ui.commons.layout:MatrixLayoutCell
 													hAlign="Begin">
 													<sap.ui.commons.layout:content>
-														<sap.ui.commons:TextView text="{i18n>LegalStatus}"></sap.ui.commons:TextView>
+														<sap.ui.commons:TextView id="idbi_legalstatus" text="{i18n>LegalStatus}"></sap.ui.commons:TextView>
 														<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>

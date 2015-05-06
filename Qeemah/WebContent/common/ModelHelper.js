@@ -69,11 +69,11 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Read Country 
 	 */
-	oCountryCollectionModel : new sap.ui.model.json.JSONModel(),
+	//,
 	readCountry : function() {
 		// Open busy dialog
 		this.openBusyDialog();
-
+		
 		var that = this;
 		// Create deferred object so that calling program can wait till
 		// asynchronous call is finished
@@ -81,18 +81,26 @@ com.sagia.common.ModelHelper = {
 
 		this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27", {
 			success : function(oData, response) {
-				oRequestFinishedDeferred.resolve(oData);
-				
-				console.dir(response);
-				console.dir(oData);
+				//oRequestFinishedDeferred.resolve(oData);
 				
 				
+				/*console.dir(response);
+				console.dir(oData);*/
+				
+				that.oCountryCollectionModel = new sap.ui.model.json.JSONModel();
 				that.oCountryCollectionModel.setData({DetailsCollection:oData.results});
-				/*console.log(that.oCountryCollectionModel.oData.DetailsCollection[0].Landx);*/
-				for(var i = 0; i < that.oCountryCollectionModel.oData.DetailsCollection.length ; i++){
-					console.log(that.oCountryCollectionModel.oData.DetailsCollection[i].Landx);
-				}
 				
+				//sap.ui.getCore().setModel(that.oCountryCollectionModel,"AmendmentDetailModel");
+				
+				/*console.log(that.oCountryCollectionModel.getJSON());*/
+				
+				//console.log(that.oCountryCollectionModel.oData.DetailsCollection[0].Landx);
+				/*for(var i = 0; i < that.oCountryCollectionModel.oData.DetailsCollection.length ; i++){
+					console.log(that.oCountryCollectionModel.oData.DetailsCollection[i].Landx);
+				}//
+*/				//oRequestFinishedDeferred.resolve(that.oCountryCollectionModel.getJSON());
+				oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
+
 				// close busy dialog
 				that.closeBusyDialog();
 			},
@@ -108,6 +116,7 @@ com.sagia.common.ModelHelper = {
 			}
 		});
 
+		//return oRequestFinishedDeferred;
 		return oRequestFinishedDeferred;
 	},
 
