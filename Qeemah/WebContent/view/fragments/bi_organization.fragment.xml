@@ -43,7 +43,7 @@
 															<sap.ui.core:Item text="{Landx50}" />
 														</ComboBox> -->
 														<ComboBox width="25em" items="{/DetailsCollection}" id="idCountryComboBox1400">
-															<sap.ui.core:Item id="idCountryComboBox1400Item"/>
+															<sap.ui.core:Item id="idCountryComboBox1400Item" text="{Landx50}"/>
 														</ComboBox>
 														
 													</sap.ui.commons.layout:content>
