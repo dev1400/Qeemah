@@ -8,8 +8,23 @@
     <content>
      -->
     <sap.ui.commons.layout:MatrixLayout id="idPreviewNewShareHolderExperienceQuestionsMLAyout"
-		layoutFixed="false">
+		layoutFixed="false" width="68.5rem">
 		<sap.ui.commons.layout:rows>
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="Begin"  colSpan="2">
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>PreviewShareHolderExperienceAnswers}" design="H1"></sap.ui.commons:TextView>
+							<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">

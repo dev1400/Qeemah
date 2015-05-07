@@ -10,7 +10,7 @@
 		
 			<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
 				<html:br />
-				<html:br />
+				<!-- <html:br /> -->
 				<html:br />
 				<sap.ui.commons.layout:MatrixLayout>
 					<sap.ui.commons.layout:MatrixLayoutRow>

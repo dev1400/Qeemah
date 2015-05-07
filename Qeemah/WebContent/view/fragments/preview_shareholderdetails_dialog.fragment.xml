@@ -6,9 +6,29 @@
 	<!-- <Dialog
     class="sapUiPopupWithPadding" showHeader="false">
     <content> -->
+    <!-- <VBox justifyContent="Start" alignItems="Start">
+    <sap.ui.commons:TextView text="{i18n>PreviewShareHolderInfo}" design="H1"></sap.ui.commons:TextView>
+							<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
+   
     
+    </VBox> -->
+     
     <sap.ui.commons.layout:MatrixLayout
-		layoutFixed="false" columns="4">
+		layoutFixed="false" columns="4" width="68.5rem">
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="Begin" colSpan="4">
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>PreviewShareHolderInfo}" design="H1"></sap.ui.commons:TextView>
+							<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
 		
 		<sap.ui.commons.layout:rows>
 			<sap.ui.commons.layout:MatrixLayoutRow>
@@ -52,7 +72,7 @@
 							<sap.ui.commons:TextView text="{i18n>LegalStatus}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons.layout:content>
 							<ComboBox enabled="false" width="25em">
 								<sap.ui.core:Item />
@@ -84,7 +104,7 @@
 							<sap.ui.commons:TextView text="{i18n>MultinationalCompany}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons.layout:content>
 							<ComboBox enabled="false" width="25em">
 								<sap.ui.core:Item />
@@ -129,11 +149,11 @@
 							<sap.ui.commons:TextView text="{i18n>PostalCode}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<HBox justifyContent="End">
+							<!-- <HBox justifyContent="End"> -->
 								<Input enabled="false" type="Text" width="25em" />
-							</HBox>
+							<!-- </HBox> -->
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -162,11 +182,11 @@
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
-					<sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<HBox justifyContent="End">
+							<!-- <HBox justifyContent="End"> -->
 								<Input enabled="false" type="Text" width="25em" />
-							</HBox>
+							<!-- </HBox> -->
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -197,11 +217,11 @@
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						vAlign="Middle" hAlign="End">
+						vAlign="Middle" hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<HBox justifyContent="End">
+							<!-- <HBox justifyContent="End"> -->
 								<Input enabled="false" type="Text" width="25em" />
-							</HBox>
+							<!-- </HBox> -->
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -232,11 +252,11 @@
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						vAlign="Middle" hAlign="End">
+						vAlign="Middle" hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<HBox justifyContent="End">
+							<!-- <HBox justifyContent="End"> -->
 								<Input enabled="false" type="Text" width="25em" />
-							</HBox>
+							<!-- </HBox> -->
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -267,7 +287,7 @@
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						vAlign="Middle" hAlign="End">
+						vAlign="Middle" hAlign="Begin">
 						<sap.ui.commons.layout:content>
 							<ComboBox enabled="false" width="25em">
 								<sap.ui.core:Item />
