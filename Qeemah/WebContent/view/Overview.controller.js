@@ -138,7 +138,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//this._oidRegionComboBox.bindAggregation("items", "/DetailsCollection", new sap.ui.core.ListItem({text:"{Landx50}"}));
 		var oFilter1 = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.EQ, "Guam");
 		this._oidRegionComboBox.bindAggregation("items", {path : "/DetailsCollection", template: oItemTemplate,
-			filters : oFilter1});
+			filters : oFilter1});//
 		
 		
 		
