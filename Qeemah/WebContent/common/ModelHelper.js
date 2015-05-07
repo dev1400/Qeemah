@@ -65,6 +65,7 @@ com.sagia.common.ModelHelper = {
 
 		return this.oODataModel;
 	},
+	
 	/**
 	 * Read Country Code
 	 */
@@ -118,6 +119,10 @@ com.sagia.common.ModelHelper = {
 		// Create deferred object so that calling program can wait till
 		// asynchronous call is finished
 		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+		var filtersArray = new Array();  
+		var filterRegion = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");  
+		filtersArray.push(filterRegion);  
 
 		this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27", {
 			success : function(oData, response) {
@@ -128,13 +133,29 @@ com.sagia.common.ModelHelper = {
 				console.dir(oData);*/
 				
 				that.oCountryCollectionModel = new sap.ui.model.json.JSONModel();
+				
+				//console.dir("oData = "+oData);
+				
 				that.oCountryCollectionModel.setData({DetailsCollection:oData.results});
 				
+				/*$.each(that.oCountryCollectionModel.getJSON(), function(key,value){
+					   // console.log(value);
+					    if(value==""||value==null){
+					        delete sjonObj[key];
+					    }
+
+					});*/
+				//console.log("that.oCountryCollectionModel.getJSON() = "+that.oCountryCollectionModel.getJSON());
+				//console.log("that.oCountryCollectionModel = "+that.oCountryCollectionModel);
 				//sap.ui.getCore().setModel(that.oCountryCollectionModel,"AmendmentDetailModel");
 				
 				/*console.log(that.oCountryCollectionModel.getJSON());*/
 				
 				//console.log(that.oCountryCollectionModel.oData.DetailsCollection[0].Landx);
+				/*for(var i = 0; i < that.oCountryCollectionModel.oData.DetailsCollection.length ; i++){
+					if(that.oCountryCollectionModel.oData.DetailsCollection[i].Bezei_reg !== "")
+					{console.log(that.oCountryCollectionModel.oData.DetailsCollection[i].Bezei_reg);}
+				}*/
 				/*for(var i = 0; i < that.oCountryCollectionModel.oData.DetailsCollection.length ; i++){
 					console.log(that.oCountryCollectionModel.oData.DetailsCollection[i].Landx);
 				}//
@@ -153,7 +174,8 @@ com.sagia.common.ModelHelper = {
 
 				// close busy dialog
 				that.closeBusyDialog();
-			}
+			},
+			filters : filtersArray
 		});
 
 		//return oRequestFinishedDeferred;

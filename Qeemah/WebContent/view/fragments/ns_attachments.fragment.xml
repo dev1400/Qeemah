@@ -4,7 +4,22 @@
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<sap.ui.commons.layout:MatrixLayout
-								layoutFixed="false" columns="2">
+								layoutFixed="false" columns="2" width="78em">
+								<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="Begin" colSpan="2">
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>Attachments}" design="H1"></sap.ui.commons:TextView>
+							<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			
+			
 								<sap.ui.commons.layout:rows>
 									<sap.ui.commons.layout:MatrixLayoutRow>
 										<sap.ui.commons.layout:cells>

@@ -108,7 +108,7 @@
 		<sap.ui.commons.layout:cells >
 		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
 		<sap.ui.commons.layout:content>
-		<VBox id="idAddShareHolderAttachmentssVBoxFragment" visible="true">
+		<VBox id="idAddShareHolderAttachmentssVBoxFragment" visible="true" width="78em"> 
 		<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.ns_attachments" 
 								type="XML" />
 		</VBox>
@@ -133,7 +133,7 @@
 		<sap.ui.commons.layout:cells >
 		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
 		<sap.ui.commons.layout:content>
-		<VBox id="idAddShareHolderActivityAnswersVBoxFragment" visible="true">
+		<VBox id="idAddShareHolderActivityAnswersVBoxFragment" visible="true" width="78em">
 		<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.ns_activityquestions" 
 								type="XML" />
 		</VBox>
@@ -159,7 +159,7 @@
 		<sap.ui.commons.layout:cells >
 		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
 		<sap.ui.commons.layout:content>
-		<VBox id="idAddShareHolderExperienceAnswersVBoxFragment" visible="true">
+		<VBox id="idAddShareHolderExperienceAnswersVBoxFragment" visible="true" width="78em">
 		<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.ns_p_experiencequestions" 
 								type="XML" />
 		</VBox>
@@ -185,7 +185,7 @@
 		<sap.ui.commons.layout:cells >
 		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
 		<sap.ui.commons.layout:content>
-		<VBox id="idAddShareHolderFinancialAnswersVBoxFragment" visible="true">
+		<VBox id="idAddShareHolderFinancialAnswersVBoxFragment" visible="true" width="78em">
 		<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.ns_p_financialquestions" 
 								type="XML" />
 		</VBox>

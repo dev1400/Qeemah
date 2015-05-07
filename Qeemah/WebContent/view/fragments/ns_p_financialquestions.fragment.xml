@@ -5,8 +5,23 @@
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 
 	<sap.ui.commons.layout:MatrixLayout
-		id="idNewShareHolderFinancialQuestionsMLAyout" layoutFixed="false">
+		id="idNewShareHolderFinancialQuestionsMLAyout" layoutFixed="false" width="78em">
 		<sap.ui.commons.layout:rows>
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="Begin" colSpan="4">
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>FinancialQuestions}" design="H1"></sap.ui.commons:TextView>
+							<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell

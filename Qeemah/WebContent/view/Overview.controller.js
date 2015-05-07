@@ -1,4 +1,6 @@
 jQuery.sap.require("com.sagia.common.ModelHelper");
+
+jQuery.sap.require("com.sagia.common.Formatter");
 sap.ui.controller("com.sagia.view.Overview", {
 
 	/**
@@ -151,7 +153,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}, this));	
 	},
 	handleSaveLinkPress : function(){
-		this._oCountryComboBox = sap.ui.getCore().byId("idCountryComboBox1400");
+		//this._oCountryComboBox = sap.ui.getCore().byId("idCountryComboBox1400");
+		//this._oRegionComboBox = sap.ui.getCore().byId("idRegionComboBox");
 		
 		//Read City
 		//this.oModelHelper.readCountry();
@@ -162,8 +165,30 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var oRequestFinishedDeferred = this.oModelHelper.readCountry();
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-			console.log(oResponse.getData());
+			
+			//console.log(oResponse.getData());
+			//console.dir(oResponse);
+			var arr = [];
+			for(var i = 0; i < oResponse.oData.DetailsCollection.length ; i++){
+				if(oResponse.oData.DetailsCollection[i].Bezei_reg !== "")
+				{//console.log(oResponse.oData.DetailsCollection[i].Bezei_reg);}
+					arr.push(oResponse.oData.DetailsCollection[i].Bezei_reg);
+					
+				}
+				
+				
+			}
+			//console.log(arr);
+			//console.log(JSON.stringify(arr));
+			
 			this.getView().setModel(oResponse);
+			
+			
+			
+			
+			
+			
+			
 			//console.log(oResponse.oData.DetailsCollection[0].Natio50);
 			/*for(var i = 0; i < oResponse.oData.DetailsCollection.length ; i++){
 				console.log(oResponse.oData.DetailsCollection[i].Landx);
@@ -751,6 +776,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 */
 	onBeforeRendering : function() {
 		/*this._oLanguageSelectionComboBox.setSelectedKey("E");*/
+		console.log("onBeforeRendering");
 		
 
 	},
@@ -763,11 +789,19 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * @memberOf com.sagia.view.Overview
 	 */
 	onAfterRendering : function() {
+		console.log("onAfterRendering");
+
 		this._oLanguageSelectionComboBox.setSelectedKey("E");
 		
-		this.handleSaveLinkPress();
+		//this.handleSaveLinkPress();
 		
 		//this.handleCountrySelectionComboBox();
+		
+		this._oRegionComboBox = sap.ui.getCore().byId("idRegionComboBox");
+		
+		//var oItemTemplate = new sap.ui.core.ListItem({text:"{Landx50}"});
+		
+		
 
 
 	},

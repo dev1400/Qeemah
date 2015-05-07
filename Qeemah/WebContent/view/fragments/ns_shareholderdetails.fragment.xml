@@ -4,16 +4,34 @@
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<VBox justifyContent="Center" alignItems="Center">
+	
+	<html:br/>
 	<sap.ui.commons.layout:MatrixLayout
-		layoutFixed="false" columns="4" widths="13em,25em,10em,25em">
+		layoutFixed="false" columns="4" widths="13em,25em,15em,25em">
 		
 		<sap.ui.commons.layout:rows>
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="Begin" colSpan="4">
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>ShareHolderDetails}" design="H1"></sap.ui.commons:TextView>
+							<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			
+			
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>FirstName}"></Label>
+							<sap.ui.commons:TextView text="{i18n>FirstName}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -26,7 +44,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>Country}"></Label>
+							<sap.ui.commons:TextView text="{i18n>Country}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -46,7 +64,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>LastName}"></Label>
+							<sap.ui.commons:TextView text="{i18n>LastName}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -59,7 +77,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>City}"></Label>
+							<sap.ui.commons:TextView text="{i18n>City}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -78,7 +96,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>Gender}"></Label>
+							<sap.ui.commons:TextView text="{i18n>Gender}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -91,7 +109,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>POBox}"></Label>
+							<sap.ui.commons:TextView text="{i18n>POBox}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -104,7 +122,7 @@
 					<!-- <sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>Street}"></Label>
+							<sap.ui.commons:TextView text="{i18n>Street}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -123,7 +141,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>MaritalStatus}"></Label>
+							<sap.ui.commons:TextView text="{i18n>MaritalStatus}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -136,7 +154,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>PostalCode}"></Label>
+							<sap.ui.commons:TextView text="{i18n>PostalCode}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -155,7 +173,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>AcademicTitle}"></Label>
+							<sap.ui.commons:TextView text="{i18n>AcademicTitle}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -168,7 +186,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>Street}"></Label>
+							<sap.ui.commons:TextView text="{i18n>Street}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
@@ -188,7 +206,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>DOB}"></Label>
+							<sap.ui.commons:TextView text="{i18n>DOB}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -210,7 +228,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>Website}"></Label>
+							<sap.ui.commons:TextView text="{i18n>Website}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
@@ -231,7 +249,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>Telephone}"></Label>
+							<sap.ui.commons:TextView text="{i18n>Telephone}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -244,7 +262,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>CurrentNationality}"></Label>
+							<sap.ui.commons:TextView text="{i18n>CurrentNationality}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -265,7 +283,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>MobilePhone}"></Label>
+							<sap.ui.commons:TextView text="{i18n>MobilePhone}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -278,7 +296,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>PreviousNationality}"></Label>
+							<sap.ui.commons:TextView text="{i18n>PreviousNationality}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -303,7 +321,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>Fax}"></Label>
+							<sap.ui.commons:TextView text="{i18n>Fax}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -314,7 +332,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>CommMethod}"></Label>
+							<sap.ui.commons:TextView text="{i18n>CommMethod}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -334,7 +352,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>Email}"></Label>
+							<sap.ui.commons:TextView text="{i18n>Email}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
@@ -348,7 +366,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
-							<Label text="{i18n>Percentage}"></Label>
+							<sap.ui.commons:TextView text="{i18n>Percentage}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell

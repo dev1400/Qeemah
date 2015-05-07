@@ -78,8 +78,20 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-														<ComboBox width="25em">
-															<sap.ui.core:Item />
+														<!-- <ComboBox width="25em" items="{/DetailsCollection}">
+															<sap.ui.core:Item text="{path : 'Bezei_reg',
+															formatter : com.sagia.common.Formatter.filterRegions}" />
+														</ComboBox> -->
+														<!-- <ComboBox width="25em" items="{path : '/DetailsCollection/Bezei_reg', formatter : com.sagia.common.Formatter.filterRegions }"
+														 id="idRegionComboBox">
+															<sap.ui.core:Item text="{Bezei_reg}" />
+														</ComboBox> -->
+														<!-- <ComboBox width="25em" items="{path : '/DetailsCollection'}"
+														 id="idRegionComboBox">
+															<sap.ui.core:ListItem text="{Pcode}" />
+														</ComboBox> -->
+														<ComboBox width="25em" id="idRegionComboBox">
+															<!-- <sap.ui.core:ListItem /> -->
 														</ComboBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
