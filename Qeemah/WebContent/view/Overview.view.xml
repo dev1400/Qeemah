@@ -5,8 +5,12 @@
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page id="idPage" enableScrolling="true" showHeader="false"><!-- backgroundDesign="Transparent" -->
 
-
+														
 		<VBox id="idMainPageContent">
+		<sap.ui.commons:ComboBox width="25em" id="idRegionComboBox" selectionChange="handleRegionSelectionComboBox">
+															<!-- <sap.ui.core:ListItem/> -->
+														</sap.ui.commons:ComboBox>
+		
 		
 			<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
 				<html:br />

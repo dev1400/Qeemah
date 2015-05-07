@@ -90,9 +90,22 @@
 														 id="idRegionComboBox">
 															<sap.ui.core:ListItem text="{Pcode}" />
 														</ComboBox> -->
-														<ComboBox width="25em" id="idRegionComboBox">
-															<!-- <sap.ui.core:ListItem /> -->
-														</ComboBox>
+														<!-- <ComboBox width="25em" id="idRegionComboBox" items="{/DetailsCollection}" selectionChange="handleRegionSelectionComboBox">
+															<sap.ui.core:ListItem text="{path : 'Bezei_reg',															
+															formatter : 'com.sagia.common.Formatter.filterRegions'}"/>
+														</ComboBox> -->
+														<!-- <sap.ui.commons:ComboBox width="25em" id="idRegionComboBox" items="{path : {'/DetailsCollection'}}" selectionChange="handleRegionSelectionComboBox">
+															<sap.ui.core:ListItem text="{Landx50}"/>
+														</sap.ui.commons:ComboBox> -->
+														
+														<!-- <sap.ui.commons:ComboBox width="25em" items="{/DetailsCollection}" id="idRegionComboBox" selectionChange="handleRegionSelectionComboBox">
+															<sap.ui.core:ListItem text="{Landx50}"/>
+														</sap.ui.commons:ComboBox> -->
+														
+														<sap.ui.commons:ComboBox width="25em" id="" selectionChange="handleRegionSelectionComboBox">
+															<!-- <sap.ui.core:ListItem/> -->
+														</sap.ui.commons:ComboBox>
+														
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 											</sap.ui.commons.layout:cells>

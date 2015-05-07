@@ -1,4 +1,5 @@
 jQuery.sap.require("com.sagia.common.ModelHelper");
+jQuery.sap.require("sap.ui.model.FilterOperator");
 
 jQuery.sap.require("com.sagia.common.Formatter");
 sap.ui.controller("com.sagia.view.Overview", {
@@ -126,12 +127,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this._oLanguageSelectionComboBox = this.getView().byId("idLanguageSelectionComboBox");
 		
-		//need to add this to bind controller to fragment
+		
 		this._basicInfo_OrganizationFragment = sap.ui.xmlfragment("com.sagia.view.fragments.bi_organization", this.getView()
-						.getController());
+				.getController());
+		
+		
+		this._oidRegionComboBox = this.getView().byId("idRegionComboBox");
+		
+		var oItemTemplate = new sap.ui.core.ListItem({text:"{Landx50}"});
+		//this._oidRegionComboBox.bindAggregation("items", "/DetailsCollection", new sap.ui.core.ListItem({text:"{Landx50}"}));
+		var oFilter1 = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.EQ, "Guam");
+		this._oidRegionComboBox.bindAggregation("items", {path : "/DetailsCollection", template: oItemTemplate,
+			filters : oFilter1});
 		
 		
 		
+	},
+	handleRegionSelectionComboBox : function(oControlEvent){
+		console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.text);
 		
 	},
 	handleCountrySelectionComboBox : function(oControlEvent){
@@ -793,15 +806,25 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		this._oLanguageSelectionComboBox.setSelectedKey("E");
 		
-		//this.handleSaveLinkPress();
+		this.handleSaveLinkPress();
 		
 		//this.handleCountrySelectionComboBox();
 		
-		this._oRegionComboBox = sap.ui.getCore().byId("idRegionComboBox");
+		//need to add this to bind controller to fragment
 		
+		
+		//this._oCountryComboBox = sap.ui.getCore().byId("idCountryComboBox1400");
+		
+		
+		//console.dir(this._oCountryComboBox);
 		//var oItemTemplate = new sap.ui.core.ListItem({text:"{Landx50}"});
+		/*this._oidRegionComboBox( {items : { 
+		    path : "/DetailsCollection", 
+		    template : oItemTemplate 
+		  }});*/
+		/*this._oidRegionComboBox.bindItems("/DetailsCollection", oItemTemplate);
 		
-		
+		console.dir(this._oidRegionComboBox);*/
 
 
 	},
@@ -940,6 +963,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oidMainPageContent.setVisible(false);
 		this._oTopHeaderVBox.setVisible(true);
 		this._oidLicenseButtonsHBox.setVisible(true);
+		
+this._oRegionComboBox = sap.ui.getCore().byId("idRegionComboBox");
+		
+		//var oItemTemplate = new sap.ui.core.ListItem({text:"{Landx50}"});
+		this._oRegionComboBox.bindAggregation("items", "/DetailsCollection", new sap.ui.core.ListItem({text:"{Landx50}"}));
+	
 		
 		if (userID.length > 0 && password.length > 0) {
 			var oRequestFinishedDeferred = this.oModelHelper.signInUser(userID,password);

@@ -1,3 +1,4 @@
+jQuery.sap.declare("com.sagia.common.Formatter");
 com.sagia.common.Formatter = {
 		filterRegions : function(oValue){
 			console.log(oValue);

@@ -124,7 +124,8 @@ com.sagia.common.ModelHelper = {
 		var filterRegion = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");  
 		filtersArray.push(filterRegion);  
 
-		this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27", {
+		//this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27", {   //ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27&lv_flag=%27%27&lv_region=%27%27
+		this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27&lv_flag=%27%27&lv_region=%27%27", {
 			success : function(oData, response) {
 				//oRequestFinishedDeferred.resolve(oData);
 				
@@ -174,8 +175,7 @@ com.sagia.common.ModelHelper = {
 
 				// close busy dialog
 				that.closeBusyDialog();
-			},
-			filters : filtersArray
+			}
 		});
 
 		//return oRequestFinishedDeferred;
