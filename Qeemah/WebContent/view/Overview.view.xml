@@ -10,6 +10,9 @@
 		<sap.ui.commons:ComboBox width="25em" id="idRegionComboBox" selectionChange="handleRegionSelectionComboBox">
 															<!-- <sap.ui.core:ListItem/> -->
 														</sap.ui.commons:ComboBox>
+		<sap.ui.commons:ComboBox width="25em" id="idRegionComboBox2" selectionChange="handleRegionSelectionComboBox">
+															<!-- <sap.ui.core:ListItem/> -->
+														</sap.ui.commons:ComboBox>
 		
 		
 			<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
@@ -204,8 +207,10 @@
 
 									<VBox id="idBasicInfoContent" justifyContent="Center" alignItems="Center"><!-- alignItems="Center" -->
 										
-											<sap.ui.core:Fragment  id="idBasicInfoContentFragment" fragmentName="com.sagia.view.fragments.basicinfo"
-												type="XML" />
+											<!-- <sap.ui.core:Fragment  id="idBasicInfoContentFragment" fragmentName="com.sagia.view.fragments.basicinfo"
+												type="XML" /> -->
+												<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bi_organization"
+							type="XML" />
 										
 									</VBox>
 									<VBox id="idLicenseInfoContent" 

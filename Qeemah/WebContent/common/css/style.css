@@ -312,3 +312,6 @@
 .sapMBtnContent {
   font-family: SEGOEUI-Normal;
 }
+.sapUiTfComboIcon {
+  height: 2rem !important;
+}

@@ -43,7 +43,7 @@
 															<sap.ui.core:Item text="{Landx50}" />
 														</ComboBox> -->
 														<ComboBox width="25em" items="{/DetailsCollection}" id="idCountryComboBox1400" selectionChange="handleCountrySelectionComboBox">
-															<sap.ui.core:Item id="idCountryComboBox1400Item" key="{Land1}" text="{Landx50}"/>
+															<sap.ui.core:Item  key="{Land1}" text="{Landx50}"/>
 														</ComboBox>
 														
 													</sap.ui.commons.layout:content>
@@ -102,8 +102,8 @@
 															<sap.ui.core:ListItem text="{Landx50}"/>
 														</sap.ui.commons:ComboBox> -->
 														
-														<sap.ui.commons:ComboBox width="25em" id="" selectionChange="handleRegionSelectionComboBox">
-															<!-- <sap.ui.core:ListItem/> -->
+														<sap.ui.commons:ComboBox width="25em" items="{/DetailsCollection}" id="idRegionComboBox3" selectionChange="handleRegionSelectionComboBox">
+															<sap.ui.core:ListItem text="{Bezei_reg}" id="idRegionComboBox3item"/>
 														</sap.ui.commons:ComboBox>
 														
 													</sap.ui.commons.layout:content>
