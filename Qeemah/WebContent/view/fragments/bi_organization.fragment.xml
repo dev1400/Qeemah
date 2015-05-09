@@ -107,7 +107,8 @@
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
 														<ComboBox width="25em">
-															<sap.ui.core:Item />
+															<sap.ui.core:ListItem Key="1" text="{i18n>Yes}" />
+															<sap.ui.core:ListItem key="2" text="{i18n>No}" />
 														</ComboBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -338,7 +339,11 @@
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
 														<ComboBox width="25em">
-															<sap.ui.core:Item />
+															<sap.ui.core:ListItem Key="1" text="{i18n>Phone}" />
+															<sap.ui.core:ListItem key="2" text="{i18n>Email}" />
+															<sap.ui.core:ListItem Key="3" text="{i18n>Fax}" />
+															<sap.ui.core:ListItem key="4" text="{i18n>Pager}" />
+															<sap.ui.core:ListItem Key="5" text="{i18n>Post}" />
 														</ComboBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
