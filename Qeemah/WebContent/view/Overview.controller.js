@@ -170,7 +170,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 	},
 	handleRegionSelectionComboBox : function(oControlEvent){
-		console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.text);
+		console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
+		
+		this._oBICityComboBox = this.getView().byId("idCityComboBox");		
+		var oFilter = new sap.ui.model.Filter("CityName_cty", sap.ui.model.FilterOperator.NE, "");
+		this._oBICityComboBox.getBinding("items").filter(oFilter);
 		
 	},
 	handleCountrySelectionComboBox : function(oControlEvent){
