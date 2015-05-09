@@ -39,9 +39,9 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
-													<ComboBox width="25em">
-														<sap.ui.core:Item />
-													</ComboBox>
+													<ComboBox width="25em" items="{/DetailsCollection}" id="idCINationalityComboBox">
+															<sap.ui.core:ListItem text="{Natio50}"/>
+														</ComboBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>

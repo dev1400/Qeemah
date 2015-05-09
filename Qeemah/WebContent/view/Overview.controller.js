@@ -1055,6 +1055,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var oBIILegalStatusFilter = new sap.ui.model.Filter("Textlong", sap.ui.model.FilterOperator.NE, "");
 		this._oBIILegalStatusCombobox.getBinding("items").filter(oBIILegalStatusFilter);
 		
+		this._oBICINationalityCombobox = this.getView().byId("idCINationalityComboBox");
+		var oBICINationalityFilter = new sap.ui.model.Filter("Natio50", sap.ui.model.FilterOperator.NE, "");
+		this._oBICINationalityCombobox.getBinding("items").filter(oBICINationalityFilter);
+		
+		
 		
 		
 		/*this._oidRegionComboBox3 = this.getView().byId("idRegionComboBox3");		
