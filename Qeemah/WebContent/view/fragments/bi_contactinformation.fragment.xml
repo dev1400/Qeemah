@@ -162,11 +162,11 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<HBox justifyContent="Start" alignItems="Center">
-													<Input type="Number" placeholder="{i18n>CountryCode}"
+													<Input type="Number" 
 														enabled="false" width="8em" />
-													<Input type="Number" placeholder="{i18n>Telephone}"
+													<Input type="Number" 
 														width="9em" />
-													<Input type="Number" placeholder="{i18n>Extension}"
+													<Input type="Number" 
 														width="8em" />
 												</HBox>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -200,9 +200,9 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<HBox justifyContent="Start" alignItems="Center">
-													<Input type="Number" placeholder="{i18n>CountryCode}"
+													<Input type="Number" 
 														enabled="false" width="8em" />
-													<Input type="Number" placeholder="{i18n>MobilePhone}"
+													<Input type="Number" 
 														width="17em" />
 												</HBox>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -237,9 +237,9 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<HBox justifyContent="Start" alignItems="Center">
-													<Input type="Number" placeholder="{i18n>CountryCode}"
+													<Input type="Number" 
 														enabled="false" width="8em" />
-													<Input type="Number" placeholder="{i18n>Fax}" width="17em" />
+													<Input type="Number"  width="17em" />
 												</HBox>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 
