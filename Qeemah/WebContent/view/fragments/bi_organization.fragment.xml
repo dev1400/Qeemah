@@ -38,13 +38,15 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-													<!-- 	<ComboBox width="25em" id="idCountryComboBox1400" items="{AmendmentDetailModel>/DetailsCollection/0/0/}" >
-														value="{}" {AmendmentDetailModel>/DetailsCollection/0} items="{AmendmentDetailModel>/DetailsCollection}"
-															<sap.ui.core:Item text="{Landx50}" />
-														</ComboBox> -->
-														<ComboBox width="25em" items="{/DetailsCollection}" id="idCountryComboBox1400" selectionChange="handleCountrySelectionComboBox">
+													
+														<!-- <ComboBox width="25em" items="{/DetailsCollection}" id="idCountryComboBox1400" selectionChange="handleCountrySelectionComboBox">
 															<sap.ui.core:Item  key="{Land1}" text="{Landx50}"/>
+														</ComboBox> -->
+														
+														<ComboBox selectedKey="1" enabled="false" width="25em" id="idCountryComboBox1400" selectionChange="handleCountrySelectionComboBox">
+															<sap.ui.core:Item key="1" text="Kingdom of Saudi Arabia"/>
 														</ComboBox>
+														
 														
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -78,33 +80,14 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-														<!-- <ComboBox width="25em" items="{/DetailsCollection}">
-															<sap.ui.core:Item text="{path : 'Bezei_reg',
-															formatter : com.sagia.common.Formatter.filterRegions}" />
-														</ComboBox> -->
-														<!-- <ComboBox width="25em" items="{path : '/DetailsCollection/Bezei_reg', formatter : com.sagia.common.Formatter.filterRegions }"
-														 id="idRegionComboBox">
-															<sap.ui.core:Item text="{Bezei_reg}" />
-														</ComboBox> -->
-														<!-- <ComboBox width="25em" items="{path : '/DetailsCollection'}"
-														 id="idRegionComboBox">
-															<sap.ui.core:ListItem text="{Pcode}" />
-														</ComboBox> -->
-														<!-- <ComboBox width="25em" id="idRegionComboBox" items="{/DetailsCollection}" selectionChange="handleRegionSelectionComboBox">
-															<sap.ui.core:ListItem text="{path : 'Bezei_reg',															
-															formatter : 'com.sagia.common.Formatter.filterRegions'}"/>
-														</ComboBox> -->
-														<!-- <sap.ui.commons:ComboBox width="25em" id="idRegionComboBox" items="{path : {'/DetailsCollection'}}" selectionChange="handleRegionSelectionComboBox">
-															<sap.ui.core:ListItem text="{Landx50}"/>
-														</sap.ui.commons:ComboBox> -->
+													
 														
-														<!-- <sap.ui.commons:ComboBox width="25em" items="{/DetailsCollection}" id="idRegionComboBox" selectionChange="handleRegionSelectionComboBox">
-															<sap.ui.core:ListItem text="{Landx50}"/>
-														</sap.ui.commons:ComboBox> -->
-														
-														<sap.ui.commons:ComboBox width="25em" items="{/DetailsCollection}" id="idRegionComboBox3" selectionChange="handleRegionSelectionComboBox">
+														<!-- <sap.ui.commons:ComboBox width="25em" items="{/DetailsCollection}" id="idRegionComboBox3" selectionChange="handleRegionSelectionComboBox">
 															<sap.ui.core:ListItem text="{Bezei_reg}" id="idRegionComboBox3item"/>
-														</sap.ui.commons:ComboBox>
+														</sap.ui.commons:ComboBox> -->
+														<ComboBox width="25em" items="{/DetailsCollection}" id="idRegionComboBox3" selectionChange="handleRegionSelectionComboBox">
+															<sap.ui.core:ListItem text="{Bezei_reg}" id="idRegionComboBox3item"/>
+														</ComboBox>
 														
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -223,11 +206,15 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<HBox justifyContent="Start" alignItems="Center">
-														<Input type="Number" placeholder="{CCModel>/CountryCodeCollection/TelNo}"
+														<!-- <Input type="Number" placeholder="{CCModel>/CountryCodeCollection/TelNo}"
 															 width="8em" enabled="false" id="idbi_TCountryCode"/>
-														<Input type="Number" placeholder="{i18n>Telephone}"
+													 -->
+													 <Input type="Text" value="{i18n>CountryCode}"
+															 width="8em" enabled="false"/> 		 
+													 
+														<Input type="Number" 
 															width="9em" />
-														<Input type="Number" placeholder="{i18n>Extension}"
+														<Input type="Number" 
 															width="8em" />
 													</HBox>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -260,9 +247,12 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<HBox justifyContent="Start" alignItems="Center">
-														<Input type="Number" placeholder="{CCModel>/CountryCodeCollection/TelNo}"
-															enabled="false" width="8em" />
-														<Input type="Number" placeholder="{i18n>MobilePhone}"
+														<!-- <Input type="Number" placeholder="{CCModel>/CountryCodeCollection/TelNo}"
+															enabled="false" width="8em" /> -->
+															<Input type="Text" value="{i18n>CountryCode}"
+															 width="8em" enabled="false"/>
+													
+														<Input type="Number"
 															width="17em" />
 													</HBox>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -295,9 +285,12 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<HBox justifyContent="Start" alignItems="Center">
-														<Input type="Number" placeholder="{CCModel>/CountryCodeCollection/TelNo}"
-															enabled="false" width="8em" />
-														<Input type="Number" placeholder="{i18n>Fax}" width="17em" />
+														<!-- <Input type="Number" placeholder="{CCModel>/CountryCodeCollection/TelNo}"
+															enabled="false" width="8em" /> -->
+														 <Input type="Text" value="{i18n>CountryCode}"
+															 width="8em" enabled="false"/>
+													
+														<Input type="Number" width="17em" />
 													</HBox>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell
