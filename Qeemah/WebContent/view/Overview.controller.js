@@ -1211,6 +1211,12 @@ handleRegisterUserButtonPress : function() {
 		
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("BasicInformationHTML"));
+		
+		this._oLicenseInfoButton.setSrc("common/mime/license.png");
+		this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
+		this._oPreviewInfoButton.setSrc("common/mime/preview.png");
+		this._oTermsInfoButton.setSrc("common/mime/terms.png");
+		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
 	},
 	handleLicenseButtonClick : function(){
 		this._oLicenseInfoContent.setVisible(true);
@@ -1219,6 +1225,14 @@ handleRegisterUserButtonPress : function() {
 		this._oTermsAndConditionsInfoContent.setVisible(false);
 		this._oPreviewInfoContent.setVisible(false);
 		this._oLicenseInfoButton.setSrc("common/mime/license_hover.png");
+		
+		//this._oLicenseInfoButton.setSrc("common/mime/license.png");
+		this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
+		this._oPreviewInfoButton.setSrc("common/mime/preview.png");
+		this._oTermsInfoButton.setSrc("common/mime/terms.png");
+		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+		
+		
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("LicenseInformationHTML"));
 	},
@@ -1232,6 +1246,12 @@ handleRegisterUserButtonPress : function() {
 		this._oPreviewInfoContent.setVisible(false);
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("ShareHolderInformationHTML"));
+		
+		this._oLicenseInfoButton.setSrc("common/mime/license.png");
+		//this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
+		this._oPreviewInfoButton.setSrc("common/mime/preview.png");
+		this._oTermsInfoButton.setSrc("common/mime/terms.png");
+		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
 	},
 	handlePreviewInfoButtonClick : function(){
 		this._oPreviewInfoButton.setSrc("common/mime/preview_hover.png");
@@ -1242,6 +1262,12 @@ handleRegisterUserButtonPress : function() {
 		this._oTermsAndConditionsInfoContent.setVisible(false);
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("PreviewInformationHTML"));
+		
+		this._oLicenseInfoButton.setSrc("common/mime/license.png");
+		this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
+		//this._oPreviewInfoButton.setSrc("common/mime/preview.png");
+		this._oTermsInfoButton.setSrc("common/mime/terms.png");
+		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
 	},
 	handleTermsInfoButtonClick : function(){
 		this._oShareHoldersInfoContent.setVisible(false);
@@ -1253,11 +1279,24 @@ handleRegisterUserButtonPress : function() {
 		this._oTermsInfoButton.setSrc("common/mime/terms_hover.png");
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("TermsnCondInformationHTML"));
+		
+		
+		this._oLicenseInfoButton.setSrc("common/mime/license.png");
+		this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
+		this._oPreviewInfoButton.setSrc("common/mime/preview.png");
+		//this._oTermsInfoButton.setSrc("common/mime/terms.png");
+		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
 	},
 	handleSubmitInfoButtonClick : function(){
 		this._oSubmitInfoButton.setSrc("common/mime/submit_hover.png");
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("SubmitInformationHTML"));
+		
+		this._oLicenseInfoButton.setSrc("common/mime/license.png");
+		this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
+		this._oPreviewInfoButton.setSrc("common/mime/preview.png");
+		this._oTermsInfoButton.setSrc("common/mime/terms.png");
+		//this._oSubmitInfoButton.setSrc("common/mime/submit.png");
 	},
 	
 });
