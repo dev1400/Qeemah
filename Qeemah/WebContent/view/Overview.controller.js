@@ -154,6 +154,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oidRegionComboBox2.bindAggregation("items", {path : "/DetailsCollection", template: oItemTemplate2,
 			filters : oFilter2});
 		
+		
+		
+		
 		/*this._oidRegionComboBox3 = sap.ui.getCore().byId("idRegionComboBox3");		
 		var oItemTemplate3 = new sap.ui.core.ListItem({text:"{Bezei_reg}"});		
 		var oFilter3 = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
@@ -166,6 +169,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oidRegionComboBox4.bindAggregation("items", {path : "/DetailsCollection", template: oItemTemplate4,
 			filters : oFilter4});*/
 		
+		//this._oBIILegalStatus.onAfterRendering = function() { console.log("dir");};
 
 		
 	},
@@ -279,6 +283,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 			oModel.setData(data);
 			// set the model to the core
 			sap.ui.getCore().setModel(oModel);*/
+			
+			
+			
 			
 		}, this));	
 	},
@@ -845,6 +852,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this.handleSaveLinkPress();
 		
+		//this.getView().addDependent(this._basicInfo_OrganizationFragmentChild);
 		//this.handleCountrySelectionComboBox();
 		
 		//need to add this to bind controller to fragment
@@ -887,6 +895,18 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oidRegionComboBox3.bindAggregation("items", {path : "/DetailsCollection", template: oItemTemplate3,
 			filters : oFilter3});*/
 
+		
+		/*this._oBIILegalStatus = sap.ui.getCore().byId("idBILegalStatus");
+		
+		
+		this._oBIILegalStatus.prototype.onAfterRendering = function() {
+
+	       console.log("rendered");
+	     };*/
+		/*this._oBIILegalStatus = sap.ui.getCore().byId("idBILegalStatus");
+		this._oBIILegalStatus.onAfterRendering = function() { console.log("dir");};*/
+		//console.log(this._oBIILegalStatus);
+		
 		
 
 	},
@@ -1029,6 +1049,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oidRegionComboBox3 = this.getView().byId("idRegionComboBox3");		
 		var oFilter3 = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
 		this._oidRegionComboBox3.getBinding("items").filter(oFilter3);
+		
+		this._oBIILegalStatusCombobox = this.getView().byId("idBILegalStatusComboBox");
+		var oBIILegalStatusFilter = new sap.ui.model.Filter("Textlong", sap.ui.model.FilterOperator.NE, "");
+		this._oBIILegalStatusCombobox.getBinding("items").filter(oBIILegalStatusFilter);
+		
 		
 		
 		/*this._oidRegionComboBox3 = this.getView().byId("idRegionComboBox3");		

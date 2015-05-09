@@ -66,8 +66,8 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-														<ComboBox width="25em">
-															<sap.ui.core:Item />
+														<ComboBox width="25em" items="{/DetailsCollection}" id="idBILegalStatusComboBox">
+															<sap.ui.core:ListItem text="{Textlong}"/>
 														</ComboBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
