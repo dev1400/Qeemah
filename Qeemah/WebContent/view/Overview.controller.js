@@ -1060,6 +1060,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oBICINationalityCombobox.getBinding("items").filter(oBICINationalityFilter);
 		
 		
+		this._oBICICountryCombobox = this.getView().byId("idCICountryComboBox");
+		var oBICICountryFilter = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.NE, "");
+		this._oBICICountryCombobox.getBinding("items").filter(oBICICountryFilter);
+		
+		
+		
 		
 		
 		/*this._oidRegionComboBox3 = this.getView().byId("idRegionComboBox3");		

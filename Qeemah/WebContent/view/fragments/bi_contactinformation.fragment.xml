@@ -94,7 +94,8 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<ComboBox width="25em">
-														<sap.ui.core:Item />
+														<sap.ui.core:ListItem Key="1" text="{i18n>Male}" />
+															<sap.ui.core:ListItem key="2" text="{i18n>Female}" />
 													</ComboBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -126,9 +127,9 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
-													<ComboBox width="25em">
-														<sap.ui.core:Item />
-													</ComboBox>
+													<ComboBox width="25em" items="{/DetailsCollection}" id="idCICountryComboBox">
+															<sap.ui.core:ListItem text="{Landx50}"/>
+														</ComboBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell
@@ -214,7 +215,11 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<ComboBox width="25em">
-														<sap.ui.core:Item />
+														<sap.ui.core:ListItem Key="1" text="{i18n>Phone}" />
+															<sap.ui.core:ListItem key="2" text="{i18n>Email}" />
+															<sap.ui.core:ListItem Key="3" text="{i18n>Fax}" />
+															<sap.ui.core:ListItem key="4" text="{i18n>Pager}" />
+															<sap.ui.core:ListItem Key="5" text="{i18n>Post}" />
 													</ComboBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -248,7 +253,10 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<ComboBox width="25em">
-														<sap.ui.core:Item />
+														<sap.ui.core:ListItem Key="1" text="{i18n>Agent}" />
+															<sap.ui.core:ListItem key="2" text="{i18n>Employee}" />
+															<sap.ui.core:ListItem Key="3" text="{i18n>Invester}" />
+															<sap.ui.core:ListItem key="4" text="{i18n>GM}" />
 													</ComboBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
