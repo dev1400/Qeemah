@@ -209,8 +209,32 @@
 										
 											<!-- <sap.ui.core:Fragment  id="idBasicInfoContentFragment" fragmentName="com.sagia.view.fragments.basicinfo"
 												type="XML" /> -->
-												<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bi_organization"
+												<!-- <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bi_organization"
+							type="XML" /> -->
+							<VBox class="HeadingBGVBOX">
+
+		<HBox id="idBasicInfoBoxContent" justifyContent="Center" width="100%">
+	
+							<sap.ui.commons:TabStrip class="IconTabBarStyling"
+				>
+				<sap.ui.commons:tabs>
+					<sap.ui.commons:Tab  text="{i18n>Organization}">
+						<sap.ui.commons:content>
+						<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bi_organization"
 							type="XML" />
+						</sap.ui.commons:content>
+					</sap.ui.commons:Tab>
+					<sap.ui.commons:Tab  text="{i18n>ContactInformation}">
+						<sap.ui.commons:content>
+						<sap.ui.core:Fragment
+							fragmentName="com.sagia.view.fragments.bi_contactinformation"
+							type="XML" />
+
+						</sap.ui.commons:content>
+					</sap.ui.commons:Tab>
+				</sap.ui.commons:tabs>
+			</sap.ui.commons:TabStrip>
+			</HBox></VBox>
 										
 									</VBox>
 									<VBox id="idLicenseInfoContent" 

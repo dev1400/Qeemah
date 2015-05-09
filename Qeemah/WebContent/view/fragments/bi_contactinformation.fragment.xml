@@ -377,7 +377,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
-												<Button style="Accept" text="{i18n>Previous}" id="idLicenseInfoPreviousButton"
+												<Button style="Accept" text="{i18n>Previous}" id="idContactInfoButton"
 									press="" icon="sap-icon://navigation-left-arrow">
 								</Button>
 												</sap.ui.commons.layout:content>
@@ -385,7 +385,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
-												<Button style="Accept" text="{i18n>Next}" id="idLicenseInfoNextButton"
+												<Button style="Accept" text="{i18n>Next}" id="idBIContactInfoNextButton"
 									press="" icon="sap-icon://navigation-right-arrow" iconFirst="false"></Button>
 												</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
