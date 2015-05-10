@@ -25,7 +25,7 @@
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<sap.ui.commons.layout:content>
 														<HBox justifyContent="Start">
-															<Input type="Text" width="25em" />
+															<Input type="Text" width="25em" id="idBIOIOrganizationName" />
 														</HBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -67,7 +67,7 @@
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
 														<ComboBox width="25em" items="{/DetailsCollection}" id="idBILegalStatusComboBox">
-															<sap.ui.core:ListItem text="{Textlong}"/>
+															<sap.ui.core:ListItem key="{Source}" text="{Textlong}"/>
 														</ComboBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -106,7 +106,7 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-														<ComboBox width="25em">
+														<ComboBox width="25em" id="idBIOIMultiNationalCompanyCombobox">
 															<sap.ui.core:ListItem Key="1" text="{i18n>Yes}" />
 															<sap.ui.core:ListItem key="2" text="{i18n>No}" />
 														</ComboBox>
@@ -141,7 +141,7 @@
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<sap.ui.commons.layout:content>
 														<HBox justifyContent="Start">
-															<Input type="Text" width="25em" />
+															<Input type="Text" width="25em" id="idBIOILaborSizeInputText"/>
 														</HBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -154,7 +154,7 @@
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<sap.ui.commons.layout:content>
 														<HBox justifyContent="Start">
-															<Input type="Text" width="25em" />
+															<Input type="Text" width="25em" id="idBIOIPOBoxInputText"/>
 														</HBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -174,7 +174,7 @@
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<sap.ui.commons.layout:content>
 														<HBox justifyContent="Start">
-															<Input type="Text" width="25em" />
+															<Input type="Text" width="25em" id="idBIOICapitalInputText"/>
 														</HBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -188,7 +188,7 @@
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<sap.ui.commons.layout:content>
 														<HBox justifyContent="Start">
-															<Input type="Text" width="25em" />
+															<Input type="Text" width="25em" id="idBIOIIPostalCodeInputText"/>
 														</HBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -211,12 +211,12 @@
 															 width="8em" enabled="false" id="idbi_TCountryCode"/>
 													 -->
 													 <Input type="Text" value="{i18n>CountryCode}"
-															 width="8em" enabled="false"/> 		 
+															 width="8em" enabled="false" /> 		 
 													 
 														<Input type="Number" 
-															width="9em" />
+															width="9em" id="idBIOITelephoneInputText"/>
 														<Input type="Number" 
-															width="8em" />
+															width="8em" id="idBIOIExtensionInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell
@@ -229,7 +229,7 @@
 													vAlign="Middle" hAlign="End">
 													<sap.ui.commons.layout:content>
 														<HBox justifyContent="Start">
-															<Input type="Text" width="25em" />
+															<Input type="Text" width="25em" id="idBIOIStreetInputText"/>
 														</HBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -254,7 +254,7 @@
 															 width="8em" enabled="false"/>
 													
 														<Input type="Number"
-															width="17em" />
+															width="17em" id="idBIOIMobilephoneInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell
@@ -267,7 +267,7 @@
 													vAlign="Middle" hAlign="Begin">
 													<sap.ui.commons.layout:content>
 														<HBox justifyContent="Start">
-															<Input type="Text" width="25em" />
+															<Input type="Text" width="25em" id="idBIOIBuildingNoInputText"/>
 														</HBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -291,7 +291,7 @@
 														 <Input type="Text" value="{i18n>CountryCode}"
 															 width="8em" enabled="false"/>
 													
-														<Input type="Number" width="17em" />
+														<Input type="Number" width="17em" id="idBIOIFaxInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell
@@ -305,7 +305,7 @@
 													vAlign="Middle" hAlign="Begin">
 													<sap.ui.commons.layout:content>
 														<HBox justifyContent="Start">
-															<Input type="Text" width="25em" />
+															<Input type="Text" width="25em" id="idBIOIEmailInputText"/>
 														</HBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -325,7 +325,7 @@
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<sap.ui.commons.layout:content>
 														<HBox justifyContent="Start">
-															<Input type="Text" width="25em" />
+															<Input type="Text" width="25em" id="idBIOIWebSiteInputText"/>
 														</HBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -338,7 +338,7 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-														<ComboBox width="25em">
+														<ComboBox width="25em" id="idBIOICommMethodComboBox">
 															<sap.ui.core:ListItem Key="1" text="{i18n>Phone}" />
 															<sap.ui.core:ListItem key="2" text="{i18n>Email}" />
 															<sap.ui.core:ListItem Key="3" text="{i18n>Fax}" />
@@ -368,7 +368,7 @@
 
 															<sap.ui.unified:FileUploader
 																uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
-																iconOnly="true" />
+																iconOnly="true" id="idBIOIPreApprovalFileUploader"/>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 											</sap.ui.commons.layout:cells>

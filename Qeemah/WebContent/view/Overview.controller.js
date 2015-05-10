@@ -1,5 +1,7 @@
 jQuery.sap.require("com.sagia.common.ModelHelper");
 jQuery.sap.require("sap.ui.model.FilterOperator");
+jQuery.sap.require("com.sagia.common.js.validate");
+
 
 jQuery.sap.require("com.sagia.common.Formatter");
 sap.ui.controller("com.sagia.view.Overview", {
@@ -16,6 +18,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		// Model Helper reference
 		this.oModelHelper = com.sagia.common.ModelHelper;
+		this.oValidationHelper = com.sagia.common.js.validate;
 
 		this._oVboxSignIn = this.getView().byId("idVBoxSignIn");
 		/*this._oVboxUserInfo = this.getView().byId("idVBoxUserInformation");
@@ -1043,6 +1046,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var userID = this.getView().byId("idSignInUsernameInput").getValue();
 		var password = this.getView().byId("idSignInPasswordInput").getValue();
 		
+		
+		
 		this._oidMainPageContent.setVisible(false);
 		this._oTopHeaderVBox.setVisible(true);
 		this._oidLicenseButtonsHBox.setVisible(true);
@@ -1268,6 +1273,11 @@ handleRegisterUserButtonPress : function() {
 		//this._oPreviewInfoButton.setSrc("common/mime/preview.png");
 		this._oTermsInfoButton.setSrc("common/mime/terms.png");
 		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+		
+		
+		
+		this.oValidationHelper.validateBasicInfo(this);
+		
 	},
 	handleTermsInfoButtonClick : function(){
 		this._oShareHoldersInfoContent.setVisible(false);

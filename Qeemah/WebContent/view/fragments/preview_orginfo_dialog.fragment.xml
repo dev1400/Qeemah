@@ -38,7 +38,7 @@
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<sap.ui.commons.layout:content>
 														<HBox justifyContent="Start">
-															<Input enabled="false" type="Text" width="25em" />
+															<Input enabled="false" type="Text" width="25em" id="idBIOIPreviewOrganizationName"/>
 														</HBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -50,8 +50,8 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-														<ComboBox enabled="false" width="25em">
-															<sap.ui.core:Item />
+														<ComboBox selectedKey="1" enabled="false" width="25em">
+															<sap.ui.core:Item key="1" text="Kingdom of Saudi Arabia"/>
 														</ComboBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -70,8 +70,12 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-														<ComboBox enabled="false" width="25em">
-															<sap.ui.core:Item />
+														
+														<!-- <ComboBox  width="25em" items="{/DetailsCollection}" id="idBIOIPreviewLegalStatusComboBox">
+															<sap.ui.core:ListItem key="{source}" text="{Textlong}"/>
+														</ComboBox> -->
+														<ComboBox  enabled="false" width="25em" id="idBIOIPreviewLegalStatusComboBox">
+														<sap.ui.core:ListItem />
 														</ComboBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
