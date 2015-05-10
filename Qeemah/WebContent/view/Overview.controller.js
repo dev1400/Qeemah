@@ -1236,6 +1236,7 @@ handleRegisterUserButtonPress : function() {
 		this._oPreviewInfoButton.setSrc("common/mime/preview.png");
 		this._oTermsInfoButton.setSrc("common/mime/terms.png");
 		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
 		
 		
 		this._oStagesHeading.setContent(this.oModelHelper
@@ -1257,6 +1258,7 @@ handleRegisterUserButtonPress : function() {
 		this._oPreviewInfoButton.setSrc("common/mime/preview.png");
 		this._oTermsInfoButton.setSrc("common/mime/terms.png");
 		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
 	},
 	handlePreviewInfoButtonClick : function(){
 		this._oPreviewInfoButton.setSrc("common/mime/preview_hover.png");
@@ -1273,6 +1275,7 @@ handleRegisterUserButtonPress : function() {
 		//this._oPreviewInfoButton.setSrc("common/mime/preview.png");
 		this._oTermsInfoButton.setSrc("common/mime/terms.png");
 		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
 		
 		
 		
@@ -1296,6 +1299,7 @@ handleRegisterUserButtonPress : function() {
 		this._oPreviewInfoButton.setSrc("common/mime/preview.png");
 		//this._oTermsInfoButton.setSrc("common/mime/terms.png");
 		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
 	},
 	handleSubmitInfoButtonClick : function(){
 		this._oSubmitInfoButton.setSrc("common/mime/submit_hover.png");
@@ -1307,6 +1311,7 @@ handleRegisterUserButtonPress : function() {
 		this._oPreviewInfoButton.setSrc("common/mime/preview.png");
 		this._oTermsInfoButton.setSrc("common/mime/terms.png");
 		//this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
 	},
 	
 });
