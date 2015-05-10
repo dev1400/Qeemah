@@ -188,7 +188,7 @@
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<sap.ui.commons.layout:content>
 														<HBox justifyContent="Start">
-															<Input type="Text" width="25em" id="idBIOIIPostalCodeInputText"/>
+															<Input type="Text" width="25em" id="idBIOIPostalCodeInputText"/>
 														</HBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -216,7 +216,7 @@
 														<Input type="Number" 
 															width="9em" id="idBIOITelephoneInputText"/>
 														<Input type="Number" 
-															width="8em" id="idBIOIExtensionInputText"/>
+															width="8em" id="idBIOITelephoneExtensionInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell
