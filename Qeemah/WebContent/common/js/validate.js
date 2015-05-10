@@ -23,10 +23,10 @@ com.sagia.common.js.validate = {
 			var oPreviewMNCComboboxItemTemplate = context._oBIOIMNCComboBox.getSelectedItem();			
             context._oBIOIPreviewMNCCombobox.setSelectedItem(oPreviewMNCComboboxItemTemplate);
             
-            context._oBIOIMNCComboBox = context.getView().byId("idBIOIMultiNationalCompanyCombobox");
+            /*context._oBIOIMNCComboBox = context.getView().byId("idBIOIMultiNationalCompanyCombobox");
 			context._oBIOIPreviewMNCCombobox = context.getView().byId("idBIOIPreviewMultiNationalCompanyCombobox");			
 			var oPreviewMNCComboboxItemTemplate = context._oBIOIMNCComboBox.getSelectedItem();			
-            context._oBIOIPreviewMNCCombobox.setSelectedItem(oPreviewMNCComboboxItemTemplate);
+            context._oBIOIPreviewMNCCombobox.setSelectedItem(oPreviewMNCComboboxItemTemplate);*/
             
             context._oBIOICityComboBox = context.getView().byId("idCityComboBox");
 			context._oBIOICityMNCCombobox = context.getView().byId("idBIOIPreviewCityComboBox");			
@@ -96,6 +96,98 @@ com.sagia.common.js.validate = {
             context._oBIOIPreApprovalFileUploader = context.getView().byId("idBIOIPreApprovalFileUploader");
 			context._oBIOIPReviewPreApprovalFileUploader = context.getView().byId("idBIOIPreviewPreApprovalFileUploader");
             context._oBIOIPReviewPreApprovalFileUploader.setValue(context._oBIOIPreApprovalFileUploader.getValue());
+            
+            //CI Start
+            context.oBICIPFirstNameInputText = context.getView().byId("idBICIFirstNameInputText");	
+            context._oBICIPreviewFirstNameInputText = context.getView().byId("idBICIPreviewFirstNameInputText");			
+            context._oBICIPreviewFirstNameInputText.setValue(context.oBICIPFirstNameInputText.getValue());
+            
+            context._oBICINationalityComboBox = context.getView().byId("idCINationalityComboBox");
+			context._oBICIPreviewNationalityCombobox = context.getView().byId("idBICIPreviewNationalityInputText");			
+			var oPreviewNationalityComboboxItemTemplate = context._oBICINationalityComboBox.getSelectedItem();			
+            context._oBICIPreviewNationalityCombobox.setSelectedItem(oPreviewNationalityComboboxItemTemplate);
+
+            context.oBICILastNameInputText = context.getView().byId("idBICILastNameInputText");	
+            context._oBICIPreviewLastNameInputText = context.getView().byId("idBICIPreviewLastNameInputText");			
+            context._oBICIPreviewLastNameInputText.setValue(context.oBICILastNameInputText.getValue());
+            
+            context.oBICICityNameInputText = context.getView().byId("idBICICityInputText");	
+            context._oBICIPreviewCityNameInputText = context.getView().byId("idBICIPreviewCityInputText");			
+            context._oBICIPreviewCityNameInputText.setValue(context.oBICICityNameInputText.getValue());
+            
+            context._oBICIGenderComboBox = context.getView().byId("idBICIGenderComboBox");
+			context._oBICIPreviewGenderCombobox = context.getView().byId("idBICIPreviewGenderComboBox");			
+			var oPreviewGenderComboboxItemTemplate = context._oBICIGenderComboBox.getSelectedItem();			
+            context._oBICIPreviewGenderCombobox.setSelectedItem(oPreviewGenderComboboxItemTemplate);
+            
+            context.oBICIStreetInputText = context.getView().byId("idBICIStreetInputText");	
+            context._oBICIPreviewStreetInputText = context.getView().byId("idBICIPreviewStreetInputText");			
+            context._oBICIPreviewStreetInputText.setValue(context.oBICIStreetInputText.getValue());
+			
+              
+            context._oBICICountryComboBox = context.getView().byId("idCICountryComboBox");
+			context._oBICIPreviewCountryCombobox = context.getView().byId("idBICIPreviewCountryComboBox");			
+			var oPreviewCountryComboboxItemTemplate = context._oBICICountryComboBox.getSelectedItem();			
+            context._oBICIPreviewCountryCombobox.setSelectedItem(oPreviewCountryComboboxItemTemplate);
+            
+            context.oBICIPOBoxInputText = context.getView().byId("idBICIPOBoxInputText");	
+            context._oBICIPreviewPOBoxInputText = context.getView().byId("idBICIPreviewPOBoxInputText");			
+            context._oBICIPreviewPOBoxInputText.setValue(context.oBICIPOBoxInputText.getValue());
+			
+            context.oBICITelephoneCCInputText = context.getView().byId("idBICITelephoneCountryCodeInputText");	
+            context._oBICIPreviewTelephoneCCInputText = context.getView().byId("idBICIPreviewTelephoneCountryCodeInputText");			
+            context._oBICIPreviewTelephoneCCInputText.setValue(context.oBICITelephoneCCInputText.getValue());
+			
+            context.oBICITelephoneInputText = context.getView().byId("idBICITelephoneInputText");	
+            context._oBICIPreviewTelephoneInputText = context.getView().byId("idBICIPreviewTelephoneInputText");			
+            context._oBICIPreviewTelephoneInputText.setValue(context.oBICITelephoneInputText.getValue());
+			
+            context.oBICITelephoneInputText = context.getView().byId("idBICITelephoneInputText");	
+            context._oBICIPreviewTelephoneInputText = context.getView().byId("idBICIPreviewTelephoneInputText");			
+            context._oBICIPreviewTelephoneInputText.setValue(context.oBICITelephoneInputText.getValue());
+			
+            context.oBICITelephoneExtInputText = context.getView().byId("idBICIExtensionInputText");	
+            context._oBICIPreviewTelephoneExtInputText = context.getView().byId("idBICIPreviewExtensionInputText");			
+            context._oBICIPreviewTelephoneExtInputText.setValue(context.oBICITelephoneExtInputText.getValue());
+			
+            context.oBICIPostalCodeInputText = context.getView().byId("idBICIPostalCodeInputText");	
+            context._oBICIPreviewPostalCodeInputText = context.getView().byId("idBICIPreviewPostalCodeInputText");			
+            context._oBICIPreviewPostalCodeInputText.setValue(context.oBICIPostalCodeInputText.getValue());
+			
+            context.oBICIMobileCCInputText = context.getView().byId("idBICIMobileCountryCodeInputText");	
+            context._oBICIPreviewMobileCCInputText = context.getView().byId("idBICIPreviewMobileCountryCodeInputText");			
+            context._oBICIPreviewMobileCCInputText.setValue(context.oBICIMobileCCInputText.getValue());
+            
+            context.oBICIMobileInputText = context.getView().byId("idBICIMobilePhoneInputText");	
+            context._oBICIPreviewMobileInputText = context.getView().byId("idBICIPreviewMobileInputText");			
+            context._oBICIPreviewMobileInputText.setValue(context.oBICIMobileInputText.getValue());
+            
+            
+            context._oBICICommMethodComboBox = context.getView().byId("idBICICommMethodComboBox");
+			context._oBICIPreviewCommMethodCombobox = context.getView().byId("idBICIPreviewCommMethodInputText");			
+			var oBICIPreviewCommMethodComboboxItemTemplate = context._oBICICommMethodComboBox.getSelectedItem();			
+            context._oBICIPreviewCommMethodCombobox.setSelectedItem(oBICIPreviewCommMethodComboboxItemTemplate);
+            
+            context.oBICIFaxCCInputText = context.getView().byId("idBICIFaxCountryCodeInputText");	
+            context._oBICIPreviewFaxCCInputText = context.getView().byId("idBICIPreviewFaxCountryCodeInputText");			
+            context._oBICIPreviewFaxCCInputText.setValue(context.oBICIFaxCCInputText.getValue());
+           
+            
+            context.oBICIFaxInputText = context.getView().byId("idBICIFaxInputText");	
+            context._oBICIPreviewFaxInputText = context.getView().byId("idBICIPreviewFaxInputText");			
+            context._oBICIPreviewFaxInputText.setValue(context.oBICIFaxInputText.getValue());
+            
+            context._oBICIRoleComboBox = context.getView().byId("idBICIRoleInputText");
+			context._oBICIPreviewRoleCombobox = context.getView().byId("idBICIPreviewRoleInputText");			
+			var oBICIPreviewCommMethodComboboxItemTemplate = context._oBICIRoleComboBox.getSelectedItem();			
+            context._oBICIPreviewRoleCombobox.setSelectedItem(_oBICIPreviewRoleCombobox);
+            
+           
+
+			
+			
+
+            //CI End
 			
 
 		}

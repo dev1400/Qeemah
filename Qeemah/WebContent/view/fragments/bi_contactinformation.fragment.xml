@@ -26,7 +26,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<HBox justifyContent="Start">
-														<Input type="Text" width="25em" />
+														<Input type="Text" width="25em" id="idBICIFirstNameInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -60,7 +60,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<HBox justifyContent="Start">
-														<Input type="Text" width="25em" />
+														<Input type="Text" width="25em" id="idBICILastNameInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -74,7 +74,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<HBox justifyContent="Start">
-														<Input type="Text" width="25em" />
+														<Input type="Text" width="25em" id="idBICICityInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -93,7 +93,7 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
-													<ComboBox width="25em">
+													<ComboBox width="25em" id="idBICIGenderComboBox">
 														<sap.ui.core:ListItem Key="1" text="{i18n>Male}" />
 															<sap.ui.core:ListItem key="2" text="{i18n>Female}" />
 													</ComboBox>
@@ -108,7 +108,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<HBox justifyContent="Start">
-														<Input type="Text" width="25em" />
+														<Input type="Text" width="25em" id="idBICIStreetInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -142,7 +142,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<HBox justifyContent="Start">
-														<Input type="Text" width="25em" />
+														<Input type="Text" width="25em" id="idBICIPOBoxInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -162,12 +162,12 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<HBox justifyContent="Start" alignItems="Center">
-													<Input type="Number" 
-														enabled="false" width="8em" />
-													<Input type="Number" 
-														width="9em" />
-													<Input type="Number" 
-														width="8em" />
+													<Input type="Text" 
+														 width="8em" id="idBICITelephoneCountryCodeInputText"/>
+													<Input type="Text" 
+														width="9em" id="idBICITelephoneInputText"/>
+													<Input type="Text" 
+														width="8em" id="idBICIExtensionInputText"/>
 												</HBox>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell
@@ -181,7 +181,7 @@
 												vAlign="Middle" hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<HBox justifyContent="Start">
-														<Input type="Text" width="25em" />
+														<Input type="Text" width="25em" id="idBICIPostalCodeInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -200,10 +200,10 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<HBox justifyContent="Start" alignItems="Center">
-													<Input type="Number" 
-														enabled="false" width="8em" />
-													<Input type="Number" 
-														width="17em" />
+													<Input type="Text" 
+														 width="8em" id="idBICIMobileCountryCodeInputText"/>
+													<Input type="Text" 
+														width="17em" id="idBICIMobilePhoneInputText"/>
 												</HBox>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell
@@ -214,7 +214,7 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
-													<ComboBox width="25em">
+													<ComboBox width="25em" id="idBICICommMethodComboBox">
 														<sap.ui.core:ListItem Key="1" text="{i18n>Phone}" />
 															<sap.ui.core:ListItem key="2" text="{i18n>Email}" />
 															<sap.ui.core:ListItem Key="3" text="{i18n>Fax}" />
@@ -237,9 +237,9 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<HBox justifyContent="Start" alignItems="Center">
-													<Input type="Number" 
-														enabled="false" width="8em" />
-													<Input type="Number"  width="17em" />
+													<Input type="Text" 
+														width="8em" id="idBICIFaxCountryCodeInputText"/>
+													<Input type="Text"  width="17em" id="idBICIFaxInputText"/>
 												</HBox>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 
@@ -252,7 +252,7 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
-													<ComboBox width="25em">
+													<ComboBox width="25em" id="idBICIRoleInputText">
 														<sap.ui.core:ListItem Key="1" text="{i18n>Agent}" />
 															<sap.ui.core:ListItem key="2" text="{i18n>Employee}" />
 															<sap.ui.core:ListItem Key="3" text="{i18n>Invester}" />
@@ -278,7 +278,7 @@
 												vAlign="Middle" hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<HBox justifyContent="Start">
-														<Input type="Text" width="25em" />
+														<Input type="Text" width="25em" id="idBICIEmailInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -295,7 +295,7 @@
 												<sap.ui.commons.layout:content>
 													<sap.ui.unified:FileUploader
 															uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
-															iconOnly="true" />
+															iconOnly="true" id="idBICIPassportCopyFileUploader"/>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											
@@ -311,7 +311,7 @@
 										<sap.ui.commons.layout:MatrixLayoutCell>
 										<sap.ui.unified:FileUploader
 														uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
-														iconOnly="true" />
+														iconOnly="true" id="idBICIPowerofAttorneyFileUploader"/>
 										</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
 									</sap.ui.commons.layout:MatrixLayoutRow>

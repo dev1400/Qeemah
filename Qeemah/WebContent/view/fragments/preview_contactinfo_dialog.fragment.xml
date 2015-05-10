@@ -36,7 +36,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<HBox justifyContent="Start">
-														<Input enabled="false" type="Text" width="25em" />
+														<Input enabled="false" type="Text" width="25em" id="idBICIPreviewFirstNameInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -48,7 +48,7 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
-													<ComboBox enabled="false" width="25em">
+													<ComboBox enabled="false" width="25em" id="idBICIPreviewNationalityInputText">
 														<sap.ui.core:Item />
 													</ComboBox>
 												</sap.ui.commons.layout:content>
@@ -69,7 +69,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<HBox justifyContent="Start">
-														<Input enabled="false" type="Text" width="25em" />
+														<Input enabled="false" type="Text" width="25em" id="idBICIPreviewLastNameInputText" />
 													</HBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -82,7 +82,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<HBox justifyContent="Start">
-														<Input enabled="false" type="Text" width="25em" />
+														<Input enabled="false" type="Text" width="25em" id="idBICIPreviewCityInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -100,7 +100,7 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
-													<ComboBox enabled="false" width="25em">
+													<ComboBox enabled="false" width="25em" id="idBICIPreviewGenderComboBox">
 														<sap.ui.core:Item />
 													</ComboBox>
 												</sap.ui.commons.layout:content>
@@ -114,7 +114,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<HBox justifyContent="Start">
-														<Input enabled="false" type="Text" width="25em" />
+														<Input enabled="false" type="Text" width="25em" id="idBICIPreviewStreetInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -132,7 +132,7 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
-													<ComboBox enabled="false" width="25em">
+													<ComboBox enabled="false" width="25em" id="idBICIPreviewCountryComboBox">
 														<sap.ui.core:Item />
 													</ComboBox>
 												</sap.ui.commons.layout:content>
@@ -146,7 +146,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<HBox justifyContent="Start">
-														<Input enabled="false" type="Text" width="25em" />
+														<Input enabled="false" type="Text" width="25em" id="idBICIPreviewPOBoxInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -165,11 +165,11 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<HBox justifyContent="Start" alignItems="Center">
-													<Input enabled="false" type="Number" placeholder="{i18n>CountryCode}"
+													<Input enabled="false" type="Text" id="idBICIPreviewTelephoneCountryCodeInputText"
 														 width="8em" />
-													<Input enabled="false" type="Number" placeholder="{i18n>Telephone}"
+													<Input enabled="false" type="Text" id="idBICIPreviewTelephoneInputText"
 														width="9em" />
-													<Input enabled="false" type="Number" placeholder="{i18n>Extension}"
+													<Input enabled="false" type="Text" id="idBICIPreviewExtensionInputText"
 														width="8em" />
 												</HBox>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -183,7 +183,7 @@
 												vAlign="Middle" hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<HBox justifyContent="Start">
-														<Input enabled="false" type="Text" width="25em" />
+														<Input enabled="false" type="Text" width="25em" id="idBICIPreviewPostalCodeInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -201,9 +201,9 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<HBox justifyContent="Start" alignItems="Center">
-													<Input enabled="false" type="Number" placeholder="{i18n>CountryCode}"
+													<Input enabled="false" type="Text" id="idBICIPreviewMobileCountryCodeInputText"
 														width="8em" />
-													<Input enabled="false" type="Number" placeholder="{i18n>MobilePhone}"
+													<Input enabled="false" type="Text" id="idBICIPreviewMobileInputText"
 														width="17em" />
 												</HBox>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -215,7 +215,7 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
-													<ComboBox enabled="false" width="25em">
+													<ComboBox enabled="false" width="25em" id="idBICIPreviewCommMethodInputText">
 														<sap.ui.core:Item />
 													</ComboBox>
 												</sap.ui.commons.layout:content>
@@ -234,9 +234,9 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<HBox justifyContent="Start" alignItems="Center">
-													<Input enabled="false" type="Number" placeholder="{i18n>CountryCode}"
+													<Input enabled="false" type="Text" id="idBICIPreviewFaxCountryCodeInputText"
 														 width="8em" />
-													<Input enabled="false" type="Number" placeholder="{i18n>Fax}" width="17em" />
+													<Input enabled="false" type="Text" id="idBICIPreviewFaxInputText" width="17em" />
 												</HBox>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 
@@ -248,7 +248,7 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
-													<ComboBox enabled="false" width="25em">
+													<ComboBox enabled="false" width="25em" id="idBICIPreviewRoleInputText">
 														<sap.ui.core:Item />
 													</ComboBox>
 												</sap.ui.commons.layout:content>
@@ -270,7 +270,7 @@
 												vAlign="Middle" hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<HBox justifyContent="Start">
-														<Input enabled="false" type="Text" width="25em" />
+														<Input enabled="false" type="Text" width="25em" id="idBICIPreviewEmailInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -287,7 +287,7 @@
 												<sap.ui.commons.layout:content>
 													<sap.ui.unified:FileUploader enabled="false"
 															uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
-															iconOnly="true" />
+															iconOnly="true" id="idBICIPreviewPAssportCopyFileUploader"/>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											
@@ -303,7 +303,7 @@
 										<sap.ui.commons.layout:MatrixLayoutCell>
 										<sap.ui.unified:FileUploader enabled="false"
 														uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
-														iconOnly="true" />
+														iconOnly="true" id="idBICIPreviewPowerofAttorneyFileUploader"/>
 										</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
 									</sap.ui.commons.layout:MatrixLayoutRow>
