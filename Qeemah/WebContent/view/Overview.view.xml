@@ -239,8 +239,31 @@
 									</VBox>
 									<VBox id="idLicenseInfoContent" 
 										visible="false">
-										<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.licenseinfo"
-											type="XML" />
+										<!-- <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.licenseinfo"
+											type="XML" /> -->
+											
+											<VBox  id="idLicenseInfoParentVBox" class="HeadingBGVBOX">
+ <HBox justifyContent="Center">
+ <sap.ui.commons:TabStrip class="IconTabBarStyling"
+				>
+				<sap.ui.commons:tabs>
+					<sap.ui.commons:Tab  text="{i18n>BusinessActivityQuestions}">
+						<sap.ui.commons:content>
+						 <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bizactivityquestions"
+		type="XML" />
+						</sap.ui.commons:content>
+					</sap.ui.commons:Tab>
+					<sap.ui.commons:Tab  text="{i18n>LicenseInformation}">
+						<sap.ui.commons:content>
+						 <sap.ui.core:Fragment
+		fragmentName="com.sagia.view.fragments.bizactivityquestions_licenseinfo"
+		type="XML" />
+						</sap.ui.commons:content>
+					</sap.ui.commons:Tab>
+				</sap.ui.commons:tabs>
+			</sap.ui.commons:TabStrip>
+	</HBox>
+	</VBox>
 									</VBox>
 									<VBox id="idShareHoldersInfoContent" 
 										visible="false">

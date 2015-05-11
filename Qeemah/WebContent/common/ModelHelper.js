@@ -65,11 +65,45 @@ com.sagia.common.ModelHelper = {
 
 		return this.oODataModel;
 	},
+	/**
+	 * Read BAQ
+	 */
+	readBAQ : function() {
+		// Open busy dialog
+		this.openBusyDialog();
+		
+		var that = this;
+		// Create deferred object so that calling program can wait till
+		// asynchronous call is finished
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		this.oODataModel.read("ZFM_CRM_QMH_GET_Q_AND_A?ImLanguage=%27EN%27", {
+			success : function(oData, response) {
+				
+				that.BAQCollectionJSONModel = new sap.ui.model.json.JSONModel();
+				that.BAQCollectionJSONModel.setData({BAQCollection:oData});
+				oRequestFinishedDeferred.resolve(that.BAQCollectionJSONModel);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				console.log(oResponse);
+				
+				// Reject deferred object
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
+
+				// close busy dialog
+				that.closeBusyDialog();
+			}
+		});
+
+		//return oRequestFinishedDeferred;
+		return oRequestFinishedDeferred;
+	},
 	
 	/**
 	 * Read Country Code
 	 */
-	//,
 	readCountryCode : function(countryTelCode) {
 		// Open busy dialog
 		this.openBusyDialog();
@@ -110,7 +144,6 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Read Country 
 	 */
-	//,
 	readCountry : function() {
 		// Open busy dialog
 		this.openBusyDialog();

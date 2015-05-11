@@ -32,9 +32,9 @@
 												<sap.ui.commons.layout:MatrixLayoutCell
 													vAlign="Middle" hAlign="End">
 													<sap.ui.commons.layout:content>
-														<sap.ui.commons:TextView text="{i18n>Country}"></sap.ui.commons:TextView>
+														<!-- <sap.ui.commons:TextView text="{i18n>Country}"></sap.ui.commons:TextView>
 														<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-													</sap.ui.commons.layout:content>
+												 -->	</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
@@ -43,9 +43,9 @@
 															<sap.ui.core:Item  key="{Land1}" text="{Landx50}"/>
 														</ComboBox> -->
 														
-														<ComboBox selectedKey="1" enabled="false" width="25em" id="idCountryComboBox1400" selectionChange="handleCountrySelectionComboBox">
+														<!-- <ComboBox selectedKey="1" enabled="false" width="25em" id="idCountryComboBox1400" selectionChange="handleCountrySelectionComboBox">
 															<sap.ui.core:Item key="1" text="Kingdom of Saudi Arabia"/>
-														</ComboBox>
+														</ComboBox> -->
 														
 														
 													</sap.ui.commons.layout:content>
@@ -148,14 +148,14 @@
 												<sap.ui.commons.layout:MatrixLayoutCell
 													hAlign="End">
 													<sap.ui.commons.layout:content>
-														<sap.ui.commons:TextView text="{i18n>POBox}"></sap.ui.commons:TextView>
+														<!-- <sap.ui.commons:TextView text="{i18n>POBox}"></sap.ui.commons:TextView> -->
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<sap.ui.commons.layout:content>
-														<HBox justifyContent="Start">
+														<!-- <HBox justifyContent="Start">
 															<Input type="Text" width="25em" id="idBIOIPOBoxInputText"/>
-														</HBox>
+														</HBox> -->
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 											</sap.ui.commons.layout:cells>
@@ -181,15 +181,15 @@
 												<sap.ui.commons.layout:MatrixLayoutCell
 													hAlign="End">
 													<sap.ui.commons.layout:content>
-														<sap.ui.commons:TextView text="{i18n>PostalCode}"></sap.ui.commons:TextView>
+														<!-- <sap.ui.commons:TextView text="{i18n>PostalCode}"></sap.ui.commons:TextView> -->
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<sap.ui.commons.layout:content>
-														<HBox justifyContent="Start">
+														<!-- <HBox justifyContent="Start">
 															<Input type="Text" width="25em" id="idBIOIPostalCodeInputText"/>
-														</HBox>
+														</HBox> -->
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 											</sap.ui.commons.layout:cells>
@@ -210,8 +210,8 @@
 														<!-- <Input type="Number" placeholder="{CCModel>/CountryCodeCollection/TelNo}"
 															 width="8em" enabled="false" id="idbi_TCountryCode"/>
 													 -->
-													 <Input type="Text" value="{i18n>CountryCode}"
-															 width="8em" enabled="false" /> 		 
+													 <Input type="Text" 
+															 width="8em"  /> 		 
 													 
 														<Input type="Number" 
 															width="9em" id="idBIOITelephoneInputText"/>
@@ -222,14 +222,14 @@
 												<sap.ui.commons.layout:MatrixLayoutCell
 													hAlign="End">
 													<sap.ui.commons.layout:content>
-														<sap.ui.commons:TextView text="{i18n>Street}"></sap.ui.commons:TextView>
+														<!-- <sap.ui.commons:TextView text="{i18n>Street}"></sap.ui.commons:TextView> -->
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell
 													vAlign="Middle" hAlign="End">
 													<sap.ui.commons.layout:content>
 														<HBox justifyContent="Start">
-															<Input type="Text" width="25em" id="idBIOIStreetInputText"/>
+															<!-- <Input type="Text" width="25em" id="idBIOIStreetInputText"/> -->
 														</HBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -250,8 +250,8 @@
 													<HBox justifyContent="Start" alignItems="Center">
 														<!-- <Input type="Number" placeholder="{CCModel>/CountryCodeCollection/TelNo}"
 															enabled="false" width="8em" /> -->
-															<Input type="Text" value="{i18n>CountryCode}"
-															 width="8em" enabled="false"/>
+															<Input type="Text" 
+															 width="8em" />
 													
 														<Input type="Number"
 															width="17em" id="idBIOIMobilephoneInputText"/>
@@ -260,15 +260,15 @@
 												<sap.ui.commons.layout:MatrixLayoutCell
 													hAlign="End">
 													<sap.ui.commons.layout:content>
-														<sap.ui.commons:TextView text="{i18n>BuildingNo}"></sap.ui.commons:TextView>
+														<!-- <sap.ui.commons:TextView text="{i18n>BuildingNo}"></sap.ui.commons:TextView> -->
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell
 													vAlign="Middle" hAlign="Begin">
 													<sap.ui.commons.layout:content>
-														<HBox justifyContent="Start">
+														<!-- <HBox justifyContent="Start">
 															<Input type="Text" width="25em" id="idBIOIBuildingNoInputText"/>
-														</HBox>
+														</HBox> -->
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 											</sap.ui.commons.layout:cells>
@@ -288,8 +288,8 @@
 													<HBox justifyContent="Start" alignItems="Center">
 														<!-- <Input type="Number" placeholder="{CCModel>/CountryCodeCollection/TelNo}"
 															enabled="false" width="8em" /> -->
-														 <Input type="Text" value="{i18n>CountryCode}"
-															 width="8em" enabled="false"/>
+														 <Input type="Text" 
+															 width="8em" />
 													
 														<Input type="Number" width="17em" id="idBIOIFaxInputText"/>
 													</HBox>
@@ -358,7 +358,7 @@
 													<sap.ui.commons.layout:content>
 
 														
-															<sap.ui.commons:TextView text="{i18n>PreApprovalFile}"></sap.ui.commons:TextView>
+															<!-- <sap.ui.commons:TextView text="{i18n>PreApprovalFile}"></sap.ui.commons:TextView> -->
 															
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -366,9 +366,9 @@
 													>
 													<sap.ui.commons.layout:content>
 
-															<sap.ui.unified:FileUploader
+															<!-- <sap.ui.unified:FileUploader
 																uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
-																iconOnly="true" id="idBIOIPreApprovalFileUploader"/>
+																iconOnly="true" id="idBIOIPreApprovalFileUploader"/> -->
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 											</sap.ui.commons.layout:cells>

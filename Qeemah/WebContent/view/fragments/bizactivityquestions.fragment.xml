@@ -22,7 +22,8 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							<!-- <VBox justifyContent="Center"> -->
-								<sap.ui.commons:TextView text="{i18n>BAQ1}"></sap.ui.commons:TextView>
+								<!-- <sap.ui.commons:TextView text="{i18n>BAQ1}"></sap.ui.commons:TextView> Qtxtlg_bus-->
+								<sap.ui.commons:TextView  id="idBAQ1TextView"></sap.ui.commons:TextView>
 								<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 								<HBox justifyContent="SpaceBetween">
 									<ComboBox width="25em">

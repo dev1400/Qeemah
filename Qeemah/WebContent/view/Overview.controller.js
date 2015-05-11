@@ -136,6 +136,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this._basicInfo_OrganizationFragmentChild = sap.ui.xmlfragment("com.sagia.view.fragments.bi_organization", this.getView()
 				.getController());
+		this._licenseInfo_BAQFragmentChild = sap.ui.xmlfragment("com.sagia.view.fragments.bizactivityquestions", this.getView()
+				.getController());
 		//this.getView().addDependent(this._basicInfo_OrganizationFragment);
 		//console.dir(this._basicInfo_OrganizationFragment);
 		
@@ -198,15 +200,42 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var oRequestFinishedDeferred = this.oModelHelper.readCountryCode(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-			//console.log(oResponse.getData());
-			//this.getView().setModel(oResponse);
-			//console.log(oResponse);
-			//this._oBI_TCountryCode = sap.ui.getCore().byId("idbi_TCountryCode");
-			//this._oBI_TCountryCode.setModel(oResponse);
-			//this._oBI_TCountryCode.setValue(oResponse);
 			this.getView().setModel(oResponse,"CCModel");
 			
 		}, this));	
+	},
+	getBAQ : function(){
+		var oRequestFinishedDeferred = this.oModelHelper.readBAQ();
+
+		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+			//console.log(oResponse);
+			console.log(oResponse.getJSON());
+			this.getView().setModel(oResponse,"BAQModel");
+			//console.log(this.getView().getModel("BAQModel"));
+			this._oBAQ1TextView = this.getView().byId("idBAQ1TextView");
+			
+			//this._oBAQ1TextView.bindProperty("text", {path : "/BAQCollection", model : "BAQModel"});
+			this._oBAQ1TextView.bindProperty("text", "BAQModel>/BAQCollection");
+			var BAQModel = this.getView().getModel("BAQModel");
+			
+			console.dir(BAQModel);
+			
+			console.dir(BAQModel.getProperty("/BAQCollection/results"));
+			var arr = BAQModel.getProperty("/BAQCollection/results");
+			for(var i = 0; i < arr.length; i++){
+				if(arr[i].Qtxtlg_bus != ""){
+					console.log(arr[i].Qtxtlg_bus);
+				}
+			}
+			//this._oBAQ1TextView.bindText({path : "/BAQCollection", model : "BAQModel"});
+			
+			//this._oBAQ1TextView({text : "{BAQModel>/BAQCollection/Qtxtlg_bus}"});
+			
+			//this._oBAQ1TextView.setText({"{Qtxtlg_bus}"})
+			//sName : "Qtxtlg_bus", 
+			
+		}, this));	
+		
 	},
 	handleSaveLinkPress : function(){
 		//this._oCountryComboBox = sap.ui.getCore().byId("idCountryComboBox1400");
@@ -1224,6 +1253,8 @@ handleRegisterUserButtonPress : function() {
 		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
 	},
 	handleLicenseButtonClick : function(){
+		
+		
 		this._oLicenseInfoContent.setVisible(true);
 		this._oBasicInfoContent.setVisible(false);
 		this._oShareHoldersInfoContent.setVisible(false);
@@ -1241,6 +1272,10 @@ handleRegisterUserButtonPress : function() {
 		
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("LicenseInformationHTML"));
+		
+		this.getBAQ();
+		
+	
 	},
 	handleShareholderInfoButtonClick : function(){
 		this._oShareholderInfoButton.setSrc("common/mime/shareholder_hover.png");
