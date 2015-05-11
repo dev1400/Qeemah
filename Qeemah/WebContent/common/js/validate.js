@@ -180,8 +180,22 @@ com.sagia.common.js.validate = {
             context._oBICIRoleComboBox = context.getView().byId("idBICIRoleInputText");
 			context._oBICIPreviewRoleCombobox = context.getView().byId("idBICIPreviewRoleInputText");			
 			var oBICIPreviewCommMethodComboboxItemTemplate = context._oBICIRoleComboBox.getSelectedItem();			
-            context._oBICIPreviewRoleCombobox.setSelectedItem(_oBICIPreviewRoleCombobox);
+            context._oBICIPreviewRoleCombobox.setSelectedItem(oBICIPreviewCommMethodComboboxItemTemplate);
             
+            context.oBICIEmailInputText = context.getView().byId("idBICIEmailInputText");	
+            context._oBICIPreviewEmailInputText = context.getView().byId("idBICIPreviewEmailInputText");			
+            context._oBICIPreviewEmailInputText.setValue(context.oBICIEmailInputText.getValue());
+            
+            context._oBICIPassportCopyFileUploader = context.getView().byId("idBICIPassportCopyFileUploader");
+			context._oBICIPreviewPassportCopyFileUploader = context.getView().byId("idBICIPreviewPAssportCopyFileUploader");
+            context._oBICIPreviewPassportCopyFileUploader.setValue(context._oBICIPassportCopyFileUploader.getValue());
+           
+            
+            
+            context._oBICIPowerOfAttorneyFileUploader = context.getView().byId("idBICIPowerofAttorneyFileUploader");
+			context._oBICIPreviewPowerOfAttorneyFileUploader = context.getView().byId("idBICIPreviewPowerofAttorneyFileUploader");
+            context._oBICIPreviewPowerOfAttorneyFileUploader.setValue(context._oBICIPowerOfAttorneyFileUploader.getValue());
+           
            
 
 			
