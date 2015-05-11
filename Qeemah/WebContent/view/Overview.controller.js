@@ -209,7 +209,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 			//console.log(oResponse);
-			console.log(oResponse.getJSON());
+			//console.log(oResponse.getJSON());
 			this.getView().setModel(oResponse,"BAQModel");
 			//console.log(this.getView().getModel("BAQModel"));
 			this._oBAQ1TextView = this.getView().byId("idBAQ1TextView");
@@ -218,15 +218,22 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this._oBAQ1TextView.bindProperty("text", "BAQModel>/BAQCollection");
 			var BAQModel = this.getView().getModel("BAQModel");
 			
-			console.dir(BAQModel);
+			//console.dir(BAQModel);
 			
-			console.dir(BAQModel.getProperty("/BAQCollection/results"));
+			var baqQuestionsArray = [];
+			//console.dir(BAQModel.getProperty("/BAQCollection/results"));
 			var arr = BAQModel.getProperty("/BAQCollection/results");
 			for(var i = 0; i < arr.length; i++){
 				if(arr[i].Qtxtlg_bus != ""){
-					console.log(arr[i].Qtxtlg_bus);
+					baqQuestionsArray.push(arr[i].Qtxtlg_bus);
 				}
 			}
+			console.log(baqQuestionsArray.reduce(function(a,b){if(a.indexOf(b)<0)a.push(b);return a;},[]));
+			this._oBAQ1TextView.setText(baqQuestionsArray[0]);
+			
+			var oFilter = new sap.ui.model.Filter("Qtxtlg_bus", sap.ui.model.FilterOperator.NE, "");
+			this._oBAQ1TextView.bindProperty("text", {path : "BAQModel>/BAQCollection", filters : oFilter});
+			
 			//this._oBAQ1TextView.bindText({path : "/BAQCollection", model : "BAQModel"});
 			
 			//this._oBAQ1TextView({text : "{BAQModel>/BAQCollection/Qtxtlg_bus}"});
