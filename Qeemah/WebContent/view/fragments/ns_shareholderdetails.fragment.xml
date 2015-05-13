@@ -6,10 +6,44 @@
 	<VBox justifyContent="Center" alignItems="Center">
 	
 	<html:br/>
+	
+	
 	<sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false" columns="4" widths="13em,25em,15em,25em">
 		
 		<sap.ui.commons.layout:rows>
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="Begin" colSpan="4">
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>ShareholderType}" design="H1"></sap.ui.commons:TextView>
+							<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="Begin" colSpan="4">
+						<sap.ui.commons.layout:content>
+							<HBox alignItems="Center">
+			<Label text="{i18n>SelectShareHolderType}"></Label>
+			<RadioButton groupName="NewShareHolderGroup" text="{i18n>Person}" />
+			<RadioButton groupName="NewShareHolderGroup" text="{i18n>Organization}" />
+		</HBox>
+							
+										</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
 		
 		<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>

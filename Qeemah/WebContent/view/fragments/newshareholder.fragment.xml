@@ -6,11 +6,11 @@
 
 	<!-- <ScrollContainer height="39.88rem" width="69rem" vertical="true"> -->
 <VBox justifyContent="Center" alignItems="Center">
-		<HBox alignItems="Center">
+		<!-- <HBox alignItems="Center">
 			<Label text="{i18n>SelectShareHolderType}"></Label>
 			<RadioButton groupName="NewShareHolderGroup" text="{i18n>Person}" />
 			<RadioButton groupName="NewShareHolderGroup" text="{i18n>Organization}" />
-		</HBox>
+		</HBox> -->
 		
 		<sap.ui.commons.layout:MatrixLayout
 				layoutFixed="false">

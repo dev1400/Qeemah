@@ -178,6 +178,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		
 	},
+	handleBasicInfoTabsSelection : function(oEvent){
+		//console.log("Tab Selected");
+	},
 	handleRegionSelectionComboBox : function(oControlEvent){
 		console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
 		
@@ -218,7 +221,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this._oBAQ1TextView.bindProperty("text", "BAQModel>/BAQCollection");
 			var BAQModel = this.getView().getModel("BAQModel");
 			
-			//console.dir(BAQModel);
+			console.dir(BAQModel.getJSON());
 			
 			var baqQuestionsArray = [];
 			var baqQuestionsIDArray = [];
@@ -1194,9 +1197,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 		sap.ui.getCore().byId("idInvestmentGuidelineMsg").setVisible(false);
 	},
 	handleSignInButtonPress : function(oEvent) {
-
+		
 		var userID = this.getView().byId("idSignInUsernameInput").getValue();
 		var password = this.getView().byId("idSignInPasswordInput").getValue();
+		
+		
+		if(typeof(Storage) !== "undefined") {
+		    //console.log("Code for localStorage/sessionStorage.");
+		} else {
+		    //console.log("Sorry! No Web Storage support..");
+		}
+
 		
 		
 		

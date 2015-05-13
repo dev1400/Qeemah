@@ -215,7 +215,7 @@
 
 		<HBox id="idBasicInfoBoxContent" justifyContent="Center" width="100%">
 	
-							<sap.ui.commons:TabStrip class="IconTabBarStyling"
+							<sap.ui.commons:TabStrip class="IconTabBarStyling" id="idBasicInfoTab" select="handleBasicInfoTabsSelection"
 				>
 				<sap.ui.commons:tabs>
 					<sap.ui.commons:Tab  text="{i18n>Organization}">
