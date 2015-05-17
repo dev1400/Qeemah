@@ -1,6 +1,8 @@
 jQuery.sap.require("com.sagia.common.ModelHelper");
 jQuery.sap.require("sap.ui.model.FilterOperator");
 jQuery.sap.require("com.sagia.common.js.validate");
+//jQuery.sap.require("com.sagia.common.js.parsley");
+
 
 
 jQuery.sap.require("com.sagia.common.Formatter");
@@ -176,6 +178,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		//this._oBIILegalStatus.onAfterRendering = function() { console.log("dir");};
 
+		
+	},
+	handleSaveLinkPressSave : function(oEvent){
 		
 	},
 	handleBasicInfoTabsSelection : function(oEvent){

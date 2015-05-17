@@ -26,7 +26,7 @@ sap.ui.core.UIComponent.extend("com.sagia.Component",{
 		}
 	}
 });
-
+//The prototype property allows you to add properties and methods to an object.
 com.sagia.Component.prototype.init = function(){
 	jQuery.sap.require("sap.ui.core.routing.History");
 	jQuery.sap.require("sap.m.routing.RouteMatchedHandler");
