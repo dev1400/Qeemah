@@ -70,7 +70,7 @@
 						<sap.ui.commons:TextView text="*"
 							class="redcolortext"></sap.ui.commons:TextView>
 						<sap.ui.commons:TextView id="idFirstNameTextView"
-							text="{i18n>PleaseEnterFirstName}" class="textcolorwhite"></sap.ui.commons:TextView>
+							text="{i18n>EnterCompanyName}" class="textcolorwhite"></sap.ui.commons:TextView>
 
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
@@ -92,7 +92,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons:TextView text="*"
 							class="redcolortext"></sap.ui.commons:TextView>
-						<sap.ui.commons:TextView text="{i18n>PleaseEnterLastName}"
+						<sap.ui.commons:TextView text="{i18n>EnterContactPersonName}"
 							class="textcolorwhite"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
@@ -108,34 +108,10 @@
 							id="idRegLastNameErrorMsg" class="textcolorred"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
-
-
-
-
-
-				<sap.ui.commons.layout:MatrixLayoutRow>
-
-					<sap.ui.commons.layout:MatrixLayoutCell>
-						<sap.ui.commons:TextView text="*"
-							class="redcolortext"></sap.ui.commons:TextView>
-						<sap.ui.commons:TextView text="{i18n>PleaseEnterPassword}"
-							class="textcolorwhite"></sap.ui.commons:TextView>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-
-					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Password" required="true" id="idInputPassword" liveChange="handlePasswordEntryLive"/>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-				</sap.ui.commons.layout:MatrixLayoutRow>
 				
-				<sap.ui.commons.layout:MatrixLayoutRow>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						colSpan="2" vAlign="Middle" hAlign="Center">
-						<sap.ui.commons:TextView visible="false"
-							id="idRegPasswordErrorMsg" class="textcolorred"></sap.ui.commons:TextView>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-				</sap.ui.commons.layout:MatrixLayoutRow>
-
-				<sap.ui.commons.layout:MatrixLayoutRow>
+				
+				
+				<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons:TextView text="*"
@@ -154,8 +130,8 @@
 						colSpan="2" vAlign="Middle" hAlign="Center">
 						<sap.ui.commons:TextView visible="false"
 							id="idRegRePasswordErrorMsg" class="textcolorred"></sap.ui.commons:TextView>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-				</sap.ui.commons.layout:MatrixLayoutRow>
+					</sap.ui.commons.layout:MatrixLayoutCell> 
+				</sap.ui.commons.layout:MatrixLayoutRow>-->
 
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
@@ -201,6 +177,43 @@
 						colSpan="2" vAlign="Middle" hAlign="Center">
 						<sap.ui.commons:TextView visible="false"
 							id="idRegEmailErrorMsg" class="textcolorred"></sap.ui.commons:TextView>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				
+				<sap.ui.commons.layout:MatrixLayoutRow>
+
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons:TextView text="*"
+							class="redcolortext"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="{i18n>PleaseEnterUserID}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<Input type="Password" required="true" />
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				
+				
+				<sap.ui.commons.layout:MatrixLayoutRow>
+
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons:TextView text="*"
+							class="redcolortext"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="{i18n>PleaseEnterPassword}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<Input type="Password" required="true" id="idInputPassword" liveChange="handlePasswordEntryLive"/>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						colSpan="2" vAlign="Middle" hAlign="Center">
+						<sap.ui.commons:TextView visible="false"
+							id="idRegPasswordErrorMsg" class="textcolorred"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 
