@@ -455,6 +455,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleLogoutLinkPress : function(){
 		
+		sessionStorage.clear();
 		location.reload(true);
 		
 		
@@ -1010,11 +1011,20 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 * @memberOf com.sagia.view.Overview
 	 */
 	onAfterRendering : function() {
+		
 		console.log("onAfterRendering");
+		
 
 		this._oLanguageSelectionComboBox.setSelectedKey("E");
 		
 		this.handleSaveLinkPress();
+		
+		if(sessionStorage.getItem('userID') !== null){
+			this.getView().byId("idSignInUsernameInput").setValue(sessionStorage.getItem('userID'));
+			this.getView().byId("idSignInPasswordInput").setValue(sessionStorage.getItem('password'));
+			
+			this.handleSignInButtonPress();
+		}
 		
 		//this.getView().addDependent(this._basicInfo_OrganizationFragmentChild);
 		//this.handleCountrySelectionComboBox();
@@ -1201,87 +1211,88 @@ sap.ui.controller("com.sagia.view.Overview", {
 		sap.ui.getCore().byId("idInvestmentGuidelines").setVisible(true);
 		sap.ui.getCore().byId("idInvestmentGuidelineMsg").setVisible(false);
 	},
-	handleSignInButtonPress : function(oEvent) {
+	handleSignInButtonPress : function() {
+		//console.log(oReferenceID);//undefined
 		
 		var userID = this.getView().byId("idSignInUsernameInput").getValue();
 		var password = this.getView().byId("idSignInPasswordInput").getValue();
 		
 		
+		
+		
 		if(typeof(Storage) !== "undefined") {
-		    //console.log("Code for localStorage/sessionStorage.");
+			
+			//console.log(sessionStorage.getItem('userID'));
+			
+			if((sessionStorage.getItem('userID') === "" 
+				|| sessionStorage.getItem('userID') === null) && 
+				sessionStorage.getItem('password') === ""
+				|| sessionStorage.getItem('password') === null){
+				
+				sessionStorage.setItem('userID', userID);
+				sessionStorage.setItem('password', password);				
+				
+			}else{
+				userID = sessionStorage.getItem('userID');
+				password = sessionStorage.getItem('password');
+			}
+			
+			
+			
+			
+			if (userID.length > 0 && password.length > 0) {
+				var oRequestFinishedDeferred = this.oModelHelper.signInUser(userID,password);
+
+				jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+					
+					
+					
+					if(oResponse.InvestorId === "0000000000"){
+						sap.m.MessageToast.show(this.oModelHelper.getText("AuthenticationFailedMessage"));
+					}else{
+						/*sap.m.MessageToast.show(this.oModelHelper
+								.getText("SignInSuccessful"));
+*/						
+						sessionStorage.setItem('ReferenceId', oResponse.InvestorId);
+						
+						this._oidMainPageContent.setVisible(false);
+						this._oTopHeaderVBox.setVisible(true);
+						this._oidLicenseButtonsHBox.setVisible(true);
+						
+						this._oidRegionComboBox = this.getView().byId("idRegionComboBox");		
+						var oRegionComboBoxFilter = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
+						this._oidRegionComboBox.getBinding("items").filter(oRegionComboBoxFilter);
+						
+						this._oBIILegalStatusCombobox = this.getView().byId("idBILegalStatusComboBox");
+						var oBIILegalStatusFilter = new sap.ui.model.Filter("Textlong", sap.ui.model.FilterOperator.NE, "");
+						this._oBIILegalStatusCombobox.getBinding("items").filter(oBIILegalStatusFilter);
+						
+						this._oBICINationalityCombobox = this.getView().byId("idCINationalityComboBox");
+						var oBICINationalityFilter = new sap.ui.model.Filter("Natio50", sap.ui.model.FilterOperator.NE, "");
+						this._oBICINationalityCombobox.getBinding("items").filter(oBICINationalityFilter);
+						
+						
+						this._oBICICountryCombobox = this.getView().byId("idCICountryComboBox");
+						var oBICICountryFilter = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.NE, "");
+						this._oBICICountryCombobox.getBinding("items").filter(oBICICountryFilter);
+					
+					}
+					
+				}, this));				
+				
+				
+				
+			} else {
+				sap.m.MessageToast.show(this.oModelHelper
+						.getText("PleaseEnterRequiredFields"));						
+				
+			}
+			
 		} else {
-		    //console.log("Sorry! No Web Storage support..");
+		    console.log("Sorry! No Web Storage support..");
 		}
 
-		
-		
-		
-		this._oidMainPageContent.setVisible(false);
-		this._oTopHeaderVBox.setVisible(true);
-		this._oidLicenseButtonsHBox.setVisible(true);
-		
-		this._oidRegionComboBox = this.getView().byId("idRegionComboBox");		
-		var oRegionComboBoxFilter = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
-		this._oidRegionComboBox.getBinding("items").filter(oRegionComboBoxFilter);
-		
-		this._oBIILegalStatusCombobox = this.getView().byId("idBILegalStatusComboBox");
-		var oBIILegalStatusFilter = new sap.ui.model.Filter("Textlong", sap.ui.model.FilterOperator.NE, "");
-		this._oBIILegalStatusCombobox.getBinding("items").filter(oBIILegalStatusFilter);
-		
-		this._oBICINationalityCombobox = this.getView().byId("idCINationalityComboBox");
-		var oBICINationalityFilter = new sap.ui.model.Filter("Natio50", sap.ui.model.FilterOperator.NE, "");
-		this._oBICINationalityCombobox.getBinding("items").filter(oBICINationalityFilter);
-		
-		
-		this._oBICICountryCombobox = this.getView().byId("idCICountryComboBox");
-		var oBICICountryFilter = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.NE, "");
-		this._oBICICountryCombobox.getBinding("items").filter(oBICICountryFilter);
-		
-		
-		
-		
-		
-		/*this._oidRegionComboBox3 = this.getView().byId("idRegionComboBox3");		
-		var oItemTemplate3 = new sap.ui.core.ListItem({text:"{Bezei_reg}"});		
-		var oFilter3 = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
-		this._oidRegionComboBox3.bindAggregation("items", {path : "/DetailsCollection", template: oItemTemplate3,
-			filters : oFilter3});
-        */
-		
-//this._oRegionComboBox = sap.ui.getCore().byId("idRegionComboBox");
-		
-		//var oItemTemplate = new sap.ui.core.ListItem({text:"{Landx50}"});
-	//	this._oRegionComboBox.bindAggregation("items", "/DetailsCollection", new sap.ui.core.ListItem({text:"{Landx50}"}));
 	
-		
-		if (userID.length > 0 && password.length > 0) {
-			var oRequestFinishedDeferred = this.oModelHelper.signInUser(userID,password);
-
-			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {	
-				
-				if(oResponse.InvestorId === "0000000000"){
-					sap.m.MessageToast.show(this.oModelHelper.getText("AuthenticationFailedMessage"));
-				}else{
-					sap.m.MessageToast.show(this.oModelHelper
-							.getText("SignInSuccessful"));
-					/*this._oidMainPageContent.setVisible(false);
-					this._oTopHeaderVBox.setVisible(true);
-					this._oidLicenseButtonsHBox.setVisible(true);*/
-				}
-				
-			}, this));	
-			
-			
-			
-			
-			
-		} else {
-			sap.m.MessageToast.show(this.oModelHelper
-					.getText("PleaseEnterRequiredFields"));
-			
-			
-			
-		}		
 	},
 handleRegisterUserButtonPress : function() {
 		var that = this;
