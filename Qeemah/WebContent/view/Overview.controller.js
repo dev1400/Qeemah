@@ -1023,7 +1023,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.getView().byId("idSignInUsernameInput").setValue(sessionStorage.getItem('userID'));
 			this.getView().byId("idSignInPasswordInput").setValue(sessionStorage.getItem('password'));
 			
-			this.handleSignInButtonPress();
+            //Uncomment later start
+			//this.handleSignInButtonPress();
+			//Uncomment later end
 		}
 		
 		//this.getView().addDependent(this._basicInfo_OrganizationFragmentChild);
@@ -1212,10 +1214,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 		sap.ui.getCore().byId("idInvestmentGuidelineMsg").setVisible(false);
 	},
 	handleSignInButtonPress : function() {
-		//console.log(oReferenceID);//undefined
 		
 		var userID = this.getView().byId("idSignInUsernameInput").getValue();
 		var password = this.getView().byId("idSignInPasswordInput").getValue();
+		
+		//Remove later start
+		
+		this.userSignIn(userID, password);
+		
+		//Remove later end
 		
 		if (userID.length > 0 && password.length > 0) {
 		console.log("userID "+userID);
@@ -1226,12 +1233,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		if(typeof(Storage) !== "undefined") {
 			
-			//console.log(sessionStorage.getItem('userID'));
-			
-			/*if((sessionStorage.getItem('userID') === "" 
-				|| sessionStorage.getItem('userID') === null) && 
-				sessionStorage.getItem('password') === ""
-				|| sessionStorage.getItem('password') === null){*/
 			if(sessionStorage.getItem('userID') === "" || 
 			   sessionStorage.getItem('userID') === null || 
 			   sessionStorage.getItem('password') === "" ||
@@ -1264,7 +1265,30 @@ sap.ui.controller("com.sagia.view.Overview", {
 	
 	},
 userSignIn : function(userID, password){
-	/*if (userID.length > 0 && password.length > 0) {*/
+	//Remove later start
+	this._oidMainPageContent.setVisible(false);
+	this._oTopHeaderVBox.setVisible(true);
+	this._oidLicenseButtonsHBox.setVisible(true);
+	
+	this._oidRegionComboBox = this.getView().byId("idRegionComboBox");		
+	var oRegionComboBoxFilter = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
+	this._oidRegionComboBox.getBinding("items").filter(oRegionComboBoxFilter);
+	
+	this._oBIILegalStatusCombobox = this.getView().byId("idBILegalStatusComboBox");
+	var oBIILegalStatusFilter = new sap.ui.model.Filter("Textlong", sap.ui.model.FilterOperator.NE, "");
+	this._oBIILegalStatusCombobox.getBinding("items").filter(oBIILegalStatusFilter);
+	
+	this._oBICINationalityCombobox = this.getView().byId("idCINationalityComboBox");
+	var oBICINationalityFilter = new sap.ui.model.Filter("Natio50", sap.ui.model.FilterOperator.NE, "");
+	this._oBICINationalityCombobox.getBinding("items").filter(oBICINationalityFilter);
+	
+	
+	this._oBICICountryCombobox = this.getView().byId("idCICountryComboBox");
+	var oBICICountryFilter = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.NE, "");
+	this._oBICICountryCombobox.getBinding("items").filter(oBICICountryFilter);
+	
+	//Remove later End
+	
 		var oRequestFinishedDeferred = this.oModelHelper.signInUser(userID,password);
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
@@ -1274,12 +1298,13 @@ userSignIn : function(userID, password){
 			if(oResponse.InvestorId === "0000000000"){
 				sap.m.MessageToast.show(this.oModelHelper.getText("AuthenticationFailedMessage"));
 			}else{
-				/*sap.m.MessageToast.show(this.oModelHelper
+				sap.m.MessageToast.show(this.oModelHelper
 						.getText("SignInSuccessful"));
-*/						
+						
 				sessionStorage.setItem('ReferenceId', oResponse.InvestorId);
 				
-				this._oidMainPageContent.setVisible(false);
+				//Uncomment later start
+				/*this._oidMainPageContent.setVisible(false);
 				this._oTopHeaderVBox.setVisible(true);
 				this._oidLicenseButtonsHBox.setVisible(true);
 				
@@ -1298,19 +1323,13 @@ userSignIn : function(userID, password){
 				
 				this._oBICICountryCombobox = this.getView().byId("idCICountryComboBox");
 				var oBICICountryFilter = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.NE, "");
-				this._oBICICountryCombobox.getBinding("items").filter(oBICICountryFilter);
+				this._oBICICountryCombobox.getBinding("items").filter(oBICICountryFilter);*/
+				//Uncomment later end
 			
 			}
 			
 		}, this));				
-		
-		
-		
-	/*} else {
-		sap.m.MessageToast.show(this.oModelHelper
-				.getText("PleaseEnterRequiredFields"));						
-		
-	}*/
+	
 },
 handleRegisterUserButtonPress : function() {
 		var that = this;
