@@ -1,7 +1,7 @@
 jQuery.sap.require("com.sagia.common.ModelHelper");
 jQuery.sap.require("sap.ui.model.FilterOperator");
 jQuery.sap.require("com.sagia.common.js.validate");
-//jQuery.sap.require("com.sagia.common.js.parsley");
+jQuery.sap.require("com.sagia.common.js.marknote");
 
 
 
@@ -177,17 +177,86 @@ sap.ui.controller("com.sagia.view.Overview", {
 			filters : oFilter4});*/
 		
 		//this._oBIILegalStatus.onAfterRendering = function() { console.log("dir");};
+		
+		
+		
+		/*this.partialSaveXMLDocument = new marknote.Document();
+		this.XMLrootElement = new marknote.Element("RegistrationInfo");
+		
+		this.partialSaveXMLDocument.setRootElement(this.XMLrootElement);
+		this.idBIOIOrganizationNameME = new marknote.Element("BasicInfoOrgInfoOrganizationName");
+		this.XMLrootElement.addChildElement(this.idBIOIOrganizationNameME);*/
+		
+		
+		
+		/*var rootElement = new marknote.Element("songs");
+		this.partialSaveXMLDocument.setRootElement(rootElement);
 
+		// add Truckin'
+		var truckingElement = new marknote.Element("song");
+		truckingElement.setAttribute("artist", "Grateful Dead");
+		truckingElement.setAttribute("title", "Truckin'");
+		rootElement.addChildElement(truckingElement);
+
+		// add Smoke on the Water
+		var smokeElement = new marknote.Element("song");
+		smokeElement.setAttribute("artist", "Deep Purple");
+		smokeElement.setAttribute("title", "Smoke on the Water");
+		rootElement.addChildElement(smokeElement);
+
+		// add Hair of the Dog
+		var dogElement = new marknote.Element("song");
+		dogElement.setAttribute("artist", "Nazareth");
+		dogElement.setAttribute("title", "Hair of the Dog");
+		rootElement.addChildElement(dogElement);
+		
+		console.log(this.partialSaveXMLDocument.toString());
+*/
 		
 	},
 	handleSaveLinkPressSave : function(oEvent){
+		var oBIOIOrganizationName = this.getView().byId("idBIOIOrganizationName");
+		//var oBIOIRegionComboBoxitem = this.getView().byId("idRegionComboBoxitem");
+		console.log("Org Name="+oBIOIOrganizationName.getValue()+ " Region= "+
+				this._oidRegionComboBox.getSelectedItem().getText()+" Legal Status= "+
+				this._oBIILegalStatusCombobox.getSelectedItem().getText()+" City="+
+				this._oBICityComboBox.getSelectedItem().getText());
+		
+		
+		//console.log(oBIOIRegionComboBoxitem.getText());
+		
+		
+		
+		//var 
+		//idBIOIOrganizationName.setAttribute("value", oBIOIOrganizationName.getValue());
+		//this.idBIOIOrganizationNameME.setText(oBIOIOrganizationName.getValue());
+		
+		
+		/*var paintings = this.XMLrootElement.getChildElements("painting");
+		for (var i=0; i<paintings.length; i++) {
+		    var child = paintings[i];
+		    alert(
+		        "Element name is " + 
+		        child.getName() + 
+		        " and title is " + 
+		        child.getAttribute("title").getValue()
+		    );
+		}
+		*/
+		
+		//console.log(this.partialSaveXMLDocument.toString());
 		
 	},
 	handleBasicInfoTabsSelection : function(oEvent){
 		//console.log("Tab Selected");
+		
+		
+		
+		
+		
 	},
 	handleRegionSelectionComboBox : function(oControlEvent){
-		console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
+		console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.text);
 		
 		this._oBICityComboBox = this.getView().byId("idCityComboBox");
 		this._oBICityComboBox.setEnabled(true);
