@@ -1,7 +1,6 @@
 jQuery.sap.require("com.sagia.common.ModelHelper");
 jQuery.sap.require("sap.ui.model.FilterOperator");
 jQuery.sap.require("com.sagia.common.js.validate");
-jQuery.sap.require("com.sagia.common.js.marknote");
 
 
 
@@ -213,18 +212,45 @@ sap.ui.controller("com.sagia.view.Overview", {
 		console.log(this.partialSaveXMLDocument.toString());
 */
 		
+		
 	},
 	handleSaveLinkPressSave : function(oEvent){
-		var oBIOIOrganizationName = this.getView().byId("idBIOIOrganizationName");
+		
+		
 		//var oBIOIRegionComboBoxitem = this.getView().byId("idRegionComboBoxitem");
-		console.log("Org Name="+oBIOIOrganizationName.getValue()+ " Region= "+
+		console.log("Org Name="+this.oBIOIOrganizationName.getValue()+ " Region= "+
 				this._oidRegionComboBox.getSelectedItem().getText()+" Legal Status= "+
 				this._oBIILegalStatusCombobox.getSelectedItem().getText()+" City="+
-				this._oBICityComboBox.getSelectedItem().getText());
+				this._oBICityComboBox.getSelectedItem().getText()+" MNC= "+
+				this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText()+" Email = "+
+				this.oBIOIEmailInputText.getValue()+" Labor Size = "+
+				this.oBIOILaborSizeInputText.getValue()+" Comm Method = " +
+				this.oBIOICommMethodComboBox.getValue()+" Captial = "+
+				this.oBIOICapitalInputText.getValue()+" Telephone = "+
+				this.oBIOITelephoneCountryCodeInputText.getValue()+""+this.oBIOITelephoneInputText.getValue()
+				+" Mobile Phone = "+this.oBIOIMobilephoneCountryCodeInputText.getValue()+""+
+				this.oBIOIMobilephoneInputText.getValue()
+				+" Fax = "+this.oBIOIFaxCountryCodeInputText.getValue()+""+this.oBIOIFaxInputText.getValue()
+				+" Website "+this.oBIOIWebSiteInputText.getValue());
 		
 		
-		//console.log(oBIOIRegionComboBoxitem.getText());
-		
+		this.oModelHelper.saveBIOI(this.oBIOIOrganizationName.getValue(),
+				this._oidRegionComboBox.getSelectedItem().getText(),
+				this._oBIILegalStatusCombobox.getSelectedItem().getText(),
+				this._oBICityComboBox.getSelectedItem().getText(),
+				this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
+				this.oBIOIEmailInputText.getValue(),
+				this.oBIOILaborSizeInputText.getValue(),
+				this.oBIOICommMethodComboBox.getValue(),
+				this.oBIOICapitalInputText.getValue(),
+				this.oBIOITelephoneCountryCodeInputText.getValue(),
+				this.oBIOITelephoneInputText.getValue(),
+				this.oBIOIMobilephoneCountryCodeInputText.getValue(),
+				this.oBIOIMobilephoneInputText.getValue(),
+				this.oBIOIFaxCountryCodeInputText.getValue(),
+				this.oBIOIFaxInputText.getValue(),
+				this.oBIOIWebSiteInputText.getValue()
+				);
 		
 		
 		//var 
@@ -1355,6 +1381,23 @@ userSignIn : function(userID, password){
 	this._oBICICountryCombobox = this.getView().byId("idCICountryComboBox");
 	var oBICICountryFilter = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.NE, "");
 	this._oBICICountryCombobox.getBinding("items").filter(oBICICountryFilter);
+	
+	this.oBIOIOrganizationName = this.getView().byId("idBIOIOrganizationName");
+	this.oBIOIMultiNationalCompanyCombobox = this.getView().byId("idBIOIMultiNationalCompanyCombobox");
+	this.oBIOIEmailInputText = this.getView().byId("idBIOIEmailInputText");
+	this.oBIOILaborSizeInputText = this.getView().byId("idBIOILaborSizeInputText");
+	this.oBIOICommMethodComboBox = this.getView().byId("idBIOICommMethodComboBox");
+	this.oBIOICapitalInputText = this.getView().byId("idBIOICapitalInputText");
+	this.oBIOITelephoneCountryCodeInputText = this.getView().byId("idBIOITelephoneCountryCodeInputText");
+	this.oBIOITelephoneInputText = this.getView().byId("idBIOITelephoneInputText");
+	this.oBIOIMobilephoneCountryCodeInputText = this.getView().byId("idBIOIMobilephoneCountryCodeInputText");
+	this.oBIOIMobilephoneInputText = this.getView().byId("idBIOIMobilephoneInputText");
+	this.oBIOIFaxCountryCodeInputText = this.getView().byId("idBIOIFaxCountryCodeInputText");
+	this.oBIOIFaxInputText = this.getView().byId("idBIOIFaxInputText");
+	this.oBIOIWebSiteInputText = this.getView().byId("idBIOIWebSiteInputText");
+	
+	
+	
 	
 	//Remove later End
 	

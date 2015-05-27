@@ -278,12 +278,12 @@
 															 width="8em" enabled="false" id="idbi_TCountryCode"/>
 													 -->
 													 <Input type="Text" 
-															 width="8em"  /> 		 
+															 width="8em" id="idBIOITelephoneCountryCodeInputText" /> 		 
 													 
-														<Input type="Number" 
-															width="9em" id="idBIOITelephoneInputText"/>
-														<Input type="Number" 
-															width="8em" id="idBIOITelephoneExtensionInputText"/>
+														<Input type="Text" 
+															width="17em" id="idBIOITelephoneInputText"/>
+														<!-- <Input type="Number" 
+															width="8em" id="idBIOITelephoneExtensionInputText"/> -->
 													</HBox>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell
@@ -318,9 +318,9 @@
 														<!-- <Input type="Number" placeholder="{CCModel>/CountryCodeCollection/TelNo}"
 															enabled="false" width="8em" /> -->
 															<Input type="Text" 
-															 width="8em" />
+															 width="8em" id="idBIOIMobilephoneCountryCodeInputText"/>
 													
-														<Input type="Number"
+														<Input type="Text"
 															width="17em" id="idBIOIMobilephoneInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -356,9 +356,9 @@
 														<!-- <Input type="Number" placeholder="{CCModel>/CountryCodeCollection/TelNo}"
 															enabled="false" width="8em" /> -->
 														 <Input type="Text" 
-															 width="8em" />
+															 width="8em" id="idBIOIFaxCountryCodeInputText"/>
 													
-														<Input type="Number" width="17em" id="idBIOIFaxInputText"/>
+														<Input type="Text" width="17em" id="idBIOIFaxInputText"/>
 													</HBox>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<!-- <sap.ui.commons.layout:MatrixLayoutCell

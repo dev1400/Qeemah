@@ -311,5 +311,63 @@ com.sagia.common.ModelHelper = {
 		});
 		return oRequestFinishedDeferred;
 
+	},
+	
+	/**
+	 * Register new user.
+	 * @author Abdul Waheed
+	 */
+	saveBIOI : function(oBIOIOrganizationName, oBIOIRegion, oBIOILegalStatus, 
+			oBIOICity, oBIOIMNC, oBIOIEmail, oBIOILaborSize, oBIOICommMethod, oBIOICapital,
+			oBIOITelephoneCountryCode, oBIOITelephone, oBIOIMobilephoneCountryCode,
+			oBIOIMobilephone, oBIOIFaxCountryCode, oBIOIFax, oBIOIWebSite) {
+		
+		// Open busy dialog
+		this.openBusyDialog();
+
+		var that = this;
+		
+		// Create deferred object so that calling program can wait till
+		// asynchronous call is finished
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+        var oEntry = {};
+        oEntry.RefID = '8';//this will be replaced by user id
+        oEntry.OrgName = oBIOIOrganizationName;
+        oEntry.Region = oBIOIRegion;
+        oEntry.LegalStatus = oBIOILegalStatus;
+        oEntry.City = oBIOICity;
+		oEntry.MncComp = oBIOIMNC;
+		oEntry.Email = oBIOIEmail;
+		oEntry.LbrSize = oBIOILaborSize;
+		oEntry.CommMtd = oBIOICommMethod;
+		oEntry.Capital = oBIOICapital;
+		oEntry.Telephone = oBIOITelephoneCountryCode+""+oBIOITelephone;
+		oEntry.Mobile = oBIOIMobilephoneCountryCode+""+oBIOIMobilephone;
+		oEntry.Fax = oBIOIFaxCountryCode+""+oBIOIFax;		
+		oEntry.Website = oBIOIWebSite;
+		//(RefID='',OrgName='',LegalStatus='',MncComp='',LbrSize='',Capital='',Telephone='',Mobile='',Fax='',Website='',Region='',City='',Email='',CommMtd='')
+		
+		this.oODataModel.create("/ZBASIC_ORG_INFO_ENT", oEntry , {
+		
+		//this.oODataModel.create("/ZBASIC_ORG_INFO_ENT", "(RefID="++",)",{
+		
+			success : function(oData) {
+				console.log(oData);
+				oRequestFinishedDeferred.resolve(oData);
+				// close busy dialog
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				/*console.log(oResponse);*/
+				oRequestFinishedDeferred.resolve();
+				// close busy dialog
+				that.closeBusyDialog();
+			},
+			async : true,
+			urlParameters : oEntry
+		});
+		return oRequestFinishedDeferred;
+
 	}
 };
