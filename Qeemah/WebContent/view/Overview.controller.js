@@ -234,7 +234,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 				+" Website "+this.oBIOIWebSiteInputText.getValue());
 		
 		
-		this.oModelHelper.saveBIOI(this.oBIOIOrganizationName.getValue(),
+		/*this.oModelHelper.saveBIOI(this.oBIOIOrganizationName.getValue(),
+				this._oidRegionComboBox.getSelectedItem().getText(),
+				this._oBIILegalStatusCombobox.getSelectedItem().getText(),
+				this._oBICityComboBox.getSelectedItem().getText(),
+				this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
+				this.oBIOIEmailInputText.getValue(),
+				this.oBIOILaborSizeInputText.getValue(),
+				this.oBIOICommMethodComboBox.getValue(),
+				this.oBIOICapitalInputText.getValue(),
+				this.oBIOITelephoneCountryCodeInputText.getValue(),
+				this.oBIOITelephoneInputText.getValue(),
+				this.oBIOIMobilephoneCountryCodeInputText.getValue(),
+				this.oBIOIMobilephoneInputText.getValue(),
+				this.oBIOIFaxCountryCodeInputText.getValue(),
+				this.oBIOIFaxInputText.getValue(),
+				this.oBIOIWebSiteInputText.getValue()
+				);*/
+		this.oModelHelper.createAndUpdateBIOI(this.oBIOIOrganizationName.getValue(),
 				this._oidRegionComboBox.getSelectedItem().getText(),
 				this._oBIILegalStatusCombobox.getSelectedItem().getText(),
 				this._oBICityComboBox.getSelectedItem().getText(),

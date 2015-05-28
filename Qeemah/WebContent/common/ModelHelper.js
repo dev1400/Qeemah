@@ -357,7 +357,7 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
 		
         var oEntry = {};
-        oEntry.RefID = '8';//this will be replaced by user id
+        oEntry.RefID = '11';//this will be replaced by user id
         oEntry.OrgName = oBIOIOrganizationName;
         oEntry.Region = oBIOIRegion;
         oEntry.LegalStatus = oBIOILegalStatus;
@@ -402,7 +402,7 @@ com.sagia.common.ModelHelper = {
 				+"',Fax='"+oBIOIFaxCountryCode+""+oBIOIFax+"',Website='"+oBIOIWebSite+"',Region='"+oBIOIRegion+"',City='"+oBIOICity+"',Email='"+oBIOIEmail+"',CommMtd='"+oBIOICommMethod+"')",null,{//urlParameters : oEntry,		
 		*/	
 		
-		this.oODataModel.update("ZBASIC_ORG_INFO_ENT('8')",oEntry,{//urlParameters : oEntry,		
+		this.oODataModel.update("ZBASIC_ORG_INFO_ENT('11')",oEntry,{//urlParameters : oEntry,		
 		
 		success : function(oData, response) { //console.dir(response);
 			
@@ -432,6 +432,76 @@ com.sagia.common.ModelHelper = {
 			async : true,
 			//urlParameters : oEntry
 		});*/
+		return oRequestFinishedDeferred;
+
+	},
+	/**
+	 * Create and update BIOI.
+	 * @author Abdul Waheed
+	 */
+	createAndUpdateBIOI : function(oBIOIOrganizationName, oBIOIRegion, oBIOILegalStatus, 
+			oBIOICity, oBIOIMNC, oBIOIEmail, oBIOILaborSize, oBIOICommMethod, oBIOICapital,
+			oBIOITelephoneCountryCode, oBIOITelephone, oBIOIMobilephoneCountryCode,
+			oBIOIMobilephone, oBIOIFaxCountryCode, oBIOIFax, oBIOIWebSite) {
+		
+		
+		// Open busy dialog
+		this.openBusyDialog();
+
+		var that = this;
+		
+		// Create deferred object so that calling program can wait till
+		// asynchronous call is finished
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+        var oEntry = {};
+        oEntry.RefID = '12';//this will be replaced by user id
+        oEntry.OrgName = oBIOIOrganizationName;
+        oEntry.Region = oBIOIRegion;
+        oEntry.LegalStatus = oBIOILegalStatus;
+        oEntry.City = oBIOICity;
+		oEntry.MncComp = oBIOIMNC;
+		oEntry.Email = oBIOIEmail;
+		oEntry.LbrSize = oBIOILaborSize;
+		oEntry.CommMtd = oBIOICommMethod;
+		oEntry.Capital = oBIOICapital;
+		oEntry.Telephone = oBIOITelephoneCountryCode+""+oBIOITelephone;
+		oEntry.Mobile = oBIOIMobilephoneCountryCode+""+oBIOIMobilephone;
+		oEntry.Fax = oBIOIFaxCountryCode+""+oBIOIFax;		
+		oEntry.Website = oBIOIWebSite;
+		
+		this.oODataModel.create("ZBASIC_ORG_INFO_ENT", oEntry, {
+			
+			
+			success : function(oData) {
+				
+				oRequestFinishedDeferred.resolve(oData);
+				// close busy dialog
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				
+				oRequestFinishedDeferred.resolve();
+				// close busy dialog
+				that.closeBusyDialog();
+			},
+			async : true,
+			urlParameters : oEntry
+		});
+		
+		/*this.oODataModel.update("ZBASIC_ORG_INFO_ENT('11')",oEntry,{//urlParameters : oEntry,		
+		
+		success : function(oData, response) { //console.dir(response);
+			
+			//console.log(response.x-csrf-token); 
+			that.closeBusyDialog();
+			},
+		    error : function(oResponse) {// console.log("error"+response); 
+		    that.closeBusyDialog();
+		    }
+		
+		});*/
+		
 		return oRequestFinishedDeferred;
 
 	}
