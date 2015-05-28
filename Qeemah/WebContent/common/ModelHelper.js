@@ -60,11 +60,23 @@ com.sagia.common.ModelHelper = {
 				"nkumar", "sap123", {
 					"X-Requested-With" : "XMLHttpRequest",
 					"Content-Type" : "application/json",
-					"X-CSRF-Token":"Fetch"   
+					"X-CSRF-Token":"Fetch" ,
+					"DataServiceVersion": "2.0",
+					"Authorization" : "Basic bmt1bWFyOnNhcDEyMw=="
 
 				}, true, true);
 		//this.oODataModel.refreshSecurityToken();
 		
+		/*this.oODataModel.setHeaders(
+				 
+                {
+                   "X-Requested-With": "XMLHttpRequest",
+                   "Content-Type": "application/atom+xml",
+                   "DataServiceVersion": "2.0",      
+                   "X-CSRF-Token":"Fetch", 
+                   "Authorization" : "Basic bmt1bWFyOnNhcDEyMw=="                	   
+
+                });*/
 		
 		
 		return this.oODataModel;
@@ -345,7 +357,7 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
 		
         var oEntry = {};
-        oEntry.RefID = '10';//this will be replaced by user id
+        oEntry.RefID = '8';//this will be replaced by user id
         oEntry.OrgName = oBIOIOrganizationName;
         oEntry.Region = oBIOIRegion;
         oEntry.LegalStatus = oBIOILegalStatus;
@@ -363,7 +375,7 @@ com.sagia.common.ModelHelper = {
 		
 		//this.oODataModel.create("/ZBASIC_ORG_INFO_ENT", oEntry , {
 		
-		this.oODataModel.refreshSecurityToken(function() {
+		/*this.oODataModel.refreshSecurityToken(function() {
 			  console.log('Succesfully retrieved CSRF Token');
 			 
 			  // oModel.create()
@@ -372,29 +384,33 @@ com.sagia.common.ModelHelper = {
 			 
 			  console.log('Error retrieving CSRF Token');
 			 
-			}, false);
+			}, false);*/
 		
 		
-		this.oODataModel.setHeaders(
-				 
-                {
-                   "X-Requested-With": "XMLHttpRequest",
-                   "Content-Type": "application/atom+xml",
-                   "DataServiceVersion": "2.0",      
-                   "X-CSRF-Token":"Fetch", 
-                   "Authorization" : "Basic bmt1bWFyOnNhcDEyMw=="                	   
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
-                });
-
-		this.oODataModel.read("ZBASIC_ORG_INFO_ENT(RefID='',OrgName='',LegalStatus='',MncComp='',LbrSize='',Capital='',Telephone='',Mobile='',Fax='',Website='',Region='',City='',Email='',CommMtd='')",{//urlParameters : oEntry,		
-			success : function(oData, response) { console.dir(response);
+		this.oODataModel.read("ZBASIC_ORG_INFO_ENT(RefID='9',OrgName='"+oBIOIOrganizationName+"',LegalStatus='"+oBIOILegalStatus+"',MncComp='"+oBIOIMNC+"',LbrSize='"+oBIOILaborSize+"',Capital='"+oBIOICapital+"',Telephone='"+oBIOITelephoneCountryCode+""+oBIOITelephone+"',Mobile='"+oBIOIMobilephoneCountryCode+""+oBIOIMobilephone
+				+"',Fax='"+oBIOIFaxCountryCode+""+oBIOIFax+"',Website='"+oBIOIWebSite+"',Region='"+oBIOIRegion+"',City='"+oBIOICity+"',Email='"+oBIOIEmail+"',CommMtd='"+oBIOICommMethod+"')",{//urlParameters : oEntry,		
+			success : function(oData, response) { //console.dir(response);
 			
 			//console.log(response.x-csrf-token); 
+			that.closeBusyDialog();
 			},
-		    error : function(oResponse) { console.log("error"+response); }
+		    error : function(oResponse) {// console.log("error"+response); 
+		    that.closeBusyDialog();
+		    }
 		
 		});
-		/*this.oODataModel.update("ZBASIC_ORG_INFO_ENT", oEntry , {
+		/*this.oODataModel.update("ZBASIC_ORG_INFO_ENT", oEntry, {
 			
 		
 			success : function(oData) {
