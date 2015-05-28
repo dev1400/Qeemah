@@ -57,12 +57,16 @@ com.sagia.common.ModelHelper = {
 		// var sUrl = dia.cmc.model.Config.getServiceUrl();
 		var sUrl = this.getServiceUrl();
 		this.oODataModel = new sap.ui.model.odata.ODataModel(sUrl, true,
-				null, null, {
+				"nkumar", "sap123", {
 					"X-Requested-With" : "XMLHttpRequest",
+					"Content-Type" : "application/json",
+					"X-CSRF-Token":"Fetch"   
 
 				}, true, true);
-		this.oODataModel.refreshSecurityToken();
-
+		//this.oODataModel.refreshSecurityToken();
+		
+		
+		
 		return this.oODataModel;
 	},
 	/**
@@ -76,9 +80,15 @@ com.sagia.common.ModelHelper = {
 		// Create deferred object so that calling program can wait till
 		// asynchronous call is finished
 		var oRequestFinishedDeferred = jQuery.Deferred();
-
+		//"X-CSRF-Token":"Fetch"   
+			
+		this.oODataModel.setHeaders({
+		         "X-CSRF-Token": "Fetch"  // auth 
+		    });
 		this.oODataModel.read("ZFM_CRM_QMH_GET_Q_AND_A?ImLanguage=%27EN%27", {
 			success : function(oData, response) {
+				
+				console.log(response);
 				
 				that.BAQCollectionJSONModel = new sap.ui.model.json.JSONModel();
 				that.BAQCollectionJSONModel.setData({BAQCollection:oData});
@@ -322,6 +332,9 @@ com.sagia.common.ModelHelper = {
 			oBIOITelephoneCountryCode, oBIOITelephone, oBIOIMobilephoneCountryCode,
 			oBIOIMobilephone, oBIOIFaxCountryCode, oBIOIFax, oBIOIWebSite) {
 		
+		console.log("csrf token"+this.oODataModel.getSecurityToken());
+
+		
 		// Open busy dialog
 		this.openBusyDialog();
 
@@ -332,7 +345,7 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
 		
         var oEntry = {};
-        oEntry.RefID = '8';//this will be replaced by user id
+        oEntry.RefID = '10';//this will be replaced by user id
         oEntry.OrgName = oBIOIOrganizationName;
         oEntry.Region = oBIOIRegion;
         oEntry.LegalStatus = oBIOILegalStatus;
@@ -348,9 +361,41 @@ com.sagia.common.ModelHelper = {
 		oEntry.Website = oBIOIWebSite;
 		//(RefID='',OrgName='',LegalStatus='',MncComp='',LbrSize='',Capital='',Telephone='',Mobile='',Fax='',Website='',Region='',City='',Email='',CommMtd='')
 		
-		this.oODataModel.create("/ZBASIC_ORG_INFO_ENT", oEntry , {
+		//this.oODataModel.create("/ZBASIC_ORG_INFO_ENT", oEntry , {
 		
-		//this.oODataModel.create("/ZBASIC_ORG_INFO_ENT", "(RefID="++",)",{
+		this.oODataModel.refreshSecurityToken(function() {
+			  console.log('Succesfully retrieved CSRF Token');
+			 
+			  // oModel.create()
+			 
+			}, function() {
+			 
+			  console.log('Error retrieving CSRF Token');
+			 
+			}, false);
+		
+		
+		this.oODataModel.setHeaders(
+				 
+                {
+                   "X-Requested-With": "XMLHttpRequest",
+                   "Content-Type": "application/atom+xml",
+                   "DataServiceVersion": "2.0",      
+                   "X-CSRF-Token":"Fetch", 
+                   "Authorization" : "Basic bmt1bWFyOnNhcDEyMw=="                	   
+
+                });
+
+		this.oODataModel.read("ZBASIC_ORG_INFO_ENT(RefID='',OrgName='',LegalStatus='',MncComp='',LbrSize='',Capital='',Telephone='',Mobile='',Fax='',Website='',Region='',City='',Email='',CommMtd='')",{//urlParameters : oEntry,		
+			success : function(oData, response) { console.dir(response);
+			
+			//console.log(response.x-csrf-token); 
+			},
+		    error : function(oResponse) { console.log("error"+response); }
+		
+		});
+		/*this.oODataModel.update("ZBASIC_ORG_INFO_ENT", oEntry , {
+			
 		
 			success : function(oData) {
 				console.log(oData);
@@ -359,14 +404,14 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				/*console.log(oResponse);*/
+				console.log(oResponse);
 				oRequestFinishedDeferred.resolve();
 				// close busy dialog
 				that.closeBusyDialog();
 			},
 			async : true,
-			urlParameters : oEntry
-		});
+			//urlParameters : oEntry
+		});*/
 		return oRequestFinishedDeferred;
 
 	}
