@@ -211,14 +211,19 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		console.log(this.partialSaveXMLDocument.toString());
 */
-		
+		this.oUserID = this.getView().byId("idUserIDInputText");
+		this.oPassword = this.getView().byId("idPasswordInputText");
+		this.oInputEmail = this.getView().byId("idEmailInputText");
+		this.oContactNumber = this.getView().byId("idContactNumberInputText");
+		this.oContactPersonName = this.getView().byId("idContactNameInputText");
+		this.oCompany = this.getView().byId("idCompanyInputText");
 		
 	},
 	handleSaveLinkPressSave : function(oEvent){
 		
 		
 		//var oBIOIRegionComboBoxitem = this.getView().byId("idRegionComboBoxitem");
-		console.log("Org Name="+this.oBIOIOrganizationName.getValue()+ " Region= "+
+		/*console.log("Org Name="+this.oBIOIOrganizationName.getValue()+ " Region= "+
 				this._oidRegionComboBox.getSelectedItem().getText()+" Legal Status= "+
 				this._oBIILegalStatusCombobox.getSelectedItem().getText()+" City="+
 				this._oBICityComboBox.getSelectedItem().getText()+" MNC= "+
@@ -231,7 +236,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 				+" Mobile Phone = "+this.oBIOIMobilephoneCountryCodeInputText.getValue()+""+
 				this.oBIOIMobilephoneInputText.getValue()
 				+" Fax = "+this.oBIOIFaxCountryCodeInputText.getValue()+""+this.oBIOIFaxInputText.getValue()
-				+" Website "+this.oBIOIWebSiteInputText.getValue());
+				+" Website "+this.oBIOIWebSiteInputText.getValue());*/
 		
 		
 		/*this.oModelHelper.saveBIOI(this.oBIOIOrganizationName.getValue(),
@@ -299,7 +304,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 	},
 	handleRegionSelectionComboBox : function(oControlEvent){
-		console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.text);
+		//console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.text);
 		
 		this._oBICityComboBox = this.getView().byId("idCityComboBox");
 		this._oBICityComboBox.setEnabled(true);
@@ -315,7 +320,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleCountrySelectionComboBox : function(oControlEvent){
 		
 		
-		console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
+		//console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
 		
 		var oRequestFinishedDeferred = this.oModelHelper.readCountryCode(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
 
@@ -370,7 +375,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 						
 						
 					}
-					console.log(arr[i].Answer_Id_bus_para +" "+arr[i].AnswerId_bus );
+					//console.log(arr[i].Answer_Id_bus_para +" "+arr[i].AnswerId_bus );
 					
 					var KeyM = arr[i].Answer_Id_bus_para;
 					var value = arr[i].AnswerId_bus;
@@ -434,18 +439,18 @@ sap.ui.controller("com.sagia.view.Overview", {
 				
 				}
 			
-			console.log(arrM);
+			//console.log(arrM);
 			
-			console.log(questionID);
+			//console.log(questionID);
 			
-			console.log(dulicateQID);
+			//console.log(dulicateQID);
 			
 			//questionID[0] = dulicateQID;
 			
 			//console.log(questionID);
 			
 			finalMap[questionID[0]] = dulicateQID;
-			console.log(finalMap);
+			//console.log(finalMap);
 			
 			/*for(var f=0; f < arrM.length; f++){
 				var str1 = arrM.key;
@@ -574,7 +579,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleLanguageChange : function(oControlEvent){
 		
-		console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);		
+		//console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);		
 		
 		if(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key === "E"){
 			var i18nModel =	com.sagia.common.ModelHelper.getI18nModel("i18n/messageBundle.properties","en");
@@ -589,16 +594,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}
 		
 	},
-	handleEmailEntryLive : function(){
-		var email = this._oEmailInputText.getValue();
-		this.handleEmailValidation(email);		
+	handleEmailEntryLiveChange : function(){
+		//var email = this._oEmailInputText.getValue();
+		this.handleEmailEntryValidation(this.oInputEmail.getValue());		
 	},
-	handleEmailValidation : function(email){
+	handleEmailEntryValidation : function(email){
 		if(email.length>20){
 			this._oRegEmailErrorMsg.setText(this.oModelHelper.getText("EmailMoreThan20Chars"));
 			this._oRegEmailErrorMsg.setVisible(true);
 		}else if(!(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test( email ))){
-			console.log(email.length);
+			//console.log(email.length);
 			this._oRegEmailErrorMsg.setText(this.oModelHelper.getText("InvalidEmailFormat"));
 			if(email.length > 0){
 			this._oRegEmailErrorMsg.setVisible(true);
@@ -610,11 +615,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}
 	},
 	
-	handleMobileEntryLive : function(){
-		var mobile = this._oMobileNumberInputText.getValue();
-		this.handleMobileValidation(mobile);		
+	handleContactNumberEntryLiveChange : function(){
+		//var mobile = this._oMobileNumberInputText.getValue();
+		this.handleContactNumberValidation(this.oContactNumber.getValue());		
 	},
-	handleMobileValidation : function(mobile){
+	handleContactNumberValidation : function(mobile){
 		if(mobile.length>10){
 			this._oRegMobileErrorMsg.setText(this.oModelHelper.getText("MobileMoreThan10Chars"));
 			this._oRegMobileErrorMsg.setVisible(true);
@@ -627,7 +632,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}
 	},
 	
-	handleRePasswordEntryLive : function(){
+	/*handleRePasswordEntryLive : function(){
 		var password = this._oRePasswordInputText.getValue();
 		this.handleRePasswordValidation(password);		
 	},
@@ -636,19 +641,19 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this._oRePasswordErrorMsg.setText(this.oModelHelper.getText("PasswordMoreThan10Chars"));
 			this._oRePasswordErrorMsg.setVisible(true);
 		}else if(this._oPasswordInputText.getValue() !== this._oRePasswordInputText.getValue()){
-			/*console.log(this._oPasswordInputText.getValue()+" "+this._oRePasswordInputText.getValue());*/
+			console.log(this._oPasswordInputText.getValue()+" "+this._oRePasswordInputText.getValue());
 			this._oRePasswordErrorMsg.setText(this.oModelHelper.getText("PasswordsNotMatched"));
 			this._oRePasswordErrorMsg.setVisible(true);
 		}		
 		else{
 			this._oRePasswordErrorMsg.setVisible(false);
 		}
+	},*/
+	handlePasswordEntryLiveChange : function(){
+		//var password = this._oPasswordInputText.getValue();
+		this.handlePasswordEntryValidation(this.oPassword.getValue());		
 	},
-	handlePasswordEntryLive : function(){
-		var password = this._oPasswordInputText.getValue();
-		this.handlePasswordValidation(password);		
-	},
-	handlePasswordValidation : function(password){
+	handlePasswordEntryValidation : function(password){
 		if(password.length>10){
 			this._oPasswordErrorMsg.setText(this.oModelHelper.getText("PasswordMoreThan10Chars"));
 			this._oPasswordErrorMsg.setVisible(true);
@@ -656,15 +661,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this._oPasswordErrorMsg.setVisible(false);
 		}
 	},
-	handleFirstNameEntryLive : function(){
-		var firstName = this._oFirstNameInputText.getValue();
-		this.handleFirstNameValidation(firstName);		
+	handleCompanyNameEntryLiveChange : function(){
+		//var firstName = this._oFirstNameInputText.getValue();
+		this.handleCompanyNameValidation(this.oCompany.getValue());		
 	},
-	handleLastNameEntryLive : function(){
-		var lastName = this._oLastNameInputText.getValue();
-		this.handleLastNameValidation(lastName);		
+	handleContactNameEntryLiveChange : function(){
+		
+		this.handleContactNameValidation(this.oContactPersonName.getValue());		
 	},
-	handleLastNameValidation : function(name){
+	handleContactNameValidation : function(name){
 		if(name.length>40){
 			this._oLastNameErrorMsg.setText(this.oModelHelper.getText("LastNameTextMoreThan40Chars"));
 			this._oLastNameErrorMsg.setVisible(true);
@@ -675,7 +680,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this._oLastNameErrorMsg.setVisible(false);
 		}
 	},
-	handleFirstNameValidation : function(name){
+	handleCompanyNameValidation : function(name){
 		if(name.length>40){
 			this._oFirstNameErrorMsg.setText(this.oModelHelper.getText("FirstNameTextMoreThan40Chars"));
 			this._oFirstNameErrorMsg.setVisible(true);
@@ -1288,7 +1293,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oVboxNISTLAF.setVisible(true);
 	},
 	handleRoadMapSection : function(oEvent) {
-		console.log(oEvent.getParameters.stepId);
+	//	console.log(oEvent.getParameters.stepId);
 	},
 	handleIconTabBarItemSelect : function(oEvent) {
 		if (oEvent.getParameters().key == '1') {
@@ -1337,11 +1342,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//Remove later end
 		
 		if (userID.length > 0 && password.length > 0) {
-		console.log("userID "+userID);
+		/*console.log("userID "+userID);
 		console.log("password "+password);
 		console.log("sessionStorage.getItem('userID') "+sessionStorage.getItem('userID'));
 		console.log("sessionStorage.getItem('password') "+sessionStorage.getItem('password'));
-	
+	*/
 		
 		if(typeof(Storage) !== "undefined") {
 			
@@ -1460,9 +1465,22 @@ userSignIn : function(userID, password){
 		}, this));				
 	
 },
+/**
+ * Register new user button pressed.
+ * @author Abdul Waheed
+ */
 handleRegisterUserButtonPress : function() {
 		var that = this;
-		var oInputFirstName = this.getView().byId("idFirstNameInputText")
+		var oUserID, oPassword, oInputEmail, oContactNumber, oContactPersonName, oCompany;
+		
+		oUserID = this.oUserID.getValue();
+		oPassword = this.oPassword.getValue();
+		oInputEmail = this.oInputEmail.getValue();
+		oContactNumber = this.oContactNumber.getValue();
+		oContactPersonName = this.oContactPersonName.getValue();
+		oCompany = this.oCompany.getValue();
+		
+		/*var oInputFirstName = this.getView().byId("idFirstNameInputText")
 		.getValue();
 		var oInputLastName = this.getView().byId("idLastNameInputText")
 		.getValue();
@@ -1470,18 +1488,25 @@ handleRegisterUserButtonPress : function() {
 		var oInputMobileNumber = this.getView().byId("idInputMobileNumber")
 				.getValue();
 		var oInputEmail = this.getView().byId("idInputEmail").getValue();
-		var oPassword = this.getView().byId("idInputPassword").getValue();
+		var oPassword = this.getView().byId("idInputPassword").getValue();*/
 		
-		if (oInputMobileNumber.length > 0 && oInputEmail.length > 0
-				&& oPassword.length > 0 && oInputFirstName.length > 0 && oInputLastName.length > 0) {
+		if (oUserID.length > 0 && oPassword.length > 0
+				&& oInputEmail.length > 0 && oContactNumber.length > 0 && oContactPersonName.length > 0) {
 			
-			var oRequestFinishedDeferred = this.oModelHelper.registerUser(oInputMobileNumber, oInputEmail, oPassword, oInputFirstName, oInputLastName);
+			var oRequestFinishedDeferred = this.oModelHelper.registerUser(oUserID, oPassword, oInputEmail, oContactNumber, oContactPersonName, oCompany);
 			
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 				
-				console.log(oResponse);
+				//console.log(oResponse.Return);
 				
-				if(oResponse.InvestorId === "0000000000"){
+				this.oUserID.setValue("");
+				this.oPassword.setValue("");
+				this.oInputEmail.setValue("");
+				this.oContactNumber.setValue("");
+				this.oContactPersonName.setValue("");
+				this.oCompany.setValue("");
+				
+				/*if(oResponse.InvestorId === "0000000000"){
 					sap.m.MessageToast.show(oResponse.Return);
 				}else{
 					
@@ -1505,24 +1530,26 @@ handleRegisterUserButtonPress : function() {
 					
 					this.getView().byId("idSignInUsernameInput").setValue(oResponse.InvestorId);
 					
-					/*sap.m.MessageToast.show(this.oModelHelper
+					sap.m.MessageToast.show(this.oModelHelper
 							.getText("SignInSuccessful"));
 					this._oidMainPageContent.setVisible(false);
 					this._oTopHeaderVBox.setVisible(true);
-					this._oidLicenseButtonsHBox.setVisible(true);*/
-				}
+					this._oidLicenseButtonsHBox.setVisible(true);
+				}*/
 				
 			}, this));	
 			
 			/*sap.m.MessageToast.show(this.oModelHelper
 					.getText("RegistrationSuccessful"));*/
-			this.getView().byId("idFirstNameInputText").setValue("");
+			/*this.getView().byId("idFirstNameInputText").setValue("");
 			this.getView().byId("idLastNameInputText").setValue("");
 			this.getView().byId("idInputMobileNumber").setValue("");
 			this.getView().byId("idInputEmail").setValue("");
 			this.getView().byId("idInputPassword").setValue("");
-			this.getView().byId("idInputRePassword").setValue("");
+			this.getView().byId("idInputRePassword").setValue("");*/
 			
+			
+		
 			
 		} else {
 			sap.m.MessageToast.show(this.oModelHelper

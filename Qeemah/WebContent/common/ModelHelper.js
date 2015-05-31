@@ -295,7 +295,44 @@ com.sagia.common.ModelHelper = {
 	 * Register new user.
 	 * @author Abdul Waheed
 	 */
-	registerUser : function(oInputMobileNumber, oInputEmail, oPassword, oInputFirstName, oInputLastName) {
+	registerUser : function(oUserID, oPassword, oInputEmail, oContactNumber, oContactPersonName, oCompany) {
+		// Open busy dialog
+		this.openBusyDialog();
+
+		var that = this;
+		
+		// Create deferred object so that calling program can wait till
+		// asynchronous call is finished
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+        var oEntry = {};
+        oEntry.Userid = oUserID;
+        oEntry.Password = oPassword;
+        oEntry.Email = oInputEmail;
+        oEntry.ContNumber = oContactNumber;
+		oEntry.ContPersname = oContactPersonName;
+		oEntry.Company = oCompany;
+		this.oODataModel.create("/REGISTER_USER_ENT", oEntry , {
+		
+			success : function(oData) {
+				/*console.log(oData);*/
+				oRequestFinishedDeferred.resolve(oData);
+				// close busy dialog
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				/*console.log(oResponse);*/
+				oRequestFinishedDeferred.resolve();
+				// close busy dialog
+				that.closeBusyDialog();
+			},
+			async : true,
+			urlParameters : oEntry
+		});
+		return oRequestFinishedDeferred;
+
+	},
+	/*registerUser : function(oInputMobileNumber, oInputEmail, oPassword, oInputFirstName, oInputLastName) {
 		// Open busy dialog
 		this.openBusyDialog();
 
@@ -317,13 +354,13 @@ com.sagia.common.ModelHelper = {
 		this.oODataModel.create("/USER_REGISTRATION_ENT", oEntry , {
 		
 			success : function(oData) {
-				/*console.log(oData);*/
+				console.log(oData);
 				oRequestFinishedDeferred.resolve(oData);
 				// close busy dialog
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				/*console.log(oResponse);*/
+				console.log(oResponse);
 				oRequestFinishedDeferred.resolve();
 				// close busy dialog
 				that.closeBusyDialog();
@@ -333,7 +370,7 @@ com.sagia.common.ModelHelper = {
 		});
 		return oRequestFinishedDeferred;
 
-	},
+	},*/
 	
 	/**
 	 * Register new user.
