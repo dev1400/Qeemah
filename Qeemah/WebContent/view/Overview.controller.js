@@ -1498,6 +1498,7 @@ handleRegisterUserButtonPress : function() {
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 				
 				//console.log(oResponse.Return);
+				//console.dir(oResponse);
 				
 				this.oUserID.setValue("");
 				this.oPassword.setValue("");
@@ -1505,6 +1506,14 @@ handleRegisterUserButtonPress : function() {
 				this.oContactNumber.setValue("");
 				this.oContactPersonName.setValue("");
 				this.oCompany.setValue("");
+				
+				sap.m.MessageToast.show(oResponse.Return);
+				
+				if(oResponse.Return="Data Saved Successfully"){
+					that.handleLoginButtonPress();
+					
+					this.getView().byId("idSignInUsernameInput").setValue(oResponse.Userid);
+				}
 				
 				/*if(oResponse.InvestorId === "0000000000"){
 					sap.m.MessageToast.show(oResponse.Return);

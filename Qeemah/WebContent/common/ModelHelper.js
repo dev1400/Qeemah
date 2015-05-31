@@ -57,7 +57,8 @@ com.sagia.common.ModelHelper = {
 		// var sUrl = dia.cmc.model.Config.getServiceUrl();
 		var sUrl = this.getServiceUrl();
 		this.oODataModel = new sap.ui.model.odata.ODataModel(sUrl, true,
-				"nkumar", "sap123", {
+				//"nkumar", "sap123", {
+				null, null, {
 					"X-Requested-With" : "XMLHttpRequest",
 					"Content-Type" : "application/json",
 					"X-CSRF-Token":"Fetch" ,
