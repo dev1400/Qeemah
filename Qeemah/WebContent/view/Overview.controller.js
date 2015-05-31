@@ -20,6 +20,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		// Model Helper reference
 		this.oModelHelper = com.sagia.common.ModelHelper;
 		this.oValidationHelper = com.sagia.common.js.validate;
+		
 
 		this._oVboxSignIn = this.getView().byId("idVBoxSignIn");
 		/*this._oVboxUserInfo = this.getView().byId("idVBoxUserInformation");
@@ -256,7 +257,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 				this.oBIOIFaxInputText.getValue(),
 				this.oBIOIWebSiteInputText.getValue()
 				);*/
-		this.oModelHelper.createAndUpdateBIOI(this.oBIOIOrganizationName.getValue(),
+		this.oModelHelper.createAndUpdateBIOI(this.oRef_id, this.oBIOIOrganizationName.getValue(),
 				this._oidRegionComboBox.getSelectedItem().getText(),
 				this._oBIILegalStatusCombobox.getSelectedItem().getText(),
 				this._oBICityComboBox.getSelectedItem().getText(),
@@ -1136,14 +1137,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this.handleSaveLinkPress();
 		
-		if(sessionStorage.getItem('userID') !== null && sessionStorage.getItem('userID') !== ""){
+		/*if(sessionStorage.getItem('userID') !== null && sessionStorage.getItem('userID') !== ""){
 			this.getView().byId("idSignInUsernameInput").setValue(sessionStorage.getItem('userID'));
 			this.getView().byId("idSignInPasswordInput").setValue(sessionStorage.getItem('password'));
 			
             //Uncomment later start
 			//this.handleSignInButtonPress();
 			//Uncomment later end
-		}
+		}*/
 		
 		//this.getView().addDependent(this._basicInfo_OrganizationFragmentChild);
 		//this.handleCountrySelectionComboBox();
@@ -1337,18 +1338,20 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		//Remove later start
 		
-		this.userSignIn(userID, password);
+		//this.userSignIn(userID, password);
 		
 		//Remove later end
 		
 		if (userID.length > 0 && password.length > 0) {
+			this.userSignIn(userID, password);
+			
 		/*console.log("userID "+userID);
 		console.log("password "+password);
 		console.log("sessionStorage.getItem('userID') "+sessionStorage.getItem('userID'));
 		console.log("sessionStorage.getItem('password') "+sessionStorage.getItem('password'));
 	*/
 		
-		if(typeof(Storage) !== "undefined") {
+		/*if(typeof(Storage) !== "undefined") {
 			
 			if(sessionStorage.getItem('userID') === "" || 
 			   sessionStorage.getItem('userID') === null || 
@@ -1359,7 +1362,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 				sessionStorage.setItem('userID', userID);
 				sessionStorage.setItem('password', password);
 				
-				this.userSignIn(userID, password);
+				
 				
 			}else{
 				userID = sessionStorage.getItem('userID');
@@ -1371,7 +1374,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 		} else {
 		    console.log("Sorry! No Web Storage support..");
-		}
+		}*/
 		
 		} else {
 			sap.m.MessageToast.show(this.oModelHelper
@@ -1383,7 +1386,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 userSignIn : function(userID, password){
 	//Remove later start
-	this._oidMainPageContent.setVisible(false);
+	/*this._oidMainPageContent.setVisible(false);
 	this._oTopHeaderVBox.setVisible(true);
 	this._oidLicenseButtonsHBox.setVisible(true);
 	
@@ -1416,7 +1419,7 @@ userSignIn : function(userID, password){
 	this.oBIOIMobilephoneInputText = this.getView().byId("idBIOIMobilephoneInputText");
 	this.oBIOIFaxCountryCodeInputText = this.getView().byId("idBIOIFaxCountryCodeInputText");
 	this.oBIOIFaxInputText = this.getView().byId("idBIOIFaxInputText");
-	this.oBIOIWebSiteInputText = this.getView().byId("idBIOIWebSiteInputText");
+	this.oBIOIWebSiteInputText = this.getView().byId("idBIOIWebSiteInputText");*/
 	
 	
 	
@@ -1428,17 +1431,18 @@ userSignIn : function(userID, password){
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 			
 			
-			
-			if(oResponse.InvestorId === "0000000000"){
+			//console.dir(oResponse.Ref_id);
+			if(oResponse.Password !== password){
 				sap.m.MessageToast.show(this.oModelHelper.getText("AuthenticationFailedMessage"));
 			}else{
 				sap.m.MessageToast.show(this.oModelHelper
 						.getText("SignInSuccessful"));
-						
-				sessionStorage.setItem('ReferenceId', oResponse.InvestorId);
+				
+				this.oRef_id = oResponse.Ref_id;;
+				//sessionStorage.setItem('ReferenceId', oResponse.InvestorId);
 				
 				//Uncomment later start
-				/*this._oidMainPageContent.setVisible(false);
+				this._oidMainPageContent.setVisible(false);
 				this._oTopHeaderVBox.setVisible(true);
 				this._oidLicenseButtonsHBox.setVisible(true);
 				
@@ -1457,7 +1461,21 @@ userSignIn : function(userID, password){
 				
 				this._oBICICountryCombobox = this.getView().byId("idCICountryComboBox");
 				var oBICICountryFilter = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.NE, "");
-				this._oBICICountryCombobox.getBinding("items").filter(oBICICountryFilter);*/
+				this._oBICICountryCombobox.getBinding("items").filter(oBICICountryFilter);
+				
+				this.oBIOIOrganizationName = this.getView().byId("idBIOIOrganizationName");
+				this.oBIOIMultiNationalCompanyCombobox = this.getView().byId("idBIOIMultiNationalCompanyCombobox");
+				this.oBIOIEmailInputText = this.getView().byId("idBIOIEmailInputText");
+				this.oBIOILaborSizeInputText = this.getView().byId("idBIOILaborSizeInputText");
+				this.oBIOICommMethodComboBox = this.getView().byId("idBIOICommMethodComboBox");
+				this.oBIOICapitalInputText = this.getView().byId("idBIOICapitalInputText");
+				this.oBIOITelephoneCountryCodeInputText = this.getView().byId("idBIOITelephoneCountryCodeInputText");
+				this.oBIOITelephoneInputText = this.getView().byId("idBIOITelephoneInputText");
+				this.oBIOIMobilephoneCountryCodeInputText = this.getView().byId("idBIOIMobilephoneCountryCodeInputText");
+				this.oBIOIMobilephoneInputText = this.getView().byId("idBIOIMobilephoneInputText");
+				this.oBIOIFaxCountryCodeInputText = this.getView().byId("idBIOIFaxCountryCodeInputText");
+				this.oBIOIFaxInputText = this.getView().byId("idBIOIFaxInputText");
+				this.oBIOIWebSiteInputText = this.getView().byId("idBIOIWebSiteInputText");
 				//Uncomment later end
 			
 			}

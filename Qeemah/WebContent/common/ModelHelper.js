@@ -251,9 +251,7 @@ com.sagia.common.ModelHelper = {
 		// asynchronous call is finished
 		var oRequestFinishedDeferred = jQuery.Deferred();
 
-		this.oODataModel.read("/USER_REGISTRATION_ENT(Flag='L',Userid='"
-				+ userid + "',Password='" + password
-				+ "',MobileNo='',Email='',NameFirst='',NameLast='')", {
+		this.oODataModel.read("/REGISTER_USER_ENT('"+ userid + "')", {
 			success : function(oData) {
 				oRequestFinishedDeferred.resolve(oData);
 
@@ -477,7 +475,7 @@ com.sagia.common.ModelHelper = {
 	 * Create and update BIOI.
 	 * @author Abdul Waheed
 	 */
-	createAndUpdateBIOI : function(oBIOIOrganizationName, oBIOIRegion, oBIOILegalStatus, 
+	createAndUpdateBIOI : function(oRefID, oBIOIOrganizationName, oBIOIRegion, oBIOILegalStatus, 
 			oBIOICity, oBIOIMNC, oBIOIEmail, oBIOILaborSize, oBIOICommMethod, oBIOICapital,
 			oBIOITelephoneCountryCode, oBIOITelephone, oBIOIMobilephoneCountryCode,
 			oBIOIMobilephone, oBIOIFaxCountryCode, oBIOIFax, oBIOIWebSite) {
@@ -493,7 +491,7 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
 		
         var oEntry = {};
-        oEntry.RefID = '12';//this will be replaced by user id
+        oEntry.RefID = oRefID;//this will be replaced by user id
         oEntry.OrgName = oBIOIOrganizationName;
         oEntry.Region = oBIOIRegion;
         oEntry.LegalStatus = oBIOILegalStatus;
