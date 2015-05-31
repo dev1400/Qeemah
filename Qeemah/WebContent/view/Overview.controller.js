@@ -222,58 +222,52 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleSaveLinkPressSave : function(oEvent){
 		
+		if(this.oRecordExists){
+			this.oModelHelper.saveBIOI(this.oRef_id, this.oBIOIOrganizationName.getValue(),
+					this._oidRegionComboBox.getSelectedItem().getText(),
+					this._oBIILegalStatusCombobox.getSelectedItem().getText(),
+					this._oBICityComboBox.getSelectedItem().getText(),
+					this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
+					this.oBIOIEmailInputText.getValue(),
+					this.oBIOILaborSizeInputText.getValue(),
+					this.oBIOICommMethodComboBox.getValue(),
+					this.oBIOICapitalInputText.getValue(),
+					this.oBIOITelephoneCountryCodeInputText.getValue(),
+					this.oBIOITelephoneInputText.getValue(),
+					this.oBIOIMobilephoneCountryCodeInputText.getValue(),
+					this.oBIOIMobilephoneInputText.getValue(),
+					this.oBIOIFaxCountryCodeInputText.getValue(),
+					this.oBIOIFaxInputText.getValue(),
+					this.oBIOIWebSiteInputText.getValue()
+					);
+		}else{
+			this.oModelHelper.createAndUpdateBIOI(this.oRef_id, this.oBIOIOrganizationName.getValue(),
+					this._oidRegionComboBox.getSelectedItem().getText(),
+					this._oBIILegalStatusCombobox.getSelectedItem().getText(),
+					this._oBICityComboBox.getSelectedItem().getText(),
+					this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
+					this.oBIOIEmailInputText.getValue(),
+					this.oBIOILaborSizeInputText.getValue(),
+					this.oBIOICommMethodComboBox.getValue(),
+					this.oBIOICapitalInputText.getValue(),
+					this.oBIOITelephoneCountryCodeInputText.getValue(),
+					this.oBIOITelephoneInputText.getValue(),
+					this.oBIOIMobilephoneCountryCodeInputText.getValue(),
+					this.oBIOIMobilephoneInputText.getValue(),
+					this.oBIOIFaxCountryCodeInputText.getValue(),
+					this.oBIOIFaxInputText.getValue(),
+					this.oBIOIWebSiteInputText.getValue()
+					);
+			
+		}
+		
 		
 		//var oBIOIRegionComboBoxitem = this.getView().byId("idRegionComboBoxitem");
-		/*console.log("Org Name="+this.oBIOIOrganizationName.getValue()+ " Region= "+
-				this._oidRegionComboBox.getSelectedItem().getText()+" Legal Status= "+
-				this._oBIILegalStatusCombobox.getSelectedItem().getText()+" City="+
-				this._oBICityComboBox.getSelectedItem().getText()+" MNC= "+
-				this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText()+" Email = "+
-				this.oBIOIEmailInputText.getValue()+" Labor Size = "+
-				this.oBIOILaborSizeInputText.getValue()+" Comm Method = " +
-				this.oBIOICommMethodComboBox.getValue()+" Captial = "+
-				this.oBIOICapitalInputText.getValue()+" Telephone = "+
-				this.oBIOITelephoneCountryCodeInputText.getValue()+""+this.oBIOITelephoneInputText.getValue()
-				+" Mobile Phone = "+this.oBIOIMobilephoneCountryCodeInputText.getValue()+""+
-				this.oBIOIMobilephoneInputText.getValue()
-				+" Fax = "+this.oBIOIFaxCountryCodeInputText.getValue()+""+this.oBIOIFaxInputText.getValue()
-				+" Website "+this.oBIOIWebSiteInputText.getValue());*/
+		/**/
 		
 		
-		/*this.oModelHelper.saveBIOI(this.oBIOIOrganizationName.getValue(),
-				this._oidRegionComboBox.getSelectedItem().getText(),
-				this._oBIILegalStatusCombobox.getSelectedItem().getText(),
-				this._oBICityComboBox.getSelectedItem().getText(),
-				this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
-				this.oBIOIEmailInputText.getValue(),
-				this.oBIOILaborSizeInputText.getValue(),
-				this.oBIOICommMethodComboBox.getValue(),
-				this.oBIOICapitalInputText.getValue(),
-				this.oBIOITelephoneCountryCodeInputText.getValue(),
-				this.oBIOITelephoneInputText.getValue(),
-				this.oBIOIMobilephoneCountryCodeInputText.getValue(),
-				this.oBIOIMobilephoneInputText.getValue(),
-				this.oBIOIFaxCountryCodeInputText.getValue(),
-				this.oBIOIFaxInputText.getValue(),
-				this.oBIOIWebSiteInputText.getValue()
-				);*/
-		this.oModelHelper.createAndUpdateBIOI(this.oRef_id, this.oBIOIOrganizationName.getValue(),
-				this._oidRegionComboBox.getSelectedItem().getText(),
-				this._oBIILegalStatusCombobox.getSelectedItem().getText(),
-				this._oBICityComboBox.getSelectedItem().getText(),
-				this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
-				this.oBIOIEmailInputText.getValue(),
-				this.oBIOILaborSizeInputText.getValue(),
-				this.oBIOICommMethodComboBox.getValue(),
-				this.oBIOICapitalInputText.getValue(),
-				this.oBIOITelephoneCountryCodeInputText.getValue(),
-				this.oBIOITelephoneInputText.getValue(),
-				this.oBIOIMobilephoneCountryCodeInputText.getValue(),
-				this.oBIOIMobilephoneInputText.getValue(),
-				this.oBIOIFaxCountryCodeInputText.getValue(),
-				this.oBIOIFaxInputText.getValue(),
-				this.oBIOIWebSiteInputText.getValue()
-				);
+		
+		/**/
 		
 		
 		//var 
@@ -294,6 +288,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		*/
 		
 		//console.log(this.partialSaveXMLDocument.toString());
+		this.oRecordExists = false;
 		
 	},
 	handleBasicInfoTabsSelection : function(oEvent){
@@ -1385,6 +1380,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	
 	},
 userSignIn : function(userID, password){
+	var that = this
 	//Remove later start
 	/*this._oidMainPageContent.setVisible(false);
 	this._oTopHeaderVBox.setVisible(true);
@@ -1438,7 +1434,7 @@ userSignIn : function(userID, password){
 				sap.m.MessageToast.show(this.oModelHelper
 						.getText("SignInSuccessful"));
 				
-				this.oRef_id = oResponse.Ref_id;;
+				this.oRef_id = oResponse.Ref_id;
 				//sessionStorage.setItem('ReferenceId', oResponse.InvestorId);
 				
 				//Uncomment later start
@@ -1477,10 +1473,38 @@ userSignIn : function(userID, password){
 				this.oBIOIFaxInputText = this.getView().byId("idBIOIFaxInputText");
 				this.oBIOIWebSiteInputText = this.getView().byId("idBIOIWebSiteInputText");
 				//Uncomment later end
+				
+				var oRequestFinishedDeferredChild = this.oModelHelper.readBIOI(this.oRef_id);
+
+				jQuery.when(oRequestFinishedDeferredChild).then(jQuery.proxy(function(oResponse) {
+				
+					console.log(oResponse.data.Return);
+					
+					if(oResponse.data.Return !== "Record does not exist"){
+						this.oBIOIOrganizationName.setValue(oResponse.data.OrgName);
+						
+						this.oRecordExists = true;
+						
+						//this.oSaveLink = this.getView().byId("idSaveLink");
+						//this.oSaveLink.attachPress(that.handleSaveLinkPressSave());
+						//this.oSaveLink.attachEvent("EID", that.handleSaveLinkPressSave());
+						//this.oSaveLink.attachEventOnce("updateFinished", that.handleSaveLinkPressSave());//function() {});
+					}
+					
+				}, this));		
+					
+				
+				
+				
 			
 			}
 			
-		}, this));				
+		}, this));		
+		
+		
+		
+		
+		
 	
 },
 /**

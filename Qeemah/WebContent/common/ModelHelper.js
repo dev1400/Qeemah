@@ -271,6 +271,49 @@ com.sagia.common.ModelHelper = {
 		return oRequestFinishedDeferred;
 	},
 	/**
+	 * read BIOI UI
+	 * @author : Abdul Waheed
+	 */
+	readBIOI : function(refid) {
+		// Open busy dialog
+		this.openBusyDialog();
+
+		var that = this;
+		// Create deferred object so that calling program can wait till
+		// asynchronous call is finished
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		this.oODataModel.read("ZBASIC_ORG_INFO_ENT('"+refid+"')", {
+			success : function(oData, response) {
+				
+				//console.log(response.data.Return);
+				
+				/*that.BIOICollectionJSONModel = new sap.ui.model.json.JSONModel();
+				that.BIOICollectionJSONModel.setData({BIOICollection:oData});*/
+				
+				
+				/*if(response.data.Return !== "Record does not exist"){
+					
+				}*/
+				
+				
+				oRequestFinishedDeferred.resolve(response);//that.BIOICollectionJSONModel);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				console.log(oResponse);
+				
+				// Reject deferred object
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
+
+				// close busy dialog
+				that.closeBusyDialog();
+			}});
+
+		return oRequestFinishedDeferred;
+	},
+	/**
 	 * Open busy dialog
 	 */
 	openBusyDialog : function() {
@@ -375,12 +418,12 @@ com.sagia.common.ModelHelper = {
 	 * Register new user.
 	 * @author Abdul Waheed
 	 */
-	saveBIOI : function(oBIOIOrganizationName, oBIOIRegion, oBIOILegalStatus, 
+	saveBIOI : function(oRefID, oBIOIOrganizationName, oBIOIRegion, oBIOILegalStatus, 
 			oBIOICity, oBIOIMNC, oBIOIEmail, oBIOILaborSize, oBIOICommMethod, oBIOICapital,
 			oBIOITelephoneCountryCode, oBIOITelephone, oBIOIMobilephoneCountryCode,
 			oBIOIMobilephone, oBIOIFaxCountryCode, oBIOIFax, oBIOIWebSite) {
 		
-		console.log("csrf token"+this.oODataModel.getSecurityToken());
+		//console.log("csrf token"+this.oODataModel.getSecurityToken());
 
 		
 		// Open busy dialog
@@ -393,7 +436,7 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
 		
         var oEntry = {};
-        oEntry.RefID = '11';//this will be replaced by user id
+        oEntry.RefID = oRefID;//this will be replaced by user id
         oEntry.OrgName = oBIOIOrganizationName;
         oEntry.Region = oBIOIRegion;
         oEntry.LegalStatus = oBIOILegalStatus;
@@ -438,7 +481,7 @@ com.sagia.common.ModelHelper = {
 				+"',Fax='"+oBIOIFaxCountryCode+""+oBIOIFax+"',Website='"+oBIOIWebSite+"',Region='"+oBIOIRegion+"',City='"+oBIOICity+"',Email='"+oBIOIEmail+"',CommMtd='"+oBIOICommMethod+"')",null,{//urlParameters : oEntry,		
 		*/	
 		
-		this.oODataModel.update("ZBASIC_ORG_INFO_ENT('11')",oEntry,{//urlParameters : oEntry,		
+		this.oODataModel.update("ZBASIC_ORG_INFO_ENT('"+oEntry.RefID+"')",oEntry,{//urlParameters : oEntry,		
 		
 		success : function(oData, response) { //console.dir(response);
 			
