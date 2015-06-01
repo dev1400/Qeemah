@@ -308,11 +308,17 @@
 										<sap.ui.commons.layout:cells>
 										<sap.ui.commons.layout:MatrixLayoutCell><sap.ui.commons:TextView text="{i18n>PowerofAttorney}"></sap.ui.commons:TextView>
 										</sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons.layout:MatrixLayoutCell vAlign="Top">
 										<sap.ui.unified:FileUploader
-														uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
-														iconOnly="true" id="idBICIPowerofAttorneyFileUploader"/>
+											uploadUrl="upload/"  icon="common/mime/attachment.png"
+											uploadOnChange="true"	sameFilenameAllowed="true" iconOnly="true" id="idBICIPowerofAttorneyFileUploader"/>
+										<!-- <Button id="idUpload" text="Upload"	press="handlePowerOfAttorneyUploadPress" >
+													</Button> -->
 										</sap.ui.commons.layout:MatrixLayoutCell>
+										<!-- <sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+										
+										
+										</sap.ui.commons.layout:MatrixLayoutCell> -->
 										</sap.ui.commons.layout:cells>
 									</sap.ui.commons.layout:MatrixLayoutRow>
 									

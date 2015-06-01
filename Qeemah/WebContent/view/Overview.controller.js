@@ -218,12 +218,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oContactNumber = this.getView().byId("idContactNumberInputText");
 		this.oContactPersonName = this.getView().byId("idContactNameInputText");
 		this.oCompany = this.getView().byId("idCompanyInputText");
-		
+		this.oPoweOfAttorneyFileUpload = this.getView().byId("idBICIPowerofAttorneyFileUploader");
+	},
+	handlePowerOfAttorneyUploadPress : function(oEvent){
+		//console.log("handlePowerOfAttorneyUploadPress");
+		this.oPoweOfAttorneyFileUpload.upload();
 	},
 	handleSaveLinkPressSave : function(oEvent){
 		
 		if(this.oRecordExists){
-			this.oModelHelper.saveBIOI(this.oRef_id, this.oBIOIOrganizationName.getValue(),
+			var oRequestFinishedDeferred = this.oModelHelper.saveBIOI(this.oRef_id, this.oBIOIOrganizationName.getValue(),
 					this._oidRegionComboBox.getSelectedItem().getText(),
 					this._oBIILegalStatusCombobox.getSelectedItem().getText(),
 					this._oBICityComboBox.getSelectedItem().getText(),
@@ -238,10 +242,21 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this.oBIOIMobilephoneInputText.getValue(),
 					this.oBIOIFaxCountryCodeInputText.getValue(),
 					this.oBIOIFaxInputText.getValue(),
-					this.oBIOIWebSiteInputText.getValue()
+					this.oBIOIWebSiteInputText.getValue(),
+					this.oBIOITelephoneCountryCodeInputText.getValue(),
+					this.oBIOIFaxCountryCodeInputText.getValue(),
+					this.oBIOIMobilephoneCountryCodeInputText.getValue()					
+					
 					);
+
+			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+				sap.m.MessageToast.show(this.oModelHelper
+    					.getText("Saved"));	
+			}, this));	
+			
+			
 		}else{
-			this.oModelHelper.createAndUpdateBIOI(this.oRef_id, this.oBIOIOrganizationName.getValue(),
+			var oRequestFinishedDeferred = this.oModelHelper.createAndUpdateBIOI(this.oRef_id, this.oBIOIOrganizationName.getValue(),
 					this._oidRegionComboBox.getSelectedItem().getText(),
 					this._oBIILegalStatusCombobox.getSelectedItem().getText(),
 					this._oBICityComboBox.getSelectedItem().getText(),
@@ -256,8 +271,18 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this.oBIOIMobilephoneInputText.getValue(),
 					this.oBIOIFaxCountryCodeInputText.getValue(),
 					this.oBIOIFaxInputText.getValue(),
-					this.oBIOIWebSiteInputText.getValue()
+					this.oBIOIWebSiteInputText.getValue(),
+					this.oBIOITelephoneCountryCodeInputText.getValue(),
+					this.oBIOIFaxCountryCodeInputText.getValue(),
+					this.oBIOIMobilephoneCountryCodeInputText.getValue()					
 					);
+			
+			
+				
+            jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+            	sap.m.MessageToast.show(this.oModelHelper
+    					.getText("Saved"));	
+			}, this));	
 			
 		}
 		
@@ -338,7 +363,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this._oBAQ1TextView.bindProperty("text", "BAQModel>/BAQCollection");
 			var BAQModel = this.getView().getModel("BAQModel");
 			
-			console.dir(BAQModel.getJSON());
+			//console.dir(BAQModel.getJSON());
 			
 			var baqQuestionsArray = [];
 			var baqQuestionsIDArray = [];
@@ -1481,7 +1506,7 @@ userSignIn : function(userID, password){
 				jQuery.when(oRequestFinishedDeferredChild).then(jQuery.proxy(function(oResponse) {
 				
 					console.dir(oResponse);
-					console.log(oResponse.data.Region);
+					//console.log(oResponse.data.Region);
 					if(oResponse.data.Return !== "Record does not exist"){
 						var vItem = new sap.ui.core.Item();
 						
@@ -1509,6 +1534,13 @@ userSignIn : function(userID, password){
 						this.oBIOICapitalInputText.setValue(oResponse.data.Capital);
 						
 						this.oBIOIWebSiteInputText.setValue(oResponse.data.Website);
+						this.oBIOITelephoneInputText.setValue(oResponse.data.Telephone);  
+						this.oBIOIMobilephoneInputText.setValue(oResponse.data.Mobile);
+						this.oBIOIFaxInputText.setValue(oResponse.data.Fax);
+						this.oBIOITelephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Tele),
+						this.oBIOIFaxCountryCodeInputText.setValue(oResponse.data.Ccode_Fax),
+						this.oBIOIMobilephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Mobile)					
+						
 						
 						this.oRecordExists = true;
 						
@@ -1582,6 +1614,7 @@ handleRegisterUserButtonPress : function() {
 					that.handleLoginButtonPress();
 					
 					this.getView().byId("idSignInUsernameInput").setValue(oResponse.Userid);
+					//idSignInPasswordInput
 				}
 				
 				/*if(oResponse.InvestorId === "0000000000"){

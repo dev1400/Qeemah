@@ -421,7 +421,10 @@ com.sagia.common.ModelHelper = {
 	saveBIOI : function(oRefID, oBIOIOrganizationName, oBIOIRegion, oBIOILegalStatus, 
 			oBIOICity, oBIOIMNC, oBIOIEmail, oBIOILaborSize, oBIOICommMethod, oBIOICapital,
 			oBIOITelephoneCountryCode, oBIOITelephone, oBIOIMobilephoneCountryCode,
-			oBIOIMobilephone, oBIOIFaxCountryCode, oBIOIFax, oBIOIWebSite) {
+			oBIOIMobilephone, oBIOIFaxCountryCode, oBIOIFax, oBIOIWebSite, 
+			oBIOITelephoneCountryCode,
+			oBIOIFaxCountryCode,
+			oBIOIMobilephoneCountryCode) {
 		
 		//console.log("csrf token"+this.oODataModel.getSecurityToken());
 
@@ -446,10 +449,14 @@ com.sagia.common.ModelHelper = {
 		oEntry.LbrSize = oBIOILaborSize;
 		oEntry.CommMtd = oBIOICommMethod;
 		oEntry.Capital = oBIOICapital;
-		oEntry.Telephone = oBIOITelephoneCountryCode+""+oBIOITelephone;
-		oEntry.Mobile = oBIOIMobilephoneCountryCode+""+oBIOIMobilephone;
-		oEntry.Fax = oBIOIFaxCountryCode+""+oBIOIFax;		
+		oEntry.Telephone = oBIOITelephone;
+		oEntry.Mobile = oBIOIMobilephone;
+		oEntry.Fax = oBIOIFax;		
 		oEntry.Website = oBIOIWebSite;
+		oEntry.Ccode_Tele = oBIOITelephoneCountryCode;
+		oEntry.Ccode_Fax = oBIOIFaxCountryCode
+		oEntry.Ccode_Mobile = oBIOIMobilephoneCountryCode
+		
 		//(RefID='',OrgName='',LegalStatus='',MncComp='',LbrSize='',Capital='',Telephone='',Mobile='',Fax='',Website='',Region='',City='',Email='',CommMtd='')
 		
 		//this.oODataModel.create("/ZBASIC_ORG_INFO_ENT", oEntry , {
@@ -465,17 +472,6 @@ com.sagia.common.ModelHelper = {
 			 
 			}, false);*/
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 
 		/*this.oODataModel.update("ZBASIC_ORG_INFO_ENT(RefID='9',OrgName='"+oBIOIOrganizationName+"',LegalStatus='"+oBIOILegalStatus+"',MncComp='"+oBIOIMNC+"',LbrSize='"+oBIOILaborSize+"',Capital='"+oBIOICapital+"',Telephone='"+oBIOITelephoneCountryCode+""+oBIOITelephone+"',Mobile='"+oBIOIMobilephoneCountryCode+""+oBIOIMobilephone
 				+"',Fax='"+oBIOIFaxCountryCode+""+oBIOIFax+"',Website='"+oBIOIWebSite+"',Region='"+oBIOIRegion+"',City='"+oBIOICity+"',Email='"+oBIOIEmail+"',CommMtd='"+oBIOICommMethod+"')",null,{//urlParameters : oEntry,		
@@ -484,11 +480,12 @@ com.sagia.common.ModelHelper = {
 		this.oODataModel.update("ZBASIC_ORG_INFO_ENT('"+oEntry.RefID+"')",oEntry,{//urlParameters : oEntry,		
 		
 		success : function(oData, response) { //console.dir(response);
-			
+			oRequestFinishedDeferred.resolve(oData);
 			//console.log(response.x-csrf-token); 
 			that.closeBusyDialog();
 			},
-		    error : function(oResponse) {// console.log("error"+response); 
+		    error : function(oResponse) {// console.log("error"+response);
+		    	oRequestFinishedDeferred.resolve();
 		    that.closeBusyDialog();
 		    }
 		
@@ -521,7 +518,11 @@ com.sagia.common.ModelHelper = {
 	createAndUpdateBIOI : function(oRefID, oBIOIOrganizationName, oBIOIRegion, oBIOILegalStatus, 
 			oBIOICity, oBIOIMNC, oBIOIEmail, oBIOILaborSize, oBIOICommMethod, oBIOICapital,
 			oBIOITelephoneCountryCode, oBIOITelephone, oBIOIMobilephoneCountryCode,
-			oBIOIMobilephone, oBIOIFaxCountryCode, oBIOIFax, oBIOIWebSite) {
+			oBIOIMobilephone, oBIOIFaxCountryCode, oBIOIFax, oBIOIWebSite, 
+			oBIOITelephoneCountryCode,
+			oBIOIFaxCountryCode,
+			oBIOIMobilephoneCountryCode					
+			) {
 		
 		
 		// Open busy dialog
@@ -544,10 +545,13 @@ com.sagia.common.ModelHelper = {
 		oEntry.LbrSize = oBIOILaborSize;
 		oEntry.CommMtd = oBIOICommMethod;
 		oEntry.Capital = oBIOICapital;
-		oEntry.Telephone = oBIOITelephoneCountryCode+""+oBIOITelephone;
-		oEntry.Mobile = oBIOIMobilephoneCountryCode+""+oBIOIMobilephone;
-		oEntry.Fax = oBIOIFaxCountryCode+""+oBIOIFax;		
+		oEntry.Telephone = oBIOITelephone;
+		oEntry.Mobile = oBIOIMobilephone;
+		oEntry.Fax = oBIOIFax;		
 		oEntry.Website = oBIOIWebSite;
+		oEntry.Ccode_Tele = oBIOITelephoneCountryCode;
+		oEntry.Ccode_Fax = oBIOIFaxCountryCode
+		oEntry.Ccode_Mobile = oBIOIMobilephoneCountryCode
 		
 		this.oODataModel.create("ZBASIC_ORG_INFO_ENT", oEntry, {
 			
