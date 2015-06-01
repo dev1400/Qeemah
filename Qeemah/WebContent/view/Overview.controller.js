@@ -1508,28 +1508,30 @@ userSignIn : function(userID, password){
 					console.dir(oResponse);
 					//console.log(oResponse.data.Region);
 					if(oResponse.data.Return !== "Record does not exist"){
-						var vItem = new sap.ui.core.Item();
+						//var vItem = new sap.ui.core.Item();
 						
 						this.oBIOIOrganizationName.setValue(oResponse.data.OrgName);
 						
-						vItem.setText(oResponse.data.Region);						
-						this._oidRegionComboBox.setSelectedItem(vItem);
+						//vItem.setText(oResponse.data.Region);						
+						//this._oidRegionComboBox.setSelectedItem(vItem);
+						this._oidRegionComboBox.setValue(oResponse.data.Region);
 						
-						vItem.setText(oResponse.data.LegalStatus);
-						this._oBIILegalStatusCombobox.setSelectedItem(vItem);
 						
-						vItem.setText(oResponse.data.City);
-						this._oBICityComboBox.setSelectedItem(vItem);
+						//vItem.setText(oResponse.data.LegalStatus);
+						this._oBIILegalStatusCombobox.setValue(oResponse.data.LegalStatus);//.setSelectedItem(vItem);
 						
-						vItem.setText(oResponse.data.MncComp);
-						this.oBIOIMultiNationalCompanyCombobox.setSelectedItem(vItem);
+						//vItem.setText(oResponse.data.City);
+						this._oBICityComboBox.setValue(oResponse.data.City);//.setSelectedItem(vItem);
+						
+						//vItem.setText(oResponse.data.MncComp);
+						this.oBIOIMultiNationalCompanyCombobox.setValue(oResponse.data.MncComp);//.setSelectedItem(vItem);
 						
 						this.oBIOIEmailInputText.setValue(oResponse.data.Email);
 						
 						this.oBIOILaborSizeInputText.setValue(oResponse.data.LbrSize);
 						
-						vItem.setText(oResponse.data.CommMtd);
-						this.oBIOICommMethodComboBox.setSelectedItem(vItem);
+						//vItem.setText(oResponse.data.CommMtd);
+						this.oBIOICommMethodComboBox.setValue(oResponse.data.CommMtd);//.setSelectedItem(vItem);
 						
 						this.oBIOICapitalInputText.setValue(oResponse.data.Capital);
 						
