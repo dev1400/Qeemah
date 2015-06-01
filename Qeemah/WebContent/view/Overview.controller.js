@@ -302,7 +302,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleRegionSelectionComboBox : function(oControlEvent){
 		//console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.text);
 		
-		this._oBICityComboBox = this.getView().byId("idCityComboBox");
 		this._oBICityComboBox.setEnabled(true);
 		var filters = [];
 		
@@ -1459,6 +1458,9 @@ userSignIn : function(userID, password){
 				var oBICICountryFilter = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.NE, "");
 				this._oBICICountryCombobox.getBinding("items").filter(oBICICountryFilter);
 				
+				this._oBICityComboBox = this.getView().byId("idCityComboBox");
+				
+				
 				this.oBIOIOrganizationName = this.getView().byId("idBIOIOrganizationName");
 				this.oBIOIMultiNationalCompanyCombobox = this.getView().byId("idBIOIMultiNationalCompanyCombobox");
 				this.oBIOIEmailInputText = this.getView().byId("idBIOIEmailInputText");
@@ -1478,10 +1480,35 @@ userSignIn : function(userID, password){
 
 				jQuery.when(oRequestFinishedDeferredChild).then(jQuery.proxy(function(oResponse) {
 				
-					console.log(oResponse.data.Return);
-					
+					console.dir(oResponse);
+					console.log(oResponse.data.Region);
 					if(oResponse.data.Return !== "Record does not exist"){
+						var vItem = new sap.ui.core.Item();
+						
 						this.oBIOIOrganizationName.setValue(oResponse.data.OrgName);
+						
+						vItem.setText(oResponse.data.Region);						
+						this._oidRegionComboBox.setSelectedItem(vItem);
+						
+						vItem.setText(oResponse.data.LegalStatus);
+						this._oBIILegalStatusCombobox.setSelectedItem(vItem);
+						
+						vItem.setText(oResponse.data.City);
+						this._oBICityComboBox.setSelectedItem(vItem);
+						
+						vItem.setText(oResponse.data.MncComp);
+						this.oBIOIMultiNationalCompanyCombobox.setSelectedItem(vItem);
+						
+						this.oBIOIEmailInputText.setValue(oResponse.data.Email);
+						
+						this.oBIOILaborSizeInputText.setValue(oResponse.data.LbrSize);
+						
+						vItem.setText(oResponse.data.CommMtd);
+						this.oBIOICommMethodComboBox.setSelectedItem(vItem);
+						
+						this.oBIOICapitalInputText.setValue(oResponse.data.Capital);
+						
+						this.oBIOIWebSiteInputText.setValue(oResponse.data.Website);
 						
 						this.oRecordExists = true;
 						
