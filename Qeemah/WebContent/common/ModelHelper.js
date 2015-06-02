@@ -95,12 +95,49 @@ com.sagia.common.ModelHelper = {
 		
 		this.olocalODataModel.read("SurveyQue?Flag=%27B%27&SurveyID=%27QUEEMAH_BUS_PLAN%27", {
 			success : function(oData, response) {
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
 				
-				//console.dir(response);
-				
-				//that.BAQCollectionJSONModel = new sap.ui.model.json.JSONModel();
-				//that.BAQCollectionJSONModel.setData({BAQCollection:oData});
-				//oRequestFinishedDeferred.resolve(that.BAQCollectionJSONModel);
+				// Reject deferred object
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
+
+				// close busy dialog
+				that.closeBusyDialog();
+			}
+		});
+
+		//return oRequestFinishedDeferred;
+		return oRequestFinishedDeferred;
+	},
+	/**
+	 * Read BAQ Answer based on ID
+	 */
+	readBAQAnswer : function(oNodeGuid, oSurveyID) {
+		// Open busy dialog
+		this.openBusyDialog();
+		
+		
+		this.olocalODataModel = new sap.ui.model.odata.ODataModel("proxy/sap/opu/odata/sap/ZTEST_QEEMAH_Q_A_SRV/", true,
+						null, null, {
+							"X-Requested-With" : "XMLHttpRequest",
+							"Content-Type" : "application/json",
+							"X-CSRF-Token":"Fetch" ,
+							"DataServiceVersion": "2.0",
+							"Authorization" : "Basic bmt1bWFyOnNhcDEyMw=="
+
+						}, true, true);
+
+		
+		var that = this;
+		// Create deferred object so that calling program can wait till
+		// asynchronous call is finished
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+		this.olocalODataModel.read("SurveyAns?NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
+			success : function(oData, response) {
 				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
 			},

@@ -382,25 +382,106 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	getBAQ : function(){
 		var oRequestFinishedDeferred = this.oModelHelper.readBAQ();
+		
+		var questions = [];
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-			console.dir(oResponse);
-			console.log(oResponse.data.results.length);
+			//console.dir(oResponse);
+			/*console.log(oResponse.data.results.length);
 			console.log(oResponse.data.results[0].Qtxtlg);
+			*/
 			
-			
+			var nodeID = [];
+			var surveyID = [];
+			var answers = [];
 			this.oBAQMatrixLayout = this.getView().byId("idLI_BAQ_1_to_6MAtrixLayoutz");
 			
 			for(var i=0; i < oResponse.data.results.length; i++){
-				var oTextView = new sap.ui.commons.TextView({
+				questions[i] = oResponse.data.results[i].Qtxtlg;
+				nodeID[i] = oResponse.data.results[i].NodeGuid;
+				surveyID[i] = oResponse.data.results[i].SurveyID;
+				/*var oTextView = new sap.ui.commons.TextView({
 					text : oResponse.data.results[i].Qtxtlg,
 					});
-				this.oBAQMatrixLayout.createRow( oTextView );
-			}
-			/*var oTextView = new sap.ui.commons.TextView({
-				text : 'This is a long text to see if the wrapping property works. If wrapping is set to false it should not wrap automatically. Only defined line breaks should be used. \nThis is a new line.',
-				});*/
+				*/
 				
+			//	this.oBAQMatrixLayout.createRow( oTextView );
+				
+				
+				/*var oRequestFinishedDeferred = this.oModelHelper.readBAQAnswer(oResponse.data.results[i].NodeGuid, oResponse.data.results[i].SurveyID);
+
+				jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+					//console.dir(oResponse);
+					
+					
+					var oComboBox = new sap.m.ComboBox();
+					
+					
+					this.oBAQMatrixLayout.createRow( oComboBox );
+					
+				}, this));*/
+				
+				
+				
+			}
+			/*console.dir(questions);
+			console.dir(nodeID);			
+			console.dir(surveyID);*/
+			
+			for(var i=0; i < questions.length; i++){
+				//this.question = questions[i];
+				//that = this;
+				
+				var oRequestFinishedDeferred = this.oModelHelper.readBAQAnswer(oResponse.data.results[i].NodeGuid, "QUEEMAH_BUS_PLAN");
+
+				jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+					//console.log(oResponse);
+					
+					answers.push(oResponse.data.results);
+					
+					/*for(var j=0; j < questions.length; j++){
+					
+					var oTextView = new sap.ui.commons.TextView({
+						text : questions[j],
+						});
+                    var oComboBox = new sap.m.ComboBox();
+					
+					
+					
+					this.oBAQMatrixLayout.createRow( oTextView );
+					this.oBAQMatrixLayout.createRow( oComboBox );
+					}*/
+					//console.dir(oResponse);
+					//console.dir(answers);
+					console.dir(answers);
+				}, this));
+				
+			}
+			
+			console.dir(questions);
+			console.dir(answers[0]);
+			
+			for(var j=0; j < questions.length; j++){
+				
+				var oTextView = new sap.ui.commons.TextView({
+					text : questions[j],
+					});
+				
+                var oComboBox = new sap.m.ComboBox();
+                
+                for(var k=0; k < answers.length; k++){
+                	var vItem = new sap.ui.core.Item();
+    				vItem.setText(oResponse.data.Region);						
+    				oComboBox.addItem(vItem);
+                }
+                
+				
+                
+               //oComboBox.bindAggregation("items", {path: answers[j].data.results[j], template : new sap.ui.core.ListItem({text:"{name}"})});
+				
+				this.oBAQMatrixLayout.createRow( oTextView );
+				this.oBAQMatrixLayout.createRow( oComboBox );
+			}
 			
 		}, this));	
 		
