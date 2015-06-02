@@ -382,15 +382,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	getBAQ : function(){
 		var oRequestFinishedDeferred = this.oModelHelper.readBAQ();
-		
-		var questions = [];
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 			//console.dir(oResponse);
 			/*console.log(oResponse.data.results.length);
 			console.log(oResponse.data.results[0].Qtxtlg);
 			*/
-			
+			var questions = [];
 			var nodeID = [];
 			var surveyID = [];
 			var answers = [];
@@ -427,10 +425,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			/*console.dir(questions);
 			console.dir(nodeID);			
 			console.dir(surveyID);*/
-			
+			j = 0 ;
 			for(var i=0; i < questions.length; i++){
 				//this.question = questions[i];
 				//that = this;
+				
 				
 				var oRequestFinishedDeferred = this.oModelHelper.readBAQAnswer(oResponse.data.results[i].NodeGuid, "QUEEMAH_BUS_PLAN");
 
@@ -439,29 +438,74 @@ sap.ui.controller("com.sagia.view.Overview", {
 					
 					answers.push(oResponse.data.results);
 					
-					/*for(var j=0; j < questions.length; j++){
+					
+					/*console.dir(answers[0][0].Atxtlg);
 					
 					var oTextView = new sap.ui.commons.TextView({
-						text : questions[j],
+						text : questions[0],
 						});
-                    var oComboBox = new sap.m.ComboBox();
 					
-					
-					
-					this.oBAQMatrixLayout.createRow( oTextView );
-					this.oBAQMatrixLayout.createRow( oComboBox );
-					}*/
-					//console.dir(oResponse);
-					//console.dir(answers);
-					console.dir(answers);
+	                var oComboBox = new sap.m.ComboBox();
+	                
+	                for(var k=0; k < answers.length; k++){
+	                	var vItem = new sap.ui.core.Item();
+	    				vItem.setText(answers[k][k].Atxtlg);						
+	    				oComboBox.addItem(vItem);
+	    				
+	    				
+	                }
+	    				this.oBAQMatrixLayout.createRow( oTextView );
+	    				this.oBAQMatrixLayout.createRow( oComboBox );*/
+					console.log(j);
+					j++;
+	                
+					if(j === questions.length){
+						//console.log(answers[0][0].Atxtlg);
+						//console.log(answers.length);
+						//console.dir(answers);
+						
+						for(var l=0; l < questions.length; l++){
+							console.dir(answers[l]);
+							var oTextView = new sap.ui.commons.TextView({
+								text : questions[l],
+								});
+							var oComboBox = new sap.m.ComboBox();
+							var vItem = new sap.ui.core.Item();		    				
+		    				
+							for(var m=0; m < answers[l].length; m++){
+								console.log(m+" >"+answers[l][m].Atxtlg);
+								vItem.setText(answers[l][m].Atxtlg);						
+								oComboBox.addItem(vItem);
+							}
+							this.oBAQMatrixLayout.createRow( oTextView );
+							this.oBAQMatrixLayout.createRow( oComboBox );
+						}
+						
+						
+						
+		              /*  var oComboBox = new sap.m.ComboBox();
+		                
+		                for(var k=0; k < answers.length; k++){
+		                	var vItem = new sap.ui.core.Item();
+		    				vItem.setText(answers[k][k].Atxtlg);						
+		    				oComboBox.addItem(vItem);
+		    				
+		    				
+		                }
+		    				
+		    				this.oBAQMatrixLayout.createRow( oComboBox );*/
+		    				
+		    				
+					}
 				}, this));
+				
 				
 			}
 			
 			console.dir(questions);
-			console.dir(answers[0]);
+			//console.dir(answers);
 			
-			for(var j=0; j < questions.length; j++){
+			/*for(var j=0; j < questions.length; j++){
 				
 				var oTextView = new sap.ui.commons.TextView({
 					text : questions[j],
@@ -475,13 +519,10 @@ sap.ui.controller("com.sagia.view.Overview", {
     				oComboBox.addItem(vItem);
                 }
                 
-				
-                
-               //oComboBox.bindAggregation("items", {path: answers[j].data.results[j], template : new sap.ui.core.ListItem({text:"{name}"})});
-				
+					
 				this.oBAQMatrixLayout.createRow( oTextView );
 				this.oBAQMatrixLayout.createRow( oComboBox );
-			}
+			}*/
 			
 		}, this));	
 		
