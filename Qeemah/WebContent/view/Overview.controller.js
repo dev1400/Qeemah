@@ -384,154 +384,23 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var oRequestFinishedDeferred = this.oModelHelper.readBAQ();
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-			//console.log(oResponse);
-			//console.log(oResponse.getJSON());
-			this.getView().setModel(oResponse,"BAQModel");
-			//console.log(this.getView().getModel("BAQModel"));
-			this._oBAQ1TextView = this.getView().byId("idBAQ1TextView");
+			console.dir(oResponse);
+			console.log(oResponse.data.results.length);
+			console.log(oResponse.data.results[0].Qtxtlg);
 			
-			//this._oBAQ1TextView.bindProperty("text", {path : "/BAQCollection", model : "BAQModel"});
-			this._oBAQ1TextView.bindProperty("text", "BAQModel>/BAQCollection");
-			var BAQModel = this.getView().getModel("BAQModel");
 			
-			//console.dir(BAQModel.getJSON());
+			this.oBAQMatrixLayout = this.getView().byId("idLI_BAQ_1_to_6MAtrixLayoutz");
 			
-			var baqQuestionsArray = [];
-			var baqQuestionsIDArray = [];
-			var baqQuestionsAnswersArray = [];
-			var questionID
-			
-			var m = new Map();
-			var arrM = {};
-			var tmp = {};
-			
-			var questionID = [];
-			var answerID = [];
-			
-			var finalMap = {};
-			
-			//console.dir(BAQModel.getProperty("/BAQCollection/results"));
-			var arr = BAQModel.getProperty("/BAQCollection/results");
-			for(var i = 0; i < arr.length; i++){
-				if(arr[i].Qtxtlg_bus != ""){
-					
-					questionID[i] = arr[i].QuestId_bus;
-					if(questionID === arr[i].QuestId_bus){
-						//console.log("same qid"+ questionID);
-						m.set(arr[i].QuestId_bus, arr[i].AnswerId_bus);
-						
-						//arrM.push(arr[i].QuestId_bus, arr[i].AnswerId_bus);
-						//arrM = {arr[i].QuestId_bus : arr[i].AnswerId_bus };
-						//arrM[arr[i].QuestId_bus+"_"+i] = arr[i].AnswerId_bus;
-						
-						
-					}
-					//console.log(arr[i].Answer_Id_bus_para +" "+arr[i].AnswerId_bus );
-					
-					var KeyM = arr[i].Answer_Id_bus_para;
-					var value = arr[i].AnswerId_bus;
-					//arrM.push({KeyM : value});
-					arrM[KeyM] = arr[i].AnswerId_bus;
-				
-					/*console.log(arr[i]);
-					baqQuestionsArray.push(arr[i].Qtxtlg_bus);
-					baqQuestionsIDArray.push(arr[i].QuestId_bus);
-					baqQuestionsAnswersArray.push(arr[i].AnswerId_bus);*/
-				}
-				
-				
+			for(var i=0; i < oResponse.data.results.length; i++){
+				var oTextView = new sap.ui.commons.TextView({
+					text : oResponse.data.results[i].Qtxtlg,
+					});
+				this.oBAQMatrixLayout.createRow( oTextView );
 			}
-			for(var i = 0; i < arr.length; i++){
-				if(arr[i].QuestId_bus != ""){						
-					answerID[i] = arr[i].AnswerId_bus;
-				}
-			}
-			
-			//console.log(questionID.reduce(function(a,b){if(a.indexOf(b)<0)a.push(b);return a;},[]));
-			
-			//console.log(answerID);
-			var arrZ = {};
-			//arrM[KeyM] = arr[i].AnswerId_bus;
-			questionID = questionID.reduce(function(a,b){if(a.indexOf(b)<0)a.push(b);return a;},[]);
-			var dulicateQID = {};
-			var m=0;
-			/*for(var j = 0; j < questionID.length; j++){
+			/*var oTextView = new sap.ui.commons.TextView({
+				text : 'This is a long text to see if the wrapping property works. If wrapping is set to false it should not wrap automatically. Only defined line breaks should be used. \nThis is a new line.',
+				});*/
 				
-				for (var key in arrM) {
-					  //console.log(key);
-					var str= key;
-					if(str.indexOf("Q1 -A") !== -1){
-						//console.log(key);
-						//console.log(arrM[key]);
-						//questionID[j] = arrM[key];
-						dulicateQID[m] = key;//arrM[key];
-						++m;
-					}
-					}
-			}*/
-			var e=0;
-			for (var key in arrM) {
-				  //console.log(key);
-				
-				var str= key;
-				
-				if(str.indexOf("Q1 -A") !== -1){
-					//console.log(key);
-					//console.log(arrM[key]);
-					
-					//var KeyM = arr[i].Answer_Id_bus_para;
-					//var value = arr[i].AnswerId_bus;
-					//arrM.push({KeyM : value});
-					dulicateQID[e] = arrM[key];
-				
-					
-					e++;
-				}
-				
-				}
-			
-			//console.log(arrM);
-			
-			//console.log(questionID);
-			
-			//console.log(dulicateQID);
-			
-			//questionID[0] = dulicateQID;
-			
-			//console.log(questionID);
-			
-			finalMap[questionID[0]] = dulicateQID;
-			//console.log(finalMap);
-			
-			/*for(var f=0; f < arrM.length; f++){
-				var str1 = arrM.key;
-				console.log(str1);
-			}*/
-			
-			//console.log(arrM);
-			
-			/*var item;
-			m.forEach(function (value, key, mapObj) {
-			    console.log(mapObj);
-			});
-*/			
-			/*console.log(baqQuestionsArray.reduce(function(a,b){if(a.indexOf(b)<0)a.push(b);return a;},[]));
-			console.log(baqQuestionsIDArray.reduce(function(a,b){if(a.indexOf(b)<0)a.push(b);return a;},[]));
-			console.log(baqQuestionsAnswersArray.reduce(function(a,b){if(a.indexOf(b)<0)a.push(b);return a;},[]));
-			*///AnswerId_bus
-			//console.log(baqQuestionsIDArray.reduce(function(a,b){if(a.indexOf(b)<0)a.push(b);return a;},[]));
-			this._oBAQ1TextView.setText(baqQuestionsArray[0]);
-			
-			
-			
-			var oFilter1 = new sap.ui.model.Filter("SurveyId_bus", sap.ui.model.FilterOperator.EQ, "QUEEMAH_BUS_PLAN");
-			var oFilter2 = new sap.ui.model.Filter("Qtxtlg_bus", sap.ui.model.FilterOperator.NE, "");
-			
-			//this._oBAQ1TextView.bindProperty("text", {path : "BAQModel>/BAQCollection", filters : [oFilter1, oFilter2]});
-			//this._oBAQ1TextView.bindProperty("text", {path : "BAQModel>/BAQCollection/results[0]", filters : [oFilter1, oFilter2]});
-			
-			//console.log(this._oBAQ1TextView);
-			
 			
 		}, this));	
 		
@@ -1536,7 +1405,7 @@ userSignIn : function(userID, password){
 
 				jQuery.when(oRequestFinishedDeferredChild).then(jQuery.proxy(function(oResponse) {
 				
-					console.dir(oResponse);
+					//console.dir(oResponse);
 					//console.log(oResponse.data.Region);
 					if(oResponse.data.Return !== "Record does not exist"){
 						//var vItem = new sap.ui.core.Item();
