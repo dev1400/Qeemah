@@ -227,11 +227,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleSaveLinkPressSave : function(oEvent){
 		
 		if(this.oRecordExists){
-			var oRequestFinishedDeferred = this.oModelHelper.saveBIOI(this.oRef_id, this.oBIOIOrganizationName.getValue(),
-					this._oidRegionComboBox.getSelectedItem().getText(),
-					this._oBIILegalStatusCombobox.getSelectedItem().getText(),
-					this._oBICityComboBox.getSelectedItem().getText(),
-					this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
+			try{
+			var oRequestFinishedDeferred = this.oModelHelper.saveBIOI(this.oRef_id, 
+					this.oBIOIOrganizationName.getValue(),
+					this._oidRegionComboBox.getValue(),
+					//this._oidRegionComboBox.getSelectedItem().getText(),
+					this._oBIILegalStatusCombobox.getValue(),
+					//this._oBIILegalStatusCombobox.getSelectedItem().getText(),
+					this._oBICityComboBox.getValue(),
+					//this._oBICityComboBox.getSelectedItem().getText(),
+					this.oBIOIMultiNationalCompanyCombobox.getValue(),
+					//this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
 					this.oBIOIEmailInputText.getValue(),
 					this.oBIOILaborSizeInputText.getValue(),
 					this.oBIOICommMethodComboBox.getValue(),
@@ -253,14 +259,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 				sap.m.MessageToast.show(this.oModelHelper
     					.getText("Saved"));	
 			}, this));	
-			
+			}
+			catch(err){
+				sap.m.MessageToast.show(this.oModelHelper
+    					.getText("AllFieldsAreRequired"));	
+			}
 			
 		}else{
-			var oRequestFinishedDeferred = this.oModelHelper.createAndUpdateBIOI(this.oRef_id, this.oBIOIOrganizationName.getValue(),
-					this._oidRegionComboBox.getSelectedItem().getText(),
-					this._oBIILegalStatusCombobox.getSelectedItem().getText(),
-					this._oBICityComboBox.getSelectedItem().getText(),
-					this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
+			try{
+			var oRequestFinishedDeferred = this.oModelHelper.createAndUpdateBIOI(this.oRef_id, 
+					this.oBIOIOrganizationName.getValue(),
+					this._oidRegionComboBox.getValue(),
+					//this._oidRegionComboBox.getSelectedItem().getText(),
+					this._oBIILegalStatusCombobox.getValue(),
+					//this._oBIILegalStatusCombobox.getSelectedItem().getText(),
+					this._oBICityComboBox.getValue(),
+					//this._oBICityComboBox.getSelectedItem().getText(),
+					this.oBIOIMultiNationalCompanyCombobox.getValue(),
+					//this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
 					this.oBIOIEmailInputText.getValue(),
 					this.oBIOILaborSizeInputText.getValue(),
 					this.oBIOICommMethodComboBox.getValue(),
@@ -280,9 +296,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 				
             jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+            	this.oRecordExists = true;
             	sap.m.MessageToast.show(this.oModelHelper
     					.getText("Saved"));	
 			}, this));	
+			}
+			catch(err){
+				sap.m.MessageToast.show(this.oModelHelper
+    					.getText("AllFieldsAreRequired"));	
+			}
 			
 		}
 		
@@ -313,7 +335,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		*/
 		
 		//console.log(this.partialSaveXMLDocument.toString());
-		this.oRecordExists = false;
+		
 		
 	},
 	handleBasicInfoTabsSelection : function(oEvent){
@@ -328,13 +350,22 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.text);
 		
 		this._oBICityComboBox.setEnabled(true);
+		this._oBICityComboBox.setValue("");
 		var filters = [];
-		
+		//console.log(oControlEvent.getParameters('selectedItem').selectedItem);
+		//console.log(oControlEvent.getParameters('selectedItem').selectedItem+" "+oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
 		//var oFilter1 = new sap.ui.model.Filter("CityName_cty", sap.ui.model.FilterOperator.NE, "");
+		
+		if(oControlEvent.getParameters('selectedItem').selectedItem !== null){
 		var oFilter2 = new sap.ui.model.Filter("Bland_cty", sap.ui.model.FilterOperator.EQ, oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
+		this._oBICityComboBox.getBinding("items").filter(oFilter2);
+		
+		}
+		
+		//this._oBICityComboBox.getBinding("items").filter(oFilter2);
+		
 		
 		//filters = new sap.ui.model.Filter([oFilter1, oFilter2]);
-		this._oBICityComboBox.getBinding("items").filter(oFilter2);
 		
 	},
 	handleCountrySelectionComboBox : function(oControlEvent){
@@ -693,7 +724,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		if(name.length>40){
 			this._oLastNameErrorMsg.setText(this.oModelHelper.getText("LastNameTextMoreThan40Chars"));
 			this._oLastNameErrorMsg.setVisible(true);
-		}else if(/[^a-zA-Z]/.test( name )){
+		}else if(/[^a-zA-Z\s]/.test( name )){
 			this._oLastNameErrorMsg.setText(this.oModelHelper.getText("LastNameTextOnlyAlphabets"));
 			this._oLastNameErrorMsg.setVisible(true);
 		}else{
@@ -704,7 +735,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		if(name.length>40){
 			this._oFirstNameErrorMsg.setText(this.oModelHelper.getText("FirstNameTextMoreThan40Chars"));
 			this._oFirstNameErrorMsg.setVisible(true);
-		}else if(/[^a-zA-Z]/.test( name )){
+		}else if(/[^a-zA-Z\s]/.test( name )){
 			this._oFirstNameErrorMsg.setText(this.oModelHelper.getText("FirstNameTextOnlyAlphabets"));
 			this._oFirstNameErrorMsg.setVisible(true);
 		}else{
@@ -1539,9 +1570,9 @@ userSignIn : function(userID, password){
 						this.oBIOITelephoneInputText.setValue(oResponse.data.Telephone);  
 						this.oBIOIMobilephoneInputText.setValue(oResponse.data.Mobile);
 						this.oBIOIFaxInputText.setValue(oResponse.data.Fax);
-						this.oBIOITelephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Tele),
-						this.oBIOIFaxCountryCodeInputText.setValue(oResponse.data.Ccode_Fax),
-						this.oBIOIMobilephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Mobile)					
+						this.oBIOITelephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Tele);
+						this.oBIOIFaxCountryCodeInputText.setValue(oResponse.data.Ccode_Fax);
+						this.oBIOIMobilephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Mobile);					
 						
 						
 						this.oRecordExists = true;
@@ -1550,7 +1581,28 @@ userSignIn : function(userID, password){
 						//this.oSaveLink.attachPress(that.handleSaveLinkPressSave());
 						//this.oSaveLink.attachEvent("EID", that.handleSaveLinkPressSave());
 						//this.oSaveLink.attachEventOnce("updateFinished", that.handleSaveLinkPressSave());//function() {});
-					}
+					}/*else{
+						var vItem = new sap.ui.core.Item();
+                        vItem.setText("");
+                        
+                        this.oBIOIOrganizationName.setValue("");
+                        
+                        this._oidRegionComboBox.setSelectedItem(vItem);
+						this._oBIILegalStatusCombobox.setSelectedItem(vItem);
+						this._oBICityComboBox.setSelectedItem(vItem);
+						this.oBIOIMultiNationalCompanyCombobox.setSelectedItem(vItem);
+						this.oBIOIEmailInputText.setValue("");
+						this.oBIOILaborSizeInputText.setValue("");
+						this.oBIOICommMethodComboBox.setSelectedItem(vItem);
+						this.oBIOICapitalInputText.setValue("");
+						this.oBIOIWebSiteInputText.setValue("");
+						this.oBIOITelephoneInputText.setValue("");  
+						this.oBIOIMobilephoneInputText.setValue("");
+						this.oBIOIFaxInputText.setValue("");
+						this.oBIOITelephoneCountryCodeInputText.setValue("");
+						this.oBIOIFaxCountryCodeInputText.setValue("");
+						this.oBIOIMobilephoneCountryCodeInputText.setValue("");			
+					}*/
 					
 				}, this));		
 					
