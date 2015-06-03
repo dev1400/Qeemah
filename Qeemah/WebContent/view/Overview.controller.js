@@ -475,14 +475,21 @@ sap.ui.controller("com.sagia.view.Overview", {
 							
 							//console.log("nodeID = "+nodeID[l]);
 							
-							for(var m=0; m < answers[l].length; m++){
+							for(var m=0; m < answers.length; m++){
 								
 							
-								/*for(var t=0; t < 10; t++){
+								for(var t=0; t < answers[m].length; t++){
 									
-								}*/
+									if(nodeID[k] === answers[m][t].NodeGuid){
+									
+										var vItem = new sap.ui.core.Item();		    				
+					    				
+										vItem.setText(answers[m][t].Atxtlg);						
+										oComboBox.addItem(vItem);
+									}
+								}
 								
-								//console.log("m = "+m+" l = "+ l+" "+ answers[m][l].NodeGuid);
+								/*//console.log("m = "+m+" l = "+ l+" "+ answers[m][l].NodeGuid);
 								if(nodeID[k] === answers[f][m].NodeGuid){
 									//console.log("Matched");
 									
@@ -497,7 +504,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 								}
 								
 								//console.log("m = "+m);
-								
+*/								
 								
 								
 							}f++; k++;
