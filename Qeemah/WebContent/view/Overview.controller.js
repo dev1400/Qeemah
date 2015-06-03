@@ -463,8 +463,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 					if(j === questions.length){
 						//console.log(answers[0][0].Atxtlg);
 						//console.log(answers.length);
-						console.dir(answers);
-						k=0;
+						//console.dir(answers);
+						k=0;f = 0;
 						for(var l=0; l < questions.length; l++){
 							
 							//console.dir(answers[l]);
@@ -473,21 +473,34 @@ sap.ui.controller("com.sagia.view.Overview", {
 								});
 							var oComboBox = new sap.m.ComboBox();
 							
-							console.log("nodeID = "+nodeID[l]);
+							//console.log("nodeID = "+nodeID[l]);
+							
 							for(var m=0; m < answers[l].length; m++){
-								//console.log("nodeID = "+nodeID[m]);
-								if(nodeID[k] === answers[l][m].NodeGuid){
-									console.log("Matched");
+								
+							
+								/*for(var t=0; t < 10; t++){
 									
-									console.log(l +" "+m+" "+ answers[l][m].NodeGuid+" >"+answers[l][m].Atxtlg);
+								}*/
+								
+								//console.log("m = "+m+" l = "+ l+" "+ answers[m][l].NodeGuid);
+								if(nodeID[k] === answers[f][m].NodeGuid){
+									//console.log("Matched");
+									
+									console.log(f +" "+m+" "+ answers[f][m].NodeGuid+" >"+answers[f][m].Atxtlg);
 									var vItem = new sap.ui.core.Item();		    				
 				    				
-									vItem.setText(answers[l][m].Atxtlg);						
+									vItem.setText(answers[f][m].Atxtlg);						
 									oComboBox.addItem(vItem);
+								}else{
+									//console.log("NotMatched ");
+
 								}
 								
+								//console.log("m = "+m);
 								
-							}k++;
+								
+								
+							}f++; k++;
 							
 							this.oBAQMatrixLayout.createRow( oTextView );
 							this.oBAQMatrixLayout.createRow( oComboBox );
