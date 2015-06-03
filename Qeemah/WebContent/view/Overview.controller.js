@@ -381,6 +381,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}, this));	
 	},
 	getBAQ : function(){
+		this.openBusyDialog();
+		that = this;
 		var oRequestFinishedDeferred = this.oModelHelper.readBAQ();
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
@@ -457,7 +459,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	                }
 	    				this.oBAQMatrixLayout.createRow( oTextView );
 	    				this.oBAQMatrixLayout.createRow( oComboBox );*/
-					console.log(j);
+					//console.log(j);
 					j++;
 	                
 					if(j === questions.length){
@@ -526,7 +528,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		                }
 		    				
 		    				this.oBAQMatrixLayout.createRow( oComboBox );*/
-		    				
+						that.closeBusyDialog();
 		    				
 					}
 				}, this));
@@ -534,7 +536,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 				
 			}
 			
-			console.dir(questions);
+			//console.dir(questions);
 			//console.dir(answers);
 			
 			/*for(var j=0; j < questions.length; j++){
@@ -559,6 +561,26 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}, this));	
 		
 	},
+	/**
+	 * Open busy dialog
+	 */
+	openBusyDialog : function() {
+
+		if (!this._busyDialog) {
+			this._busyDialog = new sap.ui.xmlfragment("idBusydialogOverViewController",
+					"com.sagia.view.fragments.busydialog", this);
+		}
+		this._busyDialog.open();
+	},
+
+	/**
+	 * Close busy dialog
+	 */
+	closeBusyDialog : function() {
+		this._busyDialog.close();
+
+	},
+
 	handleSaveLinkPress : function(){
 		//this._oCountryComboBox = sap.ui.getCore().byId("idCountryComboBox1400");
 		//this._oRegionComboBox = sap.ui.getCore().byId("idRegionComboBox");
