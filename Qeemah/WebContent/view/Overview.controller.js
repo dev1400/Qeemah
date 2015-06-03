@@ -429,7 +429,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			for(var i=0; i < questions.length; i++){
 				//this.question = questions[i];
 				//that = this;
-				console.log("oResponse.data.results[i].NodeGuid = "+oResponse.data.results[i].NodeGuid);
+				//console.log("oResponse.data.results[i].NodeGuid = "+oResponse.data.results[i].NodeGuid);
 				
 				
 				var oRequestFinishedDeferred = this.oModelHelper.readBAQAnswer(oResponse.data.results[i].NodeGuid, "QUEEMAH_BUS_PLAN");
@@ -464,21 +464,30 @@ sap.ui.controller("com.sagia.view.Overview", {
 						//console.log(answers[0][0].Atxtlg);
 						//console.log(answers.length);
 						console.dir(answers);
-						
+						k=0;
 						for(var l=0; l < questions.length; l++){
+							
 							//console.dir(answers[l]);
 							var oTextView = new sap.ui.commons.TextView({
 								text : questions[l],
 								});
 							var oComboBox = new sap.m.ComboBox();
-							console.log("Q nodeid"+nodeID[l]);
+							
+							console.log("nodeID = "+nodeID[l]);
 							for(var m=0; m < answers[l].length; m++){
-								console.log(answers[l][m].NodeGuid+" >"+answers[l][m].Atxtlg);
-								var vItem = new sap.ui.core.Item();		    				
-			    				
-								vItem.setText(answers[l][m].Atxtlg);						
-								oComboBox.addItem(vItem);
-							}
+								//console.log("nodeID = "+nodeID[m]);
+								if(nodeID[k] === answers[l][m].NodeGuid){
+									console.log("Matched");
+									
+									console.log(l +" "+m+" "+ answers[l][m].NodeGuid+" >"+answers[l][m].Atxtlg);
+									var vItem = new sap.ui.core.Item();		    				
+				    				
+									vItem.setText(answers[l][m].Atxtlg);						
+									oComboBox.addItem(vItem);
+								}
+								
+								
+							}k++;
 							
 							this.oBAQMatrixLayout.createRow( oTextView );
 							this.oBAQMatrixLayout.createRow( oComboBox );
