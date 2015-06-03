@@ -429,6 +429,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			for(var i=0; i < questions.length; i++){
 				//this.question = questions[i];
 				//that = this;
+				console.log("oResponse.data.results[i].NodeGuid = "+oResponse.data.results[i].NodeGuid);
 				
 				
 				var oRequestFinishedDeferred = this.oModelHelper.readBAQAnswer(oResponse.data.results[i].NodeGuid, "QUEEMAH_BUS_PLAN");
@@ -462,21 +463,23 @@ sap.ui.controller("com.sagia.view.Overview", {
 					if(j === questions.length){
 						//console.log(answers[0][0].Atxtlg);
 						//console.log(answers.length);
-						//console.dir(answers);
+						console.dir(answers);
 						
 						for(var l=0; l < questions.length; l++){
-							console.dir(answers[l]);
+							//console.dir(answers[l]);
 							var oTextView = new sap.ui.commons.TextView({
 								text : questions[l],
 								});
 							var oComboBox = new sap.m.ComboBox();
-							var vItem = new sap.ui.core.Item();		    				
-		    				
+							console.log("Q nodeid"+nodeID[l]);
 							for(var m=0; m < answers[l].length; m++){
-								console.log(m+" >"+answers[l][m].Atxtlg);
+								console.log(answers[l][m].NodeGuid+" >"+answers[l][m].Atxtlg);
+								var vItem = new sap.ui.core.Item();		    				
+			    				
 								vItem.setText(answers[l][m].Atxtlg);						
 								oComboBox.addItem(vItem);
 							}
+							
 							this.oBAQMatrixLayout.createRow( oTextView );
 							this.oBAQMatrixLayout.createRow( oComboBox );
 						}
