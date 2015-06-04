@@ -71,6 +71,35 @@ com.sagia.common.ModelHelper = {
 		return this.oODataModel;
 	},
 	/**
+	 * read BICI
+	 * @author : Abdul Waheed
+	 */
+	readBICI : function(refid) {
+		
+		this.openBusyDialog();
+
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		this.oODataModel.read("ZBASIC_CONT_INFO_ENT(RefID='"+refid+"',FileType='')", {
+			success : function(oData, response) {
+				
+				oRequestFinishedDeferred.resolve(response);//that.BIOICollectionJSONModel);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				console.log(oResponse);				
+				
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(oResponse);
+
+				that.closeBusyDialog();
+			}});
+
+		return oRequestFinishedDeferred;
+	},
+	/**
 	 * Read BAQ
 	 */
 	readBAQ : function() {
@@ -618,37 +647,5 @@ com.sagia.common.ModelHelper = {
 		return oRequestFinishedDeferred;
 
 	},
-	/**
-	 * read BAQ
-	 * @author : Abdul Waheed
-	 *//*
-	readBAQ : function(refid) {
-		// Open busy dialog
-		this.openBusyDialog();
-
-		var that = this;
-		// Create deferred object so that calling program can wait till
-		// asynchronous call is finished
-		var oRequestFinishedDeferred = jQuery.Deferred();
-
-		this.oODataModel.read("ZBASIC_ORG_INFO_ENT('"+refid+"')", {
-			success : function(oData, response) {
-				console.dir(response);
-				
-				oRequestFinishedDeferred.resolve(response);
-				that.closeBusyDialog();
-			},
-			error : function(oResponse) {
-				console.log(oResponse);
-				
-				// Reject deferred object
-				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
-
-				// close busy dialog
-				that.closeBusyDialog();
-			}});
-
-		return oRequestFinishedDeferred;
-	},*/
+	
 };

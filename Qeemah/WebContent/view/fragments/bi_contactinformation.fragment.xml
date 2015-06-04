@@ -165,9 +165,8 @@
 													<Input type="Text" 
 														 width="8em" id="idBICITelephoneCountryCodeInputText"/>
 													<Input type="Text" 
-														width="9em" id="idBICITelephoneInputText"/>
-													<Input type="Text" 
-														width="8em" id="idBICIExtensionInputText"/>
+														width="17em" id="idBICITelephoneInputText"/>
+													
 												</HBox>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell

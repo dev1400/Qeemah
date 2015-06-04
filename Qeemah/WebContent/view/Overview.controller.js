@@ -1366,42 +1366,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 userSignIn : function(userID, password){
 	var that = this
-	//Remove later start
-	/*this._oidMainPageContent.setVisible(false);
-	this._oTopHeaderVBox.setVisible(true);
-	this._oidLicenseButtonsHBox.setVisible(true);
-	
-	this._oidRegionComboBox = this.getView().byId("idRegionComboBox");		
-	var oRegionComboBoxFilter = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
-	this._oidRegionComboBox.getBinding("items").filter(oRegionComboBoxFilter);
-	
-	this._oBIILegalStatusCombobox = this.getView().byId("idBILegalStatusComboBox");
-	var oBIILegalStatusFilter = new sap.ui.model.Filter("Textlong", sap.ui.model.FilterOperator.NE, "");
-	this._oBIILegalStatusCombobox.getBinding("items").filter(oBIILegalStatusFilter);
-	
-	this._oBICINationalityCombobox = this.getView().byId("idCINationalityComboBox");
-	var oBICINationalityFilter = new sap.ui.model.Filter("Natio50", sap.ui.model.FilterOperator.NE, "");
-	this._oBICINationalityCombobox.getBinding("items").filter(oBICINationalityFilter);
-	
-	
-	this._oBICICountryCombobox = this.getView().byId("idCICountryComboBox");
-	var oBICICountryFilter = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.NE, "");
-	this._oBICICountryCombobox.getBinding("items").filter(oBICICountryFilter);
-	
-	this.oBIOIOrganizationName = this.getView().byId("idBIOIOrganizationName");
-	this.oBIOIMultiNationalCompanyCombobox = this.getView().byId("idBIOIMultiNationalCompanyCombobox");
-	this.oBIOIEmailInputText = this.getView().byId("idBIOIEmailInputText");
-	this.oBIOILaborSizeInputText = this.getView().byId("idBIOILaborSizeInputText");
-	this.oBIOICommMethodComboBox = this.getView().byId("idBIOICommMethodComboBox");
-	this.oBIOICapitalInputText = this.getView().byId("idBIOICapitalInputText");
-	this.oBIOITelephoneCountryCodeInputText = this.getView().byId("idBIOITelephoneCountryCodeInputText");
-	this.oBIOITelephoneInputText = this.getView().byId("idBIOITelephoneInputText");
-	this.oBIOIMobilephoneCountryCodeInputText = this.getView().byId("idBIOIMobilephoneCountryCodeInputText");
-	this.oBIOIMobilephoneInputText = this.getView().byId("idBIOIMobilephoneInputText");
-	this.oBIOIFaxCountryCodeInputText = this.getView().byId("idBIOIFaxCountryCodeInputText");
-	this.oBIOIFaxInputText = this.getView().byId("idBIOIFaxInputText");
-	this.oBIOIWebSiteInputText = this.getView().byId("idBIOIWebSiteInputText");*/
-	
 	
 	
 	
@@ -1460,7 +1424,10 @@ userSignIn : function(userID, password){
 				this.oBIOIFaxCountryCodeInputText = this.getView().byId("idBIOIFaxCountryCodeInputText");
 				this.oBIOIFaxInputText = this.getView().byId("idBIOIFaxInputText");
 				this.oBIOIWebSiteInputText = this.getView().byId("idBIOIWebSiteInputText");
-				//Uncomment later end
+				
+				
+				
+				
 				
 				var oRequestFinishedDeferredChild = this.oModelHelper.readBIOI(this.oRef_id);
 
@@ -1506,12 +1473,7 @@ userSignIn : function(userID, password){
 						
 						
 						this.oRecordExists = true;
-						
-						//this.oSaveLink = this.getView().byId("idSaveLink");
-						//this.oSaveLink.attachPress(that.handleSaveLinkPressSave());
-						//this.oSaveLink.attachEvent("EID", that.handleSaveLinkPressSave());
-						//this.oSaveLink.attachEventOnce("updateFinished", that.handleSaveLinkPressSave());//function() {});
-					}/*else{
+						}/*else{
 						var vItem = new sap.ui.core.Item();
                         vItem.setText("");
                         
@@ -1535,9 +1497,54 @@ userSignIn : function(userID, password){
 					}*/
 					
 				}, this));		
-					
 				
 				
+				this.oBICIFirstNameInputText = this.getView().byId("idBICIFirstNameInputText");
+				this.oBICILastNameInputText = this.getView().byId("idBICILastNameInputText");
+				this.oBICICityInputText = this.getView().byId("idBICICityInputText");
+				this.oBICIGenderComboBox = this.getView().byId("idBICIGenderComboBox");
+				this.oBICIPOBoxInputText = this.getView().byId("idBICIPOBoxInputText");
+				this.oBICITelephoneCountryCodeInputText = this.getView().byId("idBICITelephoneCountryCodeInputText");
+				this.oBICITelephoneInputText = this.getView().byId("idBICITelephoneInputText");
+				this.oBICIPostalCodeInputText = this.getView().byId("idBICIPostalCodeInputText");
+				this.oBICIMobileCountryCodeInputText = this.getView().byId("idBICIMobileCountryCodeInputText");
+				this.oBICIMobilePhoneInputText = this.getView().byId("idBICIMobilePhoneInputText");
+				this.oBICICommMethodComboBox = this.getView().byId("idBICICommMethodComboBox");
+				this.oBICIFaxCountryCodeInputText = this.getView().byId("idBICIFaxCountryCodeInputText");
+				this.oBICIFaxInputText = this.getView().byId("idBICIFaxInputText");
+				this.oBICIRoleInputText = this.getView().byId("idBICIRoleInputText");
+				this.oBICIEmailInputText = this.getView().byId("idBICIEmailInputText");
+				this.oBICIPassportCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
+				this.oBICIPowerofAttorneyFileUploader = this.getView().byId("idBICIPowerofAttorneyFileUploader");
+				
+				var oRequestFinishedDeferredChild = this.oModelHelper.readBICI(1);//this.oRef_id);
+
+				jQuery.when(oRequestFinishedDeferredChild).then(jQuery.proxy(function(oResponse) {
+					console.log(oResponse);
+					if(oResponse.data.Return !== "Record does not exist"){
+						
+						this.oBICIFirstNameInputText.setValue(oResponse.data.NameFirst);
+						this.oBICILastNameInputText.setValue(oResponse.data.NameLast);
+						this.oBICICityInputText.setValue(oResponse.data.City);
+						this.oBICIGenderComboBox.setValue(oResponse.data.Gender);
+						this.oBICIPOBoxInputText.setValue(oResponse.data.PoBox);
+						this.oBICITelephoneCountryCodeInputText.setValue(oResponse.data.Fax);
+						this.oBICITelephoneInputText.setValue(oResponse.data.Telephone);
+						this.oBICIPostalCodeInputText.setValue(oResponse.data.PostalCode);
+						this.oBICIMobileCountryCodeInputText.setValue(oResponse.data.Fax);
+						this.oBICIMobilePhoneInputText.setValue(oResponse.data.Mobile);
+						this.oBICICommMethodComboBox.setValue(oResponse.data.CommMtd);
+						this.oBICIFaxCountryCodeInputText.setValue(oResponse.data.Fax);
+						this.oBICIFaxInputText.setValue(oResponse.data.Fax);
+						this.oBICIRoleInputText.setValue(oResponse.data.Role);
+						this.oBICIEmailInputText.setValue(oResponse.data.Email);
+						//this.oBICIPassportCopyFileUploader.setValue(oResponse.data.);
+						//this.oBICIPowerofAttorneyFileUploader.setValue(oResponse.data.);
+						
+						
+						this.oContactInfoRecordExists = true;
+						}
+				}, this));	
 				
 			
 			}
