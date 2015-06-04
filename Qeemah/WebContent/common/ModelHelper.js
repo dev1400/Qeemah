@@ -89,7 +89,7 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				console.log(oResponse);				
+				//console.log(oResponse);				
 				
 				oRequestFinishedDeferred.resolve();
 				sap.m.MessageToast.show(oResponse);
@@ -99,6 +99,150 @@ com.sagia.common.ModelHelper = {
 
 		return oRequestFinishedDeferred;
 	},
+	/**
+	 * Create and update BICI.
+	 * @author Abdul Waheed
+	 */
+	createAndUpdateBICI : function(
+			oRefID,
+			oBICIFirstNameInputText,
+			oBICILastNameInputText,
+			oBICICityInputText,
+			oBICIGenderComboBox,
+			oBICIPOBoxInputText,
+			oBICITelephoneCountryCodeInputText,
+			oBICITelephoneInputText,
+			oBICIPostalCodeInputText,
+			oBICIMobileCountryCodeInputText,
+			oBICIMobilePhoneInputText,
+			oBICICommMethodComboBox,
+			oBICIFaxCountryCodeInputText,
+			oBICIFaxInputText,
+			oBICIRoleInputText,
+			oBICIEmailInputText,
+			oBICICountryCombobox,
+			oBICINationalityCombobox,
+			oBICIStreet) {
+		
+		this.openBusyDialog();
+
+		var that = this;
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+        var oEntry = {};
+        oEntry.RefID = oRefID;
+        oEntry.NameFirst = oBICIFirstNameInputText;
+        oEntry.NameLast = oBICILastNameInputText;
+        oEntry.City = oBICICityInputText;
+        oEntry.Gender = oBICIGenderComboBox;
+        oEntry.PoBox = oBICIPOBoxInputText;
+        oEntry.Ccode_Tele = oBICITelephoneCountryCodeInputText;
+        oEntry.Telephone = oBICITelephoneInputText;
+        oEntry.PostalCode = oBICIPostalCodeInputText;
+        oEntry.Ccode_Mobile = oBICIMobileCountryCodeInputText;
+        oEntry.Mobile = oBICIMobilePhoneInputText;
+        oEntry.CommMtd = oBICICommMethodComboBox;
+        oEntry.Ccode_Fax = oBICIFaxCountryCodeInputText;
+        oEntry.Fax = oBICIFaxInputText;
+        oEntry.Role = oBICIRoleInputText;
+        oEntry.Email = oBICIEmailInputText;
+        oEntry.Country = oBICICountryCombobox;
+        oEntry.Nationality = oBICINationalityCombobox;
+        oEntry.Street = oBICIStreet;
+        
+		this.oODataModel.create("ZBASIC_CONT_INFO_ENT", oEntry, {
+			
+			
+			success : function(oData) {
+				
+				oRequestFinishedDeferred.resolve(oData);
+				// close busy dialog
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				console.log(oResponse);
+				oRequestFinishedDeferred.resolve();
+				// close busy dialog
+				that.closeBusyDialog();
+			},
+			async : true,
+			urlParameters : oEntry
+		});
+		
+		return oRequestFinishedDeferred;
+
+	},
+	/**
+	 * Save BI CI
+	 * @author Abdul Waheed
+	 */
+	saveBICI : function(
+			oRefID,
+			oBICIFirstNameInputText,
+			oBICILastNameInputText,
+			oBICICityInputText,
+			oBICIGenderComboBox,
+			oBICIPOBoxInputText,
+			oBICITelephoneCountryCodeInputText,
+			oBICITelephoneInputText,
+			oBICIPostalCodeInputText,
+			oBICIMobileCountryCodeInputText,
+			oBICIMobilePhoneInputText,
+			oBICICommMethodComboBox,
+			oBICIFaxCountryCodeInputText,
+			oBICIFaxInputText,
+			oBICIRoleInputText,
+			oBICIEmailInputText,
+			oBICICountryCombobox,
+			oBICINationalityCombobox,
+			oBICIStreet) {
+		
+		
+		this.openBusyDialog();
+
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+		 var oEntry = {};
+	        oEntry.RefID = oRefID;
+	        oEntry.NameFirst = oBICIFirstNameInputText;
+	        oEntry.NameLast = oBICILastNameInputText;
+	        oEntry.City = oBICICityInputText;
+	        oEntry.Gender = oBICIGenderComboBox;
+	        oEntry.PoBox = oBICIPOBoxInputText;
+	        oEntry.Ccode_Tele = oBICITelephoneCountryCodeInputText;
+	        oEntry.Telephone = oBICITelephoneInputText;
+	        oEntry.PostalCode = oBICIPostalCodeInputText;
+	        oEntry.Ccode_Mobile = oBICIMobileCountryCodeInputText;
+	        oEntry.Mobile = oBICIMobilePhoneInputText;
+	        oEntry.CommMtd = oBICICommMethodComboBox;
+	        oEntry.Ccode_Fax = oBICIFaxCountryCodeInputText;
+	        oEntry.Fax = oBICIFaxInputText;
+	        oEntry.Role = oBICIRoleInputText;
+	        oEntry.Email = oBICIEmailInputText;
+	        oEntry.Country = oBICICountryCombobox;
+	        oEntry.Nationality = oBICINationalityCombobox;
+	        oEntry.Street = oBICIStreet;
+		
+		this.oODataModel.update("ZBASIC_CONT_INFO_ENT(RefID='"+oEntry.RefID+"',FileType='')",oEntry,{		
+		
+		success : function(oData, response) { 
+			//console.log(" saveBICI >"+response);
+			oRequestFinishedDeferred.resolve(oData);
+			// 
+			that.closeBusyDialog();
+			},
+		    error : function(oResponse) {
+		    	oRequestFinishedDeferred.resolve();
+		    that.closeBusyDialog();
+		    }
+		
+		});
+		return oRequestFinishedDeferred;
+
+	},
+	
 	/**
 	 * Read BAQ
 	 */
@@ -474,7 +618,7 @@ com.sagia.common.ModelHelper = {
 	},*/
 	
 	/**
-	 * Register new user.
+	 * Save BI OI
 	 * @author Abdul Waheed
 	 */
 	saveBIOI : function(oRefID, oBIOIOrganizationName, oBIOIRegion, oBIOILegalStatus, 

@@ -132,86 +132,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this._oLanguageSelectionComboBox = this.getView().byId("idLanguageSelectionComboBox");
 		
-		/*this._basicInfo_OrganizationFragment = sap.ui.xmlfragment("com.sagia.view.fragments.basicinfo", this.getView()
-				.getController());
-		this.getView().addDependent(this._basicInfo_OrganizationFragment);*/
-		
 		this._basicInfo_OrganizationFragmentChild = sap.ui.xmlfragment("com.sagia.view.fragments.bi_organization", this.getView()
 				.getController());
 		this._licenseInfo_BAQFragmentChild = sap.ui.xmlfragment("com.sagia.view.fragments.bizactivityquestions", this.getView()
 				.getController());
-		//this.getView().addDependent(this._basicInfo_OrganizationFragment);
-		//console.dir(this._basicInfo_OrganizationFragment);
 		
-		/*this._basicInfo_OrganizationFragment = sap.ui.xmlfragment("com.sagia.view.fragments.basicinfo", this.getView()
-				.getController());*/
-		
-		/*this._oidRegionComboBox = this.getView().byId("idRegionComboBox");
-		
-		var oItemTemplate = new sap.ui.core.ListItem({text:"{Landx50}"});
-		//this._oidRegionComboBox.bindAggregation("items", "/DetailsCollection", new sap.ui.core.ListItem({text:"{Landx50}"}));
-		var oFilter1 = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.EQ, "Guam");
-		this._oidRegionComboBox.bindAggregation("items", {path : "/DetailsCollection", template: oItemTemplate,
-			filters : oFilter1});*/
-		
-        
-		/*this._oidRegionComboBox2 = this.getView().byId("idRegionComboBox2");		
-		var oItemTemplate2 = new sap.ui.core.ListItem({text:"{Bezei_reg}"});		
-		var oFilter2 = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
-		this._oidRegionComboBox2.bindAggregation("items", {path : "/DetailsCollection", template: oItemTemplate2,
-			filters : oFilter2});*/
-		
-		
-		
-		
-		/*this._oidRegionComboBox3 = sap.ui.getCore().byId("idRegionComboBox3");		
-		var oItemTemplate3 = new sap.ui.core.ListItem({text:"{Bezei_reg}"});		
-		var oFilter3 = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
-		this._oidRegionComboBox3.bindAggregation("items", {path : "/DetailsCollection", template: oItemTemplate3,
-			filters : oFilter3});*/
-		
-		/*this._oidRegionComboBox4 = sap.ui.getCore().byId("idRegionComboBox4");		
-		var oItemTemplate4 = new sap.ui.core.ListItem({text:"{Bezei_reg}"});		
-		var oFilter4 = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
-		this._oidRegionComboBox4.bindAggregation("items", {path : "/DetailsCollection", template: oItemTemplate4,
-			filters : oFilter4});*/
-		
-		//this._oBIILegalStatus.onAfterRendering = function() { console.log("dir");};
-		
-		
-		
-		/*this.partialSaveXMLDocument = new marknote.Document();
-		this.XMLrootElement = new marknote.Element("RegistrationInfo");
-		
-		this.partialSaveXMLDocument.setRootElement(this.XMLrootElement);
-		this.idBIOIOrganizationNameME = new marknote.Element("BasicInfoOrgInfoOrganizationName");
-		this.XMLrootElement.addChildElement(this.idBIOIOrganizationNameME);*/
-		
-		
-		
-		/*var rootElement = new marknote.Element("songs");
-		this.partialSaveXMLDocument.setRootElement(rootElement);
-
-		// add Truckin'
-		var truckingElement = new marknote.Element("song");
-		truckingElement.setAttribute("artist", "Grateful Dead");
-		truckingElement.setAttribute("title", "Truckin'");
-		rootElement.addChildElement(truckingElement);
-
-		// add Smoke on the Water
-		var smokeElement = new marknote.Element("song");
-		smokeElement.setAttribute("artist", "Deep Purple");
-		smokeElement.setAttribute("title", "Smoke on the Water");
-		rootElement.addChildElement(smokeElement);
-
-		// add Hair of the Dog
-		var dogElement = new marknote.Element("song");
-		dogElement.setAttribute("artist", "Nazareth");
-		dogElement.setAttribute("title", "Hair of the Dog");
-		rootElement.addChildElement(dogElement);
-		
-		console.log(this.partialSaveXMLDocument.toString());
-*/
 		this.oUserID = this.getView().byId("idUserIDInputText");
 		this.oPassword = this.getView().byId("idPasswordInputText");
 		this.oInputEmail = this.getView().byId("idEmailInputText");
@@ -308,33 +233,79 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 		}
 		
-		
-		//var oBIOIRegionComboBoxitem = this.getView().byId("idRegionComboBoxitem");
-		/**/
-		
-		
-		
-		/**/
-		
-		
-		//var 
-		//idBIOIOrganizationName.setAttribute("value", oBIOIOrganizationName.getValue());
-		//this.idBIOIOrganizationNameME.setText(oBIOIOrganizationName.getValue());
-		
-		
-		/*var paintings = this.XMLrootElement.getChildElements("painting");
-		for (var i=0; i<paintings.length; i++) {
-		    var child = paintings[i];
-		    alert(
-		        "Element name is " + 
-		        child.getName() + 
-		        " and title is " + 
-		        child.getAttribute("title").getValue()
-		    );
+		if(this.oContactInfoRecordExists){
+			try{
+			var oRequestFinishedDeferred = this.oModelHelper.saveBICI(
+					this.oRef_id,
+					this.oBICIFirstNameInputText.getValue(),
+					this.oBICILastNameInputText.getValue(),
+					this.oBICICityInputText.getValue(),
+					this.oBICIGenderComboBox.getValue(),
+					this.oBICIPOBoxInputText.getValue(),
+					this.oBICITelephoneCountryCodeInputText.getValue(),
+					this.oBICITelephoneInputText.getValue(),
+					this.oBICIPostalCodeInputText.getValue(),
+					this.oBICIMobileCountryCodeInputText.getValue(),
+					this.oBICIMobilePhoneInputText.getValue(),
+					this.oBICICommMethodComboBox.getValue(),
+					this.oBICIFaxCountryCodeInputText.getValue(),
+					this.oBICIFaxInputText.getValue(),
+					this.oBICIRoleInputText.getValue(),
+					this.oBICIEmailInputText.getValue(),
+					this._oBICICountryCombobox.getValue(),
+					this._oBICINationalityCombobox.getValue(),						
+					this.oBICIStreet.getValue()		
+							);
+
+			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+				sap.m.MessageToast.show(this.oModelHelper
+    					.getText("Saved"));	
+			}, this));	
+			}
+			catch(err){
+				sap.m.MessageToast.show("saveBICI > "+this.oModelHelper
+    					.getText("AllFieldsAreRequired"));	
+			}
+			
+		}else{
+			try{
+			var oRequestFinishedDeferred = this.oModelHelper.createAndUpdateBICI(
+			this.oRef_id,
+			this.oBICIFirstNameInputText.getValue(),
+			this.oBICILastNameInputText.getValue(),
+			this.oBICICityInputText.getValue(),
+			this.oBICIGenderComboBox.getValue(),
+			this.oBICIPOBoxInputText.getValue(),
+			this.oBICITelephoneCountryCodeInputText.getValue(),
+			this.oBICITelephoneInputText.getValue(),
+			this.oBICIPostalCodeInputText.getValue(),
+			this.oBICIMobileCountryCodeInputText.getValue(),
+			this.oBICIMobilePhoneInputText.getValue(),
+			this.oBICICommMethodComboBox.getValue(),
+			this.oBICIFaxCountryCodeInputText.getValue(),
+			this.oBICIFaxInputText.getValue(),
+			this.oBICIRoleInputText.getValue(),
+			this.oBICIEmailInputText.getValue(),
+			this._oBICICountryCombobox.getValue(),
+			this._oBICINationalityCombobox.getValue(),						
+			this.oBICIStreet.getValue()		
+					);
+			
+			
+				
+            jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+            	this.oContactInfoRecordExists = true;
+            	sap.m.MessageToast.show(this.oModelHelper
+    					.getText("Saved"));	
+			}, this));	
+			}
+			catch(err){
+				sap.m.MessageToast.show(this.oModelHelper
+    					.getText("AllFieldsAreRequired"));	
+			}
+			
 		}
-		*/
 		
-		//console.log(this.partialSaveXMLDocument.toString());
 		
 		
 	},
@@ -1516,8 +1487,11 @@ userSignIn : function(userID, password){
 				this.oBICIEmailInputText = this.getView().byId("idBICIEmailInputText");
 				this.oBICIPassportCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
 				this.oBICIPowerofAttorneyFileUploader = this.getView().byId("idBICIPowerofAttorneyFileUploader");
+				this.oBICIStreet = this.getView().byId("idBICIStreetInputText");
 				
-				var oRequestFinishedDeferredChild = this.oModelHelper.readBICI(1);//this.oRef_id);
+				
+				
+				var oRequestFinishedDeferredChild = this.oModelHelper.readBICI(this.oRef_id);
 
 				jQuery.when(oRequestFinishedDeferredChild).then(jQuery.proxy(function(oResponse) {
 					console.log(oResponse);
@@ -1528,18 +1502,23 @@ userSignIn : function(userID, password){
 						this.oBICICityInputText.setValue(oResponse.data.City);
 						this.oBICIGenderComboBox.setValue(oResponse.data.Gender);
 						this.oBICIPOBoxInputText.setValue(oResponse.data.PoBox);
-						this.oBICITelephoneCountryCodeInputText.setValue(oResponse.data.Fax);
+						this.oBICITelephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Tele);
 						this.oBICITelephoneInputText.setValue(oResponse.data.Telephone);
 						this.oBICIPostalCodeInputText.setValue(oResponse.data.PostalCode);
-						this.oBICIMobileCountryCodeInputText.setValue(oResponse.data.Fax);
+						this.oBICIMobileCountryCodeInputText.setValue(oResponse.data.Ccode_Mobile);
 						this.oBICIMobilePhoneInputText.setValue(oResponse.data.Mobile);
 						this.oBICICommMethodComboBox.setValue(oResponse.data.CommMtd);
-						this.oBICIFaxCountryCodeInputText.setValue(oResponse.data.Fax);
+						this.oBICIFaxCountryCodeInputText.setValue(oResponse.data.Ccode_Fax);
 						this.oBICIFaxInputText.setValue(oResponse.data.Fax);
 						this.oBICIRoleInputText.setValue(oResponse.data.Role);
 						this.oBICIEmailInputText.setValue(oResponse.data.Email);
 						//this.oBICIPassportCopyFileUploader.setValue(oResponse.data.);
 						//this.oBICIPowerofAttorneyFileUploader.setValue(oResponse.data.);
+						
+						
+						this._oBICICountryCombobox.setValue(oResponse.data.Country);
+						this._oBICINationalityCombobox.setValue(oResponse.data.Nationality);
+						this.oBICIStreet.setValue(oResponse.data.Street);
 						
 						
 						this.oContactInfoRecordExists = true;
@@ -1608,48 +1587,9 @@ handleRegisterUserButtonPress : function() {
 					//idSignInPasswordInput
 				}
 				
-				/*if(oResponse.InvestorId === "0000000000"){
-					sap.m.MessageToast.show(oResponse.Return);
-				}else{
-					
-					// create pop over fragment only once
-					if (!this._popOverFragment) {
-						this._popOverFragment = sap.ui.xmlfragment(
-								"com.sagia.view.fragments.show_investorid_dialog", this.getView()
-										.getController());
-						this.getView().addDependent(this._popOverFragment);
-					}
-					
-					
-
-					this._popOverFragment.open();
-					
-					this._oInvestorIDLabel = sap.ui.getCore().byId("idInvestIDText");
-					this._oInvestorIDLabel.setText(oResponse.InvestorId);
-					
-					that.handleLoginButtonPress();
-					
-					
-					this.getView().byId("idSignInUsernameInput").setValue(oResponse.InvestorId);
-					
-					sap.m.MessageToast.show(this.oModelHelper
-							.getText("SignInSuccessful"));
-					this._oidMainPageContent.setVisible(false);
-					this._oTopHeaderVBox.setVisible(true);
-					this._oidLicenseButtonsHBox.setVisible(true);
-				}*/
+				
 				
 			}, this));	
-			
-			/*sap.m.MessageToast.show(this.oModelHelper
-					.getText("RegistrationSuccessful"));*/
-			/*this.getView().byId("idFirstNameInputText").setValue("");
-			this.getView().byId("idLastNameInputText").setValue("");
-			this.getView().byId("idInputMobileNumber").setValue("");
-			this.getView().byId("idInputEmail").setValue("");
-			this.getView().byId("idInputPassword").setValue("");
-			this.getView().byId("idInputRePassword").setValue("");*/
-			
 			
 		
 			
