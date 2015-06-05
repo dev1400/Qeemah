@@ -1495,7 +1495,7 @@ userSignIn : function(userID, password){
 
 				jQuery.when(oRequestFinishedDeferredChild).then(jQuery.proxy(function(oResponse) {
 					console.log(oResponse);
-					if(oResponse.data.Return !== "Record does not exist"){
+					if(oResponse.data.Return !== "Data does not exist"){
 						
 						this.oBICIFirstNameInputText.setValue(oResponse.data.NameFirst);
 						this.oBICILastNameInputText.setValue(oResponse.data.NameLast);
