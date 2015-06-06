@@ -258,7 +258,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this._oBICINationalityCombobox.getValue(),						
 					this.oBICIStreet.getValue()		
 							);
-			this.oModelHelper.uploadPOA(this.oBICIPowerofAttorneyFileUploader);
+			this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
 			
 
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {

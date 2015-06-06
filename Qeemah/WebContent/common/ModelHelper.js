@@ -99,7 +99,8 @@ com.sagia.common.ModelHelper = {
 
 		return oRequestFinishedDeferred;
 	},
-	uploadPOA : function(oBICIPowerofAttorneyFileUploader){
+	uploadPOA : function(oRefID, oBICIPowerofAttorneyFileUploader){
+		//console.log(oBICIPowerofAttorneyFileUploader.getMimeType()[0]);
 		var csrf =  this.oODataModel.getHeaders()['x-csrf-token'];
 		
 		
@@ -119,7 +120,7 @@ com.sagia.common.ModelHelper = {
       
       
         
-        oBICIPowerofAttorneyFileUploader.setUploadUrl(this.getServiceUrl()+"ZBASIC_CONT_INFO_ENT(RefID='16',FileType='POA')/InfoToPoa");
+        oBICIPowerofAttorneyFileUploader.setUploadUrl(this.getServiceUrl()+"ZBASIC_CONT_INFO_ENT(RefID='"+oRefID+"',FileType='POA')/InfoToPoa");
         oBICIPowerofAttorneyFileUploader.upload();
 		
 	},
