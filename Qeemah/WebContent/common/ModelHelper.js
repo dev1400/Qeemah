@@ -105,8 +105,8 @@ com.sagia.common.ModelHelper = {
 		
 		oBICIPowerofAttorneyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
 				{name: "Content-Type", value: "application/xml" }));
-		oBICIPowerofAttorneyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
-				{name: "Access-Control-Request-Method", value: "POST" }));
+		/*oBICIPowerofAttorneyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+				{name: "Access-Control-Request-Method", value: "POST" }));*/
 		/*oBICIPowerofAttorneyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
 				{name: "X-PINGOTHER", value: "pp" }));*/
 		/*oBICIPowerofAttorneyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
@@ -146,9 +146,7 @@ com.sagia.common.ModelHelper = {
 			oBICIEmailInputText,
 			oBICICountryCombobox,
 			oBICINationalityCombobox,
-			oBICIStreet,
-			oBICIPowerofAttorneyFileUploader,
-			oBICIPowerofAttorneyFileUploaderMIMEType, oBICIPowerofAttorneyFileUploaderObj) {
+			oBICIStreet) {
 		
 		this.openBusyDialog();
 
@@ -156,8 +154,8 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
 		
         var oEntry = {};
-        //oEntry.RefID = oRefID;
-       /* oEntry.NameFirst = oBICIFirstNameInputText;
+        oEntry.RefID = oRefID;
+        oEntry.NameFirst = oBICIFirstNameInputText;
         oEntry.NameLast = oBICILastNameInputText;
         oEntry.City = oBICICityInputText;
         oEntry.Gender = oBICIGenderComboBox;
@@ -174,62 +172,19 @@ com.sagia.common.ModelHelper = {
         oEntry.Email = oBICIEmailInputText;
         oEntry.Country = oBICICountryCombobox;
         oEntry.Nationality = oBICINationalityCombobox;
-        oEntry.Street = oBICIStreet;*/
-        oEntry.FileName = oBICIPowerofAttorneyFileUploader;
-        oEntry.FileMtype = oBICIPowerofAttorneyFileUploaderMIMEType[0];
+        oEntry.Street = oBICIStreet;
         
-        /*var headerParameters = new sap.ui.unified.FileUploaderParameter(
-        	{"X-Requested-With" : "XMLHttpRequest",
-			"Content-Type" : "application/json",
-			"X-CSRF-Token":"Fetch" ,
-			"DataServiceVersion": "2.0",
-			"Authorization" : "Basic bmt1bWFyOnNhcDEyMw=="});*/
-        /*oBICIPowerofAttorneyFileUploaderObj.addParameter(
-        		{"X-Requested-With" : "XMLHttpRequest",
-        			"Content-Type" : "application/json",
-        			"X-CSRF-Token":"Fetch" ,
-        			"DataServiceVersion": "2.0",
-        			"Authorization" : "Basic bmt1bWFyOnNhcDEyMw=="}		
-        );*/
-        console.log(this.oODataModel.getHeaders()['x-csrf-token']);
-       /* oBICIPowerofAttorneyFileUploaderObj.addHeaderParameter(new sap.ui.unified.FileUploaderParameter(
-        		[{name: "X-Requested-With", value: "XMLHttpRequest"},
-        		 {name: "Content-Type", value: "application/atom+xml"},
-        		 {name: "X-CSRF-Token", value: this.oODataModel.getHeaders()['x-csrf-token']},
-        		 {name: "DataServiceVersion", value: "2.0"},
-        		 {name: "Authorization", value: "Basic bmt1bWFyOnNhcDEyMw=="}]
-        		));*///{name: "X-CSRF-Token", value: sap.ui.getCore().getModel().getHeaders()['X-CSRF-Token'] }));
-       /* oBICIPowerofAttorneyFileUploaderObj.addHeaderParameter(
-        		new sap.ui.unified.FileUploaderParameter(
-        				{name: "X-CSRF-Token", value: this.oODataModel.getHeaders()['x-csrf-token']}));
-      */  
-      /*  console.dir(new sap.ui.unified.FileUploaderParameter(
-				{name: "X-CSRF-Token", value: this.oODataModel.getHeaders()['x-csrf-token']}));
-        oBICIPowerofAttorneyFileUploaderObj.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
-				{name: "X-CSRF-Token", value: this.oODataModel.getHeaders()['x-csrf-token']}));
-        
-        oBICIPowerofAttorneyFileUploaderObj.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter({name: "slug", value: oBICIPowerofAttorneyFileUploaderObj.getValue() }));
-      
-      
-        
-        oBICIPowerofAttorneyFileUploaderObj.setUploadUrl("http://rhocrmdev1.mysagia.gov:8000/sap/opu/odata/sap/ZQEEMAH_SRV/ZBASIC_CONT_INFO_ENT(RefID='14',FileType='POA')/InfoToPoa");
-        
-        oBICIPowerofAttorneyFileUploaderObj.upload();*/
-        
-		//this.oODataModel.create("ZBASIC_CONT_INFO_ENT", oEntry, {
-       /* this.oODataModel.create("ZBASIC_CONT_INFO_ENT(RefID='13',FileType='POA')/InfoToPoa", oEntry, {
+		this.oODataModel.create("ZBASIC_CONT_INFO_ENT", oEntry, {
 			
 			
 			success : function(oData) {
-				console.log("success");
-				console.dir(oData);
-
+				
 				oRequestFinishedDeferred.resolve(oData);
 				// close busy dialog
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				console.log("error"+oResponse);
+				console.log(oResponse);
 				oRequestFinishedDeferred.resolve();
 				// close busy dialog
 				that.closeBusyDialog();
@@ -237,7 +192,7 @@ com.sagia.common.ModelHelper = {
 			async : true,
 			urlParameters : oEntry
 		});
-*/		
+		
 		return oRequestFinishedDeferred;
 
 	},
@@ -573,7 +528,7 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				console.log(oResponse);
+				//console.log(oResponse);
 				
 				// Reject deferred object
 				oRequestFinishedDeferred.resolve();

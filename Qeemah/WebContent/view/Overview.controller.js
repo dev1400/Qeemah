@@ -292,9 +292,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oBICIEmailInputText.getValue(),
 			this._oBICICountryCombobox.getValue(),
 			this._oBICINationalityCombobox.getValue(),						
-			this.oBICIStreet.getValue(),
-			this.oBICIPowerofAttorneyFileUploader.getValue(), this.oBICIPowerofAttorneyFileUploader.getMimeType(),
-			this.oBICIPowerofAttorneyFileUploader
+			this.oBICIStreet.getValue()
 					);
 			
 			 	
