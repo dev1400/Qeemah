@@ -151,6 +151,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleSaveLinkPressSave : function(oEvent){
 		
+		
+       
 		if(this.oRecordExists){
 			try{
 			var oRequestFinishedDeferred = this.oModelHelper.saveBIOI(this.oRef_id, 
@@ -256,6 +258,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this._oBICINationalityCombobox.getValue(),						
 					this.oBICIStreet.getValue()		
 							);
+			this.oModelHelper.uploadPOA(this.oBICIPowerofAttorneyFileUploader);
+			
 
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 				sap.m.MessageToast.show(this.oModelHelper
@@ -288,9 +292,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oBICIEmailInputText.getValue(),
 			this._oBICICountryCombobox.getValue(),
 			this._oBICINationalityCombobox.getValue(),						
-			this.oBICIStreet.getValue()		
+			this.oBICIStreet.getValue(),
+			this.oBICIPowerofAttorneyFileUploader.getValue(), this.oBICIPowerofAttorneyFileUploader.getMimeType(),
+			this.oBICIPowerofAttorneyFileUploader
 					);
 			
+			 	
 			
 				
             jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
@@ -300,6 +307,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}, this));	
 			}
 			catch(err){
+				console.log(" err "+err);
 				sap.m.MessageToast.show(this.oModelHelper
     					.getText("AllFieldsAreRequired"));	
 			}
@@ -1488,6 +1496,7 @@ userSignIn : function(userID, password){
 				this.oBICIPassportCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
 				this.oBICIPowerofAttorneyFileUploader = this.getView().byId("idBICIPowerofAttorneyFileUploader");
 				this.oBICIStreet = this.getView().byId("idBICIStreetInputText");
+				 
 				
 				
 				
