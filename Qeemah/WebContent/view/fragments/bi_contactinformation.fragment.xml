@@ -310,7 +310,7 @@
 										<sap.ui.commons.layout:MatrixLayoutCell vAlign="Top">
 										<sap.ui.unified:FileUploader
 											uploadUrl="upload/"  icon="common/mime/attachment.png"
-											sendXHR="true" useMultipart="false" sameFilenameAllowed="true" iconOnly="true" id="idBICIPowerofAttorneyFileUploader" mimeType="image/png" />  <!--fileType="['jpg', 'png', 'bmp', 'pdf']" mimeType="[application/pdf]" /> -->
+											sendXHR="true" useMultipart="false" sameFilenameAllowed="true" iconOnly="true" id="idBICIPowerofAttorneyFileUploader"  />  <!--fileType="['jpg', 'png', 'bmp', 'pdf']" mimeType="[application/pdf]" /> -->
 										<!-- sendXHR="true" useMultipart="false"  <Button id="idUpload" text="Upload"	press="handlePowerOfAttorneyUploadPress" >
 													</Button> -->
 										</sap.ui.commons.layout:MatrixLayoutCell>

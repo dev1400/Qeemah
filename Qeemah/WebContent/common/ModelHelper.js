@@ -121,6 +121,11 @@ com.sagia.common.ModelHelper = {
       
         
         oBICIPowerofAttorneyFileUploader.setUploadUrl(this.getServiceUrl()+"ZBASIC_CONT_INFO_ENT(RefID='"+oRefID+"',FileType='POA')/InfoToPoa");
+        oBICIPowerofAttorneyFileUploader.attachUploadComplete(function(){
+        	oBICIPowerofAttorneyFileUploader.removeAllHeaderParameters();
+        	oBICIPowerofAttorneyFileUploader.clear();
+        	console.log("Uploaded");
+        });       
         oBICIPowerofAttorneyFileUploader.upload();
 		
 	},
