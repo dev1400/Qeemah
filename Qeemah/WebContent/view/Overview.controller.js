@@ -265,10 +265,30 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 				
-				this.readBICIFileAttachemnts();
+				//this.readBICIFileAttachemnts();
 				
 				/*sap.m.MessageToast.show(this.oModelHelper
     					.getText("Saved"));	*/
+				
+				var oRequestFinishedDeferred1 = this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
+				jQuery.when(oRequestFinishedDeferred1).then(jQuery.proxy(function() {
+					
+					this.readBICIPOAFileAttachemnts();
+					
+					
+					var oRequestFinishedDeferred2 = this.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
+	                jQuery.when(oRequestFinishedDeferred2).then(jQuery.proxy(function() {
+	                	
+	                	this.readBICIPASSFileAttachemnts();
+					}, this));	
+	                
+	                
+	                
+				}, this));	
+				
+				
+				
+				
 			}, this));	
 			}
 			catch(err){
@@ -308,12 +328,30 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 				
             jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-            	this.readBICIFileAttachemnts();
+            	//this.readBICIFileAttachemnts();
 				
             	
             	this.oContactInfoRecordExists = true;
             	/*sap.m.MessageToast.show(this.oModelHelper
     					.getText("Saved"));	*/
+            	
+            	var oRequestFinishedDeferred1 = this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
+				jQuery.when(oRequestFinishedDeferred1).then(jQuery.proxy(function() {
+					
+					this.readBICIPOAFileAttachemnts();
+					
+					
+					var oRequestFinishedDeferred2 = this.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
+	                jQuery.when(oRequestFinishedDeferred2).then(jQuery.proxy(function() {
+	                	
+	                	this.readBICIPASSFileAttachemnts();
+					}, this));	
+	                
+	                
+	                
+				}, this));	
+				
+            	
 			}, this));	
 			}
 			catch(err){
@@ -335,32 +373,34 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		
 	},
-	readBICIFileAttachemnts : function(){
+	readBICIPASSFileAttachemnts : function(){
 		var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
 
 		jQuery.when(oRequestFinishedDeferredReadPASSBICI).then(jQuery.proxy(function(oResponse) {
 			
 			if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
-				//this.oBICIPASSAttachmentName.setVisible(true);
+				this.oBICIPASSAttachmentName.setVisible(true);
 				this.oBICIPASSAttachmentNameTextView.setVisible(true);
-				//this.oBICIPASSAttachmentName.setText(oResponse.data.FileName);
+				this.oBICIPASSAttachmentName.setText(oResponse.data.FileName);
 				}else{
-					//this.oBICIPASSAttachmentName.setVisible(false);
+					this.oBICIPASSAttachmentName.setVisible(false);
 					this.oBICIPASSAttachmentNameTextView.setVisible(false);
 				}
 			
 		}, this));	
-		
+	},
+	readBICIPOAFileAttachemnts : function(){
+	
 		var oRequestFinishedDeferredReadPOABICI = this.oModelHelper.readBICIPPOAAttachment(this.oRef_id);
 
 		jQuery.when(oRequestFinishedDeferredReadPOABICI).then(jQuery.proxy(function(oResponse) {
 			
 			if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
-				//this.oBICIPOAAttachmentName.setVisible(true);
+				this.oBICIPOAAttachmentName.setVisible(true);
 				this.oBICIPOAAttachmentNameTextView.setVisible(true);
-				//this.oBICIPOAAttachmentName.setText(oResponse.data.FileName);
+				this.oBICIPOAAttachmentName.setText(oResponse.data.FileName);
 				}else{
-					//this.oBICIPOAAttachmentName.setVisible(false);
+					this.oBICIPOAAttachmentName.setVisible(false);
 					this.oBICIPOAAttachmentNameTextView.setVisible(false);
 				}
 		}, this));	
@@ -1615,7 +1655,9 @@ userSignIn : function(userID, password){
 					
 				}, this));	*/
 				
-				that.readBICIFileAttachemnts();
+				
+				that.readBICIPASSFileAttachemnts();
+				that.readBICIPOAFileAttachemnts();
 				
 			
 			}

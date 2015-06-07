@@ -160,7 +160,7 @@ com.sagia.common.ModelHelper = {
 	 * @author Abdul Waheed
 	 */
 	uploadBICIPassPortCopy : function(oRefID, oBICIPassPortCopyFileUploader){
-		
+		var oRequestFinishedDeferred2 = jQuery.Deferred();
 		var csrf =  this.oODataModel.getHeaders()['x-csrf-token'];
 		that = this;
 		
@@ -178,6 +178,7 @@ com.sagia.common.ModelHelper = {
 			oBICIPassPortCopyFileUploader.removeAllHeaderParameters();
 			oBICIPassPortCopyFileUploader.clear();
         	that.closeBusyDialog();
+        	oRequestFinishedDeferred2.resolve();
         	 //sap.m.MessageToast.show(that.getText("Uploaded"));	
         });
         //sap.m.MessageToast.show(that.getText("Uploading"));	
@@ -189,8 +190,12 @@ com.sagia.common.ModelHelper = {
 	 * Upload Proof Of Attorney.
 	 * @author Abdul Waheed
 	 */
-	uploadPOA : function(oRefID, oBICIPowerofAttorneyFileUploader, oBICIPassPortCopyFileUploader){
+	//uploadPOA : function(oRefID, oBICIPowerofAttorneyFileUploader, oBICIPassPortCopyFileUploader){
+	uploadPOA : function(oRefID, oBICIPowerofAttorneyFileUploader){
 		that = this;
+		var oRequestFinishedDeferred1 = jQuery.Deferred();
+		//var oRequestFinishedDeferred2 = jQuery.Deferred();
+		
 		if(oBICIPowerofAttorneyFileUploader.getValue() !== ""){
 			var csrf =  this.oODataModel.getHeaders()['x-csrf-token'];		
 			
@@ -207,17 +212,18 @@ com.sagia.common.ModelHelper = {
 	        	oBICIPowerofAttorneyFileUploader.clear();
 	        	
 	        	that.closeBusyDialog();
-	        	if(oBICIPassPortCopyFileUploader.getValue() !== ""){
+	        	oRequestFinishedDeferred1.resolve();
+	        	/*if(oBICIPassPortCopyFileUploader.getValue() !== ""){
 	        	that.uploadBICIPassPortCopy(oRefID, oBICIPassPortCopyFileUploader);
-	        	}
+	        	}*/
 	        });
 	        //sap.m.MessageToast.show(that.getText("Uploading"));	
 	        this.openBusyDialog();
 	        oBICIPowerofAttorneyFileUploader.upload();
 		}
-		if(oBICIPassPortCopyFileUploader.getValue() !== ""){
+		/*if(oBICIPassPortCopyFileUploader.getValue() !== ""){
         	that.uploadBICIPassPortCopy(oRefID, oBICIPassPortCopyFileUploader);
-    	}
+    	}*/
 		
 		
 	},
@@ -281,7 +287,9 @@ com.sagia.common.ModelHelper = {
 				// close busy dialog
 				that.closeBusyDialog();
 				
-				that.uploadPOA(oEntry.RefID, oBICIPowerofAttorneyFileUploader, oBICIPassPortCopyFileUploader);
+				//that.uploadPOA(oEntry.RefID, oBICIPowerofAttorneyFileUploader, oBICIPassPortCopyFileUploader);
+				
+				
 				
 			},
 			error : function(oResponse) {
