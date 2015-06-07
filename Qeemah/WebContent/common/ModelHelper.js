@@ -102,6 +102,7 @@ com.sagia.common.ModelHelper = {
 	uploadPOA : function(oRefID, oBICIPowerofAttorneyFileUploader){
 		//console.log(oBICIPowerofAttorneyFileUploader.getMimeType()[0]);
 		var csrf =  this.oODataModel.getHeaders()['x-csrf-token'];
+		that = this;
 		
 		
 		oBICIPowerofAttorneyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
@@ -124,8 +125,10 @@ com.sagia.common.ModelHelper = {
         oBICIPowerofAttorneyFileUploader.attachUploadComplete(function(){
         	oBICIPowerofAttorneyFileUploader.removeAllHeaderParameters();
         	oBICIPowerofAttorneyFileUploader.clear();
-        	console.log("Uploaded");
-        });       
+        	//console.log("Uploaded");
+        	//that.closeBusyDialog();
+        });    
+        //this.openBusyDialog();
         oBICIPowerofAttorneyFileUploader.upload();
 		
 	},
