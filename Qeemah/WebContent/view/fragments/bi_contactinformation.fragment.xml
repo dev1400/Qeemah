@@ -287,14 +287,21 @@
 												hAlign="End">
 												<sap.ui.commons.layout:content>
 													<sap.ui.commons:TextView text="{i18n>PassportCopyIDCopy}"></sap.ui.commons:TextView>
+													 <html:br />
+										<sap.ui.core:HTML content="{i18n>POExtensionsWarning}"></sap.ui.core:HTML>
+										
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell
 												vAlign="Middle" hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<sap.ui.unified:FileUploader
-															uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
-															iconOnly="true" id="idBICIPassportCopyFileUploader"/>
+											 icon="common/mime/attachment.png"
+											sendXHR="true" useMultipart="false" sameFilenameAllowed="true" iconOnly="true" id="idBICIPassportCopyFileUploader"  /> 
+												<html:br />
+												    <sap.ui.commons:TextView id="idBICIPASSAttachmentNameTextView" text="{i18n>Attachment}" visible="false"></sap.ui.commons:TextView>
+													<sap.ui.commons:TextView id="idBICIPASSAttachmentName" visible="false"></sap.ui.commons:TextView>
+													
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											
@@ -305,14 +312,20 @@
 								<sap.ui.commons.layout:rows>
 									<sap.ui.commons.layout:MatrixLayoutRow>
 										<sap.ui.commons.layout:cells>
-										<sap.ui.commons.layout:MatrixLayoutCell><sap.ui.commons:TextView text="{i18n>PowerofAttorney}"></sap.ui.commons:TextView>
+										<sap.ui.commons.layout:MatrixLayoutCell>
+										<sap.ui.commons:TextView text="{i18n>PowerofAttorney}"></sap.ui.commons:TextView>
+										 <html:br />
+										<sap.ui.core:HTML content="{i18n>POExtensionsWarning}"></sap.ui.core:HTML>
+										
 										</sap.ui.commons.layout:MatrixLayoutCell>
 										<sap.ui.commons.layout:MatrixLayoutCell vAlign="Top">
 										<sap.ui.unified:FileUploader
 											uploadUrl="upload/"  icon="common/mime/attachment.png"
-											sendXHR="true" useMultipart="false" sameFilenameAllowed="true" iconOnly="true" id="idBICIPowerofAttorneyFileUploader"  />  <!--fileType="['jpg', 'png', 'bmp', 'pdf']" mimeType="[application/pdf]" /> -->
-										<!-- sendXHR="true" useMultipart="false"  <Button id="idUpload" text="Upload"	press="handlePowerOfAttorneyUploadPress" >
-													</Button> -->
+											sendXHR="true" useMultipart="false" sameFilenameAllowed="true" iconOnly="true" id="idBICIPowerofAttorneyFileUploader"  />
+											<html:br /> 
+											  <sap.ui.commons:TextView id="idBICIPOAAttachmentNameTextView" text="{i18n>Attachment}" visible="false"></sap.ui.commons:TextView>
+													
+										<sap.ui.commons:TextView id="idBICIPOAAttachmentName" visible="false"></sap.ui.commons:TextView>
 										</sap.ui.commons.layout:MatrixLayoutCell>
 										<!-- <sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 										

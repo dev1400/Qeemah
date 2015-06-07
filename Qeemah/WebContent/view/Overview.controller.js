@@ -150,7 +150,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oPoweOfAttorneyFileUpload.upload();
 	},
 	handleSaveLinkPressSave : function(oEvent){
-		
+		that = this;
 		
        
 		if(this.oRecordExists){
@@ -183,8 +183,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 					);
 
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-				sap.m.MessageToast.show(this.oModelHelper
-    					.getText("Saved"));	
+				/*sap.m.MessageToast.show(this.oModelHelper
+    					.getText("Saved"));	*/
 			}, this));	
 			}
 			catch(err){
@@ -224,8 +224,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 				
             jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
             	this.oRecordExists = true;
-            	sap.m.MessageToast.show(this.oModelHelper
-    					.getText("Saved"));	
+            	/*sap.m.MessageToast.show(this.oModelHelper
+    					.getText("Saved"));	*/
 			}, this));	
 			}
 			catch(err){
@@ -256,19 +256,26 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this.oBICIEmailInputText.getValue(),
 					this._oBICICountryCombobox.getValue(),
 					this._oBICINationalityCombobox.getValue(),						
-					this.oBICIStreet.getValue()		
+					this.oBICIStreet.getValue(),
+					this.oBICIPowerofAttorneyFileUploader,
+					this.oBICIPassPortCopyFileUploader
 							);
-			this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
+			//this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
 			
 
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-				sap.m.MessageToast.show(this.oModelHelper
-    					.getText("Saved"));	
+				
+				this.readBICIFileAttachemnts();
+				
+				/*sap.m.MessageToast.show(this.oModelHelper
+    					.getText("Saved"));	*/
 			}, this));	
 			}
 			catch(err){
-				sap.m.MessageToast.show("saveBICI > "+this.oModelHelper
-    					.getText("AllFieldsAreRequired"));	
+				/*sap.m.MessageToast.show(this.oModelHelper
+    					.getText("AllFieldsAreRequired"));	*/
+				sap.m.MessageToast.show(this.oModelHelper
+    					.getText(err));	
 			}
 			
 		}else{
@@ -292,16 +299,21 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oBICIEmailInputText.getValue(),
 			this._oBICICountryCombobox.getValue(),
 			this._oBICINationalityCombobox.getValue(),						
-			this.oBICIStreet.getValue()
+			this.oBICIStreet.getValue(),
+			this.oBICIPowerofAttorneyFileUploader,
+			this.oBICIPassPortCopyFileUploader
 					);
 			
 			 	
 			
 				
             jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+            	this.readBICIFileAttachemnts();
+				
+            	
             	this.oContactInfoRecordExists = true;
-            	sap.m.MessageToast.show(this.oModelHelper
-    					.getText("Saved"));	
+            	/*sap.m.MessageToast.show(this.oModelHelper
+    					.getText("Saved"));	*/
 			}, this));	
 			}
 			catch(err){
@@ -321,6 +333,37 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		
 		
+		
+	},
+	readBICIFileAttachemnts : function(){
+		var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
+
+		jQuery.when(oRequestFinishedDeferredReadPASSBICI).then(jQuery.proxy(function(oResponse) {
+			
+			if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
+				//this.oBICIPASSAttachmentName.setVisible(true);
+				this.oBICIPASSAttachmentNameTextView.setVisible(true);
+				//this.oBICIPASSAttachmentName.setText(oResponse.data.FileName);
+				}else{
+					//this.oBICIPASSAttachmentName.setVisible(false);
+					this.oBICIPASSAttachmentNameTextView.setVisible(false);
+				}
+			
+		}, this));	
+		
+		var oRequestFinishedDeferredReadPOABICI = this.oModelHelper.readBICIPPOAAttachment(this.oRef_id);
+
+		jQuery.when(oRequestFinishedDeferredReadPOABICI).then(jQuery.proxy(function(oResponse) {
+			
+			if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
+				//this.oBICIPOAAttachmentName.setVisible(true);
+				this.oBICIPOAAttachmentNameTextView.setVisible(true);
+				//this.oBICIPOAAttachmentName.setText(oResponse.data.FileName);
+				}else{
+					//this.oBICIPOAAttachmentName.setVisible(false);
+					this.oBICIPOAAttachmentNameTextView.setVisible(false);
+				}
+		}, this));	
 		
 	},
 	handleRegionSelectionComboBox : function(oControlEvent){
@@ -345,6 +388,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//filters = new sap.ui.model.Filter([oFilter1, oFilter2]);
 		
 	},
+	
 	handleCountrySelectionComboBox : function(oControlEvent){
 		
 		
@@ -1493,15 +1537,20 @@ userSignIn : function(userID, password){
 				this.oBICIEmailInputText = this.getView().byId("idBICIEmailInputText");
 				this.oBICIPassportCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
 				this.oBICIPowerofAttorneyFileUploader = this.getView().byId("idBICIPowerofAttorneyFileUploader");
+				this.oBICIPassPortCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
 				this.oBICIStreet = this.getView().byId("idBICIStreetInputText");
-				 
+				this.oBICIPASSAttachmentName = this.getView().byId("idBICIPASSAttachmentName");
+				this.oBICIPASSAttachmentNameTextView = this.getView().byId("idBICIPASSAttachmentNameTextView");
+				this.oBICIPOAAttachmentName = this.getView().byId("idBICIPOAAttachmentName");
+				this.oBICIPOAAttachmentNameTextView = this.getView().byId("idBICIPOAAttachmentNameTextView");
+				
 				
 				
 				
 				var oRequestFinishedDeferredChild = this.oModelHelper.readBICI(this.oRef_id);
 
 				jQuery.when(oRequestFinishedDeferredChild).then(jQuery.proxy(function(oResponse) {
-					console.log(oResponse);
+					//console.log(oResponse);
 					if(oResponse.data.Return !== "Data does not exist"){
 						
 						this.oBICIFirstNameInputText.setValue(oResponse.data.NameFirst);
@@ -1531,6 +1580,42 @@ userSignIn : function(userID, password){
 						this.oContactInfoRecordExists = true;
 						}
 				}, this));	
+				
+				/*var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
+
+				jQuery.when(oRequestFinishedDeferredReadPASSBICI).then(jQuery.proxy(function(oResponse) {
+					
+					if(oResponse.data.FileName !== ""){	
+						this.oBICIPASSAttachmentName.setVisible(true);
+						this.oBICIPASSAttachmentNameTextView.setVisible(true);
+						this.oBICIPASSAttachmentName.setText(oResponse.data.FileName);
+						}else{
+							this.oBICIPASSAttachmentName.setVisible(false);
+							this.oBICIPASSAttachmentNameTextView.setVisible(false);
+						}
+					
+					
+					
+					var oRequestFinishedDeferredReadPOABICI = this.oModelHelper.readBICIPPOAAttachment(this.oRef_id);
+
+					jQuery.when(oRequestFinishedDeferredReadPOABICI).then(jQuery.proxy(function(oResponse) {
+						
+						if(oResponse.data.FileName !== ""){	
+							this.oBICIPOAAttachmentName.setVisible(true);
+							this.oBICIPOAAttachmentNameTextView.setVisible(true);
+							this.oBICIPOAAttachmentName.setText(oResponse.data.FileName);
+							}else{
+								this.oBICIPOAAttachmentName.setVisible(false);
+								this.oBICIPOAAttachmentNameTextView.setVisible(false);
+							}
+					}, this));	
+					
+					
+					
+					
+				}, this));	*/
+				
+				that.readBICIFileAttachemnts();
 				
 			
 			}
