@@ -180,7 +180,7 @@
 					<sap.ui.commons:TextView text="{i18n>Product}"></sap.ui.commons:TextView>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 				<sap.ui.commons.layout:MatrixLayoutCell>				
-					<ComboBox width="25em">
+					<ComboBox width="20em">
 						<sap.ui.core:Item />
 					</ComboBox>
 				</sap.ui.commons.layout:MatrixLayoutCell>
@@ -202,7 +202,7 @@
 					<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}"></sap.ui.commons:TextView>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 				<sap.ui.commons.layout:MatrixLayoutCell>				
-					<ComboBox width="25em">
+					<ComboBox width="20em">
 						<sap.ui.core:Item />
 					</ComboBox>
 				</sap.ui.commons.layout:MatrixLayoutCell>
