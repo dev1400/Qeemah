@@ -265,12 +265,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 				
-				//this.readBICIFileAttachemnts();
 				
-				/*sap.m.MessageToast.show(this.oModelHelper
-    					.getText("Saved"));	*/
 				
-				var oRequestFinishedDeferred1 = this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
+				/*var oRequestFinishedDeferred1 = this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
+				jQuery.when(oRequestFinishedDeferred1).then(jQuery.proxy(function() {
+					
+					this.readBICIPOAFileAttachemnts();
+					
+				}, this));	
+				
+				var oRequestFinishedDeferred2 = this.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
+                jQuery.when(oRequestFinishedDeferred2).then(jQuery.proxy(function() {
+                	
+                	this.readBICIPASSFileAttachemnts();
+				}, this));	*/
+				if(this.oBICIPowerofAttorneyFileUploader.getValue() === "" && this.oBICIPassPortCopyFileUploader.getValue() === ""){
+            		sap.m.MessageToast.show(this.oModelHelper.getText("AtleastOneAttachmentNeededBICI"));
+            	}else{
+            	var oRequestFinishedDeferred1 = this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
 				jQuery.when(oRequestFinishedDeferred1).then(jQuery.proxy(function() {
 					
 					this.readBICIPOAFileAttachemnts();
@@ -282,6 +294,7 @@ sap.ui.controller("com.sagia.view.Overview", {
                 	
                 	this.readBICIPASSFileAttachemnts();
 				}, this));	
+            	}
                 
                 
 				
@@ -331,7 +344,9 @@ sap.ui.controller("com.sagia.view.Overview", {
             	this.oContactInfoRecordExists = true;
             	/*sap.m.MessageToast.show(this.oModelHelper
     					.getText("Saved"));	*/
-            	
+            	if(this.oBICIPowerofAttorneyFileUploader.getValue() === "" && this.oBICIPassPortCopyFileUploader.getValue() === ""){
+            		sap.m.MessageToast.show(this.oModelHelper.getText("AtleastOneAttachmentNeededBICI"));
+            	}else{
             	var oRequestFinishedDeferred1 = this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
 				jQuery.when(oRequestFinishedDeferred1).then(jQuery.proxy(function() {
 					
@@ -344,7 +359,7 @@ sap.ui.controller("com.sagia.view.Overview", {
                 	
                 	this.readBICIPASSFileAttachemnts();
 				}, this));	
-                
+            	}
                 
 				
             	
