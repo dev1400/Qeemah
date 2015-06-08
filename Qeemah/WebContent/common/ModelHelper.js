@@ -79,24 +79,24 @@ com.sagia.common.ModelHelper = {
 
 		var that = this;
 		
-		var oRequestFinishedDeferred = jQuery.Deferred();
+		var oRequestFinishedDeferred2 = jQuery.Deferred();
 
 		this.oODataModel.read("ZBASIC_CONT_FILE_ENT(RefID='"+refid+"',FileType='PASS')", {
 			success : function(oData, response) {
-				
-				oRequestFinishedDeferred.resolve(response);
+				console.log(response);
+				oRequestFinishedDeferred2.resolve(response);
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				//console.log(oResponse);				
 				
-				oRequestFinishedDeferred.resolve();
+				oRequestFinishedDeferred2.resolve();
 				sap.m.MessageToast.show(oResponse);
 
 				that.closeBusyDialog();
 			}});
 
-		return oRequestFinishedDeferred;
+		return oRequestFinishedDeferred2;
 	},
 	/**
 	 * read BICI POA  Attachment Name
@@ -107,24 +107,24 @@ com.sagia.common.ModelHelper = {
 
 		var that = this;
 		
-		var oRequestFinishedDeferred = jQuery.Deferred();
+		var oRequestFinishedDeferred1 = jQuery.Deferred();
 
 		this.oODataModel.read("ZBASIC_CONT_FILE_ENT(RefID='"+refid+"',FileType='POA')", {
 			success : function(oData, response) {
 				
-				oRequestFinishedDeferred.resolve(response);
+				oRequestFinishedDeferred1.resolve(response);
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				//console.log(oResponse);				
 				
-				oRequestFinishedDeferred.resolve();
+				oRequestFinishedDeferred1.resolve();
 				sap.m.MessageToast.show(oResponse);
 
 				that.closeBusyDialog();
 			}});
 
-		return oRequestFinishedDeferred;
+		return oRequestFinishedDeferred1;
 	},
 	/**
 	 * read BICI
@@ -160,7 +160,7 @@ com.sagia.common.ModelHelper = {
 	 * @author Abdul Waheed
 	 */
 	uploadBICIPassPortCopy : function(oRefID, oBICIPassPortCopyFileUploader){
-		var oRequestFinishedDeferred2 = jQuery.Deferred();
+		var oUploadBICIPassPortCopyRequestFinishedDeferred = jQuery.Deferred();
 		var csrf =  this.oODataModel.getHeaders()['x-csrf-token'];
 		that = this;
 		
@@ -178,13 +178,14 @@ com.sagia.common.ModelHelper = {
 			oBICIPassPortCopyFileUploader.removeAllHeaderParameters();
 			oBICIPassPortCopyFileUploader.clear();
         	that.closeBusyDialog();
-        	oRequestFinishedDeferred2.resolve();
+        	oUploadBICIPassPortCopyRequestFinishedDeferred.resolve();
         	 //sap.m.MessageToast.show(that.getText("Uploaded"));	
         });
         //sap.m.MessageToast.show(that.getText("Uploading"));	
         this.openBusyDialog();
         oBICIPassPortCopyFileUploader.upload();
 		
+        return oUploadBICIPassPortCopyRequestFinishedDeferred;
 	},
 	/**
 	 * Upload Proof Of Attorney.
@@ -192,9 +193,10 @@ com.sagia.common.ModelHelper = {
 	 */
 	//uploadPOA : function(oRefID, oBICIPowerofAttorneyFileUploader, oBICIPassPortCopyFileUploader){
 	uploadPOA : function(oRefID, oBICIPowerofAttorneyFileUploader){
+		console.log("In uploadPOA");
 		that = this;
-		var oRequestFinishedDeferred1 = jQuery.Deferred();
-		//var oRequestFinishedDeferred2 = jQuery.Deferred();
+		var oUploadPOARequestFinishedDeferred = jQuery.Deferred();
+		
 		
 		if(oBICIPowerofAttorneyFileUploader.getValue() !== ""){
 			var csrf =  this.oODataModel.getHeaders()['x-csrf-token'];		
@@ -212,7 +214,7 @@ com.sagia.common.ModelHelper = {
 	        	oBICIPowerofAttorneyFileUploader.clear();
 	        	
 	        	that.closeBusyDialog();
-	        	oRequestFinishedDeferred1.resolve();
+	        	oUploadPOARequestFinishedDeferred.resolve();
 	        	/*if(oBICIPassPortCopyFileUploader.getValue() !== ""){
 	        	that.uploadBICIPassPortCopy(oRefID, oBICIPassPortCopyFileUploader);
 	        	}*/
@@ -224,7 +226,8 @@ com.sagia.common.ModelHelper = {
 		/*if(oBICIPassPortCopyFileUploader.getValue() !== ""){
         	that.uploadBICIPassPortCopy(oRefID, oBICIPassPortCopyFileUploader);
     	}*/
-		
+        return oUploadPOARequestFinishedDeferred;
+
 		
 	},
 	/**

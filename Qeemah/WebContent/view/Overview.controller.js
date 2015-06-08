@@ -275,18 +275,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 					
 					this.readBICIPOAFileAttachemnts();
 					
-					
-					var oRequestFinishedDeferred2 = this.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
-	                jQuery.when(oRequestFinishedDeferred2).then(jQuery.proxy(function() {
-	                	
-	                	this.readBICIPASSFileAttachemnts();
-					}, this));	
-	                
-	                
-	                
 				}, this));	
 				
-				
+				var oRequestFinishedDeferred2 = this.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
+                jQuery.when(oRequestFinishedDeferred2).then(jQuery.proxy(function() {
+                	
+                	this.readBICIPASSFileAttachemnts();
+				}, this));	
+                
+                
 				
 				
 			}, this));	
@@ -340,16 +337,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 					
 					this.readBICIPOAFileAttachemnts();
 					
-					
-					var oRequestFinishedDeferred2 = this.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
-	                jQuery.when(oRequestFinishedDeferred2).then(jQuery.proxy(function() {
-	                	
-	                	this.readBICIPASSFileAttachemnts();
-					}, this));	
-	                
-	                
-	                
 				}, this));	
+				
+				var oRequestFinishedDeferred2 = this.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
+                jQuery.when(oRequestFinishedDeferred2).then(jQuery.proxy(function() {
+                	
+                	this.readBICIPASSFileAttachemnts();
+				}, this));	
+                
+                
 				
             	
 			}, this));	
@@ -377,7 +373,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
 
 		jQuery.when(oRequestFinishedDeferredReadPASSBICI).then(jQuery.proxy(function(oResponse) {
-			
+			console.log(oResponse.data.Return);
 			if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
 				this.oBICIPASSAttachmentName.setVisible(true);
 				this.oBICIPASSAttachmentNameTextView.setVisible(true);
