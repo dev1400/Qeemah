@@ -75,7 +75,7 @@ com.sagia.common.ModelHelper = {
 	 * @author : Abdul Waheed
 	 */
 	readBICIPassPortAttachment : function(refid) {
-		this.openBusyDialog();
+		//this.openBusyDialog();
 
 		var that = this;
 		
@@ -85,7 +85,7 @@ com.sagia.common.ModelHelper = {
 			success : function(oData, response) {
 				console.log(response);
 				oRequestFinishedDeferred2.resolve(response);
-				that.closeBusyDialog();
+				///that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				//console.log(oResponse);				
@@ -93,7 +93,7 @@ com.sagia.common.ModelHelper = {
 				oRequestFinishedDeferred2.resolve();
 				sap.m.MessageToast.show(oResponse);
 
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			}});
 
 		return oRequestFinishedDeferred2;
@@ -103,7 +103,7 @@ com.sagia.common.ModelHelper = {
 	 * @author : Abdul Waheed
 	 */
 	readBICIPPOAAttachment : function(refid) {
-		this.openBusyDialog();
+		//this.openBusyDialog();
 
 		var that = this;
 		
@@ -113,7 +113,7 @@ com.sagia.common.ModelHelper = {
 			success : function(oData, response) {
 				
 				oRequestFinishedDeferred1.resolve(response);
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				//console.log(oResponse);				
@@ -121,7 +121,7 @@ com.sagia.common.ModelHelper = {
 				oRequestFinishedDeferred1.resolve();
 				sap.m.MessageToast.show(oResponse);
 
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			}});
 
 		return oRequestFinishedDeferred1;
@@ -161,6 +161,7 @@ com.sagia.common.ModelHelper = {
 	 */
 	uploadBICIPassPortCopy : function(oRefID, oBICIPassPortCopyFileUploader){
 		var oUploadBICIPassPortCopyRequestFinishedDeferred = jQuery.Deferred();
+		if(oBICIPassPortCopyFileUploader.getValue() !== ""){
 		var csrf =  this.oODataModel.getHeaders()['x-csrf-token'];
 		that = this;
 		
@@ -184,7 +185,7 @@ com.sagia.common.ModelHelper = {
         //sap.m.MessageToast.show(that.getText("Uploading"));	
         this.openBusyDialog();
         oBICIPassPortCopyFileUploader.upload();
-		
+		}
         return oUploadBICIPassPortCopyRequestFinishedDeferred;
 	},
 	/**
@@ -193,7 +194,7 @@ com.sagia.common.ModelHelper = {
 	 */
 	//uploadPOA : function(oRefID, oBICIPowerofAttorneyFileUploader, oBICIPassPortCopyFileUploader){
 	uploadPOA : function(oRefID, oBICIPowerofAttorneyFileUploader){
-		console.log("In uploadPOA");
+		//console.log("In uploadPOA");
 		that = this;
 		var oUploadPOARequestFinishedDeferred = jQuery.Deferred();
 		
@@ -334,10 +335,10 @@ com.sagia.common.ModelHelper = {
 			oBICIStreet,
 			oBICIPowerofAttorneyFileUploader, oBICIPassPortCopyFileUploader) {
 		
+		var that = this;
 		
 		this.openBusyDialog();
 
-		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
 		
@@ -366,15 +367,15 @@ com.sagia.common.ModelHelper = {
 		
 		success : function(oData, response) { 
 			//console.log(" saveBICI >"+response);
-			oRequestFinishedDeferred.resolve(oData);
+			oRequestFinishedDeferred.resolve(response);
 			// 
 			that.closeBusyDialog();
 			
-			that.uploadPOA(oEntry.RefID, oBICIPowerofAttorneyFileUploader, oBICIPassPortCopyFileUploader);
+			//that.uploadPOA(oEntry.RefID, oBICIPowerofAttorneyFileUploader, oBICIPassPortCopyFileUploader);
 			},
 		    error : function(oResponse) {
 		    	oRequestFinishedDeferred.resolve();
-		    that.closeBusyDialog();
+				that.closeBusyDialog();
 		    }
 		
 		});

@@ -610,7 +610,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleLogoutLinkPress : function(){
 		
-		sessionStorage.clear();
+		//sessionStorage.clear();
 		location.reload(true);
 		
 		
