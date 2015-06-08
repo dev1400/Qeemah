@@ -388,7 +388,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
 
 		jQuery.when(oRequestFinishedDeferredReadPASSBICI).then(jQuery.proxy(function(oResponse) {
-			console.log(oResponse.data.Return);
+			//console.log(oResponse.data.Return);
 			if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
 				this.oBICIPASSAttachmentName.setVisible(true);
 				this.oBICIPASSAttachmentNameTextView.setVisible(true);

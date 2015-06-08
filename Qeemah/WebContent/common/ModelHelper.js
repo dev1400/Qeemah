@@ -83,7 +83,7 @@ com.sagia.common.ModelHelper = {
 
 		this.oODataModel.read("ZBASIC_CONT_FILE_ENT(RefID='"+refid+"',FileType='PASS')", {
 			success : function(oData, response) {
-				console.log(response);
+				//console.log(response);
 				oRequestFinishedDeferred2.resolve(response);
 				///that.closeBusyDialog();
 			},
