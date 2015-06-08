@@ -297,7 +297,8 @@
 												<sap.ui.commons.layout:content>
 													<sap.ui.unified:FileUploader
 											 icon="common/mime/attachment.png"
-											sendXHR="true" useMultipart="false" sameFilenameAllowed="true" iconOnly="true" id="idBICIPassportCopyFileUploader"  /> 
+											sendXHR="true" useMultipart="false" sameFilenameAllowed="true" iconOnly="true" id="idBICIPassportCopyFileUploader"  
+											mimeType="application/pdf"/> 
 												<html:br />
 												    <sap.ui.commons:TextView id="idBICIPASSAttachmentNameTextView" text="{i18n>Attachment}" visible="false"></sap.ui.commons:TextView>
 													<sap.ui.commons:TextView id="idBICIPASSAttachmentName" visible="false"></sap.ui.commons:TextView>
@@ -321,7 +322,8 @@
 										<sap.ui.commons.layout:MatrixLayoutCell vAlign="Top">
 										<sap.ui.unified:FileUploader
 											uploadUrl="upload/"  icon="common/mime/attachment.png"
-											sendXHR="true" useMultipart="false" sameFilenameAllowed="true" iconOnly="true" id="idBICIPowerofAttorneyFileUploader"  />
+											sendXHR="true" useMultipart="false" sameFilenameAllowed="true" iconOnly="true" id="idBICIPowerofAttorneyFileUploader"  
+											mimeType="application/pdf"/>
 											<html:br /> 
 											  <sap.ui.commons:TextView id="idBICIPOAAttachmentNameTextView" text="{i18n>Attachment}" visible="false"></sap.ui.commons:TextView>
 													
