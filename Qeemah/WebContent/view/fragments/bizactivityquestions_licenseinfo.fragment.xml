@@ -169,16 +169,57 @@
 	<!-- <VBox><Button style="Accept" text="{i18n>Add}" press="" >
 							</Button><html:br/></VBox> -->
 	
-							
+	<VBox alignItems="Center">					
+	<sap.ui.commons.layout:MatrixLayout
+		layoutFixed="false">
+		<sap.ui.commons.layout:rows>
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:cells>
+				<sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons:TextView text="{i18n>Product}"></sap.ui.commons:TextView>
+				</sap.ui.commons.layout:MatrixLayoutCell>
+				<sap.ui.commons.layout:MatrixLayoutCell>				
+					<ComboBox width="25em">
+						<sap.ui.core:Item />
+					</ComboBox>
+				</sap.ui.commons.layout:MatrixLayoutCell>
+			</sap.ui.commons.layout:cells>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+		<sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:cells>
+				<sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons:TextView text="{i18n>Quantity}"></sap.ui.commons:TextView>
+				</sap.ui.commons.layout:MatrixLayoutCell>
+				<sap.ui.commons.layout:MatrixLayoutCell>				
+					<Input type="Text"></Input>
+				</sap.ui.commons.layout:MatrixLayoutCell>
+			</sap.ui.commons.layout:cells>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+		<sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:cells>
+				<sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}"></sap.ui.commons:TextView>
+				</sap.ui.commons.layout:MatrixLayoutCell>
+				<sap.ui.commons.layout:MatrixLayoutCell>				
+					<ComboBox width="25em">
+						<sap.ui.core:Item />
+					</ComboBox>
+				</sap.ui.commons.layout:MatrixLayoutCell>
+			</sap.ui.commons.layout:cells>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+		
+		</sap.ui.commons.layout:rows>
+		</sap.ui.commons.layout:MatrixLayout>
+					
 	<sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false">
 		<sap.ui.commons.layout:rows>
 			
-			
-			<!-- <sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						colSpan="2">
+						>
 						<sap.ui.commons.layout:content>
 							<Table width="66rem">
 								<columns>
@@ -210,7 +251,7 @@
 											<Input type="Text" />
 											<Input type="Text" />
 											<Input type="Text" />
-											<Input type="Text" />
+											<Button style="Accept" press="" icon="sap-icon://delete"/>
 										</cells>
 									</ColumnListItem>
 								</items>
@@ -218,7 +259,7 @@
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
-			</sap.ui.commons.layout:MatrixLayoutRow> -->
+			</sap.ui.commons.layout:MatrixLayoutRow>
 			<!-- <sap.ui.commons.layout:MatrixLayoutRow><sap.ui.commons.layout:cells>
 			<sap.ui.commons.layout:MatrixLayoutCell colSpan="2">
 			<Button style="Accept" text="{i18n>BackToBAQ}" press="" >
@@ -228,6 +269,8 @@
 		</sap.ui.commons.layout:rows>
 		
 	</sap.ui.commons.layout:MatrixLayout>
+	</VBox>
+	
 	<sap.ui.commons.layout:MatrixLayout>
 	
 		<sap.ui.commons.layout:rows>
