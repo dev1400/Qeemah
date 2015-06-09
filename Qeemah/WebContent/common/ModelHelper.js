@@ -540,28 +540,7 @@ com.sagia.common.ModelHelper = {
 				
 				that.oCountryCollectionModel.setData({DetailsCollection:oData.results});
 				
-				/*$.each(that.oCountryCollectionModel.getJSON(), function(key,value){
-					   // console.log(value);
-					    if(value==""||value==null){
-					        delete sjonObj[key];
-					    }
-
-					});*/
-				//console.log("that.oCountryCollectionModel.getJSON() = "+that.oCountryCollectionModel.getJSON());
-				//console.log("that.oCountryCollectionModel = "+that.oCountryCollectionModel);
-				//sap.ui.getCore().setModel(that.oCountryCollectionModel,"AmendmentDetailModel");
 				
-				/*console.log(that.oCountryCollectionModel.getJSON());*/
-				
-				//console.log(that.oCountryCollectionModel.oData.DetailsCollection[0].Landx);
-				/*for(var i = 0; i < that.oCountryCollectionModel.oData.DetailsCollection.length ; i++){
-					if(that.oCountryCollectionModel.oData.DetailsCollection[i].Bezei_reg !== "")
-					{console.log(that.oCountryCollectionModel.oData.DetailsCollection[i].Bezei_reg);}
-				}*/
-				/*for(var i = 0; i < that.oCountryCollectionModel.oData.DetailsCollection.length ; i++){
-					console.log(that.oCountryCollectionModel.oData.DetailsCollection[i].Landx);
-				}//
-*/				//oRequestFinishedDeferred.resolve(that.oCountryCollectionModel.getJSON());
 				oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
 
 				// close busy dialog
@@ -574,6 +553,52 @@ com.sagia.common.ModelHelper = {
 				oRequestFinishedDeferred.resolve();
 				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
 
+				// close busy dialog
+				that.closeBusyDialog();
+			}
+		});
+
+		//return oRequestFinishedDeferred;
+		return oRequestFinishedDeferred;
+	},
+	/**
+	 * Read LI LI Section 
+	 */
+	readLILISection : function() {
+		// Open busy dialog
+		this.openBusyDialog();
+		
+		var that = this;
+		// Create deferred object so that calling program can wait till
+		// asynchronous call is finished
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+		/*var filtersArray = new Array();  
+		var filterRegion = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");  
+		filtersArray.push(filterRegion);*/  
+
+		this.oODataModel.read("/IsicDet?Flag='S'&Lang='E'&IsicSection=' '&IsicDivision=' '&IsicGroup=' '&IsicClass=' '", {
+			success : function(oData, response) {
+				
+				
+				that.oCountryCollectionModel = new sap.ui.model.json.JSONModel();
+				
+				
+				
+				that.oCountryCollectionModel.setData({LILISectionCollection:oData.results});
+				
+				
+				oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
+
+				// close busy dialog
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				console.log(oResponse);
+				
+				// Reject deferred object
+				oRequestFinishedDeferred.resolve();
+				
 				// close busy dialog
 				that.closeBusyDialog();
 			}

@@ -572,54 +572,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.getView().setModel(oResponse,"CC");
 			
 			
-			
-			
-			
-			
-			
-			//console.log(oResponse.oData.DetailsCollection[0].Natio50);
-			/*for(var i = 0; i < oResponse.oData.DetailsCollection.length ; i++){
-				console.log(oResponse.oData.DetailsCollection[i].Landx);
-			}*/
-			
-			//this._oCountryComboBox.setModel(JSON.stringify(oResponse));
-			//this._oCountryComboBox.setModel(oResponse);		
-			
-			//this._oCountryComboBox.setModel(sap.ui.getCore().getModel("AmendmentDetailModel"));
-			//this.getView().setModel(sap.ui.getCore().getModel("AmendmentDetailModel"));
-			//sap.ui.getCore().setModel(sap.ui.getCore().getModel("AmendmentDetailModel"));
-			
-			
-			
-			
-			
-			
-			//this._oCountryComboBox.setModel(sap.ui.getCore().getModel("AmendmentDetailModel"));
-			//this.getView().setModel(sap.ui.getCore().getModel("AmendmentDetailModel"));
-			
-			//this.getView().setModel(oResponse, "AmendmentDetailModel");
-			/*sap.ui.getCore().setModel(oResponse, "AmendmentDetailModel");*/
-			//console.log("response= ");
-			//console.log(JSON.stringify(oResponse));
-			
-			// JSON sample data
-			/*var data = {
-			    firstName: "John",
-			    lastName: "Doe",
-			    birthday: {day:01,month:05,year:1982},
-			    address:[{city:"Heidelberg"}],
-			    enabled: true
-			};
-			
-			// create JSON model instance
-			var oModel = new sap.ui.model.json.JSONModel();
-			// set the data for the model
-			oModel.setData(data);
-			// set the model to the core
-			sap.ui.getCore().setModel(oModel);*/
-			
-			
-			
+		}, this));	
+		
+		var oRequestFinishedDeferredLILI = this.oModelHelper.readLILISection();
+
+		jQuery.when(oRequestFinishedDeferredLILI).then(jQuery.proxy(function(oResponse) {			
+			this.getView().setModel(oResponse);
 			
 		}, this));	
 	},

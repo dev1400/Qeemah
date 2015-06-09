@@ -33,8 +33,8 @@
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em">
-											<sap.ui.core:Item />
+										<ComboBox width="25em" items="{/LILISectionCollection}" id="idLILISectionComboBox" selectionChange="handleLILISectionSelectionComboBox">
+										     <sap.ui.core:ListItem key="{IsicSection}" text="{IsicDescription}" id="idLILISectionComboBoxitem"/>
 										</ComboBox>
 									
 									</sap.ui.commons.layout:MatrixLayoutCell>
