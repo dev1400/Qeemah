@@ -1161,71 +1161,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		this._oLanguageSelectionComboBox.setSelectedKey("E");
 		
-		this.handleSaveLinkPress();
-		
-		/*if(sessionStorage.getItem('userID') !== null && sessionStorage.getItem('userID') !== ""){
-			this.getView().byId("idSignInUsernameInput").setValue(sessionStorage.getItem('userID'));
-			this.getView().byId("idSignInPasswordInput").setValue(sessionStorage.getItem('password'));
-			
-            //Uncomment later start
-			//this.handleSignInButtonPress();
-			//Uncomment later end
-		}*/
-		
-		//this.getView().addDependent(this._basicInfo_OrganizationFragmentChild);
-		//this.handleCountrySelectionComboBox();
-		
-		//need to add this to bind controller to fragment
-		
-		
-		//this._oCountryComboBox = sap.ui.getCore().byId("idCountryComboBox1400");
-		
-		
-		//console.dir(this._oCountryComboBox);
-		//var oItemTemplate = new sap.ui.core.ListItem({text:"{Landx50}"});
-		/*this._oidRegionComboBox( {items : { 
-		    path : "/DetailsCollection", 
-		    template : oItemTemplate 
-		  }});*/
-		/*this._oidRegionComboBox.bindItems("/DetailsCollection", oItemTemplate);
-		
-		console.dir(this._oidRegionComboBox);*/
-		
-		//if (!this._basicInfo_OrganizationFragment) {
-			/*this._basicInfo_OrganizationFragment = sap.ui.xmlfragment(
-					"com.sagia.view.fragments.bi_organization", this.getView()
-							.getController());*/
-			//this.getView().addDependent(this._basicInfo_OrganizationFragment);
-		//}
-
-		// var fragmentTextView = sap.ui.getCore().byId("idFragmentTextView");
-		// fragmentTextView.setText(oEvent.getSource().getBindingContext().getObject().Description);
-
-		//this._basicInfo_OrganizationFragment.open();
-
-
-		
-		//this.getView().addDependent(this._basicInfo_OrganizationFragment);
-		
-		
-
-/*this._oidRegionComboBox3 = sap.ui.getCore().byId("idRegionComboBox3");		
-		var oItemTemplate3 = new sap.ui.core.ListItem({text:"{Bezei_reg}"});		
-		var oFilter3 = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
-		this._oidRegionComboBox3.bindAggregation("items", {path : "/DetailsCollection", template: oItemTemplate3,
-			filters : oFilter3});*/
-
-		
-		/*this._oBIILegalStatus = sap.ui.getCore().byId("idBILegalStatus");
-		
-		
-		this._oBIILegalStatus.prototype.onAfterRendering = function() {
-
-	       console.log("rendered");
-	     };*/
-		/*this._oBIILegalStatus = sap.ui.getCore().byId("idBILegalStatus");
-		this._oBIILegalStatus.onAfterRendering = function() { console.log("dir");};*/
-		//console.log(this._oBIILegalStatus);
+		this.handleSaveLinkPress();		
 		
 		this.getBAQ();
 
