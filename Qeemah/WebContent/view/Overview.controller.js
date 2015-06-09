@@ -136,14 +136,28 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oPoweOfAttorneyFileUpload = this.getView().byId("idBICIPowerofAttorneyFileUploader");
 		
 		this.oLILISectionComboBox = this.getView().byId("idLILISectionComboBox");
+		this.oLILIDivisionComboBox = this.getView().byId("idLILIDivisionComboBox");
+		this.oLILIGroupComboBox = this.getView().byId("idLILIGroupComboBox");
+
 		
 	},
 	handleLILISectionSelectionComboBox : function(){
-		
+		this.oLILIDivisionComboBox.setValue("");
+		this.oLILIGroupComboBox.setValue("");
 		var oRequestFinishedDeferredLILIDivision = this.oModelHelper.readLILIDivision(this.oLILISectionComboBox.getSelectedKey());
 
 		jQuery.when(oRequestFinishedDeferredLILIDivision).then(jQuery.proxy(function(oResponse) {			
-			this.getView().setModel(oResponse);
+			
+			this.oLILIDivisionComboBox.setModel(oResponse);
+			
+		}, this));	
+	},
+	handleLILIDivisionSelectionComboBox : function(){
+		var oRequestFinishedDeferredLILIGroup = this.oModelHelper.readLILIGroup(this.oLILISectionComboBox.getSelectedKey(),this.oLILIDivisionComboBox.getSelectedKey());
+
+		jQuery.when(oRequestFinishedDeferredLILIGroup).then(jQuery.proxy(function(oResponse) {			
+			
+			this.oLILIGroupComboBox.setModel(oResponse);
 			
 		}, this));	
 	},
