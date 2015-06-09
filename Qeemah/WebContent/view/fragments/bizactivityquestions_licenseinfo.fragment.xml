@@ -47,8 +47,8 @@
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em">
-											<sap.ui.core:Item />
+										<ComboBox width="25em" items="{/LILIDivisionCollection}" id="idLILIDivisionComboBox" selectionChange="handleLILIDivisionSelectionComboBox">
+										     <sap.ui.core:ListItem key="{IsicSection}" text="{IsicDescription}" id="idLILIDivisionComboBoxitem"/>
 										</ComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:MatrixLayoutRow>

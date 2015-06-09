@@ -607,6 +607,38 @@ com.sagia.common.ModelHelper = {
 		//return oRequestFinishedDeferred;
 		return oRequestFinishedDeferred;
 	},
+	/**
+	 * Read LI LI Division 
+	 */
+	readLILIDivision : function(IsicSection) {
+		this.openBusyDialog();
+		
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		this.oODataModel.read("IsicDet?Flag='D'&Lang='E'&IsicSection='"+IsicSection+"'&IsicDivision=' '&IsicGroup=' '&IsicClass=' '", {
+			success : function(oData, response) {			
+				
+				that.oCountryCollectionModel = new sap.ui.model.json.JSONModel();
+				
+				that.oCountryCollectionModel.setData({LILIDivisionCollection:oData.results});		
+				
+				oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
+				
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				
+				oRequestFinishedDeferred.resolve();
+				
+				that.closeBusyDialog();
+			}
+		});
+		
+		return oRequestFinishedDeferred;
+	},
+
 
 	/**
 	 * SignInUser

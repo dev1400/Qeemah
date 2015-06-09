@@ -23,16 +23,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 
 		this._oVboxSignIn = this.getView().byId("idVBoxSignIn");
-		/*this._oVboxUserInfo = this.getView().byId("idVBoxUserInformation");
-		this._oVboxQuestion1 = this.getView().byId("idVBoxQuestion1Content");
-		this._oVboxQuestion2 = this.getView().byId("idVBoxQuestion2Content");
-		this._oVboxQuestion3 = this.getView().byId("idVBoxQuestion3Content");
-		this._oVboxQuestion4 = this.getView().byId("idVBoxQuestion4Content");
-		this._oVboxQuestion5 = this.getView().byId("idVBoxQuestion5Content");
-		this._oVboxQuestion6 = this.getView().byId("idVBoxQuestion6Content");
-		this._oVboxQuestion7 = this.getView().byId("idVBoxQuestion7Content");
-		this._oVboxQuestion8 = this.getView().byId("idVBoxQuestion8Content");
-*/
 		this._oNewRegistrationMatrixLayout = this.getView().byId(
 				"idRegistrationMatrixLayout");
 		this._oLoginVBoxLayout = this.getView().byId("idLoginVBoxLayout");
@@ -144,6 +134,18 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oContactPersonName = this.getView().byId("idContactNameInputText");
 		this.oCompany = this.getView().byId("idCompanyInputText");
 		this.oPoweOfAttorneyFileUpload = this.getView().byId("idBICIPowerofAttorneyFileUploader");
+		
+		this.oLILISectionComboBox = this.getView().byId("idLILISectionComboBox");
+		
+	},
+	handleLILISectionSelectionComboBox : function(){
+		
+		var oRequestFinishedDeferredLILIDivision = this.oModelHelper.readLILIDivision(this.oLILISectionComboBox.getSelectedKey());
+
+		jQuery.when(oRequestFinishedDeferredLILIDivision).then(jQuery.proxy(function(oResponse) {			
+			this.getView().setModel(oResponse);
+			
+		}, this));	
 	},
 	handlePowerOfAttorneyUploadPress : function(oEvent){
 		//console.log("handlePowerOfAttorneyUploadPress");
@@ -577,7 +579,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var oRequestFinishedDeferredLILI = this.oModelHelper.readLILISection();
 
 		jQuery.when(oRequestFinishedDeferredLILI).then(jQuery.proxy(function(oResponse) {			
-			this.getView().setModel(oResponse);
+			this.oLILISectionComboBox.setModel(oResponse);
 			
 		}, this));	
 	},
