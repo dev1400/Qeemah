@@ -1227,7 +1227,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oBIILegalStatus.onAfterRendering = function() { console.log("dir");};*/
 		//console.log(this._oBIILegalStatus);
 		
-		
+		this.getBAQ();
 
 	},
 
@@ -1777,7 +1777,7 @@ handleRegisterUserButtonPress : function() {
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("LicenseInformationHTML"));
 		
-		this.getBAQ();
+		
 		
 	
 	},
