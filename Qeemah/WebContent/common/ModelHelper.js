@@ -388,7 +388,7 @@ com.sagia.common.ModelHelper = {
 	 */
 	readBAQ : function() {
 		
-		this.olocalODataModel = new sap.ui.model.odata.ODataModel("proxy/sap/opu/odata/sap/ZTEST_QEEMAH_Q_A_SRV/", true,
+		this.olocalODataModel = new sap.ui.model.odata.ODataModel("proxy/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/", true,
 						null, null, {
 							"X-Requested-With" : "XMLHttpRequest",
 							"Content-Type" : "application/json",
@@ -405,8 +405,9 @@ com.sagia.common.ModelHelper = {
 		// Create deferred object so that calling program can wait till
 		// asynchronous call is finished
 		var oRequestFinishedDeferred = jQuery.Deferred();
-		
-		this.olocalODataModel.read("SurveyQue?Flag=%27B%27&SurveyID=%27QUEEMAH_BUS_PLAN%27", {
+		//	http://rhocrmdev1.MYSAGIA.GOV:8000/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/SurveyQue?Lang='E'&Flag='B'&SurveyID=' '
+
+		this.olocalODataModel.read("SurveyQue?Lang=%27E%27&Flag=%27B%27&SurveyID=%27QUEEMAH_BUS_PLAN%27", {
 			success : function(oData, response) {
 				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
@@ -433,7 +434,7 @@ com.sagia.common.ModelHelper = {
 		this.openBusyDialog();
 		
 		
-		this.olocalODataModel = new sap.ui.model.odata.ODataModel("proxy/sap/opu/odata/sap/ZTEST_QEEMAH_Q_A_SRV/", true,
+		this.olocalODataModel = new sap.ui.model.odata.ODataModel("proxy/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/", true,
 						null, null, {
 							"X-Requested-With" : "XMLHttpRequest",
 							"Content-Type" : "application/json",
@@ -448,8 +449,8 @@ com.sagia.common.ModelHelper = {
 		// Create deferred object so that calling program can wait till
 		// asynchronous call is finished
 		var oRequestFinishedDeferred = jQuery.Deferred();
-		
-		this.olocalODataModel.read("SurveyAns?NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
+		//ZQEEMAH_SURVEY_SRV/SurveyAns?Lang='E'&Flag='B'&NodeGuid='14FEB556CA711EE48BA122AFF3C53A69'&SurveyID='QUEEMAH_BUS_PLAN'
+		this.olocalODataModel.read("SurveyAns?Lang='E'&Flag='B'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
 				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
