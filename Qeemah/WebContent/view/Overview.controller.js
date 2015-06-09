@@ -143,7 +143,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleLILISectionSelectionComboBox : function(){
 		this.oLILIDivisionComboBox.setValue("");
-		this.oLILIGroupComboBox.setValue("");
+		//this.oLILIGroupComboBox.setValue("");
+		this.oLILIGroupComboBox.removeAllSelectedItems();
 		var oRequestFinishedDeferredLILIDivision = this.oModelHelper.readLILIDivision(this.oLILISectionComboBox.getSelectedKey());
 
 		jQuery.when(oRequestFinishedDeferredLILIDivision).then(jQuery.proxy(function(oResponse) {			
@@ -295,9 +296,9 @@ sap.ui.controller("com.sagia.view.Overview", {
                 	
                 	this.readBICIPASSFileAttachemnts();
 				}, this));	*/
-				if(this.oBICIPowerofAttorneyFileUploader.getValue() === "" && this.oBICIPassPortCopyFileUploader.getValue() === ""){
+				/*if(this.oBICIPowerofAttorneyFileUploader.getValue() === "" && this.oBICIPassPortCopyFileUploader.getValue() === ""){
             		sap.m.MessageToast.show(this.oModelHelper.getText("AtleastOneAttachmentNeededBICI"));
-            	}else{
+            	}else{*/
             	var oRequestFinishedDeferred1 = this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
 				jQuery.when(oRequestFinishedDeferred1).then(jQuery.proxy(function() {
 					
@@ -310,7 +311,7 @@ sap.ui.controller("com.sagia.view.Overview", {
                 	
                 	this.readBICIPASSFileAttachemnts();
 				}, this));	
-            	}
+            	//}
                 
                 
 				

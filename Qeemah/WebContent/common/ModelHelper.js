@@ -648,7 +648,7 @@ com.sagia.common.ModelHelper = {
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
 
-		this.oODataModel.read("IsicDet?Flag='D'&Lang='E'&IsicSection='"+IsicSection+"'&IsicDivision=''"+IsicDivision+"' '&IsicGroup=' '&IsicClass=' '", {
+		this.oODataModel.read("IsicDet?Flag='G'&Lang='E'&IsicSection='"+IsicSection+"'&IsicDivision='"+IsicDivision+"'&IsicGroup=' '&IsicClass=' '", {
 			success : function(oData, response) {			
 				
 				that.oCountryCollectionModel = new sap.ui.model.json.JSONModel();
