@@ -110,6 +110,10 @@
 										</sap.ui.commons.layout:content>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:MatrixLayoutRow>
+								
+								
+								
+								
 								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 									
 								</sap.ui.commons.layout:MatrixLayoutRow> -->
@@ -181,7 +185,7 @@
 					<sap.ui.commons:TextView text="{i18n>Product}"></sap.ui.commons:TextView>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 				<sap.ui.commons.layout:MatrixLayoutCell>				
-					<ComboBox width="20em">
+					<ComboBox width="20em" id="idLILIProductComboBox">
 						<sap.ui.core:Item />
 					</ComboBox>
 				</sap.ui.commons.layout:MatrixLayoutCell>
@@ -193,7 +197,7 @@
 					<sap.ui.commons:TextView text="{i18n>Quantity}"></sap.ui.commons:TextView>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 				<sap.ui.commons.layout:MatrixLayoutCell>				
-					<Input type="Text"></Input>
+					<Input type="Text" id="idLILIProductQuantityInputText"></Input>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 			</sap.ui.commons.layout:cells>
 		</sap.ui.commons.layout:MatrixLayoutRow>
@@ -203,16 +207,22 @@
 					<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}"></sap.ui.commons:TextView>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 				<sap.ui.commons.layout:MatrixLayoutCell>				
-					<ComboBox width="20em">
+					<ComboBox width="20em" id="idLILIProductUOMComboBox">
 						<sap.ui.core:Item />
 					</ComboBox>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 			</sap.ui.commons.layout:cells>
 		</sap.ui.commons.layout:MatrixLayoutRow>
-		
+		<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutCell colSpan="2" hAlign="Center">
+										<Button style="Accept" text="{i18n>Add}" press="handleLILIAddProductButtonPress" />
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									
+								</sap.ui.commons.layout:MatrixLayoutRow>
+								
 		</sap.ui.commons.layout:rows>
 		</sap.ui.commons.layout:MatrixLayout>
-					
+					<html:br/>
 	<sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false">
 		<sap.ui.commons.layout:rows>
@@ -222,7 +232,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						>
 						<sap.ui.commons.layout:content>
-							<Table width="66rem" items="{/LILISectionCollection}" id="idLILIProductsTable">
+							<Table width="66rem" items="{/employees}" id="idLILIProductsTable">
 								<columns>
 									<Column width="2em">
 										<sap.ui.commons:TextView text="#" class="textcolorwhite"></sap.ui.commons:TextView>
@@ -247,7 +257,7 @@
 								<items>
 									<ColumnListItem>
 										<cells>
-											<sap.ui.commons:TextView text="{IsicDescription}"></sap.ui.commons:TextView>
+											<sap.ui.commons:TextView text="{firstName}"></sap.ui.commons:TextView>
 											<sap.ui.commons:TextView></sap.ui.commons:TextView>
 											<sap.ui.commons:TextView></sap.ui.commons:TextView>
 											<sap.ui.commons:TextView></sap.ui.commons:TextView>

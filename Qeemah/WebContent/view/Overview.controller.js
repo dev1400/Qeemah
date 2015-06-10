@@ -138,9 +138,23 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oLILISectionComboBox = this.getView().byId("idLILISectionComboBox");
 		this.oLILIDivisionComboBox = this.getView().byId("idLILIDivisionComboBox");
 		this.oLILIGroupComboBox = this.getView().byId("idLILIGroupComboBox");
-		this.oLILIProductsTable = this.getView().byId("idLILIProductsTable");
+		this.oLILIProductsTable = this.getView().byId("idLILIProductsTable"); 
+		this.oLILIProductComboBox = this.getView().byId("idLILIProductComboBox");
+		this.oLILIProductQuantityInputText = this.getView().byId("idLILIProductQuantityInputText");
+		this.oLILIProductUOMComboBox = this.getView().byId("idLILIProductUOMComboBox");
+		
 
 		
+	},
+	handleLILIAddProductButtonPress : function(){
+		//console.log(this.oLILIProductComboBox.getValue()+""+this.oLILIProductQuantityInputText.getValue());
+		sample = new sap.ui.model.json.JSONModel();
+		sample.setData({"employees":[
+                                     {"firstName":"John", "lastName":"Doe"},
+                                     {"firstName":"Anna", "lastName":"Smith"},
+                                     {"firstName":"Peter", "lastName":"Jones"}
+                                 ]});
+		this.oLILIProductsTable.setModel(sample);
 	},
 	handleLILISectionSelectionComboBox : function(){
 		this.oLILIDivisionComboBox.setValue("");
@@ -598,7 +612,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		jQuery.when(oRequestFinishedDeferredLILI).then(jQuery.proxy(function(oResponse) {			
 			this.oLILISectionComboBox.setModel(oResponse);
-			this.oLILIProductsTable.setModel(oResponse);
+			//this.oLILIProductsTable.setModel(oResponse);
 			
 		}, this));	
 	},
