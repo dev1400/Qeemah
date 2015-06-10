@@ -222,7 +222,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						>
 						<sap.ui.commons.layout:content>
-							<Table width="66rem">
+							<Table width="66rem" items="{/LILISectionCollection}" id="idLILIProductsTable">
 								<columns>
 									<Column width="2em">
 										<sap.ui.commons:TextView text="#" class="textcolorwhite"></sap.ui.commons:TextView>
@@ -247,11 +247,11 @@
 								<items>
 									<ColumnListItem>
 										<cells>
-											<Input type="Text" />
-											<Input type="Text" />
-											<Input type="Text" />
-											<Input type="Text" />
-											<Input type="Text" />
+											<sap.ui.commons:TextView text="{IsicDescription}"></sap.ui.commons:TextView>
+											<sap.ui.commons:TextView></sap.ui.commons:TextView>
+											<sap.ui.commons:TextView></sap.ui.commons:TextView>
+											<sap.ui.commons:TextView></sap.ui.commons:TextView>
+											<sap.ui.commons:TextView></sap.ui.commons:TextView>
 											<Button style="Accept" press="" icon="sap-icon://delete"/>
 										</cells>
 									</ColumnListItem>

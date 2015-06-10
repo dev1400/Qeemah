@@ -138,6 +138,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oLILISectionComboBox = this.getView().byId("idLILISectionComboBox");
 		this.oLILIDivisionComboBox = this.getView().byId("idLILIDivisionComboBox");
 		this.oLILIGroupComboBox = this.getView().byId("idLILIGroupComboBox");
+		this.oLILIProductsTable = this.getView().byId("idLILIProductsTable");
 
 		
 	},
@@ -597,6 +598,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		jQuery.when(oRequestFinishedDeferredLILI).then(jQuery.proxy(function(oResponse) {			
 			this.oLILISectionComboBox.setModel(oResponse);
+			this.oLILIProductsTable.setModel(oResponse);
 			
 		}, this));	
 	},
