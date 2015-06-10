@@ -142,19 +142,62 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oLILIProductComboBox = this.getView().byId("idLILIProductComboBox");
 		this.oLILIProductQuantityInputText = this.getView().byId("idLILIProductQuantityInputText");
 		this.oLILIProductUOMComboBox = this.getView().byId("idLILIProductUOMComboBox");
+		this.oLILIProductsTableJSONData = new sap.ui.model.json.JSONModel();
+		this.oLILIProductsdata = {ProductsCollection: []};
+		this.oLILIProductsdataSerialNo = 1;
+		this.oLILIProductsTableColumn1 = this.getView().byId("idLILIProductsTableColumn1");
+		this.oLILIProductsTableColoumnListItem = this.getView().byId("idLILIProductsTableColoumnListItem");
 		
 
 		
 	},
-	handleLILIAddProductButtonPress : function(){
-		//console.log(this.oLILIProductComboBox.getValue()+""+this.oLILIProductQuantityInputText.getValue());
-		sample = new sap.ui.model.json.JSONModel();
-		sample.setData({"employees":[
-                                     {"firstName":"John", "lastName":"Doe"},
-                                     {"firstName":"Anna", "lastName":"Smith"},
-                                     {"firstName":"Peter", "lastName":"Jones"}
-                                 ]});
-		this.oLILIProductsTable.setModel(sample);
+	handleLILIProductDeleteButtonPress : function(oEvent){
+		console.log(oEvent);
+		//this.oLILIProductsTableColoumnListItem.removeCell("1");
+		//console.log(this.oLILIProductsTable.indexOfColumn(this.oLILIProductsTableColumn1));
+		//console.log(this.oLILIProductsTableColoumnListItem.getCells().length);
+		//delete this.oLILIProductsdata.ProductsCollection[0];
+		
+        //this.oLILIProductsTableJSONData.setData(this.oLILIProductsdata,true);
+        //this.oLILIProductsTableJSONData.updateBindings(true);
+        //this.oLILIProductsTable.setModel(this.oLILIProductsTableJSONData);
+        //this.oLILIProductsTable.getModel().refresh(true);
+		//
+		//console.log(this.oLILIProductsdata.ProductsCollection[1].sno);
+		//console.log(this.oLILIProductsdata);
+		
+		console.log("Total items = "+this.oLILIProductsTable.getItems().length);
+		
+		this.oLILIProductsTable.removeItem(1);
+		//console.log(this.oLILIProductsTableJSONData.getJSON() );
+		/*obj = this.oLILIProductsdata;
+		console.log(obj.ProductsCollection[0]);
+		$.each(obj, function(index, value){
+			  
+			  if(value.sno === 1)
+			  {
+			   delete obj[index];
+			  }     
+
+			});
+		console.log(obj);*/
+		console.log(this.oLILIProductsTable.getSelectedItem());
+
+		
+		
+	},
+	handleLILIAddProductButtonPress : function(){		
+		
+		//this.oLILIProductsdata.ProductsCollection.push({"sno":this.oLILIProductsdataSerialNo,"product":this.oLILIProductComboBox.getValue(), "quantity": this.oLILIProductQuantityInputText.getValue(), "uom":this.oLILIProductUOMComboBox.getValue()});
+		this.oLILIProductsdata.ProductsCollection.push({
+			"sno":this.oLILIProductsdataSerialNo,
+			"product":this.oLILIProductComboBox.getValue(), 
+			"quantity": this.oLILIProductQuantityInputText.getValue(), 
+			"uom":this.oLILIProductUOMComboBox.getValue()});
+		this.oLILIProductsTableJSONData.setData(this.oLILIProductsdata,true);	
+		
+		this.oLILIProductsTable.setModel(this.oLILIProductsTableJSONData);
+		this.oLILIProductsdataSerialNo++;
 	},
 	handleLILISectionSelectionComboBox : function(){
 		this.oLILIDivisionComboBox.setValue("");

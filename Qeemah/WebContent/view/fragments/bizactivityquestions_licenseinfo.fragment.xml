@@ -232,9 +232,9 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						>
 						<sap.ui.commons.layout:content>
-							<Table width="66rem" items="{/employees}" id="idLILIProductsTable">
+							<Table width="66rem" items="{/ProductsCollection}" id="idLILIProductsTable">
 								<columns>
-									<Column width="2em">
+									<Column width="2em" id="idLILIProductsTableColumn1">
 										<sap.ui.commons:TextView text="#" class="textcolorwhite"></sap.ui.commons:TextView>
 									</Column>
 									<Column width="5em">
@@ -255,14 +255,14 @@
 									</Column>
 								</columns>
 								<items>
-									<ColumnListItem>
+									<ColumnListItem id="idLILIProductsTableColoumnListItem">
 										<cells>
-											<sap.ui.commons:TextView text="{firstName}"></sap.ui.commons:TextView>
+											<sap.ui.commons:TextView text="{sno}"></sap.ui.commons:TextView>
 											<sap.ui.commons:TextView></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView></sap.ui.commons:TextView>
-											<Button style="Accept" press="" icon="sap-icon://delete"/>
+											<sap.ui.commons:TextView text="{product}"></sap.ui.commons:TextView>
+											<sap.ui.commons:TextView text="{quantity}"></sap.ui.commons:TextView>
+											<sap.ui.commons:TextView text="{uom}"></sap.ui.commons:TextView>
+											<Button style="Accept" press="handleLILIProductDeleteButtonPress" icon="sap-icon://delete"/>
 										</cells>
 									</ColumnListItem>
 								</items>
