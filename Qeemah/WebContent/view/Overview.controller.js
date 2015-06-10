@@ -154,6 +154,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}, this));	
 	},
 	handleLILIDivisionSelectionComboBox : function(){
+		this.oLILIGroupComboBox.removeAllSelectedItems();
+		
 		var oRequestFinishedDeferredLILIGroup = this.oModelHelper.readLILIGroup(this.oLILISectionComboBox.getSelectedKey(),this.oLILIDivisionComboBox.getSelectedKey());
 
 		jQuery.when(oRequestFinishedDeferredLILIGroup).then(jQuery.proxy(function(oResponse) {			
