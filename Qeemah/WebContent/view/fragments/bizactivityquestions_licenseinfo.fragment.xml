@@ -232,11 +232,12 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						>
 						<sap.ui.commons.layout:content>
-							<Table width="66rem" items="{/ProductsCollection}" id="idLILIProductsTable">
+							<Table   delete="handleLILIProductDeleteButtonPress" mode="Delete" width="66rem" items="{/ProductsCollection}" id="idLILIProductsTable">
+							<!-- mode="SingleSelect" delete="handleLILIProductDeleteButtonPress" mode="Delete" -->
 								<columns>
-									<Column width="2em" id="idLILIProductsTableColumn1">
+									<!-- <Column width="2em" id="idLILIProductsTableColumn1">
 										<sap.ui.commons:TextView text="#" class="textcolorwhite"></sap.ui.commons:TextView>
-									</Column>
+									</Column> -->
 									<Column width="5em">
 										<sap.ui.commons:TextView text="{i18n>ProductCode}" class="textcolorwhite"></sap.ui.commons:TextView>
 									</Column>
@@ -250,19 +251,19 @@
 									<Column width="10em">
 										<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}" class="textcolorwhite"></sap.ui.commons:TextView>
 									</Column>
-									<Column width="5em">
+									<!-- <Column width="5em">
 										<sap.ui.commons:TextView text="{i18n>Delete}" class="textcolorwhite"></sap.ui.commons:TextView>
-									</Column>
+									</Column> -->
 								</columns>
 								<items>
-									<ColumnListItem id="idLILIProductsTableColoumnListItem">
+									<ColumnListItem> <!-- id="idLILIProductsTableColoumnListItem" -->
 										<cells>
-											<sap.ui.commons:TextView text="{sno}"></sap.ui.commons:TextView>
+											<!-- <sap.ui.commons:TextView text="{sno}"></sap.ui.commons:TextView> -->
 											<sap.ui.commons:TextView></sap.ui.commons:TextView>
 											<sap.ui.commons:TextView text="{product}"></sap.ui.commons:TextView>
 											<sap.ui.commons:TextView text="{quantity}"></sap.ui.commons:TextView>
 											<sap.ui.commons:TextView text="{uom}"></sap.ui.commons:TextView>
-											<Button style="Accept" press="handleLILIProductDeleteButtonPress" icon="sap-icon://delete"/>
+											<!-- <Button style="Accept" press="handleLILIProductDeleteButtonPress" icon="sap-icon://delete"/> -->
 										</cells>
 									</ColumnListItem>
 								</items>
