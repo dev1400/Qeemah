@@ -151,6 +151,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		
 	},
+	
 	handleLILIProductDeleteButtonPress : function(oEvent){
 		//console.log(oEvent);
 		//this.oLILIProductsTableColoumnListItem.removeCell("1");
@@ -165,15 +166,20 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oLILIProductsTable.getModel().refresh(true);*/
 		
 		var path = oEvent.getParameter('listItem').getBindingContext().sPath;
+		this.oLILIProductsdata.ProductsCollection.splice(path.slice(-1), 1);
+		console.log(this.oLILIProductsdata.ProductsCollection);
+		//console.log(this.oLILIProductsdata.ProductsCollection[path.slice(-1)]);
+		//delete this.oLILIProductsdata.ProductsCollection[path.slice(-1)];
 		
-		delete this.oLILIProductsdata.ProductsCollection[path.slice(-1)];
-		
-		this.oLILIProductsTableJSONData.setData(this.oLILIProductsdata,true);
+		//this.oLILIProductsTableJSONData.setData(this.oLILIProductsdata,true);
 		
 		var obj = this.oLILIProductsTable.getModel().getProperty(path);
 		
 		
         this.oLILIProductsTable.removeItem(oEvent.getParameter('listItem'));
+        
+       // this.oLILIProductsTable.unbindItems();
+       // this.oLILIProductsTable.setModel(this.oLILIProductsTableJSONData);
         
 		//console.log(path);
 		
@@ -221,14 +227,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleLILIAddProductButtonPress : function(){		
 		this.oLILIProductsTable.unbindItems();
 		//this.oLILIProductsdata.ProductsCollection.push({"sno":this.oLILIProductsdataSerialNo,"product":this.oLILIProductComboBox.getValue(), "quantity": this.oLILIProductQuantityInputText.getValue(), "uom":this.oLILIProductUOMComboBox.getValue()});
+		console.log(this.oLILIProductsdata);
 		this.oLILIProductsdata.ProductsCollection.push({
 			//"sno":this.oLILIProductsdataSerialNo,
 			"product":this.oLILIProductComboBox.getValue(), 
 			"quantity": this.oLILIProductQuantityInputText.getValue(), 
 			"uom":this.oLILIProductUOMComboBox.getValue()});
+		console.dir(this.oLILIProductsdata);
 		this.oLILIProductsTableJSONData.setData(this.oLILIProductsdata,true);	
 		//this.oLILIProductsTable.getModel().refresh(true);
-		
+		console.log(this.oLILIProductsTableJSONData);
 		this.oLILIProductsTable.setModel(this.oLILIProductsTableJSONData);
 		//this.oLILIProductsTable.setModel("");items="{/ProductsCollection}"
 		this.oLILIProductsTable.bindItems("/ProductsCollection", new sap.m.ColumnListItem({
@@ -275,6 +283,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleSaveLinkPressSave : function(oEvent){
 		that = this;
 		
+		var oCreateNSHRequestFinishedDeferred = this.oModelHelper.createNewShareHolder(this.oRef_id);
        
 		if(this.oRecordExists){
 			try{
@@ -1687,6 +1696,8 @@ userSignIn : function(userID, password){
 				
 				that.readBICIPASSFileAttachemnts();
 				that.readBICIPOAFileAttachemnts();
+				
+				
 				
 			
 			}

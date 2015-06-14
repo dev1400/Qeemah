@@ -71,6 +71,116 @@ com.sagia.common.ModelHelper = {
 		return this.oODataModel;
 	},
 	/**
+	 * Create new share holder.
+	 * @author Abdul Waheed
+	 */
+	createNewShareHolder : function(oRefID){
+		this.openBusyDialog();
+
+		this.oShareHolderODataModel = new sap.ui.model.odata.ODataModel("proxy/sap/opu/odata/sap/ZQEEMAH_SHRHLDR_SRV/", true,
+				null, null, {
+					"X-Requested-With" : "XMLHttpRequest",
+					"Content-Type" : "application/json",
+					"X-CSRF-Token":"Fetch" ,
+					"DataServiceVersion": "2.0",
+					"Authorization" : "Basic bmt1bWFyOnNhcDEyMw=="
+
+				}, true, true);
+		var that = this;
+		var oEntry = {};
+		oEntry.RefID = "'"+24+"'";
+		oEntry.EntityNo = '';
+		oEntry.FileType = '';
+		oEntry.ShldrType = 'P';
+		oEntry.EntityFname = 'LN';
+		oEntry.EntityLname = 'FN';
+		oEntry.Gender = 'M';
+		oEntry.MaritalStatus = 'MAr';
+		oEntry.Academic = 'GRAD';
+		oEntry.Dob = '02062015';
+		oEntry.CcodeTele = '6';
+		oEntry.Telephone = '6';
+		oEntry.CcodeMobile = '6';
+		oEntry.Mobile = '6';
+		oEntry.CcodeFax = '6';
+		oEntry.Fax = '6';
+		oEntry.Country = 'ksa';
+		oEntry.City = 'EDI';
+		oEntry.Street = 'astreet';
+		oEntry.PoBox = 'a2';
+		oEntry.PostalCode = 'a1';
+		oEntry.Website = 'www.ksa.com';
+		oEntry.CurrNationalty = 'KSA';
+		oEntry.PrevNationalty = 'KSa';
+		oEntry.CommMtd = 'MOB';
+		oEntry.Percentage = '6';
+		oEntry.CompanyAge = '6';
+		oEntry.Branches = '6';
+		oEntry.Employees = '6';
+		oEntry.FinStable = 'Yes';
+		oEntry.CultLandArea = '6';
+		oEntry.NoGreenhouse = '6';
+		oEntry.ApprMinistry = 'App';
+		oEntry.Stock12 = '6';
+		oEntry.Stock13 = '6';
+		oEntry.Stock14 = '6';
+		oEntry.CurrAssets12 = '6';
+		oEntry.CurrAssets13 = '6';
+		oEntry.CurrAssets14 = '6';
+		oEntry.CurrLiability12 = '6';
+		oEntry.CurrLiability13 = '6';
+		oEntry.CurrLiability14 = '6';
+		oEntry.NetSales12 = '6';
+		oEntry.NetSales13 = '6';
+		oEntry.NetSales14 = '6';
+		oEntry.TotAssets12 = '6';
+		oEntry.TotAssets13 = '6';
+		oEntry.TotAssets14 = '6';
+		oEntry.TotDebt12 = '6';
+		oEntry.TotDebt13 = '6';
+		oEntry.TotDebt14 = '6';
+		oEntry.NetIncome12 = '6';
+		oEntry.NetIncome13 = '6';
+		oEntry.NetIncome14 = '6';
+		oEntry.NetProfit12 = '6';
+		oEntry.NetProfit13 = '6';
+		oEntry.NetProfit14 = '6';
+		oEntry.Intrest12 = '6';
+		oEntry.Intrest13 = '6';
+		oEntry.Intrest14 = '6';
+		oEntry.BalShtAssest12 = '6';
+		oEntry.BalShtAssest13 = '6';
+		oEntry.BalShtAssest14 = '6';//*/
+		
+		//ZSHAREHOLDER_INFO_ENT(RefID='0000000001',EntityNo='001',FileType='')
+		
+		
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+        
+		this.oShareHolderODataModel.create("ZSHAREHOLDER_INFO_ENT", oEntry , {
+		
+			success : function(oData) {
+				console.log(oData);
+				oRequestFinishedDeferred.resolve(oData);
+				
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				console.log(oResponse);
+				oRequestFinishedDeferred.resolve();
+				that.closeBusyDialog();
+			},
+			async : true,
+			urlParameters : oEntry
+		});
+		return oRequestFinishedDeferred;
+		
+	},
+	
+	/**
 	 * read BICI Pass Port Attachment Name
 	 * @author : Abdul Waheed
 	 */
