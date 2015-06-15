@@ -150,88 +150,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oLILIProductsTableJSONData = new sap.ui.model.json.JSONModel();
 		this.oLILIProductsdata = {ProductsCollection: []};
 		this.oLILIProductsdataSerialNo = 1;
-		//this.oLILIProductsTableColumn1 = this.getView().byId("idLILIProductsTableColumn1");
-		//this.oLILIProductsTableColoumnListItem = this.getView().byId("idLILIProductsTableColoumnListItem");
 		
-		//NSH Start
-		/*this.oShareHolderTypeRadioButtonGroup = this.getView().byId("idShareHolderTypeRadioButtonGroup");
-		this.oNSHFirstNameInputText = sap.ui.getCore().byId("idNSHFirstNameInputText");
-		this.oNSHCountryComboBox = sap.ui.getCore().byId("idNSHCountryComboBox");
-		this.oNSHLastNameInputText = sap.ui.getCore().byId("idNSHLastNameInputText");
-		this.oNSHCityNameInputText = sap.ui.getCore().byId("idNSHCityNameInputText");
-		this.oNSHGenderComboBox = sap.ui.getCore().byId("idNSHGenderComboBox");
-		this.oNSHPOBoxInputText = sap.ui.getCore().byId("idNSHPOBoxInputText");
-		this.oNSHMaritalStatusComboBox = sap.ui.getCore().byId("idNSHMaritalStatusComboBox");
-		this.oNSHPostalCodeInputText = sap.ui.getCore().byId("idNSHPostalCodeInputText");
-		this.oNSHAcademicTitleInputText = sap.ui.getCore().byId("idNSHAcademicTitleInputText");
-		this.oNSHStreetInputText = sap.ui.getCore().byId("idNSHStreetInputText");
-		this.oNSHDOBDate = sap.ui.getCore().byId("idNSHDOBDate");
-		this.oNSHWebsiteInputText = sap.ui.getCore().byId("idNSHWebsiteInputText");
-		this.oNSHTelephoneInputText = sap.ui.getCore().byId("idNSHTelephoneInputText");
-		this.oNSHNationalityComboBox = sap.ui.getCore().byId("idNSHNationalityComboBox");
-		this.oNSHMobilePhoneInputText = sap.ui.getCore().byId("idNSHMobilePhoneInputText");
-		this.oNSHPreviousNationalityInputText = sap.ui.getCore().byId("idNSHPreviousNationalityInputText");
-		this.oNSHFaxInputText = sap.ui.getCore().byId("idNSHFaxInputText");
-		this.oNSHCommMethodInputText = sap.ui.getCore().byId("idNSHCommMethodInputText");
-		this.oNSHEmailInputText = sap.ui.getCore().byId("idNSHEmailInputText");
-		this.oNSHPercentageInputText = sap.ui.getCore().byId("idNSHPercentageInputText");*/
-		/*this.oShareHolderTypeRadioButtonGroup = this.getView().byId("idShareHolderTypeRadioButtonGroup");
-		this.oNSHCountryComboBox = this.getView().byId("idNSHCountryComboBox");
-		this.oNSHLastNameInputText = this.getView().byId("idNSHLastNameInputText");
-		this.oNSHCityNameInputText = this.getView().byId("idNSHCityNameInputText");
-		this.oNSHGenderComboBox = this.getView().byId("idNSHGenderComboBox");
-		this.oNSHPOBoxInputText = this.getView().byId("idNSHPOBoxInputText");
-		this.oNSHMaritalStatusComboBox = this.getView().byId("idNSHMaritalStatusComboBox");
-		this.oNSHPostalCodeInputText = this.getView().byId("idNSHPostalCodeInputText");
-		this.oNSHAcademicTitleInputText = this.getView().byId("idNSHAcademicTitleInputText");
-		this.oNSHStreetInputText = this.getView().byId("idNSHStreetInputText");
-		this.oNSHDOBDate = this.getView().byId("idNSHDOBDate");
-		this.oNSHWebsiteInputText = this.getView().byId("idNSHWebsiteInputText");
-		this.oNSHTelephoneInputText = this.getView().byId("idNSHTelephoneInputText");
-		this.oNSHNationalityComboBox = this.getView().byId("idNSHNationalityComboBox");
-		this.oNSHMobilePhoneInputText = this.getView().byId("idNSHMobilePhoneInputText");
-		this.oNSHPreviousNationalityInputText = this.getView().byId("idNSHPreviousNationalityInputText");
-		this.oNSHFaxInputText = this.getView().byId("idNSHFaxInputText");
-		this.oNSHCommMethodInputText = this.getView().byId("idNSHCommMethodInputText");
-		this.oNSHEmailInputText = this.getView().byId("idNSHEmailInputText");
-		this.oNSHPercentageInputText = this.getView().byId("idNSHPercentageInputText");*/
-		//NSH End
-		
-		
-
 		
 	},
 	handleCreateNewShareHolder : function(oEvent){
-		//console.log(this.oShareHolderTypeRadioButtonGroup.getSelectedButton().getText());
-		//this.oModelHelper.createNewShareHolder();
 		
-		/*this.oShareHolderNewShareHolderFragment = sap.ui.xmlfragment("com.sagia.view.fragments.ns_shareholderdetails", this.getView()
-				.getController());
-		this.oShareHolderTypeRadioButtonGroup = this.getView().byId("idShareHolderTypeRadioButtonGroup");
-		this.oNSHFirstNameInputText = sap.ui.getCore().byId("idNSHFirstNameInputText");
-		this.oNSHCountryComboBox = sap.ui.getCore().byId("idNSHCountryComboBox");
-		this.oNSHLastNameInputText = sap.ui.getCore().byId("idNSHLastNameInputText");
-		this.oNSHCityNameInputText = sap.ui.getCore().byId("idNSHCityNameInputText");
-		this.oNSHGenderComboBox = sap.ui.getCore().byId("idNSHGenderComboBox");
-		this.oNSHPOBoxInputText = sap.ui.getCore().byId("idNSHPOBoxInputText");
-		this.oNSHMaritalStatusComboBox = sap.ui.getCore().byId("idNSHMaritalStatusComboBox");
-		this.oNSHPostalCodeInputText = sap.ui.getCore().byId("idNSHPostalCodeInputText");
-		this.oNSHAcademicTitleInputText = sap.ui.getCore().byId("idNSHAcademicTitleInputText");
-		this.oNSHStreetInputText = sap.ui.getCore().byId("idNSHStreetInputText");
-		this.oNSHDOBDate = sap.ui.getCore().byId("idNSHDOBDate");
-		this.oNSHWebsiteInputText = sap.ui.getCore().byId("idNSHWebsiteInputText");
-		this.oNSHTelephoneInputText = sap.ui.getCore().byId("idNSHTelephoneInputText");
-		this.oNSHNationalityComboBox = sap.ui.getCore().byId("idNSHNationalityComboBox");
-		this.oNSHMobilePhoneInputText = sap.ui.getCore().byId("idNSHMobilePhoneInputText");
-		this.oNSHPreviousNationalityInputText = sap.ui.getCore().byId("idNSHPreviousNationalityInputText");
-		this.oNSHFaxInputText = sap.ui.getCore().byId("idNSHFaxInputText");
-		this.oNSHCommMethodInputText = sap.ui.getCore().byId("idNSHCommMethodInputText");
-		this.oNSHEmailInputText = sap.ui.getCore().byId("idNSHEmailInputText");
-		this.oNSHPercentageInputText = sap.ui.getCore().byId("idNSHPercentageInputText");*/
-		
-		
-			
-		var oRequestFinishedDeferredNSH = this.oModelHelper.createNewShareHolder(
+		var oRequestFinishedDeferredNSH = this.oModelHelper.createNewShareHolder(this.oRef_id,
 				this.oShareHolderTypeRadioButtonGroup.getSelectedButton().getText(),
 				this.oNSHFirstNameInputText.getValue(),
 				this.oNSHCountryComboBox.getValue(),
@@ -393,7 +317,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleSaveLinkPressSave : function(oEvent){
 		that = this;
 		
-		var oCreateNSHRequestFinishedDeferred = this.oModelHelper.createNewShareHolder(this.oRef_id);
+		//var oCreateNSHRequestFinishedDeferred = this.oModelHelper.createNewShareHolder(this.oRef_id);
        
 		if(this.oRecordExists){
 			try{

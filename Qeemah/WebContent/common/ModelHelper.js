@@ -74,7 +74,7 @@ com.sagia.common.ModelHelper = {
 	 * Create new share holder.
 	 * @author Abdul Waheed
 	 */
-	createNewShareHolder : function(oShareHolderType, oNSHFirstNameInputText,
+	createNewShareHolder : function(oRef_id, oShareHolderType, oNSHFirstNameInputText,
 			oNSHCountryComboBox,
 			oNSHLastNameInputText,
 			oNSHCityNameInputText,
@@ -107,7 +107,7 @@ com.sagia.common.ModelHelper = {
 				}, true, true);
 		var that = this;
 		var oEntry = {};
-		oEntry.RefID = "'"+25+"'";
+		oEntry.RefID = "'"+parseInt(oRef_id, 10)+"'";
 		oEntry.EntityNo = '';
 		oEntry.FileType = '';
 		oEntry.ShldrType = oShareHolderType;
