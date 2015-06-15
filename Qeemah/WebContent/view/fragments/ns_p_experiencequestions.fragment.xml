@@ -33,8 +33,12 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons.layout:content>
-						<ComboBox width="25em">
-										<sap.ui.core:Item />
+						<ComboBox id="idNSHExperienceQ1ComboBox" width="25em">
+								<sap.ui.core:ListItem Key="1" text="{i18n>InternalorExternal}" />
+								<sap.ui.core:ListItem key="2" text="{i18n>InternalFinancing}" />
+								<sap.ui.core:ListItem Key="3" text="{i18n>ExternalFinancing}" />
+								
+							
 									</ComboBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -51,8 +55,21 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons.layout:content>
-						<ComboBox width="25em">
-										<sap.ui.core:Item />
+						<ComboBox width="25em" id="idNSHExperienceQ2ComboBox">
+								<sap.ui.core:ListItem Key="1" text="1-10" />
+								<sap.ui.core:ListItem key="2" text="11-20" />
+								<sap.ui.core:ListItem Key="3" text="21-30" />
+								<sap.ui.core:ListItem Key="4" text="31-40" />
+								<sap.ui.core:ListItem key="5" text="41-50" />
+								<sap.ui.core:ListItem Key="6" text="51-60" />
+								<sap.ui.core:ListItem Key="7" text="61-70" />
+								<sap.ui.core:ListItem key="8" text="71-80" />
+								<sap.ui.core:ListItem Key="9" text="81-90" />
+								<sap.ui.core:ListItem Key="10" text="91-100" />
+								<sap.ui.core:ListItem key="11" text="{i18n>Above100}" />
+								
+								
+								
 									</ComboBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -69,8 +86,18 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons.layout:content>
-						<ComboBox width="25em">
-										<sap.ui.core:Item />
+						<ComboBox id="idNSHExperienceQ3ComboBox" width="25em">
+										<sap.ui.core:ListItem Key="1" text="1-10" />
+								<sap.ui.core:ListItem key="2" text="11-20" />
+								<sap.ui.core:ListItem Key="3" text="21-30" />
+								<sap.ui.core:ListItem Key="4" text="31-40" />
+								<sap.ui.core:ListItem key="5" text="41-50" />
+								<sap.ui.core:ListItem Key="6" text="51-60" />
+								<sap.ui.core:ListItem Key="7" text="61-70" />
+								<sap.ui.core:ListItem key="8" text="71-80" />
+								<sap.ui.core:ListItem Key="9" text="81-90" />
+								<sap.ui.core:ListItem Key="10" text="91-100" />
+								<sap.ui.core:ListItem key="11" text="{i18n>Above100}" />
 									</ComboBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -87,8 +114,9 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons.layout:content>
-						<ComboBox width="25em">
-										<sap.ui.core:Item />
+						<ComboBox width="25em" id="idNSHExperienceQ4ComboBox">
+										<sap.ui.core:ListItem Key="1" text="{i18n>Yes}" />
+								<sap.ui.core:ListItem key="2" text="{i18n>No}" />
 									</ComboBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>

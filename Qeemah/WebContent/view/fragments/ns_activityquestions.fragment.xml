@@ -31,8 +31,13 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons.layout:content>
-						<ComboBox width="25em">
-										<sap.ui.core:Item />
+						<ComboBox id="idNSHActivityQ1ComboBox" width="25em">
+								<sap.ui.core:ListItem Key="1" text="1-10" />
+								<sap.ui.core:ListItem key="2" text="11-20" />
+								<sap.ui.core:ListItem Key="3" text="21-30" />
+								<sap.ui.core:ListItem key="4" text="31-40" />
+								<sap.ui.core:ListItem key="5" text="41-50" />
+								<sap.ui.core:ListItem key="6" text="{i18n>Above}" />
 									</ComboBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -49,8 +54,13 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons.layout:content>
-						<ComboBox width="25em">
-										<sap.ui.core:Item />
+						<ComboBox id="idNSHActivityQ2ComboBox" width="25em">
+								<sap.ui.core:ListItem Key="1" text="1-10" />
+								<sap.ui.core:ListItem key="2" text="11-50" />
+								<sap.ui.core:ListItem Key="3" text="51-100" />
+								<sap.ui.core:ListItem key="4" text="101-150" />
+								<sap.ui.core:ListItem key="5" text="151-200" />
+								<sap.ui.core:ListItem key="6" text="{i18n>Above}" />
 									</ComboBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -67,8 +77,13 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons.layout:content>
-						<ComboBox width="25em">
-										<sap.ui.core:Item />
+						<ComboBox id="idNSHActivityQ3ComboBox" width="25em">
+								<sap.ui.core:ListItem Key="1" text="1-10" />
+								<sap.ui.core:ListItem key="2" text="11-100" />
+								<sap.ui.core:ListItem Key="3" text="101-500" />
+								<sap.ui.core:ListItem key="4" text="501-1000" />
+								<sap.ui.core:ListItem key="5" text="1001-2000" />
+								<sap.ui.core:ListItem key="6" text="{i18n>Above}" />
 									</ComboBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
