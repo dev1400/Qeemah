@@ -348,19 +348,19 @@
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow>
 			
-			<!-- <sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center" colSpan="4"
 						>
 						<sap.ui.commons.layout:content>
-							<Button style="Accept" text="{i18n>SaveandAddShareHolder}" press="">
+							<Button style="Accept" text="{i18n>CreateShareHolder}" press="handleCreateNewShareHolder">
 							</Button>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					
 					
 				</sap.ui.commons.layout:cells>
-			</sap.ui.commons.layout:MatrixLayoutRow> -->
+			</sap.ui.commons.layout:MatrixLayoutRow>
 			
 			
 			

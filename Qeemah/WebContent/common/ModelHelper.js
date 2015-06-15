@@ -74,7 +74,26 @@ com.sagia.common.ModelHelper = {
 	 * Create new share holder.
 	 * @author Abdul Waheed
 	 */
-	createNewShareHolder : function(oRefID){
+	createNewShareHolder : function(oShareHolderType, oNSHFirstNameInputText,
+			oNSHCountryComboBox,
+			oNSHLastNameInputText,
+			oNSHCityNameInputText,
+			oNSHGenderComboBox,
+			oNSHPOBoxInputText,
+			oNSHMaritalStatusComboBox,
+			oNSHPostalCodeInputText,
+			oNSHAcademicTitleInputText,
+			oNSHStreetInputText,
+			oNSHDOBDate,
+			oNSHWebsiteInputText,
+			oNSHTelephoneInputText,
+			oNSHNationalityComboBox,
+			oNSHMobilePhoneInputText,
+			oNSHPreviousNationalityInputText,
+			oNSHFaxInputText,
+			oNSHCommMethodInputText,
+			oNSHEmailInputText,
+			oNSHPercentageInputText){
 		this.openBusyDialog();
 
 		this.oShareHolderODataModel = new sap.ui.model.odata.ODataModel("proxy/sap/opu/odata/sap/ZQEEMAH_SHRHLDR_SRV/", true,
@@ -88,16 +107,16 @@ com.sagia.common.ModelHelper = {
 				}, true, true);
 		var that = this;
 		var oEntry = {};
-		oEntry.RefID = "'"+24+"'";
+		oEntry.RefID = "'"+25+"'";
 		oEntry.EntityNo = '';
 		oEntry.FileType = '';
-		oEntry.ShldrType = 'P';
-		oEntry.EntityFname = 'LN';
-		oEntry.EntityLname = 'FN';
-		oEntry.Gender = 'M';
-		oEntry.MaritalStatus = 'MAr';
-		oEntry.Academic = 'GRAD';
-		oEntry.Dob = '02062015';
+		oEntry.ShldrType = oShareHolderType;
+		oEntry.EntityFname = oNSHFirstNameInputText;
+		oEntry.EntityLname = oNSHLastNameInputText;
+		oEntry.Gender = oNSHGenderComboBox;
+		oEntry.MaritalStatus = oNSHMaritalStatusComboBox;
+		oEntry.Academic = oNSHAcademicTitleInputText;
+		oEntry.Dob = oNSHDOBDate;
 		oEntry.CcodeTele = '6';
 		oEntry.Telephone = '6';
 		oEntry.CcodeMobile = '6';
@@ -113,7 +132,7 @@ com.sagia.common.ModelHelper = {
 		oEntry.CurrNationalty = 'KSA';
 		oEntry.PrevNationalty = 'KSa';
 		oEntry.CommMtd = 'MOB';
-		oEntry.Percentage = '6';
+		oEntry.Percentage = 6;
 		oEntry.CompanyAge = '6';
 		oEntry.Branches = '6';
 		oEntry.Employees = '6';
@@ -150,7 +169,70 @@ com.sagia.common.ModelHelper = {
 		oEntry.Intrest14 = '6';
 		oEntry.BalShtAssest12 = '6';
 		oEntry.BalShtAssest13 = '6';
-		oEntry.BalShtAssest14 = '6';//*/
+		oEntry.BalShtAssest14 = '6';/**/
+		/*oEntry.RefID = "'"+25+"'";//"'"+24+"'"
+		oEntry.EntityNo = '';
+		oEntry.FileType = '';
+		oEntry.ShldrType = '6';//oShareHolderType;
+		oEntry.EntityFname = '6';//oNSHFirstNameInputText;
+		oEntry.EntityLname = '6';//oNSHLastNameInputText;
+		oEntry.Gender = '6';//oNSHGenderComboBox;
+		oEntry.MaritalStatus = '6';//oNSHMaritalStatusComboBox;
+		oEntry.Academic = '6';//oNSHAcademicTitleInputText;
+		oEntry.Dob = '02062015';//oNSHDOBDate;
+		oEntry.CcodeTele = '6';
+		oEntry.Telephone = '6';//oNSHTelephoneInputText;
+		oEntry.CcodeMobile = '6';
+		oEntry.Mobile = '6';//oNSHMobilePhoneInputText;
+		oEntry.CcodeFax = '6';
+		oEntry.Fax = '6';//oNSHFaxInputText;
+		oEntry.Country = '6';//oNSHCountryComboBox;
+		oEntry.City = '6';//oNSHCityNameInputText;
+		oEntry.Street = '6';//oNSHStreetInputText;
+		oEntry.PoBox = '6';//oNSHPOBoxInputText;
+		oEntry.PostalCode = '6';//oNSHPostalCodeInputText;
+		oEntry.Website = '6';//oNSHWebsiteInputText;
+		oEntry.CurrNationalty = '6';//oNSHNationalityComboBox;
+		oEntry.PrevNationalty = '6';//oNSHPreviousNationalityInputText;
+		oEntry.CommMtd = '6';//oNSHCommMethodInputText;
+		oEntry.Percentage = '7';//oNSHPercentageInputText;
+		oEntry.CompanyAge = '6';
+		oEntry.Branches = '6';
+		oEntry.Employees = '6';
+		oEntry.FinStable = 'Yes';
+		oEntry.CultLandArea = '6';
+		oEntry.NoGreenhouse = '6';
+		oEntry.ApprMinistry = 'App';
+		oEntry.Stock12 = '6';
+		oEntry.Stock13 = '6';
+		oEntry.Stock14 = '6';
+		oEntry.CurrAssets12 = '6';
+		oEntry.CurrAssets13 = '6';
+		oEntry.CurrAssets14 = '6';
+		oEntry.CurrLiability12 = '6';
+		oEntry.CurrLiability13 = '6';
+		oEntry.CurrLiability14 = '6';
+		oEntry.NetSales12 = '6';
+		oEntry.NetSales13 = '6';
+		oEntry.NetSales14 = '6';
+		oEntry.TotAssets12 = '6';
+		oEntry.TotAssets13 = '6';
+		oEntry.TotAssets14 = '6';
+		oEntry.TotDebt12 = '6';
+		oEntry.TotDebt13 = '6';
+		oEntry.TotDebt14 = '6';
+		oEntry.NetIncome12 = '6';
+		oEntry.NetIncome13 = '6';
+		oEntry.NetIncome14 = '6';
+		oEntry.NetProfit12 = '6';
+		oEntry.NetProfit13 = '6';
+		oEntry.NetProfit14 = '6';
+		oEntry.Intrest12 = '6';
+		oEntry.Intrest13 = '6';
+		oEntry.Intrest14 = '6';
+		oEntry.BalShtAssest12 = '6';
+		oEntry.BalShtAssest13 = '6';
+		oEntry.BalShtAssest14 = '6';*///*/
 		
 		//ZSHAREHOLDER_INFO_ENT(RefID='0000000001',EntityNo='001',FileType='')
 		
