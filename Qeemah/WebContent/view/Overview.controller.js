@@ -229,34 +229,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oNSHEmailInputText = sap.ui.getCore().byId("idNSHEmailInputText");
 		this.oNSHPercentageInputText = sap.ui.getCore().byId("idNSHPercentageInputText");*/
 		
-		if (!this.oShareHolderNewShareHolderFragment) {
-			this.oShareHolderNewShareHolderFragment = sap.ui.xmlfragment("com.sagia.view.fragments.ns_shareholderdetails", this.getView()
-					.getController());
-			
-			this.oShareHolderTypeRadioButtonGroup = this.getView().byId("idShareHolderTypeRadioButtonGroup");
-			this.oNSHFirstNameInputText = this.getView().byId("idNSHFirstNameInputText");
-			this.oNSHCountryComboBox = this.getView().byId("idNSHCountryComboBox");
-			this.oNSHLastNameInputText = this.getView().byId("idNSHLastNameInputText");
-			this.oNSHCityNameInputText = this.getView().byId("idNSHCityNameInputText");
-			this.oNSHGenderComboBox = this.getView().byId("idNSHGenderComboBox");
-			this.oNSHPOBoxInputText = this.getView().byId("idNSHPOBoxInputText");
-			this.oNSHMaritalStatusComboBox = this.getView().byId("idNSHMaritalStatusComboBox");
-			this.oNSHPostalCodeInputText = this.getView().byId("idNSHPostalCodeInputText");
-			this.oNSHAcademicTitleInputText = this.getView().byId("idNSHAcademicTitleInputText");
-			this.oNSHStreetInputText = this.getView().byId("idNSHStreetInputText");
-			this.oNSHDOBDate = this.getView().byId("idNSHDOBDate");
-			this.oNSHWebsiteInputText = this.getView().byId("idNSHWebsiteInputText");
-			this.oNSHTelephoneInputText = this.getView().byId("idNSHTelephoneInputText");
-			this.oNSHNationalityComboBox = this.getView().byId("idNSHNationalityComboBox");
-			this.oNSHMobilePhoneInputText = this.getView().byId("idNSHMobilePhoneInputText");
-			this.oNSHPreviousNationalityInputText = this.getView().byId("idNSHPreviousNationalityInputText");
-			this.oNSHFaxInputText = this.getView().byId("idNSHFaxInputText");
-			this.oNSHCommMethodInputText = this.getView().byId("idNSHCommMethodInputText");
-			this.oNSHEmailInputText = this.getView().byId("idNSHEmailInputText");
-			this.oNSHPercentageInputText = this.getView().byId("idNSHPercentageInputText");
-
-		}
-		
 		
 			
 		var oRequestFinishedDeferredNSH = this.oModelHelper.createNewShareHolder(
@@ -818,6 +790,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		/*var oAmendmentDetailModel = this.oModelHelper.readCountry();
 		this.getView().setModel(oAmendmentDetailModel, "AmendmentDetailModel");*/
 		
+		/*this.oShareHolderNewShareHolderFragment = sap.ui.xmlfragment("com.sagia.view.fragments.ns_shareholderdetails", this.getView()
+				.getController());*/
+		
 		var oRequestFinishedDeferred = this.oModelHelper.readCountry();
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
@@ -836,11 +811,27 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}
 			//console.log(arr);
 			//console.log(JSON.stringify(arr));
+			//this.oShareHolderNewShareHolderFragment.setModel(oResponse);
 			
 			this.getView().setModel(oResponse);
 			
 			this.getView().setModel(oResponse,"CC");
 			
+			
+			//var filterRegion = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
+			
+			/*var filterRegion = new sap.ui.model.Filter([
+			 						new sap.ui.model.Filter("Landx50",
+			 								sap.ui.model.FilterOperator.Contains, "") ],
+			 						false);
+			
+			
+			
+			var oBinding = this.oShareHolderNewShareHolderFragment.getBinding("items");
+			oBinding.filter(filterRegion);*/
+			
+			
+			//this.oShareHolderNewShareHolderFragment.setModel(oResponse);
 			
 		}, this));	
 		
@@ -851,6 +842,20 @@ sap.ui.controller("com.sagia.view.Overview", {
 			//this.oLILIProductsTable.setModel(oResponse);
 			
 		}, this));	
+		
+		
+		/*this.oShareHolderNewShareHolderFragment = sap.ui.xmlfragment("com.sagia.view.fragments.ns_shareholderdetails", this.getView()
+				.getController());
+		
+		var oRequestFinishedNSHCountryDeferred = this.oModelHelper.readCountry();
+
+		jQuery.when(oRequestFinishedNSHCountryDeferred).then(jQuery.proxy(function(oResponse) {
+			
+			this.oShareHolderNewShareHolderFragment.setModel(oResponse);
+			
+		}, this));	*/
+		
+		
 	},
 	handleLogoutLinkPress : function(){
 		
@@ -1975,6 +1980,7 @@ handleRegisterUserButtonPress : function() {
 	
 	},
 	handleShareholderInfoButtonClick : function(){
+		that = this;
 		this._oShareholderInfoButton.setSrc("common/mime/shareholder_hover.png");
 		
 		this._oShareHoldersInfoContent.setVisible(true);
@@ -1991,6 +1997,53 @@ handleRegisterUserButtonPress : function() {
 		this._oTermsInfoButton.setSrc("common/mime/terms.png");
 		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
 		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+		
+		if (!this.oShareHolderNewShareHolderFragment) {
+		this.oShareHolderNewShareHolderFragment = sap.ui.xmlfragment("com.sagia.view.fragments.ns_shareholderdetails", this.getView()
+				.getController());
+		this.oShareHolderTypeRadioButtonGroup = this.getView().byId("idShareHolderTypeRadioButtonGroup");
+		this.oNSHFirstNameInputText = this.getView().byId("idNSHFirstNameInputText");
+		this.oNSHCountryComboBox = this.getView().byId("idNSHCountryComboBox");
+		this.oNSHLastNameInputText = this.getView().byId("idNSHLastNameInputText");
+		this.oNSHCityNameInputText = this.getView().byId("idNSHCityNameInputText");
+		this.oNSHGenderComboBox = this.getView().byId("idNSHGenderComboBox");
+		this.oNSHPOBoxInputText = this.getView().byId("idNSHPOBoxInputText");
+		this.oNSHMaritalStatusComboBox = this.getView().byId("idNSHMaritalStatusComboBox");
+		this.oNSHPostalCodeInputText = this.getView().byId("idNSHPostalCodeInputText");
+		this.oNSHAcademicTitleInputText = this.getView().byId("idNSHAcademicTitleInputText");
+		this.oNSHStreetInputText = this.getView().byId("idNSHStreetInputText");
+		this.oNSHDOBDate = this.getView().byId("idNSHDOBDate");
+		this.oNSHWebsiteInputText = this.getView().byId("idNSHWebsiteInputText");
+		this.oNSHTelephoneInputText = this.getView().byId("idNSHTelephoneInputText");
+		this.oNSHNationalityComboBox = this.getView().byId("idNSHNationalityComboBox");
+		this.oNSHMobilePhoneInputText = this.getView().byId("idNSHMobilePhoneInputText");
+		this.oNSHPreviousNationalityInputText = this.getView().byId("idNSHPreviousNationalityInputText");
+		this.oNSHFaxInputText = this.getView().byId("idNSHFaxInputText");
+		this.oNSHCommMethodInputText = this.getView().byId("idNSHCommMethodInputText");
+		this.oNSHEmailInputText = this.getView().byId("idNSHEmailInputText");
+		this.oNSHPercentageInputText = this.getView().byId("idNSHPercentageInputText");
+		
+		var oRequestFinishedDeferred = this.oModelHelper.readCountry();
+
+		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+			
+			
+			this.oShareHolderNewShareHolderFragment.setModel(oResponse);
+			
+			
+			var filterRegion = new sap.ui.model.Filter([
+			        			 						new sap.ui.model.Filter("Landx50",
+			        			 								sap.ui.model.FilterOperator.NE, "") ],
+			        			 						false);
+			        			
+			        			
+			        			
+			        			var oBinding = that.oNSHCountryComboBox.getBinding("items");
+			        			oBinding.filter(filterRegion);
+			
+		}, this));	
+		}
+		
 	},
 	handlePreviewInfoButtonClick : function(){
 		this._oPreviewInfoButton.setSrc("common/mime/preview_hover.png");

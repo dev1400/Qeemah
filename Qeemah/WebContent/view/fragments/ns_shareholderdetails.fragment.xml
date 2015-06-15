@@ -90,9 +90,12 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<ComboBox id="idNSHCountryComboBox" width="25em">
+							<!-- <ComboBox id="idNSHCountryComboBox" width="25em">
 								<sap.ui.core:Item />
-							</ComboBox>
+							</ComboBox> -->
+							<ComboBox width="25em" items="{/DetailsCollection}" id="idNSHCountryComboBox">
+								<sap.ui.core:ListItem text="{Landx50}"/>
+						    </ComboBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					
