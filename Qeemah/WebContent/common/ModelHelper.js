@@ -93,7 +93,11 @@ com.sagia.common.ModelHelper = {
 			oNSHFaxInputText,
 			oNSHCommMethodInputText,
 			oNSHEmailInputText,
-			oNSHPercentageInputText){
+			oNSHPercentageInputText,
+			oNSHActivityQ1ComboBox,
+			oNSHActivityQ2ComboBox,
+			oNSHActivityQ3ComboBox, oNSHExperienceQ1ComboBox, oNSHExperienceQ2ComboBox,
+			oNSHExperienceQ3ComboBox, oNSHExperienceQ4ComboBox){
 		this.openBusyDialog();
 
 		this.oShareHolderODataModel = new sap.ui.model.odata.ODataModel("proxy/sap/opu/odata/sap/ZQEEMAH_SHRHLDR_SRV/", true,
@@ -133,13 +137,13 @@ com.sagia.common.ModelHelper = {
 		oEntry.PrevNationalty = oNSHPreviousNationalityInputText;
 		oEntry.CommMtd = oNSHCommMethodInputText;
 		oEntry.Percentage = Number(oNSHPercentageInputText);
-		oEntry.CompanyAge = '6';
-		oEntry.Branches = '6';
-		oEntry.Employees = '6';
-		oEntry.FinStable = 'Yes';
-		oEntry.CultLandArea = '6';
-		oEntry.NoGreenhouse = '6';
-		oEntry.ApprMinistry = 'App';
+		oEntry.CompanyAge = oNSHActivityQ1ComboBox;
+		oEntry.Branches = oNSHActivityQ2ComboBox;
+		oEntry.Employees = oNSHActivityQ3ComboBox;
+		oEntry.FinStable = oNSHExperienceQ1ComboBox;
+		oEntry.CultLandArea = oNSHExperienceQ2ComboBox;
+		oEntry.NoGreenhouse = oNSHExperienceQ3ComboBox;
+		oEntry.ApprMinistry = oNSHExperienceQ4ComboBox;
 		oEntry.Stock12 = '6';
 		oEntry.Stock13 = '6';
 		oEntry.Stock14 = '6';
@@ -169,72 +173,8 @@ com.sagia.common.ModelHelper = {
 		oEntry.Intrest14 = '6';
 		oEntry.BalShtAssest12 = '6';
 		oEntry.BalShtAssest13 = '6';
-		oEntry.BalShtAssest14 = '6';/**/
-		/*oEntry.RefID = "'"+25+"'";//"'"+24+"'"
-		oEntry.EntityNo = '';
-		oEntry.FileType = '';
-		oEntry.ShldrType = '6';//oShareHolderType;
-		oEntry.EntityFname = '6';//oNSHFirstNameInputText;
-		oEntry.EntityLname = '6';//oNSHLastNameInputText;
-		oEntry.Gender = '6';//oNSHGenderComboBox;
-		oEntry.MaritalStatus = '6';//oNSHMaritalStatusComboBox;
-		oEntry.Academic = '6';//oNSHAcademicTitleInputText;
-		oEntry.Dob = '02062015';//oNSHDOBDate;
-		oEntry.CcodeTele = '6';
-		oEntry.Telephone = '6';//oNSHTelephoneInputText;
-		oEntry.CcodeMobile = '6';
-		oEntry.Mobile = '6';//oNSHMobilePhoneInputText;
-		oEntry.CcodeFax = '6';
-		oEntry.Fax = '6';//
-		oEntry.Country = '6';//
-		oEntry.City = '6';//
-		oEntry.Street = '6';//
-		oEntry.PoBox = '6';//
-		oEntry.PostalCode = '6';//
-		oEntry.Website = '6';//
-		oEntry.CurrNationalty = '6';//
-		oEntry.PrevNationalty = '6';//
-		oEntry.CommMtd = '6';//
-		oEntry.Percentage = '7';//oNSHPercentageInputText;
-		oEntry.CompanyAge = '6';
-		oEntry.Branches = '6';
-		oEntry.Employees = '6';
-		oEntry.FinStable = 'Yes';
-		oEntry.CultLandArea = '6';
-		oEntry.NoGreenhouse = '6';
-		oEntry.ApprMinistry = 'App';
-		oEntry.Stock12 = '6';
-		oEntry.Stock13 = '6';
-		oEntry.Stock14 = '6';
-		oEntry.CurrAssets12 = '6';
-		oEntry.CurrAssets13 = '6';
-		oEntry.CurrAssets14 = '6';
-		oEntry.CurrLiability12 = '6';
-		oEntry.CurrLiability13 = '6';
-		oEntry.CurrLiability14 = '6';
-		oEntry.NetSales12 = '6';
-		oEntry.NetSales13 = '6';
-		oEntry.NetSales14 = '6';
-		oEntry.TotAssets12 = '6';
-		oEntry.TotAssets13 = '6';
-		oEntry.TotAssets14 = '6';
-		oEntry.TotDebt12 = '6';
-		oEntry.TotDebt13 = '6';
-		oEntry.TotDebt14 = '6';
-		oEntry.NetIncome12 = '6';
-		oEntry.NetIncome13 = '6';
-		oEntry.NetIncome14 = '6';
-		oEntry.NetProfit12 = '6';
-		oEntry.NetProfit13 = '6';
-		oEntry.NetProfit14 = '6';
-		oEntry.Intrest12 = '6';
-		oEntry.Intrest13 = '6';
-		oEntry.Intrest14 = '6';
-		oEntry.BalShtAssest12 = '6';
-		oEntry.BalShtAssest13 = '6';
-		oEntry.BalShtAssest14 = '6';*///*/
-		
-		//ZSHAREHOLDER_INFO_ENT(RefID='0000000001',EntityNo='001',FileType='')
+		oEntry.BalShtAssest14 = '6';
+
 		
 		
 		var that = this;

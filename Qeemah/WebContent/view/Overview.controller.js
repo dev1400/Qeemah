@@ -176,7 +176,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 				this.oNSHFaxInputText.getValue(),
 				this.oNSHCommMethodInputText.getValue(),
 				this.oNSHEmailInputText.getValue(),
-				this.oNSHPercentageInputText.getValue()
+				this.oNSHPercentageInputText.getValue(),
+				this.oNSHActivityQ1ComboBox.getValue(),
+				this.oNSHActivityQ2ComboBox.getValue(),
+				this.oNSHActivityQ3ComboBox.getValue(),
+				this.oNSHExperienceQ1ComboBox.getValue(),
+				this.oNSHExperienceQ2ComboBox.getValue(),
+				this.oNSHExperienceQ3ComboBox.getValue(),
+				this.oNSHExperienceQ4ComboBox.getValue()
+				
 			
 				);
 
@@ -1946,6 +1954,17 @@ handleRegisterUserButtonPress : function() {
 		this.oNSHCommMethodInputText = this.getView().byId("idNSHCommMethodInputText");
 		this.oNSHEmailInputText = this.getView().byId("idNSHEmailInputText");
 		this.oNSHPercentageInputText = this.getView().byId("idNSHPercentageInputText");
+		this.oNSHActivityQ1ComboBox = this.getView().byId("idNSHActivityQ1ComboBox");
+		this.oNSHActivityQ2ComboBox = this.getView().byId("idNSHActivityQ2ComboBox");
+		this.oNSHActivityQ3ComboBox = this.getView().byId("idNSHActivityQ3ComboBox");
+		this.oNSHExperienceQ1ComboBox = this.getView().byId("idNSHExperienceQ1ComboBox");
+		this.oNSHExperienceQ2ComboBox = this.getView().byId("idNSHExperienceQ2ComboBox");
+		this.oNSHExperienceQ3ComboBox = this.getView().byId("idNSHExperienceQ3ComboBox");
+		this.oNSHExperienceQ4ComboBox = this.getView().byId("idNSHExperienceQ4ComboBox");
+		
+		
+		
+		
 		
 		var oRequestFinishedDeferred = this.oModelHelper.readCountry();
 
