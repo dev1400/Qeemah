@@ -2031,15 +2031,25 @@ handleRegisterUserButtonPress : function() {
 			this.oShareHolderNewShareHolderFragment.setModel(oResponse);
 			
 			
-			var filterRegion = new sap.ui.model.Filter([
+			var filterCountry = new sap.ui.model.Filter([
 			        			 						new sap.ui.model.Filter("Landx50",
 			        			 								sap.ui.model.FilterOperator.NE, "") ],
 			        			 						false);
 			        			
 			        			
 			        			
-			        			var oBinding = that.oNSHCountryComboBox.getBinding("items");
-			        			oBinding.filter(filterRegion);
+			var oBinding = that.oNSHCountryComboBox.getBinding("items");
+			oBinding.filter(filterCountry);
+			        			
+			        			
+			        			
+			var filterNationality = new sap.ui.model.Filter([new sap.ui.model.Filter("Natio50",
+			        				        			 	sap.ui.model.FilterOperator.NE, "") ],
+			        				        			 	false);
+		    var oNationalityBinding = that.oNSHNationalityComboBox.getBinding("items");
+		    var oPreviousNationalityBinding = that.oNSHPreviousNationalityInputText.getBinding("items");
+		    oNationalityBinding.filter(filterNationality);
+		    oPreviousNationalityBinding.filter(filterNationality);
 			
 		}, this));	
 		}
