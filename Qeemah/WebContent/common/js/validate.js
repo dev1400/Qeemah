@@ -42,9 +42,9 @@ com.sagia.common.js.validate = {
 //            context._oBIOIPreviewLaborSizeInputText = context.getView().byId("idBIOIPreviewLaborSizeInputText");			
 //            context._oBIOIPreviewLaborSizeInputText.setValue(context.oBIOILaborSizeInputText.getValue());
 
-            context.oBIOIPOBoxInputText = context.getView().byId("idBICIPOBoxInputText");	
+           /* context.oBIOIPOBoxInputText = context.getView().byId("idBICIPOBoxInputText");	
             context._oBIOIPreviewPOBoxInputText = context.getView().byId("idBIOIPreviewPOBoxInputText");			
-            context._oBIOIPreviewPOBoxInputText.setValue(context.oBIOIPOBoxInputText.getValue());
+            context._oBIOIPreviewPOBoxInputText.setValue(context.oBIOIPOBoxInputText.getValue());*/
             
             context.oBIOICapitalInputText = context.getView().byId("idBIOICapitalInputText");	
             context._oBIOIPreviewCapitalInputText = context.getView().byId("idBIOIPreviewCapitalInputText");			
