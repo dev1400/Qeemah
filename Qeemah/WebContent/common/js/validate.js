@@ -38,11 +38,11 @@ com.sagia.common.js.validate = {
             context._oBIOIPreviewLaborSizeInputText = context.getView().byId("idBIOIPreviewLaborSizeInputText");			
             context._oBIOIPreviewLaborSizeInputText.setValue(context.oBIOILaborSizeInputText.getValue());
             
-            context.oBIOILaborSizeInputText = context.getView().byId("idBIOILaborSizeInputText");	
-            context._oBIOIPreviewLaborSizeInputText = context.getView().byId("idBIOIPreviewLaborSizeInputText");			
-            context._oBIOIPreviewLaborSizeInputText.setValue(context.oBIOILaborSizeInputText.getValue());
+//            context.oBIOILaborSizeInputText = context.getView().byId("idBIOILaborSizeInputText");	
+//            context._oBIOIPreviewLaborSizeInputText = context.getView().byId("idBIOIPreviewLaborSizeInputText");			
+//            context._oBIOIPreviewLaborSizeInputText.setValue(context.oBIOILaborSizeInputText.getValue());
 
-            context.oBIOIPOBoxInputText = context.getView().byId("idBIOIPOBoxInputText");	
+            context.oBIOIPOBoxInputText = context.getView().byId("idBICIPOBoxInputText");	
             context._oBIOIPreviewPOBoxInputText = context.getView().byId("idBIOIPreviewPOBoxInputText");			
             context._oBIOIPreviewPOBoxInputText.setValue(context.oBIOIPOBoxInputText.getValue());
             
@@ -50,7 +50,7 @@ com.sagia.common.js.validate = {
             context._oBIOIPreviewCapitalInputText = context.getView().byId("idBIOIPreviewCapitalInputText");			
             context._oBIOIPreviewCapitalInputText.setValue(context.oBIOICapitalInputText.getValue());
             
-            context.oBIOIPostalCodeInputText = context.getView().byId("idBIOIPostalCodeInputText");	
+            context.oBIOIPostalCodeInputText = context.getView().byId("idBICIPostalCodeInputText");	
             context._oBIOIPreviewPostalCodeInputText = context.getView().byId("idBIOIPreviewPostalCodeInputText");			
             context._oBIOIPreviewPostalCodeInputText.setValue(context.oBIOIPostalCodeInputText.getValue());
             
@@ -58,22 +58,22 @@ com.sagia.common.js.validate = {
             context._oBIOIPreviewTelephoneInputText = context.getView().byId("idBIOIPreviewTelephoneInputText");			
             context._oBIOIPreviewTelephoneInputText.setValue(context.oBIOITelephoneInputText.getValue());
 			
-            context.oBIOITelephoneExtensionInputText = context.getView().byId("idBIOITelephoneExtensionInputText");	
-            context._oBIOIPreviewTelephoneExtensionInputText = context.getView().byId("idBIOIPreviewTelephoneExtensionInputText");			
-            context._oBIOIPreviewTelephoneExtensionInputText.setValue(context.oBIOITelephoneExtensionInputText.getValue());
-
-            
-            context.oBIOIStreetInputText = context.getView().byId("idBIOIStreetInputText");	
+//            context.oBIOITelephoneExtensionInputText = context.getView().byId("idBICITelephoneExtensionInputText");	
+//            context._oBIOIPreviewTelephoneExtensionInputText = context.getView().byId("idBIOIPreviewTelephoneExtensionInputText");			
+//            context._oBIOIPreviewTelephoneExtensionInputText.setValue(context.oBIOITelephoneExtensionInputText.getValue());
+//
+//            
+            context.oBIOIStreetInputText = context.getView().byId("idBICIStreetInputText");	
             context._oBIOIPreviewStreetInputText = context.getView().byId("idBIOIPreviewStreetInputText");			
             context._oBIOIPreviewStreetInputText.setValue(context.oBIOIStreetInputText.getValue());
 			
             context.oBIOIMobilePhoneInputText = context.getView().byId("idBIOIMobilephoneInputText");	
-            context._oBIOIMobilePhoneInputText = context.getView().byId("idBIOIPreviewMobilephoneInputText");			
-            context._oBIOIMobilePhoneInputText.setValue(context.oBIOIMobilePhoneInputText.getValue());
+            context._oBIOIPreviewMobilePhoneInputText = context.getView().byId("idBIOIPreviewMobilephoneInputText");			
+            context._oBIOIPreviewMobilePhoneInputText.setValue(context.oBIOIMobilePhoneInputText.getValue());
 			
-            context.oBIOIBuildingNoInputText = context.getView().byId("idBIOIBuildingNoInputText");	
-            context._oBIOIBuildingNoInputText = context.getView().byId("idBIOIPreviewBuildingNoInputText");			
-            context._oBIOIBuildingNoInputText.setValue(context.oBIOIBuildingNoInputText.getValue());
+//            context.oBIOIBuildingNoInputText = context.getView().byId("idBIOIBuildingNoInputText");	
+//            context._oBIOIPreviewBuildingNoInputText = context.getView().byId("idBIOIPreviewBuildingNoInputText");			
+//            context._oBIOIPreviewBuildingNoInputText.setValue(context.oBIOIBuildingNoInputText.getValue());
 			
             context.oBIOIFaxInputText = context.getView().byId("idBIOIFaxInputText");	
             context._oBIOIPreviewFaxInputText = context.getView().byId("idBIOIPreviewFaxInputText");			
@@ -93,14 +93,14 @@ com.sagia.common.js.validate = {
 			var oPreviewCommMethodComboboxItemTemplate = context._oBIOICommMethodComboBox.getSelectedItem();			
             context._oBIOIPreviewCommMethodCombobox.setSelectedItem(oPreviewCommMethodComboboxItemTemplate);
 
-            context._oBIOIPreApprovalFileUploader = context.getView().byId("idBIOIPreApprovalFileUploader");
-			context._oBIOIPReviewPreApprovalFileUploader = context.getView().byId("idBIOIPreviewPreApprovalFileUploader");
-            context._oBIOIPReviewPreApprovalFileUploader.setValue(context._oBIOIPreApprovalFileUploader.getValue());
+//            context._oBIOIPreApprovalFileUploader = context.getView().byId("idBIOIPreApprovalFileUploader");
+//			context._oBIOIPReviewPreApprovalFileUploader = context.getView().byId("idBIOIPreviewPreApprovalFileUploader");
+//            context._oBIOIPReviewPreApprovalFileUploader.setValue(context._oBIOIPreApprovalFileUploader.getValue());
             
             //CI Start
-            context.oBICIPFirstNameInputText = context.getView().byId("idBICIFirstNameInputText");	
+            context.oBICIFirstNameInputText = context.getView().byId("idBICIFirstNameInputText");	
             context._oBICIPreviewFirstNameInputText = context.getView().byId("idBICIPreviewFirstNameInputText");			
-            context._oBICIPreviewFirstNameInputText.setValue(context.oBICIPFirstNameInputText.getValue());
+            context._oBICIPreviewFirstNameInputText.setValue(context.oBICIFirstNameInputText.getValue());
             
             context._oBICINationalityComboBox = context.getView().byId("idCINationalityComboBox");
 			context._oBICIPreviewNationalityCombobox = context.getView().byId("idBICIPreviewNationalityInputText");			
@@ -138,17 +138,17 @@ com.sagia.common.js.validate = {
             context._oBICIPreviewTelephoneCCInputText = context.getView().byId("idBICIPreviewTelephoneCountryCodeInputText");			
             context._oBICIPreviewTelephoneCCInputText.setValue(context.oBICITelephoneCCInputText.getValue());
 			
-            context.oBICITelephoneInputText = context.getView().byId("idBICITelephoneInputText");	
-            context._oBICIPreviewTelephoneInputText = context.getView().byId("idBICIPreviewTelephoneInputText");			
-            context._oBICIPreviewTelephoneInputText.setValue(context.oBICITelephoneInputText.getValue());
+//            context.oBICITelephoneInputText = context.getView().byId("idBICITelephoneInputText");	
+//            context._oBICIPreviewTelephoneInputText = context.getView().byId("idBICIPreviewTelephoneInputText");			
+//            context._oBICIPreviewTelephoneInputText.setValue(context.oBICITelephoneInputText.getValue());
 			
             context.oBICITelephoneInputText = context.getView().byId("idBICITelephoneInputText");	
             context._oBICIPreviewTelephoneInputText = context.getView().byId("idBICIPreviewTelephoneInputText");			
             context._oBICIPreviewTelephoneInputText.setValue(context.oBICITelephoneInputText.getValue());
 			
-            context.oBICITelephoneExtInputText = context.getView().byId("idBICIExtensionInputText");	
-            context._oBICIPreviewTelephoneExtInputText = context.getView().byId("idBICIPreviewExtensionInputText");			
-            context._oBICIPreviewTelephoneExtInputText.setValue(context.oBICITelephoneExtInputText.getValue());
+//            context.oBICITelephoneExtInputText = context.getView().byId("idBICIExtensionInputText");	
+//            context._oBICIPreviewTelephoneExtInputText = context.getView().byId("idBICIPreviewExtensionInputText");			
+//            context._oBICIPreviewTelephoneExtInputText.setValue(context.oBICITelephoneExtInputText.getValue());
 			
             context.oBICIPostalCodeInputText = context.getView().byId("idBICIPostalCodeInputText");	
             context._oBICIPreviewPostalCodeInputText = context.getView().byId("idBICIPreviewPostalCodeInputText");			
@@ -190,19 +190,66 @@ com.sagia.common.js.validate = {
 			context._oBICIPreviewPassportCopyFileUploader = context.getView().byId("idBICIPreviewPAssportCopyFileUploader");
             context._oBICIPreviewPassportCopyFileUploader.setValue(context._oBICIPassportCopyFileUploader.getValue());
            
-            
-            
             context._oBICIPowerOfAttorneyFileUploader = context.getView().byId("idBICIPowerofAttorneyFileUploader");
 			context._oBICIPreviewPowerOfAttorneyFileUploader = context.getView().byId("idBICIPreviewPowerofAttorneyFileUploader");
             context._oBICIPreviewPowerOfAttorneyFileUploader.setValue(context._oBICIPowerOfAttorneyFileUploader.getValue());
            
-           
-
-			
-			
 
             //CI End
-			
+            
+            
+     // License Info  -  Start
+            
+//            console.log("Reached");
+            /*context._oLISectionComboBox = context.getView().byId("idLISectionComboBox");
+			context._oLIPreviewSectionComboBox = context.getView().byId("idLIPreviewSectionComboBox");			
+			var oLIPreviewSectionComboBoxItemTemplate = context._oLISectionComboBox.getSelectedItem();			
+            context._oLIPreviewSectionComboBox.setSelectedItem(oLIPreviewSectionComboBoxItemTemplate);
+            
+            context._oLIDivisionComboBox = context.getView().byId("idLIDivisionComboBox");
+			context._oLIPreviewDivisionComboBox = context.getView().byId("idLIPreviewDivisionComboBox");			
+			var oLIPreviewDivisionComboBoxItemTemplate = context._oLIDivisionComboBox.getSelectedItem();			
+            context._oLIPreviewDivisionComboBox.setSelectedItem(oLIPreviewDivisionComboBoxItemTemplate);
+            
+            context._oLIGroupComboBox = context.getView().byId("idLIGroupComboBox");
+			context._oLIPreviewGroupComboBox = context.getView().byId("idLIPreviewGroupComboBox");			
+			var oLIPreviewGroupComboBoxItemTemplate = context._oLIGroupComboBox.getSelectedItem();			
+            context._oLIPreviewGroupComboBox.setSelectedItem(oLIPreviewGroupComboBoxItemTemplate);
+            
+            context._oLIClassComboBox = context.getView().byId("idLIClassComboBox");
+			context._oLIPreviewClassComboBox = context.getView().byId("idLIPreviewClassComboBox");			
+			var oLIPreviewClassComboBoxItemTemplate = context._oLIClassComboBox.getSelectedItem();			
+            context._oLIPreviewClassComboBox.setSelectedItem(oLIPreviewClassComboBoxItemTemplate);
+            
+            context._oLILicenseActivityComboBox = context.getView().byId("idLILicenseActivityComboBox");
+			context._oLIPreviewLicenseActivityComboBox = context.getView().byId("idLIPreviewLicenseActivityComboBox");			
+			var oLIPreviewLicenseActivityComboBoxItemTemplate = context._oLILicenseActivityComboBox.getSelectedItem();			
+            context._oLIPreviewLicenseActivityComboBox.setSelectedItem(oLIPreviewLicenseActivityComboBoxItemTemplate);*/
+            
+            
+//            //Activity Description still to be Coded
+//            context.oBICIEmailInputText = context.getView().byId("idBICIEmailInputText");	
+//            context._oBICIPreviewEmailInputText = context.getView().byId("idBICIPreviewEmailInputText");			
+//            context._oBICIPreviewEmailInputText.setValue(context.oBICIEmailInputText.getValue());
+            
+            //ID for Product is missing in the respective Preview tab
+            
+            //Quantity has to be changed as InputText in Preview --->> Same like License Info
+            
+            
+            /*context._oLIUnitOfMeasurementComboBox = context.getView().byId("idLIUnitOfMeasurementComboBox");
+			context._oLIPreviewUnitOfMeasurementComboBox = context.getView().byId("idLIPreviewUnitOfMeasurementComboBox");			
+			var oLIPreviewUnitOfMeasurementComboBoxItemTemplate = context._oLIUnitOfMeasurementComboBox.getSelectedItem();			
+            context._oLIPreviewUnitOfMeasurementComboBox.setSelectedItem(oLIPreviewUnitOfMeasurementComboBoxItemTemplate);*/
+	
+    // License Info  -  End
+            
+            
+//     Start of Shareholder Details
+            
+            
+            
+//     End of   Shareholder Details       
 
 		}
 };
