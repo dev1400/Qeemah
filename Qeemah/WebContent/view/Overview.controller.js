@@ -222,6 +222,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 				);
 
 		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {			
+			sap.m.MessageToast.show(this.oModelHelper
+					.getText("NewShareHolderCreated"));
 			
 			this.oNSHCreateNSHTable.unbindItems();
             //this.oNSHCreateNSHTable.setModel(oResponse);
@@ -405,6 +407,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oLILIGroupComboBox.setModel(oResponse);
 			
 		}, this));	
+	},
+	handleLILIMultiSelectionComboBoxChange : function(){
+		console.log(this.oLILIGroupComboBox.getSelectedKeys());
+	 var oRequestFinishedDeferredLILISection = this.oModelHelper.readLILISectionCategory(this.oLILIGroupComboBox.getSelectedKeys());
+
+		jQuery.when(oRequestFinishedDeferredLILISection).then(jQuery.proxy(function(oResponse) {			
+			
+			//this.oLILIGroupComboBox.setModel(oResponse);
+			
+		}, this));
 	},
 	handlePowerOfAttorneyUploadPress : function(oEvent){
 		//console.log("handlePowerOfAttorneyUploadPress");
@@ -2160,6 +2172,30 @@ handleRegisterUserButtonPress : function() {
 		//this._oTermsInfoButton.setSrc("common/mime/terms.png");
 		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
 		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+		
+		if (!this.oTermsAndConditionsFragment) {
+			this.oTermsAndConditionsFragment = sap.ui.xmlfragment("com.sagia.view.fragments.terms_and_conditions", this.getView()
+					.getController());
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1; //January is 0!
+			var yyyy = today.getFullYear();
+
+			if(dd<10) {
+			    dd='0'+dd
+			} 
+
+			if(mm<10) {
+			    mm='0'+mm
+			} 
+
+			today = dd+'/'+mm+'/'+yyyy;
+			
+			this.oTermsandCondtionsDate = this.getView().byId("idTNCDate");
+			this.oTermsandCondtionsDate.setValue(today);
+		}
+		
+		
 	},
 	handleSubmitInfoButtonClick : function(){
 		this._oSubmitInfoButton.setSrc("common/mime/submit_hover.png");

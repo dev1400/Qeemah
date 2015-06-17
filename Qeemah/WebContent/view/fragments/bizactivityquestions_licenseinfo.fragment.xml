@@ -63,7 +63,7 @@
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<MultiComboBox selectionChange="handleSelectionChange"  id="idLILIGroupComboBox"
+										<MultiComboBox selectionChange="handleLILIMultiSelectionComboBoxChange"  id="idLILIGroupComboBox"
 										selectionFinish="handleSelectionFinish"    items="{/LILIGroupCollection}" width="25em">
                                         <sap.ui.core:ListItem key="{IsicGroup}" text="{IsicDescription}" id="idLILIGroupComboBoxListitem"/>
                                      </MultiComboBox>
@@ -77,7 +77,7 @@
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em">
+										<ComboBox width="25em" id="idLILIClassComboBox">
 											<sap.ui.core:Item />
 										</ComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>

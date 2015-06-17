@@ -838,6 +838,77 @@ com.sagia.common.ModelHelper = {
 		
 		return oRequestFinishedDeferred;
 	},
+	/**
+	 * Read LI LI Section 
+	 */
+	readLILISectionCategory : function(IsicSelectedGroups) {
+		this.openBusyDialog();
+		
+		var that = this;
+		
+		 var aBatchOperations = [];
+         for ( var i = 0; i < IsicSelectedGroups.length; i++) {
+           aBatchOperations.push(this.oODataModel.createBatchOperation(
+            "IsicDet?Flag='C'&Lang='E'&IsicSection='A'&IsicDivision='01'&IsicGroup='"+IsicSelectedGroups[i]+"'&IsicClass='C'", 'GET' ));
+            }
+         this.oODataModel.addBatchReadOperations( aBatchOperations);
+         
+         
+/*         this.oODataModel.submitBatch( {fnSuccess : function(oResponse){
+        	 console.log("Sucess "+oResponse);
+        	 }, fnError : function() {
+        		 console.log("Error "+oResponse);
+        	     }, bAsync : false});*/
+         
+         fnSuccess = function(aErrorResponse){
+        	 that.closeBusyDialog();
+      		console.log("S"+ aErrorResponse);
+      	};
+      	fnError = function(oError){
+      		console.log("E"+oError);
+      	};
+         
+         this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {
+        	 console.dir( oData);
+        	 console.dir( oResponse);
+
+        	 fnSuccess(aErrorResponse);
+        	 }, function(oError) {
+        	 fnError(oError);
+        	     }, false);
+         
+         
+         
+         /*this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {
+        	 fnSuccess(aErrorResponse);
+         }, function(oError) {
+        	 fnError(oError);
+         }, false);*/
+		
+		/*var oRequestFinishedDeferred = jQuery.Deferred();
+
+		this.oODataModel.read("IsicDet?Flag='G'&Lang='E'&IsicSection='"+IsicSection+"'&IsicDivision='"+IsicDivision+"'&IsicGroup=' '&IsicClass=' '", {
+			success : function(oData, response) {			
+				
+				that.oCountryCollectionModel = new sap.ui.model.json.JSONModel();
+				
+				that.oCountryCollectionModel.setData({LILIGroupCollection:oData.results});		
+				
+				oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
+				
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				
+				oRequestFinishedDeferred.resolve();
+				
+				that.closeBusyDialog();
+			}
+		});
+		
+		return oRequestFinishedDeferred;*/
+	},
+	
 
 
 	/**

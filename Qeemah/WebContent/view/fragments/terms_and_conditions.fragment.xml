@@ -47,7 +47,10 @@
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
 													<ComboBox width="25em">
-														<sap.ui.core:Item />
+														<sap.ui.core:ListItem Key="1" text="{i18n>Agent}" />
+															<sap.ui.core:ListItem key="2" text="{i18n>Employee}" />
+															<sap.ui.core:ListItem Key="3" text="{i18n>Invester}" />
+															<sap.ui.core:ListItem key="4" text="{i18n>GM}" />
 													</ComboBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
@@ -63,7 +66,7 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
-													<Input type="Text" width="25em" enabled="false" />
+													<Input id="idTNCDate" type="Text" width="25em" enabled="false" />
 
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
