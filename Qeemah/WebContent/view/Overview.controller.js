@@ -143,6 +143,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oLILISectionComboBox = this.getView().byId("idLILISectionComboBox");
 		this.oLILIDivisionComboBox = this.getView().byId("idLILIDivisionComboBox");
 		this.oLILIGroupComboBox = this.getView().byId("idLILIGroupComboBox");
+		this.oLILIClassMultiComboBox = this.getView().byId("idLILIClassMultiComboBox");
 		this.oLILIProductsTable = this.getView().byId("idLILIProductsTable"); 
 		this.oLILIProductComboBox = this.getView().byId("idLILIProductComboBox");
 		this.oLILIProductQuantityInputText = this.getView().byId("idLILIProductQuantityInputText");
@@ -403,17 +404,28 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var oRequestFinishedDeferredLILIGroup = this.oModelHelper.readLILIGroup(this.oLILISectionComboBox.getSelectedKey(),this.oLILIDivisionComboBox.getSelectedKey());
 
 		jQuery.when(oRequestFinishedDeferredLILIGroup).then(jQuery.proxy(function(oResponse) {			
-			
+			console.dir(oResponse);
 			this.oLILIGroupComboBox.setModel(oResponse);
 			
 		}, this));	
 	},
-	handleLILIMultiSelectionComboBoxChange : function(){
-		console.log(this.oLILIGroupComboBox.getSelectedKeys());
-	 var oRequestFinishedDeferredLILISection = this.oModelHelper.readLILISectionCategory(this.oLILIGroupComboBox.getSelectedKeys());
+	handleLILIGropuMultiSelectionComboBoxChange : function(){
+		//console.log(this.oLILIGroupComboBox.getSelectedKeys());
+	 var oRequestFinishedDeferredLILIClass = this.oModelHelper.readLILIClass(this.oLILIGroupComboBox.getSelectedKeys());
 
-		jQuery.when(oRequestFinishedDeferredLILISection).then(jQuery.proxy(function(oResponse) {			
+		jQuery.when(oRequestFinishedDeferredLILIClass).then(jQuery.proxy(function(oResponse) {
+			/*console.log(oResponse.oData.LILIClassCollection);
+			console.log(oResponse.oData.LILIClassCollection.length);
+			this.oLILIClassCollection = {LILIClassCollection: []};
+			for(var i=0;i<oResponse.oData.LILIClassCollection.length;i++){
+				this.oLILIClassCollection.LILIClassCollection.push(oResponse.oData.LILIClassCollection[i]);
+			}*/
 			
+			//var oLILIClassCollection = new sap.ui.model.json.JSONModel();
+			//oLILIClassCollection.setData(oResponse.oData.LILIClassCollection[0][0],true);	
+			//this.oLILIProductsTable.setModel(oLILIClassCollection);
+			//console.log(oLILIClassCollection);
+			this.oLILIClassMultiComboBox.setModel(oResponse);
 			//this.oLILIGroupComboBox.setModel(oResponse);
 			
 		}, this));

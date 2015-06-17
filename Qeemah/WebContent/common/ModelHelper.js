@@ -841,11 +841,12 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Read LI LI Section 
 	 */
-	readLILISectionCategory : function(IsicSelectedGroups) {
+	readLILIClass : function(IsicSelectedGroups) {
 		this.openBusyDialog();
 		
 		var that = this;
-		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
 		 var aBatchOperations = [];
          for ( var i = 0; i < IsicSelectedGroups.length; i++) {
            aBatchOperations.push(this.oODataModel.createBatchOperation(
@@ -860,24 +861,42 @@ com.sagia.common.ModelHelper = {
         		 console.log("Error "+oResponse);
         	     }, bAsync : false});*/
          
-         fnSuccess = function(aErrorResponse){
+         fnSuccess = function(oResponse){
         	 that.closeBusyDialog();
-      		console.log("S"+ aErrorResponse);
+      		//console.log("S"+ aErrorResponse);
+        	 var oLocalLILIClassCollection = {LILIClassCollection: []};
+        	 
+        	 console.dir(oResponse.data.__batchResponses);
+        	 for(var i=0; i<oResponse.data.__batchResponses.length; i++){
+        		 //console.log(oResponse.data.__batchResponses[i].data.results)
+        		 oLocalLILIClassCollection.LILIClassCollection.push(oResponse.data.__batchResponses[i].data.results);
+        	 }
+        	 
+        	 that.oLILIClassCollection = new sap.ui.model.json.JSONModel();
+				
+				//that.oLILIClassCollection.setData({LILIClassCollection:oResponse.data.__batchResponses});		
+        	 that.oLILIClassCollection.setData(oLocalLILIClassCollection);
+				
+				oRequestFinishedDeferred.resolve(that.oLILIClassCollection);
+				
       	};
       	fnError = function(oError){
       		console.log("E"+oError);
       	};
          
          this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {
-        	 console.dir( oData);
-        	 console.dir( oResponse);
+        	 //console.dir( oData);
+        	 //console.dir( oResponse);
+        	 //console.dir( aErrorResponse);
+        	 
+        	 
 
-        	 fnSuccess(aErrorResponse);
+        	 fnSuccess(oResponse);
         	 }, function(oError) {
         	 fnError(oError);
         	     }, false);
          
-         
+         return oRequestFinishedDeferred;
          
          /*this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {
         	 fnSuccess(aErrorResponse);
