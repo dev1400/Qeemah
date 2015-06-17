@@ -183,12 +183,64 @@ sap.ui.controller("com.sagia.view.Overview", {
 				this.oNSHExperienceQ1ComboBox.getValue(),
 				this.oNSHExperienceQ2ComboBox.getValue(),
 				this.oNSHExperienceQ3ComboBox.getValue(),
-				this.oNSHExperienceQ4ComboBox.getValue()
+				this.oNSHExperienceQ4ComboBox.getValue(),
+				this.oNSHStock12InputText.getValue(),
+		this.oNSHStock13InputText.getValue(),
+		this.oNSHStock14InputText.getValue(),
+		this.oNSHTotalCurrentAssets12InputText.getValue(),
+		this.oNSHTotalCurrentAssets13InputText.getValue(),
+		this.oNSHTotalCurrentAssets14InputText.getValue(),		
+		this.oNSHTotalCurrentLiabialities12InputText.getValue(),
+		this.oNSHTotalCurrentLiabialities13InputText.getValue(),
+		this.oNSHTotalCurrentLiabialities14InputText.getValue(),
+		this.oNSHNetSales12InputText.getValue(),
+		this.oNSHNetSales13InputText.getValue(),
+		this.oNSHNetSales14InputText.getValue(),
+		this.oNSHTotalAssets12InputText.getValue(),
+		this.oNSHTotalAssets13InputText.getValue(),
+		this.oNSHTotalAssets14InputText.getValue(),
+		this.oNSHTotalDebt12InputText.getValue(),
+		this.oNSHTotalDebt13InputText.getValue(),
+		this.oNSHTotalDebt14InputText.getValue(),
+		this.oNSHDistributableNetIncome12InputText.getValue(),
+		this.oNSHDistributableNetIncome13InputText.getValue(),
+		this.oNSHDistributableNetIncome14InputText.getValue(),
+		this.oNSHNetProfit12InputText.getValue(),
+		this.oNSHNetProfit13InputText.getValue(),
+		this.oNSHNetProfit14InputText.getValue(),
+		this.oNSHInterests12InputText.getValue(),
+		this.oNSHInterests13InputText.getValue(),
+		this.oNSHInterests14InputText.getValue(),
+		this.oNSHTotalAssetsInBalanceSheet12InputText.getValue(),
+		this.oNSHTotalAssetsInBalanceSheet13InputText.getValue(),		
+		this.oNSHTotalAssetsInBalanceSheet14InputText.getValue()
 				
 			
 				);
 
 		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {			
+			
+			
+			
+			
+			this.oNSHCreateNSHTable.setModel(oResponse);
+			
+			this.oNSHCreateNSHTable.bindItems("/", new sap.m.ColumnListItem({
+		        cells : [ new sap.ui.commons.TextView({
+		          text : "{EntityFname}"
+		        }),new sap.ui.commons.TextView({
+		          text : "{EntityLname}"
+		        }),  new sap.ui.commons.TextView({
+		          text : "{ShldrType}"
+		        }),  new sap.ui.commons.TextView({
+		          text : "{Percentage}"
+		        }),  new sap.ui.commons.TextView({
+		          text : "{Percentage}"
+		        }),  new sap.ui.commons.TextView({
+		          text : "{Percentage}"
+		        })]
+		      }));
+			
 			
 			console.log(oResponse);
 			
@@ -1933,6 +1985,8 @@ handleRegisterUserButtonPress : function() {
 		if (!this.oShareHolderNewShareHolderFragment) {
 		this.oShareHolderNewShareHolderFragment = sap.ui.xmlfragment("com.sagia.view.fragments.ns_shareholderdetails", this.getView()
 				.getController());
+		this.oShareHolderNewShareHolderFinancialQuestionsFragment = sap.ui.xmlfragment("com.sagia.view.fragments.ns_p_financialquestions", this.getView()
+				.getController());
 		this.oShareHolderTypeRadioButtonGroup = this.getView().byId("idShareHolderTypeRadioButtonGroup");
 		this.oNSHFirstNameInputText = this.getView().byId("idNSHFirstNameInputText");
 		this.oNSHCountryComboBox = this.getView().byId("idNSHCountryComboBox");
@@ -1954,18 +2008,50 @@ handleRegisterUserButtonPress : function() {
 		this.oNSHCommMethodInputText = this.getView().byId("idNSHCommMethodInputText");
 		this.oNSHEmailInputText = this.getView().byId("idNSHEmailInputText");
 		this.oNSHPercentageInputText = this.getView().byId("idNSHPercentageInputText");
+		
 		this.oNSHActivityQ1ComboBox = this.getView().byId("idNSHActivityQ1ComboBox");
 		this.oNSHActivityQ2ComboBox = this.getView().byId("idNSHActivityQ2ComboBox");
 		this.oNSHActivityQ3ComboBox = this.getView().byId("idNSHActivityQ3ComboBox");
+		
 		this.oNSHExperienceQ1ComboBox = this.getView().byId("idNSHExperienceQ1ComboBox");
 		this.oNSHExperienceQ2ComboBox = this.getView().byId("idNSHExperienceQ2ComboBox");
 		this.oNSHExperienceQ3ComboBox = this.getView().byId("idNSHExperienceQ3ComboBox");
 		this.oNSHExperienceQ4ComboBox = this.getView().byId("idNSHExperienceQ4ComboBox");
 		
+		this.oNSHStock12InputText = this.getView().byId("idNSHStock12InputText");
+		this.oNSHStock13InputText = this.getView().byId("idNSHStock13InputText");
+		this.oNSHStock14InputText = this.getView().byId("idNSHStock14InputText");
+		this.oNSHTotalCurrentAssets12InputText = this.getView().byId("idNSHTotalCurrentAssets12InputText");
+		this.oNSHTotalCurrentAssets13InputText = this.getView().byId("idNSHTotalCurrentAssets13InputText");
+		this.oNSHTotalCurrentAssets14InputText = this.getView().byId("idNSHTotalCurrentAssets14InputText");		
+		this.oNSHTotalCurrentLiabialities12InputText = this.getView().byId("idNSHTotalCurrentLiabialities12InputText");
+		this.oNSHTotalCurrentLiabialities13InputText = this.getView().byId("idNSHTotalCurrentLiabialities13InputText");
+		this.oNSHTotalCurrentLiabialities14InputText = this.getView().byId("idNSHTotalCurrentLiabialities14InputText");
+		this.oNSHNetSales12InputText = this.getView().byId("idNSHNetSales12InputText");
+		this.oNSHNetSales13InputText = this.getView().byId("idNSHNetSales13InputText");
+		this.oNSHNetSales14InputText = this.getView().byId("idNSHNetSales14InputText");
+		this.oNSHTotalAssets12InputText = this.getView().byId("idNSHTotalAssets12InputText");
+		this.oNSHTotalAssets13InputText = this.getView().byId("idNSHTotalAssets13InputText");
+		this.oNSHTotalAssets14InputText = this.getView().byId("idNSHTotalAssets14InputText");
+		this.oNSHTotalDebt12InputText = this.getView().byId("idNSHTotalDebt12InputText");
+		this.oNSHTotalDebt13InputText = this.getView().byId("idNSHTotalDebt13InputText");
+		this.oNSHTotalDebt14InputText = this.getView().byId("idNSHTotalDebt14InputText");
+		this.oNSHDistributableNetIncome12InputText = this.getView().byId("idNSHDistributableNetIncome12InputText");
+		this.oNSHDistributableNetIncome13InputText = this.getView().byId("idNSHDistributableNetIncome13InputText");
+		this.oNSHDistributableNetIncome14InputText = this.getView().byId("idNSHDistributableNetIncome14InputText");
+		this.oNSHNetProfit12InputText = this.getView().byId("idNSHNetProfit12InputText");
+		this.oNSHNetProfit13InputText = this.getView().byId("idNSHNetProfit13InputText");
+		this.oNSHNetProfit14InputText = this.getView().byId("idNSHNetProfit14InputText");
+		this.oNSHInterests12InputText = this.getView().byId("idNSHInterests12InputText");
+		this.oNSHInterests13InputText = this.getView().byId("idNSHInterests13InputText");
+		this.oNSHInterests14InputText = this.getView().byId("idNSHInterests14InputText");
+		this.oNSHTotalAssetsInBalanceSheet12InputText = this.getView().byId("idNSHTotalAssetsInBalanceSheet12InputText");
+		this.oNSHTotalAssetsInBalanceSheet13InputText = this.getView().byId("idNSHTotalAssetsInBalanceSheet13InputText");		
+		this.oNSHTotalAssetsInBalanceSheet14InputText = this.getView().byId("idNSHTotalAssetsInBalanceSheet14InputText");
+		this.oNSHCreateNSHTable = this.getView().byId("idNSHCreateNSHTable");
 		
 		
-		
-		
+	
 		var oRequestFinishedDeferred = this.oModelHelper.readCountry();
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {

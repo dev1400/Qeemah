@@ -62,19 +62,19 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHStock12InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHStock13InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHStock14InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -91,19 +91,19 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHTotalCurrentAssets12InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHTotalCurrentAssets13InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHTotalCurrentAssets14InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -120,19 +120,19 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHTotalCurrentLiabialities12InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHTotalCurrentLiabialities13InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHTotalCurrentLiabialities14InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -150,19 +150,19 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHNetSales12InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHNetSales13InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHNetSales14InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -180,19 +180,19 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHTotalAssets12InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHTotalAssets13InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHTotalAssets14InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -210,19 +210,19 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHTotalDebt12InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHTotalDebt13InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHTotalDebt14InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -240,19 +240,19 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHDistributableNetIncome12InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHDistributableNetIncome13InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHDistributableNetIncome14InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -270,19 +270,19 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHNetProfit12InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHNetProfit13InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHNetProfit14InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -300,19 +300,19 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHInterests12InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHInterests13InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHInterests14InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -330,19 +330,19 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHTotalAssetsInBalanceSheet12InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHTotalAssetsInBalanceSheet13InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Center">
 						<sap.ui.commons.layout:content>
-						<Input type="Number" width="5rem"></Input>
+						<Input type="Text" id="idNSHTotalAssetsInBalanceSheet14InputText" width="5rem"></Input>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>

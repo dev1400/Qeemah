@@ -97,7 +97,40 @@ com.sagia.common.ModelHelper = {
 			oNSHActivityQ1ComboBox,
 			oNSHActivityQ2ComboBox,
 			oNSHActivityQ3ComboBox, oNSHExperienceQ1ComboBox, oNSHExperienceQ2ComboBox,
-			oNSHExperienceQ3ComboBox, oNSHExperienceQ4ComboBox){
+			oNSHExperienceQ3ComboBox, oNSHExperienceQ4ComboBox,
+			oNSHStock12InputText,
+			oNSHStock13InputText,
+			oNSHStock14InputText,
+			oNSHTotalCurrentAssets12InputText,
+			oNSHTotalCurrentAssets13InputText,
+			oNSHTotalCurrentAssets14InputText,		
+			oNSHTotalCurrentLiabialities12InputText,
+			oNSHTotalCurrentLiabialities13InputText,
+			oNSHTotalCurrentLiabialities14InputText,
+			oNSHNetSales12InputText,
+			oNSHNetSales13InputText,
+			oNSHNetSales14InputText,
+			oNSHTotalAssets12InputText,
+			oNSHTotalAssets13InputText,
+			oNSHTotalAssets14InputText,
+			oNSHTotalDebt12InputText,
+			oNSHTotalDebt13InputText,
+			oNSHTotalDebt14InputText,
+			oNSHDistributableNetIncome12InputText,
+			oNSHDistributableNetIncome13InputText,
+			oNSHDistributableNetIncome14InputText,
+			oNSHNetProfit12InputText,
+			oNSHNetProfit13InputText,
+			oNSHNetProfit14InputText,
+			oNSHInterests12InputText,
+			oNSHInterests13InputText,
+			oNSHInterests14InputText,
+			oNSHTotalAssetsInBalanceSheet12InputText,
+			oNSHTotalAssetsInBalanceSheet13InputText,		
+			oNSHTotalAssetsInBalanceSheet14InputText
+			
+				
+	){
 		this.openBusyDialog();
 
 		this.oShareHolderODataModel = new sap.ui.model.odata.ODataModel("proxy/sap/opu/odata/sap/ZQEEMAH_SHRHLDR_SRV/", true,
@@ -144,38 +177,36 @@ com.sagia.common.ModelHelper = {
 		oEntry.CultLandArea = oNSHExperienceQ2ComboBox;
 		oEntry.NoGreenhouse = oNSHExperienceQ3ComboBox;
 		oEntry.ApprMinistry = oNSHExperienceQ4ComboBox;
-		oEntry.Stock12 = '6';
-		oEntry.Stock13 = '6';
-		oEntry.Stock14 = '6';
-		oEntry.CurrAssets12 = '6';
-		oEntry.CurrAssets13 = '6';
-		oEntry.CurrAssets14 = '6';
-		oEntry.CurrLiability12 = '6';
-		oEntry.CurrLiability13 = '6';
-		oEntry.CurrLiability14 = '6';
-		oEntry.NetSales12 = '6';
-		oEntry.NetSales13 = '6';
-		oEntry.NetSales14 = '6';
-		oEntry.TotAssets12 = '6';
-		oEntry.TotAssets13 = '6';
-		oEntry.TotAssets14 = '6';
-		oEntry.TotDebt12 = '6';
-		oEntry.TotDebt13 = '6';
-		oEntry.TotDebt14 = '6';
-		oEntry.NetIncome12 = '6';
-		oEntry.NetIncome13 = '6';
-		oEntry.NetIncome14 = '6';
-		oEntry.NetProfit12 = '6';
-		oEntry.NetProfit13 = '6';
-		oEntry.NetProfit14 = '6';
-		oEntry.Intrest12 = '6';
-		oEntry.Intrest13 = '6';
-		oEntry.Intrest14 = '6';
-		oEntry.BalShtAssest12 = '6';
-		oEntry.BalShtAssest13 = '6';
-		oEntry.BalShtAssest14 = '6';
-
-		
+		oEntry.Stock12 = oNSHStock12InputText;
+		oEntry.Stock13 = oNSHStock13InputText;
+		oEntry.Stock14 = oNSHStock14InputText;
+		oEntry.CurrAssets12 = oNSHTotalCurrentAssets12InputText;
+		oEntry.CurrAssets13 = oNSHTotalCurrentAssets13InputText;
+		oEntry.CurrAssets14 = oNSHTotalCurrentAssets14InputText;
+		oEntry.CurrLiability12 = oNSHTotalCurrentLiabialities12InputText;
+		oEntry.CurrLiability13 = oNSHTotalCurrentLiabialities13InputText;
+		oEntry.CurrLiability14 = oNSHTotalCurrentLiabialities14InputText;
+		oEntry.NetSales12 = oNSHNetSales12InputText;
+		oEntry.NetSales13 = oNSHNetSales13InputText;
+		oEntry.NetSales14 = oNSHNetSales14InputText;
+		oEntry.TotAssets12 = oNSHTotalAssets12InputText;
+		oEntry.TotAssets13 = oNSHTotalAssets13InputText;
+		oEntry.TotAssets14 = oNSHTotalAssets14InputText;
+		oEntry.TotDebt12 = oNSHTotalDebt12InputText;
+		oEntry.TotDebt13 = oNSHTotalDebt13InputText;
+		oEntry.TotDebt14 = oNSHTotalDebt14InputText;
+		oEntry.NetIncome12 = oNSHDistributableNetIncome12InputText;
+		oEntry.NetIncome13 = oNSHDistributableNetIncome13InputText;
+		oEntry.NetIncome14 = oNSHDistributableNetIncome14InputText;
+		oEntry.NetProfit12 = oNSHNetProfit12InputText;
+		oEntry.NetProfit13 = oNSHNetProfit13InputText;
+		oEntry.NetProfit14 = oNSHNetProfit14InputText;
+		oEntry.Intrest12 = oNSHInterests12InputText;
+		oEntry.Intrest13 = oNSHInterests13InputText;
+		oEntry.Intrest14 = oNSHInterests14InputText;
+		oEntry.BalShtAssest12 = oNSHTotalAssetsInBalanceSheet12InputText;
+		oEntry.BalShtAssest13 = oNSHTotalAssetsInBalanceSheet13InputText;
+		oEntry.BalShtAssest14 = oNSHTotalAssetsInBalanceSheet14InputText;
 		
 		var that = this;
 		
@@ -186,7 +217,10 @@ com.sagia.common.ModelHelper = {
 		
 			success : function(oData) {
 				console.log(oData);
-				oRequestFinishedDeferred.resolve(oData);
+				//oRequestFinishedDeferred.resolve(oData);
+				that.oNSHCollectionModel = new sap.ui.model.json.JSONModel();
+				that.oNSHCollectionModel.setData(oData);
+				oRequestFinishedDeferred.resolve(that.oNSHCollectionModel);
 				
 				that.closeBusyDialog();
 			},
@@ -850,17 +884,6 @@ com.sagia.common.ModelHelper = {
 		this.oODataModel.read("ZBASIC_ORG_INFO_ENT('"+refid+"')", {
 			success : function(oData, response) {
 				
-				//console.log(response.data.Return);
-				
-				/*that.BIOICollectionJSONModel = new sap.ui.model.json.JSONModel();
-				that.BIOICollectionJSONModel.setData({BIOICollection:oData});*/
-				
-				
-				/*if(response.data.Return !== "Record does not exist"){
-					
-				}*/
-				
-				
 				oRequestFinishedDeferred.resolve(response);//that.BIOICollectionJSONModel);
 				that.closeBusyDialog();
 			},
@@ -938,45 +961,7 @@ com.sagia.common.ModelHelper = {
 		return oRequestFinishedDeferred;
 
 	},
-	/*registerUser : function(oInputMobileNumber, oInputEmail, oPassword, oInputFirstName, oInputLastName) {
-		// Open busy dialog
-		this.openBusyDialog();
-
-		var that = this;
-		
-		// Create deferred object so that calling program can wait till
-		// asynchronous call is finished
-		var oRequestFinishedDeferred = jQuery.Deferred();
-		
-        var oEntry = {};
-        oEntry.Flag = 'R';
-        oEntry.NameFirst = oInputFirstName;
-        oEntry.NameLast = oInputLastName;
-        oEntry.Userid = '';
-		oEntry.Password = oPassword;
-		oEntry.MobileNo = oInputMobileNumber;
-		oEntry.Email = oInputEmail;
-		
-		this.oODataModel.create("/USER_REGISTRATION_ENT", oEntry , {
-		
-			success : function(oData) {
-				console.log(oData);
-				oRequestFinishedDeferred.resolve(oData);
-				// close busy dialog
-				that.closeBusyDialog();
-			},
-			error : function(oResponse) {
-				console.log(oResponse);
-				oRequestFinishedDeferred.resolve();
-				// close busy dialog
-				that.closeBusyDialog();
-			},
-			async : true,
-			urlParameters : oEntry
-		});
-		return oRequestFinishedDeferred;
-
-	},*/
+	
 	
 	/**
 	 * Save BI OI
@@ -1021,26 +1006,7 @@ com.sagia.common.ModelHelper = {
 		oEntry.Ccode_Fax = oBIOIFaxCountryCode
 		oEntry.Ccode_Mobile = oBIOIMobilephoneCountryCode
 		
-		//(RefID='',OrgName='',LegalStatus='',MncComp='',LbrSize='',Capital='',Telephone='',Mobile='',Fax='',Website='',Region='',City='',Email='',CommMtd='')
-		
-		//this.oODataModel.create("/ZBASIC_ORG_INFO_ENT", oEntry , {
-		
-		/*this.oODataModel.refreshSecurityToken(function() {
-			  console.log('Succesfully retrieved CSRF Token');
-			 
-			  // oModel.create()
-			 
-			}, function() {
-			 
-			  console.log('Error retrieving CSRF Token');
-			 
-			}, false);*/
-		
-
-		/*this.oODataModel.update("ZBASIC_ORG_INFO_ENT(RefID='9',OrgName='"+oBIOIOrganizationName+"',LegalStatus='"+oBIOILegalStatus+"',MncComp='"+oBIOIMNC+"',LbrSize='"+oBIOILaborSize+"',Capital='"+oBIOICapital+"',Telephone='"+oBIOITelephoneCountryCode+""+oBIOITelephone+"',Mobile='"+oBIOIMobilephoneCountryCode+""+oBIOIMobilephone
-				+"',Fax='"+oBIOIFaxCountryCode+""+oBIOIFax+"',Website='"+oBIOIWebSite+"',Region='"+oBIOIRegion+"',City='"+oBIOICity+"',Email='"+oBIOIEmail+"',CommMtd='"+oBIOICommMethod+"')",null,{//urlParameters : oEntry,		
-		*/	
-		
+				
 		this.oODataModel.update("ZBASIC_ORG_INFO_ENT('"+oEntry.RefID+"')",oEntry,{//urlParameters : oEntry,		
 		
 		success : function(oData, response) { //console.dir(response);
@@ -1054,24 +1020,7 @@ com.sagia.common.ModelHelper = {
 		    }
 		
 		});
-		/*this.oODataModel.update("ZBASIC_ORG_INFO_ENT", oEntry, {
-			
 		
-			success : function(oData) {
-				console.log(oData);
-				oRequestFinishedDeferred.resolve(oData);
-				// close busy dialog
-				that.closeBusyDialog();
-			},
-			error : function(oResponse) {
-				console.log(oResponse);
-				oRequestFinishedDeferred.resolve();
-				// close busy dialog
-				that.closeBusyDialog();
-			},
-			async : true,
-			//urlParameters : oEntry
-		});*/
 		return oRequestFinishedDeferred;
 
 	},
@@ -1136,18 +1085,7 @@ com.sagia.common.ModelHelper = {
 			urlParameters : oEntry
 		});
 		
-		/*this.oODataModel.update("ZBASIC_ORG_INFO_ENT('11')",oEntry,{//urlParameters : oEntry,		
 		
-		success : function(oData, response) { //console.dir(response);
-			
-			//console.log(response.x-csrf-token); 
-			that.closeBusyDialog();
-			},
-		    error : function(oResponse) {// console.log("error"+response); 
-		    that.closeBusyDialog();
-		    }
-		
-		});*/
 		
 		return oRequestFinishedDeferred;
 
