@@ -217,10 +217,13 @@ com.sagia.common.ModelHelper = {
 		
 			success : function(oData) {
 				console.log(oData);
+				
+				
+				
 				//oRequestFinishedDeferred.resolve(oData);
-				that.oNSHCollectionModel = new sap.ui.model.json.JSONModel();
-				that.oNSHCollectionModel.setData(oData);
-				oRequestFinishedDeferred.resolve(that.oNSHCollectionModel);
+				//that.oNSHCollectionModel = new sap.ui.model.json.JSONModel();
+				//that.oNSHCollectionModel.setData({NSHCollection:oData});
+				oRequestFinishedDeferred.resolve(oData);
 				
 				that.closeBusyDialog();
 			},

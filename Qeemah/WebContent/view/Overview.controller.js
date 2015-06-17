@@ -149,6 +149,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oLILIProductUOMComboBox = this.getView().byId("idLILIProductUOMComboBox");
 		this.oLILIProductsTableJSONData = new sap.ui.model.json.JSONModel();
 		this.oLILIProductsdata = {ProductsCollection: []};
+		this.oNSHCreateNewData = {NSHCollection: []};
+		this.oNSHCreateNewDataJSONData = new sap.ui.model.json.JSONModel();
+		
 		this.oLILIProductsdataSerialNo = 1;
 		
 		
@@ -220,10 +223,43 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {			
 			
+			this.oNSHCreateNSHTable.unbindItems();
+            //this.oNSHCreateNSHTable.setModel(oResponse);
+			
+            console.log(oResponse.EntityFname);
+            this.oNSHCreateNewData.NSHCollection.push({
+    			"EntityFname":oResponse.EntityFname, 
+    			"EntityLname": oResponse.EntityLname, 
+    			"ShldrType":oResponse.ShldrType,
+    			"Percentage":oResponse.Percentage});
+    		
+    		this.oNSHCreateNewDataJSONData.setData(this.oNSHCreateNewData,true);	
+            
+    		this.oNSHCreateNSHTable.setModel(this.oNSHCreateNewDataJSONData);
+    		
+    		this.oNSHCreateNSHTable.bindItems("/NSHCollection", new sap.m.ColumnListItem({
+		        cells : [ new sap.ui.commons.TextView({
+			          text : "{EntityFname}"
+			        }),new sap.ui.commons.TextView({
+			          text : "{EntityLname}"
+			        }),  new sap.ui.commons.TextView({
+			          text : "{ShldrType}"
+			        }),  new sap.ui.commons.TextView({
+			          text : "{Percentage}"
+			        }), new sap.m.Button({ icon : "sap-icon://edit"}),
+			        new sap.m.Button({ icon : "sap-icon://delete"})
+			        
+			        
+			        /*new sap.ui.commons.TextView({
+			          text : "{Percentage}"
+			        }),  new sap.ui.commons.TextView({
+			          text : "{Percentage}"
+			        })*/]
+			      }));
 			
 			
 			
-			this.oNSHCreateNSHTable.setModel(oResponse);
+			/*this.oNSHCreateNSHTable.setModel(oResponse);
 			
 			this.oNSHCreateNSHTable.bindItems("/", new sap.m.ColumnListItem({
 		        cells : [ new sap.ui.commons.TextView({
@@ -239,7 +275,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		        }),  new sap.ui.commons.TextView({
 		          text : "{Percentage}"
 		        })]
-		      }));
+		      }));*/
 			
 			
 			console.log(oResponse);
