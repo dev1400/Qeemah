@@ -1926,7 +1926,8 @@ handleRegisterUserButtonPress : function() {
 		}
 	},
 	handleShowInvestorIDDialogCloseButton : function(oEvent) {
-		this._popOverFragment.close();
+		this._ShowLeadIDFragment.close();
+		location.reload(true);
 	},
 	handleCancelButtonPress : function(oEvent) {
 	},
@@ -2186,6 +2187,25 @@ handleRegisterUserButtonPress : function() {
 		this._oTermsInfoButton.setSrc("common/mime/terms.png");
 		//this._oSubmitInfoButton.setSrc("common/mime/submit.png");
 		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+		
+		var oRequestSubmitFinishedDeferred = this.oModelHelper.Submit(this.oRef_id);
+
+		jQuery.when(oRequestSubmitFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+			//console.log(oResponse);			
+			if (!this._ShowLeadIDFragment) {
+				this._ShowLeadIDFragment = sap.ui.xmlfragment(
+						"com.sagia.view.fragments.show_investorid_dialog", this.getView()
+								.getController());
+				this.getView().addDependent(this._ShowLeadIDFragment);
+			}		
+			
+			var oLeadIDTextView = sap.ui.getCore().byId("idLeadIDTextView");
+			
+			oLeadIDTextView.setText(oResponse.LeadID);
+
+			this._ShowLeadIDFragment.open();
+			
+		}, this));	
 	},
 	
 });

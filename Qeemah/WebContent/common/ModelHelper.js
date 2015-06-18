@@ -71,6 +71,43 @@ com.sagia.common.ModelHelper = {
 		return this.oODataModel;
 	},
 	/**
+	 * Submit App.
+	 * @author Abdul Waheed
+	 */
+	Submit : function(oRefID) {
+		// Open busy dialog
+		this.openBusyDialog();
+
+		var that = this;
+		var oEntry = {};
+		oEntry.RefID='1';
+		
+		// Create deferred object so that calling program can wait till
+		// asynchronous call is finished
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+       
+		this.oODataModel.create("/ZQEEMAH_SUBMIT_ENT", oEntry , {
+		
+			success : function(oData) {
+				//console.log(oData);
+				oRequestFinishedDeferred.resolve(oData);
+				// close busy dialog
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				/*console.log(oResponse);*/
+				oRequestFinishedDeferred.resolve();
+				// close busy dialog
+				that.closeBusyDialog();
+			},
+			async : true,
+			urlParameters : oEntry
+		});
+		return oRequestFinishedDeferred;
+
+	},
+	/**
 	 * Create new share holder.
 	 * @author Abdul Waheed
 	 */
