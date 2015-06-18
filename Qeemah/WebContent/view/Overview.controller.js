@@ -252,36 +252,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			        }), new sap.m.Button({ icon : "sap-icon://edit"}),
 			        new sap.m.Button({ icon : "sap-icon://delete"})
 			        
-			        
-			        /*new sap.ui.commons.TextView({
-			          text : "{Percentage}"
-			        }),  new sap.ui.commons.TextView({
-			          text : "{Percentage}"
-			        })*/]
+			        ]
 			      }));
-			
-			
-			
-			/*this.oNSHCreateNSHTable.setModel(oResponse);
-			
-			this.oNSHCreateNSHTable.bindItems("/", new sap.m.ColumnListItem({
-		        cells : [ new sap.ui.commons.TextView({
-		          text : "{EntityFname}"
-		        }),new sap.ui.commons.TextView({
-		          text : "{EntityLname}"
-		        }),  new sap.ui.commons.TextView({
-		          text : "{ShldrType}"
-		        }),  new sap.ui.commons.TextView({
-		          text : "{Percentage}"
-		        }),  new sap.ui.commons.TextView({
-		          text : "{Percentage}"
-		        }),  new sap.ui.commons.TextView({
-		          text : "{Percentage}"
-		        })]
-		      }));*/
-			
-			
-			console.log(oResponse);
 			
 		}, this));
 	},
@@ -390,6 +362,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oLILIDivisionComboBox.setValue("");
 		//this.oLILIGroupComboBox.setValue("");
 		this.oLILIGroupComboBox.removeAllSelectedItems();
+		this.oLILIClassMultiComboBox.removeAllSelectedItems();
 		var oRequestFinishedDeferredLILIDivision = this.oModelHelper.readLILIDivision(this.oLILISectionComboBox.getSelectedKey());
 
 		jQuery.when(oRequestFinishedDeferredLILIDivision).then(jQuery.proxy(function(oResponse) {			
@@ -400,17 +373,21 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleLILIDivisionSelectionComboBox : function(){
 		this.oLILIGroupComboBox.removeAllSelectedItems();
+		this.oLILIClassMultiComboBox.removeAllSelectedItems();
 		
 		var oRequestFinishedDeferredLILIGroup = this.oModelHelper.readLILIGroup(this.oLILISectionComboBox.getSelectedKey(),this.oLILIDivisionComboBox.getSelectedKey());
 
 		jQuery.when(oRequestFinishedDeferredLILIGroup).then(jQuery.proxy(function(oResponse) {			
-			console.dir(oResponse);
+			//console.dir(oResponse);
 			this.oLILIGroupComboBox.setModel(oResponse);
 			
 		}, this));	
 	},
 	handleLILIGropuMultiSelectionComboBoxChange : function(){
 		//console.log(this.oLILIGroupComboBox.getSelectedKeys());
+		//this.oLILIGroupComboBox.removeAllSelectedItems();
+		this.oLILIClassMultiComboBox.removeAllSelectedItems();
+		
 	 var oRequestFinishedDeferredLILIClass = this.oModelHelper.readLILIClass(this.oLILIGroupComboBox.getSelectedKeys());
 
 		jQuery.when(oRequestFinishedDeferredLILIClass).then(jQuery.proxy(function(oResponse) {
