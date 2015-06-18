@@ -414,19 +414,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 var oRequestFinishedDeferredLILIClass = this.oModelHelper.readLILIClass(this.oLILIGroupComboBox.getSelectedKeys());
 
 		jQuery.when(oRequestFinishedDeferredLILIClass).then(jQuery.proxy(function(oResponse) {
-			/*console.log(oResponse.oData.LILIClassCollection);
-			console.log(oResponse.oData.LILIClassCollection.length);
-			this.oLILIClassCollection = {LILIClassCollection: []};
-			for(var i=0;i<oResponse.oData.LILIClassCollection.length;i++){
-				this.oLILIClassCollection.LILIClassCollection.push(oResponse.oData.LILIClassCollection[i]);
-			}*/
 			
-			//var oLILIClassCollection = new sap.ui.model.json.JSONModel();
-			//oLILIClassCollection.setData(oResponse.oData.LILIClassCollection[0][0],true);	
-			//this.oLILIProductsTable.setModel(oLILIClassCollection);
-			//console.log(oLILIClassCollection);
 			this.oLILIClassMultiComboBox.setModel(oResponse);
-			//this.oLILIGroupComboBox.setModel(oResponse);
 			
 		}, this));
 	},

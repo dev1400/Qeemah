@@ -839,9 +839,11 @@ com.sagia.common.ModelHelper = {
 		return oRequestFinishedDeferred;
 	},
 	/**
-	 * Read LI LI Section 
+	 * Read LI LI Class 
 	 */
 	readLILIClass : function(IsicSelectedGroups) {
+		if(IsicSelectedGroups.length>0){
+		
 		this.openBusyDialog();
 		
 		var that = this;
@@ -853,85 +855,30 @@ com.sagia.common.ModelHelper = {
             "IsicDet?Flag='C'&Lang='E'&IsicSection='A'&IsicDivision='01'&IsicGroup='"+IsicSelectedGroups[i]+"'&IsicClass='C'", 'GET' ));
             }
          this.oODataModel.addBatchReadOperations( aBatchOperations);
-         
-         
-/*         this.oODataModel.submitBatch( {fnSuccess : function(oResponse){
-        	 console.log("Sucess "+oResponse);
-        	 }, fnError : function() {
-        		 console.log("Error "+oResponse);
-        	     }, bAsync : false});*/
-         
-         fnSuccess = function(oResponse){
-        	 that.closeBusyDialog();
-      		//console.log("S"+ aErrorResponse);
+         this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
+             that.closeBusyDialog();
+        	 
         	 var oLocalLILIClassCollection = {LILIClassCollection: []};
         	 
         	 console.dir(oResponse.data.__batchResponses);
         	 for(var i=0; i<oResponse.data.__batchResponses.length; i++){
-        		 console.log(oResponse.data.__batchResponses[i].data.results.length);
-        		 console.log(oResponse.data.__batchResponses[i].data.results);
         		 for(var j=0; j<oResponse.data.__batchResponses[i].data.results.length; j++){
         			 oLocalLILIClassCollection.LILIClassCollection.push(oResponse.data.__batchResponses[i].data.results[j]);
-        		 }
-        		 //oLocalLILIClassCollection.LILIClassCollection.push(oResponse.data.__batchResponses[i].data.results);
-        		
+        		 }        		
         	 }
-        	 console.log(oLocalLILIClassCollection);
         	 
         	 that.oLILIClassCollection = new sap.ui.model.json.JSONModel();
+			 that.oLILIClassCollection.setData(oLocalLILIClassCollection);
 				
-				//that.oLILIClassCollection.setData({LILIClassCollection:oResponse.data.__batchResponses});		
-        	 that.oLILIClassCollection.setData(oLocalLILIClassCollection);
-				
-				oRequestFinishedDeferred.resolve(that.oLILIClassCollection);
-				
-      	};
-      	fnError = function(oError){
-      		console.log("E"+oError);
-      	};
-         
-         this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {
-        	 //console.dir( oData);
-        	 //console.dir( oResponse);
-        	 //console.dir( aErrorResponse);
-        	 
-        	 
-
-        	 fnSuccess(oResponse);
-        	 }, function(oError) {
-        	 fnError(oError);
-        	     }, false);
+			 oRequestFinishedDeferred.resolve(that.oLILIClassCollection);
+     	 }, 
+     	 function(oError) {
+     		console.log("E"+oError);
+     	 }, false);
          
          return oRequestFinishedDeferred;
-         
-         /*this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {
-        	 fnSuccess(aErrorResponse);
-         }, function(oError) {
-        	 fnError(oError);
-         }, false);*/
-		
-		/*var oRequestFinishedDeferred = jQuery.Deferred();
-
-		this.oODataModel.read("IsicDet?Flag='G'&Lang='E'&IsicSection='"+IsicSection+"'&IsicDivision='"+IsicDivision+"'&IsicGroup=' '&IsicClass=' '", {
-			success : function(oData, response) {			
-				
-				that.oCountryCollectionModel = new sap.ui.model.json.JSONModel();
-				
-				that.oCountryCollectionModel.setData({LILIGroupCollection:oData.results});		
-				
-				oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
-				
-				that.closeBusyDialog();
-			},
-			error : function(oResponse) {
-				
-				oRequestFinishedDeferred.resolve();
-				
-				that.closeBusyDialog();
-			}
-		});
-		
-		return oRequestFinishedDeferred;*/
+ 
+		}
 	},
 	
 
