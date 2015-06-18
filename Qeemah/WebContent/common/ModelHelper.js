@@ -868,9 +868,15 @@ com.sagia.common.ModelHelper = {
         	 
         	 console.dir(oResponse.data.__batchResponses);
         	 for(var i=0; i<oResponse.data.__batchResponses.length; i++){
-        		 //console.log(oResponse.data.__batchResponses[i].data.results)
-        		 oLocalLILIClassCollection.LILIClassCollection.push(oResponse.data.__batchResponses[i].data.results);
+        		 console.log(oResponse.data.__batchResponses[i].data.results.length);
+        		 console.log(oResponse.data.__batchResponses[i].data.results);
+        		 for(var j=0; j<oResponse.data.__batchResponses[i].data.results.length; j++){
+        			 oLocalLILIClassCollection.LILIClassCollection.push(oResponse.data.__batchResponses[i].data.results[j]);
+        		 }
+        		 //oLocalLILIClassCollection.LILIClassCollection.push(oResponse.data.__batchResponses[i].data.results);
+        		
         	 }
+        	 console.log(oLocalLILIClassCollection);
         	 
         	 that.oLILIClassCollection = new sap.ui.model.json.JSONModel();
 				
