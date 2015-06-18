@@ -2177,6 +2177,8 @@ handleRegisterUserButtonPress : function() {
 		
 	},
 	handleSubmitInfoButtonClick : function(){
+		this.openBusyDialog();
+		that = this;
 		this._oSubmitInfoButton.setSrc("common/mime/submit_hover.png");
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("SubmitInformationHTML"));
@@ -2191,6 +2193,7 @@ handleRegisterUserButtonPress : function() {
 		var oRequestSubmitFinishedDeferred = this.oModelHelper.Submit(this.oRef_id);
 
 		jQuery.when(oRequestSubmitFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+			that.closeBusyDialog();
 			//console.log(oResponse);			
 			if (!this._ShowLeadIDFragment) {
 				this._ShowLeadIDFragment = sap.ui.xmlfragment(
