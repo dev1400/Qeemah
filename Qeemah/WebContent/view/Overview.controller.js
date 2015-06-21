@@ -153,8 +153,51 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oNSHCreateNewData = {NSHCollection: []};
 		this.oNSHCreateNewDataJSONData = new sap.ui.model.json.JSONModel();
 		
+		this.oESHCreateNewData = {ESHCollection: []};
+		this.oESHCreateNewDataJSONData = new sap.ui.model.json.JSONModel();
+		
 		this.oLILIProductsdataSerialNo = 1;
 		
+		
+	},
+	handleExistingShareHolderAddButtonPress : function(oEvent){
+		
+		this.oExistingShareHolderTable = this.getView().byId("idESHTable");
+		
+		this.oExistingShareHolderTable.setModel(this.oESHCreateNewDataJSONData);
+		
+		this.oExistingShareHolderTable.bindItems("/ESHCollection",new sap.m.ColumnListItem({
+	        cells : [ new sap.ui.commons.TextView({
+	          text : "{Bpname}"
+	        }),new sap.ui.commons.TextView({
+	          text : "{Bpname}"
+	        }),  new sap.ui.commons.TextView({
+	          text : "{Bpname}"
+	        }), 
+	        new sap.m.Button({ icon : "sap-icon://delete"})]
+	      }));
+		
+	},
+	handleValidateESHButtonPress : function(oEvent){
+		
+		this.oExistingShareHolderEntityNo = this.getView().byId("idESHEntityNoInputText");
+		this.oExistingShareHolderEntityName = this.getView().byId("idESHEntityNameInputText");
+		
+		
+		var oRequestFinishedDeferredVESH = this.oModelHelper.readExistingSH(this.oExistingShareHolderEntityNo.getValue());
+
+		jQuery.when(oRequestFinishedDeferredVESH).then(jQuery.proxy(function(oResponse) {			
+			//console.dir(oResponse);
+			this.oExistingShareHolderEntityName.setValue(oResponse.data.Bpname);
+			
+			this.oESHCreateNewData.ESHCollection.push({
+	 			"Bpname":oResponse.data.Bpname});
+	 		
+	 		this.oESHCreateNewDataJSONData.setData(this.oESHCreateNewData,true);	
+			
+			
+			
+		}, this));	
 		
 	},
 	handleCreateNewShareHolder : function(oEvent){

@@ -33,9 +33,9 @@
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<Select width="25em" items="{/LILISectionCollection}" id="idLILISectionComboBox" selectionChange="handleLILISectionSelectionComboBox">
+										<ComboBox width="25em" items="{/LILISectionCollection}" id="idLILISectionComboBox" selectionChange="handleLILISectionSelectionComboBox">
 										     <sap.ui.core:ListItem key="{IsicSection}" text="{IsicDescription}" id="idLILISectionComboBoxitem"/>
-										</Select>
+										</ComboBox>
 									
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									</sap.ui.commons.layout:MatrixLayoutRow>
@@ -47,7 +47,7 @@
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<Select width="25em"  items="{/LILIDivisionCollection}" id="idLILIDivisionComboBox" selectionChange="handleLILIDivisionSelectionComboBox">
+										<Select width="25em"  items="{/LILIDivisionCollection}" id="idLILIDivisionComboBox" change="handleLILIDivisionSelectionComboBox">
 										     <sap.ui.core:ListItem key="{IsicDivision}" text="{IsicDescription}" id="idLILIDivisionComboBoxListitem"/>
 										</Select>
 									</sap.ui.commons.layout:MatrixLayoutCell>

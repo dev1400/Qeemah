@@ -62,7 +62,7 @@
 													<sap.ui.commons.layout:content>
 													
 														
-														<Select width="25em" items="{/DetailsCollection}" id="idRegionComboBox" selectionChange="handleRegionSelectionComboBox">
+														<Select width="25em" items="{/DetailsCollection}" id="idRegionComboBox" change="handleRegionSelectionComboBox">
 															<sap.ui.core:ListItem key="{Bland_reg}" text="{Bezei_reg}" id="idRegionComboBoxitem"/>
 														</Select>
 														

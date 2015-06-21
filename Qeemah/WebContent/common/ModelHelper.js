@@ -120,6 +120,33 @@ com.sagia.common.ModelHelper = {
 		
 	},
 	/**
+	 * Get Existing Share Holder details
+	 * @Author Abdul Waheed 
+	 */
+	readExistingSH : function(entityNo){
+		this.openBusyDialog();
+
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		this.oODataModel.read("VALIDATE_SHAREHOLDER_ENT(Bpno='"+entityNo+"')", {
+			success : function(oData, response) {
+				
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(oResponse);
+				
+				that.closeBusyDialog();
+			}});
+
+		return oRequestFinishedDeferred;
+	},
+	/**
 	 * Create BAQ Answers
 	 * @Author Abdul Waheed 
 	 */
@@ -1094,6 +1121,7 @@ com.sagia.common.ModelHelper = {
         oEntry.ContNumber = oContactNumber;
 		oEntry.ContPersname = oContactPersonName;
 		oEntry.Company = oCompany;
+		oEntry.Ref_id = '';
 		this.oODataModel.create("/REGISTER_USER_ENT", oEntry , {
 		
 			success : function(oData) {

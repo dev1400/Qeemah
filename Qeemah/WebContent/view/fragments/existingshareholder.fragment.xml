@@ -100,12 +100,12 @@
 							</sap.ui.commons.layout:MatrixLayoutCell>
 							<sap.ui.commons.layout:MatrixLayoutCell>
 								<sap.ui.commons.layout:content>
-								<Input type="Text"></Input>
+								<Input type="Text" id="idESHEntityNoInputText"></Input>
 								</sap.ui.commons.layout:content>
 							</sap.ui.commons.layout:MatrixLayoutCell>
 							<sap.ui.commons.layout:MatrixLayoutCell vAlign="Top">
 								<sap.ui.commons.layout:content>
-								<Button text="{i18n>Validate}"></Button>
+								<Button text="{i18n>Validate}" press="handleValidateESHButtonPress"></Button>
 								</sap.ui.commons.layout:content>
 							</sap.ui.commons.layout:MatrixLayoutCell>
 						</sap.ui.commons.layout:cells>
@@ -121,7 +121,7 @@
 							</sap.ui.commons.layout:MatrixLayoutCell>
 							<sap.ui.commons.layout:MatrixLayoutCell>
 								<sap.ui.commons.layout:content>
-								<Input type="Text"></Input>
+								<Input type="Text" id="idESHEntityNameInputText" enabled="false"></Input>
 								</sap.ui.commons.layout:content>
 							</sap.ui.commons.layout:MatrixLayoutCell>
 						
@@ -148,12 +148,12 @@
 						<sap.ui.commons.layout:cells>
 							<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 								<sap.ui.commons.layout:content>
-								<Button text="{i18n>Add}"></Button>
+								<Button text="{i18n>Add}" press="handleExistingShareHolderAddButtonPress"></Button>
 								</sap.ui.commons.layout:content>
 							</sap.ui.commons.layout:MatrixLayoutCell>
 							<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 								<sap.ui.commons.layout:content>
-								<Button text="{i18n>Cancel}" press="handleAddExistingShareHolderCancelButtonPress"></Button>
+								<Button text="{i18n>Cancel}" press="handleExistingShareHolderCancelButtonPress"></Button>
 								</sap.ui.commons.layout:content>
 							</sap.ui.commons.layout:MatrixLayoutCell>
 						
@@ -180,11 +180,11 @@
 							<sap.ui.commons.layout:MatrixLayoutCell
 								colSpan="2">
 								<sap.ui.commons.layout:content>
-									<Table width="60rem">
+									<Table width="60rem" id="idESHTable">
 										<columns>
-											<Column width="2em">
+											<!-- <Column width="2em">
 												<Text text="#" />
-											</Column>
+											</Column> -->
 											<Column width="5em">
 												<Text text="{i18n>ShareholderEntityNo}" />
 											</Column>
@@ -198,17 +198,17 @@
 												<Text text="{i18n>Delete}" />
 											</Column>
 										</columns>
-										<items>
+										<!-- <items>
 											<ColumnListItem>
 												<cells>
 													<Input type="Text" />
 													<Input type="Text" />
 													<Input type="Text" />
 													<Input type="Text" />
-													<Input type="Text" />
+													<Button style="Accept" icon="sap-icon://delete"/>
 												</cells>
 											</ColumnListItem>
-										</items>
+										</items> -->
 									</Table>
 								</sap.ui.commons.layout:content>
 							</sap.ui.commons.layout:MatrixLayoutCell>
