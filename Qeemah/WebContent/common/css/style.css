@@ -318,3 +318,21 @@
 .sapMMultiComboBox>.sapMMultiComboBoxBorder {  
   height: 2rem;
 }
+.sapMSlt {
+  height: 2rem;
+  margin: 0.25rem 0 0.25rem 0;
+  border: 1px solid #bfbfbf;
+  background: #ffffff;
+}
+.sapMSlt>.sapMSltLabel {
+  width: 100%;
+  line-height: 2rem;
+  color: #000000;
+  font-size: 0.875rem;
+}
+.sapMSltArrow {
+  width: 2.5rem;
+  line-height: 2rem;
+  right: 0;
+  background: #ffffff;
+}

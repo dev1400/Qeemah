@@ -609,7 +609,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 				 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+i);
 				 //oBAQAnswer.setValue("Hello");
 				 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+i);
-				 console.log(oBAQuestion.getText());
+				 //console.log(oBAQuestion.getText());
+				 
+				 console.log(oBAQuestion.data("idBAQuestion"+i));
 			}
 		}else{
 			
@@ -732,7 +734,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 							var oTextView = new sap.ui.commons.TextView("idBAQuestion"+l,{
 								text : questions[l],
 								});
-							var oComboBox = new sap.m.ComboBox("idBAQAnswer"+l);
+							var oSelect = new sap.m.Select("idBAQAnswer"+l);
 							
 							
 							
@@ -745,7 +747,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 										var vItem = new sap.ui.core.Item();		    				
 					    				
 										vItem.setText(answers[m][t].Atxtlg);						
-										oComboBox.addItem(vItem);
+										oSelect.addItem(vItem);
 									}
 								}
 								
@@ -754,7 +756,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 							oTextView.data("idBAQuestion"+l,nodeID[l]);
 							
 							this.oBAQMatrixLayout.createRow( oTextView );
-							this.oBAQMatrixLayout.createRow( oComboBox );
+							this.oBAQMatrixLayout.createRow( oSelect );
 							
 							this.oTotalBAQQuestions++;
 						}			
