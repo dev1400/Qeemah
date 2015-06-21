@@ -31,14 +31,14 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons.layout:content>
-						<ComboBox id="idNSHActivityQ1ComboBox" width="25em">
+						<Select id="idNSHActivityQ1ComboBox" width="25em">
 								<sap.ui.core:ListItem Key="1" text="&#60;10" />
 								<sap.ui.core:ListItem key="2" text="&#60;20" />
 								<sap.ui.core:ListItem Key="3" text="&#60;30" />
 								<sap.ui.core:ListItem key="4" text="&#60;40" />
 								<sap.ui.core:ListItem key="5" text="&#60;50" />
 								<sap.ui.core:ListItem key="6" text="&#62;50" />
-									</ComboBox>
+									</Select>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -54,14 +54,14 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons.layout:content>
-						<ComboBox id="idNSHActivityQ2ComboBox" width="25em">
+						<Select id="idNSHActivityQ2ComboBox" width="25em">
 								<sap.ui.core:ListItem Key="1" text="&#60;10" />
 								<sap.ui.core:ListItem key="2" text="&#60;50" />
 								<sap.ui.core:ListItem Key="3" text="&#60;100" />
 								<sap.ui.core:ListItem key="4" text="&#60;150" />
 								<sap.ui.core:ListItem key="5" text="&#60;200" />
 								<sap.ui.core:ListItem key="6" text="&#62;200" />
-									</ComboBox>
+									</Select>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -77,14 +77,14 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons.layout:content>
-						<ComboBox id="idNSHActivityQ3ComboBox" width="25em">
+						<Select id="idNSHActivityQ3ComboBox" width="25em">
 								<sap.ui.core:ListItem Key="1" text="&#60;10" />
 								<sap.ui.core:ListItem key="2" text="&#60;100" />
 								<sap.ui.core:ListItem Key="3" text="&#60;500" />
 								<sap.ui.core:ListItem key="4" text="&#60;1000" />
 								<sap.ui.core:ListItem key="5" text="&#60;2000" />
 								<sap.ui.core:ListItem key="6" text="&#62;2000" />
-									</ComboBox>
+									</Select>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>

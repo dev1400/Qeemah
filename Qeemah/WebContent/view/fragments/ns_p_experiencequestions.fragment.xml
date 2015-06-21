@@ -33,13 +33,13 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons.layout:content>
-						<ComboBox id="idNSHExperienceQ1ComboBox" width="25em">
+						<Select id="idNSHExperienceQ1ComboBox" width="25em">
 								<sap.ui.core:ListItem Key="1" text="{i18n>InternalorExternal}" />
 								<sap.ui.core:ListItem key="2" text="{i18n>InternalFinancing}" />
 								<sap.ui.core:ListItem Key="3" text="{i18n>ExternalFinancing}" />
 								
 							
-									</ComboBox>
+									</Select>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -55,7 +55,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons.layout:content>
-						<ComboBox width="25em" id="idNSHExperienceQ2ComboBox">
+						<Select width="25em" id="idNSHExperienceQ2ComboBox">
 								<sap.ui.core:ListItem Key="1" text="1-10" />
 								<sap.ui.core:ListItem key="2" text="11-20" />
 								<sap.ui.core:ListItem Key="3" text="21-30" />
@@ -70,7 +70,7 @@
 								
 								
 								
-									</ComboBox>
+									</Select>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -86,7 +86,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons.layout:content>
-						<ComboBox id="idNSHExperienceQ3ComboBox" width="25em">
+						<Select id="idNSHExperienceQ3ComboBox" width="25em">
 										<sap.ui.core:ListItem Key="1" text="1-10" />
 								<sap.ui.core:ListItem key="2" text="11-20" />
 								<sap.ui.core:ListItem Key="3" text="21-30" />
@@ -98,7 +98,7 @@
 								<sap.ui.core:ListItem Key="9" text="81-90" />
 								<sap.ui.core:ListItem Key="10" text="91-100" />
 								<sap.ui.core:ListItem key="11" text="{i18n>Above100}" />
-									</ComboBox>
+									</Select>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -114,10 +114,10 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons.layout:content>
-						<ComboBox width="25em" id="idNSHExperienceQ4ComboBox">
+						<Select width="25em" id="idNSHExperienceQ4ComboBox">
 										<sap.ui.core:ListItem Key="1" text="{i18n>Yes}" />
 								<sap.ui.core:ListItem key="2" text="{i18n>No}" />
-									</ComboBox>
+									</Select>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>

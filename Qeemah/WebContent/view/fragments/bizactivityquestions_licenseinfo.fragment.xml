@@ -33,9 +33,9 @@
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em" items="{/LILISectionCollection}" id="idLILISectionComboBox" selectionChange="handleLILISectionSelectionComboBox">
+										<Select width="25em" items="{/LILISectionCollection}" id="idLILISectionComboBox" selectionChange="handleLILISectionSelectionComboBox">
 										     <sap.ui.core:ListItem key="{IsicSection}" text="{IsicDescription}" id="idLILISectionComboBoxitem"/>
-										</ComboBox>
+										</Select>
 									
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									</sap.ui.commons.layout:MatrixLayoutRow>
@@ -47,9 +47,9 @@
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em"  items="{/LILIDivisionCollection}" id="idLILIDivisionComboBox" selectionChange="handleLILIDivisionSelectionComboBox">
+										<Select width="25em"  items="{/LILIDivisionCollection}" id="idLILIDivisionComboBox" selectionChange="handleLILIDivisionSelectionComboBox">
 										     <sap.ui.core:ListItem key="{IsicDivision}" text="{IsicDescription}" id="idLILIDivisionComboBoxListitem"/>
-										</ComboBox>
+										</Select>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:MatrixLayoutRow>
 								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
@@ -94,9 +94,9 @@
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em">
+										<Select width="25em">
 											<sap.ui.core:Item />
-										</ComboBox>
+										</Select>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									</sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutRow>
@@ -127,9 +127,9 @@
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em">
+										<Select width="25em">
 											<sap.ui.core:Item />
-										</ComboBox>
+										</Select>
 									</sap.ui.commons.layout:MatrixLayoutCell> -->
 									<!-- <sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">
@@ -137,9 +137,9 @@
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em">
+										<Select width="25em">
 											<sap.ui.core:Item />
-										</ComboBox>
+										</Select>
 									</sap.ui.commons.layout:MatrixLayoutCell> -->
 								</sap.ui.commons.layout:MatrixLayoutRow>
 								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
@@ -152,9 +152,9 @@
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em">
+										<Select width="25em">
 											<sap.ui.core:Item />
-										</ComboBox>
+										</Select>
 									</sap.ui.commons.layout:MatrixLayoutCell> -->
 								</sap.ui.commons.layout:MatrixLayoutRow>
 								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
@@ -186,9 +186,9 @@
 					<sap.ui.commons:TextView text="{i18n>Product}"></sap.ui.commons:TextView>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 				<sap.ui.commons.layout:MatrixLayoutCell>				
-					<ComboBox width="20em" id="idLILIProductComboBox">
+					<Select width="20em" id="idLILIProductComboBox">
 						<sap.ui.core:Item />
-					</ComboBox>
+					</Select>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 			</sap.ui.commons.layout:cells>
 		</sap.ui.commons.layout:MatrixLayoutRow>
@@ -208,9 +208,9 @@
 					<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}"></sap.ui.commons:TextView>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 				<sap.ui.commons.layout:MatrixLayoutCell>				
-					<ComboBox width="20em" id="idLILIProductUOMComboBox">
+					<Select width="20em" id="idLILIProductUOMComboBox">
 						<sap.ui.core:Item />
-					</ComboBox>
+					</Select>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 			</sap.ui.commons.layout:cells>
 		</sap.ui.commons.layout:MatrixLayoutRow>
