@@ -41,6 +41,11 @@ com.sagia.Component.prototype.init = function(){
     var oODataModel = com.sagia.common.ModelHelper.getODataModel();
     // Set OData Model
     this.setModel(oODataModel, "ODataModel");
+    
+	// Get ODataModel instance
+    var oBAQODataModel = com.sagia.common.ModelHelper.getBAQODataModel();
+    // Set OData Model
+    this.setModel(oBAQODataModel, "BAQODataModel");
 	
 	// Get i18n model 
 	var i18nModel =	com.sagia.common.ModelHelper.getI18nModel("i18n/messageBundle.properties","en");

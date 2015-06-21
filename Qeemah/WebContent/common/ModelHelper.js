@@ -70,6 +70,98 @@ com.sagia.common.ModelHelper = {
 		
 		return this.oODataModel;
 	},
+	
+	/**
+	 * Build BAQ ODataModel instance and return
+	 */
+	getBAQODataModel : function() {
+
+		
+		var sUrl = this.getServiceUrl();
+		
+		this.oBAQODataModel = new sap.ui.model.odata.ODataModel("proxy/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/", true,
+				null, null, {
+					"X-Requested-With" : "XMLHttpRequest",
+					"Content-Type" : "application/json",
+					"X-CSRF-Token":"Fetch" ,
+					"DataServiceVersion": "2.0",
+					"Authorization" : "Basic bmt1bWFyOnNhcDEyMw=="
+
+				}, true, true);
+		
+		return this.oBAQODataModel;
+	},
+	/**
+	 * check BAQ Answers Availability
+	 * @Author Abdul Waheed 
+	 */
+	checkBAQAnswersAvailability : function(oRef_id){
+		
+		this.openBusyDialog();
+
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		this.oBAQODataModel.read("SurveyChg?Investorid='"+oRef_id+"'&NodeGuid=''", {
+			success : function(oData, response) {
+				
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(oResponse);
+				
+				that.closeBusyDialog();
+			}});
+
+		return oRequestFinishedDeferred;
+		
+	},
+	/**
+	 * Create BAQ Answers
+	 * @Author Abdul Waheed 
+	 */
+	createBAQAnswers : function(IsicSelectedGroups) {
+		if(IsicSelectedGroups.length>0){
+		
+		this.openBusyDialog();
+		
+		var that = this;
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		 var aBatchOperations = [];
+         for ( var i = 0; i < IsicSelectedGroups.length; i++) {
+           aBatchOperations.push(this.oODataModel.createBatchOperation(
+            "IsicDet?Flag='C'&Lang='E'&IsicSection='A'&IsicDivision='01'&IsicGroup='"+IsicSelectedGroups[i]+"'&IsicClass='C'", 'GET' ));
+            }
+         this.oODataModel.addBatchReadOperations( aBatchOperations);
+         this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
+             that.closeBusyDialog();
+        	 
+        	 var oLocalLILIClassCollection = {LILIClassCollection: []};
+        	 
+        	 console.dir(oResponse.data.__batchResponses);
+        	 for(var i=0; i<oResponse.data.__batchResponses.length; i++){
+        		 for(var j=0; j<oResponse.data.__batchResponses[i].data.results.length; j++){
+        			 oLocalLILIClassCollection.LILIClassCollection.push(oResponse.data.__batchResponses[i].data.results[j]);
+        		 }        		
+        	 }
+        	 
+        	 that.oLILIClassCollection = new sap.ui.model.json.JSONModel();
+			 that.oLILIClassCollection.setData(oLocalLILIClassCollection);
+				
+			 oRequestFinishedDeferred.resolve(that.oLILIClassCollection);
+     	 }, 
+     	 function(oError) {
+     		console.log("E"+oError);
+     	 }, false);
+         
+         return oRequestFinishedDeferred;
+ 
+		}
+	},
 	/**
 	 * Submit App.
 	 * @author Abdul Waheed
@@ -594,26 +686,15 @@ com.sagia.common.ModelHelper = {
 	 */
 	readBAQ : function() {
 		
-		this.olocalODataModel = new sap.ui.model.odata.ODataModel("proxy/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/", true,
-						null, null, {
-							"X-Requested-With" : "XMLHttpRequest",
-							"Content-Type" : "application/json",
-							"X-CSRF-Token":"Fetch" ,
-							"DataServiceVersion": "2.0",
-							"Authorization" : "Basic bmt1bWFyOnNhcDEyMw=="
-
-						}, true, true);
-
-		// Open busy dialog
+		
 		this.openBusyDialog();
 		
 		var that = this;
-		// Create deferred object so that calling program can wait till
-		// asynchronous call is finished
+		
+		
 		var oRequestFinishedDeferred = jQuery.Deferred();
-		//	http://rhocrmdev1.MYSAGIA.GOV:8000/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/SurveyQue?Lang='E'&Flag='B'&SurveyID=' '
-
-		this.olocalODataModel.read("SurveyQue?Lang=%27E%27&Flag=%27B%27&SurveyID=%27QUEEMAH_BUS_PLAN%27", {
+		
+		this.oBAQODataModel.read("SurveyQue?Lang=%27E%27&Flag=%27B%27&SurveyID=%27QUEEMAH_BUS_PLAN%27", {
 			success : function(oData, response) {
 				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
@@ -640,23 +721,12 @@ com.sagia.common.ModelHelper = {
 		this.openBusyDialog();
 		
 		
-		this.olocalODataModel = new sap.ui.model.odata.ODataModel("proxy/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/", true,
-						null, null, {
-							"X-Requested-With" : "XMLHttpRequest",
-							"Content-Type" : "application/json",
-							"X-CSRF-Token":"Fetch" ,
-							"DataServiceVersion": "2.0",
-							"Authorization" : "Basic bmt1bWFyOnNhcDEyMw=="
-
-						}, true, true);
-
 		
 		var that = this;
-		// Create deferred object so that calling program can wait till
-		// asynchronous call is finished
+		
 		var oRequestFinishedDeferred = jQuery.Deferred();
-		//ZQEEMAH_SURVEY_SRV/SurveyAns?Lang='E'&Flag='B'&NodeGuid='14FEB556CA711EE48BA122AFF3C53A69'&SurveyID='QUEEMAH_BUS_PLAN'
-		this.olocalODataModel.read("SurveyAns?Lang='E'&Flag='B'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
+		
+		this.oBAQODataModel.read("SurveyAns?Lang='E'&Flag='B'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
 				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
