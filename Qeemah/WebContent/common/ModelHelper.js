@@ -103,7 +103,7 @@ com.sagia.common.ModelHelper = {
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
 
-		this.oBAQODataModel.read("SurveyChg?Investorid='"+oRef_id+"'&NodeGuid=''", {
+		this.oBAQODataModel.read("SurChg?Investorid='"+oRef_id+"'", {
 			success : function(oData, response) {
 				
 				oRequestFinishedDeferred.resolve(response);
@@ -150,8 +150,8 @@ com.sagia.common.ModelHelper = {
 	 * Create BAQ Answers
 	 * @Author Abdul Waheed 
 	 */
-	createBAQAnswers : function(IsicSelectedGroups) {
-		if(IsicSelectedGroups.length>0){
+	createBAQAnswers : function(oRef_id, questions, answers) {
+		//if(IsicSelectedGroups.length>0){
 		
 		this.openBusyDialog();
 		
@@ -159,16 +159,20 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
 
 		 var aBatchOperations = [];
-         for ( var i = 0; i < IsicSelectedGroups.length; i++) {
-           aBatchOperations.push(this.oODataModel.createBatchOperation(
-            "IsicDet?Flag='C'&Lang='E'&IsicSection='A'&IsicDivision='01'&IsicGroup='"+IsicSelectedGroups[i]+"'&IsicClass='C'", 'GET' ));
+         for ( var i = 0; i < questions.length; i++) {
+        	 //SurveyQue?Lang=%27E%27&Flag=%27B%27&SurveyID=%27QUEEMAH_BUS_PLAN%27
+        	 //,Atxtlg='"+answers[i]+"', Flag='B', Lang='E' 
+           //aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet(Investorid='"+oRef_id+"',NodeGuid='"+questions[i]+"')", 'GET' ));
+        	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("$batch", 'POST',{Investorid : oRef_id,
+        		 NodeGuid : questions[i], Atxtlg : answers[i]} ));
             }
-         this.oODataModel.addBatchReadOperations( aBatchOperations);
-         this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
+         this.oBAQODataModel.addBatchReadOperations( aBatchOperations);
+         this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
              that.closeBusyDialog();
         	 
+             console.log(oResponse);
         	 var oLocalLILIClassCollection = {LILIClassCollection: []};
-        	 
+        	/* 
         	 console.dir(oResponse.data.__batchResponses);
         	 for(var i=0; i<oResponse.data.__batchResponses.length; i++){
         		 for(var j=0; j<oResponse.data.__batchResponses[i].data.results.length; j++){
@@ -179,7 +183,9 @@ com.sagia.common.ModelHelper = {
         	 that.oLILIClassCollection = new sap.ui.model.json.JSONModel();
 			 that.oLILIClassCollection.setData(oLocalLILIClassCollection);
 				
-			 oRequestFinishedDeferred.resolve(that.oLILIClassCollection);
+			 oRequestFinishedDeferred.resolve(that.oLILIClassCollection);*/
+        	 
+        	 oRequestFinishedDeferred.resolve(oResponse);
      	 }, 
      	 function(oError) {
      		console.log("E"+oError);
@@ -187,7 +193,7 @@ com.sagia.common.ModelHelper = {
          
          return oRequestFinishedDeferred;
  
-		}
+		//}
 	},
 	/**
 	 * Submit App.

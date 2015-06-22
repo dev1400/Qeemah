@@ -124,6 +124,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this._basicInfo_OrganizationFragmentChild = sap.ui.xmlfragment("com.sagia.view.fragments.bi_organization", this.getView()
 				.getController());
+		
 		this._licenseInfo_BAQFragmentChild = sap.ui.xmlfragment("com.sagia.view.fragments.bizactivityquestions", this.getView()
 				.getController());
 		
@@ -444,25 +445,31 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oPoweOfAttorneyFileUpload.upload();
 	},
 	handleSaveLinkPressSave : function(oEvent){
+		//this.oBasicInfoTab.setSelectedIndex(1);
+		//this.oBasicInfoTab.setSelectedIndex(0);
 		that = this;
+		
+		/*this.oBasicInfoContactInfoFragment = sap.ui.xmlfragment("com.sagia.view.fragments.bi_contactinformation", this.getView()
+				.getController());*/
 		
 		
        
 		if(this.oRecordExists){
 			try{
+				
 			var oRequestFinishedDeferred = this.oModelHelper.saveBIOI(this.oRef_id, 
 					this.oBIOIOrganizationName.getValue(),
-					this._oidRegionComboBox.getValue(),
+					this._oidRegionComboBox.getSelectedItem().getText(),
 					//this._oidRegionComboBox.getSelectedItem().getText(),
-					this._oBIILegalStatusCombobox.getValue(),
+					this._oBIILegalStatusCombobox.getSelectedItem().getText(),
 					//this._oBIILegalStatusCombobox.getSelectedItem().getText(),
-					this._oBICityComboBox.getValue(),
+					this._oBICityComboBox.getSelectedItem().getText(),
 					//this._oBICityComboBox.getSelectedItem().getText(),
-					this.oBIOIMultiNationalCompanyCombobox.getValue(),
+					this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
 					//this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
 					this.oBIOIEmailInputText.getValue(),
 					this.oBIOILaborSizeInputText.getValue(),
-					this.oBIOICommMethodComboBox.getValue(),
+					this.oBIOICommMethodComboBox.getSelectedItem().getText(),
 					this.oBIOICapitalInputText.getValue(),
 					this.oBIOITelephoneCountryCodeInputText.getValue(),
 					this.oBIOITelephoneInputText.getValue(),
@@ -491,17 +498,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 			try{
 			var oRequestFinishedDeferred = this.oModelHelper.createAndUpdateBIOI(this.oRef_id, 
 					this.oBIOIOrganizationName.getValue(),
-					this._oidRegionComboBox.getValue(),
+					this._oidRegionComboBox.getSelectedItem().getText(),
 					//this._oidRegionComboBox.getSelectedItem().getText(),
-					this._oBIILegalStatusCombobox.getValue(),
+					this._oBIILegalStatusCombobox.getSelectedItem().getText(),
 					//this._oBIILegalStatusCombobox.getSelectedItem().getText(),
-					this._oBICityComboBox.getValue(),
+					this._oBICityComboBox.getSelectedItem().getText(),
 					//this._oBICityComboBox.getSelectedItem().getText(),
-					this.oBIOIMultiNationalCompanyCombobox.getValue(),
+					this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
 					//this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
 					this.oBIOIEmailInputText.getValue(),
 					this.oBIOILaborSizeInputText.getValue(),
-					this.oBIOICommMethodComboBox.getValue(),
+					this.oBIOICommMethodComboBox.getSelectedItem().getText(),
 					this.oBIOICapitalInputText.getValue(),
 					this.oBIOITelephoneCountryCodeInputText.getValue(),
 					this.oBIOITelephoneInputText.getValue(),
@@ -531,26 +538,38 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}
 		
 		if(this.oContactInfoRecordExists){
+			this.oBasicInfoTab.setSelectedIndex(1);
+			this.oBasicInfoTab.setSelectedIndex(0);
+			
+			console.log(this.oBICIGenderComboBox.getSelectedItem().getText()+"\n"+
+					this.oBICICommMethodComboBox.getSelectedItem().getText()+"\n"+
+					this.oBICIRoleInputText.getSelectedItem().getText()+"\n"+
+					this._oBICICountryCombobox.getSelectedItem().getText()+"\n"+
+					this._oBICINationalityCombobox.getSelectedItem().getText()	
+					);
 			try{
+				
+				
+				
 			var oRequestFinishedDeferred = this.oModelHelper.saveBICI(
 					this.oRef_id,
 					this.oBICIFirstNameInputText.getValue(),
 					this.oBICILastNameInputText.getValue(),
 					this.oBICICityInputText.getValue(),
-					this.oBICIGenderComboBox.getValue(),
+					this.oBICIGenderComboBox.getSelectedItem().getText(),
 					this.oBICIPOBoxInputText.getValue(),
 					this.oBICITelephoneCountryCodeInputText.getValue(),
 					this.oBICITelephoneInputText.getValue(),
 					this.oBICIPostalCodeInputText.getValue(),
 					this.oBICIMobileCountryCodeInputText.getValue(),
 					this.oBICIMobilePhoneInputText.getValue(),
-					this.oBICICommMethodComboBox.getValue(),
+					this.oBICICommMethodComboBox.getSelectedItem().getText(),
 					this.oBICIFaxCountryCodeInputText.getValue(),
 					this.oBICIFaxInputText.getValue(),
-					this.oBICIRoleInputText.getValue(),
+					this.oBICIRoleInputText.getSelectedItem().getText(),
 					this.oBICIEmailInputText.getValue(),
-					this._oBICICountryCombobox.getValue(),
-					this._oBICINationalityCombobox.getValue(),						
+					this._oBICICountryCombobox.getSelectedItem().getText(),
+					this._oBICINationalityCombobox.getSelectedItem().getText(),						
 					this.oBICIStreet.getValue(),
 					this.oBICIPowerofAttorneyFileUploader,
 					this.oBICIPassPortCopyFileUploader
@@ -585,27 +604,27 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}else{
 			try{
 			var oRequestFinishedDeferred = this.oModelHelper.createAndUpdateBICI(
-			this.oRef_id,
-			this.oBICIFirstNameInputText.getValue(),
-			this.oBICILastNameInputText.getValue(),
-			this.oBICICityInputText.getValue(),
-			this.oBICIGenderComboBox.getValue(),
-			this.oBICIPOBoxInputText.getValue(),
-			this.oBICITelephoneCountryCodeInputText.getValue(),
-			this.oBICITelephoneInputText.getValue(),
-			this.oBICIPostalCodeInputText.getValue(),
-			this.oBICIMobileCountryCodeInputText.getValue(),
-			this.oBICIMobilePhoneInputText.getValue(),
-			this.oBICICommMethodComboBox.getValue(),
-			this.oBICIFaxCountryCodeInputText.getValue(),
-			this.oBICIFaxInputText.getValue(),
-			this.oBICIRoleInputText.getValue(),
-			this.oBICIEmailInputText.getValue(),
-			this._oBICICountryCombobox.getValue(),
-			this._oBICINationalityCombobox.getValue(),						
-			this.oBICIStreet.getValue(),
-			this.oBICIPowerofAttorneyFileUploader,
-			this.oBICIPassPortCopyFileUploader
+					this.oRef_id,
+					this.oBICIFirstNameInputText.getValue(),
+					this.oBICILastNameInputText.getValue(),
+					this.oBICICityInputText.getValue(),
+					this.oBICIGenderComboBox.getSelectedItem().getText(),
+					this.oBICIPOBoxInputText.getValue(),
+					this.oBICITelephoneCountryCodeInputText.getValue(),
+					this.oBICITelephoneInputText.getValue(),
+					this.oBICIPostalCodeInputText.getValue(),
+					this.oBICIMobileCountryCodeInputText.getValue(),
+					this.oBICIMobilePhoneInputText.getValue(),
+					this.oBICICommMethodComboBox.getSelectedItem().getText(),
+					this.oBICIFaxCountryCodeInputText.getValue(),
+					this.oBICIFaxInputText.getValue(),
+					this.oBICIRoleInputText.getSelectedItem().getText(),
+					this.oBICIEmailInputText.getValue(),
+					this._oBICICountryCombobox.getSelectedItem().getText(),
+					this._oBICINationalityCombobox.getSelectedItem().getText(),						
+					this.oBICIStreet.getValue(),
+					this.oBICIPowerofAttorneyFileUploader,
+					this.oBICIPassPortCopyFileUploader
 					);
 			
 			 	
@@ -647,15 +666,28 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 		}
 		if(!this.oBAQExists){
+			var questions = [];
+			var answers = [];
 			//var oRequestFinishedBAQCreateDeferred = this.oModelHelper.createBAQAnswers();
 			for(var i=0; i < this.oTotalBAQQuestions; i++){
 				 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+i);
 				 //oBAQAnswer.setValue("Hello");
+				 //console.log(oBAQAnswer.getSelectedItem().getText());
 				 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+i);
-				 //console.log(oBAQuestion.getText());
-				 
-				 console.log(oBAQuestion.data("idBAQuestion"+i));
+				 //console.log(oBAQuestion.getText());				 
+				 //console.log(oBAQuestion.data("idBAQuestion"+i));
+				 questions.push(oBAQuestion.data("idBAQuestion"+i));
+				 answers.push(oBAQAnswer.getSelectedItem().getText());
 			}
+			
+			
+			var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers);
+
+			jQuery.when(oRequestFinishedDeferredcreateBAQAnswers).then(jQuery.proxy(function(oResponse) {
+				console.log(oResponse);
+				
+				
+			}, this));
 		}else{
 			
 		}
@@ -1678,6 +1710,10 @@ userSignIn : function(userID, password){
 				sap.m.MessageToast.show(this.oModelHelper
 						.getText("SignInSuccessful"));
 				
+				
+				
+				
+				
 				this.oRef_id = oResponse.Ref_id;
 				//sessionStorage.setItem('ReferenceId', oResponse.InvestorId);
 				
@@ -1685,6 +1721,8 @@ userSignIn : function(userID, password){
 				this._oidMainPageContent.setVisible(false);
 				this._oTopHeaderVBox.setVisible(true);
 				this._oidLicenseButtonsHBox.setVisible(true);
+				
+				this.oBasicInfoTab =  this.getView().byId("idBasicInfoTab");
 				
 				this._oidRegionComboBox = this.getView().byId("idRegionComboBox");		
 				var oRegionComboBoxFilter = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
@@ -1705,6 +1743,10 @@ userSignIn : function(userID, password){
 				
 				this._oBICityComboBox = this.getView().byId("idCityComboBox");
 				
+				//this.oBasicInfoTab.setSelectedIndex(0);
+				
+				
+				
 				
 				this.oBIOIOrganizationName = this.getView().byId("idBIOIOrganizationName");
 				this.oBIOIMultiNationalCompanyCombobox = this.getView().byId("idBIOIMultiNationalCompanyCombobox");
@@ -1719,6 +1761,35 @@ userSignIn : function(userID, password){
 				this.oBIOIFaxCountryCodeInputText = this.getView().byId("idBIOIFaxCountryCodeInputText");
 				this.oBIOIFaxInputText = this.getView().byId("idBIOIFaxInputText");
 				this.oBIOIWebSiteInputText = this.getView().byId("idBIOIWebSiteInputText");
+				
+				
+				//this.oBasicInfoTab.setSelectedIndex(1);
+				
+				
+				this.oBICIFirstNameInputText = this.getView().byId("idBICIFirstNameInputText");
+				this.oBICILastNameInputText = this.getView().byId("idBICILastNameInputText");
+				this.oBICICityInputText = this.getView().byId("idBICICityInputText");
+				this.oBICIGenderComboBox = this.getView().byId("idBICIGenderComboBox");
+				this.oBICIPOBoxInputText = this.getView().byId("idBICIPOBoxInputText");
+				this.oBICITelephoneCountryCodeInputText = this.getView().byId("idBICITelephoneCountryCodeInputText");
+				this.oBICITelephoneInputText = this.getView().byId("idBICITelephoneInputText");
+				this.oBICIPostalCodeInputText = this.getView().byId("idBICIPostalCodeInputText");
+				this.oBICIMobileCountryCodeInputText = this.getView().byId("idBICIMobileCountryCodeInputText");
+				this.oBICIMobilePhoneInputText = this.getView().byId("idBICIMobilePhoneInputText");
+				this.oBICICommMethodComboBox = this.getView().byId("idBICICommMethodComboBox");
+				this.oBICIFaxCountryCodeInputText = this.getView().byId("idBICIFaxCountryCodeInputText");
+				this.oBICIFaxInputText = this.getView().byId("idBICIFaxInputText");
+				this.oBICIRoleInputText = this.getView().byId("idBICIRoleInputText");
+				this.oBICIEmailInputText = this.getView().byId("idBICIEmailInputText");
+				this.oBICIPassportCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
+				this.oBICIPowerofAttorneyFileUploader = this.getView().byId("idBICIPowerofAttorneyFileUploader");
+				this.oBICIPassPortCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
+				this.oBICIStreet = this.getView().byId("idBICIStreetInputText");
+				this.oBICIPASSAttachmentName = this.getView().byId("idBICIPASSAttachmentName");
+				this.oBICIPASSAttachmentNameTextView = this.getView().byId("idBICIPASSAttachmentNameTextView");
+				this.oBICIPOAAttachmentName = this.getView().byId("idBICIPOAAttachmentName");
+				this.oBICIPOAAttachmentNameTextView = this.getView().byId("idBICIPOAAttachmentNameTextView");
+				
 				
 				
 				
@@ -1794,29 +1865,6 @@ userSignIn : function(userID, password){
 				}, this));		
 				
 				
-				this.oBICIFirstNameInputText = this.getView().byId("idBICIFirstNameInputText");
-				this.oBICILastNameInputText = this.getView().byId("idBICILastNameInputText");
-				this.oBICICityInputText = this.getView().byId("idBICICityInputText");
-				this.oBICIGenderComboBox = this.getView().byId("idBICIGenderComboBox");
-				this.oBICIPOBoxInputText = this.getView().byId("idBICIPOBoxInputText");
-				this.oBICITelephoneCountryCodeInputText = this.getView().byId("idBICITelephoneCountryCodeInputText");
-				this.oBICITelephoneInputText = this.getView().byId("idBICITelephoneInputText");
-				this.oBICIPostalCodeInputText = this.getView().byId("idBICIPostalCodeInputText");
-				this.oBICIMobileCountryCodeInputText = this.getView().byId("idBICIMobileCountryCodeInputText");
-				this.oBICIMobilePhoneInputText = this.getView().byId("idBICIMobilePhoneInputText");
-				this.oBICICommMethodComboBox = this.getView().byId("idBICICommMethodComboBox");
-				this.oBICIFaxCountryCodeInputText = this.getView().byId("idBICIFaxCountryCodeInputText");
-				this.oBICIFaxInputText = this.getView().byId("idBICIFaxInputText");
-				this.oBICIRoleInputText = this.getView().byId("idBICIRoleInputText");
-				this.oBICIEmailInputText = this.getView().byId("idBICIEmailInputText");
-				this.oBICIPassportCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
-				this.oBICIPowerofAttorneyFileUploader = this.getView().byId("idBICIPowerofAttorneyFileUploader");
-				this.oBICIPassPortCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
-				this.oBICIStreet = this.getView().byId("idBICIStreetInputText");
-				this.oBICIPASSAttachmentName = this.getView().byId("idBICIPASSAttachmentName");
-				this.oBICIPASSAttachmentNameTextView = this.getView().byId("idBICIPASSAttachmentNameTextView");
-				this.oBICIPOAAttachmentName = this.getView().byId("idBICIPOAAttachmentName");
-				this.oBICIPOAAttachmentNameTextView = this.getView().byId("idBICIPOAAttachmentNameTextView");
 				
 				
 				
@@ -1987,6 +2035,8 @@ handleRegisterUserButtonPress : function() {
 	},
 	handleLicenseButtonClick : function(){
 		
+		this.oBasicInfoTab.setSelectedIndex(1);
+		this.oBasicInfoTab.setSelectedIndex(0);
 		
 		this._oLicenseInfoContent.setVisible(true);
 		this._oBasicInfoContent.setVisible(false);
