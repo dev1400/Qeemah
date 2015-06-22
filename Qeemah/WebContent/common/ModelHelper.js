@@ -156,22 +156,26 @@ com.sagia.common.ModelHelper = {
 		this.openBusyDialog();
 		
 		var that = this;
-		var oRequestFinishedDeferred = jQuery.Deferred();
+		var oRequestFinishedCreateBAQDeferred = jQuery.Deferred();
 
 		 var aBatchOperations = [];
          for ( var i = 0; i < questions.length; i++) {
         	 //SurveyQue?Lang=%27E%27&Flag=%27B%27&SurveyID=%27QUEEMAH_BUS_PLAN%27
         	 //,Atxtlg='"+answers[i]+"', Flag='B', Lang='E' 
-           //aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet(Investorid='"+oRef_id+"',NodeGuid='"+questions[i]+"')", 'GET' ));
-        	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("$batch", 'POST',{Investorid : oRef_id,
-        		 NodeGuid : questions[i], Atxtlg : answers[i]} ));
+           //aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet(Investorid='"+oRef_id+"',NodeGuid='"+questions[i]+"')", 'GET'));
+        	 
+        		   //,{Investorid : oRef_id,
+       		//NodeGuid : questions[i], Atxtlg : answers[i]} ));
+        	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',{Investorid : oRef_id,
+        		 NodeGuid : questions[i], Atxtlg : answers[i], Flag : 'B', Lang : 'E'} ));
             }
-         this.oBAQODataModel.addBatchReadOperations( aBatchOperations);
+         this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
+         this.oBAQODataModel.setUseBatch(true);
          this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
              that.closeBusyDialog();
         	 
              console.log(oResponse);
-        	 var oLocalLILIClassCollection = {LILIClassCollection: []};
+        	 //var oLocalLILIClassCollection = {LILIClassCollection: []};
         	/* 
         	 console.dir(oResponse.data.__batchResponses);
         	 for(var i=0; i<oResponse.data.__batchResponses.length; i++){
@@ -185,13 +189,13 @@ com.sagia.common.ModelHelper = {
 				
 			 oRequestFinishedDeferred.resolve(that.oLILIClassCollection);*/
         	 
-        	 oRequestFinishedDeferred.resolve(oResponse);
+        	 oRequestFinishedCreateBAQDeferred.resolve(oResponse);
      	 }, 
      	 function(oError) {
      		console.log("E"+oError);
      	 }, false);
          
-         return oRequestFinishedDeferred;
+         return oRequestFinishedCreateBAQDeferred;
  
 		//}
 	},

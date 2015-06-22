@@ -541,12 +541,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oBasicInfoTab.setSelectedIndex(1);
 			this.oBasicInfoTab.setSelectedIndex(0);
 			
-			console.log(this.oBICIGenderComboBox.getSelectedItem().getText()+"\n"+
-					this.oBICICommMethodComboBox.getSelectedItem().getText()+"\n"+
-					this.oBICIRoleInputText.getSelectedItem().getText()+"\n"+
-					this._oBICICountryCombobox.getSelectedItem().getText()+"\n"+
-					this._oBICINationalityCombobox.getSelectedItem().getText()	
-					);
+			this.oLicenseInfoTab.setSelectedIndex(1);
+			this.oLicenseInfoTab.setSelectedIndex(0);
+			
+			
+			
 			try{
 				
 				
@@ -1723,6 +1722,10 @@ userSignIn : function(userID, password){
 				this._oidLicenseButtonsHBox.setVisible(true);
 				
 				this.oBasicInfoTab =  this.getView().byId("idBasicInfoTab");
+				this.oLicenseInfoTab =  this.getView().byId("idLicenseInfoTab");
+				
+				this.oLicenseInfoTab.setSelectedIndex(1);
+				this.oLicenseInfoTab.setSelectedIndex(0);
 				
 				this._oidRegionComboBox = this.getView().byId("idRegionComboBox");		
 				var oRegionComboBoxFilter = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
@@ -2016,6 +2019,11 @@ handleRegisterUserButtonPress : function() {
 	},
 	
 	handleBasicInfoButtonClick : function(){
+		
+		
+		this.oLicenseInfoTab.setSelectedIndex(1);
+		this.oLicenseInfoTab.setSelectedIndex(0);
+		
 		this._oBasicInfoButton.setSrc("common/mime/basicinfo_hover.png");
 
 		this._oBasicInfoContent.setVisible(true);
@@ -2037,6 +2045,9 @@ handleRegisterUserButtonPress : function() {
 		
 		this.oBasicInfoTab.setSelectedIndex(1);
 		this.oBasicInfoTab.setSelectedIndex(0);
+		this.oLicenseInfoTab.setSelectedIndex(1);
+		this.oLicenseInfoTab.setSelectedIndex(0);
+		
 		
 		this._oLicenseInfoContent.setVisible(true);
 		this._oBasicInfoContent.setVisible(false);

@@ -244,7 +244,7 @@
 											
 											<VBox  id="idLicenseInfoParentVBox" class="HeadingBGVBOX">
  <HBox justifyContent="Center">
- <sap.ui.commons:TabStrip class="IconTabBarStyling"
+ <sap.ui.commons:TabStrip class="IconTabBarStyling" id="idLicenseInfoTab"
 				>
 				<sap.ui.commons:tabs>
 					<sap.ui.commons:Tab  text="{i18n>BusinessActivityQuestions}">
