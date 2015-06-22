@@ -77,7 +77,7 @@ com.sagia.common.ModelHelper = {
 	getBAQODataModel : function() {
 
 		
-		var sUrl = this.getServiceUrl();
+		//var sUrl = this.getServiceUrl();
 		
 		this.oBAQODataModel = new sap.ui.model.odata.ODataModel("proxy/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/", true,
 				null, null, {
