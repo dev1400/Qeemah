@@ -1941,47 +1941,23 @@ userSignIn : function(userID, password){
 
 				jQuery.when(oRequestFinishedDeferredBAQAnswersReadChild).then(jQuery.proxy(function(oResponse) {
 					
-					if(oResponse.data.results[0].Return !== "No Records"){
+					if(oResponse.data.results[0].Return !== "No Records"){						
 						
-						
-						var questions = [];
-						var answers = [];
-						//var oRequestFinishedBAQCreateDeferred = this.oModelHelper.createBAQAnswers();
 						for(var i=0; i < this.oTotalBAQQuestions; i++){
-							 //var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+i);
-							 //var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+i);
 							 for (j=0; j < this.oTotalBAQQuestions; j++){
 								 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+j);
 								 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+j);
 								
 								 if(oBAQuestion.data("idBAQuestion"+j) === oResponse.data.results[i].NodeGuid){
 									 
-									 console.log("oResponse.data.results[i].Atxtlg "+oResponse.data.results[i].Atxtlg);
-									 
-									 console.log(oBAQAnswer.getItemByKey(oResponse.data.results[i].Atxtlg));
-									 
 									 oBAQAnswer.setSelectedItem(oBAQAnswer.getItemByKey(oResponse.data.results[i].Atxtlg)); 
-								 }
+								 }			 
 								 
-								 
-							 }
-							
-							
+							 }									
 						}
-						
-						console.log(oResponse);
-						this.oBAQExists = true;
-						
+						this.oBAQExists = true;						
 						}
-				}, this));	
-				
-				/*var oRequestFinishedDeferredReadSavedBAQAnswers = this.oModelHelper.readBAQSavedAnswers(this.oRef_id);
-
-				jQuery.when(oRequestFinishedDeferredReadSavedBAQAnswers).then(jQuery.proxy(function(oResponse) {
-					console.log(oResponse);
-					
-					
-				}, this));*/
+				}, this));				
 			
 			}
 			
