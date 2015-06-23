@@ -664,7 +664,30 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}
 			
 		}
-		if(!this.oBAQExists){
+		if(this.oBAQExists){
+			
+			var questions = [];
+			var answers = [];
+			
+			for(var i=0; i < this.oTotalBAQQuestions; i++){
+				 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+i);
+				 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+i);
+				 questions.push(oBAQuestion.data("idBAQuestion"+i));
+				 answers.push(oBAQAnswer.getSelectedItem().getText());
+			}
+			
+			
+			var oRequestFinishedDeferredUpdateBAQAnswers = this.oModelHelper.updateBAQAnswers(this.oRef_id, questions, answers);
+
+			jQuery.when(oRequestFinishedDeferredUpdateBAQAnswers).then(jQuery.proxy(function(oResponse) {
+				console.log(oResponse);			
+				
+			}, this));
+			
+			
+			
+		}else{
+			
 			var questions = [];
 			var answers = [];
 			//var oRequestFinishedBAQCreateDeferred = this.oModelHelper.createBAQAnswers();
@@ -683,11 +706,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers);
 
 			jQuery.when(oRequestFinishedDeferredcreateBAQAnswers).then(jQuery.proxy(function(oResponse) {
-				console.log(oResponse);
+				//console.log(oResponse);
 				
 				
 			}, this));
-		}else{
+			
 			
 		}
 		
@@ -821,6 +844,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 										var vItem = new sap.ui.core.Item();		    				
 					    				
 										vItem.setText(answers[m][t].Atxtlg);						
+										vItem.setKey(answers[m][t].Atxtlg);
 										oSelect.addItem(vItem);
 									}
 								}
@@ -1913,16 +1937,51 @@ userSignIn : function(userID, password){
 				that.readBICIPOAFileAttachemnts();
 				
 				
-				var oRequestFinishedDeferredBAQAnswersReadChild = this.oModelHelper.checkBAQAnswersAvailability(this.oRef_id);
+				var oRequestFinishedDeferredBAQAnswersReadChild = this.oModelHelper.readBAQSavedAnswers(this.oRef_id);
 
 				jQuery.when(oRequestFinishedDeferredBAQAnswersReadChild).then(jQuery.proxy(function(oResponse) {
 					
 					if(oResponse.data.results[0].Return !== "No Records"){
 						
-						this.oBAQExists = false;
+						
+						var questions = [];
+						var answers = [];
+						//var oRequestFinishedBAQCreateDeferred = this.oModelHelper.createBAQAnswers();
+						for(var i=0; i < this.oTotalBAQQuestions; i++){
+							 //var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+i);
+							 //var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+i);
+							 for (j=0; j < this.oTotalBAQQuestions; j++){
+								 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+j);
+								 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+j);
+								
+								 if(oBAQuestion.data("idBAQuestion"+j) === oResponse.data.results[i].NodeGuid){
+									 
+									 console.log("oResponse.data.results[i].Atxtlg "+oResponse.data.results[i].Atxtlg);
+									 
+									 console.log(oBAQAnswer.getItemByKey(oResponse.data.results[i].Atxtlg));
+									 
+									 oBAQAnswer.setSelectedItem(oBAQAnswer.getItemByKey(oResponse.data.results[i].Atxtlg)); 
+								 }
+								 
+								 
+							 }
+							
+							
+						}
+						
+						console.log(oResponse);
+						this.oBAQExists = true;
 						
 						}
 				}, this));	
+				
+				/*var oRequestFinishedDeferredReadSavedBAQAnswers = this.oModelHelper.readBAQSavedAnswers(this.oRef_id);
+
+				jQuery.when(oRequestFinishedDeferredReadSavedBAQAnswers).then(jQuery.proxy(function(oResponse) {
+					console.log(oResponse);
+					
+					
+				}, this));*/
 			
 			}
 			
