@@ -144,7 +144,7 @@
 						</sap.ui.commons.layout:cells>
 					</sap.ui.commons.layout:MatrixLayoutRow>
 					
-					<sap.ui.commons.layout:MatrixLayoutRow>
+				<!-- 	<sap.ui.commons.layout:MatrixLayoutRow>
 						<sap.ui.commons.layout:cells>
 							<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 								<sap.ui.commons.layout:content>
@@ -158,7 +158,7 @@
 							</sap.ui.commons.layout:MatrixLayoutCell>
 						
 						</sap.ui.commons.layout:cells>
-					</sap.ui.commons.layout:MatrixLayoutRow>
+					</sap.ui.commons.layout:MatrixLayoutRow> -->
 					
 					
 
@@ -180,7 +180,7 @@
 							<sap.ui.commons.layout:MatrixLayoutCell
 								colSpan="2">
 								<sap.ui.commons.layout:content>
-									<Table width="60rem" id="idESHTable">
+									<Table width="60rem" id="idESHTable" mode="Delete" delete="handleESHTableDeleteButtonPress">
 										<columns>
 											<!-- <Column width="2em">
 												<Text text="#" />
@@ -194,9 +194,9 @@
 											<Column width="5em">
 												<Text text="{i18n>Percentage}" />
 											</Column>
-											<Column width="5em">
+											<!-- <Column width="5em">
 												<Text text="{i18n>Delete}" />
-											</Column>
+											</Column -->
 										</columns>
 										<!-- <items>
 											<ColumnListItem>

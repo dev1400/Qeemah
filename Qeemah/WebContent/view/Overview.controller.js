@@ -163,8 +163,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleExistingShareHolderAddButtonPress : function(oEvent){
 		
-		this.oExistingShareHolderTable = this.getView().byId("idESHTable");
+		//this.oExistingShareHolderTable = this.getView().byId("idESHTable");
 		
+		/*this.oExistingShareHolderTable.unbindItems();
 		this.oExistingShareHolderTable.setModel(this.oESHCreateNewDataJSONData);
 		
 		this.oExistingShareHolderTable.bindItems("/ESHCollection",new sap.m.ColumnListItem({
@@ -174,9 +175,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 	          text : "{Bpname}"
 	        }),  new sap.ui.commons.TextView({
 	          text : "{Bpname}"
-	        }), 
-	        new sap.m.Button({ icon : "sap-icon://delete"})]
-	      }));
+	        })]
+	      }));*/
 		
 	},
 	handleValidateESHButtonPress : function(oEvent){
@@ -191,14 +191,39 @@ sap.ui.controller("com.sagia.view.Overview", {
 			//console.dir(oResponse);
 			this.oExistingShareHolderEntityName.setValue(oResponse.data.Bpname);
 			
+			this.oExistingShareHolderTable.unbindItems();
+			
 			this.oESHCreateNewData.ESHCollection.push({
 	 			"Bpname":oResponse.data.Bpname});
 	 		
-	 		this.oESHCreateNewDataJSONData.setData(this.oESHCreateNewData,true);	
+	 		this.oESHCreateNewDataJSONData.setData(this.oESHCreateNewData);
+	 		
+	 		
+			this.oExistingShareHolderTable.setModel(this.oESHCreateNewDataJSONData);
+			
+			this.oExistingShareHolderTable.bindItems("/ESHCollection",new sap.m.ColumnListItem({
+		        cells : [ new sap.ui.commons.TextView({
+		          text : "{Bpname}"
+		        }),new sap.ui.commons.TextView({
+		          text : "{Bpname}"
+		        }),  new sap.ui.commons.TextView({
+		          text : "{Bpname}"
+		        })/*, 
+		        new sap.m.Button({ icon : "sap-icon://delete"})*/]
+		      }));
 			
 			
 			
 		}, this));	
+		
+	},
+	handleESHTableDeleteButtonPress : function(oEvent){
+		
+		 var path = oEvent.getParameter('listItem').getBindingContext().sPath;
+	       
+         this.oESHCreateNewData.ESHCollection.splice(path.slice(-1),1);
+                  
+         this.oExistingShareHolderTable.removeItem(oEvent.getParameter('listItem'));
 		
 	},
 	handleCreateNewShareHolder : function(oEvent){
@@ -304,7 +329,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		
 		 var path = oEvent.getParameter('listItem').getBindingContext().sPath;
-         var obj = this.oNSHCreateNSHTable.getModel().getProperty(path);
        
          this.oNSHCreateNewData.NSHCollection.splice(path.slice(-1),1);
                   
@@ -1423,6 +1447,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleAddExistingShareHolderButtonPress : function(){
 		this._oCREATE_NewShareHolderVBox.setVisible(false);
 		this._oADD_ExistingShareHolderVBox.setVisible(true);
+		
+		if (!this.oExistingShareHolderTable) {
+			this.oExistingShareHolderTable = this.getView().byId("idESHTable");
+		}
 	},
 	handleCreateNewShareHolderButtonPress : function(){
 		this._oADD_ExistingShareHolderVBox.setVisible(false);
