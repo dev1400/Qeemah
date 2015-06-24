@@ -206,32 +206,32 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var oRequestFinishedDeferredNSH = this.oModelHelper.createNewShareHolder(this.oRef_id,
 				this.oShareHolderTypeRadioButtonGroup.getSelectedButton().getText(),
 				this.oNSHFirstNameInputText.getValue(),
-				this.oNSHCountryComboBox.getValue(),
+				this.oNSHCountryComboBox.getSelectedItem().getText(),
 				this.oNSHLastNameInputText.getValue(),
 				this.oNSHCityNameInputText.getValue(),
-				this.oNSHGenderComboBox.getValue(),
+				this.oNSHGenderComboBox.getSelectedItem().getText(),
 				this.oNSHPOBoxInputText.getValue(),
-				this.oNSHMaritalStatusComboBox.getValue(),
+				this.oNSHMaritalStatusComboBox.getSelectedItem().getText(),
 				this.oNSHPostalCodeInputText.getValue(),
-				this.oNSHAcademicTitleInputText.getValue(),
+				this.oNSHAcademicTitleComboBox.getSelectedItem().getText(),
 				this.oNSHStreetInputText.getValue(),
 				this.oNSHDOBDate.getValue(),
 				this.oNSHWebsiteInputText.getValue(),
 				this.oNSHTelephoneInputText.getValue(),
-				this.oNSHNationalityComboBox.getValue(),
+				this.oNSHNationalityComboBox.getSelectedItem().getText(),
 				this.oNSHMobilePhoneInputText.getValue(),
-				this.oNSHPreviousNationalityInputText.getValue(),
+				this.oNSHPreviousNationalityInputText.getSelectedItem().getText(),
 				this.oNSHFaxInputText.getValue(),
-				this.oNSHCommMethodInputText.getValue(),
+				this.oNSHCommMethodInputText.getSelectedItem().getText(),
 				this.oNSHEmailInputText.getValue(),
 				this.oNSHPercentageInputText.getValue(),
-				this.oNSHActivityQ1ComboBox.getValue(),
-				this.oNSHActivityQ2ComboBox.getValue(),
-				this.oNSHActivityQ3ComboBox.getValue(),
-				this.oNSHExperienceQ1ComboBox.getValue(),
-				this.oNSHExperienceQ2ComboBox.getValue(),
-				this.oNSHExperienceQ3ComboBox.getValue(),
-				this.oNSHExperienceQ4ComboBox.getValue(),
+				this.oNSHActivityQ1ComboBox.getSelectedItem().getText(),
+				this.oNSHActivityQ2ComboBox.getSelectedItem().getText(),
+				this.oNSHActivityQ3ComboBox.getSelectedItem().getText(),
+				this.oNSHExperienceQ1ComboBox.getSelectedItem().getText(),
+				this.oNSHExperienceQ2ComboBox.getSelectedItem().getText(),
+				this.oNSHExperienceQ3ComboBox.getSelectedItem().getText(),
+				this.oNSHExperienceQ4ComboBox.getSelectedItem().getText(),
 				this.oNSHStock12InputText.getValue(),
 		this.oNSHStock13InputText.getValue(),
 		this.oNSHStock14InputText.getValue(),
@@ -271,16 +271,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 					.getText("NewShareHolderCreated"));
 			
 			this.oNSHCreateNSHTable.unbindItems();
-            //this.oNSHCreateNSHTable.setModel(oResponse);
 			
-            console.log(oResponse.EntityFname);
-            this.oNSHCreateNewData.NSHCollection.push({
+			this.oNSHCreateNewData.NSHCollection.push({
     			"EntityFname":oResponse.EntityFname, 
     			"EntityLname": oResponse.EntityLname, 
     			"ShldrType":oResponse.ShldrType,
     			"Percentage":oResponse.Percentage});
     		
-    		this.oNSHCreateNewDataJSONData.setData(this.oNSHCreateNewData,true);	
+    		
+    		this.oNSHCreateNewDataJSONData.setData(this.oNSHCreateNewData);	
             
     		this.oNSHCreateNSHTable.setModel(this.oNSHCreateNewDataJSONData);
     		
@@ -293,85 +292,33 @@ sap.ui.controller("com.sagia.view.Overview", {
 			          text : "{ShldrType}"
 			        }),  new sap.ui.commons.TextView({
 			          text : "{Percentage}"
-			        }), new sap.m.Button({ icon : "sap-icon://edit"}),
-			        new sap.m.Button({ icon : "sap-icon://delete"})
+			        })/*, new sap.m.Button({ icon : "sap-icon://edit"})*///,
+			        //new sap.m.Button({ icon : "sap-icon://delete"})
 			        
 			        ]
 			      }));
 			
 		}, this));
 	},
-	handleLILIProductDeleteButtonPress : function(oEvent){
-		//console.log(oEvent);
-		//this.oLILIProductsTableColoumnListItem.removeCell("1");
-		//console.log(this.oLILIProductsTable.indexOfColumn(this.oLILIProductsTableColumn1));
-		//console.log(this.oLILIProductsTableColoumnListItem.getCells().length);
+	handleNSHTableDeleteButtonPress : function(oEvent){
 		
 		
-		/*delete this.oLILIProductsdata.ProductsCollection[0];
-		
-		this.oLILIProductsTableJSONData.setData(this.oLILIProductsdata);	
-		this.oLILIProductsTable.setModel(this.oLILIProductsTableJSONData);
-		this.oLILIProductsTable.getModel().refresh(true);*/
+		 var path = oEvent.getParameter('listItem').getBindingContext().sPath;
+         var obj = this.oNSHCreateNSHTable.getModel().getProperty(path);
+       
+         this.oNSHCreateNewData.NSHCollection.splice(path.slice(-1),1);
+                  
+         this.oNSHCreateNSHTable.removeItem(oEvent.getParameter('listItem'));
+	},
+	handleLILIProductDeleteButtonPress : function(oEvent){		
 		
 		var path = oEvent.getParameter('listItem').getBindingContext().sPath;
 		this.oLILIProductsdata.ProductsCollection.splice(path.slice(-1), 1);
 		console.log(this.oLILIProductsdata.ProductsCollection);
-		//console.log(this.oLILIProductsdata.ProductsCollection[path.slice(-1)]);
-		//delete this.oLILIProductsdata.ProductsCollection[path.slice(-1)];
-		
-		//this.oLILIProductsTableJSONData.setData(this.oLILIProductsdata,true);
-		
-		var obj = this.oLILIProductsTable.getModel().getProperty(path);
-		
+				
+		var obj = this.oLILIProductsTable.getModel().getProperty(path);		
 		
         this.oLILIProductsTable.removeItem(oEvent.getParameter('listItem'));
-        
-       // this.oLILIProductsTable.unbindItems();
-       // this.oLILIProductsTable.setModel(this.oLILIProductsTableJSONData);
-        
-		//console.log(path);
-		
-		//this.oLILIProductsTable.removeItem(0);
-		
-		
-		//this.oLILIProductsTable.unbindItems();
-		
-		
-		/*var iIdx = this.oLILIProductsTable.getSelectedIndex();
-	    var sPath = this.oLILIProductsTable.getContextByIndex(iIdx).getPath();
-	    console.log(iIdx);
-		console.log(sPath);*/
-		
-	   
-        //this.oLILIProductsTableJSONData.setData(this.oLILIProductsdata,true);
-        //this.oLILIProductsTableJSONData.updateBindings(true);
-        //this.oLILIProductsTable.setModel(this.oLILIProductsTableJSONData);
-        //this.oLILIProductsTable.getModel().refresh(true);
-		//
-		//console.log(this.oLILIProductsdata.ProductsCollection[1].sno);
-		//console.log(this.oLILIProductsdata);
-		
-		//console.log("Total items = "+this.oLILIProductsTable.getItems().length);
-		//this.oLILIProductsTable.removeItem(1);
-		//this.oLILIProductsTable.removeItem(this.oLILIProductsTable.getSelectedItem());
-		
-		//console.log(this.oLILIProductsTableJSONData.getJSON() );
-		/*obj = this.oLILIProductsdata;
-		console.log(obj.ProductsCollection[0]);
-		$.each(obj, function(index, value){
-			  
-			  if(value.sno === 1)
-			  {
-			   delete obj[index];
-			  }     
-
-			});
-		console.log(obj);*/
-		//console.log(this.oLILIProductsTable.getSelectedItem());
-
-		
-		
 	},
 	handleLILIAddProductButtonPress : function(){		
 		this.oLILIProductsTable.unbindItems();
@@ -2139,7 +2086,7 @@ handleRegisterUserButtonPress : function() {
 		this.oNSHPOBoxInputText = this.getView().byId("idNSHPOBoxInputText");
 		this.oNSHMaritalStatusComboBox = this.getView().byId("idNSHMaritalStatusComboBox");
 		this.oNSHPostalCodeInputText = this.getView().byId("idNSHPostalCodeInputText");
-		this.oNSHAcademicTitleInputText = this.getView().byId("idNSHAcademicTitleInputText");
+		this.oNSHAcademicTitleComboBox = this.getView().byId("idNSHAcademicTitleInputText");
 		this.oNSHStreetInputText = this.getView().byId("idNSHStreetInputText");
 		this.oNSHDOBDate = this.getView().byId("idNSHDOBDate");
 		this.oNSHWebsiteInputText = this.getView().byId("idNSHWebsiteInputText");

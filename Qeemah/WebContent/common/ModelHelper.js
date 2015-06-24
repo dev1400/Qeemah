@@ -397,7 +397,7 @@ com.sagia.common.ModelHelper = {
 		this.oShareHolderODataModel.create("ZSHAREHOLDER_INFO_ENT", oEntry , {
 		
 			success : function(oData) {
-				console.log(oData);
+				//console.log(oData);
 				
 				
 				
