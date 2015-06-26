@@ -506,6 +506,41 @@ com.sagia.common.ModelHelper = {
 		return oRequestFinishedDeferred;
 	},
 	/**
+	 * Upload BAQ Attachment.
+	 * @author Abdul Waheed
+	 */
+	uploadBAQAttachment : function(oRefID, oNodeGuid, oBAQFileUploader){
+		//var oUploadBAQAttachmentRequestFinishedDeferred = jQuery.Deferred();
+		if(oBAQFileUploader.getValue() !== ""){
+		var csrf =  this.oODataModel.getHeaders()['x-csrf-token'];
+		that = this;
+		
+		
+		oBAQFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+				{name: "Content-Type", value: "application/pdf" }));
+		oBAQFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+				{name: "X-CSRF-Token", value: csrf })); 
+		oBAQFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+				{name: "Method", value: 'PUT' }));
+		/*oBAQFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
+        		({name: "slug", value: oBAQFileUploader.getValue() }));
+           */
+        
+		oBAQFileUploader.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/SurveyAttSet(Investorid='"+oRefID+"',NodeGuid='"+oNodeGuid+"',FileName='"+oBAQFileUploader.getValue()+"')/$value");
+		oBAQFileUploader.attachUploadComplete(function(){
+			oBAQFileUploader.removeAllHeaderParameters();
+			oBAQFileUploader.clear();
+        	that.closeBusyDialog();
+        	//oUploadBAQAttachmentRequestFinishedDeferred.resolve();
+        	 sap.m.MessageToast.show(that.getText("Uploaded"));	
+        });
+        	
+        this.openBusyDialog();
+        oBAQFileUploader.upload();
+		}
+       // return oUploadBAQAttachmentRequestFinishedDeferred;
+	},
+	/**
 	 * Upload Passport Copy.
 	 * @author Abdul Waheed
 	 */

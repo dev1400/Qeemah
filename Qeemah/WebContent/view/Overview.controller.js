@@ -159,6 +159,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this.oLILIProductsdataSerialNo = 1;
 		
+		this.oNSHTotalShareHolderPercentage=0;
+		this.oESHTotalShareHolderPercentage=0;
+		
 		
 	},
 	handleExistingShareHolderAddButtonPress : function(oEvent){
@@ -183,6 +186,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this.oExistingShareHolderEntityNo = this.getView().byId("idESHEntityNoInputText");
 		this.oExistingShareHolderEntityName = this.getView().byId("idESHEntityNameInputText");
+		this.oESHPercentageInputText = this.getView().byId("idESHPercentageInputText");
 		
 		
 		var oRequestFinishedDeferredVESH = this.oModelHelper.readExistingSH(this.oExistingShareHolderEntityNo.getValue());
@@ -194,8 +198,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oExistingShareHolderTable.unbindItems();
 			
 			this.oESHCreateNewData.ESHCollection.push({
+				"Bpno":oResponse.data.Bpno,
 	 			"Bpname":oResponse.data.Bpname});
-	 		
+			var percentage = parseInt(this.oESHPercentageInputText.getValue());
+			
+			this.oESHTotalShareHolderPercentage += percentage;
+			
 	 		this.oESHCreateNewDataJSONData.setData(this.oESHCreateNewData);
 	 		
 	 		
@@ -203,11 +211,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 			this.oExistingShareHolderTable.bindItems("/ESHCollection",new sap.m.ColumnListItem({
 		        cells : [ new sap.ui.commons.TextView({
-		          text : "{Bpname}"
+		          text : "{Bpno}"
 		        }),new sap.ui.commons.TextView({
 		          text : "{Bpname}"
 		        }),  new sap.ui.commons.TextView({
-		          text : "{Bpname}"
+		          text : percentage
 		        })/*, 
 		        new sap.m.Button({ icon : "sap-icon://delete"})*/]
 		      }));
@@ -302,7 +310,7 @@ sap.ui.controller("com.sagia.view.Overview", {
     			"EntityLname": oResponse.EntityLname, 
     			"ShldrType":oResponse.ShldrType,
     			"Percentage":oResponse.Percentage});
-    		
+			this.oNSHTotalShareHolderPercentage += oResponse.Percentage;
     		
     		this.oNSHCreateNewDataJSONData.setData(this.oNSHCreateNewData);	
             
@@ -643,7 +651,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 			for(var i=0; i < this.oTotalBAQQuestions; i++){
 				 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+i);
 				 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+i);
+				 var oBAQFileUploader = sap.ui.getCore().byId("idBAQFileUploader"+i);
+				 
+				 this.oModelHelper.uploadBAQAttachment(this.oRef_id, oBAQuestion.data("idBAQuestion"+i), oBAQFileUploader);
+				 
+				 
 				 questions.push(oBAQuestion.data("idBAQuestion"+i));
+				 console.log(oBAQAnswer.getSelectedItem().getText());
 				 answers.push(oBAQAnswer.getSelectedItem().getText());
 			}
 			
@@ -804,6 +818,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 								});
 							var oSelect = new sap.m.Select("idBAQAnswer"+l);
 							
+							var oFileUploader = new sap.ui.unified.FileUploader("idBAQFileUploader"+l,{
+								icon : "common/mime/attachment.png",
+								sendXHR : true,
+								useMultipart : false,
+								sameFilenameAllowed : true,
+								iconOnly : true,
+								mimeType : "application/pdf"
+							});
 							
 							
 							for(var m=0; m < answers.length; m++){								
@@ -826,6 +848,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 							
 							this.oBAQMatrixLayout.createRow( oTextView );
 							this.oBAQMatrixLayout.createRow( oSelect );
+							this.oBAQMatrixLayout.createRow( oFileUploader );
 							
 							this.oTotalBAQQuestions++;
 						}			
@@ -2268,8 +2291,9 @@ handleRegisterUserButtonPress : function() {
 		
 	},
 	handleSubmitInfoButtonClick : function(){
-		this.openBusyDialog();
+		
 		that = this;
+		
 		this._oSubmitInfoButton.setSrc("common/mime/submit_hover.png");
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("SubmitInformationHTML"));
@@ -2280,7 +2304,42 @@ handleRegisterUserButtonPress : function() {
 		this._oTermsInfoButton.setSrc("common/mime/terms.png");
 		//this._oSubmitInfoButton.setSrc("common/mime/submit.png");
 		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+		if((this.oNSHTotalShareHolderPercentage === 0 || this.oNSHTotalShareHolderPercentage === 100) && 
+				this.oESHTotalShareHolderPercentage === 0){
+			that.submit();
+			/*that.openBusyDialog();
+			var oRequestSubmitFinishedDeferred = this.oModelHelper.Submit(this.oRef_id);
+
+			jQuery.when(oRequestSubmitFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+				that.closeBusyDialog();
+				//console.log(oResponse);			
+				if (!this._ShowLeadIDFragment) {
+					this._ShowLeadIDFragment = sap.ui.xmlfragment(
+							"com.sagia.view.fragments.show_investorid_dialog", this.getView()
+									.getController());
+					this.getView().addDependent(this._ShowLeadIDFragment);
+				}		
+				
+				var oLeadIDTextView = sap.ui.getCore().byId("idLeadIDTextView");
+				
+				oLeadIDTextView.setText(oResponse.LeadID);
+
+				this._ShowLeadIDFragment.open();
+				
+			}, this));	*/
+			
+		}else if((this.oESHTotalShareHolderPercentage === 0 || this.oESHTotalShareHolderPercentage === 100) && 
+				this.oNSHTotalShareHolderPercentage === 0){
+			that.submit();
+		}else{
+			sap.m.MessageToast.show(this.oModelHelper
+					.getText("NSHPercentageNot100"));
+		}
 		
+	},
+	
+	submit : function(){
+		this.openBusyDialog();
 		var oRequestSubmitFinishedDeferred = this.oModelHelper.Submit(this.oRef_id);
 
 		jQuery.when(oRequestSubmitFinishedDeferred).then(jQuery.proxy(function(oResponse) {
@@ -2300,6 +2359,6 @@ handleRegisterUserButtonPress : function() {
 			this._ShowLeadIDFragment.open();
 			
 		}, this));	
-	},
+	}
 	
 });

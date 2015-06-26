@@ -137,7 +137,7 @@
 							</sap.ui.commons.layout:MatrixLayoutCell>
 							<sap.ui.commons.layout:MatrixLayoutCell>
 								<sap.ui.commons.layout:content>
-								<Input type="Text"></Input>
+								<Input type="Text" id="idESHPercentageInputText"></Input>
 								</sap.ui.commons.layout:content>
 							</sap.ui.commons.layout:MatrixLayoutCell>
 						
