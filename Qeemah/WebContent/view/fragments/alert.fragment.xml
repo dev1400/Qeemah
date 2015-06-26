@@ -1,0 +1,26 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core" xmlns:sap.ui.commons="sap.ui.commons"
+  xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+  <Dialog
+    icon="sap-icon://message-error"
+    title="{i18n>Information}"
+    class="sapUiPopupWithPadding" >
+    <content>
+      <VBox id="idInvestorIdMsg" justifyContent="Center" alignItems="Center">
+     <!--  <Label text="{i18n>PleaseNoteYourInvestorId}"></Label>
+       <Label id="idInvestIDText" design="Bold" class="InvestorIDLabelStyling"></Label> -->
+       <!-- <sap.ui.commons:TextView text="{i18n>PleaseNoteYourInvestorId}"></sap.ui.commons:TextView>
+        <sap.ui.commons:TextView id="idLeadIDTextView" ></sap.ui.commons:TextView> -->
+        <sap.ui.commons:TextView id="idAlertFragmentTextView" ></sap.ui.commons:TextView>
+        
+	  </VBox>	 
+    </content>
+    <beginButton>
+    <Button text="{i18n>Ok}" app:dialogType="Std" press="handleCloseAlertDialogButtonPress" />
+    </beginButton>
+    <!-- <endButton>      
+      <Button text="{i18n>Exit}" app:dialogType="Std" press="handleShowInvestorIDDialogCloseButton" />
+    </endButton> -->
+  </Dialog>
+</core:FragmentDefinition>
