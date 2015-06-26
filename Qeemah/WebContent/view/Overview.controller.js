@@ -469,8 +469,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}, this));	
 			}
 			catch(err){
-				sap.m.MessageToast.show(this.oModelHelper
-    					.getText("AllFieldsAreRequired"));	
+				/*sap.m.MessageToast.show(this.oModelHelper
+    					.getText("AllFieldsAreRequired"));*/
+				console.log(err);
 			}
 			
 		}else{
@@ -580,6 +581,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}
 			
 		}else{
+			this.oBasicInfoTab.setSelectedIndex(1);
+			this.oBasicInfoTab.setSelectedIndex(0);
+			
+			this.oLicenseInfoTab.setSelectedIndex(1);
+			this.oLicenseInfoTab.setSelectedIndex(0);
+			
 			try{
 			var oRequestFinishedDeferred = this.oModelHelper.createAndUpdateBICI(
 					this.oRef_id,
@@ -645,6 +652,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}
 		if(this.oBAQExists){
 			
+			this.oBasicInfoTab.setSelectedIndex(1);
+			this.oBasicInfoTab.setSelectedIndex(0);
+			
+			this.oLicenseInfoTab.setSelectedIndex(1);
+			this.oLicenseInfoTab.setSelectedIndex(0);
+			
 			var questions = [];
 			var answers = [];
 			
@@ -672,6 +685,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 			
 		}else{
+			
+			this.oBasicInfoTab.setSelectedIndex(1);
+			this.oBasicInfoTab.setSelectedIndex(0);
+			
+			this.oLicenseInfoTab.setSelectedIndex(1);
+			this.oLicenseInfoTab.setSelectedIndex(0);
+			
 			
 			var questions = [];
 			var answers = [];
