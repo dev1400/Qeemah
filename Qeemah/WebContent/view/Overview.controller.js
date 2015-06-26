@@ -623,7 +623,13 @@ sap.ui.controller("com.sagia.view.Overview", {
             	/*sap.m.MessageToast.show(this.oModelHelper
     					.getText("Saved"));	*/
             	if(this.oBICIPowerofAttorneyFileUploader.getValue() === "" && this.oBICIPassPortCopyFileUploader.getValue() === ""){
-            		sap.m.MessageToast.show(this.oModelHelper.getText("AtleastOneAttachmentNeededBICI"));
+            		//sap.m.MessageToast.show(this.oModelHelper.getText("AtleastOneAttachmentNeededBICI"));
+            		if(!this.oShowAlertDialog.isOpen())
+					{
+					this.oAlertTextView.setText(this.oModelHelper.getText("AtleastOneAttachmentNeededBICI"));
+					this.oShowAlertDialog.open();
+					
+					}
             	}else{
             	var oRequestFinishedDeferred1 = this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
 				jQuery.when(oRequestFinishedDeferred1).then(jQuery.proxy(function() {
@@ -692,7 +698,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oLicenseInfoTab.setSelectedIndex(1);
 			this.oLicenseInfoTab.setSelectedIndex(0);
 			
-			
+			try{			
 			var questions = [];
 			var answers = [];
 			//var oRequestFinishedBAQCreateDeferred = this.oModelHelper.createBAQAnswers();
@@ -715,6 +721,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 				
 				
 			}, this));
+			}catch(err){
+				
+				if(!this.oShowAlertDialog.isOpen())
+					{
+					this.oAlertTextView.setText(this.oModelHelper
+							.getText("ChooseBAQ"));
+					this.oShowAlertDialog.open();
+					
+					}
+				
+			}
 			
 			
 		}
@@ -1550,6 +1567,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.handleSaveLinkPress();		
 		
 		this.getBAQ();
+		
+		if (!this.oShowAlertDialog) {
+			this.oShowAlertDialog = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.alert", this.getView()
+							.getController());
+			this.getView().addDependent(this.oShowAlertDialog);
+		}		
+		
+		this.oAlertTextView = sap.ui.getCore().byId("idAlertFragmentTextView");
+		
+		
 
 	},
 
@@ -2052,6 +2080,9 @@ handleRegisterUserButtonPress : function() {
 	handleShowInvestorIDDialogCloseButton : function(oEvent) {
 		this._ShowLeadIDFragment.close();
 		location.reload(true);
+	},
+	handleCloseAlertDialogButtonPress : function(oEvent) {
+		this.oShowAlertDialog.close();		
 	},
 	handleCancelButtonPress : function(oEvent) {
 	},
