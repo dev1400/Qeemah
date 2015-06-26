@@ -30,24 +30,34 @@
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin" colSpan="4">
+						hAlign="Begin" colSpan="1">
 						<sap.ui.commons.layout:content>
-							<HBox alignItems="Center">
-			<Label text="{i18n>SelectShareHolderType}"></Label>
+							<!-- <HBox alignItems="Center"> -->
+			<sap.ui.commons:TextView text="{i18n>SelectShareHolderType}"></sap.ui.commons:TextView>
 			<!-- <RadioButton groupName="NewShareHolderGroup" text="{i18n>Person}" />
 			<RadioButton groupName="NewShareHolderGroup" text="{i18n>Organization}" />
 			 -->
-			<RadioButtonGroup id="idShareHolderTypeRadioButtonGroup">
+			<!-- <RadioButtonGroup id="idShareHolderTypeRadioButtonGroup">
         <buttons>
           <RadioButton id="RB1-1" text="{i18n>Person}"/>
           <RadioButton id="RB1-2" text="{i18n>Organization}"/>
         </buttons>
-      </RadioButtonGroup>
-		</HBox>
+      </RadioButtonGroup> -->
+      
+      
+		<!-- </HBox> -->
 							
 										</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
-					
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="Begin" colSpan="3">
+						<sap.ui.commons.layout:content>
+						<Select id="idNSHTypeComboBox" width="25em">
+								<sap.ui.core:ListItem Key="1" text="{i18n>Person}" />
+								<sap.ui.core:ListItem key="2" text="{i18n>Organization}" />
+							</Select>
+						</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
 					
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow>

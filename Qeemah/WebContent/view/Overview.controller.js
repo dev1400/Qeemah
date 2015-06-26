@@ -237,7 +237,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleCreateNewShareHolder : function(oEvent){
 		
 		var oRequestFinishedDeferredNSH = this.oModelHelper.createNewShareHolder(this.oRef_id,
-				this.oShareHolderTypeRadioButtonGroup.getSelectedButton().getText(),
+				this.oShareHolderTypeComboBox.getSelectedItem().getText(),
 				this.oNSHFirstNameInputText.getValue(),
 				this.oNSHCountryComboBox.getSelectedItem().getText(),
 				this.oNSHLastNameInputText.getValue(),
@@ -2179,7 +2179,7 @@ handleRegisterUserButtonPress : function() {
 				.getController());
 		this.oShareHolderNewShareHolderFinancialQuestionsFragment = sap.ui.xmlfragment("com.sagia.view.fragments.ns_p_financialquestions", this.getView()
 				.getController());
-		this.oShareHolderTypeRadioButtonGroup = this.getView().byId("idShareHolderTypeRadioButtonGroup");
+		this.oShareHolderTypeComboBox = this.getView().byId("idNSHTypeComboBox");
 		this.oNSHFirstNameInputText = this.getView().byId("idNSHFirstNameInputText");
 		this.oNSHCountryComboBox = this.getView().byId("idNSHCountryComboBox");
 		this.oNSHLastNameInputText = this.getView().byId("idNSHLastNameInputText");
@@ -2357,34 +2357,18 @@ handleRegisterUserButtonPress : function() {
 		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
 		if((this.oNSHTotalShareHolderPercentage === 0 || this.oNSHTotalShareHolderPercentage === 100) && 
 				this.oESHTotalShareHolderPercentage === 0){
-			that.submit();
-			/*that.openBusyDialog();
-			var oRequestSubmitFinishedDeferred = this.oModelHelper.Submit(this.oRef_id);
-
-			jQuery.when(oRequestSubmitFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-				that.closeBusyDialog();
-				//console.log(oResponse);			
-				if (!this._ShowLeadIDFragment) {
-					this._ShowLeadIDFragment = sap.ui.xmlfragment(
-							"com.sagia.view.fragments.show_investorid_dialog", this.getView()
-									.getController());
-					this.getView().addDependent(this._ShowLeadIDFragment);
-				}		
-				
-				var oLeadIDTextView = sap.ui.getCore().byId("idLeadIDTextView");
-				
-				oLeadIDTextView.setText(oResponse.LeadID);
-
-				this._ShowLeadIDFragment.open();
-				
-			}, this));	*/
+			that.submit();			
 			
 		}else if((this.oESHTotalShareHolderPercentage === 0 || this.oESHTotalShareHolderPercentage === 100) && 
 				this.oNSHTotalShareHolderPercentage === 0){
 			that.submit();
 		}else{
-			sap.m.MessageToast.show(this.oModelHelper
-					.getText("NSHPercentageNot100"));
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("NSHPercentageNot100"));
+			this.oShowAlertDialog.open();
+			
+			}
 		}
 		
 	},
