@@ -11,8 +11,23 @@
     <sap.ui.commons.layout:MatrixLayout
 		id="idPreview_LI_BAQ_1_to_6MAtrixLayout" layoutFixed="false">
 		<sap.ui.commons.layout:rows>
-		
 		<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="Begin" colSpan="4">
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>BusinessActivityQuestions}" design="H1"></sap.ui.commons:TextView>
+							<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:rows>
+		</sap.ui.commons.layout:MatrixLayout>
+		
+		<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Begin" colSpan="4">
@@ -43,7 +58,7 @@
 										
 										<sap.ui.unified:FileUploader enabled="false"
 											id="idPreview_BAQ1FU" width="20rem"  icon="common/mime/attachment.png" iconOnly="true"/>
-<!-- icon="common/mime/attachment.png" iconOnly="true" -->
+icon="common/mime/attachment.png" iconOnly="true"
 									</HBox>
 								</HBox>
 							</VBox>
@@ -146,7 +161,7 @@
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
-			</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:MatrixLayoutRow> -->
 			
 			<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
@@ -171,7 +186,7 @@
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow> -->
 	
-	<sap.ui.commons.layout:MatrixLayoutRow>
+	<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
@@ -192,7 +207,7 @@
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
-			</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:MatrixLayoutRow> -->
 			
 			
 	<!-- <sap.ui.commons.layout:MatrixLayoutRow>
@@ -206,7 +221,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow> -->
-	 <sap.ui.commons.layout:MatrixLayoutRow>
+	<!--  <sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
@@ -303,7 +318,7 @@
 			
 		
 		</sap.ui.commons.layout:rows>
-	</sap.ui.commons.layout:MatrixLayout>
+	</sap.ui.commons.layout:MatrixLayout> -->
 	
 	
 	<!-- <sap.ui.commons.layout:MatrixLayout id="idPreview_LI_BAQ_6_to_10MatrixLayout" visible="false">

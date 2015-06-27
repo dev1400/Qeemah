@@ -826,6 +826,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			var surveyID = [];
 			var answers = [];
 			this.oBAQMatrixLayout = this.getView().byId("idLI_BAQ_1_to_6MAtrixLayoutz");
+			//this.oBAQPreviewMatrixLayout = this.getView().byId("idPreview_LI_BAQ_1_to_6MAtrixLayout");
 			
 			this.oTotalBAQQuestions = 0;
 			
@@ -887,6 +888,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 							this.oBAQMatrixLayout.createRow( oSelect );
 							this.oBAQMatrixLayout.createRow( oFileUploader );
 							
+							/*this.oBAQPreviewMatrixLayout.createRow( oTextView );
+							this.oBAQPreviewMatrixLayout.createRow( oSelect );
+							this.oBAQPreviewMatrixLayout.createRow( oFileUploader );*/
+							
+							
+							
 							this.oTotalBAQQuestions++;
 						}			
 						
@@ -897,6 +904,97 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}			
 			
 		}, this));	
+		
+	},
+	getPreviewBAQ : function(){
+		if(!this.oBAQPreviewMatrixLayout){
+		this.openBusyDialog();
+		that = this;
+		var oRequestFinishedDeferred = this.oModelHelper.readBAQ();
+
+		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+			var questions = [];
+			var nodeID = [];
+			var surveyID = [];
+			var answers = [];
+			this.oBAQPreviewMatrixLayout = this.getView().byId("idPreview_LI_BAQ_1_to_6MAtrixLayout");
+			
+			this.oTotalBAQQuestions = 0;
+			
+			for(var i=0; i < oResponse.data.results.length; i++){
+				questions[i] = oResponse.data.results[i].Qtxtlg;
+				nodeID[i] = oResponse.data.results[i].NodeGuid;
+				surveyID[i] = oResponse.data.results[i].SurveyID;				
+			}
+			
+			j = 0 ;
+			for(var i=0; i < questions.length; i++){
+				
+				var oRequestFinishedDeferred = this.oModelHelper.readBAQAnswer(oResponse.data.results[i].NodeGuid, "QUEEMAH_BUS_PLAN");
+
+				jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+					answers.push(oResponse.data.results);
+					
+					j++;
+	                
+					if(j === questions.length){
+						
+						k = 0;
+						for(var l=0; l < questions.length; l++){
+							
+							var oTextView = new sap.ui.commons.TextView("idPBAQuestion"+l,{
+								text : questions[l],
+								enabled : false
+								});
+							var oSelect = new sap.m.Select("idPBAQAnswer"+l, {enabled : false});
+							
+							var oFileUploader = new sap.ui.unified.FileUploader("idPBAQFileUploader"+l,{
+								icon : "common/mime/attachment.png",
+								sendXHR : true,
+								useMultipart : false,
+								sameFilenameAllowed : true,
+								iconOnly : true,
+								mimeType : "application/pdf",
+								enabled : false
+							});
+							
+							
+							for(var m=0; m < answers.length; m++){								
+							
+								for(var t=0; t < answers[m].length; t++){
+									
+									if(nodeID[k] === answers[m][t].NodeGuid){
+									
+										var vItem = new sap.ui.core.Item();		    				
+					    				
+										vItem.setText(answers[m][t].Atxtlg);						
+										vItem.setKey(answers[m][t].Atxtlg);
+										oSelect.addItem(vItem);
+									}
+								}
+								
+							}k++;
+							
+							oTextView.data("idBAQuestion"+l,nodeID[l]);
+							
+							
+							this.oBAQPreviewMatrixLayout.createRow( oTextView );
+							this.oBAQPreviewMatrixLayout.createRow( oSelect );
+							this.oBAQPreviewMatrixLayout.createRow( oFileUploader );
+							
+							
+							
+							this.oTotalBAQQuestions++;
+						}			
+						
+						that.closeBusyDialog();		    				
+					}
+				}, this));				
+				
+			}			
+			
+		}, this));	
+		}
 		
 	},
 	/**
@@ -1567,6 +1665,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.handleSaveLinkPress();		
 		
 		this.getBAQ();
+		//this.getPreviewBAQ();
 		
 		if (!this.oShowAlertDialog) {
 			this.oShowAlertDialog = sap.ui.xmlfragment(
@@ -2127,6 +2226,8 @@ handleRegisterUserButtonPress : function() {
 	},
 	handleLicenseButtonClick : function(){
 		
+		//this.getBAQ();
+		
 		this.oBasicInfoTab.setSelectedIndex(1);
 		this.oBasicInfoTab.setSelectedIndex(0);
 		this.oLicenseInfoTab.setSelectedIndex(1);
@@ -2277,6 +2378,12 @@ handleRegisterUserButtonPress : function() {
 		
 	},
 	handlePreviewInfoButtonClick : function(){
+		//sap.ui.getCore().getUIArea(sap.ui.getCore().byId("idLI_BAQ_1_to_6MAtrixLayoutz")).lock();
+		//this.oBAQMatrixLayout.lock();
+		//sap.ui.getCore().getUIArea(sap.ui.getCore().byId("__xmlview0--idBAQDIV")).lock();
+		//sap.ui.getCore().getUIArea("content").lock();
+		this.getPreviewBAQ();
+		
 		this._oPreviewInfoButton.setSrc("common/mime/preview_hover.png");
 		this._oPreviewInfoContent.setVisible(true);
 		this._oShareHoldersInfoContent.setVisible(false);
