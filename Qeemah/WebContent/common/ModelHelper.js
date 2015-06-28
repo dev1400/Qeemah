@@ -517,22 +517,22 @@ com.sagia.common.ModelHelper = {
 		
 		
 		oBAQFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
-				{name: "Content-Type", value: "application/pdf" }));
+				{name: "Content-Type", value: "application/ atom+xml" }));
 		oBAQFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
 				{name: "X-CSRF-Token", value: csrf })); 
-		oBAQFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
-				{name: "Method", value: 'PUT' }));
+		/*oBAQFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+				{name: "Method", value: 'PUT' }));*/
 		/*oBAQFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
         		({name: "slug", value: oBAQFileUploader.getValue() }));
            */
         
-		oBAQFileUploader.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/SurveyAttSet(Investorid='"+oRefID+"',NodeGuid='"+oNodeGuid+"',FileName='"+oBAQFileUploader.getValue()+"')/$value");
+		oBAQFileUploader.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/Survey_Att_hdrSet(Investorid='"+oRefID+"',NodeGuid='"+oNodeGuid+"',FileName='"+oBAQFileUploader.getValue()+"')/SurveyFile");
 		oBAQFileUploader.attachUploadComplete(function(){
 			oBAQFileUploader.removeAllHeaderParameters();
 			oBAQFileUploader.clear();
         	that.closeBusyDialog();
         	//oUploadBAQAttachmentRequestFinishedDeferred.resolve();
-        	 sap.m.MessageToast.show(that.getText("Uploaded"));	
+        	 //sap.m.MessageToast.show(that.getText("Uploaded"));	
         });
         	
         this.openBusyDialog();
