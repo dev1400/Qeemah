@@ -971,6 +971,28 @@ com.sagia.common.ModelHelper = {
 		return oRequestFinishedDeferred;
 	},
 	/**
+	 * Read LI LI BusinessType 
+	 * @author mabdulwaheed
+	 */
+	readLILIBusinessType : function() {
+		this.openBusyDialog();		
+		var that = this;		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		this.oODataModel.read("IsicDet?Flag='L'&Lang='E'&IsicSection=' '&IsicDivision=' '&IsicGroup=' '&IsicClass=' '", {
+			success : function(oData, response) {
+				that.oBusinessTypeCollectionModel = new sap.ui.model.json.JSONModel();
+				that.oBusinessTypeCollectionModel.setData({LILIBusinessTypeCollection:oData.results});
+				oRequestFinishedDeferred.resolve(that.oBusinessTypeCollectionModel);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				oRequestFinishedDeferred.resolve();
+				that.closeBusyDialog();
+			}
+		});
+		return oRequestFinishedDeferred;
+	},
+	/**
 	 * Read LI LI Division 
 	 */
 	readLILIDivision : function(IsicSection) {

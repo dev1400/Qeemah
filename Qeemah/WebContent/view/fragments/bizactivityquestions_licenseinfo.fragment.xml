@@ -25,6 +25,22 @@
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons.layout:MatrixLayout
 								layoutFixed="false">
+								
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<HBox justifyContent="End">
+											<sap.ui.commons:TextView text="{i18n>BusinessType}"></sap.ui.commons:TextView>
+											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+										</HBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<ComboBox width="25em" items="{/LILIBusinessTypeCollection}" id="idLILIBusinessTypeComboBox" selectionChange="handleLILIBusinessTypeComboBoxSelectionChange">
+										     <sap.ui.core:ListItem key="{Flag}" text="{IsicDescription}" id="idLILIBusinessTypeComboBoxitem"/>
+										</ComboBox>
+									
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<HBox justifyContent="End">

@@ -34,9 +34,9 @@
 											<Column width="5em" hAlign = "Center">
 												<Text text="{i18n>Percentage}" />
 											</Column>
-											<!-- <Column width="5em" hAlign = "Center">
+											<Column width="5em" hAlign = "Center">
 												<Text text="{i18n>Edit}" />
-											</Column> -->
+											</Column>
 											<!-- <Column width="5em" hAlign = "Center">
 												<Text text="{i18n>Delete}" />
 											</Column> -->

@@ -142,6 +142,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oPoweOfAttorneyFileUpload = this.getView().byId("idBICIPowerofAttorneyFileUploader");
 		
 		this.oLILISectionComboBox = this.getView().byId("idLILISectionComboBox");
+		this.oLILIBusinessTypeComboBox = this.getView().byId("idLILIBusinessTypeComboBox");
 		this.oLILIDivisionComboBox = this.getView().byId("idLILIDivisionComboBox");
 		this.oLILIGroupComboBox = this.getView().byId("idLILIGroupComboBox");
 		this.oLILIClassMultiComboBox = this.getView().byId("idLILIClassMultiComboBox");
@@ -325,7 +326,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			          text : "{ShldrType}"
 			        }),  new sap.ui.commons.TextView({
 			          text : "{Percentage}"
-			        })/*, new sap.m.Button({ icon : "sap-icon://edit"})*///,
+			        }), new sap.m.Button({ icon : "sap-icon://edit"})//,
 			        //new sap.m.Button({ icon : "sap-icon://delete"})
 			        
 			        ]
@@ -1018,24 +1019,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 
 	handleSaveLinkPress : function(){
-		//this._oCountryComboBox = sap.ui.getCore().byId("idCountryComboBox1400");
-		//this._oRegionComboBox = sap.ui.getCore().byId("idRegionComboBox");
-		
-		//Read City
-		//this.oModelHelper.readCountry();
-		
-		/*var oAmendmentDetailModel = this.oModelHelper.readCountry();
-		this.getView().setModel(oAmendmentDetailModel, "AmendmentDetailModel");*/
-		
-		/*this.oShareHolderNewShareHolderFragment = sap.ui.xmlfragment("com.sagia.view.fragments.ns_shareholderdetails", this.getView()
-				.getController());*/
-		
+				
 		var oRequestFinishedDeferred = this.oModelHelper.readCountry();
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 			
-			//console.log(oResponse.getData());
-			//console.dir(oResponse);
 			var arr = [];
 			for(var i = 0; i < oResponse.oData.DetailsCollection.length ; i++){
 				if(oResponse.oData.DetailsCollection[i].Bezei_reg !== "")
@@ -1046,29 +1034,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 				
 				
 			}
-			//console.log(arr);
-			//console.log(JSON.stringify(arr));
-			//this.oShareHolderNewShareHolderFragment.setModel(oResponse);
 			
 			this.getView().setModel(oResponse);
 			
 			this.getView().setModel(oResponse,"CC");
-			
-			
-			//var filterRegion = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
-			
-			/*var filterRegion = new sap.ui.model.Filter([
-			 						new sap.ui.model.Filter("Landx50",
-			 								sap.ui.model.FilterOperator.Contains, "") ],
-			 						false);
-			
-			
-			
-			var oBinding = this.oShareHolderNewShareHolderFragment.getBinding("items");
-			oBinding.filter(filterRegion);*/
-			
-			
-			//this.oShareHolderNewShareHolderFragment.setModel(oResponse);
 			
 		}, this));	
 		
@@ -1076,27 +1045,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		jQuery.when(oRequestFinishedDeferredLILI).then(jQuery.proxy(function(oResponse) {			
 			this.oLILISectionComboBox.setModel(oResponse);
-			//this.oLILIProductsTable.setModel(oResponse);
-			
 		}, this));	
 		
-		
-		/*this.oShareHolderNewShareHolderFragment = sap.ui.xmlfragment("com.sagia.view.fragments.ns_shareholderdetails", this.getView()
-				.getController());
-		
-		var oRequestFinishedNSHCountryDeferred = this.oModelHelper.readCountry();
+		var oRequestFinishedDeferredLILIBusinessType = this.oModelHelper.readLILIBusinessType();
 
-		jQuery.when(oRequestFinishedNSHCountryDeferred).then(jQuery.proxy(function(oResponse) {
-			
-			this.oShareHolderNewShareHolderFragment.setModel(oResponse);
-			
-		}, this));	*/
-		
-		
+		jQuery.when(oRequestFinishedDeferredLILIBusinessType).then(jQuery.proxy(function(oResponse) {			
+			this.oLILIBusinessTypeComboBox.setModel(oResponse);
+		}, this));	
 	},
 	handleLogoutLinkPress : function(){
 		
-		//sessionStorage.clear();
 		location.reload(true);
 		
 		
