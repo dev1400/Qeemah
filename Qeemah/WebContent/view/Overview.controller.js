@@ -143,6 +143,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this.oLILISectionComboBox = this.getView().byId("idLILISectionComboBox");
 		this.oLILIBusinessTypeComboBox = this.getView().byId("idLILIBusinessTypeComboBox");
+		this.oLicenseTypeInputText = this.getView().byId("idLicenseTypeInputText");
 		this.oLILIDivisionComboBox = this.getView().byId("idLILIDivisionComboBox");
 		this.oLILIGroupComboBox = this.getView().byId("idLILIGroupComboBox");
 		this.oLILIClassMultiComboBox = this.getView().byId("idLILIClassMultiComboBox");
@@ -394,6 +395,18 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oLILIDivisionComboBox.setModel(oResponse);
 			
 		}, this));	
+	},
+	handleLILIBusinessTypeComboBoxSelectionChange : function(){
+		var oRequestFinishedDeferredLILIBusinessType = this.oModelHelper.readLILIBusinessTypeIsicDescription(this.oLILIBusinessTypeComboBox.getSelectedKey());
+		jQuery.when(oRequestFinishedDeferredLILIBusinessType).then(jQuery.proxy(function(oResponse) {	
+			
+			if(oResponse.data.results[0].IsicDescription !== "ISIC"){
+				this.oLicenseTypeInputText.setValue(oResponse.data.results[0].IsicDescription);
+			}else{
+				this.oLicenseTypeInputText.setValue("");
+			}
+		}, this));	
+		
 	},
 	handleLILIDivisionSelectionComboBox : function(){
 		this.oLILIGroupComboBox.removeAllSelectedItems();

@@ -992,6 +992,23 @@ com.sagia.common.ModelHelper = {
 		});
 		return oRequestFinishedDeferred;
 	},
+	readLILIBusinessTypeIsicDescription : function(oFlag){
+		this.openBusyDialog();		
+		var that = this;		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		this.oODataModel.read("IsicDet?Flag='"+oFlag+"'&Lang='E'&IsicSection=' '&IsicDivision=' '&IsicGroup=' '&IsicClass=' '", {
+			success : function(oData, response) {				
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				oRequestFinishedDeferred.resolve();
+				that.closeBusyDialog();
+			}
+		});
+		return oRequestFinishedDeferred;
+		
+	},
 	/**
 	 * Read LI LI Division 
 	 */

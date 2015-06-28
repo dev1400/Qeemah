@@ -40,6 +40,17 @@
 									
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									</sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										<HBox justifyContent="End">
+											<sap.ui.commons:TextView text="{i18n>LicenseType}"></sap.ui.commons:TextView>
+											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+										</HBox>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+										  <Input type="Text" id="idLicenseTypeInputText" enabled="false"></Input>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:MatrixLayoutRow>
 									
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
