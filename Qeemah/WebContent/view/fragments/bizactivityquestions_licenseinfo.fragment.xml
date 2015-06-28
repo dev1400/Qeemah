@@ -14,7 +14,7 @@
     width="69rem"
     vertical="true" ><!-- height="39.88rem" -->
      <html:br/>
-    <VBox justifyContent="Center" alignItems="Center">
+    <VBox  alignItems="Center">
 	<!-- Child license activity Q start -->
 	<sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false">
@@ -51,6 +51,27 @@
 										  <Input type="Text" id="idLicenseTypeInputText" enabled="false"></Input>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									</sap.ui.commons.layout:MatrixLayoutRow>
+									</sap.ui.commons.layout:MatrixLayout>
+									</sap.ui.commons.layout:content>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									</sap.ui.commons.layout:rows>
+									</sap.ui.commons.layout:MatrixLayout>
+									</VBox>
+	<VBox id="LicenceInfoContentVBox" visible="false" alignItems="Center">
+									
+	<sap.ui.commons.layout:MatrixLayout
+		layoutFixed="false">
+		<sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons.layout:MatrixLayout
+								layoutFixed="false">
+								
+								
 									
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
@@ -202,7 +223,7 @@
 	<!-- <VBox><Button style="Accept" text="{i18n>Add}" press="" >
 							</Button><html:br/></VBox> -->
 	
-	<VBox alignItems="Center">					
+	<!-- <VBox alignItems="Center"> -->					
 	<sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false">
 		<sap.ui.commons.layout:rows>
@@ -309,7 +330,7 @@
 		</sap.ui.commons.layout:rows>
 		
 	</sap.ui.commons.layout:MatrixLayout>
-	</VBox>
+	<!-- </VBox> -->
 	
 	<sap.ui.commons.layout:MatrixLayout>
 	
@@ -360,5 +381,6 @@
 							</Button>
 	</VBox> -->
 	<!-- </ScrollContainer> -->
+	<!-- </VBox> -->
 	</ScrollContainer>
 </sap.ui.core:FragmentDefinition>

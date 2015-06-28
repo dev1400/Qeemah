@@ -143,6 +143,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this.oLILISectionComboBox = this.getView().byId("idLILISectionComboBox");
 		this.oLILIBusinessTypeComboBox = this.getView().byId("idLILIBusinessTypeComboBox");
+		this.oLILILicenceInfoContentVBox = this.getView().byId("LicenceInfoContentVBox");
 		this.oLicenseTypeInputText = this.getView().byId("idLicenseTypeInputText");
 		this.oLILIDivisionComboBox = this.getView().byId("idLILIDivisionComboBox");
 		this.oLILIGroupComboBox = this.getView().byId("idLILIGroupComboBox");
@@ -402,8 +403,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 			if(oResponse.data.results[0].IsicDescription !== "ISIC"){
 				this.oLicenseTypeInputText.setValue(oResponse.data.results[0].IsicDescription);
+				this.oLILILicenceInfoContentVBox.setVisible(false);
 			}else{
 				this.oLicenseTypeInputText.setValue("");
+				this.oLILILicenceInfoContentVBox.setVisible(true);
 			}
 		}, this));	
 		
