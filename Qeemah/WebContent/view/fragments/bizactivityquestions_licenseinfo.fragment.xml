@@ -16,24 +16,18 @@
      <html:br/>
     <VBox  alignItems="Center">
 	<!-- Child license activity Q start -->
-	<sap.ui.commons.layout:MatrixLayout
-		layoutFixed="false">
-		<sap.ui.commons.layout:rows>
-			<sap.ui.commons.layout:MatrixLayoutRow>
-				<sap.ui.commons.layout:cells>
-					<sap.ui.commons.layout:MatrixLayoutCell>
-						<sap.ui.commons.layout:content>
+	
 							<sap.ui.commons.layout:MatrixLayout
 								layoutFixed="false">
 								
 								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<HBox justifyContent="End">
+									<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
+										
 											<sap.ui.commons:TextView text="{i18n>BusinessType}"></sap.ui.commons:TextView>
 											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										</HBox>
+										
 									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell >
 										<ComboBox width="25em" items="{/LILIBusinessTypeCollection}" id="idLILIBusinessTypeComboBox" selectionChange="handleLILIBusinessTypeComboBoxSelectionChange">
 										     <sap.ui.core:ListItem key="{Flag}" text="{IsicDescription}" id="idLILIBusinessTypeComboBoxitem"/>
 										</ComboBox>
@@ -41,44 +35,27 @@
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									</sap.ui.commons.layout:MatrixLayoutRow>
 								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<HBox justifyContent="End">
+									<sap.ui.commons.layout:MatrixLayoutCell >
+										
 											<sap.ui.commons:TextView text="{i18n>LicenseType}"></sap.ui.commons:TextView>
 											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										</HBox>
+										
 									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell >
 										  <Input type="Text" id="idLicenseTypeInputText" enabled="false"></Input>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									</sap.ui.commons.layout:MatrixLayoutRow>
 									</sap.ui.commons.layout:MatrixLayout>
-									</sap.ui.commons.layout:content>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:cells>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-									</sap.ui.commons.layout:rows>
-									</sap.ui.commons.layout:MatrixLayout>
-									</VBox>
+									
 	<VBox id="LicenceInfoContentVBox" visible="false" alignItems="Center">
 									
 	<sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false">
-		<sap.ui.commons.layout:rows>
-			<sap.ui.commons.layout:MatrixLayoutRow>
-				<sap.ui.commons.layout:cells>
-					<sap.ui.commons.layout:MatrixLayoutCell>
-						<sap.ui.commons.layout:content>
-							<sap.ui.commons.layout:MatrixLayout
-								layoutFixed="false">
-								
-								
-									
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>Section}"></sap.ui.commons:TextView>
 											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										</HBox>
+										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<ComboBox width="25em" items="{/LILISectionCollection}" id="idLILISectionComboBox" selectionChange="handleLILISectionSelectionComboBox">
@@ -89,10 +66,10 @@
 									</sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<HBox justifyContent="End">
+										
 											<sap.ui.commons:TextView text="{i18n>Division}"></sap.ui.commons:TextView>
 											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										</HBox>
+										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<ComboBox width="25em"  items="{/LILIDivisionCollection}" id="idLILIDivisionComboBox" selectionChange="handleLILIDivisionSelectionComboBox">
@@ -105,10 +82,10 @@
 								</sap.ui.commons.layout:MatrixLayoutRow> -->
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<HBox justifyContent="End">
+										
 											<sap.ui.commons:TextView text="{i18n>Group}"></sap.ui.commons:TextView>
 											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										</HBox>
+										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<MultiComboBox selectionChange="handleLILIGropuMultiSelectionComboBoxChange"  id="idLILIGroupComboBox"
@@ -119,10 +96,10 @@
 									</sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<HBox justifyContent="End">
+										
 											<sap.ui.commons:TextView text="{i18n>Class}"></sap.ui.commons:TextView>
 											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										</HBox>
+										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<MultiComboBox selectionChange=""  id="idLILIClassMultiComboBox"
@@ -136,10 +113,9 @@
 								</sap.ui.commons.layout:MatrixLayoutRow> -->
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<HBox justifyContent="End">
+										
 											<sap.ui.commons:TextView text="{i18n>LicenseActivity}"></sap.ui.commons:TextView>
 											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<Select width="25em">
@@ -149,9 +125,7 @@
 									</sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<HBox justifyContent="End">
 											<sap.ui.commons:TextView text="{i18n>ActivityDescription}"></sap.ui.commons:TextView>
-										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<sap.ui.commons.layout:content>
@@ -159,66 +133,7 @@
 										</sap.ui.commons.layout:content>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:MatrixLayoutRow>
-								
-								
-								
-								
-								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
-									
-								</sap.ui.commons.layout:MatrixLayoutRow> -->
-								
-								
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<!-- <sap.ui.commons.layout:MatrixLayoutCell>
-										<HBox justifyContent="End">
-											<sap.ui.commons:TextView text="{i18n>LicenseActivity}"></sap.ui.commons:TextView>
-										</HBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<Select width="25em">
-											<sap.ui.core:Item />
-										</Select>
-									</sap.ui.commons.layout:MatrixLayoutCell> -->
-									<!-- <sap.ui.commons.layout:MatrixLayoutCell>
-										<HBox justifyContent="End">
-											<sap.ui.commons:TextView text="{i18n>Quantity}"></sap.ui.commons:TextView>
-										</HBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<Select width="25em">
-											<sap.ui.core:Item />
-										</Select>
-									</sap.ui.commons.layout:MatrixLayoutCell> -->
-								</sap.ui.commons.layout:MatrixLayoutRow>
-								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
-									
-								</sap.ui.commons.layout:MatrixLayoutRow> -->
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<!-- <sap.ui.commons.layout:MatrixLayoutCell>
-										<HBox justifyContent="End">
-											<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}"></sap.ui.commons:TextView>
-										</HBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<Select width="25em">
-											<sap.ui.core:Item />
-										</Select>
-									</sap.ui.commons.layout:MatrixLayoutCell> -->
-								</sap.ui.commons.layout:MatrixLayoutRow>
-								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<Button style="Accept" text="{i18n>Add}" press="" >
-							</Button>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow> -->
-							
-							</sap.ui.commons.layout:MatrixLayout>
-						</sap.ui.commons.layout:content>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-				</sap.ui.commons.layout:cells>
-			</sap.ui.commons.layout:MatrixLayoutRow>
-			
-		</sap.ui.commons.layout:rows>
+		
 	</sap.ui.commons.layout:MatrixLayout>
 	<!-- <VBox><Button style="Accept" text="{i18n>Add}" press="" >
 							</Button><html:br/></VBox> -->
@@ -226,7 +141,6 @@
 	<!-- <VBox alignItems="Center"> -->					
 	<sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false">
-		<sap.ui.commons.layout:rows>
 		
 		<sap.ui.commons.layout:MatrixLayoutRow>
 			<sap.ui.commons.layout:cells>
@@ -269,19 +183,9 @@
 									
 								</sap.ui.commons.layout:MatrixLayoutRow>
 								
-		</sap.ui.commons.layout:rows>
 		</sap.ui.commons.layout:MatrixLayout>
 					<html:br/>
-	<sap.ui.commons.layout:MatrixLayout
-		layoutFixed="false">
-		<sap.ui.commons.layout:rows>
-			
-			<sap.ui.commons.layout:MatrixLayoutRow>
-				<sap.ui.commons.layout:cells>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						>
-						<sap.ui.commons.layout:content>
-							<Table   delete="handleLILIProductDeleteButtonPress" mode="Delete" width="66rem"  id="idLILIProductsTable">
+						<Table   delete="handleLILIProductDeleteButtonPress" mode="Delete" width="66rem"  id="idLILIProductsTable">
 							<!-- mode="SingleSelect" delete="handleLILIProductDeleteButtonPress" mode="Delete" -->
 								<columns>
 									<!-- <Column width="2em" id="idLILIProductsTableColumn1">
@@ -304,33 +208,8 @@
 										<sap.ui.commons:TextView text="{i18n>Delete}" class="textcolorwhite"></sap.ui.commons:TextView>
 									</Column> -->
 								</columns>
-								<!-- <items>
-									<ColumnListItem> id="idLILIProductsTableColoumnListItem"
-										<cells>
-											<sap.ui.commons:TextView text="{sno}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="{product}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="{quantity}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="{uom}"></sap.ui.commons:TextView>
-											<Button style="Accept" press="handleLILIProductDeleteButtonPress" icon="sap-icon://delete"/>
-										</cells>
-									</ColumnListItem>
-								</items> -->
 							</Table>
-						</sap.ui.commons.layout:content>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-				</sap.ui.commons.layout:cells>
-			</sap.ui.commons.layout:MatrixLayoutRow>
-			<!-- <sap.ui.commons.layout:MatrixLayoutRow><sap.ui.commons.layout:cells>
-			<sap.ui.commons.layout:MatrixLayoutCell colSpan="2">
-			<Button style="Accept" text="{i18n>BackToBAQ}" press="" >
-							</Button>
-			</sap.ui.commons.layout:MatrixLayoutCell>
-			</sap.ui.commons.layout:cells></sap.ui.commons.layout:MatrixLayoutRow> -->
-		</sap.ui.commons.layout:rows>
-		
-	</sap.ui.commons.layout:MatrixLayout>
-	<!-- </VBox> -->
+				
 	
 	<sap.ui.commons.layout:MatrixLayout>
 	
@@ -373,6 +252,8 @@
 								</sap.ui.commons.layout:rows>
 	
 	</sap.ui.commons.layout:MatrixLayout>
+	</VBox>
+	
 	</VBox>
 	<!-- Business Activity Questions End -->
 	<!-- Child license activity Q end -->
