@@ -882,6 +882,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 								mimeType : "application/pdf"
 							});
 							
+							var oTextViewAttachment = new sap.ui.commons.TextView("idBAQAttachment"+l,{});
 							
 							for(var m=0; m < answers.length; m++){								
 							
@@ -904,6 +905,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 							this.oBAQMatrixLayout.createRow( oTextView );
 							this.oBAQMatrixLayout.createRow( oSelect );
 							this.oBAQMatrixLayout.createRow( oFileUploader );
+							this.oBAQMatrixLayout.createRow( oTextViewAttachment );
 							
 							/*this.oBAQPreviewMatrixLayout.createRow( oTextView );
 							this.oBAQPreviewMatrixLayout.createRow( oSelect );
@@ -1985,28 +1987,7 @@ userSignIn : function(userID, password){
 						
 						
 						this.oRecordExists = true;
-						}/*else{
-						var vItem = new sap.ui.core.Item();
-                        vItem.setText("");
-                        
-                        this.oBIOIOrganizationName.setValue("");
-                        
-                        this._oidRegionComboBox.setSelectedItem(vItem);
-						this._oBIILegalStatusCombobox.setSelectedItem(vItem);
-						this._oBICityComboBox.setSelectedItem(vItem);
-						this.oBIOIMultiNationalCompanyCombobox.setSelectedItem(vItem);
-						this.oBIOIEmailInputText.setValue("");
-						this.oBIOILaborSizeInputText.setValue("");
-						this.oBIOICommMethodComboBox.setSelectedItem(vItem);
-						this.oBIOICapitalInputText.setValue("");
-						this.oBIOIWebSiteInputText.setValue("");
-						this.oBIOITelephoneInputText.setValue("");  
-						this.oBIOIMobilephoneInputText.setValue("");
-						this.oBIOIFaxInputText.setValue("");
-						this.oBIOITelephoneCountryCodeInputText.setValue("");
-						this.oBIOIFaxCountryCodeInputText.setValue("");
-						this.oBIOIMobilephoneCountryCodeInputText.setValue("");			
-					}*/
+						}
 					
 				}, this));		
 				
@@ -2076,7 +2057,27 @@ userSignIn : function(userID, password){
 						}
 						this.oBAQExists = true;						
 						}
-				}, this));				
+				}, this));
+				
+				var oRequestFinishedDeferredBAQAnswersAttachmentName = [];
+				for(var i=0; i < this.oTotalBAQQuestions; i++){
+					var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+i);
+					var oBAQAttachment = sap.ui.getCore().byId("idBAQAttachment"+i);
+					
+
+					oRequestFinishedDeferredBAQAnswersAttachmentName.push(this.oModelHelper.readBAQSavedAttachments(this.oRef_id, oBAQuestion.data("idBAQuestion"+i)));
+
+					
+					
+				}
+				
+				jQuery.when.apply($,oRequestFinishedDeferredBAQAnswersAttachmentName).then(jQuery.proxy(function(oResponse) {
+					//console.log(oResponse.data.FileName);
+					oBAQAttachment.setText(oResponse.data.FileName);
+					
+				}, this));
+				
+				
 			
 			}
 			

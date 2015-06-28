@@ -186,6 +186,35 @@ com.sagia.common.ModelHelper = {
 		
 	},
 	/**
+	 * Read BAQ Saved Attachments.
+	 * @author Abdul Waheed
+	 */
+	readBAQSavedAttachments : function(oRef_id, oNodeID) {
+		
+		this.openBusyDialog();
+
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		this.oBAQODataModel.read("SurveyAttSet(Investorid='"+oRef_id+"',NodeGuid='"+oNodeID+"',FileName=' ')", {
+			success : function(oData, response) {
+				
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(oResponse);
+
+				that.closeBusyDialog();
+			}});
+
+		return oRequestFinishedDeferred;
+		
+	},
+	/**
 	 * Read BAQ Saved Answers.
 	 * @author Abdul Waheed
 	 */
