@@ -867,14 +867,18 @@ sap.ui.controller("com.sagia.view.Overview", {
 				oCell1.addContent(oTextView);
 				
 				var oCell2 = new sap.ui.commons.layout.MatrixLayoutCell();
-				oCell2.addContent(new sap.m.Input({type : "Text"}));
+				oCell2.addContent(new sap.m.Input({type : "Text", id : "idFinancialQAnswer"+i+""+1}));
 				
 				var oCell3 = new sap.ui.commons.layout.MatrixLayoutCell();
-				oCell3.addContent(new sap.m.Input({type : "Text"}));
+				oCell3.addContent(new sap.m.Input({type : "Text", id : "idFinancialQAnswer"+i+""+2}));
+				
+				var oCell4 = new sap.ui.commons.layout.MatrixLayoutCell();
+				oCell4.addContent(new sap.m.Input({type : "Text", id : "idFinancialQAnswer"+i+""+3}));
 				
 				oRow.addCell(oCell1);
 				oRow.addCell(oCell2);
 				oRow.addCell(oCell3);
+				oRow.addCell(oCell4);
 
 
 				
