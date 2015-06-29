@@ -204,6 +204,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 				"Bpno":oResponse.data.Bpno,
 	 			"Bpname":oResponse.data.Bpname});
 			var percentage = parseInt(this.oESHPercentageInputText.getValue());
+			if(percentage === "NaN"){
+				percentage = 0;
+			}
 			
 			this.oESHTotalShareHolderPercentage += percentage;
 			
@@ -836,6 +839,51 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.openBusyDialog();
 		that = this;
 		var oRequestFinishedDeferred = this.oModelHelper.readBAQ();
+		var oRequestFinishedFinancialQuestionsDeferred = this.oModelHelper.readFinancialQuestions();
+		
+		jQuery.when(oRequestFinishedFinancialQuestionsDeferred).then(jQuery.proxy(function(oResponse) {
+			
+			var questions = [];
+			var nodeID = [];
+			var surveyID = [];
+			var answers = [];
+			this.oFinancialQuestionsMatrixLayout = this.getView().byId("idNewShareHolderFinancialQuestionsMLAyout");
+			
+			this.oTotalFinancialQuestions = 0;
+			
+			for(var i=0; i < oResponse.data.results.length; i++){
+				questions[i] = oResponse.data.results[i].Qtxtlg;
+				nodeID[i] = oResponse.data.results[i].NodeGuid;
+				surveyID[i] = oResponse.data.results[i].SurveyID;
+				
+				var oTextView = new sap.ui.commons.TextView("idFinancialQuestion"+i,{
+					text : questions[i],
+					});
+				oTextView.data("idFinancialQuestion"+i,nodeID[i]);
+				
+				var oRow = new sap.ui.commons.layout.MatrixLayoutRow();
+				
+				var oCell1 = new sap.ui.commons.layout.MatrixLayoutCell();
+				oCell1.addContent(oTextView);
+				
+				var oCell2 = new sap.ui.commons.layout.MatrixLayoutCell();
+				oCell2.addContent(new sap.m.Input({type : "Text"}));
+				
+				var oCell3 = new sap.ui.commons.layout.MatrixLayoutCell();
+				oCell3.addContent(new sap.m.Input({type : "Text"}));
+				
+				oRow.addCell(oCell1);
+				oRow.addCell(oCell2);
+				oRow.addCell(oCell3);
+
+
+				
+				this.oFinancialQuestionsMatrixLayout.addRow(oRow);
+				
+	
+			}
+			
+		}, this));	
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 			var questions = [];
@@ -843,7 +891,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 			var surveyID = [];
 			var answers = [];
 			this.oBAQMatrixLayout = this.getView().byId("idLI_BAQ_1_to_6MAtrixLayoutz");
-			//this.oBAQPreviewMatrixLayout = this.getView().byId("idPreview_LI_BAQ_1_to_6MAtrixLayout");
 			
 			this.oTotalBAQQuestions = 0;
 			
@@ -906,13 +953,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 							this.oBAQMatrixLayout.createRow( oSelect );
 							this.oBAQMatrixLayout.createRow( oFileUploader );
 							this.oBAQMatrixLayout.createRow( oTextViewAttachment );
-							
-							/*this.oBAQPreviewMatrixLayout.createRow( oTextView );
-							this.oBAQPreviewMatrixLayout.createRow( oSelect );
-							this.oBAQPreviewMatrixLayout.createRow( oFileUploader );*/
-							
-							
-							
+						
 							this.oTotalBAQQuestions++;
 						}			
 						

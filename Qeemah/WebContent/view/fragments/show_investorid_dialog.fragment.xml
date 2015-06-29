@@ -6,7 +6,7 @@
     title="{i18n>RegistrationSuccessMsg}"
     class="sapUiPopupWithPadding" >
     <content>
-      <VBox id="idInvestorIdMsg" justifyContent="Center" alignItems="Center">
+      <VBox  justifyContent="Center" alignItems="Center">
      <!--  <Label text="{i18n>PleaseNoteYourInvestorId}"></Label>
        <Label id="idInvestIDText" design="Bold" class="InvestorIDLabelStyling"></Label> -->
        <sap.ui.commons:TextView text="{i18n>PleaseNoteYourInvestorId}"></sap.ui.commons:TextView>

@@ -819,7 +819,39 @@ com.sagia.common.ModelHelper = {
 				
 				// Reject deferred object
 				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
+				sap.m.MessageToast.show(oResponse);
+
+				// close busy dialog
+				that.closeBusyDialog();
+			}
+		});
+
+		//return oRequestFinishedDeferred;
+		return oRequestFinishedDeferred;
+	},
+	/**
+	 * Read Financial Questions
+	 */
+	readFinancialQuestions : function() {
+		
+		
+		this.openBusyDialog();
+		
+		var that = this;
+		
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+		this.oBAQODataModel.read("SurveyQue?Lang=%27E%27&Flag=%27F%27&SurveyID=%27QUEEMAH_BUS_PLAN%27", {
+			success : function(oData, response) {
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				
+				// Reject deferred object
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(oResponse);
 
 				// close busy dialog
 				that.closeBusyDialog();
@@ -848,17 +880,33 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				
-				// Reject deferred object
 				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
-
-				// close busy dialog
+				sap.m.MessageToast.show(oResponse);
 				that.closeBusyDialog();
 			}
 		});
-
-		//return oRequestFinishedDeferred;
+		return oRequestFinishedDeferred;
+	},
+	/**
+	 * Read BAQ Answer based on ID
+	 */
+	readFinancialQuestionsAnswer : function(oNodeGuid, oSurveyID) {
+		this.openBusyDialog();
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+		this.oBAQODataModel.read("SurveyAns?Lang='E'&Flag='F'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
+			success : function(oData, response) {
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(oResponse);
+				that.closeBusyDialog();
+			}
+		});
 		return oRequestFinishedDeferred;
 	},
 	
