@@ -1230,7 +1230,7 @@ com.sagia.common.ModelHelper = {
         	 
         	 var oLocalLILIClassCollection = {LILIClassCollection: []};
         	 
-        	 console.dir(oResponse.data.__batchResponses);
+        	// console.dir(oResponse.data.__batchResponses);
         	 for(var i=0; i<oResponse.data.__batchResponses.length; i++){
         		 for(var j=0; j<oResponse.data.__batchResponses[i].data.results.length; j++){
         			 oLocalLILIClassCollection.LILIClassCollection.push(oResponse.data.__batchResponses[i].data.results[j]);
@@ -1251,6 +1251,93 @@ com.sagia.common.ModelHelper = {
 		}
 	},
 	
+	
+	/**
+	 * Read LI LI License Activity 
+	 * @author mabdulwaheed
+	 */
+	readLILILicenseActivity : function(IsicSelectedClasses) {
+		if(IsicSelectedClasses.length>0){
+		
+		this.openBusyDialog();
+		
+		var that = this;
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		 var aBatchOperations = [];
+         for ( var i = 0; i < IsicSelectedClasses.length; i++) {
+           aBatchOperations.push(this.oODataModel.createBatchOperation(
+            "IsicDet?Flag='K'&Lang='E'&IsicSection='A'&IsicDivision='01'&IsicGroup='011'&IsicClass='"+IsicSelectedClasses[i]+"'", 'GET' ));
+            }
+         this.oODataModel.addBatchReadOperations( aBatchOperations);
+         this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
+             that.closeBusyDialog();
+        	 
+        	 var oLocalLILILicenseActivityCollection = {LILILicenseActivityCollection: []};
+        	 
+        	 //console.dir(oResponse.data.__batchResponses);
+        	 for(var i=0; i<oResponse.data.__batchResponses.length; i++){
+        		 for(var j=0; j<oResponse.data.__batchResponses[i].data.results.length; j++){
+        			 oLocalLILILicenseActivityCollection.LILILicenseActivityCollection.push(oResponse.data.__batchResponses[i].data.results[j]);
+        		 }        		
+        	 }
+        	 
+        	 that.oLILILicenceActivityCollection = new sap.ui.model.json.JSONModel();
+			 that.oLILILicenceActivityCollection.setData(oLocalLILILicenseActivityCollection);
+				
+			 oRequestFinishedDeferred.resolve(that.oLILILicenceActivityCollection);
+     	 }, 
+     	 function(oError) {
+     		console.log("E"+oError);
+     	 }, false);
+         
+         return oRequestFinishedDeferred;
+ 
+		}
+	},
+	/**
+	 * Read LI LI License Type 
+	 * @author mabdulwaheed
+	 */
+	readLILILicenseType : function(IsicSelectedClasses) {
+		if(IsicSelectedClasses.length>0){
+		
+		this.openBusyDialog();
+		
+		var that = this;
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		 var aBatchOperations = [];
+         for ( var i = 0; i < IsicSelectedClasses.length; i++) {
+           aBatchOperations.push(this.oODataModel.createBatchOperation(
+            "IsicDet?Flag='C'&Lang='E'&IsicSection='A'&IsicDivision='01'&IsicGroup='011'&IsicClass='"+IsicSelectedClasses[i]+"'", 'GET' ));
+            }
+         this.oODataModel.addBatchReadOperations( aBatchOperations);
+         this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
+             that.closeBusyDialog();
+        	 //console.log(oResponse.data.__batchResponses);
+        	 var oLocalLILILicenseTypeCollection = {LILILicenseActivityType: []};
+        	 
+        	 console.dir(oResponse.data.__batchResponses);
+        	 for(var i=0; i<oResponse.data.__batchResponses.length; i++){
+        		 for(var j=0; j<oResponse.data.__batchResponses[i].data.results.length; j++){
+        			 oLocalLILILicenseTypeCollection.LILILicenseActivityType.push(oResponse.data.__batchResponses[i].data.results[j]);
+        		 }        		
+        	 }
+        	 
+        	 that.oLILILicenceTypeCollection = new sap.ui.model.json.JSONModel();
+			 that.oLILILicenceTypeCollection.setData(oLocalLILILicenseTypeCollection);
+				
+			 oRequestFinishedDeferred.resolve(oLocalLILILicenseTypeCollection);
+     	 }, 
+     	 function(oError) {
+     		console.log("E"+oError);
+     	 }, false);
+         
+         return oRequestFinishedDeferred;
+ 
+		}
+	},
 
 
 	/**

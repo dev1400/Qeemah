@@ -147,6 +147,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oLicenseTypeInputText = this.getView().byId("idLicenseTypeInputText");
 		this.oLILIDivisionComboBox = this.getView().byId("idLILIDivisionComboBox");
 		this.oLILIGroupComboBox = this.getView().byId("idLILIGroupComboBox");
+		this.oLILILicenseActivityMultiComboBox = this.getView().byId("idLILILicenseActivityMultiComboBox");
+		
 		this.oLILIClassMultiComboBox = this.getView().byId("idLILIClassMultiComboBox");
 		this.oLILIProductsTable = this.getView().byId("idLILIProductsTable"); 
 		this.oLILIProductComboBox = this.getView().byId("idLILIProductComboBox");
@@ -445,7 +447,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//this.oLILIProductsdataSerialNo++;
 	},
 	handleLILISectionSelectionComboBox : function(){
-		this.oLILIDivisionComboBox.setValue("");
+		//this.oLILIDivisionComboBox.setValue("");
 		//this.oLILIGroupComboBox.setValue("");
 		this.oLILIGroupComboBox.removeAllSelectedItems();
 		this.oLILIClassMultiComboBox.removeAllSelectedItems();
@@ -461,11 +463,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var oRequestFinishedDeferredLILIBusinessType = this.oModelHelper.readLILIBusinessTypeIsicDescription(this.oLILIBusinessTypeComboBox.getSelectedKey());
 		jQuery.when(oRequestFinishedDeferredLILIBusinessType).then(jQuery.proxy(function(oResponse) {	
 			
-			if(oResponse.data.results[0].IsicDescription !== "ISIC"){
-				this.oLicenseTypeInputText.setValue(oResponse.data.results[0].IsicDescription);
+			if(oResponse.data.results[0].IsicDescription !== "None of the above"){
+				this.oLicenseTypeInputText.setValue(oResponse.data.results[0].Activity);
 				this.oLILILicenceInfoContentVBox.setVisible(false);
 			}else{
-				this.oLicenseTypeInputText.setValue("");
+				this.oLicenseTypeInputText.setValue(oResponse.data.results[0].Activity);
 				this.oLILILicenceInfoContentVBox.setVisible(true);
 			}
 		}, this));	
@@ -484,8 +486,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}, this));	
 	},
 	handleLILIGropuMultiSelectionComboBoxChange : function(){
-		//console.log(this.oLILIGroupComboBox.getSelectedKeys());
-		//this.oLILIGroupComboBox.removeAllSelectedItems();
 		this.oLILIClassMultiComboBox.removeAllSelectedItems();
 		
 	 var oRequestFinishedDeferredLILIClass = this.oModelHelper.readLILIClass(this.oLILIGroupComboBox.getSelectedKeys());
@@ -493,6 +493,28 @@ sap.ui.controller("com.sagia.view.Overview", {
 		jQuery.when(oRequestFinishedDeferredLILIClass).then(jQuery.proxy(function(oResponse) {
 			
 			this.oLILIClassMultiComboBox.setModel(oResponse);
+			
+		}, this));
+	},
+	handleLILIClassMultiSelectionComboBoxChange : function(){
+		this.oLILILicenseActivityMultiComboBox.removeAllSelectedItems();
+		
+	 var oRequestFinishedDeferredLILILicenseActivity = this.oModelHelper.readLILILicenseActivity(this.oLILIClassMultiComboBox.getSelectedKeys());
+
+		jQuery.when(oRequestFinishedDeferredLILILicenseActivity).then(jQuery.proxy(function(oResponse) {
+			
+			this.oLILILicenseActivityMultiComboBox.setModel(oResponse);
+			
+		}, this));
+		var oRequestFinishedDeferredLILILicenseType = this.oModelHelper.readLILILicenseType(this.oLILIClassMultiComboBox.getSelectedKeys());
+
+		jQuery.when(oRequestFinishedDeferredLILILicenseType).then(jQuery.proxy(function(oResponse) {
+			
+			//console.log(oResponse);
+			//oLocalLILILicenseTypeCollection
+			this.oLicenseTypeInputText.setValue(oResponse.LILILicenseActivityType[0].Activity);
+			
+			//this.oLILILicenseActivityMultiComboBox.setModel(oResponse);
 			
 		}, this));
 	},

@@ -102,7 +102,7 @@
 										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<MultiComboBox selectionChange=""  id="idLILIClassMultiComboBox"
+										<MultiComboBox selectionChange="handleLILIClassMultiSelectionComboBoxChange"  id="idLILIClassMultiComboBox"
 										selectionFinish="handleSelectionFinish"    items="{/LILIClassCollection}" width="25em">
                                         <sap.ui.core:ListItem key="{IsicClass}" text="{IsicDescription}" id="idLILIClassMultiComboBoxListitem"/> <!-- key="{IsicClass}"  -->
                                      </MultiComboBox>
@@ -118,9 +118,10 @@
 											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<Select width="25em">
-											<sap.ui.core:Item />
-										</Select>
+										<MultiComboBox selectionChange=""  id="idLILILicenseActivityMultiComboBox"
+										selectionFinish="handleSelectionFinish"    items="{/LILILicenseActivityCollection}" width="25em">
+                                        <sap.ui.core:ListItem key="{IsicClass}" text="{IsicDescription}" id="idLILILicenseActivityMultiComboBoxListitem"/> <!-- key="{IsicClass}"  -->
+                                     </MultiComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									</sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutRow>
@@ -139,7 +140,7 @@
 							</Button><html:br/></VBox> -->
 	
 	<!-- <VBox alignItems="Center"> -->					
-	<sap.ui.commons.layout:MatrixLayout
+	<!-- <sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false">
 		
 		<sap.ui.commons.layout:MatrixLayoutRow>
@@ -183,14 +184,14 @@
 									
 								</sap.ui.commons.layout:MatrixLayoutRow>
 								
-		</sap.ui.commons.layout:MatrixLayout>
+		</sap.ui.commons.layout:MatrixLayout> -->
 					<html:br/>
-						<Table   delete="handleLILIProductDeleteButtonPress" mode="Delete" width="66rem"  id="idLILIProductsTable">
-							<!-- mode="SingleSelect" delete="handleLILIProductDeleteButtonPress" mode="Delete" -->
+						<!-- <Table   delete="handleLILIProductDeleteButtonPress" mode="Delete" width="66rem"  id="idLILIProductsTable">
+							mode="SingleSelect" delete="handleLILIProductDeleteButtonPress" mode="Delete"
 								<columns>
-									<!-- <Column width="2em" id="idLILIProductsTableColumn1">
+									<Column width="2em" id="idLILIProductsTableColumn1">
 										<sap.ui.commons:TextView text="#" class="textcolorwhite"></sap.ui.commons:TextView>
-									</Column> -->
+									</Column>
 									<Column width="5em">
 										<sap.ui.commons:TextView text="{i18n>ProductCode}" class="textcolorwhite"></sap.ui.commons:TextView>
 									</Column>
@@ -204,11 +205,11 @@
 									<Column width="10em">
 										<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}" class="textcolorwhite"></sap.ui.commons:TextView>
 									</Column>
-									<!-- <Column width="5em">
+									<Column width="5em">
 										<sap.ui.commons:TextView text="{i18n>Delete}" class="textcolorwhite"></sap.ui.commons:TextView>
-									</Column> -->
+									</Column>
 								</columns>
-							</Table>
+							</Table> -->
 				
 	
 	<sap.ui.commons.layout:MatrixLayout>
