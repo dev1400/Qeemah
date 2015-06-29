@@ -148,6 +148,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oLILIDivisionComboBox = this.getView().byId("idLILIDivisionComboBox");
 		this.oLILIGroupComboBox = this.getView().byId("idLILIGroupComboBox");
 		this.oLILILicenseActivityMultiComboBox = this.getView().byId("idLILILicenseActivityMultiComboBox");
+		this.oLILIActivityDescriptionTextArea = this.getView().byId("idLILIActivityDescriptionTextArea");
 		
 		this.oLILIClassMultiComboBox = this.getView().byId("idLILIClassMultiComboBox");
 		this.oLILIProductsTable = this.getView().byId("idLILIProductsTable"); 
@@ -447,10 +448,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//this.oLILIProductsdataSerialNo++;
 	},
 	handleLILISectionSelectionComboBox : function(){
-		//this.oLILIDivisionComboBox.setValue("");
+		this.oLILIDivisionComboBox.setValue("");
 		//this.oLILIGroupComboBox.setValue("");
 		this.oLILIGroupComboBox.removeAllSelectedItems();
 		this.oLILIClassMultiComboBox.removeAllSelectedItems();
+		
 		var oRequestFinishedDeferredLILIDivision = this.oModelHelper.readLILIDivision(this.oLILISectionComboBox.getSelectedKey());
 
 		jQuery.when(oRequestFinishedDeferredLILIDivision).then(jQuery.proxy(function(oResponse) {			
@@ -511,12 +513,28 @@ sap.ui.controller("com.sagia.view.Overview", {
 		jQuery.when(oRequestFinishedDeferredLILILicenseType).then(jQuery.proxy(function(oResponse) {
 			
 			//console.log(oResponse);
-			//oLocalLILILicenseTypeCollection
-			this.oLicenseTypeInputText.setValue(oResponse.LILILicenseActivityType[0].Activity);
+			if(oResponse !== undefined)
+			{
+				this.oLicenseTypeInputText.setValue(oResponse.LILILicenseActivityType[0].Activity);
+			}else{
+				this.oLicenseTypeInputText.setValue("ISIC");
+			}
 			
-			//this.oLILILicenseActivityMultiComboBox.setModel(oResponse);
+			
 			
 		}, this));
+	},
+	handleLILILicenseActivityMultiSelectionComboBoxChange : function(oEvent){
+		//console.log(this.oLILILicenseActivityMultiComboBox.getSelectedItems() );
+		var oDescription = "";
+		for(var i=0; i < this.oLILILicenseActivityMultiComboBox.getSelectedItems().length; i++){
+			//console.log(this.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText());
+			oDescription += this.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText()+" , ";
+		}
+		if(oDescription !== undefined){
+			this.oLILIActivityDescriptionTextArea.setValue(oDescription);			
+		}
+
 	},
 	handlePowerOfAttorneyUploadPress : function(oEvent){
 		//console.log("handlePowerOfAttorneyUploadPress");
