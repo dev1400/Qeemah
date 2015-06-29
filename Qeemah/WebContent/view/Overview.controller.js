@@ -242,6 +242,63 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleCreateNewShareHolder : function(oEvent){
 		
+		
+
+		/*
+		
+		try{			
+			var questions = [];
+			var answers1 = [];
+			var answers2 = [];
+			var answers3 = [];
+			for(var i=0; i < this.oTotalFinancialQuestions; i++){
+				 
+				 var oFinancialQuestion = sap.ui.getCore().byId("idFinancialQuestion"+i);
+				 var oFinancialAnswer1 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+1);
+				 var oFinancialAnswer2 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+2);
+				 var oFinancialAnswer3 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+3);
+				 questions.push(oFinancialQuestion.data("idFinancialQuestion"+i));
+				 answers1.push(oFinancialAnswer1.getValue());
+				 answers2.push(oFinancialAnswer2.getValue());
+				 answers3.push(oFinancialAnswer3.getValue());
+
+			}
+			
+			
+			var oRequestFinishedDeferredcreateFinancialAnswers1 = this.oModelHelper.createFinancialAnswers(this.oRef_id, questions, answers1, "Year 1");
+
+			jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers1).then(jQuery.proxy(function(oResponse) {
+			}, this));
+			
+			var oRequestFinishedDeferredcreateFinancialAnswers2 = this.oModelHelper.createFinancialAnswers(this.oRef_id, questions, answers2, "Year 2");
+
+			jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers2).then(jQuery.proxy(function(oResponse) {
+				
+			}, this));
+			var oRequestFinishedDeferredcreateFinancialAnswers3 = this.oModelHelper.createFinancialAnswers(this.oRef_id, questions, answers3, "Year 3");
+
+			jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers3).then(jQuery.proxy(function(oResponse) {
+			
+				
+				
+			}, this));
+			
+			}catch(err){
+				
+				if(!this.oShowAlertDialog.isOpen())
+					{
+					this.oAlertTextView.setText(this.oModelHelper
+							.getText("ChooseBAQ"));
+					this.oShowAlertDialog.open();
+					
+					}
+				
+			}*/
+			
+			
+		
+			
+		
 		var oRequestFinishedDeferredNSH = this.oModelHelper.createNewShareHolder(this.oRef_id,
 				this.oShareHolderTypeComboBox.getSelectedItem().getText(),
 				this.oNSHFirstNameInputText.getValue(),
@@ -271,36 +328,36 @@ sap.ui.controller("com.sagia.view.Overview", {
 				this.oNSHExperienceQ2ComboBox.getSelectedItem().getText(),
 				this.oNSHExperienceQ3ComboBox.getSelectedItem().getText(),
 				this.oNSHExperienceQ4ComboBox.getSelectedItem().getText(),
-				this.oNSHStock12InputText.getValue(),
-		this.oNSHStock13InputText.getValue(),
-		this.oNSHStock14InputText.getValue(),
-		this.oNSHTotalCurrentAssets12InputText.getValue(),
-		this.oNSHTotalCurrentAssets13InputText.getValue(),
-		this.oNSHTotalCurrentAssets14InputText.getValue(),		
-		this.oNSHTotalCurrentLiabialities12InputText.getValue(),
-		this.oNSHTotalCurrentLiabialities13InputText.getValue(),
-		this.oNSHTotalCurrentLiabialities14InputText.getValue(),
-		this.oNSHNetSales12InputText.getValue(),
-		this.oNSHNetSales13InputText.getValue(),
-		this.oNSHNetSales14InputText.getValue(),
-		this.oNSHTotalAssets12InputText.getValue(),
-		this.oNSHTotalAssets13InputText.getValue(),
-		this.oNSHTotalAssets14InputText.getValue(),
-		this.oNSHTotalDebt12InputText.getValue(),
-		this.oNSHTotalDebt13InputText.getValue(),
-		this.oNSHTotalDebt14InputText.getValue(),
-		this.oNSHDistributableNetIncome12InputText.getValue(),
-		this.oNSHDistributableNetIncome13InputText.getValue(),
-		this.oNSHDistributableNetIncome14InputText.getValue(),
-		this.oNSHNetProfit12InputText.getValue(),
-		this.oNSHNetProfit13InputText.getValue(),
-		this.oNSHNetProfit14InputText.getValue(),
-		this.oNSHInterests12InputText.getValue(),
-		this.oNSHInterests13InputText.getValue(),
-		this.oNSHInterests14InputText.getValue(),
-		this.oNSHTotalAssetsInBalanceSheet12InputText.getValue(),
-		this.oNSHTotalAssetsInBalanceSheet13InputText.getValue(),		
-		this.oNSHTotalAssetsInBalanceSheet14InputText.getValue()
+		"",//		this.oNSHStock12InputText.getValue(),
+		"",//this.oNSHStock13InputText.getValue(),
+		"",//this.oNSHStock14InputText.getValue(),
+		"",//this.oNSHTotalCurrentAssets12InputText.getValue(),
+		"",//this.oNSHTotalCurrentAssets13InputText.getValue(),
+		"",//this.oNSHTotalCurrentAssets14InputText.getValue(),		
+		"",//this.oNSHTotalCurrentLiabialities12InputText.getValue(),
+		"",//this.oNSHTotalCurrentLiabialities13InputText.getValue(),
+		"",//this.oNSHTotalCurrentLiabialities14InputText.getValue(),
+		"",//this.oNSHNetSales12InputText.getValue(),
+		"",//this.oNSHNetSales13InputText.getValue(),
+		"",//this.oNSHNetSales14InputText.getValue(),
+		"",//this.oNSHTotalAssets12InputText.getValue(),
+		"",//this.oNSHTotalAssets13InputText.getValue(),
+		"",//this.oNSHTotalAssets14InputText.getValue(),
+		"",//this.oNSHTotalDebt12InputText.getValue(),
+		"",//this.oNSHTotalDebt13InputText.getValue(),
+		"",//this.oNSHTotalDebt14InputText.getValue(),
+		"",//this.oNSHDistributableNetIncome12InputText.getValue(),
+		"",//this.oNSHDistributableNetIncome13InputText.getValue(),
+		"",//this.oNSHDistributableNetIncome14InputText.getValue(),
+		"",//this.oNSHNetProfit12InputText.getValue(),
+		"",//this.oNSHNetProfit13InputText.getValue(),
+		"",//this.oNSHNetProfit14InputText.getValue(),
+		"",//this.oNSHInterests12InputText.getValue(),
+		"",//this.oNSHInterests13InputText.getValue(),
+		"",//this.oNSHInterests14InputText.getValue(),
+		"",//this.oNSHTotalAssetsInBalanceSheet12InputText.getValue(),
+		"",//this.oNSHTotalAssetsInBalanceSheet13InputText.getValue(),		
+		""//this.oNSHTotalAssetsInBalanceSheet14InputText.getValue()
 				
 			
 				);
@@ -757,7 +814,88 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}
 		
 		
+		if(this.oFinancialAnswersExists){
+			
+			/*this.oBasicInfoTab.setSelectedIndex(1);
+			this.oBasicInfoTab.setSelectedIndex(0);
+			
+			this.oLicenseInfoTab.setSelectedIndex(1);
+			this.oLicenseInfoTab.setSelectedIndex(0);
+			
+			var questions = [];
+			var answers = [];
+			
+			for(var i=0; i < this.oTotalBAQQuestions; i++){
+				 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+i);
+				 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+i);
+				 var oBAQFileUploader = sap.ui.getCore().byId("idBAQFileUploader"+i);
+				 
+				 this.oModelHelper.uploadBAQAttachment(this.oRef_id, oBAQuestion.data("idBAQuestion"+i), oBAQFileUploader);
+				 
+				 
+				 questions.push(oBAQuestion.data("idBAQuestion"+i));
+				 console.log(oBAQAnswer.getSelectedItem().getText());
+				 answers.push(oBAQAnswer.getSelectedItem().getText());
+			}
+			
+			
+			var oRequestFinishedDeferredUpdateBAQAnswers = this.oModelHelper.updateBAQAnswers(this.oRef_id, questions, answers);
+
+			jQuery.when(oRequestFinishedDeferredUpdateBAQAnswers).then(jQuery.proxy(function(oResponse) {
+				console.log(oResponse);			
+				
+			}, this));*/
+			
+			
+			
+		}else{
+			
+			this.oBasicInfoTab.setSelectedIndex(1);
+			this.oBasicInfoTab.setSelectedIndex(0);
+			
+			this.oLicenseInfoTab.setSelectedIndex(1);
+			this.oLicenseInfoTab.setSelectedIndex(0);
+			
+			/*try{			
+			var questions = [];
+			var answers = [];
+			//var oRequestFinishedBAQCreateDeferred = this.oModelHelper.createBAQAnswers();
+			for(var i=0; i < this.oTotalBAQQuestions; i++){
+				 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+i);
+				 //oBAQAnswer.setValue("Hello");
+				 //console.log(oBAQAnswer.getSelectedItem().getText());
+				 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+i);
+				 //console.log(oBAQuestion.getText());				 
+				 //console.log(oBAQuestion.data("idBAQuestion"+i));
+				 questions.push(oBAQuestion.data("idBAQuestion"+i));
+				 answers.push(oBAQAnswer.getSelectedItem().getText());
+			}
+			
+			
+			var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers);
+
+			jQuery.when(oRequestFinishedDeferredcreateBAQAnswers).then(jQuery.proxy(function(oResponse) {
+				//console.log(oResponse);
+				
+				
+			}, this));
+			}catch(err){
+				
+				if(!this.oShowAlertDialog.isOpen())
+					{
+					this.oAlertTextView.setText(this.oModelHelper
+							.getText("ChooseBAQ"));
+					this.oShowAlertDialog.open();
+					
+					}
+				
+			}
+			
+			
+		}
+		*/
 		
+		}
 	},
 	handleBasicInfoTabsSelection : function(oEvent){
 		//console.log("Tab Selected");
@@ -2121,6 +2259,32 @@ userSignIn : function(userID, password){
 					oBAQAttachment.setText(oResponse.data.FileName);
 					
 				}, this));
+				
+				
+				var oRequestFinishedDeferredFinancialAnswersReadChild = this.oModelHelper.readFinancialSavedAnswers(this.oRef_id);
+
+				jQuery.when(oRequestFinishedDeferredFinancialAnswersReadChild).then(jQuery.proxy(function(oResponse) {
+					
+					if(oResponse.data.results[0].Return !== "No Records"){	
+						
+						//console.log(oResponse);
+						
+						/*for(var i=0; i < this.oTotalBAQQuestions; i++){
+							 for (j=0; j < this.oTotalBAQQuestions; j++){
+								 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+j);
+								 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+j);
+								
+								 if(oBAQuestion.data("idBAQuestion"+j) === oResponse.data.results[i].NodeGuid){
+									 
+									 oBAQAnswer.setSelectedItem(oBAQAnswer.getItemByKey(oResponse.data.results[i].Atxtlg)); 
+								 }			 
+								 
+							 }									
+						}*/
+						this.oFinancialAnswersExists = true;						
+						}
+				}, this));
+				
 				
 				
 			

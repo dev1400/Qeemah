@@ -91,6 +91,37 @@ com.sagia.common.ModelHelper = {
 		
 		return this.oBAQODataModel;
 	},
+	/**
+	 * Create Financial Answers
+	 * @Author Abdul Waheed 
+	 */
+	createFinancialAnswers : function(oRef_id, questions, answers, oAtxtlg) {
+		this.openBusyDialog();
+		
+		var that = this;
+		var oRequestFinishedCreateBAQDeferred = jQuery.Deferred();
+
+		 var aBatchOperations = [];
+         for ( var i = 0; i < questions.length; i++) {
+        	 
+        	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',{Investorid : oRef_id,
+        		 NodeGuid : questions[i], Atxtlg : oAtxtlg, Flag : 'F', Lang : 'E', Fin_value : answers[i]} ));
+            }
+         this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
+         this.oBAQODataModel.setUseBatch(true);
+         this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
+             that.closeBusyDialog();             
+        	        	 
+        	 oRequestFinishedCreateBAQDeferred.resolve(oResponse);
+     	 }, 
+     	 function(oError) {
+     		console.log("E"+oError);
+     	 }, false);
+         
+         return oRequestFinishedCreateBAQDeferred; 
+		
+	},
+	/**
 	
 	/**
 	 * Get Existing Share Holder details
@@ -198,6 +229,35 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
 
 		this.oBAQODataModel.read("SurveyAttSet(Investorid='"+oRef_id+"',NodeGuid='"+oNodeID+"',FileName=' ')", {
+			success : function(oData, response) {
+				
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(oResponse);
+
+				that.closeBusyDialog();
+			}});
+
+		return oRequestFinishedDeferred;
+		
+	},
+	/**
+	 * Read Financial Saved Answers.
+	 * @author Abdul Waheed
+	 */
+	readFinancialSavedAnswers : function(oRef_id) {
+		
+		this.openBusyDialog();
+
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		this.oBAQODataModel.read("SurChg?Investorid='"+oRef_id+"'", {
 			success : function(oData, response) {
 				
 				oRequestFinishedDeferred.resolve(response);
