@@ -1211,7 +1211,7 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Read LI LI Class 
 	 */
-	readLILIClass : function(IsicSelectedGroups) {
+	readLILIClass : function(IsicSection, IsicDivision, IsicSelectedGroups) {
 		if(IsicSelectedGroups.length>0){
 		
 		this.openBusyDialog();
@@ -1222,7 +1222,7 @@ com.sagia.common.ModelHelper = {
 		 var aBatchOperations = [];
          for ( var i = 0; i < IsicSelectedGroups.length; i++) {
            aBatchOperations.push(this.oODataModel.createBatchOperation(
-            "IsicDet?Flag='C'&Lang='E'&IsicSection='A'&IsicDivision='01'&IsicGroup='"+IsicSelectedGroups[i]+"'&IsicClass='C'", 'GET' ));
+            "IsicDet?Flag='C'&Lang='E'&IsicSection='"+IsicSection+"'&IsicDivision='"+IsicDivision+"'&IsicGroup='"+IsicSelectedGroups[i]+"'&IsicClass='C'", 'GET' ));
             }
          this.oODataModel.addBatchReadOperations( aBatchOperations);
          this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
@@ -1256,7 +1256,7 @@ com.sagia.common.ModelHelper = {
 	 * Read LI LI License Activity 
 	 * @author mabdulwaheed
 	 */
-	readLILILicenseActivity : function(IsicSelectedClasses) {
+	readLILILicenseActivity : function(IsicSection, IsicDivision, IsicSelectedGroups, IsicSelectedClasses) {
 		if(IsicSelectedClasses.length>0){
 		
 		this.openBusyDialog();
@@ -1267,7 +1267,8 @@ com.sagia.common.ModelHelper = {
 		 var aBatchOperations = [];
          for ( var i = 0; i < IsicSelectedClasses.length; i++) {
            aBatchOperations.push(this.oODataModel.createBatchOperation(
-            "IsicDet?Flag='K'&Lang='E'&IsicSection='A'&IsicDivision='01'&IsicGroup='011'&IsicClass='"+IsicSelectedClasses[i]+"'", 'GET' ));
+            //"IsicDet?Flag='K'&Lang='E'IsicSection='"+IsicSection+"'&IsicDivision='"+IsicDivision+"'&IsicGroup='011'&IsicClass='0111' ", 'GET' ));
+        		"IsicDet?Flag='K'&Lang='E'&IsicSection='A'&IsicDivision='01'&IsicGroup='011'&IsicClass='0111' "   , 'GET' ));
             }
          this.oODataModel.addBatchReadOperations( aBatchOperations);
          this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
