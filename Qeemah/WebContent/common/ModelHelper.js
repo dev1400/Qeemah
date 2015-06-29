@@ -1318,7 +1318,7 @@ com.sagia.common.ModelHelper = {
         	 //console.log(oResponse.data.__batchResponses);
         	 var oLocalLILILicenseTypeCollection = {LILILicenseActivityType: []};
         	 
-        	 console.dir(oResponse.data.__batchResponses);
+        	 //console.dir(oResponse.data.__batchResponses);
         	 for(var i=0; i<oResponse.data.__batchResponses.length; i++){
         		 for(var j=0; j<oResponse.data.__batchResponses[i].data.results.length; j++){
         			 oLocalLILILicenseTypeCollection.LILILicenseActivityType.push(oResponse.data.__batchResponses[i].data.results[j]);
