@@ -448,10 +448,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//this.oLILIProductsdataSerialNo++;
 	},
 	handleLILISectionSelectionComboBox : function(){
-		this.oLILIDivisionComboBox.setValue("");
+		//this.oLILIDivisionComboBox.setValue("");
 		//this.oLILIGroupComboBox.setValue("");
 		this.oLILIGroupComboBox.removeAllSelectedItems();
 		this.oLILIClassMultiComboBox.removeAllSelectedItems();
+		if(this.oLILIDivisionComboBox){
+		//	this.oLILIDivisionComboBox.removeAllSelectedItems();
+			}
 		if(this.oLILILicenseActivityMultiComboBox){
 		this.oLILILicenseActivityMultiComboBox.removeAllSelectedItems();
 		}
@@ -529,8 +532,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		jQuery.when(oRequestFinishedDeferredLILILicenseType).then(jQuery.proxy(function(oResponse) {
 			
-			console.log(oResponse);
-			if(oResponse !== undefined && oResponse.LILILicenseActivityType[0].Activity !== "0")
+			//console.log(oResponse);
+			if(oResponse !== undefined){
+				
+			for(var k=0;k < oResponse.LILILicenseActivityType.length; k++){
+				console.log(oResponse.LILILicenseActivityType[k].Activity);
+			}
+			if(oResponse.LILILicenseActivityType[0].Activity !== "0")
 			{
 				this.oLicenseTypeInputText.setValue(oResponse.LILILicenseActivityType[0].Activity);
 			}else if(oResponse.LILILicenseActivityType[0].Activity === "0")
@@ -550,7 +558,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 				this.oLicenseTypeInputText.setValue("ISIC");
 			}
 			
-			
+			}
 			
 		}, this));
 	},
@@ -2290,7 +2298,7 @@ userSignIn : function(userID, password){
 				that.readBICIPOAFileAttachemnts();
 				
 				
-				var oRequestFinishedDeferredBAQAnswersReadChild = this.oModelHelper.readBAQSavedAnswers(this.oRef_id);
+			/*	var oRequestFinishedDeferredBAQAnswersReadChild = this.oModelHelper.readBAQSavedAnswers(this.oRef_id);
 
 				jQuery.when(oRequestFinishedDeferredBAQAnswersReadChild).then(jQuery.proxy(function(oResponse) {
 					
@@ -2310,9 +2318,9 @@ userSignIn : function(userID, password){
 						}
 						this.oBAQExists = true;						
 						}
-				}, this));
+				}, this));*/
 				
-				var oRequestFinishedDeferredBAQAnswersAttachmentName = [];
+				/*var oRequestFinishedDeferredBAQAnswersAttachmentName = [];
 				for(var i=0; i < this.oTotalBAQQuestions; i++){
 					var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+i);
 					var oBAQAttachment = sap.ui.getCore().byId("idBAQAttachment"+i);
@@ -2339,7 +2347,7 @@ userSignIn : function(userID, password){
 						
 						//console.log(oResponse);
 						
-						/*for(var i=0; i < this.oTotalBAQQuestions; i++){
+						for(var i=0; i < this.oTotalBAQQuestions; i++){
 							 for (j=0; j < this.oTotalBAQQuestions; j++){
 								 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+j);
 								 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+j);
@@ -2350,11 +2358,11 @@ userSignIn : function(userID, password){
 								 }			 
 								 
 							 }									
-						}*/
+						}
 						this.oFinancialAnswersExists = true;						
 						}
 				}, this));
-				
+				*/
 				
 				
 			
