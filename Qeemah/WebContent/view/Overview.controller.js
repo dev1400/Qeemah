@@ -452,6 +452,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//this.oLILIGroupComboBox.setValue("");
 		this.oLILIGroupComboBox.removeAllSelectedItems();
 		this.oLILIClassMultiComboBox.removeAllSelectedItems();
+		if(this.oLILILicenseActivityMultiComboBox){
+		this.oLILILicenseActivityMultiComboBox.removeAllSelectedItems();
+		}
+		if(this.oLILIActivityDescriptionTextArea){
+		this.oLILIActivityDescriptionTextArea.setValue("");
+		}
+		if(this.oLicenseTypeInputText){
+			this.oLicenseTypeInputText.setValue("ISIC");
+		}
+
 		
 		var oRequestFinishedDeferredLILIDivision = this.oModelHelper.readLILIDivision(this.oLILISectionComboBox.getSelectedKey());
 
@@ -515,14 +525,27 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oLILILicenseActivityMultiComboBox.setModel(oResponse);
 			
 		}, this));
-		var oRequestFinishedDeferredLILILicenseType = this.oModelHelper.readLILILicenseType(this.oLILIClassMultiComboBox.getSelectedKeys());
+		var oRequestFinishedDeferredLILILicenseType = this.oModelHelper.readLILILicenseType(this.oLILISectionComboBox.getSelectedKey(),this.oLILIDivisionComboBox.getSelectedKey(), this.oLILIGroupComboBox.getSelectedKeys(), this.oLILIClassMultiComboBox.getSelectedKeys());
 
 		jQuery.when(oRequestFinishedDeferredLILILicenseType).then(jQuery.proxy(function(oResponse) {
 			
-			//console.log(oResponse);
-			if(oResponse !== undefined)
+			console.log(oResponse);
+			if(oResponse !== undefined && oResponse.LILILicenseActivityType[0].Activity !== "0")
 			{
 				this.oLicenseTypeInputText.setValue(oResponse.LILILicenseActivityType[0].Activity);
+			}else if(oResponse.LILILicenseActivityType[0].Activity === "0")
+			{
+				this.oLicenseTypeInputText.setValue("");
+				
+			}else if(oResponse.LILILicenseActivityType[0].Activity === "22"){
+				
+				if(!this.oShowAlertDialog.isOpen())
+				{
+				this.oAlertTextView.setText(this.oModelHelper.getText("NotHandledBySAGIA"));
+				this.oShowAlertDialog.open();
+				
+				}
+
 			}else{
 				this.oLicenseTypeInputText.setValue("ISIC");
 			}
@@ -2308,7 +2331,7 @@ userSignIn : function(userID, password){
 				}, this));
 				
 				
-				var oRequestFinishedDeferredFinancialAnswersReadChild = this.oModelHelper.readFinancialSavedAnswers(this.oRef_id);
+				var oRequestFinishedDeferredFinancialAnswersReadChild; //= this.oModelHelper.readFinancialSavedAnswers(this.oRef_id);
 
 				jQuery.when(oRequestFinishedDeferredFinancialAnswersReadChild).then(jQuery.proxy(function(oResponse) {
 					

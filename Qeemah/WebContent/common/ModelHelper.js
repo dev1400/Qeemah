@@ -1303,7 +1303,7 @@ com.sagia.common.ModelHelper = {
 	 * Read LI LI License Type 
 	 * @author mabdulwaheed
 	 */
-	readLILILicenseType : function(IsicSelectedClasses) {
+	readLILILicenseType : function(IsicSection, IsicDivision, IsicSelectedGroups, IsicSelectedClasses) {
 		if(IsicSelectedClasses.length>0){
 		
 		this.openBusyDialog();
@@ -1313,9 +1313,11 @@ com.sagia.common.ModelHelper = {
 
 		 var aBatchOperations = [];
          for ( var i = 0; i < IsicSelectedClasses.length; i++) {
-           aBatchOperations.push(this.oODataModel.createBatchOperation(
-            "IsicDet?Flag='C'&Lang='E'&IsicSection='A'&IsicDivision='01'&IsicGroup='011'&IsicClass='"+IsicSelectedClasses[i]+"'", 'GET' ));
-            }
+        	 for(var j=0; j< IsicSelectedGroups.length; j++){
+        		 aBatchOperations.push(this.oODataModel.createBatchOperation(
+        		 "IsicDet?Flag='C'&Lang='E'&IsicSection='"+IsicSection+"'&IsicDivision='"+IsicDivision+"'&IsicGroup='"+IsicSelectedGroups[j]+"'&IsicClass='"+IsicSelectedClasses[i]+"' "   , 'GET' ));
+        		          
+        	 } }
          this.oODataModel.addBatchReadOperations( aBatchOperations);
          this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
              that.closeBusyDialog();
