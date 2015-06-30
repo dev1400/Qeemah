@@ -490,7 +490,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 				this.oLicenseTypeInputText.setValue(oResponse.data.results[0].Activity);
 				this.oLILILicenceInfoContentVBox.setVisible(false);
 			}else{
-				this.oLicenseTypeInputText.setValue(oResponse.data.results[0].Activity);
+				this.oLicenseTypeInputText.setValue("");
 				this.oLILILicenceInfoContentVBox.setVisible(true);
 			}
 		}, this));	
