@@ -170,6 +170,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this.oBAQError = false;
 		
+		this.oSurveyID="UNKNOWN";
+
 		
 	},
 	handleExistingShareHolderAddButtonPress : function(oEvent){
@@ -468,7 +470,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oLILIActivityDescriptionTextArea.setValue("");
 		}
 		if(this.oLicenseTypeInputText){
-			this.oLicenseTypeInputText.setValue("ISIC");
+			this.oLicenseTypeInputText.setValue("");
 		}
 
 		
@@ -540,10 +542,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 			//console.log(oResponse);
 			if(oResponse !== undefined){
+			
+			this.oSurveyID = oResponse.LILILicenseActivityType[0].SurveyID;
 				
-			for(var k=0;k < oResponse.LILILicenseActivityType.length; k++){
-				console.log(oResponse.LILILicenseActivityType[k].Activity);
-			}
+			/*for(var k=0;k < oResponse.LILILicenseActivityType.length; k++){
+				console.log(oResponse.LILILicenseActivityType[k].SurveyID);
+			}*/
 			if(oResponse.LILILicenseActivityType[0].Activity !== "0")
 			{
 				this.oLicenseTypeInputText.setValue(oResponse.LILILicenseActivityType[0].Activity);
@@ -551,7 +555,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			{
 				this.oLicenseTypeInputText.setValue("");
 				
-			}else if(oResponse.LILILicenseActivityType[0].Activity === "22"){
+			}/*else if(oResponse.LILILicenseActivityType[0].Activity === "22"){
 				
 				if(!this.oShowAlertDialog.isOpen())
 				{
@@ -560,8 +564,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 				
 				}
 
-			}else{
-				this.oLicenseTypeInputText.setValue("ISIC");
+			}*/else{
+				this.oLicenseTypeInputText.setValue("");
 			}
 			
 			}
@@ -985,7 +989,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		var oRequestFinishedDeferredcreateLicenseInfo = this.oModelHelper.createLILIBusiness(
 				this.oLicenseTypeInputText.getValue(),
-				this.oLILILicenseActivityMultiComboBox.getSelectedKeys(),
+				this.oSurveyID,
+				//this.oLILILicenseActivityMultiComboBox.getSelectedKeys(),
 				this.oLILIClassMultiComboBox.getSelectedKeys(),
 				this.oLILIGroupComboBox.getSelectedKeys(),
 				this.oLILIDivisionComboBox.getSelectedKey(),

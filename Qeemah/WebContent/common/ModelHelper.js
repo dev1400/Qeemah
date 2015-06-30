@@ -219,7 +219,7 @@ com.sagia.common.ModelHelper = {
         		 for ( var k = 0; k < oIsicGroup.length; k++) {
         	          aBatchOperations.push(this.oODataModel.createBatchOperation("IsicDetPsSet", 'POST',{        		
         	        	  Activity : oActivity,
-        	        	  SurveyID : oSurveyID[0],
+        	        	  SurveyID : oSurveyID,
         	        	  IsicClass : oIsicClass[j],
         	        	  IsicGroup : oIsicGroup[k],
         	        	  IsicDivision : oIsicDivision,
