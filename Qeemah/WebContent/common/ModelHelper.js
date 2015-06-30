@@ -95,7 +95,7 @@ com.sagia.common.ModelHelper = {
 	 * Create Financial Answers
 	 * @Author Abdul Waheed 
 	 */
-	createFinancialAnswers : function(oRef_id, questions, answers, oAtxtlg) {
+	createFinancialAnswers : function(oRef_id, questions, answers, oAtxtlg, oFirstName, oLastName) {
 		this.openBusyDialog();
 		
 		var that = this;
@@ -104,12 +104,20 @@ com.sagia.common.ModelHelper = {
 		 var aBatchOperations = [];
          for ( var i = 0; i < questions.length; i++) {
         	 
-        	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',{Investorid : oRef_id,
-        		 NodeGuid : questions[i], Atxtlg : oAtxtlg, Flag : 'F', Lang : 'E', Fin_value : answers[i]} ));
+        	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',
+        	{    Investorid : oRef_id,
+        		 NodeGuid : questions[i], 
+        		 Atxtlg : oAtxtlg, 
+        		 Flag : 'F', 
+        		 Lang : 'E', 
+        		 Fin_value : answers[i],
+        		 Shldr_FName : oFirstName,
+        		 Shldr_LName : oLastName} ));
             }
          this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
          this.oBAQODataModel.setUseBatch(true);
-         this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
+         this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {
+        	 console.log(" SH "+oResponse);
              that.closeBusyDialog();             
         	        	 
         	 oRequestFinishedCreateBAQDeferred.resolve(oResponse);

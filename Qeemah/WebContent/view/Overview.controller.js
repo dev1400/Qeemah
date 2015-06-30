@@ -249,7 +249,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		
 
-		/*
+		
 		
 		try{			
 			var questions = [];
@@ -270,17 +270,20 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}
 			
 			
-			var oRequestFinishedDeferredcreateFinancialAnswers1 = this.oModelHelper.createFinancialAnswers(this.oRef_id, questions, answers1, "Year 1");
+			var oRequestFinishedDeferredcreateFinancialAnswers1 = this.oModelHelper.createFinancialAnswers
+			(this.oRef_id, questions, answers1, "Year 1", this.oNSHFirstNameInputText.getValue(),this.oNSHLastNameInputText.getValue());
 
 			jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers1).then(jQuery.proxy(function(oResponse) {
 			}, this));
 			
-			var oRequestFinishedDeferredcreateFinancialAnswers2 = this.oModelHelper.createFinancialAnswers(this.oRef_id, questions, answers2, "Year 2");
+			var oRequestFinishedDeferredcreateFinancialAnswers2 = this.oModelHelper.createFinancialAnswers
+			(this.oRef_id, questions, answers2, "Year 2", this.oNSHFirstNameInputText.getValue(),this.oNSHLastNameInputText.getValue());
 
 			jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers2).then(jQuery.proxy(function(oResponse) {
 				
 			}, this));
-			var oRequestFinishedDeferredcreateFinancialAnswers3 = this.oModelHelper.createFinancialAnswers(this.oRef_id, questions, answers3, "Year 3");
+			var oRequestFinishedDeferredcreateFinancialAnswers3 = this.oModelHelper.createFinancialAnswers
+			(this.oRef_id, questions, answers3, "Year 3", this.oNSHFirstNameInputText.getValue(),this.oNSHLastNameInputText.getValue());
 
 			jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers3).then(jQuery.proxy(function(oResponse) {
 			
@@ -289,16 +292,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}, this));
 			
 			}catch(err){
+				console.log(err);
 				
-				if(!this.oShowAlertDialog.isOpen())
+				/*if(!this.oShowAlertDialog.isOpen())
 					{
 					this.oAlertTextView.setText(this.oModelHelper
 							.getText("ChooseBAQ"));
 					this.oShowAlertDialog.open();
 					
-					}
+					}*/
 				
-			}*/
+			}
 			
 			
 		
@@ -1103,7 +1107,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 				
 				this.oFinancialQuestionsMatrixLayout.addRow(oRow);
-				
+				this.oTotalFinancialQuestions++;
 	
 			}
 			
