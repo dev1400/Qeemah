@@ -168,6 +168,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oNSHTotalShareHolderPercentage=0;
 		this.oESHTotalShareHolderPercentage=0;
 		
+		this.oBAQError = false;
+		
 		
 	},
 	handleExistingShareHolderAddButtonPress : function(oEvent){
@@ -578,7 +580,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//console.log("handlePowerOfAttorneyUploadPress");
 		this.oPoweOfAttorneyFileUpload.upload();
 	},
-	handleSaveLinkPressSave : function(oEvent){
+	handleSaveLinkPressSave : function(){
 		//this.oBasicInfoTab.setSelectedIndex(1);
 		//this.oBasicInfoTab.setSelectedIndex(0);
 		that = this;
@@ -873,10 +875,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 			jQuery.when(oRequestFinishedDeferredcreateBAQAnswers).then(jQuery.proxy(function(oResponse) {
 				//console.log(oResponse);
-				
+				this.oBAQError = false;
 				
 			}, this));
 			}catch(err){
+				
+				this.oBAQError = true;
 				
 				if(!this.oShowAlertDialog.isOpen())
 					{
@@ -2744,25 +2748,46 @@ handleRegisterUserButtonPress : function() {
 	
 	submit : function(){
 		this.openBusyDialog();
-		var oRequestSubmitFinishedDeferred = this.oModelHelper.Submit(this.oRef_id);
+		
+		this.handleSaveLinkPressSave();
+		that = this;
+		
+		if(!this.oBAQError){
+			
+			setTimeout(function() { 
+				
+				var oRequestSubmitFinishedDeferred = that.oModelHelper.Submit(that.oRef_id);
 
-		jQuery.when(oRequestSubmitFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-			that.closeBusyDialog();
-			//console.log(oResponse);			
-			if (!this._ShowLeadIDFragment) {
-				this._ShowLeadIDFragment = sap.ui.xmlfragment(
-						"com.sagia.view.fragments.show_investorid_dialog", this.getView()
-								.getController());
-				this.getView().addDependent(this._ShowLeadIDFragment);
-			}		
-			
-			var oLeadIDTextView = sap.ui.getCore().byId("idLeadIDTextView");
-			
-			oLeadIDTextView.setText(oResponse.LeadID);
+				jQuery.when(oRequestSubmitFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+					that.closeBusyDialog();
+					//console.log(oResponse);			
+					if (!that._ShowLeadIDFragment) {
+						that._ShowLeadIDFragment = sap.ui.xmlfragment(
+								"com.sagia.view.fragments.show_investorid_dialog", that.getView()
+										.getController());
+						this.getView().addDependent(that._ShowLeadIDFragment);
+					}		
+					
+					var oLeadIDTextView = sap.ui.getCore().byId("idLeadIDTextView");
+					
+					oLeadIDTextView.setText(oResponse.LeadID);
 
-			this._ShowLeadIDFragment.open();
+					that._ShowLeadIDFragment.open();
+					
+				}, that));	
+				
+				
+	        }, 10000);
 			
-		}, this));	
+		}else{
+			this.closeBusyDialog();
+
+		}
+		
+		
+		
+		
+		
 	}
 	
 });
