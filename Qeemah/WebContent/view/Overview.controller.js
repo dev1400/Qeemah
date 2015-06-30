@@ -1329,10 +1329,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.handleEmailEntryValidation(this.oInputEmail.getValue());		
 	},
 	handleEmailEntryValidation : function(email){
-		if(email.length>20){
+		/*if(email.length>20){
 			this._oRegEmailErrorMsg.setText(this.oModelHelper.getText("EmailMoreThan20Chars"));
 			this._oRegEmailErrorMsg.setVisible(true);
-		}else if(!(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test( email ))){
+		}else*/ if(!(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test( email ))){
 			//console.log(email.length);
 			this._oRegEmailErrorMsg.setText(this.oModelHelper.getText("InvalidEmailFormat"));
 			if(email.length > 0){
