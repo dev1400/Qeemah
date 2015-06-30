@@ -982,6 +982,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 		*/
 		
 		}
+		
+		var oRequestFinishedDeferredcreateLicenseInfo = this.oModelHelper.createLILIBusiness(
+				this.oLicenseTypeInputText.getValue(),
+				this.oLILILicenseActivityMultiComboBox.getSelectedKeys(),
+				this.oLILIClassMultiComboBox.getSelectedKeys(),
+				this.oLILIGroupComboBox.getSelectedKeys(),
+				this.oLILIDivisionComboBox.getSelectedKey(),
+				this.oLILISectionComboBox.getSelectedKey(),
+				this.oRef_id,
+				this.oLILIBusinessTypeComboBox.getSelectedKey(),
+				this.oLILIActivityDescriptionTextArea.getValue()
+				);
+
+		jQuery.when(oRequestFinishedDeferredcreateLicenseInfo).then(jQuery.proxy(function(oResponse) {
+			console.log(oResponse);
+			//this.oBAQError = false;
+			
+		}, this));
 	},
 	handleBasicInfoTabsSelection : function(oEvent){
 		//console.log("Tab Selected");

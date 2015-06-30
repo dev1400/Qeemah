@@ -193,6 +193,61 @@ com.sagia.common.ModelHelper = {
 		
 	},
 	/**
+	 * Create LILI Business
+	 * @Author Abdul Waheed 
+	 */
+	createLILIBusiness : function( 
+			     oActivity,
+        		 oSurveyID, 
+        		 oIsicClass, 
+        		 oIsicGroup,
+        		 oIsicDivision, 
+        		 oIsicSection,
+        		 oRef_id,
+        		 oLic, 
+        		 oActDesc) {
+		//if(IsicSelectedGroups.length>0){
+		
+		this.openBusyDialog();
+		
+		var that = this;
+		var oRequestFinishedCreateBAQDeferred = jQuery.Deferred();
+
+		 var aBatchOperations = [];
+         for ( var i = 0; i < oLic.length; i++) {
+        	 for ( var j = 0; j < oIsicClass.length; j++) {
+        		 for ( var k = 0; k < oIsicGroup.length; k++) {
+        	          aBatchOperations.push(this.oODataModel.createBatchOperation("IsicDetPsSet", 'POST',{        		
+        	        	  Activity : oActivity,
+        	        	  SurveyID : oSurveyID[0],
+        	        	  IsicClass : oIsicClass[j],
+        	        	  IsicGroup : oIsicGroup[k],
+        	        	  IsicDivision : oIsicDivision,
+        	        	  IsicSection : oIsicSection,
+        	        	  Investorid : oRef_id,
+        	        	  Lic : oLic[i],
+        	        	  ActDesc : oActDesc   } )); 
+        	          }
+        		 }
+        	 }
+        	 
+        	 
+            
+         this.oODataModel.addBatchChangeOperations(aBatchOperations);
+         this.oODataModel.setUseBatch(true);
+         this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
+             that.closeBusyDialog();             
+        	        	 
+        	 oRequestFinishedCreateBAQDeferred.resolve(oResponse);
+     	 }, 
+     	 function(oError) {
+     		console.log("E"+oError);
+     	 }, false);
+         
+         return oRequestFinishedCreateBAQDeferred; 
+		
+	},
+	/**
 	 * Create BAQ Answers
 	 * @Author Abdul Waheed 
 	 */
