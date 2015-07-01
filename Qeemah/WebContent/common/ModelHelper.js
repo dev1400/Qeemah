@@ -199,7 +199,8 @@ com.sagia.common.ModelHelper = {
 	createLILIBusiness : function( 
 			     oActivity,
         		 oSurveyID, 
-        		 oIsicClass, 
+        		 oIsicClass,
+        		 oIsicDescription,
         		 oIsicGroup,
         		 oIsicDivision, 
         		 oIsicSection,
@@ -217,16 +218,19 @@ com.sagia.common.ModelHelper = {
          for ( var i = 0; i < oLic.length; i++) {
         	 for ( var j = 0; j < oIsicClass.length; j++) {
         		 for ( var k = 0; k < oIsicGroup.length; k++) {
-        	          aBatchOperations.push(this.oODataModel.createBatchOperation("IsicDetPsSet", 'POST',{        		
-        	        	  Activity : oActivity,
-        	        	  SurveyID : oSurveyID,
-        	        	  IsicClass : oIsicClass[j],
-        	        	  IsicGroup : oIsicGroup[k],
-        	        	  IsicDivision : oIsicDivision,
-        	        	  IsicSection : oIsicSection,
-        	        	  Investorid : oRef_id,
-        	        	  Lic : oLic[i],
-        	        	  ActDesc : oActDesc   } )); 
+        			 for ( var l = 0; l < oIsicDescription.length; l++) {
+	        			 aBatchOperations.push(this.oODataModel.createBatchOperation("IsicDetPsSet", 'POST',{        		
+	        	        	  Activity : oActivity,
+	        	        	  SurveyID : oSurveyID,
+	        	        	  IsicClass : oIsicClass[j],
+	        	        	  IsicDescription : oIsicDescription[l],
+	        	        	  IsicGroup : oIsicGroup[k],
+	        	        	  IsicDivision : oIsicDivision,
+	        	        	  IsicSection : oIsicSection,
+	        	        	  Investorid : oRef_id,
+	        	        	  Lic : oLic[i],
+	        	        	  ActDesc : oActDesc   } )); 
+        			     }
         	          }
         		 }
         	 }

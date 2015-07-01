@@ -995,6 +995,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 				this.oSurveyID,
 				//this.oLILILicenseActivityMultiComboBox.getSelectedKeys(),
 				this.oLILIClassMultiComboBox.getSelectedKeys(),
+				this.oLILILicenseActivityMultiComboBox.getSelectedKeys(),
 				this.oLILIGroupComboBox.getSelectedKeys(),
 				this.oLILIDivisionComboBox.getSelectedKey(),
 				this.oLILISectionComboBox.getSelectedKey(),
@@ -1254,7 +1255,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			var oRequestFinishedDeferredReadISIC = this.oModelHelper.readISIC(this.oRef_id);
 			
 			jQuery.when(oRequestFinishedDeferredReadISIC).then(jQuery.proxy(function(oResponse) {
-				
+				if(oResponse){
 				if(oResponse.data.results.length > 0){
 					//that.openBusyDialog();
 					this.oLILIBusinessTypeComboBox.setSelectedKey("N");
@@ -1335,9 +1336,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 					}
 					//that.closeBusyDialog();
 					
-				}				
+				}			
+				}
 					
-				console.dir(oResponse);//addSelectedKeys
+				//console.dir(oResponse);//addSelectedKeys
 				
 			}, this));
 		}
@@ -1420,7 +1422,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 							this.oBAQPreviewMatrixLayout.createRow( oFileUploader );
 							
 							
-							
+
+							oSelect.setSelectedKey(sap.ui.getCore().byId("idBAQAnswer"+l).getSelectedKey());
 							this.oTotalBAQQuestions++;
 						}			
 						
@@ -1431,6 +1434,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}			
 			
 		}, this));	
+		}else{
+			for(i=0; i< this.oTotalBAQQuestions; i++){
+				sap.ui.getCore().byId("idPBAQAnswer"+i).setSelectedKey(sap.ui.getCore().byId("idBAQAnswer"+i).getSelectedKey());
+			}
+			
 		}
 		
 	},
