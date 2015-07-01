@@ -1245,6 +1245,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//console.log(oControlEvent.getParameters().index);
 		that = this;
 		var isicGroup = [];
+		var IsicClass = [];
 		if(oControlEvent.getParameters().index === 1){
 			var oRequestFinishedDeferredReadISIC = this.oModelHelper.readISIC(this.oRef_id);
 			
@@ -1267,25 +1268,39 @@ sap.ui.controller("com.sagia.view.Overview", {
 							this.oLILIDivisionComboBox.fireSelectionChange();
 						}
 						
-						//console.log(this.oLILIGroupComboBox.getSelectedKeys().length);
 						
 						
 						
-						for(j=0; j < oResponse.data.results.length; j++){
-							
+						
+						for(var j=0; j < oResponse.data.results.length; j++){							
 							
 							isicGroup[j] = oResponse.data.results[j].IsicGroup;
 							
 							var uniqueISISCGroupArray = isicGroup.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
 							
 							this.oLILIGroupComboBox.setSelectedKeys(uniqueISISCGroupArray);
-							//this.oLILIGroupComboBox.fireSelectionChange();
-							if(this.oLILIGroupComboBox.getSelectedKeys().length > 0){
-								//this.oLILIGroupComboBox.fireSelectionChange();
-
-							}
+							
 						}
 						
+                         for(var k=0; k < oResponse.data.results.length; k++){							
+							
+                            IsicClass[k] = oResponse.data.results[k].IsicClass;
+							
+							var uniqueIsicClassArray = IsicClass.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+							
+							this.oLILIClassMultiComboBox.setSelectedKeys(uniqueIsicClassArray);
+							
+						}
+						
+					}
+					
+					for(var k=0; k < this.oLILIGroupComboBox.getSelectedKeys().length; k++){
+						//that = this;						
+						
+						setTimeout(function() {							
+							that.oLILIGroupComboBox.fireSelectionChange();
+							
+				        },2000);
 					}
 					that.closeBusyDialog();
 					
