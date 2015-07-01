@@ -596,7 +596,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		/*this.oBasicInfoContactInfoFragment = sap.ui.xmlfragment("com.sagia.view.fragments.bi_contactinformation", this.getView()
 				.getController());*/
 		
-		
+		this.openBusyDialog();
        
 		if(this.oRecordExists){
 			try{
@@ -1001,10 +1001,25 @@ sap.ui.controller("com.sagia.view.Overview", {
 				);
 
 		jQuery.when(oRequestFinishedDeferredcreateLicenseInfo).then(jQuery.proxy(function(oResponse) {
-			console.log(oResponse);
+			//console.log(oResponse);
 			//this.oBAQError = false;
 			
 		}, this));
+		
+		that = this;
+		setTimeout(function() {
+			
+			that.closeBusyDialog();
+			
+			if(!that.oShowAlertDialog.isOpen())
+			{
+				that.oAlertTextView.setText(that.oModelHelper.getText("Saved"));
+				that.oShowAlertDialog.open();
+			
+			}
+					
+			
+        }, 4000);
 	},
 	handleBasicInfoTabsSelection : function(oEvent){
 		//console.log("Tab Selected");

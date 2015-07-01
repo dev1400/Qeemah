@@ -165,7 +165,7 @@ com.sagia.common.ModelHelper = {
 	updateBAQAnswers : function(oRef_id, questions, answers) {
 		//if(IsicSelectedGroups.length>0){
 		
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		
 		var that = this;
 		var oRequestFinishedUpdateBAQDeferred = jQuery.Deferred();
@@ -181,7 +181,7 @@ com.sagia.common.ModelHelper = {
          this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
          this.oBAQODataModel.setUseBatch(true);
          this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
-             that.closeBusyDialog();             
+             //that.closeBusyDialog();             
         	        	 
              oRequestFinishedUpdateBAQDeferred.resolve(oResponse);
      	 }, 
@@ -208,7 +208,7 @@ com.sagia.common.ModelHelper = {
         		 oActDesc) {
 		//if(IsicSelectedGroups.length>0){
 		
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		
 		var that = this;
 		var oRequestFinishedCreateBAQDeferred = jQuery.Deferred();
@@ -236,7 +236,7 @@ com.sagia.common.ModelHelper = {
          this.oODataModel.addBatchChangeOperations(aBatchOperations);
          this.oODataModel.setUseBatch(true);
          this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
-             that.closeBusyDialog();             
+             //that.closeBusyDialog();             
         	        	 
         	 oRequestFinishedCreateBAQDeferred.resolve(oResponse);
      	 }, 
@@ -254,7 +254,7 @@ com.sagia.common.ModelHelper = {
 	createBAQAnswers : function(oRef_id, questions, answers) {
 		//if(IsicSelectedGroups.length>0){
 		
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		
 		var that = this;
 		var oRequestFinishedCreateBAQDeferred = jQuery.Deferred();
@@ -268,7 +268,7 @@ com.sagia.common.ModelHelper = {
          this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
          this.oBAQODataModel.setUseBatch(true);
          this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
-             that.closeBusyDialog();             
+             //that.closeBusyDialog();             
         	        	 
         	 oRequestFinishedCreateBAQDeferred.resolve(oResponse);
      	 }, 
@@ -715,12 +715,12 @@ com.sagia.common.ModelHelper = {
 		oBICIPassPortCopyFileUploader.attachUploadComplete(function(){
 			oBICIPassPortCopyFileUploader.removeAllHeaderParameters();
 			oBICIPassPortCopyFileUploader.clear();
-        	that.closeBusyDialog();
+        	//that.closeBusyDialog();
         	oUploadBICIPassPortCopyRequestFinishedDeferred.resolve();
         	 //sap.m.MessageToast.show(that.getText("Uploaded"));	
         });
         //sap.m.MessageToast.show(that.getText("Uploading"));	
-        this.openBusyDialog();
+        //this.openBusyDialog();
         oBICIPassPortCopyFileUploader.upload();
 		}
         return oUploadBICIPassPortCopyRequestFinishedDeferred;
@@ -751,14 +751,14 @@ com.sagia.common.ModelHelper = {
 	        	oBICIPowerofAttorneyFileUploader.removeAllHeaderParameters();
 	        	oBICIPowerofAttorneyFileUploader.clear();
 	        	
-	        	that.closeBusyDialog();
+	        	//that.closeBusyDialog();
 	        	oUploadPOARequestFinishedDeferred.resolve();
 	        	/*if(oBICIPassPortCopyFileUploader.getValue() !== ""){
 	        	that.uploadBICIPassPortCopy(oRefID, oBICIPassPortCopyFileUploader);
 	        	}*/
 	        });
 	        //sap.m.MessageToast.show(that.getText("Uploading"));	
-	        this.openBusyDialog();
+	        //this.openBusyDialog();
 	        oBICIPowerofAttorneyFileUploader.upload();
 		}
 		/*if(oBICIPassPortCopyFileUploader.getValue() !== ""){
@@ -793,7 +793,7 @@ com.sagia.common.ModelHelper = {
 			oBICINationalityCombobox,
 			oBICIStreet, oBICIPowerofAttorneyFileUploader, oBICIPassPortCopyFileUploader) {
 		
-		this.openBusyDialog();
+		//this.openBusyDialog();
 
 		var that = this;
 		var oRequestFinishedDeferred = jQuery.Deferred();
@@ -826,7 +826,7 @@ com.sagia.common.ModelHelper = {
 				
 				oRequestFinishedDeferred.resolve(oData);
 				// close busy dialog
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 				
 				//that.uploadPOA(oEntry.RefID, oBICIPowerofAttorneyFileUploader, oBICIPassPortCopyFileUploader);
 				
@@ -834,10 +834,10 @@ com.sagia.common.ModelHelper = {
 				
 			},
 			error : function(oResponse) {
-				console.log(oResponse);
+				//console.log(oResponse);
 				oRequestFinishedDeferred.resolve();
 				// close busy dialog
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			},
 			async : true,
 			urlParameters : oEntry
@@ -874,7 +874,7 @@ com.sagia.common.ModelHelper = {
 		
 		var that = this;
 		
-		this.openBusyDialog();
+		//this.openBusyDialog();
 
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
@@ -906,13 +906,13 @@ com.sagia.common.ModelHelper = {
 			//console.log(" saveBICI >"+response);
 			oRequestFinishedDeferred.resolve(response);
 			// 
-			that.closeBusyDialog();
+			//that.closeBusyDialog();
 			
 			//that.uploadPOA(oEntry.RefID, oBICIPowerofAttorneyFileUploader, oBICIPassPortCopyFileUploader);
 			},
 		    error : function(oResponse) {
 		    	oRequestFinishedDeferred.resolve();
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 		    }
 		
 		});
@@ -1552,7 +1552,7 @@ com.sagia.common.ModelHelper = {
 
 		
 		// Open busy dialog
-		this.openBusyDialog();
+		//this.openBusyDialog();
 
 		var that = this;
 		
@@ -1585,11 +1585,11 @@ com.sagia.common.ModelHelper = {
 		success : function(oData, response) { //console.dir(response);
 			oRequestFinishedDeferred.resolve(oData);
 			//console.log(response.x-csrf-token); 
-			that.closeBusyDialog();
+			//that.closeBusyDialog();
 			},
 		    error : function(oResponse) {// console.log("error"+response);
 		    	oRequestFinishedDeferred.resolve();
-		    that.closeBusyDialog();
+		    //that.closeBusyDialog();
 		    }
 		
 		});
@@ -1612,7 +1612,7 @@ com.sagia.common.ModelHelper = {
 		
 		
 		// Open busy dialog
-		this.openBusyDialog();
+		//this.openBusyDialog();
 
 		var that = this;
 		
@@ -1646,13 +1646,13 @@ com.sagia.common.ModelHelper = {
 				
 				oRequestFinishedDeferred.resolve(oData);
 				// close busy dialog
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				
 				oRequestFinishedDeferred.resolve();
 				// close busy dialog
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			},
 			async : true,
 			urlParameters : oEntry
