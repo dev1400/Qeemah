@@ -1019,7 +1019,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}
 					
 			
-        }, 4000);
+        }, 8000);
 	},
 	handleBasicInfoTabsSelection : function(oEvent){
 		//console.log("Tab Selected");
