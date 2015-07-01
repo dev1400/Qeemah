@@ -1243,21 +1243,50 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleLicenseInfoTabStripSelect : function(oControlEvent){
 		//console.log(oControlEvent.getParameters().index);
+		that = this;
+		var isicGroup = [];
 		if(oControlEvent.getParameters().index === 1){
 			var oRequestFinishedDeferredReadISIC = this.oModelHelper.readISIC(this.oRef_id);
 			
 			jQuery.when(oRequestFinishedDeferredReadISIC).then(jQuery.proxy(function(oResponse) {
 				
 				if(oResponse.data.results.length > 0){
+					that.openBusyDialog();
 					this.oLILIBusinessTypeComboBox.setSelectedKey("N");
 					this.oLILIBusinessTypeComboBox.fireSelectionChange();
 					for(var i=0; i < oResponse.data.results.length; i++){
 						
+						//console.log(this.oLILISectionComboBox.getSelectedKey());
+						if(this.oLILISectionComboBox.getSelectedKey() === ""){
+							this.oLILISectionComboBox.setSelectedKey(oResponse.data.results[i].IsicSection);
+							this.oLILISectionComboBox.fireSelectionChange(); 
+						}
+						
+						if(this.oLILIDivisionComboBox.getSelectedKey() === ""){
+							this.oLILIDivisionComboBox.setSelectedKey(oResponse.data.results[i].IsicDivision);
+							this.oLILIDivisionComboBox.fireSelectionChange();
+						}
+						
+						console.log(this.oLILIGroupComboBox.getSelectedKeys().length);
+						
+						
+						
+						for(j=0; j < oResponse.data.results.length; j++){
+							
+							
+							isicGroup[j] = oResponse.data.results[j].IsicGroup;
+							
+							var unique = isicGroup.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+							
+							this.oLILIGroupComboBox.setSelectedKeys(unique);
+							//this.oLILIGroupComboBox.fireSelectionChange();
+						}
 					}
+					that.closeBusyDialog();
 					
 				}				
 					
-				console.dir(oResponse);
+				console.dir(oResponse);//addSelectedKeys
 				
 			}, this));
 		}

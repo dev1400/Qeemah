@@ -253,7 +253,7 @@ com.sagia.common.ModelHelper = {
 	 */
 	readISIC : function(oRef_id) {
 		
-		//this.openBusyDialog();
+		this.openBusyDialog();
 
 		var that = this;
 		
@@ -263,14 +263,14 @@ com.sagia.common.ModelHelper = {
 			success : function(oData, response) {
 				
 				oRequestFinishedDeferred.resolve(response);
-				//that.closeBusyDialog();
+				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				
 				oRequestFinishedDeferred.resolve();
 				sap.m.MessageToast.show(oResponse);
 
-				//that.closeBusyDialog();
+				that.closeBusyDialog();
 			}});
 
 		return oRequestFinishedDeferred;
