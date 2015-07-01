@@ -1255,7 +1255,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 							
 							var oTextView = new sap.ui.commons.TextView("idPBAQuestion"+l,{
 								text : questions[l],
-								enabled : false
+								//enabled : false
 								});
 							var oSelect = new sap.m.Select("idPBAQAnswer"+l, {enabled : false});
 							
