@@ -2331,7 +2331,7 @@ userSignIn : function(userID, password){
 				that.readBICIPOAFileAttachemnts();
 				
 				
-			/*	var oRequestFinishedDeferredBAQAnswersReadChild = this.oModelHelper.readBAQSavedAnswers(this.oRef_id);
+				var oRequestFinishedDeferredBAQAnswersReadChild = this.oModelHelper.readBAQSavedAnswers(this.oRef_id);
 
 				jQuery.when(oRequestFinishedDeferredBAQAnswersReadChild).then(jQuery.proxy(function(oResponse) {
 					
@@ -2351,7 +2351,7 @@ userSignIn : function(userID, password){
 						}
 						this.oBAQExists = true;						
 						}
-				}, this));*/
+				}, this));
 				
 				/*var oRequestFinishedDeferredBAQAnswersAttachmentName = [];
 				for(var i=0; i < this.oTotalBAQQuestions; i++){
