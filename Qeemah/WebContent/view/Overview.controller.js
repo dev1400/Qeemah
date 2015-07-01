@@ -995,7 +995,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 				this.oSurveyID,
 				//this.oLILILicenseActivityMultiComboBox.getSelectedKeys(),
 				this.oLILIClassMultiComboBox.getSelectedKeys(),
-				this.oLILILicenseActivityMultiComboBox.getSelectedKeys(),
+				this.oLILILicenseActivityMultiComboBox.getSelectedItems(),
 				this.oLILIGroupComboBox.getSelectedKeys(),
 				this.oLILIDivisionComboBox.getSelectedKey(),
 				this.oLILISectionComboBox.getSelectedKey(),
@@ -1251,11 +1251,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var isicGroup = [];
 		var IsicClass = [];
 		var IsicLicenseActivity = [];
-		if(oControlEvent.getParameters().index === 1){
+		//if(oControlEvent.getParameters().index === 1){
 			var oRequestFinishedDeferredReadISIC = this.oModelHelper.readISIC(this.oRef_id);
 			
 			jQuery.when(oRequestFinishedDeferredReadISIC).then(jQuery.proxy(function(oResponse) {
-				if(oResponse){
+				//if(oResponse){
 				if(oResponse.data.results.length > 0){
 					//that.openBusyDialog();
 					this.oLILIBusinessTypeComboBox.setSelectedKey("N");
@@ -1311,10 +1311,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 					for(var k=0; k < this.oLILIClassMultiComboBox.getSelectedKeys().length; k++){
 						//that = this;						
 						
-						setTimeout(function() {							
+						//setTimeout(function() {							
 							that.oLILIClassMultiComboBox.fireSelectionChange();
 							
-				        },2000);
+				       // },2000);
 						
 						
 						/*setTimeout(function() {		
@@ -1337,12 +1337,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 					//that.closeBusyDialog();
 					
 				}			
-				}
+				//}
 					
 				//console.dir(oResponse);//addSelectedKeys
 				
 			}, this));
-		}
+		//}
 		
 	},
 	getPreviewBAQ : function(){
@@ -2681,7 +2681,13 @@ handleRegisterUserButtonPress : function() {
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("LicenseInformationHTML"));
 		
-		
+		this.openBusyDialog();
+		this.handleLicenseInfoTabStripSelect();
+		var that = this;
+		setTimeout(function() { 
+			that.closeBusyDialog();
+			
+        }, 5000);
 		
 	
 	},

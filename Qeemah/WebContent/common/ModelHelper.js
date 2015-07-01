@@ -223,7 +223,7 @@ com.sagia.common.ModelHelper = {
 	        	        	  Activity : oActivity,
 	        	        	  SurveyID : oSurveyID,
 	        	        	  IsicClass : oIsicClass[j],
-	        	        	  IsicDescription : oIsicDescription[l],
+	        	        	  IsicDescription : oIsicDescription[l].getText(),
 	        	        	  IsicGroup : oIsicGroup[k],
 	        	        	  IsicDivision : oIsicDivision,
 	        	        	  IsicSection : oIsicSection,
@@ -1162,7 +1162,7 @@ com.sagia.common.ModelHelper = {
 	 */
 	readLILISection : function() {
 		// Open busy dialog
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		
 		var that = this;
 		// Create deferred object so that calling program can wait till
@@ -1187,7 +1187,7 @@ com.sagia.common.ModelHelper = {
 				oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
 
 				// close busy dialog
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				console.log(oResponse);
@@ -1196,7 +1196,7 @@ com.sagia.common.ModelHelper = {
 				oRequestFinishedDeferred.resolve();
 				
 				// close busy dialog
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			}
 		});
 
@@ -1208,7 +1208,7 @@ com.sagia.common.ModelHelper = {
 	 * @author mabdulwaheed
 	 */
 	readLILIBusinessType : function() {
-		this.openBusyDialog();		
+		//this.openBusyDialog();		
 		var that = this;		
 		var oRequestFinishedDeferred = jQuery.Deferred();
 		this.oODataModel.read("IsicDet?Flag='L'&Lang='E'&IsicSection=' '&IsicDivision=' '&IsicGroup=' '&IsicClass=' '", {
@@ -1216,27 +1216,27 @@ com.sagia.common.ModelHelper = {
 				that.oBusinessTypeCollectionModel = new sap.ui.model.json.JSONModel();
 				that.oBusinessTypeCollectionModel.setData({LILIBusinessTypeCollection:oData.results});
 				oRequestFinishedDeferred.resolve(that.oBusinessTypeCollectionModel);
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				oRequestFinishedDeferred.resolve();
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			}
 		});
 		return oRequestFinishedDeferred;
 	},
 	readLILIBusinessTypeIsicDescription : function(oFlag){
-		this.openBusyDialog();		
+		//this.openBusyDialog();		
 		var that = this;		
 		var oRequestFinishedDeferred = jQuery.Deferred();
 		this.oODataModel.read("IsicDet?Flag='"+oFlag+"'&Lang='E'&IsicSection=' '&IsicDivision=' '&IsicGroup=' '&IsicClass=' '", {
 			success : function(oData, response) {				
 				oRequestFinishedDeferred.resolve(response);
-				that.closeBusyDialog();
+			//	that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				oRequestFinishedDeferred.resolve();
-				that.closeBusyDialog();
+			//	that.closeBusyDialog();
 			}
 		});
 		return oRequestFinishedDeferred;
@@ -1246,7 +1246,7 @@ com.sagia.common.ModelHelper = {
 	 * Read LI LI Division 
 	 */
 	readLILIDivision : function(IsicSection) {
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		
 		var that = this;
 		
@@ -1261,13 +1261,13 @@ com.sagia.common.ModelHelper = {
 				
 				oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
 				
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				
 				oRequestFinishedDeferred.resolve();
 				
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			}
 		});
 		
@@ -1277,7 +1277,7 @@ com.sagia.common.ModelHelper = {
 	 * Read LI LI Group 
 	 */
 	readLILIGroup : function(IsicSection, IsicDivision) {
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		
 		var that = this;
 		
@@ -1292,13 +1292,13 @@ com.sagia.common.ModelHelper = {
 				
 				oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
 				
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				
 				oRequestFinishedDeferred.resolve();
 				
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			}
 		});
 		
