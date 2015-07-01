@@ -376,7 +376,7 @@ com.sagia.common.ModelHelper = {
 
 		var that = this;
 		var oEntry = {};
-		oEntry.RefID='1';
+		oEntry.RefID=oRefID;
 		
 		// Create deferred object so that calling program can wait till
 		// asynchronous call is finished

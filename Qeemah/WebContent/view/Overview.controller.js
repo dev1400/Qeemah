@@ -890,13 +890,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 				
 				this.oBAQError = true;
 				
-				if(!this.oShowAlertDialog.isOpen())
+				/*if(!this.oShowAlertDialog.isOpen())
 					{
 					this.oAlertTextView.setText(this.oModelHelper
 							.getText("ChooseBAQ"));
 					this.oShowAlertDialog.open();
 					
-					}
+					}*/
 				
 			}
 			
@@ -2262,17 +2262,19 @@ userSignIn : function(userID, password){
 						
 						this.oBIOIEmailInputText.setValue(oResponse.data.Email);
 						
-						this.oBIOILaborSizeInputText.setValue(oResponse.data.LbrSize);
+						 
+						
+						this.oBIOILaborSizeInputText.setValue(Number(oResponse.data.LbrSize).toString());
 						
 						//vItem.setText(oResponse.data.CommMtd);
 						this.oBIOICommMethodComboBox.setValue(oResponse.data.CommMtd);//.setSelectedItem(vItem);
 						
-						this.oBIOICapitalInputText.setValue(oResponse.data.Capital);
+						this.oBIOICapitalInputText.setValue(Number(oResponse.data.Capital).toString());
 						
 						this.oBIOIWebSiteInputText.setValue(oResponse.data.Website);
 						this.oBIOITelephoneInputText.setValue(oResponse.data.Telephone);  
 						this.oBIOIMobilephoneInputText.setValue(oResponse.data.Mobile);
-						this.oBIOIFaxInputText.setValue(oResponse.data.Fax);
+						this.oBIOIFaxInputText.setValue(Number(oResponse.data.Fax).toString());
 						this.oBIOITelephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Tele);
 						this.oBIOIFaxCountryCodeInputText.setValue(oResponse.data.Ccode_Fax);
 						this.oBIOIMobilephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Mobile);					
@@ -2306,7 +2308,7 @@ userSignIn : function(userID, password){
 						this.oBICIMobilePhoneInputText.setValue(oResponse.data.Mobile);
 						this.oBICICommMethodComboBox.setValue(oResponse.data.CommMtd);
 						this.oBICIFaxCountryCodeInputText.setValue(oResponse.data.Ccode_Fax);
-						this.oBICIFaxInputText.setValue(oResponse.data.Fax);
+						this.oBICIFaxInputText.setValue(Number(oResponse.data.Fax).toString());
 						this.oBICIRoleInputText.setValue(oResponse.data.Role);
 						this.oBICIEmailInputText.setValue(oResponse.data.Email);
 						//this.oBICIPassportCopyFileUploader.setValue(oResponse.data.);
