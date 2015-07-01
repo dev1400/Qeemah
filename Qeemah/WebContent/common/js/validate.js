@@ -54,6 +54,10 @@ com.sagia.common.js.validate = {
             context._oBIOIPreviewPostalCodeInputText = context.getView().byId("idBIOIPreviewPostalCodeInputText");			
             context._oBIOIPreviewPostalCodeInputText.setValue(context.oBIOIPostalCodeInputText.getValue());
             
+            context.oBIOITelephoneCCInputText = context.getView().byId("idBIOITelephoneCountryCodeInputText");	
+            context._oBIOIPreviewTelephoneCCInputText = context.getView().byId("idBIOIPreviewTelephoneCountryCode");			
+            context._oBIOIPreviewTelephoneCCInputText.setValue(context.oBIOITelephoneCCInputText.getValue());
+            
             context.oBIOITelephoneInputText = context.getView().byId("idBIOITelephoneInputText");	
             context._oBIOIPreviewTelephoneInputText = context.getView().byId("idBIOIPreviewTelephoneInputText");			
             context._oBIOIPreviewTelephoneInputText.setValue(context.oBIOITelephoneInputText.getValue());
@@ -62,7 +66,20 @@ com.sagia.common.js.validate = {
 //            context._oBIOIPreviewTelephoneExtensionInputText = context.getView().byId("idBIOIPreviewTelephoneExtensionInputText");			
 //            context._oBIOIPreviewTelephoneExtensionInputText.setValue(context.oBIOITelephoneExtensionInputText.getValue());
 //
-//            
+//             
+            //idBIOIPreviewMobilephoneCountryCodeInputText   idBIOIMobilephoneCountryCodeInputText
+            //idBIOIPreviewFaxCountryCodeInputText   idBIOIFaxCountryCodeInputText
+            
+            context.oBIOIMobilephoneCountryCodeInputText = context.getView().byId("idBIOIMobilephoneCountryCodeInputText");	
+            context._oBIOIPreviewMobilephoneCountryCodeInputText = context.getView().byId("idBIOIPreviewMobilephoneCountryCodeInputText");			
+            context._oBIOIPreviewMobilephoneCountryCodeInputText.setValue(context.oBIOIMobilephoneCountryCodeInputText.getValue());
+            
+            context.oBIOIFaxCountryCodeInputText = context.getView().byId("idBIOIFaxCountryCodeInputText");	
+            context.oBIOIPreviewFaxCountryCodeInputText = context.getView().byId("idBIOIPreviewFaxCountryCodeInputText");			
+            context.oBIOIPreviewFaxCountryCodeInputText.setValue(context.oBIOIFaxCountryCodeInputText.getValue());
+            
+            
+            
             context.oBIOIStreetInputText = context.getView().byId("idBICIStreetInputText");	
             context._oBIOIPreviewStreetInputText = context.getView().byId("idBIOIPreviewStreetInputText");			
             context._oBIOIPreviewStreetInputText.setValue(context.oBIOIStreetInputText.getValue());

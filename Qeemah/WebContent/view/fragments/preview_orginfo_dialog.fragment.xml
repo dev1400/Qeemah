@@ -203,12 +203,12 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<HBox justifyContent="Start" alignItems="Center">
-														<Input enabled="false" type="Number" placeholder="{i18n>CountryCode}"
-															 width="8em" />
-														<Input enabled="false" type="Number" id="idBIOIPreviewTelephoneInputText"
-															width="9em" />
-														<Input enabled="false" type="Number" id="idBIOIPreviewTelephoneExtensionInputText"
+														<!-- <Input enabled="false" type="Number" placeholder="{i18n>CountryCode}"
+															 width="8em" /> -->
+														<Input enabled="false" type="Text" id="idBIOIPreviewTelephoneCountryCode"
 															width="8em" />
+														<Input enabled="false" type="Text" id="idBIOIPreviewTelephoneInputText"
+															width="17em" />
 													</HBox>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell
@@ -239,9 +239,9 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<HBox justifyContent="Start" alignItems="Center">
-														<Input enabled="false" type="Number" placeholder="{i18n>CountryCode}"
+														<Input enabled="false" type="Text" id="idBIOIPreviewMobilephoneCountryCodeInputText"
 															 width="8em" />
-														<Input enabled="false" type="Number" id="idBIOIPreviewMobilephoneInputText"
+														<Input enabled="false" type="Text" id="idBIOIPreviewMobilephoneInputText"
 															width="17em" />
 													</HBox>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -273,9 +273,9 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 													<HBox justifyContent="Start" alignItems="Center">
-														<Input enabled="false" type="Number" placeholder="{i18n>CountryCode}"
+														<Input enabled="false" type="Text" id="idBIOIPreviewFaxCountryCodeInputText"
 															 width="8em" />
-														<Input enabled="false" type="Number" id="idBIOIPreviewFaxInputText" width="17em" />
+														<Input enabled="false" tzype="Text" id="idBIOIPreviewFaxInputText" width="17em" />
 													</HBox>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell
