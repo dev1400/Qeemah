@@ -518,16 +518,19 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oLILIClassMultiComboBox.setModel(oResponse);
 			
 		}, this));*/
+		this.openBusyDialog();
+		var that = this;
 		 var oRequestFinishedDeferredLILIClass = this.oModelHelper.readLILIClass(this.oLILISectionComboBox.getSelectedKey(),this.oLILIDivisionComboBox.getSelectedKey(), this.oLILIGroupComboBox.getSelectedKeys());
 
 			jQuery.when(oRequestFinishedDeferredLILIClass).then(jQuery.proxy(function(oResponse) {
 				
 				this.oLILIClassMultiComboBox.setModel(oResponse);
-				
+				that.closeBusyDialog();
 			}, this));
 	},
 	handleLILIClassMultiSelectionComboBoxChange : function(){
 		this.oLILILicenseActivityMultiComboBox.removeAllSelectedItems();
+		
 		
 	 var oRequestFinishedDeferredLILILicenseActivity = this.oModelHelper.readLILILicenseActivity(this.oLILISectionComboBox.getSelectedKey(),this.oLILIDivisionComboBox.getSelectedKey(), this.oLILIGroupComboBox.getSelectedKeys(), this.oLILIClassMultiComboBox.getSelectedKeys());
 
@@ -1246,13 +1249,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 		that = this;
 		var isicGroup = [];
 		var IsicClass = [];
+		var IsicLicenseActivity = [];
 		if(oControlEvent.getParameters().index === 1){
 			var oRequestFinishedDeferredReadISIC = this.oModelHelper.readISIC(this.oRef_id);
 			
 			jQuery.when(oRequestFinishedDeferredReadISIC).then(jQuery.proxy(function(oResponse) {
 				
 				if(oResponse.data.results.length > 0){
-					that.openBusyDialog();
+					//that.openBusyDialog();
 					this.oLILIBusinessTypeComboBox.setSelectedKey("N");
 					this.oLILIBusinessTypeComboBox.fireSelectionChange();
 					for(var i=0; i < oResponse.data.results.length; i++){
@@ -1296,13 +1300,40 @@ sap.ui.controller("com.sagia.view.Overview", {
 					
 					for(var k=0; k < this.oLILIGroupComboBox.getSelectedKeys().length; k++){
 						//that = this;						
+						//that.openBusyDialog()
+						//setTimeout(function() {							
+							that.oLILIGroupComboBox.fireSelectionChange();
+							//that.closeBusyDialog();
+				       // },2000);
+					}
+					
+					for(var k=0; k < this.oLILIClassMultiComboBox.getSelectedKeys().length; k++){
+						//that = this;						
 						
 						setTimeout(function() {							
-							that.oLILIGroupComboBox.fireSelectionChange();
+							that.oLILIClassMultiComboBox.fireSelectionChange();
 							
 				        },2000);
+						
+						
+						/*setTimeout(function() {		
+							for(var i=0; i < oResponse.data.results.length; i++){
+							for(var k=0; k < oResponse.data.results.length; k++){							
+								
+								IsicLicenseActivity[k] = oResponse.data.results[k].IsicClass;
+								
+								var uniqueIsicLAArray = IsicLicenseActivity.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+								
+								this.oLILIClassMultiComboBox.setSelectedKeys(uniqueIsicLAArray);
+								
+							}
+							}
+							
+				        },4000);*/
+						
+						
 					}
-					that.closeBusyDialog();
+					//that.closeBusyDialog();
 					
 				}				
 					

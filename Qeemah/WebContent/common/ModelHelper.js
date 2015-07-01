@@ -1306,7 +1306,7 @@ com.sagia.common.ModelHelper = {
 	readLILIClass : function(IsicSection, IsicDivision, IsicSelectedGroups) {
 		if(IsicSelectedGroups.length>0){
 		
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		
 		var that = this;
 		var oRequestFinishedDeferred = jQuery.Deferred();
@@ -1318,7 +1318,7 @@ com.sagia.common.ModelHelper = {
             }
          this.oODataModel.addBatchReadOperations( aBatchOperations);
          this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
-             that.closeBusyDialog();
+             //that.closeBusyDialog();
         	 
         	 var oLocalLILIClassCollection = {LILIClassCollection: []};
         	 
@@ -1351,7 +1351,7 @@ com.sagia.common.ModelHelper = {
 	readLILILicenseActivity : function(IsicSection, IsicDivision, IsicSelectedGroups, IsicSelectedClasses) {
 		if(IsicSelectedClasses.length>0){
 		
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		
 		var that = this;
 		var oRequestFinishedDeferred = jQuery.Deferred();
@@ -1367,7 +1367,7 @@ com.sagia.common.ModelHelper = {
              }
          this.oODataModel.addBatchReadOperations( aBatchOperations);
          this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
-             that.closeBusyDialog();
+            // that.closeBusyDialog();
         	 
         	 var oLocalLILILicenseActivityCollection = {LILILicenseActivityCollection: []};
         	 
@@ -1398,7 +1398,7 @@ com.sagia.common.ModelHelper = {
 	readLILILicenseType : function(IsicSection, IsicDivision, IsicSelectedGroups, IsicSelectedClasses) {
 		if(IsicSelectedClasses.length>0){
 		
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		
 		var that = this;
 		var oRequestFinishedDeferred = jQuery.Deferred();
@@ -1412,7 +1412,7 @@ com.sagia.common.ModelHelper = {
         	 } }
          this.oODataModel.addBatchReadOperations( aBatchOperations);
          this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
-             that.closeBusyDialog();
+             //that.closeBusyDialog();
         	 //console.log(oResponse.data.__batchResponses);
         	 var oLocalLILILicenseTypeCollection = {LILILicenseActivityType: []};
         	 
