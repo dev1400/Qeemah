@@ -378,7 +378,7 @@ com.sagia.common.ModelHelper = {
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
 
-		this.oBAQODataModel.read("SurChg?Investorid='"+oRef_id+"'", {
+		this.oBAQODataModel.read("SurChg?Investorid='"+oRef_id+"'&Flag='B'", {
 			success : function(oData, response) {
 				
 				oRequestFinishedDeferred.resolve(response);

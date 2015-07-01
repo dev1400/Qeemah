@@ -1267,7 +1267,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 							this.oLILIDivisionComboBox.fireSelectionChange();
 						}
 						
-						console.log(this.oLILIGroupComboBox.getSelectedKeys().length);
+						//console.log(this.oLILIGroupComboBox.getSelectedKeys().length);
 						
 						
 						
@@ -1276,11 +1276,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 							
 							isicGroup[j] = oResponse.data.results[j].IsicGroup;
 							
-							var unique = isicGroup.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+							var uniqueISISCGroupArray = isicGroup.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
 							
-							this.oLILIGroupComboBox.setSelectedKeys(unique);
+							this.oLILIGroupComboBox.setSelectedKeys(uniqueISISCGroupArray);
 							//this.oLILIGroupComboBox.fireSelectionChange();
+							if(this.oLILIGroupComboBox.getSelectedKeys().length > 0){
+								//this.oLILIGroupComboBox.fireSelectionChange();
+
+							}
 						}
+						
 					}
 					that.closeBusyDialog();
 					
