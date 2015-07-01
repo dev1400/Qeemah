@@ -1231,6 +1231,37 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 		}, this));	
 		
+        /*var oRequestFinishedDeferredReadISIC = this.oModelHelper.readISIC(this.oRef_id);
+		
+		jQuery.when(oRequestFinishedDeferredReadISIC).then(jQuery.proxy(function(oResponse) {
+			
+			console.dir(oResponse);
+			
+		}, this));	*/
+
+		
+	},
+	handleLicenseInfoTabStripSelect : function(oControlEvent){
+		//console.log(oControlEvent.getParameters().index);
+		if(oControlEvent.getParameters().index === 1){
+			var oRequestFinishedDeferredReadISIC = this.oModelHelper.readISIC(this.oRef_id);
+			
+			jQuery.when(oRequestFinishedDeferredReadISIC).then(jQuery.proxy(function(oResponse) {
+				
+				if(oResponse.data.results.length > 0){
+					this.oLILIBusinessTypeComboBox.setSelectedKey("N");
+					this.oLILIBusinessTypeComboBox.fireSelectionChange();
+					for(var i=0; i < oResponse.data.results.length; i++){
+						
+					}
+					
+				}				
+					
+				console.dir(oResponse);
+				
+			}, this));
+		}
+		
 	},
 	getPreviewBAQ : function(){
 		if(!this.oBAQPreviewMatrixLayout){
