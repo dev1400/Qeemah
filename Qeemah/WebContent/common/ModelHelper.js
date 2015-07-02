@@ -1339,7 +1339,10 @@ com.sagia.common.ModelHelper = {
         	 that.oLILIClassCollection = new sap.ui.model.json.JSONModel();
 			 that.oLILIClassCollection.setData(oLocalLILIClassCollection);
 				
-			 oRequestFinishedDeferred.resolve(that.oLILIClassCollection);
+			
+			 setTimeout(function() {
+				 oRequestFinishedDeferred.resolve(that.oLILIClassCollection);
+				},2000);
      	 }, 
      	 function(oError) {
      		console.log("E"+oError);
