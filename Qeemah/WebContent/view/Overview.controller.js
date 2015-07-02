@@ -904,6 +904,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 				this.oBAQError = false;
 				
 			}, this));
+			
+			
 			}catch(err){
 				
 				this.oBAQError = true;
@@ -1005,25 +1007,62 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		}
 		
-		var oRequestFinishedDeferredcreateLicenseInfo = this.oModelHelper.createLILIBusiness(
-				this.oLicenseTypeInputText.getValue(),
-				this.oSurveyID,
-				//this.oLILILicenseActivityMultiComboBox.getSelectedKeys(),
-				this.oLILIClassMultiComboBox.getSelectedKeys(),
-				this.oLILILicenseActivityMultiComboBox.getSelectedItems(),
-				this.oLILIGroupComboBox.getSelectedKeys(),
-				this.oLILIDivisionComboBox.getSelectedKey(),
-				this.oLILISectionComboBox.getSelectedKey(),
-				this.oRef_id,
-				this.oLILIBusinessTypeComboBox.getSelectedKey(),
-				this.oLILIActivityDescriptionTextArea.getValue()
-				);
-
-		jQuery.when(oRequestFinishedDeferredcreateLicenseInfo).then(jQuery.proxy(function(oResponse) {
-			//console.log(oResponse);
-			//this.oBAQError = false;
+		
+		
+		if(this.oISICUnAvailable){
 			
-		}, this));
+			
+			var oRequestFinishedDeferredcreateISIC = this.oModelHelper.createLILIBusiness(
+					this.oLicenseTypeInputText.getValue(),
+					this.oSurveyID,
+					//this.oLILILicenseActivityMultiComboBox.getSelectedKeys(),
+					this.oLILIClassMultiComboBox.getSelectedKeys(),
+					this.oLILILicenseActivityMultiComboBox.getSelectedItems(),
+					this.oLILIGroupComboBox.getSelectedKeys(),
+					this.oLILIDivisionComboBox.getSelectedKey(),
+					this.oLILISectionComboBox.getSelectedKey(),
+					this.oRef_id,
+					this.oLILIBusinessTypeComboBox.getSelectedKey(),
+					this.oLILIActivityDescriptionTextArea.getValue()
+					);
+
+			jQuery.when(oRequestFinishedDeferredcreateISIC).then(jQuery.proxy(function(oResponse) {
+				//console.log(oResponse);
+				//this.oBAQError = false;
+				
+			}, this));
+			
+		}else{
+			
+			var oRequestFinishedDeferredDeleteISICEntry = this.oModelHelper.deleteISICEntry(this.oRef_id);
+
+			jQuery.when(oRequestFinishedDeferredDeleteISICEntry).then(jQuery.proxy(function(oResponse) {
+				
+				var oRequestFinishedDeferredcreateISIC = this.oModelHelper.createLILIBusiness(
+						this.oLicenseTypeInputText.getValue(),
+						this.oSurveyID,
+						//this.oLILILicenseActivityMultiComboBox.getSelectedKeys(),
+						this.oLILIClassMultiComboBox.getSelectedKeys(),
+						this.oLILILicenseActivityMultiComboBox.getSelectedItems(),
+						this.oLILIGroupComboBox.getSelectedKeys(),
+						this.oLILIDivisionComboBox.getSelectedKey(),
+						this.oLILISectionComboBox.getSelectedKey(),
+						this.oRef_id,
+						this.oLILIBusinessTypeComboBox.getSelectedKey(),
+						this.oLILIActivityDescriptionTextArea.getValue()
+						);
+
+				jQuery.when(oRequestFinishedDeferredcreateISIC).then(jQuery.proxy(function(oResponse) {
+					//console.log(oResponse);
+					//this.oBAQError = false;
+					
+				}, this));
+				
+			}, this));				
+			
+			
+		}
+		
 		
 		that = this;
 		setTimeout(function() {
@@ -2502,6 +2541,17 @@ userSignIn : function(userID, password){
 							 }									
 						}
 						this.oBAQExists = true;						
+						}
+				}, this));
+				
+				var oRequestFinishedDeferredISICRecord = this.oModelHelper.checkISICAvailability(this.oRef_id);
+
+				jQuery.when(oRequestFinishedDeferredISICRecord).then(jQuery.proxy(function(oResponse) {
+					
+					if(oResponse.data.results[0].Return === "No Records"){					
+						
+						this.oISICUnAvailable = true;						
+						
 						}
 				}, this));
 				

@@ -403,6 +403,64 @@ com.sagia.common.ModelHelper = {
 		
 	},
 	/**
+	 * Check ISIC Availability
+	 * @author Abdul Waheed
+	 */
+	checkISICAvailability : function(oRef_id) {
+		
+		this.openBusyDialog();
+
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		this.oODataModel.read("IsicDetPs?Investorid='"+oRef_id+"'", {
+			success : function(oData, response) {
+				
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(oResponse);
+
+				that.closeBusyDialog();
+			}});
+
+		return oRequestFinishedDeferred;
+		
+	},
+	/**
+	 * Delete ISIC Entry
+	 * @author Abdul Waheed
+	 */
+	deleteISICEntry : function(oRef_id) {
+		
+		this.openBusyDialog();
+
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		this.oODataModel.remove("IsicDetPsSet(Investorid='"+oRef_id+"')", {
+			success : function(oData, response) {
+				
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(oResponse);
+
+				that.closeBusyDialog();
+			}});
+
+		return oRequestFinishedDeferred;
+		
+	},
+	/**
 	 * Submit App.
 	 * @author Abdul Waheed
 	 */
