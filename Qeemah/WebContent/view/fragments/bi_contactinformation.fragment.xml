@@ -252,7 +252,7 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
 													<Select width="25em" id="idBICIRoleInputText">
-														<sap.ui.core:ListItem Key="1" text="{i18n>Agent}" />
+														    <sap.ui.core:ListItem Key="1" text="{i18n>Agent}" />
 															<sap.ui.core:ListItem key="2" text="{i18n>Employee}" />
 															<sap.ui.core:ListItem Key="3" text="{i18n>Invester}" />
 															<sap.ui.core:ListItem key="4" text="{i18n>GM}" />

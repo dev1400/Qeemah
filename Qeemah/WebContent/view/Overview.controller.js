@@ -621,17 +621,19 @@ sap.ui.controller("com.sagia.view.Overview", {
 				
 			var oRequestFinishedDeferred = this.oModelHelper.saveBIOI(this.oRef_id, 
 					this.oBIOIOrganizationName.getValue(),
-					this._oidRegionComboBox.getSelectedItem().getKey(),
+					this._oidRegionComboBox.getSelectedKey(),
 					//this._oidRegionComboBox.getSelectedItem().getText(),
-					this._oBIILegalStatusCombobox.getSelectedItem().getKey(),
+					this._oBIILegalStatusCombobox.getSelectedKey(),
 					//this._oBIILegalStatusCombobox.getSelectedItem().getText(),
-					this._oBICityComboBox.getSelectedItem().getKey(),
+					this._oBICityComboBox.getSelectedKey(),
 					//this._oBICityComboBox.getSelectedItem().getText(),
-					this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
+					this.oBIOIMultiNationalCompanyCombobox.getSelectedKey(),
+					
 					//this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
 					this.oBIOIEmailInputText.getValue(),
 					this.oBIOILaborSizeInputText.getValue(),
-					this.oBIOICommMethodComboBox.getSelectedItem().getKey(),
+					//sap.ui.getCore().byId("idBIOICommMethodComboBox").getSelectedKey(),
+					this.oBIOICommMethodComboBox.getSelectedKey(),
 					this.oBIOICapitalInputText.getValue(),
 					this.oBIOITelephoneCountryCodeInputText.getValue(),
 					this.oBIOITelephoneInputText.getValue(),
@@ -661,17 +663,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 			try{
 			var oRequestFinishedDeferred = this.oModelHelper.createAndUpdateBIOI(this.oRef_id, 
 					this.oBIOIOrganizationName.getValue(),
-					this._oidRegionComboBox.getSelectedItem().getKey(),
+					this._oidRegionComboBox.getSelectedKey(),
 					//this._oidRegionComboBox.getSelectedItem().getText(),
-					this._oBIILegalStatusCombobox.getSelectedItem().getKey(),
+					this._oBIILegalStatusCombobox.getSelectedKey(),
 					//this._oBIILegalStatusCombobox.getSelectedItem().getText(),
-					this._oBICityComboBox.getSelectedItem().getKey(),
+					this._oBICityComboBox.getSelectedKey(),
 					//this._oBICityComboBox.getSelectedItem().getText(),
 					this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
 					//this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
 					this.oBIOIEmailInputText.getValue(),
 					this.oBIOILaborSizeInputText.getValue(),
-					this.oBIOICommMethodComboBox.getSelectedItem().getKey(),
+					this.oBIOICommMethodComboBox.getSelectedKey(),
 					this.oBIOICapitalInputText.getValue(),
 					this.oBIOITelephoneCountryCodeInputText.getValue(),
 					this.oBIOITelephoneInputText.getValue(),
@@ -682,7 +684,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this.oBIOIWebSiteInputText.getValue(),
 					this.oBIOITelephoneCountryCodeInputText.getValue(),
 					this.oBIOIFaxCountryCodeInputText.getValue(),
-					this.oBIOIMobilephoneCountryCodeInputText.getValue()					
+					this.oBIOIMobilephoneCountryCodeInputText.getValue()								
 					);
 			
 			
@@ -718,20 +720,20 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this.oBICIFirstNameInputText.getValue(),
 					this.oBICILastNameInputText.getValue(),
 					this.oBICICityInputText.getValue(),
-					this.oBICIGenderComboBox.getSelectedItem().getKey(),
+					this.oBICIGenderComboBox.getSelectedKey(),
 					this.oBICIPOBoxInputText.getValue(),
 					this.oBICITelephoneCountryCodeInputText.getValue(),
 					this.oBICITelephoneInputText.getValue(),
 					this.oBICIPostalCodeInputText.getValue(),
 					this.oBICIMobileCountryCodeInputText.getValue(),
 					this.oBICIMobilePhoneInputText.getValue(),
-					this.oBICICommMethodComboBox.getSelectedItem().getKey(),
+					this.oBICICommMethodComboBox.getSelectedKey(),
 					this.oBICIFaxCountryCodeInputText.getValue(),
 					this.oBICIFaxInputText.getValue(),
-					this.oBICIRoleInputText.getSelectedItem().getText(),
+					this.oBICIRoleInputText.getSelectedKey(),
 					this.oBICIEmailInputText.getValue(),
-					this._oBICICountryCombobox.getSelectedItem().getKey(),
-					this._oBICINationalityCombobox.getSelectedItem().getKey(),						
+					this._oBICICountryCombobox.getSelectedKey(),
+					this._oBICINationalityCombobox.getSelectedKey(),						
 					this.oBICIStreet.getValue(),
 					this.oBICIPowerofAttorneyFileUploader,
 					this.oBICIPassPortCopyFileUploader
@@ -776,20 +778,20 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this.oBICIFirstNameInputText.getValue(),
 					this.oBICILastNameInputText.getValue(),
 					this.oBICICityInputText.getValue(),
-					this.oBICIGenderComboBox.getSelectedItem().getKey(),
+					this.oBICIGenderComboBox.getSelectedKey(),
 					this.oBICIPOBoxInputText.getValue(),
 					this.oBICITelephoneCountryCodeInputText.getValue(),
 					this.oBICITelephoneInputText.getValue(),
 					this.oBICIPostalCodeInputText.getValue(),
 					this.oBICIMobileCountryCodeInputText.getValue(),
 					this.oBICIMobilePhoneInputText.getValue(),
-					this.oBICICommMethodComboBox.getSelectedItem().getKey(),
+					this.oBICICommMethodComboBox.getSelectedKey(),
 					this.oBICIFaxCountryCodeInputText.getValue(),
 					this.oBICIFaxInputText.getValue(),
-					this.oBICIRoleInputText.getSelectedItem().getText(),
+					this.oBICIRoleInputText.getSelectedKey(),
 					this.oBICIEmailInputText.getValue(),
-					this._oBICICountryCombobox.getSelectedItem().getKey(),
-					this._oBICINationalityCombobox.getSelectedItem().getKey(),						
+					this._oBICICountryCombobox.getSelectedKey(),
+					this._oBICINationalityCombobox.getSelectedKey(),						
 					this.oBICIStreet.getValue(),
 					this.oBICIPowerofAttorneyFileUploader,
 					this.oBICIPassPortCopyFileUploader
@@ -2365,21 +2367,36 @@ userSignIn : function(userID, password){
 				
 				this._oBIILegalStatusCombobox = this.getView().byId("idBILegalStatusComboBox");
 				var oBIILegalStatusFilter = new sap.ui.model.Filter("Textlong", sap.ui.model.FilterOperator.NE, "");
-				this._oBIILegalStatusCombobox.getBinding("items").filter(oBIILegalStatusFilter);
+				var oBIILegalStatusKeyFilter = new sap.ui.model.Filter("Source", sap.ui.model.FilterOperator.NE, "");
+				this._oBIILegalStatusCombobox.getBinding("items").filter([oBIILegalStatusFilter,oBIILegalStatusKeyFilter]);
 				
 				this._oBICINationalityCombobox = this.getView().byId("idCINationalityComboBox");
 				var oBICINationalityFilter = new sap.ui.model.Filter("Natio50", sap.ui.model.FilterOperator.NE, "");
-				this._oBICINationalityCombobox.getBinding("items").filter(oBICINationalityFilter);
+				var oBICINationalityKeyFilter = new sap.ui.model.Filter("Land1", sap.ui.model.FilterOperator.NE, "");
+				this._oBICINationalityCombobox.getBinding("items").filter([oBICINationalityFilter,oBICINationalityKeyFilter]);
 				
 				
 				this._oBICICountryCombobox = this.getView().byId("idCICountryComboBox");
 				var oBICICountryFilter = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.NE, "");
-				this._oBICICountryCombobox.getBinding("items").filter(oBICICountryFilter);
+				var oBICICountryKeyFilter = new sap.ui.model.Filter("Land1", sap.ui.model.FilterOperator.NE, "");
+				this._oBICICountryCombobox.getBinding("items").filter([oBICICountryFilter,oBICICountryKeyFilter]);
 				
 				this._oBICityComboBox = this.getView().byId("idCityComboBox");
 				
 				//this.oBasicInfoTab.setSelectedIndex(0);
+				this.oBIOICommMethodComboBox = this.getView().byId("idBIOICommMethodComboBox");
+				this.oBICommunicationMethodJSON = {CommMethodCollection: []};
 				
+				this.oBICommunicationMethodJSON.CommMethodCollection.push(
+					{"methodKey": "TEL","methodText": "Telephone"},
+		 			{"methodKey": "INT","methodText": "Email"},
+		 			{"methodKey": "FAX","methodText": "Fax"},
+		 			{"methodKey": "PAG","methodText": "Pager"},
+		 			{"methodKey": "LET","methodText": "Post"});
+				this.oBICommunicationMethodJSONData = new sap.ui.model.json.JSONModel();
+				this.oBICommunicationMethodJSONData.setData(this.oBICommunicationMethodJSON);				 		
+				this.oBIOICommMethodComboBox.setModel(this.oBICommunicationMethodJSONData);
+
 				
 				
 				
@@ -2387,7 +2404,6 @@ userSignIn : function(userID, password){
 				this.oBIOIMultiNationalCompanyCombobox = this.getView().byId("idBIOIMultiNationalCompanyCombobox");
 				this.oBIOIEmailInputText = this.getView().byId("idBIOIEmailInputText");
 				this.oBIOILaborSizeInputText = this.getView().byId("idBIOILaborSizeInputText");
-				this.oBIOICommMethodComboBox = this.getView().byId("idBIOICommMethodComboBox");
 				this.oBIOICapitalInputText = this.getView().byId("idBIOICapitalInputText");
 				this.oBIOITelephoneCountryCodeInputText = this.getView().byId("idBIOITelephoneCountryCodeInputText");
 				this.oBIOITelephoneInputText = this.getView().byId("idBIOITelephoneInputText");
@@ -2443,14 +2459,14 @@ userSignIn : function(userID, password){
 						
 						//vItem.setText(oResponse.data.Region);						
 						//this._oidRegionComboBox.setSelectedItem(vItem);
-						this._oidRegionComboBox.setValue(oResponse.data.Region);
+						this._oidRegionComboBox.setSelectedKey(oResponse.data.Region);
 						
 						
 						//vItem.setText(oResponse.data.LegalStatus);
-						this._oBIILegalStatusCombobox.setValue(oResponse.data.LegalStatus);//.setSelectedItem(vItem);
+						this._oBIILegalStatusCombobox.setSelectedKey(oResponse.data.LegalStatus);//.setSelectedItem(vItem);
 						
 						//vItem.setText(oResponse.data.City);
-						this._oBICityComboBox.setValue(oResponse.data.City);//.setSelectedItem(vItem);
+						this._oBICityComboBox.setSelectedKey(oResponse.data.City);//.setSelectedItem(vItem);
 						
 						//vItem.setText(oResponse.data.MncComp);
 						this.oBIOIMultiNationalCompanyCombobox.setValue(oResponse.data.MncComp);//.setSelectedItem(vItem);
@@ -2462,7 +2478,7 @@ userSignIn : function(userID, password){
 						this.oBIOILaborSizeInputText.setValue(Number(oResponse.data.LbrSize).toString());
 						
 						//vItem.setText(oResponse.data.CommMtd);
-						this.oBIOICommMethodComboBox.setValue(oResponse.data.CommMtd);//.setSelectedItem(vItem);
+						this.oBIOICommMethodComboBox.setSelectedKey(oResponse.data.CommMtd);//.setSelectedItem(vItem);
 						
 						this.oBIOICapitalInputText.setValue(Number(oResponse.data.Capital).toString());
 						
@@ -2494,24 +2510,24 @@ userSignIn : function(userID, password){
 						this.oBICIFirstNameInputText.setValue(oResponse.data.NameFirst);
 						this.oBICILastNameInputText.setValue(oResponse.data.NameLast);
 						this.oBICICityInputText.setValue(oResponse.data.City);
-						this.oBICIGenderComboBox.setValue(oResponse.data.Gender);
+						this.oBICIGenderComboBox.setSelectedKey(oResponse.data.Gender);
 						this.oBICIPOBoxInputText.setValue(oResponse.data.PoBox);
 						this.oBICITelephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Tele);
 						this.oBICITelephoneInputText.setValue(oResponse.data.Telephone);
 						this.oBICIPostalCodeInputText.setValue(oResponse.data.PostalCode);
 						this.oBICIMobileCountryCodeInputText.setValue(oResponse.data.Ccode_Mobile);
 						this.oBICIMobilePhoneInputText.setValue(oResponse.data.Mobile);
-						this.oBICICommMethodComboBox.setValue(oResponse.data.CommMtd);
+						this.oBICICommMethodComboBox.setSelectedKey(oResponse.data.CommMtd);
 						this.oBICIFaxCountryCodeInputText.setValue(oResponse.data.Ccode_Fax);
 						this.oBICIFaxInputText.setValue(Number(oResponse.data.Fax).toString());
-						this.oBICIRoleInputText.setValue(oResponse.data.Role);
+						this.oBICIRoleInputText.setSelectedKey(oResponse.data.Role);
 						this.oBICIEmailInputText.setValue(oResponse.data.Email);
 						//this.oBICIPassportCopyFileUploader.setValue(oResponse.data.);
 						//this.oBICIPowerofAttorneyFileUploader.setValue(oResponse.data.);
 						
 						
-						this._oBICICountryCombobox.setValue(oResponse.data.Country);
-						this._oBICINationalityCombobox.setValue(oResponse.data.Nationality);
+						this._oBICICountryCombobox.setSelectedKey(oResponse.data.Country);
+						this._oBICINationalityCombobox.setSelectedKey(oResponse.data.Nationality);
 						this.oBICIStreet.setValue(oResponse.data.Street);
 						
 						
