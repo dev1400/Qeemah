@@ -100,7 +100,7 @@
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
 														<Select enabled="false" width="25em" items="{/DetailsCollection}" id="idCityComboBox">
-															<sap.ui.core:ListItem text="{CityName_cty}"/>
+															<sap.ui.core:ListItem key="{CityCode_cty}" text="{CityName_cty}"/>
 														</Select>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -214,11 +214,11 @@
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
 														<Select width="25em" id="idBIOICommMethodComboBox">
-															<sap.ui.core:ListItem Key="1" text="{i18n>Phone}" />
-															<sap.ui.core:ListItem key="2" text="{i18n>Email}" />
-															<sap.ui.core:ListItem Key="3" text="{i18n>Fax}" />
-															<sap.ui.core:ListItem key="4" text="{i18n>Pager}" />
-															<sap.ui.core:ListItem Key="5" text="{i18n>Post}" />
+															<sap.ui.core:ListItem Key="TEL" text="{i18n>Phone}" />
+															<sap.ui.core:ListItem key="INT" text="{i18n>Email}" />
+															<sap.ui.core:ListItem Key="FAX" text="{i18n>Fax}" />
+															<sap.ui.core:ListItem key="PAG" text="{i18n>Pager}" />
+															<sap.ui.core:ListItem Key="LET" text="{i18n>Post}" />
 														</Select>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
