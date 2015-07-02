@@ -176,7 +176,10 @@ com.sagia.common.ModelHelper = {
         	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet(Investorid='"+oRef_id+"',NodeGuid='"+questions[i]+"')", 'PUT',{
         		 Investorid : oRef_id,
         		 NodeGuid : questions[i],
-        		 Atxtlg : answers[i]} ));
+        		 Atxtlg : answers[i],
+        	     Flag : 'B', 
+        	     Lang : 'E'
+        	 } ));
             }
          this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
          this.oBAQODataModel.setUseBatch(true);
