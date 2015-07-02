@@ -520,43 +520,51 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}, this));*/
 		this.openBusyDialog();
 		var that = this;
-		 var oRequestFinishedDeferredLILIClass = this.oModelHelper.readLILIClass(this.oLILISectionComboBox.getSelectedKey(),this.oLILIDivisionComboBox.getSelectedKey(), this.oLILIGroupComboBox.getSelectedKeys());
+		
+		setTimeout(function() {
+		 var oRequestFinishedDeferredLILIClass = that.oModelHelper.readLILIClass(that.oLILISectionComboBox.getSelectedKey(),that.oLILIDivisionComboBox.getSelectedKey(), that.oLILIGroupComboBox.getSelectedKeys());
 
 			jQuery.when(oRequestFinishedDeferredLILIClass).then(jQuery.proxy(function(oResponse) {
 				
-				this.oLILIClassMultiComboBox.setModel(oResponse);
+				that.oLILIClassMultiComboBox.setModel(oResponse);
 				that.closeBusyDialog();
-			}, this));
+			}, that));
+		},4000);
 	},
 	handleLILIClassMultiSelectionComboBoxChange : function(){
 		this.oLILILicenseActivityMultiComboBox.removeAllSelectedItems();
 		
-		
-	 var oRequestFinishedDeferredLILILicenseActivity = this.oModelHelper.readLILILicenseActivity(this.oLILISectionComboBox.getSelectedKey(),this.oLILIDivisionComboBox.getSelectedKey(), this.oLILIGroupComboBox.getSelectedKeys(), this.oLILIClassMultiComboBox.getSelectedKeys());
+		var that = this;
+		this.openBusyDialog();
+		setTimeout(function() {
+			
+			
+			
+	 var oRequestFinishedDeferredLILILicenseActivity = that.oModelHelper.readLILILicenseActivity(that.oLILISectionComboBox.getSelectedKey(),that.oLILIDivisionComboBox.getSelectedKey(), that.oLILIGroupComboBox.getSelectedKeys(), that.oLILIClassMultiComboBox.getSelectedKeys());
 
 		jQuery.when(oRequestFinishedDeferredLILILicenseActivity).then(jQuery.proxy(function(oResponse) {
 			
-			this.oLILILicenseActivityMultiComboBox.setModel(oResponse);
+			that.oLILILicenseActivityMultiComboBox.setModel(oResponse);
 			
 			
-			var oRequestFinishedDeferredLILILicenseType = this.oModelHelper.readLILILicenseType(this.oLILISectionComboBox.getSelectedKey(),this.oLILIDivisionComboBox.getSelectedKey(), this.oLILIGroupComboBox.getSelectedKeys(), this.oLILIClassMultiComboBox.getSelectedKeys());
+			var oRequestFinishedDeferredLILILicenseType = that.oModelHelper.readLILILicenseType(that.oLILISectionComboBox.getSelectedKey(),that.oLILIDivisionComboBox.getSelectedKey(), that.oLILIGroupComboBox.getSelectedKeys(), that.oLILIClassMultiComboBox.getSelectedKeys());
 
 			jQuery.when(oRequestFinishedDeferredLILILicenseType).then(jQuery.proxy(function(oResponse) {
 				
 				//console.log(oResponse);
 				if(oResponse !== undefined){
 				
-				this.oSurveyID = oResponse.LILILicenseActivityType[0].SurveyID;
+				that.oSurveyID = oResponse.LILILicenseActivityType[0].SurveyID;
 					
 				/*for(var k=0;k < oResponse.LILILicenseActivityType.length; k++){
 					console.log(oResponse.LILILicenseActivityType[k].SurveyID);
 				}*/
 				if(oResponse.LILILicenseActivityType[0].Activity !== "0")
 				{
-					this.oLicenseTypeInputText.setValue(oResponse.LILILicenseActivityType[0].Activity);
+					that.oLicenseTypeInputText.setValue(oResponse.LILILicenseActivityType[0].Activity);
 				}else if(oResponse.LILILicenseActivityType[0].Activity === "0")
 				{
-					this.oLicenseTypeInputText.setValue("");
+					that.oLicenseTypeInputText.setValue("");
 					
 				}/*else if(oResponse.LILILicenseActivityType[0].Activity === "22"){
 					
@@ -568,14 +576,18 @@ sap.ui.controller("com.sagia.view.Overview", {
 					}
 
 				}*/else{
-					this.oLicenseTypeInputText.setValue("");
+					that.oLicenseTypeInputText.setValue("");
 				}
 				
 				}
+				that.closeBusyDialog();
+
 				
-			}, this));
+				
+			}, that));
 			
-		}, this));
+		}, that));
+		},4000);
 		
 	},
 	handleLILILicenseActivityMultiSelectionComboBoxChange : function(oEvent){
@@ -1315,11 +1327,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 							
 						}
 						
-						for(var k=0; k < this.oLILIGroupComboBox.getSelectedKeys().length; k++){
-							//setTimeout(function() {
+						
+						
+						/*for(var k=0; k < this.oLILIGroupComboBox.getSelectedKeys().length; k++){
+							setTimeout(function() {
 								that.oLILIGroupComboBox.fireSelectionChange();
-							//},2000);
-						}
+							},2000);
+						}*/
 						
 						/*for(var k=0; k < this.oLILIClassMultiComboBox.getSelectedKeys().length; k++){
 								that.oLILIClassMultiComboBox.fireSelectionChange();							
@@ -1336,7 +1350,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 			       // },2000);
 						
 						
-					}			
+					}		
+					this.oLILIGroupComboBox.fireSelectionChange();
+					this.oLILIClassMultiComboBox.fireSelectionChange();
 					//}
 						
 					//console.dir(oResponse);//addSelectedKeys

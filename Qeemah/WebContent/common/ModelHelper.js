@@ -1391,7 +1391,10 @@ com.sagia.common.ModelHelper = {
         	 that.oLILILicenceActivityCollection = new sap.ui.model.json.JSONModel();
 			 that.oLILILicenceActivityCollection.setData(oLocalLILILicenseActivityCollection);
 				
-			 oRequestFinishedDeferred.resolve(that.oLILILicenceActivityCollection);
+			 //oRequestFinishedDeferred.resolve(that.oLILILicenceActivityCollection);
+			 setTimeout(function() {
+				 oRequestFinishedDeferred.resolve(that.oLILILicenceActivityCollection);
+				},2000);
      	 }, 
      	 function(oError) {
      		console.log("E"+oError);
@@ -1436,7 +1439,13 @@ com.sagia.common.ModelHelper = {
         	 that.oLILILicenceTypeCollection = new sap.ui.model.json.JSONModel();
 			 that.oLILILicenceTypeCollection.setData(oLocalLILILicenseTypeCollection);
 				
-			 oRequestFinishedDeferred.resolve(oLocalLILILicenseTypeCollection);
+			 //oRequestFinishedDeferred.resolve(oLocalLILILicenseTypeCollection);
+			 
+			 setTimeout(function() {
+				 oRequestFinishedDeferred.resolve(oLocalLILILicenseTypeCollection);
+				},2000);
+			 
+			 
      	 }, 
      	 function(oError) {
      		console.log("E"+oError);
