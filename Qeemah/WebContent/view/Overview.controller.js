@@ -456,22 +456,33 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//this.oLILIProductsdataSerialNo++;
 	},
 	handleLILISectionSelectionComboBox : function(){
-		//this.oLILIDivisionComboBox.setValue("");
-		//this.oLILIGroupComboBox.setValue("");
-		this.oLILIGroupComboBox.removeAllSelectedItems();
-		this.oLILIClassMultiComboBox.removeAllSelectedItems();
+	
 		if(this.oLILIDivisionComboBox){
-		//	this.oLILIDivisionComboBox.removeAllSelectedItems();
+			this.oLILIDivisionComboBox.setSelectedKey("");
 			}
+		if(this.oLILIGroupComboBox){
+			this.oLILIGroupComboBox.setModel(null);
+			//this.oLILIGroupComboBox.setSelectedItems([]);
+		}
+		if(this.oLILIClassMultiComboBox){
+			this.oLILIClassMultiComboBox.setModel(null);
+			//this.oLILIClassMultiComboBox.setSelectedItems([]);
+		}		
 		if(this.oLILILicenseActivityMultiComboBox){
-		this.oLILILicenseActivityMultiComboBox.removeAllSelectedItems();
+			this.oLILILicenseActivityMultiComboBox.setModel(null);
+			//this.oLILILicenseActivityMultiComboBox.setSelectedItems([]);
 		}
 		if(this.oLILIActivityDescriptionTextArea){
-		this.oLILIActivityDescriptionTextArea.setValue("");
+			this.oLILIActivityDescriptionTextArea.setValue("");
 		}
 		if(this.oLicenseTypeInputText){
 			this.oLicenseTypeInputText.setValue("");
 		}
+		
+
+		//this.oLILIGroupComboBox.removeAllSelectedItems();//removeAllItems()
+		//this.oLILIClassMultiComboBox.removeAllSelectedItems();
+		
 
 		
 		var oRequestFinishedDeferredLILIDivision = this.oModelHelper.readLILIDivision(this.oLILISectionComboBox.getSelectedKey());
@@ -497,19 +508,43 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 	},
 	handleLILIDivisionSelectionComboBox : function(){
-		this.oLILIGroupComboBox.removeAllSelectedItems();
-		this.oLILIClassMultiComboBox.removeAllSelectedItems();
+		//this.oLILIGroupComboBox.removeAllSelectedItems();
+		//this.oLILIClassMultiComboBox.removeAllSelectedItems();
 		
-		var oRequestFinishedDeferredLILIGroup = this.oModelHelper.readLILIGroup(this.oLILISectionComboBox.getSelectedKey(),this.oLILIDivisionComboBox.getSelectedKey());
+		if(this.oLILIGroupComboBox){
+			this.oLILIGroupComboBox.setModel(null);
+		}
+		if(this.oLILIClassMultiComboBox){
+			this.oLILIClassMultiComboBox.setModel(null);
+		}		
+		if(this.oLILILicenseActivityMultiComboBox){
+			this.oLILILicenseActivityMultiComboBox.setModel(null);
+		}
+		if(this.oLILIActivityDescriptionTextArea){
+			this.oLILIActivityDescriptionTextArea.setValue("");
+		}
+		if(this.oLicenseTypeInputText){
+			this.oLicenseTypeInputText.setValue("");
+		}
+		
+		this.openBusyDialog();
+		var that = this;
+		
+		setTimeout(function() {
+			var oRequestFinishedDeferredLILIGroup = that.oModelHelper.readLILIGroup(that.oLILISectionComboBox.getSelectedKey(),that.oLILIDivisionComboBox.getSelectedKey());
 
-		jQuery.when(oRequestFinishedDeferredLILIGroup).then(jQuery.proxy(function(oResponse) {			
-			//console.dir(oResponse);
-			this.oLILIGroupComboBox.setModel(oResponse);
-			
-		}, this));	
+			jQuery.when(oRequestFinishedDeferredLILIGroup).then(jQuery.proxy(function(oResponse) {			
+				//console.dir(oResponse);
+				that.oLILIGroupComboBox.setModel(oResponse);
+				that.closeBusyDialog();
+
+			}, that));	
+		},4000);
+		
+		
 	},
 	handleLILIGropuMultiSelectionComboBoxChange : function(){
-		this.oLILIClassMultiComboBox.removeAllSelectedItems();
+		//this.oLILIClassMultiComboBox.removeAllSelectedItems();
 		
 	/* var oRequestFinishedDeferredLILIClass = this.oModelHelper.readLILIClass(this.oLILIGroupComboBox.getSelectedKeys());
 
@@ -518,6 +553,22 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oLILIClassMultiComboBox.setModel(oResponse);
 			
 		}, this));*/
+		
+		
+		if(this.oLILIClassMultiComboBox){
+			this.oLILIClassMultiComboBox.setModel(null);
+		}		
+		if(this.oLILILicenseActivityMultiComboBox){
+			this.oLILILicenseActivityMultiComboBox.setModel(null);
+		}
+		if(this.oLILIActivityDescriptionTextArea){
+			this.oLILIActivityDescriptionTextArea.setValue("");
+		}
+		if(this.oLicenseTypeInputText){
+			this.oLicenseTypeInputText.setValue("");
+		}
+		
+		
 		this.openBusyDialog();
 		var that = this;
 		
@@ -532,7 +583,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 		},4000);
 	},
 	handleLILIClassMultiSelectionComboBoxChange : function(){
-		this.oLILILicenseActivityMultiComboBox.removeAllSelectedItems();
+		
+				
+		if(this.oLILILicenseActivityMultiComboBox){
+			this.oLILILicenseActivityMultiComboBox.setModel(null);
+		}
+		if(this.oLILIActivityDescriptionTextArea){
+			this.oLILIActivityDescriptionTextArea.setValue("");
+		}
+		if(this.oLicenseTypeInputText){
+			this.oLicenseTypeInputText.setValue("");
+		}
 		
 		var that = this;
 		this.openBusyDialog();
@@ -592,6 +653,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleLILILicenseActivityMultiSelectionComboBoxChange : function(oEvent){
 		//console.log(this.oLILILicenseActivityMultiComboBox.getSelectedItems() );
+		
+		
+		
 		var oDescription = "";
 		for(var i=0; i < this.oLILILicenseActivityMultiComboBox.getSelectedItems().length; i++){
 			//console.log(this.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText());
@@ -901,7 +965,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}
 			
 			
-			var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers);
+			var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers,this.oNSHFirstNameInputText.getValue(),this.oNSHLastNameInputText.getValue());
 
 			jQuery.when(oRequestFinishedDeferredcreateBAQAnswers).then(jQuery.proxy(function(oResponse) {
 				//console.log(oResponse);
@@ -1022,7 +1086,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					//this.oLILILicenseActivityMultiComboBox.getSelectedKeys(),
 					this.oLILIClassMultiComboBox.getSelectedKeys(),
 					this.oLILILicenseActivityMultiComboBox.getSelectedItems(),
-					this.oLILIGroupComboBox.getSelectedKeys(),
+					this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean),
 					this.oLILIDivisionComboBox.getSelectedKey(),
 					this.oLILISectionComboBox.getSelectedKey(),
 					this.oRef_id,
@@ -1048,7 +1112,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 						//this.oLILILicenseActivityMultiComboBox.getSelectedKeys(),
 						this.oLILIClassMultiComboBox.getSelectedKeys(),
 						this.oLILILicenseActivityMultiComboBox.getSelectedItems(),
-						this.oLILIGroupComboBox.getSelectedKeys(),
+						this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean),
 						this.oLILIDivisionComboBox.getSelectedKey(),
 						this.oLILISectionComboBox.getSelectedKey(),
 						this.oRef_id,
@@ -1331,9 +1395,70 @@ sap.ui.controller("com.sagia.view.Overview", {
 						//that.openBusyDialog();
 						this.oLILIBusinessTypeComboBox.setSelectedKey("N");
 						this.oLILIBusinessTypeComboBox.fireSelectionChange();
-						for(var i=0; i < oResponse.data.results.length; i++){
+						
+						var resultsI = 0, resultsJ = 0, howManyTimes = oResponse.data.results.length;
+						
+						    (function myLoop (i) {          
+							   setTimeout(function () {  
+								   
+								   if(that.oLILISectionComboBox.getSelectedKey() === ""){
+										that.oLILISectionComboBox.setSelectedKey(oResponse.data.results[resultsI].IsicSection);
+										that.oLILISectionComboBox.fireSelectionChange(); 
+									}
+									
+									if(that.oLILIDivisionComboBox.getSelectedKey() === ""){
+										that.oLILIDivisionComboBox.setSelectedKey(oResponse.data.results[resultsI].IsicDivision);
+										that.oLILIDivisionComboBox.fireSelectionChange();
+									}
+									
+									(function myInnerLoop1 (i) {          
+										   setTimeout(function () {   
+										      
+												isicGroup[resultsJ] = oResponse.data.results[resultsJ].IsicGroup;
+												
+												var uniqueISISCGroupArray = isicGroup.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+												
+												that.oLILIGroupComboBox.setSelectedKeys(uniqueISISCGroupArray);
+											
+											   
+											   resultsJ++;
+										      if (--i) myInnerLoop1(i);      
+										   }, 2000)
+										})(howManyTimes);   
+									
+									/*for(var j=0; j < oResponse.data.results.length; j++){							
+										
+										isicGroup[j] = oResponse.data.results[j].IsicGroup;
+										
+										var uniqueISISCGroupArray = isicGroup.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+										
+										this.oLILIGroupComboBox.setSelectedKeys(uniqueISISCGroupArray);
+										
+									}
+									
+						             for(var k=0; k < oResponse.data.results.length; k++){							
+										
+						                IsicClass[k] = oResponse.data.results[k].IsicClass;
+										
+										var uniqueIsicClassArray = IsicClass.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+										
+										this.oLILIClassMultiComboBox.setSelectedKeys(uniqueIsicClassArray);
+										
+									}*/  
+								   
+									resultsI++;
+								   
+							      if (--i) myLoop(i);      //  decrement i and call myLoop again if i > 0
+							   }, 2000)
+							})(howManyTimes);   
+						
+						//this.f(this, i,howManyTimes, oResponse);
+
+							     
+						/*for(var i=0; i < oResponse.data.results.length; i++){
 							
-							//console.log(this.oLILISectionComboBox.getSelectedKey());
+							
+							
 							if(this.oLILISectionComboBox.getSelectedKey() === ""){
 								this.oLILISectionComboBox.setSelectedKey(oResponse.data.results[i].IsicSection);
 								this.oLILISectionComboBox.fireSelectionChange(); 
@@ -1343,10 +1468,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 								this.oLILIDivisionComboBox.setSelectedKey(oResponse.data.results[i].IsicDivision);
 								this.oLILIDivisionComboBox.fireSelectionChange();
 							}
-							
-							
-							
-							
 							
 							for(var j=0; j < oResponse.data.results.length; j++){							
 								
@@ -1368,41 +1489,91 @@ sap.ui.controller("com.sagia.view.Overview", {
 								
 							}
 							
-						}
-						
-						
-						
-						/*for(var k=0; k < this.oLILIGroupComboBox.getSelectedKeys().length; k++){
-							setTimeout(function() {
-								that.oLILIGroupComboBox.fireSelectionChange();
-							},2000);
 						}*/
-						
-						/*for(var k=0; k < this.oLILIClassMultiComboBox.getSelectedKeys().length; k++){
-								that.oLILIClassMultiComboBox.fireSelectionChange();							
-						}*/
-						
-						
-						
-						//that = this;						
-						//that.openBusyDialog()
-						//setTimeout(function() {		
-						//that.closeBusyDialog();
-
-						//that.closeBusyDialog();
-			       // },2000);
-						
-						
+							
 					}		
 					this.oLILIGroupComboBox.fireSelectionChange();
 					this.oLILIClassMultiComboBox.fireSelectionChange();
-					//}
-						
-					//console.dir(oResponse);//addSelectedKeys
 					
 				}, this));
-			//}
+			
 	    } 
+		
+		
+	},
+	f : function(that, i,howManyTimes, oResponse) {
+	    //var that = this;
+		//for(var i=0; i < oResponse.data.results.length; i++){
+			
+			
+			
+			if(that.oLILISectionComboBox.getSelectedKey() === ""){
+				that.oLILISectionComboBox.setSelectedKey(oResponse.data.results[i].IsicSection);
+				that.oLILISectionComboBox.fireSelectionChange(); 
+			}
+			
+			if(that.oLILIDivisionComboBox.getSelectedKey() === ""){
+				that.oLILIDivisionComboBox.setSelectedKey(oResponse.data.results[i].IsicDivision);
+				that.oLILIDivisionComboBox.fireSelectionChange();
+			}
+			
+			/*for(var j=0; j < oResponse.data.results.length; j++){							
+				
+				isicGroup[j] = oResponse.data.results[j].IsicGroup;
+				
+				var uniqueISISCGroupArray = isicGroup.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+				
+				this.oLILIGroupComboBox.setSelectedKeys(uniqueISISCGroupArray);
+				
+			}
+			
+             for(var k=0; k < oResponse.data.results.length; k++){							
+				
+                IsicClass[k] = oResponse.data.results[k].IsicClass;
+				
+				var uniqueIsicClassArray = IsicClass.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+				
+				this.oLILIClassMultiComboBox.setSelectedKeys(uniqueIsicClassArray);
+				
+			}*/
+			
+		//}
+		
+	    i++;
+	    if( i < howManyTimes ){
+	        setTimeout( that.f, 3000 );
+	    }
+	},
+	handlePreviewLicenseInfoTabStripSelect : function(oControlEvent){
+		//console.log(oControlEvent.getParameters().index);
+		that = this;
+		if(!this.PreviewBeenFired)
+	    {
+			/*this.oLILISectionComboBox = this.getView().byId("idLILISectionComboBox");
+			this.oLILIBusinessTypeComboBox = this.getView().byId("idLILIBusinessTypeComboBox");
+			this.oLILILicenceInfoContentVBox = this.getView().byId("LicenceInfoContentVBox");
+			this.oLicenseTypeInputText = this.getView().byId("idLicenseTypeInputText");
+			this.oLILIDivisionComboBox = this.getView().byId("idLILIDivisionComboBox");
+			this.oLILIGroupComboBox = this.getView().byId("idLILIGroupComboBox");
+			this.oLILILicenseActivityMultiComboBox = this.getView().byId("idLILILicenseActivityMultiComboBox");
+			this.oLILIActivityDescriptionTextArea = this.getView().byId("idLILIActivityDescriptionTextArea");
+			
+			this.oLILIClassMultiComboBox = this.getView().byId("idLILIClassMultiComboBox");
+		*/
+			
+			this.oLILIPreviewBusinessTypeComboBox = this.getView().byId("idLILIPreviewBusinessTypeComboBox");
+			this.oLicenseTypePreviewInputText = this.getView().byId("idLicenseTypePreviewInputText");		
+			this.oLILIPreviewSectionComboBox = this.getView().byId("idLILIPreviewSectionComboBox");
+			this.oLILIDivisionComboBox = this.getView().byId("idLILIPreviewDivisionComboBox");
+			this.oLILIGroupComboBox = this.getView().byId("idLILIPreviewGroupComboBox");
+			this.oLILIClassMultiComboBox = this.getView().byId("idLILIPreviewClassMultiComboBox");
+			this.oLILILicenseActivityMultiComboBox = this.getView().byId("idLILIPreviewLicenseActivityMultiComboBox");
+			this.oLILIActivityDescriptionTextArea = this.getView().byId("idLILIPreviewActivityDescriptionTextArea");
+			
+		
+	       
+	    }
+		this.oLILIPreviewBusinessTypeComboBox.setValue(this.oLILIBusinessTypeComboBox.getSelectedItem().getText());
 		
 		
 	},
@@ -2941,10 +3112,11 @@ handleRegisterUserButtonPress : function() {
 		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
 		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
 		
-		
+		//this.handleLicenseInfoTabStripSelect();
+
 		
 		this.oValidationHelper.validateBasicInfo(this);
-		
+		this.handlePreviewLicenseInfoTabStripSelect();
 	},
 	handleTermsInfoButtonClick : function(){
 		this._oShareHoldersInfoContent.setVisible(false);

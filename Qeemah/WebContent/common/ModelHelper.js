@@ -287,7 +287,7 @@ com.sagia.common.ModelHelper = {
 	 * Create BAQ Answers
 	 * @Author Abdul Waheed 
 	 */
-	createBAQAnswers : function(oRef_id, questions, answers) {
+	createBAQAnswers : function(oRef_id, questions, answers, oFirstName, oLastName) {
 		//if(IsicSelectedGroups.length>0){
 		
 		//this.openBusyDialog();
@@ -299,7 +299,9 @@ com.sagia.common.ModelHelper = {
          for ( var i = 0; i < questions.length; i++) {
         	 
         	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',{Investorid : oRef_id,
-        		 NodeGuid : questions[i], Atxtlg : answers[i], Flag : 'B', Lang : 'E'} ));
+        		 NodeGuid : questions[i], Atxtlg : answers[i], Flag : 'B', Lang : 'E',
+        		 Shldr_FName : oFirstName,
+        		 Shldr_LName : oLastName} ));
             }
          this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
          this.oBAQODataModel.setUseBatch(true);
@@ -1292,8 +1294,11 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
 		this.oODataModel.read("IsicDet?Flag='"+oFlag+"'&Lang='E'&IsicSection=' '&IsicDivision=' '&IsicGroup=' '&IsicClass=' '", {
 			success : function(oData, response) {				
-				oRequestFinishedDeferred.resolve(response);
+				
 			//	that.closeBusyDialog();
+			//	setTimeout(function() {
+					oRequestFinishedDeferred.resolve(response);
+			//	},2000);
 			},
 			error : function(oResponse) {
 				oRequestFinishedDeferred.resolve();
@@ -1320,7 +1325,11 @@ com.sagia.common.ModelHelper = {
 				
 				that.oCountryCollectionModel.setData({LILIDivisionCollection:oData.results});		
 				
-				oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
+				
+				
+				//setTimeout(function() {
+					oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
+				//},2000);
 				
 				//that.closeBusyDialog();
 			},
@@ -1351,7 +1360,10 @@ com.sagia.common.ModelHelper = {
 				
 				that.oCountryCollectionModel.setData({LILIGroupCollection:oData.results});		
 				
-				oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
+				
+				setTimeout(function() {
+					oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
+				},2000);
 				
 				//that.closeBusyDialog();
 			},

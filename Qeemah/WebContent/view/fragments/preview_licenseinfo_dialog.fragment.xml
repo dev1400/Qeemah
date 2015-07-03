@@ -63,7 +63,7 @@
 									</sap.ui.commons.layout:MatrixLayoutRow>
 									</sap.ui.commons.layout:MatrixLayout>
 									
-	<VBox id="LicenceInfoPreviewContentVBox" visible="false" alignItems="Center">
+	<VBox id="LicenceInfoPreviewContentVBox"  alignItems="Center">
 									
 	<sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false">
