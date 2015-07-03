@@ -213,19 +213,19 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-														<!-- <Select width="25em" id="idBIOICommMethodComboBox">
+														<Select width="25em" id="idBIOICommMethodComboBox">
 														<items>
-															<sap.ui.core:ListItem Key="TEL" text="{i18n>Phone}" />
+															<sap.ui.core:ListItem key="TEL" text="{i18n>Phone}" />
 															<sap.ui.core:ListItem key="INT" text="{i18n>Email}" />
-															<sap.ui.core:ListItem Key="FAX" text="{i18n>Fax}" />
+															<sap.ui.core:ListItem key="FAX" text="{i18n>Fax}" />
 															<sap.ui.core:ListItem key="PAG" text="{i18n>Pager}" />
-															<sap.ui.core:ListItem Key="LET" text="{i18n>Post}" />
+															<sap.ui.core:ListItem key="LET" text="{i18n>Post}" />
 															</items>
-														</Select> -->
-														
-														<Select width="25em" items="{/CommMethodCollection}" id="idBIOICommMethodComboBox">
-															<sap.ui.core:ListItem Key="{methodKey}" text="{methodText}" />
 														</Select>
+														
+														<!-- <ComboBox width="25em" items="{/CommMethodCollection}" id="idBIOICommMethodComboBox">
+															<sap.ui.core:ListItem key="{methodKey}" text="{methodText}" />
+														</ComboBox> -->
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												

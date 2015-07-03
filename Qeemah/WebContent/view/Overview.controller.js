@@ -179,7 +179,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//this.oExistingShareHolderTable = this.getView().byId("idESHTable");
 		
 		/*this.oExistingShareHolderTable.unbindItems();
-		this.oExistingShareHolderTable.setModel(this.oESHCreateNewDataJSONData);
+		this.oExistingShareHolderTable.(this.oESHCreateNewDataJSONData);
 		
 		this.oExistingShareHolderTable.bindItems("/ESHCollection",new sap.m.ColumnListItem({
 	        cells : [ new sap.ui.commons.TextView({
@@ -618,6 +618,7 @@ sap.ui.controller("com.sagia.view.Overview", {
        
 		if(this.oRecordExists){
 			try{
+				console.log(this.oBIOICommMethodComboBox.getSelectedItem().getKey());
 				
 			var oRequestFinishedDeferred = this.oModelHelper.saveBIOI(this.oRef_id, 
 					this.oBIOIOrganizationName.getValue(),
@@ -627,13 +628,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 					//this._oBIILegalStatusCombobox.getSelectedItem().getText(),
 					this._oBICityComboBox.getSelectedKey(),
 					//this._oBICityComboBox.getSelectedItem().getText(),
-					this.oBIOIMultiNationalCompanyCombobox.getSelectedKey(),
+					//this.oBIOIMultiNationalCompanyCombobox.getSelectedKey(),
 					
-					//this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
+					this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
 					this.oBIOIEmailInputText.getValue(),
 					this.oBIOILaborSizeInputText.getValue(),
 					//sap.ui.getCore().byId("idBIOICommMethodComboBox").getSelectedKey(),
-					this.oBIOICommMethodComboBox.getSelectedKey(),
+					//this.oBIOICommMethodComboBox.getSelectedKey(),
+					this.oBIOICommMethodComboBox.getSelectedItem().getKey(),
 					this.oBIOICapitalInputText.getValue(),
 					this.oBIOITelephoneCountryCodeInputText.getValue(),
 					this.oBIOITelephoneInputText.getValue(),
@@ -1555,6 +1557,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		jQuery.when(oRequestFinishedDeferredLILIBusinessType).then(jQuery.proxy(function(oResponse) {			
 			this.oLILIBusinessTypeComboBox.setModel(oResponse);
 		}, this));	
+		
+		
 	},
 	handleLogoutLinkPress : function(){
 		
@@ -2385,7 +2389,8 @@ userSignIn : function(userID, password){
 				
 				//this.oBasicInfoTab.setSelectedIndex(0);
 				this.oBIOICommMethodComboBox = this.getView().byId("idBIOICommMethodComboBox");
-				this.oBICommunicationMethodJSON = {CommMethodCollection: []};
+				
+			/*	this.oBICommunicationMethodJSON = {CommMethodCollection: []};
 				
 				this.oBICommunicationMethodJSON.CommMethodCollection.push(
 					{"methodKey": "TEL","methodText": "Telephone"},
@@ -2396,7 +2401,7 @@ userSignIn : function(userID, password){
 				this.oBICommunicationMethodJSONData = new sap.ui.model.json.JSONModel();
 				this.oBICommunicationMethodJSONData.setData(this.oBICommunicationMethodJSON);				 		
 				this.oBIOICommMethodComboBox.setModel(this.oBICommunicationMethodJSONData);
-
+				*/
 				
 				
 				
