@@ -420,7 +420,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		var path = oEvent.getParameter('listItem').getBindingContext().sPath;
 		this.oLILIProductsdata.ProductsCollection.splice(path.slice(-1), 1);
-		console.log(this.oLILIProductsdata.ProductsCollection);
+		//console.log(this.oLILIProductsdata.ProductsCollection);
 				
 		var obj = this.oLILIProductsTable.getModel().getProperty(path);		
 		
@@ -429,7 +429,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleLILIAddProductButtonPress : function(){		
 		this.oLILIProductsTable.unbindItems();
 		//this.oLILIProductsdata.ProductsCollection.push({"sno":this.oLILIProductsdataSerialNo,"product":this.oLILIProductComboBox.getValue(), "quantity": this.oLILIProductQuantityInputText.getValue(), "uom":this.oLILIProductUOMComboBox.getValue()});
-		console.log(this.oLILIProductsdata);
+		//console.log(this.oLILIProductsdata);
 		this.oLILIProductsdata.ProductsCollection.push({
 			//"sno":this.oLILIProductsdataSerialNo,
 			"product":this.oLILIProductComboBox.getValue(), 
@@ -438,7 +438,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		console.dir(this.oLILIProductsdata);
 		this.oLILIProductsTableJSONData.setData(this.oLILIProductsdata,true);	
 		//this.oLILIProductsTable.getModel().refresh(true);
-		console.log(this.oLILIProductsTableJSONData);
+		//console.log(this.oLILIProductsTableJSONData);
 		this.oLILIProductsTable.setModel(this.oLILIProductsTableJSONData);
 		//this.oLILIProductsTable.setModel("");items="{/ProductsCollection}"
 		this.oLILIProductsTable.bindItems("/ProductsCollection", new sap.m.ColumnListItem({
@@ -618,7 +618,7 @@ sap.ui.controller("com.sagia.view.Overview", {
        
 		if(this.oRecordExists){
 			try{
-				console.log(this.oBIOICommMethodComboBox.getSelectedItem().getKey());
+				//console.log(this.oBIOICommMethodComboBox.getSelectedItem().getKey());
 				
 			var oRequestFinishedDeferred = this.oModelHelper.saveBIOI(this.oRef_id, 
 					this.oBIOIOrganizationName.getValue(),
@@ -863,7 +863,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 				 
 				 
 				 questions.push(oBAQuestion.data("idBAQuestion"+i));
-				 console.log(oBAQAnswer.getSelectedItem().getText());
+				 //console.log(oBAQAnswer.getSelectedItem().getText());
 				 answers.push(oBAQAnswer.getSelectedItem().getText());
 			}
 			
@@ -871,7 +871,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			var oRequestFinishedDeferredUpdateBAQAnswers = this.oModelHelper.updateBAQAnswers(this.oRef_id, questions, answers);
 
 			jQuery.when(oRequestFinishedDeferredUpdateBAQAnswers).then(jQuery.proxy(function(oResponse) {
-				console.log(oResponse);			
+				//console.log(oResponse);			
 				
 			}, this));
 			
@@ -1421,19 +1421,32 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 			this.oTotalBAQQuestions = 0;
 			
-			for(var i=0; i < oResponse.data.results.length; i++){
-				questions[i] = oResponse.data.results[i].Qtxtlg;
-				nodeID[i] = oResponse.data.results[i].NodeGuid;
-				surveyID[i] = oResponse.data.results[i].SurveyID;				
+			var oResponseFilter = [];
+			
+			if(oResponse.data.results === undefined){
+				oResponseFilter = oResponse.data.__batchResponses[0].data.results;
+			}else{
+				oResponseFilter = oResponse.data.results;
+			}
+			
+			for(var i=0; i < oResponseFilter.length; i++){
+				questions[i] = oResponseFilter[i].Qtxtlg;
+				nodeID[i] = oResponseFilter[i].NodeGuid;
+				surveyID[i] = oResponseFilter[i].SurveyID;				
 			}
 			
 			j = 0 ;
 			for(var i=0; i < questions.length; i++){
 				
-				var oRequestFinishedDeferred = this.oModelHelper.readBAQAnswer(oResponse.data.results[i].NodeGuid, "QUEEMAH_BUS_PLAN");
+				var oRequestFinishedDeferred = this.oModelHelper.readBAQAnswer(oResponseFilter[i].NodeGuid, "QUEEMAH_BUS_PLAN");
 
 				jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-					answers.push(oResponse.data.results);
+					if(oResponse.data.results === undefined){
+						oResponseAnswersFilter = oResponse.data.__batchResponses[0].data.results;
+					}else{
+						oResponseAnswersFilter = oResponse.data.results;
+					}
+					answers.push(oResponseAnswersFilter);
 					
 					j++;
 	                
