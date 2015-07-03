@@ -552,7 +552,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			jQuery.when(oRequestFinishedDeferredLILILicenseType).then(jQuery.proxy(function(oResponse) {
 				
 				//console.log(oResponse);
-				if(oResponse !== undefined){
+				if(oResponse !== undefined && oResponse.LILILicenseActivityType.length>0){
 				
 				that.oSurveyID = oResponse.LILILicenseActivityType[0].SurveyID;
 					
