@@ -1486,7 +1486,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 							   }, 2000)
 							})(howManyTimes); */  
 						
-						if(oResponse.data.results[0].Lic !== "N"){
+						if(oResponse.data.results[0].Lic === "N"){
 							     
 						for(var i=0; i < oResponse.data.results.length; i++){
 							
