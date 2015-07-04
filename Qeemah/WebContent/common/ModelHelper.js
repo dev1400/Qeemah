@@ -1310,7 +1310,8 @@ com.sagia.common.ModelHelper = {
 		//this.openBusyDialog();		
 		var that = this;		
 		var oRequestFinishedDeferred = jQuery.Deferred();
-		this.oODataModel.read("IsicDet?Flag='"+oFlag+"'&Lang='E'&IsicSection=' '&IsicDivision=' '&IsicGroup=' '&IsicClass=' '", {
+		this.oODataModel.setUseBatch(false);
+		this.oODataModel.read("IsicDet?Flag='"+oFlag+"'&Lang='E'&IsicSection=' '&IsicDivision=' '&IsicGroup=' '&IsicClass=' '&IsicDescription=' '&Activity=' '&SurveyID=' '", {
 			success : function(oData, response) {				
 				
 			//	that.closeBusyDialog();
