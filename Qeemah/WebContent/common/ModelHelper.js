@@ -215,31 +215,47 @@ com.sagia.common.ModelHelper = {
 		//if(IsicSelectedGroups.length>0){
 		
 		//this.openBusyDialog();
-		
 		var that = this;
 		var oRequestFinishedCreateBAQDeferred = jQuery.Deferred();
-
+		
+		
 		 var aBatchOperations = [];
-         for ( var i = 0; i < oLic.length; i++) {
-        	 for ( var j = 0; j < oIsicClass.length; j++) {
-        		 for ( var k = 0; k < oIsicGroup.length; k++) {
-        			 for ( var l = 0; l < oIsicDescription.length; l++) {
-	        			 aBatchOperations.push(this.oODataModel.createBatchOperation("IsicDetPsSet", 'POST',{        		
-	        	        	  Activity : oActivity,
-	        	        	  SurveyID : oSurveyID,
-	        	        	  IsicClass : oIsicClass[j],
-	        	        	  IsicDescription : oIsicDescription[l].getText(),
-	        	        	  IsicGroup : oIsicGroup[k],
-	        	        	  IsicDivision : oIsicDivision,
-	        	        	  IsicSection : oIsicSection,
-	        	        	  Investorid : oRef_id,
-	        	        	  Lic : oLic[i],
-	        	        	  ActDesc : oActDesc   } )); 
-        			     }
-        	          }
-        		 }
-        	 }
-        	 
+		 
+		 if(oLic === "N"){
+				for ( var i = 0; i < oLic.length; i++) {
+		        	 for ( var j = 0; j < oIsicClass.length; j++) {
+		        		 for ( var k = 0; k < oIsicGroup.length; k++) {
+		        			 for ( var l = 0; l < oIsicDescription.length; l++) {
+			        			 aBatchOperations.push(this.oODataModel.createBatchOperation("IsicDetPsSet", 'POST',{        		
+			        	        	  Activity : oActivity,
+			        	        	  SurveyID : oSurveyID,
+			        	        	  IsicClass : oIsicClass[j],
+			        	        	  IsicDescription : oIsicDescription[l].getText(),
+			        	        	  IsicGroup : oIsicGroup[k],
+			        	        	  IsicDivision : oIsicDivision,
+			        	        	  IsicSection : oIsicSection,
+			        	        	  Investorid : oRef_id,
+			        	        	  Lic : oLic[i],
+			        	        	  ActDesc : oActDesc   } )); 
+		        			     }
+		        	          }
+		        		 }
+		        	 }
+		        	 
+			}else{
+				  aBatchOperations.push(this.oODataModel.createBatchOperation("IsicDetPsSet", 'POST',{        		
+  	        	  Activity : oActivity,
+  	        	  SurveyID : "",
+  	        	  IsicClass : "",
+  	        	  IsicDescription : "",
+  	        	  IsicGroup : "",
+  	        	  IsicDivision : "",
+  	        	  IsicSection : "",
+  	        	  Investorid : oRef_id,
+  	        	  Lic : oLic,
+  	        	  ActDesc : ""   } )); 
+			}
+         
         	 
             
          this.oODataModel.addBatchChangeOperations(aBatchOperations);
