@@ -3109,7 +3109,7 @@ handleRegisterUserButtonPress : function() {
 
 		
 		this.oValidationHelper.validateBasicInfo(this);
-		this.handlePreviewLicenseInfoTabStripSelect();
+		//this.handlePreviewLicenseInfoTabStripSelect();
 	},
 	handleTermsInfoButtonClick : function(){
 		this._oShareHoldersInfoContent.setVisible(false);
