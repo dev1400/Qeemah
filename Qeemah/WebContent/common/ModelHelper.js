@@ -162,7 +162,7 @@ com.sagia.common.ModelHelper = {
 	 * Update BAQ Answers
 	 * @Author Abdul Waheed 
 	 */
-	updateBAQAnswers : function(oRef_id, questions, answers) {
+	updateBAQAnswers : function(oRef_id, questions, answers, oFirstName, oLastName) {
 		//if(IsicSelectedGroups.length>0){
 		
 		//this.openBusyDialog();
@@ -178,7 +178,9 @@ com.sagia.common.ModelHelper = {
         		 NodeGuid : questions[i],
         		 Atxtlg : answers[i],
         	     Flag : 'B', 
-        	     Lang : 'E'
+        	     Lang : 'E',
+        		 Shldr_FName : oFirstName,
+        		 Shldr_LName : oLastName
         	 } ));
             }
          this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);

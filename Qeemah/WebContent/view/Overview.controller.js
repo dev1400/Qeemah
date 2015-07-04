@@ -677,6 +677,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		/*this.oBasicInfoContactInfoFragment = sap.ui.xmlfragment("com.sagia.view.fragments.bi_contactinformation", this.getView()
 				.getController());*/
+		if(this.oBICIFirstNameInputText.getValue() !== "" && this.oBICILastNameInputText.getValue() !== "")
+			{
 		
 		this.openBusyDialog();
        
@@ -932,7 +934,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}
 			
 			
-			var oRequestFinishedDeferredUpdateBAQAnswers = this.oModelHelper.updateBAQAnswers(this.oRef_id, questions, answers);
+			var oRequestFinishedDeferredUpdateBAQAnswers = this.oModelHelper.updateBAQAnswers(this.oRef_id, questions, answers, this.oBICIFirstNameInputText.getValue(), this.oBICILastNameInputText.getValue());
 
 			jQuery.when(oRequestFinishedDeferredUpdateBAQAnswers).then(jQuery.proxy(function(oResponse) {
 				//console.log(oResponse);			
@@ -965,7 +967,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}
 			
 			
-			var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers,this.oNSHFirstNameInputText.getValue(),this.oNSHLastNameInputText.getValue());
+			
+			var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers, this.oBICIFirstNameInputText.getValue(), this.oBICILastNameInputText.getValue());
 
 			jQuery.when(oRequestFinishedDeferredcreateBAQAnswers).then(jQuery.proxy(function(oResponse) {
 				//console.log(oResponse);
@@ -1084,7 +1087,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this.oLicenseTypeInputText.getValue(),
 					this.oSurveyID,
 					//this.oLILILicenseActivityMultiComboBox.getSelectedKeys(),
-					this.oLILIClassMultiComboBox.getSelectedKeys(),
+					this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean),
 					this.oLILILicenseActivityMultiComboBox.getSelectedItems(),
 					this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean),
 					this.oLILIDivisionComboBox.getSelectedKey(),
@@ -1110,7 +1113,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 						this.oLicenseTypeInputText.getValue(),
 						this.oSurveyID,
 						//this.oLILILicenseActivityMultiComboBox.getSelectedKeys(),
-						this.oLILIClassMultiComboBox.getSelectedKeys(),
+						this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean),
 						this.oLILILicenseActivityMultiComboBox.getSelectedItems(),
 						this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean),
 						this.oLILIDivisionComboBox.getSelectedKey(),
@@ -1146,6 +1149,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 					
 			
         }, 8000);
+			}else{
+				if(!this.oShowAlertDialog.isOpen())
+				{
+				this.oAlertTextView.setText(this.oModelHelper.getText("CIFNameAndLName"));
+				this.oShowAlertDialog.open();
+				
+				}
+			}
 	},
 	handleBasicInfoTabsSelection : function(oEvent){
 		//console.log("Tab Selected");
@@ -1411,7 +1422,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 										that.oLILIDivisionComboBox.fireSelectionChange();
 									}
 									
-									(function myInnerLoop1 (i) {          
+									/*(function myInnerLoop1 (i) {          
 										   setTimeout(function () {   
 										      
 												isicGroup[resultsJ] = oResponse.data.results[resultsJ].IsicGroup;
@@ -1424,7 +1435,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 											   resultsJ++;
 										      if (--i) myInnerLoop1(i);      
 										   }, 2000)
-										})(howManyTimes);   
+										})(howManyTimes);   */
 									
 									/*for(var j=0; j < oResponse.data.results.length; j++){							
 										
@@ -2750,6 +2761,8 @@ userSignIn : function(userID, password){
 							 }									
 						}
 						this.oBAQExists = true;						
+						}else{
+							this.oBAQExists = false;	
 						}
 				}, this));
 				
