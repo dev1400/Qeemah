@@ -1425,7 +1425,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					//if(oResponse){
 					if(oResponse.data.results.length > 0){
 						//that.openBusyDialog();
-						this.oLILIBusinessTypeComboBox.setSelectedKey("N");
+						this.oLILIBusinessTypeComboBox.setSelectedKey(oResponse.data.results[0].Lic);
 						this.oLILIBusinessTypeComboBox.fireSelectionChange();
 						
 						var resultsI = 0, resultsJ = 0, howManyTimes = oResponse.data.results.length;
@@ -1486,7 +1486,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 							   }, 2000)
 							})(howManyTimes); */  
 						
-						
+						if(oResponse.data.results[0].Lic !== "N"){
 							     
 						for(var i=0; i < oResponse.data.results.length; i++){
 							
@@ -1523,10 +1523,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 							}
 							
 						}
+						
+						this.oLILIGroupComboBox.fireSelectionChange();
+						this.oLILIClassMultiComboBox.fireSelectionChange();
+						}
 							
 					}		
-					this.oLILIGroupComboBox.fireSelectionChange();
-					this.oLILIClassMultiComboBox.fireSelectionChange();
+					
 					
 				}, this));
 			
