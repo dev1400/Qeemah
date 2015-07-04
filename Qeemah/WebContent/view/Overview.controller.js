@@ -1564,7 +1564,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 	       
 	    }
-		this.oLILIPreviewBusinessTypeComboBox.setValue(this.oLILIBusinessTypeComboBox.getSelectedItem().getText());
+		//this.oLILIPreviewBusinessTypeComboBox.setValue(this.oLILIBusinessTypeComboBox.getSelectedItem().getText());
 		
 		
 	},

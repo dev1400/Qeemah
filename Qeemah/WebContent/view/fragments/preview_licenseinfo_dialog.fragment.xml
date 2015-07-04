@@ -44,7 +44,7 @@
 										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell >
-										<ComboBox width="25em" items="{/LILIBusinessTypeCollection}" id="idLILIPreviewBusinessTypeComboBox" selectionChange="handleLILIBusinessTypeComboBoxSelectionChange">
+										<ComboBox width="25em" enabled="false" items="{/LILIBusinessTypeCollection}" id="idLILIPreviewBusinessTypeComboBox" selectionChange="handleLILIBusinessTypeComboBoxSelectionChange">
 										     <sap.ui.core:ListItem key="{Flag}" text="{IsicDescription}" id="idLILIPreviewBusinessTypeComboBoxitem"/>
 										</ComboBox>
 									
@@ -74,7 +74,7 @@
 										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em" items="{/LILISectionCollection}" id="idLILIPreviewSectionComboBox" selectionChange="handleLILISectionSelectionComboBox">
+										<ComboBox enabled="false" width="25em" items="{/LILISectionCollection}" id="idLILIPreviewSectionComboBox" selectionChange="handleLILISectionSelectionComboBox">
 										     <sap.ui.core:ListItem key="{IsicSection}" text="{IsicDescription}" id="idLILIPreviewSectionComboBoxitem"/>
 										</ComboBox>
 									
@@ -88,7 +88,7 @@
 										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em"  items="{/LILIDivisionCollection}" id="idLILIPreviewDivisionComboBox" selectionChange="handleLILIDivisionSelectionComboBox">
+										<ComboBox enabled="false" width="25em"  items="{/LILIDivisionCollection}" id="idLILIPreviewDivisionComboBox" selectionChange="handleLILIDivisionSelectionComboBox">
 										     <sap.ui.core:ListItem key="{IsicDivision}" text="{IsicDescription}" id="idLILIPreviewDivisionComboBoxListitem"/>
 										</ComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
@@ -104,7 +104,7 @@
 										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<MultiComboBox selectionChange="handleLILIGropuMultiSelectionComboBoxChange"  id="idLILIPreviewGroupComboBox"
+										<MultiComboBox enabled="false" selectionChange="handleLILIGropuMultiSelectionComboBoxChange"  id="idLILIPreviewGroupComboBox"
 										selectionFinish="handleSelectionFinish"    items="{/LILIGroupCollection}" width="25em">
                                         <sap.ui.core:ListItem key="{IsicGroup}" text="{IsicDescription}" id="idLILIPreviewGroupComboBoxListitem"/>
                                      </MultiComboBox>
@@ -118,7 +118,7 @@
 										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<MultiComboBox selectionChange="handleLILIClassMultiSelectionComboBoxChange"  id="idLILIPreviewClassMultiComboBox"
+										<MultiComboBox enabled="false" selectionChange="handleLILIClassMultiSelectionComboBoxChange"  id="idLILIPreviewClassMultiComboBox"
 										selectionFinish="handleSelectionFinish"    items="{/LILIClassCollection}" width="25em">
                                         <sap.ui.core:ListItem key="{IsicClass}" text="{IsicDescription}" id="idLILIPreviewClassMultiComboBoxListitem"/> <!-- key="{IsicClass}"  -->
                                      </MultiComboBox>
@@ -134,7 +134,7 @@
 											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<MultiComboBox selectionChange="handleLILILicenseActivityMultiSelectionComboBoxChange"  id="idLILIPreviewLicenseActivityMultiComboBox"
+										<MultiComboBox enabled="false" selectionChange="handleLILILicenseActivityMultiSelectionComboBoxChange"  id="idLILIPreviewLicenseActivityMultiComboBox"
 										selectionFinish="handleSelectionFinish"    items="{/LILILicenseActivityCollection}" width="25em">
                                         <sap.ui.core:ListItem key="{SurveyID}" text="{IsicDescription}" id="idLILIPreviewLicenseActivityMultiComboBoxListitem"/> <!-- key="{IsicClass}"  -->
                                      </MultiComboBox>
