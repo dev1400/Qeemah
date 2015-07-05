@@ -449,6 +449,28 @@
 									</sap.ui.commons.layout:rows>
 								</sap.ui.commons.layout:MatrixLayout>
 								<!-- Org reg layout end -->
+								
+
+
+
+	<sap.ui.commons.layout:MatrixLayout>
+	
+		<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												colSpan="2" hAlign="Center">
+												<sap.ui.commons.layout:content>
+												<Button style="Accept" text="{i18n>Next}" id="idBIOIInfoNextButton"
+									press="handleBIOINextButtonPress" icon="sap-icon://navigation-right-arrow" iconFirst="false"></Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+	</sap.ui.commons.layout:MatrixLayout>
+	
+	
 
 						</ScrollContainer>
 </sap.ui.core:FragmentDefinition>

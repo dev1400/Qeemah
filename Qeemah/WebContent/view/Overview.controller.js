@@ -174,6 +174,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		
 	},
+	handleBIOINextButtonPress : function(){
+		this.oBasicInfoTab.setSelectedIndex(1);
+
+	},
+	handleBICIPreviousButtonPress : function(){
+		this.oBasicInfoTab.setSelectedIndex(0);
+
+	},
+
 	handleExistingShareHolderAddButtonPress : function(oEvent){
 		
 		//this.oExistingShareHolderTable = this.getView().byId("idESHTable");
