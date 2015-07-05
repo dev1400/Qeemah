@@ -1216,15 +1216,19 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		that = this;
 		setTimeout(function() {
+		
+		that.closeBusyDialog();
 			
-			that.closeBusyDialog();
+			/*that.closeBusyDialog();
 			
 			if(!that.oShowAlertDialog.isOpen())
 			{
 				that.oAlertTextView.setText(that.oModelHelper.getText("Saved"));
 				that.oShowAlertDialog.open();
 			
-			}
+			}*/
+			sap.m.MessageToast.show(that.oModelHelper
+					.getText("Saved"));
 					
 			
         }, 8000);
@@ -3255,6 +3259,9 @@ handleRegisterUserButtonPress : function() {
 					jQuery.when(oRequestSubmitFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 						that.closeBusyDialog();
 						//console.log(oResponse);			
+						
+						if(oResponse.LeadID !== ""){
+						
 						if (!that._ShowLeadIDFragment) {
 							that._ShowLeadIDFragment = sap.ui.xmlfragment(
 									"com.sagia.view.fragments.show_investorid_dialog", that.getView()
@@ -3267,11 +3274,24 @@ handleRegisterUserButtonPress : function() {
 						oLeadIDTextView.setText(oResponse.LeadID);
 
 						that._ShowLeadIDFragment.open();
+						}else{
+							if(!this.oShowAlertDialog.isOpen())
+							{
+							this.oAlertTextView.setText(oResponse.Return);
+							this.oShowAlertDialog.open();
+							
+							}else{
+								this.oShowAlertDialog.close();
+								this.oAlertTextView.setText(oResponse.Return);
+								this.oShowAlertDialog.open();
+							}
+						}
+						
 						
 					}, that));	
 					
 					
-		        }, 10000);
+		        }, 2000);
 				
 			}else{
 				this.closeBusyDialog();
