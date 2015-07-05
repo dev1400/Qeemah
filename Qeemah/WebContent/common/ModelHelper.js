@@ -302,6 +302,35 @@ com.sagia.common.ModelHelper = {
 		
 	},
 	/**
+	 * Delete BAQ Entries
+	 * @author Abdul Waheed
+	 */
+	deleteBAQEntry : function(oRef_id) {
+		
+		this.openBusyDialog();
+
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+
+		this.oBAQODataModel.remove("SurChgSet(Investorid='"+oRef_id+"',NodeGuid='B')", {
+			success : function(oData, response) {
+				
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(oResponse);
+
+				that.closeBusyDialog();
+			}});
+
+		return oRequestFinishedDeferred;
+		
+	},
+	/**
 	 * Create BAQ Answers
 	 * @Author Abdul Waheed 
 	 */

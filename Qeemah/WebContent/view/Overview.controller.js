@@ -976,14 +976,42 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}
 			
 			
-			var oRequestFinishedDeferredUpdateBAQAnswers = this.oModelHelper.updateBAQAnswers(this.oRef_id, questions, answers, this.oBICIFirstNameInputText.getValue(), this.oBICILastNameInputText.getValue());
+			/*var oRequestFinishedDeferredUpdateBAQAnswers = this.oModelHelper.updateBAQAnswers(this.oRef_id, questions, answers, this.oBICIFirstNameInputText.getValue(), this.oBICILastNameInputText.getValue());
 
 			jQuery.when(oRequestFinishedDeferredUpdateBAQAnswers).then(jQuery.proxy(function(oResponse) {
-				//console.log(oResponse);			
+					
+				
+			}, this));*/
+			
+			var oRequestFinishedDeferredDeleteBAQAnswers = this.oModelHelper.deleteBAQEntry(this.oRef_id);
+
+			jQuery.when(oRequestFinishedDeferredDeleteBAQAnswers).then(jQuery.proxy(function(oResponse) {
+				
+				try{			
+					var questions = [];
+					var answers = [];
+					for(var i=0; i < this.oTotalBAQQuestions; i++){
+						 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+i);
+						 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+i);
+						 questions.push(oBAQuestion.data("idBAQuestion"+i));
+						 answers.push(oBAQAnswer.getSelectedItem().getText());
+					}
+					var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers, this.oBICIFirstNameInputText.getValue(), this.oBICILastNameInputText.getValue());
+
+					jQuery.when(oRequestFinishedDeferredcreateBAQAnswers).then(jQuery.proxy(function(oResponse) {
+						
+						this.oBAQError = false;
+						
+					}, this));
+					
+					
+					}catch(err){
+						
+						this.oBAQError = true;
+					}
+					
 				
 			}, this));
-			
-			
 			
 		}else{
 			
@@ -1013,7 +1041,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers, this.oBICIFirstNameInputText.getValue(), this.oBICILastNameInputText.getValue());
 
 			jQuery.when(oRequestFinishedDeferredcreateBAQAnswers).then(jQuery.proxy(function(oResponse) {
-				//console.log(oResponse);
+				
 				this.oBAQError = false;
 				
 			}, this));
