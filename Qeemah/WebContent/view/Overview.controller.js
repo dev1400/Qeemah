@@ -1575,11 +1575,42 @@ sap.ui.controller("com.sagia.view.Overview", {
 								this.oLILIClassMultiComboBox.setSelectedKeys(uniqueIsicClassArray);
 								
 							}
+	                         
+	                         /*for(var l=0; l < oResponse.data.results.length; l++){							
+									
+		                            IsicLicenseActivity[l] = oResponse.data.results[l].Act;
+									
+									var uniqueIsicLicenseActivityArray = IsicLicenseActivity.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+									
+									this.oLILILicenseActivityMultiComboBox.setSelectedKeys(uniqueIsicLicenseActivityArray);
+
+								}*/
 							
 						}
 						
 						this.oLILIGroupComboBox.fireSelectionChange();
 						this.oLILIClassMultiComboBox.fireSelectionChange();
+						that = this;
+						 (function myLoop (i) {          
+							   setTimeout(function () { 
+								   
+								   
+                                    IsicLicenseActivity[resultsI] = oResponse.data.results[resultsI].Act;
+									
+									var uniqueIsicLicenseActivityArray = IsicLicenseActivity.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
+									
+									that.oLILILicenseActivityMultiComboBox.setSelectedKeys(uniqueIsicLicenseActivityArray);
+									
+									that.oLILIActivityDescriptionTextArea.setValue(oResponse.data.results[0].ActDesc);
+
+							   
+								   resultsI++;
+							   }, 5000)
+						  })(howManyTimes);
+						 
+						//this.oLILIActivityDescriptionTextArea.setValue(oResponse.data.results[0].ActDesc);
+						
+						
 						}
 							
 					}		
