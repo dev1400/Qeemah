@@ -1165,9 +1165,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 			var oRequestFinishedDeferredcreateISIC = this.oModelHelper.createLILIBusiness(
 					this.oLicenseTypeInputText.getValue(),
 					this.oSurveyID,
-					//this.oLILILicenseActivityMultiComboBox.getSelectedKeys(),
 					this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean),
-					this.oLILILicenseActivityMultiComboBox.getSelectedItems(),
+					//this.oLILILicenseActivityMultiComboBox.getSelectedItems(),
+					this.oLILILicenseActivityMultiComboBox.getSelectedKeys().filter(Boolean),
 					this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean),
 					this.oLILIDivisionComboBox.getSelectedKey(),
 					this.oLILISectionComboBox.getSelectedKey(),
@@ -1191,9 +1191,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 				var oRequestFinishedDeferredcreateISIC = this.oModelHelper.createLILIBusiness(
 						this.oLicenseTypeInputText.getValue(),
 						this.oSurveyID,
-						//this.oLILILicenseActivityMultiComboBox.getSelectedKeys(),
 						this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean),
-						this.oLILILicenseActivityMultiComboBox.getSelectedItems(),
+						//this.oLILILicenseActivityMultiComboBox.getSelectedItems(),
+						this.oLILILicenseActivityMultiComboBox.getSelectedKeys().filter(Boolean),
 						this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean),
 						this.oLILIDivisionComboBox.getSelectedKey(),
 						this.oLILISectionComboBox.getSelectedKey(),

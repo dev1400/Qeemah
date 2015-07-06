@@ -120,7 +120,7 @@
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<MultiComboBox selectionChange="handleLILILicenseActivityMultiSelectionComboBoxChange"  id="idLILILicenseActivityMultiComboBox"
 										selectionFinish="handleSelectionFinish"    items="{/LILILicenseActivityCollection}" width="25em">
-                                        <sap.ui.core:ListItem key="{SurveyID}" text="{IsicDescription}" id="idLILILicenseActivityMultiComboBoxListitem"/> <!-- key="{IsicClass}"  -->
+                                        <sap.ui.core:ListItem key="{IsicDescription}" text="{IsicDescription}" id="idLILILicenseActivityMultiComboBoxListitem"/> <!-- key="{IsicClass}"  -->
                                      </MultiComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									</sap.ui.commons.layout:MatrixLayoutRow>

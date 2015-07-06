@@ -141,6 +141,7 @@ com.sagia.common.ModelHelper = {
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oODataModel.setUseBatch(false);
 
 		this.oODataModel.read("VALIDATE_SHAREHOLDER_ENT(Bpno='"+entityNo+"')", {
 			success : function(oData, response) {
@@ -230,7 +231,7 @@ com.sagia.common.ModelHelper = {
 			        	        	  Activity : oActivity,
 			        	        	  SurveyID : oSurveyID,
 			        	        	  IsicClass : oIsicClass[j],
-			        	        	  IsicDescription : oIsicDescription[l].getText(),
+			        	        	  IsicDescription : oIsicDescription[l],//oIsicDescription[l].getText(),
 			        	        	  IsicGroup : oIsicGroup[k],
 			        	        	  IsicDivision : oIsicDivision,
 			        	        	  IsicSection : oIsicSection,
@@ -283,7 +284,7 @@ com.sagia.common.ModelHelper = {
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
-
+        this.oODataModel.setUseBatch(false);
 		this.oODataModel.read("IsicDetPs?Investorid='"+oRef_id+"'", {
 			success : function(oData, response) {
 				
@@ -312,6 +313,7 @@ com.sagia.common.ModelHelper = {
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oBAQODataModel.setUseBatch(false);
 
 		this.oBAQODataModel.remove("SurChgSet(Investorid='"+oRef_id+"',NodeGuid='B')", {
 			success : function(oData, response) {
@@ -375,7 +377,7 @@ com.sagia.common.ModelHelper = {
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
-
+        this.oBAQODataModel.setUseBatch(false);
 		this.oBAQODataModel.read("SurveyAttSet(Investorid='"+oRef_id+"',NodeGuid='"+oNodeID+"',FileName=' ')", {
 			success : function(oData, response) {
 				
@@ -404,6 +406,7 @@ com.sagia.common.ModelHelper = {
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oBAQODataModel.setUseBatch(false);
 
 		this.oBAQODataModel.read("SurChg?Investorid='"+oRef_id+"'", {
 			success : function(oData, response) {
@@ -433,6 +436,7 @@ com.sagia.common.ModelHelper = {
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oBAQODataModel.setUseBatch(false);
 
 		this.oBAQODataModel.read("SurChg?Investorid='"+oRef_id+"'&Flag='B'", {
 			success : function(oData, response) {
@@ -462,6 +466,7 @@ com.sagia.common.ModelHelper = {
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oODataModel.setUseBatch(false);
 
 		this.oODataModel.read("IsicDetPs?Investorid='"+oRef_id+"'", {
 			success : function(oData, response) {
@@ -491,6 +496,7 @@ com.sagia.common.ModelHelper = {
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oODataModel.setUseBatch(false);
 
 		this.oODataModel.remove("IsicDetPsSet(Investorid='"+oRef_id+"')", {
 			success : function(oData, response) {
@@ -524,7 +530,8 @@ com.sagia.common.ModelHelper = {
 		// Create deferred object so that calling program can wait till
 		// asynchronous call is finished
 		var oRequestFinishedDeferred = jQuery.Deferred();
-		
+        this.oODataModel.setUseBatch(false);
+
        
 		this.oODataModel.create("/ZQEEMAH_SUBMIT_ENT", oEntry , {
 		
@@ -688,7 +695,8 @@ com.sagia.common.ModelHelper = {
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
 		
-        
+        this.oShareHolderODataModel.setUseBatch(false);
+
 		this.oShareHolderODataModel.create("ZSHAREHOLDER_INFO_ENT", oEntry , {
 		
 			success : function(oData) {
@@ -725,6 +733,9 @@ com.sagia.common.ModelHelper = {
 		var that = this;
 		
 		var oRequestFinishedDeferred2 = jQuery.Deferred();
+		
+        this.oODataModel.setUseBatch(false);
+
 
 		this.oODataModel.read("ZBASIC_CONT_FILE_ENT(RefID='"+refid+"',FileType='PASS')", {
 			success : function(oData, response) {
@@ -753,6 +764,7 @@ com.sagia.common.ModelHelper = {
 		var that = this;
 		
 		var oRequestFinishedDeferred1 = jQuery.Deferred();
+        this.oODataModel.setUseBatch(false);
 
 		this.oODataModel.read("ZBASIC_CONT_FILE_ENT(RefID='"+refid+"',FileType='POA')", {
 			success : function(oData, response) {
@@ -782,6 +794,7 @@ com.sagia.common.ModelHelper = {
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oODataModel.setUseBatch(false);
 
 		this.oODataModel.read("ZBASIC_CONT_INFO_ENT(RefID='"+refid+"',FileType='')", {
 			success : function(oData, response) {
@@ -961,7 +974,8 @@ com.sagia.common.ModelHelper = {
         oEntry.Country = oBICICountryCombobox;
         oEntry.Nationality = oBICINationalityCombobox;
         oEntry.Street = oBICIStreet;
-        
+        this.oODataModel.setUseBatch(false);
+
 		this.oODataModel.create("ZBASIC_CONT_INFO_ENT", oEntry, {
 			
 			
@@ -1042,7 +1056,8 @@ com.sagia.common.ModelHelper = {
 	        oEntry.Country = oBICICountryCombobox;
 	        oEntry.Nationality = oBICINationalityCombobox;
 	        oEntry.Street = oBICIStreet;
-		
+	    this.oODataModel.setUseBatch(false);
+
 		this.oODataModel.update("ZBASIC_CONT_INFO_ENT(RefID='"+oEntry.RefID+"',FileType='')",oEntry,{		
 		
 		success : function(oData, response) { 
@@ -1075,7 +1090,8 @@ com.sagia.common.ModelHelper = {
 		
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
-		
+        this.oBAQODataModel.setUseBatch(false);
+
 		this.oBAQODataModel.read("SurveyQue?Lang=%27E%27&Flag=%27B%27&SurveyID=%27QUEEMAH_BUS_PLAN%27", {
 			success : function(oData, response) {
 				oRequestFinishedDeferred.resolve(response);
@@ -1107,7 +1123,8 @@ com.sagia.common.ModelHelper = {
 		
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
-		
+        this.oBAQODataModel.setUseBatch(false);
+
 		this.oBAQODataModel.read("SurveyQue?Lang=%27E%27&Flag=%27F%27&SurveyID=%27QUEEMAH_BUS_PLAN%27", {
 			success : function(oData, response) {
 				oRequestFinishedDeferred.resolve(response);
@@ -1139,7 +1156,8 @@ com.sagia.common.ModelHelper = {
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
-		
+        this.oBAQODataModel.setUseBatch(false);
+
 		this.oBAQODataModel.read("SurveyAns?Lang='E'&Flag='B'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
 				oRequestFinishedDeferred.resolve(response);
@@ -1161,7 +1179,8 @@ com.sagia.common.ModelHelper = {
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
-		
+        this.oBAQODataModel.setUseBatch(false);
+
 		this.oBAQODataModel.read("SurveyAns?Lang='E'&Flag='F'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
 				oRequestFinishedDeferred.resolve(response);
@@ -1187,6 +1206,7 @@ com.sagia.common.ModelHelper = {
 		// Create deferred object so that calling program can wait till
 		// asynchronous call is finished
 		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oODataModel.setUseBatch(false);
 
 		this.oODataModel.read("ZCRM_TELECODE_ENT(CounKey='"+countryTelCode+"')", {
 			success : function(oData, response) {
@@ -1229,6 +1249,7 @@ com.sagia.common.ModelHelper = {
 		var filtersArray = new Array();  
 		var filterRegion = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");  
 		filtersArray.push(filterRegion);  
+        this.oODataModel.setUseBatch(false);
 
 		//this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27", {   //ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27&lv_flag=%27%27&lv_region=%27%27
 		//this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27&lv_flag=%27%27&lv_region=%27%27", {
@@ -1282,7 +1303,9 @@ com.sagia.common.ModelHelper = {
 		/*var filtersArray = new Array();  
 		var filterRegion = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");  
 		filtersArray.push(filterRegion);*/  
-
+		
+		
+		this.oODataModel.setUseBatch(false);
 		this.oODataModel.read("/IsicDet?Flag='S'&Lang='E'&IsicSection=' '&IsicDivision=' '&IsicGroup=' '&IsicClass=' '", {
 			success : function(oData, response) {
 				
@@ -1321,6 +1344,7 @@ com.sagia.common.ModelHelper = {
 		//this.openBusyDialog();		
 		var that = this;		
 		var oRequestFinishedDeferred = jQuery.Deferred();
+		this.oODataModel.setUseBatch(false);
 		this.oODataModel.read("IsicDet?Flag='L'&Lang='E'&IsicSection=' '&IsicDivision=' '&IsicGroup=' '&IsicClass=' '", {
 			success : function(oData, response) {
 				that.oBusinessTypeCollectionModel = new sap.ui.model.json.JSONModel();
@@ -1365,7 +1389,7 @@ com.sagia.common.ModelHelper = {
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
-
+		this.oODataModel.setUseBatch(false);
 		this.oODataModel.read("IsicDet?Flag='D'&Lang='E'&IsicSection='"+IsicSection+"'&IsicDivision=' '&IsicGroup=' '&IsicClass=' '", {
 			success : function(oData, response) {			
 				
@@ -1400,7 +1424,7 @@ com.sagia.common.ModelHelper = {
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
-
+		this.oODataModel.setUseBatch(false);
 		this.oODataModel.read("IsicDet?Flag='G'&Lang='E'&IsicSection='"+IsicSection+"'&IsicDivision='"+IsicDivision+"'&IsicGroup=' '&IsicClass=' '", {
 			success : function(oData, response) {			
 				
@@ -1442,6 +1466,8 @@ com.sagia.common.ModelHelper = {
             "IsicDet?Flag='C'&Lang='E'&IsicSection='"+IsicSection+"'&IsicDivision='"+IsicDivision+"'&IsicGroup='"+IsicSelectedGroups[i]+"'&IsicClass='C'", 'GET' ));
             }
          this.oODataModel.addBatchReadOperations( aBatchOperations);
+         this.oODataModel.setUseBatch(true);
+
          this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
              //that.closeBusyDialog();
         	 
@@ -1494,6 +1520,8 @@ com.sagia.common.ModelHelper = {
         	 }
              }
          this.oODataModel.addBatchReadOperations( aBatchOperations);
+         this.oODataModel.setUseBatch(true);
+
          this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
             // that.closeBusyDialog();
         	 
@@ -1542,6 +1570,8 @@ com.sagia.common.ModelHelper = {
         		          
         	 } }
          this.oODataModel.addBatchReadOperations( aBatchOperations);
+         this.oODataModel.setUseBatch(true);
+
          this.oODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {        	
              //that.closeBusyDialog();
         	 //console.log(oResponse.data.__batchResponses);
@@ -1586,6 +1616,7 @@ com.sagia.common.ModelHelper = {
 		// Create deferred object so that calling program can wait till
 		// asynchronous call is finished
 		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oODataModel.setUseBatch(false);
 
 		this.oODataModel.read("/REGISTER_USER_ENT('"+ userid + "')", {
 			success : function(oData) {
@@ -1618,6 +1649,7 @@ com.sagia.common.ModelHelper = {
 		// Create deferred object so that calling program can wait till
 		// asynchronous call is finished
 		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oODataModel.setUseBatch(false);
 
 		this.oODataModel.read("ZBASIC_ORG_INFO_ENT('"+refid+"')", {
 			success : function(oData, response) {
@@ -1680,6 +1712,8 @@ com.sagia.common.ModelHelper = {
 		oEntry.ContPersname = oContactPersonName;
 		oEntry.Company = oCompany;
 		oEntry.Ref_id = '';
+        this.oODataModel.setUseBatch(false);
+
 		this.oODataModel.create("/REGISTER_USER_ENT", oEntry , {
 		
 			success : function(oData) {
@@ -1745,7 +1779,8 @@ com.sagia.common.ModelHelper = {
 		oEntry.Ccode_Fax = oBIOIFaxCountryCode
 		oEntry.Ccode_Mobile = oBIOIMobilephoneCountryCode
 		
-				
+        this.oODataModel.setUseBatch(false);
+
 		this.oODataModel.update("ZBASIC_ORG_INFO_ENT('"+oEntry.RefID+"')",oEntry,{//urlParameters : oEntry,		
 		
 		success : function(oData, response) { //console.dir(response);
@@ -1804,7 +1839,8 @@ com.sagia.common.ModelHelper = {
 		oEntry.Ccode_Tele = oBIOITelephoneCountryCode;
 		oEntry.Ccode_Fax = oBIOIFaxCountryCode
 		oEntry.Ccode_Mobile = oBIOIMobilephoneCountryCode
-		
+        this.oODataModel.setUseBatch(false);
+
 		this.oODataModel.create("ZBASIC_ORG_INFO_ENT", oEntry, {
 			
 			
