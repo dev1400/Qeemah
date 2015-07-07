@@ -139,7 +139,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oContactNumber = this.getView().byId("idContactNumberInputText");
 		this.oContactPersonName = this.getView().byId("idContactNameInputText");
 		this.oCompany = this.getView().byId("idCompanyInputText");
-		this.oPoweOfAttorneyFileUpload = this.getView().byId("idBICIPowerofAttorneyFileUploader");
 		
 		this.oLILISectionComboBox = this.getView().byId("idLILISectionComboBox");
 		this.oLILIBusinessTypeComboBox = this.getView().byId("idLILIBusinessTypeComboBox");
@@ -675,10 +674,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}
 
 	},
-	handlePowerOfAttorneyUploadPress : function(oEvent){
-		//console.log("handlePowerOfAttorneyUploadPress");
-		this.oPoweOfAttorneyFileUpload.upload();
-	},
+	
 	handleSaveLinkPressSave : function(){
 	this.oValidationLILIStatus = false;
 	
@@ -820,6 +816,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}
 			
 		}
+		
+		this.oBICIPowerofAttorneyFileUploader = this.getView().byId("idBICIPowerofAttorneyFileUploader");
+		this.oBICIPassPortCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
+		
 		
 		if(this.oContactInfoRecordExists){
 			this.oBasicInfoTab.setSelectedIndex(1);
@@ -2699,9 +2699,7 @@ userSignIn : function(userID, password){
 				this.oBICIFaxInputText = this.getView().byId("idBICIFaxInputText");
 				this.oBICIRoleInputText = this.getView().byId("idBICIRoleInputText");
 				this.oBICIEmailInputText = this.getView().byId("idBICIEmailInputText");
-				this.oBICIPassportCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
-				this.oBICIPowerofAttorneyFileUploader = this.getView().byId("idBICIPowerofAttorneyFileUploader");
-				this.oBICIPassPortCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
+				//this.oBICIPassportCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
 				this.oBICIStreet = this.getView().byId("idBICIStreetInputText");
 				this.oBICIPASSAttachmentName = this.getView().byId("idBICIPASSAttachmentName");
 				this.oBICIPASSAttachmentNameTextView = this.getView().byId("idBICIPASSAttachmentNameTextView");
