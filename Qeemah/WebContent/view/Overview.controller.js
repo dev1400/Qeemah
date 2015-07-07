@@ -1594,17 +1594,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 						 (function myLoop (i) {          
 							   setTimeout(function () { 
 								   
-								   
-                                    IsicLicenseActivity[resultsI] = oResponse.data.results[resultsI].Act;
+								   for(var l=0; l < oResponse.data.results.length; l++){
+									   
+                                    IsicLicenseActivity[l] = oResponse.data.results[l].Act;
 									
 									var uniqueIsicLicenseActivityArray = IsicLicenseActivity.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
 									
 									that.oLILILicenseActivityMultiComboBox.setSelectedKeys(uniqueIsicLicenseActivityArray);
 									
 									that.oLILIActivityDescriptionTextArea.setValue(oResponse.data.results[0].ActDesc);
-
-							   
-								   resultsI++;
+								   }
 							   }, 5000)
 						  })(howManyTimes);
 						 
