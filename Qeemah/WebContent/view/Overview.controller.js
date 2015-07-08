@@ -820,6 +820,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oBICIPowerofAttorneyFileUploader = this.getView().byId("idBICIPowerofAttorneyFileUploader");
 		this.oBICIPassPortCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
 		
+		this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
+		this.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
+		
 		
 		if(this.oContactInfoRecordExists){
 			this.oBasicInfoTab.setSelectedIndex(1);
@@ -861,21 +864,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 				
-            	var oRequestFinishedDeferred1 = this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
-				jQuery.when(oRequestFinishedDeferred1).then(jQuery.proxy(function() {
-					
-					this.readBICIPOAFileAttachemnts();
-					
-				}, this));	
-				
-				var oRequestFinishedDeferred2 = this.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
-                jQuery.when(oRequestFinishedDeferred2).then(jQuery.proxy(function() {
-                	
-                	this.readBICIPASSFileAttachemnts();
-				}, this));
+            	
                 
 				
 			}, this));	
+		    
 			}
 			catch(err){
 				/*sap.m.MessageToast.show(this.oModelHelper
@@ -935,18 +928,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					
 					}
             	}else{
-            	var oRequestFinishedDeferred1 = this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
-				jQuery.when(oRequestFinishedDeferred1).then(jQuery.proxy(function() {
-					
-					this.readBICIPOAFileAttachemnts();
-					
-				}, this));	
-				
-				var oRequestFinishedDeferred2 = this.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
-                jQuery.when(oRequestFinishedDeferred2).then(jQuery.proxy(function() {
-                	
-                	this.readBICIPASSFileAttachemnts();
-				}, this));	
+            	
             	}
                 
 				
@@ -2803,8 +2785,8 @@ userSignIn : function(userID, password){
 			
 				
 				
-				that.readBICIPASSFileAttachemnts();
-				that.readBICIPOAFileAttachemnts();
+				//that.readBICIPASSFileAttachemnts();
+				//that.readBICIPOAFileAttachemnts();
 				
 				
 				var oRequestFinishedDeferredBAQAnswersReadChild = this.oModelHelper.readBAQSavedAnswers(this.oRef_id);

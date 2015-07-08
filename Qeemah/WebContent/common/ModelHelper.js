@@ -70,6 +70,13 @@ com.sagia.common.ModelHelper = {
 		
 		return this.oODataModel;
 	},
+	/**
+	 * Build ODataModel instance and return
+	 */
+	getCSRFToken : function() {
+			
+		return this.oODataModel.getHeaders()['x-csrf-token'];
+	},
 	
 	/**
 	 * Build BAQ ODataModel instance and return
@@ -855,15 +862,13 @@ com.sagia.common.ModelHelper = {
 	 */
 	uploadBICIPassPortCopy : function(oRefID, oBICIPassPortCopyFileUploader){
 		var oUploadBICIPassPortCopyRequestFinishedDeferred = jQuery.Deferred();
-		if(oBICIPassPortCopyFileUploader.getValue() !== ""){
-		var csrf =  this.oODataModel.getHeaders()['x-csrf-token'];
-		that = this;
 		
+		if(oBICIPassPortCopyFileUploader.getValue() !== ""){
 		
 		oBICIPassPortCopyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
 				{name: "Content-Type", value: "application/xml" }));
 		oBICIPassPortCopyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
-				{name: "X-CSRF-Token", value: csrf }));        
+				{name: "X-CSRF-Token", value: this.getCSRFToken() }));        
 		oBICIPassPortCopyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
         		({name: "slug", value: oBICIPassPortCopyFileUploader.getValue() }));
            
@@ -872,59 +877,38 @@ com.sagia.common.ModelHelper = {
 		oBICIPassPortCopyFileUploader.attachUploadComplete(function(){
 			oBICIPassPortCopyFileUploader.removeAllHeaderParameters();
 			oBICIPassPortCopyFileUploader.clear();
-        	//that.closeBusyDialog();
-        	oUploadBICIPassPortCopyRequestFinishedDeferred.resolve();
-        	 //sap.m.MessageToast.show(that.getText("Uploaded"));	
+        
         });
-        //sap.m.MessageToast.show(that.getText("Uploading"));	
-        //this.openBusyDialog();
         oBICIPassPortCopyFileUploader.upload();
 		}
-        return oUploadBICIPassPortCopyRequestFinishedDeferred;
 	},
 	/**
 	 * Upload Proof Of Attorney.
 	 * @author Abdul Waheed
 	 */
-	//uploadPOA : function(oRefID, oBICIPowerofAttorneyFileUploader, oBICIPassPortCopyFileUploader){
 	uploadPOA : function(oRefID, oBICIPowerofAttorneyFileUploader){
-		//console.log("In uploadPOA");
 		that = this;
 		var oUploadPOARequestFinishedDeferred = jQuery.Deferred();
 		
-		
 		if(oBICIPowerofAttorneyFileUploader.getValue() !== ""){
-			var csrf =  this.oODataModel.getHeaders()['x-csrf-token'];		
 			
-			oBICIPowerofAttorneyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
-					{name: "Content-Type", value: "application/xml" }));
-			oBICIPowerofAttorneyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
-					{name: "X-CSRF-Token", value: csrf }));        
-	        oBICIPowerofAttorneyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
-	        		({name: "slug", value: oBICIPowerofAttorneyFileUploader.getValue() }));      
-	        
-	        oBICIPowerofAttorneyFileUploader.setUploadUrl(this.getServiceUrl()+"ZBASIC_CONT_INFO_ENT(RefID='"+oRefID+"',FileType='POA')/InfoToPoa");
-	        oBICIPowerofAttorneyFileUploader.attachUploadComplete(function(){
+		oBICIPowerofAttorneyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+				{name: "Content-Type", value: "application/xml" }));
+		oBICIPowerofAttorneyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+				{name: "X-CSRF-Token", value: this.getCSRFToken() }));        
+		oBICIPowerofAttorneyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
+        		({name: "slug", value: oBICIPowerofAttorneyFileUploader.getValue() }));     
+		
+		oBICIPowerofAttorneyFileUploader.setUploadUrl(this.getServiceUrl()+"ZBASIC_CONT_INFO_ENT(RefID='"+oRefID+"',FileType='POA')/InfoToPoa");
+		
+		 oBICIPowerofAttorneyFileUploader.attachUploadComplete(function(){
 	        	oBICIPowerofAttorneyFileUploader.removeAllHeaderParameters();
 	        	oBICIPowerofAttorneyFileUploader.clear();
-	        	
-	        	//that.closeBusyDialog();
-	        	oUploadPOARequestFinishedDeferred.resolve();
-	        	/*if(oBICIPassPortCopyFileUploader.getValue() !== ""){
-	        	that.uploadBICIPassPortCopy(oRefID, oBICIPassPortCopyFileUploader);
-	        	}*/
 	        });
-	        //sap.m.MessageToast.show(that.getText("Uploading"));	
-	        //this.openBusyDialog();
-	        oBICIPowerofAttorneyFileUploader.upload();
-		}
-		/*if(oBICIPassPortCopyFileUploader.getValue() !== ""){
-        	that.uploadBICIPassPortCopy(oRefID, oBICIPassPortCopyFileUploader);
-    	}*/
-        return oUploadPOARequestFinishedDeferred;
-
 		
-	},
+		oBICIPowerofAttorneyFileUploader.upload();
+		}
+},
 	/**
 	 * Create and update BICI.
 	 * @author Abdul Waheed

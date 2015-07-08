@@ -203,14 +203,14 @@ com.sagia.common.js.validate = {
             context._oBICIPreviewEmailInputText = context.getView().byId("idBICIPreviewEmailInputText");			
             context._oBICIPreviewEmailInputText.setValue(context.oBICIEmailInputText.getValue());
             
-            context._oBICIPassportCopyFileUploader = context.getView().byId("idBICIPassportCopyFileUploader");
+           /* context._oBICIPassportCopyFileUploader = context.getView().byId("idBICIPassportCopyFileUploader");
 			context._oBICIPreviewPassportCopyFileUploader = context.getView().byId("idBICIPreviewPAssportCopyFileUploader");
             context._oBICIPreviewPassportCopyFileUploader.setValue(context._oBICIPassportCopyFileUploader.getValue());
            
             context._oBICIPowerOfAttorneyFileUploader = context.getView().byId("idBICIPowerofAttorneyFileUploader");
 			context._oBICIPreviewPowerOfAttorneyFileUploader = context.getView().byId("idBICIPreviewPowerofAttorneyFileUploader");
             context._oBICIPreviewPowerOfAttorneyFileUploader.setValue(context._oBICIPowerOfAttorneyFileUploader.getValue());
-           
+          */ 
 
             //CI End
             
