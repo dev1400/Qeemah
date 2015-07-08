@@ -256,7 +256,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 	},
 	handleCreateNewShareHolder : function(oEvent){
-		
+		var that = this;
+		this.openBusyDialog();
 		
 
 		
@@ -279,27 +280,38 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 			}
 			
-			
-			var oRequestFinishedDeferredcreateFinancialAnswers1 = this.oModelHelper.createFinancialAnswers
-			(this.oRef_id, questions, answers1, "Year 1", this.oNSHFirstNameInputText.getValue(),this.oNSHLastNameInputText.getValue());
+		         	var getarray = [];
+					
+					var oRequestFinishedDeferredcreateFinancialAnswers1 = that.oModelHelper.createFinancialAnswers
+					(that.oRef_id, questions, answers1, "Year 1", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
 
-			jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers1).then(jQuery.proxy(function(oResponse) {
-			}, this));
-			
-			var oRequestFinishedDeferredcreateFinancialAnswers2 = this.oModelHelper.createFinancialAnswers
-			(this.oRef_id, questions, answers2, "Year 2", this.oNSHFirstNameInputText.getValue(),this.oNSHLastNameInputText.getValue());
+					jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers1).then(jQuery.proxy(function(oResponse) {
+						
+						var oRequestFinishedDeferredcreateFinancialAnswers2 = that.oModelHelper.createFinancialAnswers
+						(that.oRef_id, questions, answers2, "Year 2", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
 
-			jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers2).then(jQuery.proxy(function(oResponse) {
-				
-			}, this));
-			var oRequestFinishedDeferredcreateFinancialAnswers3 = this.oModelHelper.createFinancialAnswers
-			(this.oRef_id, questions, answers3, "Year 3", this.oNSHFirstNameInputText.getValue(),this.oNSHLastNameInputText.getValue());
+						jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers2).then(jQuery.proxy(function(oResponse) {
+							
+							var oRequestFinishedDeferredcreateFinancialAnswers3 = that.oModelHelper.createFinancialAnswers
+							(that.oRef_id, questions, answers3, "Year 3", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
 
-			jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers3).then(jQuery.proxy(function(oResponse) {
-			
-				
-				
-			}, this));
+							jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers3).then(jQuery.proxy(function(oResponse) {
+							
+								 var getarray = [];
+							       
+							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers1);
+							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers2);
+							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers3);
+
+							        
+							        jQuery.when.apply($, getarray).done(function () {
+							             that.closeBusyDialog(); 
+							        });
+								
+							}, this));
+							
+						}, this));
+					}, this));
 			
 			}catch(err){
 				console.log(err);

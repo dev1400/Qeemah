@@ -103,7 +103,7 @@ com.sagia.common.ModelHelper = {
 	 * @Author Abdul Waheed 
 	 */
 	createFinancialAnswers : function(oRef_id, questions, answers, oAtxtlg, oFirstName, oLastName) {
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		
 		var that = this;
 		var oRequestFinishedCreateBAQDeferred = jQuery.Deferred();
@@ -125,13 +125,13 @@ com.sagia.common.ModelHelper = {
          this.oBAQODataModel.setUseBatch(true);
          this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {
         	 console.log(" SH "+oResponse);
-             that.closeBusyDialog();             
+             //that.closeBusyDialog();             
         	        	 
         	 oRequestFinishedCreateBAQDeferred.resolve(oResponse);
      	 }, 
      	 function(oError) {
      		console.log("E"+oError);
-     	 }, false);
+     	 }, true);
          
          return oRequestFinishedCreateBAQDeferred; 
 		
