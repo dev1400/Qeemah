@@ -201,7 +201,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 	},
 	handleValidateESHButtonPress : function(oEvent){
-		
+		var that = this;
 		this.oExistingShareHolderEntityNo = this.getView().byId("idESHEntityNoInputText");
 		this.oExistingShareHolderEntityName = this.getView().byId("idESHEntityNameInputText");
 		this.oESHPercentageInputText = this.getView().byId("idESHPercentageInputText");
@@ -241,7 +241,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 		        new sap.m.Button({ icon : "sap-icon://delete"})*/]
 		      }));
 			
+            var oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(that.oRef_id,
+                    "E", oResponse.data.Bpname,
+                    "","","","","","","","","","","","","","","","","","","","","","",
+    				"",	"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+    				"", "", "", "", "", "", "", "", "", "", "", "", "", "");
+
+    		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {			
+    
+    			 
 			
+    		}, this));	
 			
 		}, this));	
 		
