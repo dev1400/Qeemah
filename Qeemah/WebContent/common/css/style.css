@@ -55,9 +55,10 @@
 .sapMBtnInner {
 	color: white;
 	height: 2rem;
-	background: -webkit-linear-gradient(top, #00A19C 0, #00A19C 100%);
+	/* background: -webkit-linear-gradient(top, #00A19C 0, #00A19C 100%); */
 	text-shadow: 0 0 0 #ffffff;
 }
+
 /*Button Background Color*/
 .linkColor {
 	color: white !important;
@@ -311,6 +312,7 @@
 }
 .sapMBtnContent {
   font-family: SEGOEUI-Normal;
+  color : black;
 }
 .sapUiTfComboIcon {
   height: 2rem !important;

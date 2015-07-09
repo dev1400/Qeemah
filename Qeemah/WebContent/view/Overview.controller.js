@@ -219,7 +219,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 				"Bpno":oResponse.data.Bpno,
 	 			"Bpname":oResponse.data.Bpname});
 			var percentage = parseInt(this.oESHPercentageInputText.getValue());
-			if(percentage === "NaN"){
+			if(isNaN(percentage)){
 				percentage = 0;
 			}
 			
@@ -248,11 +248,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleESHTableDeleteButtonPress : function(oEvent){
 		
-		 var path = oEvent.getParameter('listItem').getBindingContext().sPath;
-	       
-         this.oESHCreateNewData.ESHCollection.splice(path.slice(-1),1);
-                  
-         this.oExistingShareHolderTable.removeItem(oEvent.getParameter('listItem'));
+		this.oESHCreateNewData.ESHCollection.splice(this.oExistingShareHolderTable.indexOfItem(oEvent.getParameter('listItem')),1);
+        
+        this.oExistingShareHolderTable.removeItem(oEvent.getParameter('listItem'));
 		
 	},
 	handleCreateNewShareHolder : function(oEvent){
@@ -305,7 +303,99 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 							        
 							        jQuery.when.apply($, getarray).done(function () {
-							             that.closeBusyDialog(); 
+							             
+							             var oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(that.oRef_id,
+							            		 that.oShareHolderTypeComboBox.getSelectedItem().getText(),
+							     				that.oNSHFirstNameInputText.getValue(),
+							     				that.oNSHCountryComboBox.getSelectedItem().getText(),
+							     				that.oNSHLastNameInputText.getValue(),
+							     				that.oNSHCityNameInputText.getValue(),
+							     				that.oNSHGenderComboBox.getSelectedItem().getText(),
+							     				that.oNSHPOBoxInputText.getValue(),
+							     				that.oNSHMaritalStatusComboBox.getSelectedItem().getText(),
+							     				that.oNSHPostalCodeInputText.getValue(),
+							     				that.oNSHAcademicTitleComboBox.getSelectedItem().getText(),
+							     				that.oNSHStreetInputText.getValue(),
+							     				that.oNSHDOBDate.getValue(),
+							     				that.oNSHWebsiteInputText.getValue(),
+							     				that.oNSHTelephoneInputText.getValue(),
+							     				that.oNSHNationalityComboBox.getSelectedItem().getText(),
+							     				that.oNSHMobilePhoneInputText.getValue(),
+							     				that.oNSHPreviousNationalityInputText.getSelectedItem().getText(),
+							     				that.oNSHFaxInputText.getValue(),
+							     				that.oNSHCommMethodInputText.getSelectedItem().getText(),
+							     				that.oNSHEmailInputText.getValue(),
+							     				that.oNSHPercentageInputText.getValue(),
+							     				that.oNSHActivityQ1ComboBox.getSelectedItem().getText(),
+							     				that.oNSHActivityQ2ComboBox.getSelectedItem().getText(),
+							     				that.oNSHActivityQ3ComboBox.getSelectedItem().getText(),
+							     				"",//this.oNSHExperienceQ1ComboBox.getSelectedItem().getText(),
+							     				"",//this.oNSHExperienceQ2ComboBox.getSelectedItem().getText(),
+							     				"",//this.oNSHExperienceQ3ComboBox.getSelectedItem().getText(),
+							     				"",//this.oNSHExperienceQ4ComboBox.getSelectedItem().getText(),
+							     		"",//		this.oNSHStock12InputText.getValue(),
+							     		"",//this.oNSHStock13InputText.getValue(),
+							     		"",//this.oNSHStock14InputText.getValue(),
+							     		"",//this.oNSHTotalCurrentAssets12InputText.getValue(),
+							     		"",//this.oNSHTotalCurrentAssets13InputText.getValue(),
+							     		"",//this.oNSHTotalCurrentAssets14InputText.getValue(),		
+							     		"",//this.oNSHTotalCurrentLiabialities12InputText.getValue(),
+							     		"",//this.oNSHTotalCurrentLiabialities13InputText.getValue(),
+							     		"",//this.oNSHTotalCurrentLiabialities14InputText.getValue(),
+							     		"",//this.oNSHNetSales12InputText.getValue(),
+							     		"",//this.oNSHNetSales13InputText.getValue(),
+							     		"",//this.oNSHNetSales14InputText.getValue(),
+							     		"",//this.oNSHTotalAssets12InputText.getValue(),
+							     		"",//this.oNSHTotalAssets13InputText.getValue(),
+							     		"",//this.oNSHTotalAssets14InputText.getValue(),
+							     		"",//this.oNSHTotalDebt12InputText.getValue(),
+							     		"",//this.oNSHTotalDebt13InputText.getValue(),
+							     		"",//this.oNSHTotalDebt14InputText.getValue(),
+							     		"",//this.oNSHDistributableNetIncome12InputText.getValue(),
+							     		"",//this.oNSHDistributableNetIncome13InputText.getValue(),
+							     		"",//this.oNSHDistributableNetIncome14InputText.getValue(),
+							     		"",//this.oNSHNetProfit12InputText.getValue(),
+							     		"",//this.oNSHNetProfit13InputText.getValue(),
+							     		"",//this.oNSHNetProfit14InputText.getValue(),
+							     		"",//this.oNSHInterests12InputText.getValue(),
+							     		"",//this.oNSHInterests13InputText.getValue(),
+							     		"",//this.oNSHInterests14InputText.getValue(),
+							     		"",//this.oNSHTotalAssetsInBalanceSheet12InputText.getValue(),
+							     		"",//this.oNSHTotalAssetsInBalanceSheet13InputText.getValue(),		
+							     		""//this.oNSHTotalAssetsInBalanceSheet14InputText.getValue()
+							     				
+							     			
+							     				);
+
+							     		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {			
+							     
+							     			 that.closeBusyDialog();
+								             that.oNSHCreateNSHTable.unbindItems();							     			
+								             that.oNSHCreateNewData.NSHCollection.push({
+							         			"EntityFname":oResponse.EntityFname, 
+							         			"EntityLname": oResponse.EntityLname, 
+							         			"ShldrType":oResponse.ShldrType,
+							         			"Percentage":oResponse.Percentage});
+								             that.oNSHTotalShareHolderPercentage += oResponse.Percentage;							         		
+								             that.oNSHCreateNewDataJSONData.setData(that.oNSHCreateNewData);							                 
+								             that.oNSHCreateNSHTable.setModel(that.oNSHCreateNewDataJSONData);							         		
+								             that.oNSHCreateNSHTable.bindItems("/NSHCollection", new sap.m.ColumnListItem({
+							     		        cells : [ new sap.ui.commons.TextView({
+							     			          text : "{EntityFname}"
+							     			        }),new sap.ui.commons.TextView({
+							     			          text : "{EntityLname}"
+							     			        }),  new sap.ui.commons.TextView({
+							     			          text : "{ShldrType}"
+							     			        }),  new sap.ui.commons.TextView({
+							     			          text : "{Percentage}"
+							     			        })//, new sap.m.Button({ icon : "sap-icon://edit"})//,
+							     			        //new sap.m.Button({ icon : "sap-icon://delete"})
+							     			        
+							     			        ]
+							     			      }));
+							     			
+							     		}, this));
+							     		
 							        });
 								
 							}, this));
@@ -315,6 +405,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 			}catch(err){
 				console.log(err);
+	            that.closeBusyDialog();
+
 				
 				/*if(!this.oShowAlertDialog.isOpen())
 					{
@@ -330,111 +422,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 			
 		
-		var oRequestFinishedDeferredNSH = this.oModelHelper.createNewShareHolder(this.oRef_id,
-				this.oShareHolderTypeComboBox.getSelectedItem().getText(),
-				this.oNSHFirstNameInputText.getValue(),
-				this.oNSHCountryComboBox.getSelectedItem().getText(),
-				this.oNSHLastNameInputText.getValue(),
-				this.oNSHCityNameInputText.getValue(),
-				this.oNSHGenderComboBox.getSelectedItem().getText(),
-				this.oNSHPOBoxInputText.getValue(),
-				this.oNSHMaritalStatusComboBox.getSelectedItem().getText(),
-				this.oNSHPostalCodeInputText.getValue(),
-				this.oNSHAcademicTitleComboBox.getSelectedItem().getText(),
-				this.oNSHStreetInputText.getValue(),
-				this.oNSHDOBDate.getValue(),
-				this.oNSHWebsiteInputText.getValue(),
-				this.oNSHTelephoneInputText.getValue(),
-				this.oNSHNationalityComboBox.getSelectedItem().getText(),
-				this.oNSHMobilePhoneInputText.getValue(),
-				this.oNSHPreviousNationalityInputText.getSelectedItem().getText(),
-				this.oNSHFaxInputText.getValue(),
-				this.oNSHCommMethodInputText.getSelectedItem().getText(),
-				this.oNSHEmailInputText.getValue(),
-				this.oNSHPercentageInputText.getValue(),
-				this.oNSHActivityQ1ComboBox.getSelectedItem().getText(),
-				this.oNSHActivityQ2ComboBox.getSelectedItem().getText(),
-				this.oNSHActivityQ3ComboBox.getSelectedItem().getText(),
-				this.oNSHExperienceQ1ComboBox.getSelectedItem().getText(),
-				this.oNSHExperienceQ2ComboBox.getSelectedItem().getText(),
-				this.oNSHExperienceQ3ComboBox.getSelectedItem().getText(),
-				this.oNSHExperienceQ4ComboBox.getSelectedItem().getText(),
-		"",//		this.oNSHStock12InputText.getValue(),
-		"",//this.oNSHStock13InputText.getValue(),
-		"",//this.oNSHStock14InputText.getValue(),
-		"",//this.oNSHTotalCurrentAssets12InputText.getValue(),
-		"",//this.oNSHTotalCurrentAssets13InputText.getValue(),
-		"",//this.oNSHTotalCurrentAssets14InputText.getValue(),		
-		"",//this.oNSHTotalCurrentLiabialities12InputText.getValue(),
-		"",//this.oNSHTotalCurrentLiabialities13InputText.getValue(),
-		"",//this.oNSHTotalCurrentLiabialities14InputText.getValue(),
-		"",//this.oNSHNetSales12InputText.getValue(),
-		"",//this.oNSHNetSales13InputText.getValue(),
-		"",//this.oNSHNetSales14InputText.getValue(),
-		"",//this.oNSHTotalAssets12InputText.getValue(),
-		"",//this.oNSHTotalAssets13InputText.getValue(),
-		"",//this.oNSHTotalAssets14InputText.getValue(),
-		"",//this.oNSHTotalDebt12InputText.getValue(),
-		"",//this.oNSHTotalDebt13InputText.getValue(),
-		"",//this.oNSHTotalDebt14InputText.getValue(),
-		"",//this.oNSHDistributableNetIncome12InputText.getValue(),
-		"",//this.oNSHDistributableNetIncome13InputText.getValue(),
-		"",//this.oNSHDistributableNetIncome14InputText.getValue(),
-		"",//this.oNSHNetProfit12InputText.getValue(),
-		"",//this.oNSHNetProfit13InputText.getValue(),
-		"",//this.oNSHNetProfit14InputText.getValue(),
-		"",//this.oNSHInterests12InputText.getValue(),
-		"",//this.oNSHInterests13InputText.getValue(),
-		"",//this.oNSHInterests14InputText.getValue(),
-		"",//this.oNSHTotalAssetsInBalanceSheet12InputText.getValue(),
-		"",//this.oNSHTotalAssetsInBalanceSheet13InputText.getValue(),		
-		""//this.oNSHTotalAssetsInBalanceSheet14InputText.getValue()
-				
-			
-				);
-
-		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {			
-			sap.m.MessageToast.show(this.oModelHelper
-					.getText("NewShareHolderCreated"));
-			
-			this.oNSHCreateNSHTable.unbindItems();
-			
-			this.oNSHCreateNewData.NSHCollection.push({
-    			"EntityFname":oResponse.EntityFname, 
-    			"EntityLname": oResponse.EntityLname, 
-    			"ShldrType":oResponse.ShldrType,
-    			"Percentage":oResponse.Percentage});
-			this.oNSHTotalShareHolderPercentage += oResponse.Percentage;
-    		
-    		this.oNSHCreateNewDataJSONData.setData(this.oNSHCreateNewData);	
-            
-    		this.oNSHCreateNSHTable.setModel(this.oNSHCreateNewDataJSONData);
-    		
-    		this.oNSHCreateNSHTable.bindItems("/NSHCollection", new sap.m.ColumnListItem({
-		        cells : [ new sap.ui.commons.TextView({
-			          text : "{EntityFname}"
-			        }),new sap.ui.commons.TextView({
-			          text : "{EntityLname}"
-			        }),  new sap.ui.commons.TextView({
-			          text : "{ShldrType}"
-			        }),  new sap.ui.commons.TextView({
-			          text : "{Percentage}"
-			        }), new sap.m.Button({ icon : "sap-icon://edit"})//,
-			        //new sap.m.Button({ icon : "sap-icon://delete"})
-			        
-			        ]
-			      }));
-			
-		}, this));
+		
 	},
 	handleNSHTableDeleteButtonPress : function(oEvent){
-		
-		
-		 var path = oEvent.getParameter('listItem').getBindingContext().sPath;
-       
-         this.oNSHCreateNewData.NSHCollection.splice(path.slice(-1),1);
-                  
+		 
+		 this.oNSHCreateNewData.NSHCollection.splice(this.oNSHCreateNSHTable.indexOfItem(oEvent.getParameter('listItem')),1);
+		          
          this.oNSHCreateNSHTable.removeItem(oEvent.getParameter('listItem'));
+         
 	},
 	handleLILIProductDeleteButtonPress : function(oEvent){		
 		

@@ -124,7 +124,7 @@ com.sagia.common.ModelHelper = {
          this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
          this.oBAQODataModel.setUseBatch(true);
          this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {
-        	 console.log(" SH "+oResponse);
+        	 //console.log(" SH "+oResponse);
              //that.closeBusyDialog();             
         	        	 
         	 oRequestFinishedCreateBAQDeferred.resolve(oResponse);
