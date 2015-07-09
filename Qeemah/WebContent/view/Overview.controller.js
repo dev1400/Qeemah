@@ -375,7 +375,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 							         			"EntityFname":oResponse.EntityFname, 
 							         			"EntityLname": oResponse.EntityLname, 
 							         			"ShldrType":oResponse.ShldrType,
-							         			"Percentage":oResponse.Percentage});
+							         			"Percentage":oResponse.Percentage,
+							         			"EntityNo": oResponse.EntityNo});
 								             that.oNSHTotalShareHolderPercentage += oResponse.Percentage;							         		
 								             that.oNSHCreateNewDataJSONData.setData(that.oNSHCreateNewData);							                 
 								             that.oNSHCreateNSHTable.setModel(that.oNSHCreateNewDataJSONData);							         		
@@ -426,9 +427,27 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleNSHTableDeleteButtonPress : function(oEvent){
 		 
-		 this.oNSHCreateNewData.NSHCollection.splice(this.oNSHCreateNSHTable.indexOfItem(oEvent.getParameter('listItem')),1);
+		 
+         var that = this;
+         try{
+     		 this.openBusyDialog();
+
+        	 var oRequestFinishedDeferredRemoveNSHEntry = this.oModelHelper.deleteNewShareHolderEntry(this.oRef_id,this.oNSHCreateNewData.NSHCollection[this.oNSHCreateNSHTable.indexOfItem(oEvent.getParameter('listItem'))].EntityNo);
+
+     		 jQuery.when(oRequestFinishedDeferredRemoveNSHEntry).then(jQuery.proxy(function(oResponse) {			
+     			    this.oNSHCreateNewData.NSHCollection.splice(this.oNSHCreateNSHTable.indexOfItem(oEvent.getParameter('listItem')),1);
 		          
-         this.oNSHCreateNSHTable.removeItem(oEvent.getParameter('listItem'));
+     	            this.oNSHCreateNSHTable.removeItem(oEvent.getParameter('listItem'));
+     	         
+    	            that.closeBusyDialog();
+     			
+     		 }, this));	
+        	 
+         }catch(err){
+	            that.closeBusyDialog();
+
+         }
+         
          
 	},
 	handleLILIProductDeleteButtonPress : function(oEvent){		

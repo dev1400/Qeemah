@@ -99,6 +99,23 @@ com.sagia.common.ModelHelper = {
 		return this.oBAQODataModel;
 	},
 	/**
+	 * Build ShareHolder ODataModel instance and return
+	 */
+	getShareHolderODataModel : function() {
+		
+		this.oShareHolderODataModel = new sap.ui.model.odata.ODataModel("proxy/sap/opu/odata/sap/ZQEEMAH_SHRHLDR_SRV/", true,
+				null, null, {
+					"X-Requested-With" : "XMLHttpRequest",
+					"Content-Type" : "application/json",
+					"X-CSRF-Token":"Fetch" ,
+					"DataServiceVersion": "2.0",
+					"Authorization" : "Basic bmt1bWFyOnNhcDEyMw=="
+
+				}, true, true);
+		
+		return this.oShareHolderODataModel;
+	},
+	/**
 	 * Create Financial Answers
 	 * @Author Abdul Waheed 
 	 */
@@ -305,6 +322,34 @@ com.sagia.common.ModelHelper = {
 				sap.m.MessageToast.show(oResponse);
 
 				that.closeBusyDialog();
+			}});
+
+		return oRequestFinishedDeferred;
+		
+	},
+	/**
+	 * Delete Delete New Share Holder Entry
+	 * @author Abdul Waheed
+	 */
+	deleteNewShareHolderEntry : function(oRef_id, oEntityNo) {
+		
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oShareHolderODataModel.setUseBatch(false);
+
+		this.oShareHolderODataModel.remove("ZSHAREHOLDER_INFO_ENT(RefID='"+oRef_id+"',EntityNo='"+oEntityNo+"',FileType='')", {
+			success : function(oData, response) {
+				
+				oRequestFinishedDeferred.resolve(response);
+				//that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(oResponse);
+
+				//that.closeBusyDialog();
 			}});
 
 		return oRequestFinishedDeferred;
@@ -624,15 +669,7 @@ com.sagia.common.ModelHelper = {
 	){
 		this.openBusyDialog();
 
-		this.oShareHolderODataModel = new sap.ui.model.odata.ODataModel("proxy/sap/opu/odata/sap/ZQEEMAH_SHRHLDR_SRV/", true,
-				null, null, {
-					"X-Requested-With" : "XMLHttpRequest",
-					"Content-Type" : "application/json",
-					"X-CSRF-Token":"Fetch" ,
-					"DataServiceVersion": "2.0",
-					"Authorization" : "Basic bmt1bWFyOnNhcDEyMw=="
-
-				}, true, true);
+		
 		var that = this;
 		var oEntry = {};
 		oEntry.RefID = "'"+parseInt(oRef_id, 10)+"'";
