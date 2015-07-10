@@ -201,6 +201,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 	},
 	handleValidateESHButtonPress : function(oEvent){
+		this.openBusyDialog();
 		var that = this;
 		this.oExistingShareHolderEntityNo = this.getView().byId("idESHEntityNoInputText");
 		this.oExistingShareHolderEntityName = this.getView().byId("idESHEntityNameInputText");
@@ -213,43 +214,46 @@ sap.ui.controller("com.sagia.view.Overview", {
 			//console.dir(oResponse);
 			this.oExistingShareHolderEntityName.setValue(oResponse.data.Bpname);
 			
-			this.oExistingShareHolderTable.unbindItems();
+			var thatContext = this;
+			var thatoResponse = oResponse;
 			
-			this.oESHCreateNewData.ESHCollection.push({
-				"Bpno":oResponse.data.Bpno,
-	 			"Bpname":oResponse.data.Bpname});
-			var percentage = parseInt(this.oESHPercentageInputText.getValue());
-			if(isNaN(percentage)){
-				percentage = 0;
-			}
-			
-			this.oESHTotalShareHolderPercentage += percentage;
-			
-	 		this.oESHCreateNewDataJSONData.setData(this.oESHCreateNewData);
-	 		
-	 		
-			this.oExistingShareHolderTable.setModel(this.oESHCreateNewDataJSONData);
-			
-			this.oExistingShareHolderTable.bindItems("/ESHCollection",new sap.m.ColumnListItem({
-		        cells : [ new sap.ui.commons.TextView({
-		          text : "{Bpno}"
-		        }),new sap.ui.commons.TextView({
-		          text : "{Bpname}"
-		        }),  new sap.ui.commons.TextView({
-		          text : percentage
-		        })/*, 
-		        new sap.m.Button({ icon : "sap-icon://delete"})*/]
-		      }));
-			
-            var oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(that.oRef_id,
+            var oRequestFinishedDeferredVESHNSH = that.oModelHelper.createNewShareHolder(that.oRef_id,
                     "E", oResponse.data.Bpname,
                     "","","","","","","","","","","","","","","","","","","","","","",
     				"",	"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
     				"", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
-    		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {			
+    		jQuery.when(oRequestFinishedDeferredVESHNSH).then(jQuery.proxy(function(oResponse) {			
     
-    			 
+    			thatContext.oExistingShareHolderTable.unbindItems();
+    			
+    			thatContext.oESHCreateNewData.ESHCollection.push({
+    				"Bpno":thatoResponse.data.Bpno,
+    	 			"Bpname":thatoResponse.data.Bpname,
+    	 			"EntityNo" : oResponse.EntityNo});
+    			var percentage = parseInt(thatContext.oESHPercentageInputText.getValue());
+    			if(isNaN(percentage)){
+    				percentage = 0;
+    			}
+    			
+    			thatContext.oESHTotalShareHolderPercentage += percentage;
+    			
+    			thatContext.oESHCreateNewDataJSONData.setData(thatContext.oESHCreateNewData);
+    	 		
+    	 		
+    			thatContext.oExistingShareHolderTable.setModel(thatContext.oESHCreateNewDataJSONData);
+    			
+    			thatContext.oExistingShareHolderTable.bindItems("/ESHCollection",new sap.m.ColumnListItem({
+    		        cells : [ new sap.ui.commons.TextView({
+    		          text : "{Bpno}"
+    		        }),new sap.ui.commons.TextView({
+    		          text : "{Bpname}"
+    		        }),  new sap.ui.commons.TextView({
+    		          text : percentage
+    		        })/*, 
+    		        new sap.m.Button({ icon : "sap-icon://delete"})*/]
+    		      }));
+    			that.closeBusyDialog();
 			
     		}, this));	
 			
@@ -258,9 +262,30 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleESHTableDeleteButtonPress : function(oEvent){
 		
-		this.oESHCreateNewData.ESHCollection.splice(this.oExistingShareHolderTable.indexOfItem(oEvent.getParameter('listItem')),1);
-        
-        this.oExistingShareHolderTable.removeItem(oEvent.getParameter('listItem'));
+		 var that = this;
+		 this.openBusyDialog();
+
+		 
+        try{
+
+       	 var oRequestFinishedDeferredRemoveESHEntry = this.oModelHelper.deleteNewShareHolderEntry(this.oRef_id,this.oESHCreateNewData.ESHCollection[this.oExistingShareHolderTable.indexOfItem(oEvent.getParameter('listItem'))].EntityNo);
+
+    		 jQuery.when(oRequestFinishedDeferredRemoveESHEntry).then(jQuery.proxy(function(oResponse) {			
+    			
+   	             that.closeBusyDialog();
+    			
+    		 }, this));	
+    		 
+
+    			this.oESHCreateNewData.ESHCollection.splice(this.oExistingShareHolderTable.indexOfItem(oEvent.getParameter('listItem')),1);
+    	        
+    	        this.oExistingShareHolderTable.removeItem(oEvent.getParameter('listItem'));
+    	        
+       	 
+        }catch(err){
+	            that.closeBusyDialog();
+
+        }
 		
 	},
 	handleCreateNewShareHolder : function(oEvent){
@@ -445,13 +470,15 @@ sap.ui.controller("com.sagia.view.Overview", {
         	 var oRequestFinishedDeferredRemoveNSHEntry = this.oModelHelper.deleteNewShareHolderEntry(this.oRef_id,this.oNSHCreateNewData.NSHCollection[this.oNSHCreateNSHTable.indexOfItem(oEvent.getParameter('listItem'))].EntityNo);
 
      		 jQuery.when(oRequestFinishedDeferredRemoveNSHEntry).then(jQuery.proxy(function(oResponse) {			
-     			    this.oNSHCreateNewData.NSHCollection.splice(this.oNSHCreateNSHTable.indexOfItem(oEvent.getParameter('listItem')),1);
-		          
-     	            this.oNSHCreateNSHTable.removeItem(oEvent.getParameter('listItem'));
-     	         
+     			   
     	            that.closeBusyDialog();
      			
      		 }, this));	
+     		 
+     		 this.oNSHCreateNewData.NSHCollection.splice(this.oNSHCreateNSHTable.indexOfItem(oEvent.getParameter('listItem')),1);
+	          
+	         this.oNSHCreateNSHTable.removeItem(oEvent.getParameter('listItem'));
+	         
         	 
          }catch(err){
 	            that.closeBusyDialog();

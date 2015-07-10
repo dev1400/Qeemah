@@ -350,7 +350,7 @@ com.sagia.common.ModelHelper = {
 				sap.m.MessageToast.show(oResponse);
 
 				//that.closeBusyDialog();
-			}});
+			}, async : true});
 
 		return oRequestFinishedDeferred;
 		
@@ -380,7 +380,7 @@ com.sagia.common.ModelHelper = {
 				sap.m.MessageToast.show(oResponse);
 
 				that.closeBusyDialog();
-			}});
+			}, async : true});
 
 		return oRequestFinishedDeferred;
 		
