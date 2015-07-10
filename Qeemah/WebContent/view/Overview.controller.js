@@ -1488,22 +1488,119 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 				}
 				
-				//this.handleLicenseInfoTabStripSelect();
-				
 			}, this));	
 			
+			//end of reading financial Q
+			
+			//start of Activity Questions
+			
+			
+            var oRequestFinishedActivityQuestionsDeferred = this.oModelHelper.readActivityQuestions();
+			
+			jQuery.when(oRequestFinishedActivityQuestionsDeferred).then(jQuery.proxy(function(oResponse) {
+				
+				var questions = [];
+				var nodeID = [];
+				var surveyID = [];
+				var answers = [];
+				var units = [];
+				this.oActivityQuestionsMatrixLayout = this.getView().byId("idNewShareHolderActivityQuestionsMLAyout");
+				
+				this.oTotalActivityQuestions = 0;
+				
+				for(var i=0; i < oResponse.data.results.length; i++){
+					questions[i] = oResponse.data.results[i].Qtxtlg;
+					nodeID[i] = oResponse.data.results[i].NodeGuid;
+					surveyID[i] = oResponse.data.results[i].SurveyID;
+					units[i] = oResponse.data.results[i].Units;
+
+				}
+				
+				n = 0 ;
+				for(var i=0; i < questions.length; i++){
+					
+					var oRequestFinishedDeferred = this.oModelHelper.readAQAnswers(oResponse.data.results[i].NodeGuid, "QUEEMAH_GENERAL_QUESTIONS");
+
+					jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+						answers.push(oResponse.data.results);
+						
+						n++;
+		                
+						if(n === questions.length){
+							
+							p = 0;
+							for(var l=0; l < questions.length; l++){
+								
+								var oTextView = new sap.ui.commons.TextView("idAQuestion"+l,{
+									text : questions[l],
+									});
+								var oUnitsTextView = new sap.ui.commons.TextView("idAQuestionUnits"+l,{
+									text : units[l],
+									});
+								var oSelect = new sap.m.Select("idAQAnswer"+l);
+								
+								/*var oFileUploader = new sap.ui.unified.FileUploader("idBAQFileUploader"+l,{
+									icon : "common/mime/attachment.png",
+									sendXHR : true,
+									useMultipart : false,
+									sameFilenameAllowed : true,
+									iconOnly : true,
+									mimeType : "application/pdf"
+								});*/
+								
+								//var oTextViewAttachment = new sap.ui.commons.TextView("idAQAttachment"+l,{});
+								
+								for(var m=0; m < answers.length; m++){								
+								
+									for(var t=0; t < answers[m].length; t++){
+										
+										if(nodeID[p] === answers[m][t].NodeGuid){
+										
+											var vItem = new sap.ui.core.Item();		    				
+						    				
+											vItem.setText(answers[m][t].Atxtlg);						
+											vItem.setKey(answers[m][t].Atxtlg);
+											oSelect.addItem(vItem);
+										}
+									}
+									
+								}p++;
+								
+								oTextView.data("idAQuestion"+l,nodeID[l]);
+								
+								var oRow1 = new sap.ui.commons.layout.MatrixLayoutRow();
+								
+								var oCell0 = new sap.ui.commons.layout.MatrixLayoutCell();
+								var oCell1 = new sap.ui.commons.layout.MatrixLayoutCell();
+								var oCell2 = new sap.ui.commons.layout.MatrixLayoutCell();
+								
+								oCell0.addContent(oTextView);
+								oCell1.addContent(oSelect);
+								oCell2.addContent(oUnitsTextView);	
+								
+								oRow1.addCell(oCell0);
+								oRow1.addCell(oCell1);
+								oRow1.addCell(oCell2);
+								
+								this.oActivityQuestionsMatrixLayout.addRow(oRow1);
+								
+								//this.oActivityQuestionsMatrixLayout.createRow( oFileUploader );
+								//this.oActivityQuestionsMatrixLayout.createRow( oTextViewAttachment );
+							
+								this.oTotalActivityQuestions++;
+							}			
+							
+							that.closeBusyDialog();		    				
+						}
+					}, this));				
+					
+				}
+				
+			}, this));			
+			//end of Activity Questions			
 			
 		}, this));	
-		
-        /*var oRequestFinishedDeferredReadISIC = this.oModelHelper.readISIC(this.oRef_id);
-		
-		jQuery.when(oRequestFinishedDeferredReadISIC).then(jQuery.proxy(function(oResponse) {
 			
-			console.dir(oResponse);
-			
-		}, this));	this.handleLicenseInfoTabStripSelect();*/
-
-		
 	},
 	handleLicenseInfoTabStripSelect : function(oControlEvent){
 		//console.log(oControlEvent.getParameters().index);

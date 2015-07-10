@@ -1137,13 +1137,8 @@ com.sagia.common.ModelHelper = {
 	 * Read Financial Questions
 	 */
 	readFinancialQuestions : function() {
-		
-		
 		this.openBusyDialog();
-		
 		var that = this;
-		
-		
 		var oRequestFinishedDeferred = jQuery.Deferred();
         this.oBAQODataModel.setUseBatch(false);
 
@@ -1153,17 +1148,54 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				
-				// Reject deferred object
 				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(oResponse);
-
-				// close busy dialog
 				that.closeBusyDialog();
 			}
 		});
+		return oRequestFinishedDeferred;
+	},
+	/**
+	 * Read Activity Questions
+	 */
+	readActivityQuestions : function() {
+		this.openBusyDialog();
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oBAQODataModel.setUseBatch(false);
 
-		//return oRequestFinishedDeferred;
+		this.oBAQODataModel.read("SurveyQue?Lang='E'&Flag='A'&SurveyID='QUEEMAH_GENERAL_QUESTIONS'", {
+			success : function(oData, response) {
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				oRequestFinishedDeferred.resolve();
+				that.closeBusyDialog();
+			}
+		});
+		return oRequestFinishedDeferred;
+	},
+	/**
+	 * Read Activity Q Answer Answer based on ID
+	 */
+	readAQAnswers : function(oNodeGuid, oSurveyID) {
+		this.openBusyDialog();
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oBAQODataModel.setUseBatch(false);
+
+		this.oBAQODataModel.read("SurveyAns?Lang='E'&Flag='A'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
+			success : function(oData, response) {
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				oRequestFinishedDeferred.resolve();
+				that.closeBusyDialog();
+			}
+		});
 		return oRequestFinishedDeferred;
 	},
 	/**
