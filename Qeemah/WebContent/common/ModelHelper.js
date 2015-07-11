@@ -217,7 +217,7 @@ com.sagia.common.ModelHelper = {
      	 }, 
      	 function(oError) {
      		console.log("E"+oError);
-     	 }, false);
+     	 }, true);
          
          return oRequestFinishedUpdateBAQDeferred; 
 		
@@ -293,7 +293,7 @@ com.sagia.common.ModelHelper = {
      	 }, 
      	 function(oError) {
      		console.log("E"+oError);
-     	 }, false);
+     	 }, true);
          
          return oRequestFinishedCreateBAQDeferred; 
 		
@@ -361,7 +361,7 @@ com.sagia.common.ModelHelper = {
 	 */
 	deleteBAQEntry : function(oRef_id) {
 		
-		this.openBusyDialog();
+		//this.openBusyDialog();
 
 		var that = this;
 		
@@ -372,14 +372,14 @@ com.sagia.common.ModelHelper = {
 			success : function(oData, response) {
 				
 				oRequestFinishedDeferred.resolve(response);
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				
 				oRequestFinishedDeferred.resolve();
 				sap.m.MessageToast.show(oResponse);
 
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			}, async : true});
 
 		return oRequestFinishedDeferred;
@@ -414,7 +414,7 @@ com.sagia.common.ModelHelper = {
      	 }, 
      	 function(oError) {
      		console.log("E"+oError);
-     	 }, false);
+     	 }, true);
          
          return oRequestFinishedCreateBAQDeferred; 
 		
@@ -443,7 +443,7 @@ com.sagia.common.ModelHelper = {
      	 }, 
      	 function(oError) {
      		console.log("E"+oError);
-     	 }, false);
+     	 }, true);
          
          return oRequestFinishedCreateAQDeferred; 
 		
@@ -912,12 +912,12 @@ com.sagia.common.ModelHelper = {
 		oBAQFileUploader.attachUploadComplete(function(){
 			oBAQFileUploader.removeAllHeaderParameters();
 			oBAQFileUploader.clear();
-        	that.closeBusyDialog();
+        	//that.closeBusyDialog();
         	//oUploadBAQAttachmentRequestFinishedDeferred.resolve();
         	 //sap.m.MessageToast.show(that.getText("Uploaded"));	
         });
         	
-        this.openBusyDialog();
+        //this.openBusyDialog();
         oBAQFileUploader.upload();
 		}
        // return oUploadBAQAttachmentRequestFinishedDeferred;
@@ -1608,7 +1608,7 @@ com.sagia.common.ModelHelper = {
      	 }, 
      	 function(oError) {
      		console.log("E"+oError);
-     	 }, false);
+     	 }, true);
          
          return oRequestFinishedDeferred;
  
@@ -1662,7 +1662,7 @@ com.sagia.common.ModelHelper = {
      	 }, 
      	 function(oError) {
      		console.log("E"+oError);
-     	 }, false);
+     	 }, true);
          
          return oRequestFinishedDeferred;
  
@@ -1715,7 +1715,7 @@ com.sagia.common.ModelHelper = {
      	 }, 
      	 function(oError) {
      		console.log("E"+oError);
-     	 }, false);
+     	 }, true);
          
          return oRequestFinishedDeferred;
  

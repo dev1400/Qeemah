@@ -599,17 +599,25 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}, this));	
 	},
 	handleLILIBusinessTypeComboBoxSelectionChange : function(){
+		var that = this;
+		
 		var oRequestFinishedDeferredLILIBusinessType = this.oModelHelper.readLILIBusinessTypeIsicDescription(this.oLILIBusinessTypeComboBox.getSelectedKey());
 		jQuery.when(oRequestFinishedDeferredLILIBusinessType).then(jQuery.proxy(function(oResponse) {	
-			
-			if(oResponse.data.results[0].IsicDescription !== "None of the above"){
-				this.oLicenseTypeInputText.setValue(oResponse.data.results[0].Activity);
-				this.oLILILicenceInfoContentVBox.setVisible(false);
-			}else{
-				this.oLicenseTypeInputText.setValue("");
-				this.oLILILicenceInfoContentVBox.setVisible(true);
+			try{
+				if(oResponse.data.results[0].IsicDescription !== "None of the above"){
+					this.oLicenseTypeInputText.setValue(oResponse.data.results[0].Activity);
+					this.oLILILicenceInfoContentVBox.setVisible(false);
+				}else{
+					this.oLicenseTypeInputText.setValue("");
+					this.oLILILicenceInfoContentVBox.setVisible(true);
+				}
+			}catch(error){
+				that.closeBusyDialog();
 			}
+			
+			
 		}, this));	
+		
 		
 	},
 	handleLILIDivisionSelectionComboBox : function(){
@@ -1016,8 +1024,7 @@ sap.ui.controller("com.sagia.view.Overview", {
             	this.oContactInfoRecordExists = true;
             	/*sap.m.MessageToast.show(this.oModelHelper
     					.getText("Saved"));	*/
-            	if(this.oBICIPowerofAttorneyFileUploader.getValue() === "" && this.oBICIPassPortCopyFileUploader.getValue() === ""){
-            		//sap.m.MessageToast.show(this.oModelHelper.getText("AtleastOneAttachmentNeededBICI"));
+            	/*if(this.oBICIPowerofAttorneyFileUploader.getValue() === "" && this.oBICIPassPortCopyFileUploader.getValue() === ""){
             		if(!this.oShowAlertDialog.isOpen())
 					{
 					this.oAlertTextView.setText(this.oModelHelper.getText("AtleastOneAttachmentNeededBICI"));
@@ -1026,7 +1033,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					}
             	}else{
             	
-            	}
+            	}*/
                 
 				
             	
@@ -1118,6 +1125,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 				 //oBAQAnswer.setValue("Hello");
 				 //console.log(oBAQAnswer.getSelectedItem().getText());
 				 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+i);
+				 
+                 var oBAQFileUploader = sap.ui.getCore().byId("idBAQFileUploader"+i);
+				 
+				 this.oModelHelper.uploadBAQAttachment(this.oRef_id, oBAQuestion.data("idBAQuestion"+i), oBAQFileUploader);
+				
+				 
+				 
 				 //console.log(oBAQuestion.getText());				 
 				 //console.log(oBAQuestion.data("idBAQuestion"+i));
 				 questions.push(oBAQuestion.data("idBAQuestion"+i));
