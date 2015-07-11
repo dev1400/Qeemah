@@ -313,131 +313,161 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 			}
 			
-		         	var getarray = [];
-					
-					var oRequestFinishedDeferredcreateFinancialAnswers1 = that.oModelHelper.createFinancialAnswers
-					(that.oRef_id, questions, answers1, "Year 1", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+		    
+		    var actvityQuestions = [];
+			var activityAnswers = [];
+			for(var j=0; j < this.oTotalActivityQuestions; j++){
+				 var oAQAnswer = sap.ui.getCore().byId("idAQAnswer"+j);
+				 var oAQuestion = sap.ui.getCore().byId("idAQuestion"+j);
+				 actvityQuestions.push(oAQuestion.data("idAQuestion"+j));
+				 activityAnswers.push(oAQAnswer.getSelectedItem().getText());
+			}
+			
+			  var oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(that.oRef_id,
+	            		 that.oShareHolderTypeComboBox.getSelectedItem().getText(),
+	     				that.oNSHFirstNameInputText.getValue(),
+	     				that.oNSHCountryComboBox.getSelectedItem().getText(),
+	     				that.oNSHLastNameInputText.getValue(),
+	     				that.oNSHCityNameInputText.getValue(),
+	     				that.oNSHGenderComboBox.getSelectedItem().getText(),
+	     				that.oNSHPOBoxInputText.getValue(),
+	     				that.oNSHMaritalStatusComboBox.getSelectedItem().getText(),
+	     				that.oNSHPostalCodeInputText.getValue(),
+	     				that.oNSHAcademicTitleComboBox.getSelectedItem().getText(),
+	     				that.oNSHStreetInputText.getValue(),
+	     				that.oNSHDOBDate.getValue(),
+	     				that.oNSHWebsiteInputText.getValue(),
+	     				that.oNSHTelephoneInputText.getValue(),
+	     				that.oNSHNationalityComboBox.getSelectedItem().getText(),
+	     				that.oNSHMobilePhoneInputText.getValue(),
+	     				that.oNSHPreviousNationalityInputText.getSelectedItem().getText(),
+	     				that.oNSHFaxInputText.getValue(),
+	     				that.oNSHCommMethodInputText.getSelectedItem().getText(),
+	     				that.oNSHEmailInputText.getValue(),
+	     				that.oNSHPercentageInputText.getValue(),
+	     				"",//that.oNSHActivityQ1ComboBox.getSelectedItem().getText(),
+	     				"",//that.oNSHActivityQ2ComboBox.getSelectedItem().getText(),
+	     				"",//that.oNSHActivityQ3ComboBox.getSelectedItem().getText(),
+	     				"",//this.oNSHExperienceQ1ComboBox.getSelectedItem().getText(),
+	     				"",//this.oNSHExperienceQ2ComboBox.getSelectedItem().getText(),
+	     				"",//this.oNSHExperienceQ3ComboBox.getSelectedItem().getText(),
+	     				"",//this.oNSHExperienceQ4ComboBox.getSelectedItem().getText(),
+	     		"",//		this.oNSHStock12InputText.getValue(),
+	     		"",//this.oNSHStock13InputText.getValue(),
+	     		"",//this.oNSHStock14InputText.getValue(),
+	     		"",//this.oNSHTotalCurrentAssets12InputText.getValue(),
+	     		"",//this.oNSHTotalCurrentAssets13InputText.getValue(),
+	     		"",//this.oNSHTotalCurrentAssets14InputText.getValue(),		
+	     		"",//this.oNSHTotalCurrentLiabialities12InputText.getValue(),
+	     		"",//this.oNSHTotalCurrentLiabialities13InputText.getValue(),
+	     		"",//this.oNSHTotalCurrentLiabialities14InputText.getValue(),
+	     		"",//this.oNSHNetSales12InputText.getValue(),
+	     		"",//this.oNSHNetSales13InputText.getValue(),
+	     		"",//this.oNSHNetSales14InputText.getValue(),
+	     		"",//this.oNSHTotalAssets12InputText.getValue(),
+	     		"",//this.oNSHTotalAssets13InputText.getValue(),
+	     		"",//this.oNSHTotalAssets14InputText.getValue(),
+	     		"",//this.oNSHTotalDebt12InputText.getValue(),
+	     		"",//this.oNSHTotalDebt13InputText.getValue(),
+	     		"",//this.oNSHTotalDebt14InputText.getValue(),
+	     		"",//this.oNSHDistributableNetIncome12InputText.getValue(),
+	     		"",//this.oNSHDistributableNetIncome13InputText.getValue(),
+	     		"",//this.oNSHDistributableNetIncome14InputText.getValue(),
+	     		"",//this.oNSHNetProfit12InputText.getValue(),
+	     		"",//this.oNSHNetProfit13InputText.getValue(),
+	     		"",//this.oNSHNetProfit14InputText.getValue(),
+	     		"",//this.oNSHInterests12InputText.getValue(),
+	     		"",//this.oNSHInterests13InputText.getValue(),
+	     		"",//this.oNSHInterests14InputText.getValue(),
+	     		"",//this.oNSHTotalAssetsInBalanceSheet12InputText.getValue(),
+	     		"",//this.oNSHTotalAssetsInBalanceSheet13InputText.getValue(),		
+	     		""//this.oNSHTotalAssetsInBalanceSheet14InputText.getValue()
+	     				
+	     			
+	     				);
 
-					jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers1).then(jQuery.proxy(function(oResponse) {
-						
-						var oRequestFinishedDeferredcreateFinancialAnswers2 = that.oModelHelper.createFinancialAnswers
-						(that.oRef_id, questions, answers2, "Year 2", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+	     		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {			
+	     
+	     			 
+	     			 try{
+	     				that.oNSHCreateNSHTable.unbindItems();							     			
+			             that.oNSHCreateNewData.NSHCollection.push({
+		         			"EntityFname":oResponse.EntityFname, 
+		         			"EntityLname": oResponse.EntityLname, 
+		         			"ShldrType":oResponse.ShldrType,
+		         			"Percentage":oResponse.Percentage,
+		         			"EntityNo": oResponse.EntityNo});
+			             that.oNSHTotalShareHolderPercentage += oResponse.Percentage;							         		
+			             that.oNSHCreateNewDataJSONData.setData(that.oNSHCreateNewData);							                 
+			             that.oNSHCreateNSHTable.setModel(that.oNSHCreateNewDataJSONData);							         		
+			             that.oNSHCreateNSHTable.bindItems("/NSHCollection", new sap.m.ColumnListItem({
+		     		        cells : [ new sap.ui.commons.TextView({
+		     			          text : "{EntityFname}"
+		     			        }),new sap.ui.commons.TextView({
+		     			          text : "{EntityLname}"
+		     			        }),  new sap.ui.commons.TextView({
+		     			          text : "{ShldrType}"
+		     			        }),  new sap.ui.commons.TextView({
+		     			          text : "{Percentage}"
+		     			        })]
+		     			      }));
+			             
+			             
+			             var oRequestFinishedDeferredcreateSHActivityAnswers = that.oModelHelper.createShareHolderActivityAnswers
+			 			(that.oRef_id, actvityQuestions, activityAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+			  
+			     			jQuery.when(oRequestFinishedDeferredcreateSHActivityAnswers).then(jQuery.proxy(function(oResponse) {
+			     			 
+			     			
+			     			
+			 	
+			 					var oRequestFinishedDeferredcreateFinancialAnswers1 = that.oModelHelper.createFinancialAnswers
+			 					(that.oRef_id, questions, answers1, "Year 1", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
 
-						jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers2).then(jQuery.proxy(function(oResponse) {
-							
-							var oRequestFinishedDeferredcreateFinancialAnswers3 = that.oModelHelper.createFinancialAnswers
-							(that.oRef_id, questions, answers3, "Year 3", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+			 					jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers1).then(jQuery.proxy(function(oResponse) {
+			 						
+			 						var oRequestFinishedDeferredcreateFinancialAnswers2 = that.oModelHelper.createFinancialAnswers
+			 						(that.oRef_id, questions, answers2, "Year 2", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
 
-							jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers3).then(jQuery.proxy(function(oResponse) {
-							
-								 var getarray = [];
-							       
-							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers1);
-							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers2);
-							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers3);
+			 						jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers2).then(jQuery.proxy(function(oResponse) {
+			 							
+			 							var oRequestFinishedDeferredcreateFinancialAnswers3 = that.oModelHelper.createFinancialAnswers
+			 							(that.oRef_id, questions, answers3, "Year 3", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
 
-							        
-							        jQuery.when.apply($, getarray).done(function () {
-							             
-							             var oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(that.oRef_id,
-							            		 that.oShareHolderTypeComboBox.getSelectedItem().getText(),
-							     				that.oNSHFirstNameInputText.getValue(),
-							     				that.oNSHCountryComboBox.getSelectedItem().getText(),
-							     				that.oNSHLastNameInputText.getValue(),
-							     				that.oNSHCityNameInputText.getValue(),
-							     				that.oNSHGenderComboBox.getSelectedItem().getText(),
-							     				that.oNSHPOBoxInputText.getValue(),
-							     				that.oNSHMaritalStatusComboBox.getSelectedItem().getText(),
-							     				that.oNSHPostalCodeInputText.getValue(),
-							     				that.oNSHAcademicTitleComboBox.getSelectedItem().getText(),
-							     				that.oNSHStreetInputText.getValue(),
-							     				that.oNSHDOBDate.getValue(),
-							     				that.oNSHWebsiteInputText.getValue(),
-							     				that.oNSHTelephoneInputText.getValue(),
-							     				that.oNSHNationalityComboBox.getSelectedItem().getText(),
-							     				that.oNSHMobilePhoneInputText.getValue(),
-							     				that.oNSHPreviousNationalityInputText.getSelectedItem().getText(),
-							     				that.oNSHFaxInputText.getValue(),
-							     				that.oNSHCommMethodInputText.getSelectedItem().getText(),
-							     				that.oNSHEmailInputText.getValue(),
-							     				that.oNSHPercentageInputText.getValue(),
-							     				that.oNSHActivityQ1ComboBox.getSelectedItem().getText(),
-							     				that.oNSHActivityQ2ComboBox.getSelectedItem().getText(),
-							     				that.oNSHActivityQ3ComboBox.getSelectedItem().getText(),
-							     				"",//this.oNSHExperienceQ1ComboBox.getSelectedItem().getText(),
-							     				"",//this.oNSHExperienceQ2ComboBox.getSelectedItem().getText(),
-							     				"",//this.oNSHExperienceQ3ComboBox.getSelectedItem().getText(),
-							     				"",//this.oNSHExperienceQ4ComboBox.getSelectedItem().getText(),
-							     		"",//		this.oNSHStock12InputText.getValue(),
-							     		"",//this.oNSHStock13InputText.getValue(),
-							     		"",//this.oNSHStock14InputText.getValue(),
-							     		"",//this.oNSHTotalCurrentAssets12InputText.getValue(),
-							     		"",//this.oNSHTotalCurrentAssets13InputText.getValue(),
-							     		"",//this.oNSHTotalCurrentAssets14InputText.getValue(),		
-							     		"",//this.oNSHTotalCurrentLiabialities12InputText.getValue(),
-							     		"",//this.oNSHTotalCurrentLiabialities13InputText.getValue(),
-							     		"",//this.oNSHTotalCurrentLiabialities14InputText.getValue(),
-							     		"",//this.oNSHNetSales12InputText.getValue(),
-							     		"",//this.oNSHNetSales13InputText.getValue(),
-							     		"",//this.oNSHNetSales14InputText.getValue(),
-							     		"",//this.oNSHTotalAssets12InputText.getValue(),
-							     		"",//this.oNSHTotalAssets13InputText.getValue(),
-							     		"",//this.oNSHTotalAssets14InputText.getValue(),
-							     		"",//this.oNSHTotalDebt12InputText.getValue(),
-							     		"",//this.oNSHTotalDebt13InputText.getValue(),
-							     		"",//this.oNSHTotalDebt14InputText.getValue(),
-							     		"",//this.oNSHDistributableNetIncome12InputText.getValue(),
-							     		"",//this.oNSHDistributableNetIncome13InputText.getValue(),
-							     		"",//this.oNSHDistributableNetIncome14InputText.getValue(),
-							     		"",//this.oNSHNetProfit12InputText.getValue(),
-							     		"",//this.oNSHNetProfit13InputText.getValue(),
-							     		"",//this.oNSHNetProfit14InputText.getValue(),
-							     		"",//this.oNSHInterests12InputText.getValue(),
-							     		"",//this.oNSHInterests13InputText.getValue(),
-							     		"",//this.oNSHInterests14InputText.getValue(),
-							     		"",//this.oNSHTotalAssetsInBalanceSheet12InputText.getValue(),
-							     		"",//this.oNSHTotalAssetsInBalanceSheet13InputText.getValue(),		
-							     		""//this.oNSHTotalAssetsInBalanceSheet14InputText.getValue()
-							     				
-							     			
-							     				);
+			 							jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers3).then(jQuery.proxy(function(oResponse) {
+			 							
+			 								 var getarray = [];
+			 							       
+			 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers1);
+			 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers2);
+			 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers3);
+			 							        getarray.push(oRequestFinishedDeferredcreateSHActivityAnswers);
 
-							     		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {			
-							     
-							     			 that.closeBusyDialog();
-								             that.oNSHCreateNSHTable.unbindItems();							     			
-								             that.oNSHCreateNewData.NSHCollection.push({
-							         			"EntityFname":oResponse.EntityFname, 
-							         			"EntityLname": oResponse.EntityLname, 
-							         			"ShldrType":oResponse.ShldrType,
-							         			"Percentage":oResponse.Percentage,
-							         			"EntityNo": oResponse.EntityNo});
-								             that.oNSHTotalShareHolderPercentage += oResponse.Percentage;							         		
-								             that.oNSHCreateNewDataJSONData.setData(that.oNSHCreateNewData);							                 
-								             that.oNSHCreateNSHTable.setModel(that.oNSHCreateNewDataJSONData);							         		
-								             that.oNSHCreateNSHTable.bindItems("/NSHCollection", new sap.m.ColumnListItem({
-							     		        cells : [ new sap.ui.commons.TextView({
-							     			          text : "{EntityFname}"
-							     			        }),new sap.ui.commons.TextView({
-							     			          text : "{EntityLname}"
-							     			        }),  new sap.ui.commons.TextView({
-							     			          text : "{ShldrType}"
-							     			        }),  new sap.ui.commons.TextView({
-							     			          text : "{Percentage}"
-							     			        })//, new sap.m.Button({ icon : "sap-icon://edit"})//,
-							     			        //new sap.m.Button({ icon : "sap-icon://delete"})
-							     			        
-							     			        ]
-							     			      }));
-							     			
-							     		}, this));
-							     		
-							        });
-								
-							}, this));
-							
-						}, this));
-					}, this));
+
+			 							        
+			 							        jQuery.when.apply($, getarray).done(function () {
+			 							             
+			 							        	that.closeBusyDialog();
+			 							     		
+			 							        });
+			 								
+			 							}, this));
+			 							
+			 						}, this));
+			 					}, this));
+			     			}, this));
+			     			
+			     			
+	     				 
+	     			 }catch(error){
+		     			 that.closeBusyDialog();
+
+	     			 }
+		             
+	     			
+	     		}, this));
+			
+			
 			
 			}catch(err){
 				console.log(err);
@@ -1513,6 +1543,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 					nodeID[i] = oResponse.data.results[i].NodeGuid;
 					surveyID[i] = oResponse.data.results[i].SurveyID;
 					units[i] = oResponse.data.results[i].Units;
+					
+					++this.oTotalActivityQuestions;
 
 				}
 				
@@ -1586,8 +1618,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 								
 								//this.oActivityQuestionsMatrixLayout.createRow( oFileUploader );
 								//this.oActivityQuestionsMatrixLayout.createRow( oTextViewAttachment );
-							
-								this.oTotalActivityQuestions++;
+							    //console.log(this.oTotalActivityQuestions++);
+								//this.oTotalActivityQuestions++;
 							}			
 							
 							that.closeBusyDialog();		    				

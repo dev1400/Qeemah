@@ -134,7 +134,7 @@ com.sagia.common.ModelHelper = {
         		 Atxtlg : oAtxtlg, 
         		 Flag : 'F', 
         		 Lang : 'E', 
-        		 Fin_value : answers[i],
+        		 Fin_value : answers[i],        		 
         		 Shldr_FName : oFirstName,
         		 Shldr_LName : oLastName} ));
             }
@@ -420,6 +420,35 @@ com.sagia.common.ModelHelper = {
 		
 	},
 	/**
+	 * Create Share Holder Activity Answers
+	 * @Author Abdul Waheed 
+	 */
+	createShareHolderActivityAnswers : function(oRef_id, questions, answers, oFirstName, oLastName) {
+		
+		var that = this;
+		var oRequestFinishedCreateAQDeferred = jQuery.Deferred();
+
+		 var aBatchOperations = [];
+         for ( var i = 0; i < questions.length; i++) {
+        	 
+        	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',{Investorid : oRef_id,
+        		 NodeGuid : questions[i], Atxtlg : answers[i], Flag : 'A', Lang : 'E',
+        		 Shldr_FName : oFirstName,
+        		 Shldr_LName : oLastName} ));
+            }
+         this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
+         this.oBAQODataModel.setUseBatch(true);
+         this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {                  	 
+        	 oRequestFinishedCreateAQDeferred.resolve(oResponse);
+     	 }, 
+     	 function(oError) {
+     		console.log("E"+oError);
+     	 }, false);
+         
+         return oRequestFinishedCreateAQDeferred; 
+		
+	},
+	/**
 	 * Read BAQ Saved Attachments.
 	 * @author Abdul Waheed
 	 */
@@ -672,7 +701,7 @@ com.sagia.common.ModelHelper = {
 		
 		var that = this;
 		var oEntry = {};
-		oEntry.RefID = "'"+parseInt(oRef_id, 10)+"'";
+		oEntry.RefID = oRef_id;
 		oEntry.EntityNo = '';
 		oEntry.FileType = '';
 		oEntry.ShldrType = oShareHolderType;
@@ -1226,7 +1255,7 @@ com.sagia.common.ModelHelper = {
 		return oRequestFinishedDeferred;
 	},
 	/**
-	 * Read BAQ Answer based on ID
+	 * Read Financial Answer based on ID
 	 */
 	readFinancialQuestionsAnswer : function(oNodeGuid, oSurveyID) {
 		this.openBusyDialog();

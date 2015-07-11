@@ -30,8 +30,15 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 												<sap.ui.commons.layout:content>
-												<sap.ui.unified:FileUploader
-											     width="15em" icon="common/mime/attachment.png" iconOnly="true" />
+										   <sap.ui.unified:FileUploader
+											 icon="common/mime/attachment.png" 
+											 width="15em"
+										     sendXHR="true" 
+										     useMultipart="false" 
+										     sameFilenameAllowed="true" 
+										     iconOnly="true"
+											 id="idAQPassportCopyFileUploader"  
+											 mimeType="application/pdf"/> 
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -49,7 +56,14 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 												<sap.ui.commons.layout:content>
 												<sap.ui.unified:FileUploader
-											     width="15em" icon="common/mime/attachment.png" iconOnly="true" />
+											 icon="common/mime/attachment.png" 
+											 width="15em"
+										     sendXHR="true" 
+										     useMultipart="false" 
+										     sameFilenameAllowed="true" 
+										     iconOnly="true"
+											 id="idAQCommercialRegistFileUploader"  
+											 mimeType="application/pdf"/> 
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -67,7 +81,14 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 												<sap.ui.commons.layout:content>
 												<sap.ui.unified:FileUploader
-											     width="15em" icon="common/mime/attachment.png" iconOnly="true" />
+											 icon="common/mime/attachment.png" 
+											 width="15em"
+										     sendXHR="true" 
+										     useMultipart="false" 
+										     sameFilenameAllowed="true" 
+										     iconOnly="true"
+											 id="idAQBankStatementFileUploader"  
+											 mimeType="application/pdf"/> 
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -85,7 +106,14 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 												<sap.ui.commons.layout:content>
 												<sap.ui.unified:FileUploader
-											     width="15em" icon="common/mime/attachment.png" iconOnly="true" />
+											 icon="common/mime/attachment.png" 
+											 width="15em"
+										     sendXHR="true" 
+										     useMultipart="false" 
+										     sameFilenameAllowed="true" 
+										     iconOnly="true"
+											 id="idAQBalanceSheetFileUploader"  
+											 mimeType="application/pdf"/> 
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -103,7 +131,14 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 												<sap.ui.commons.layout:content>
 												<sap.ui.unified:FileUploader
-											     width="15em" icon="common/mime/attachment.png" iconOnly="true" />
+											 icon="common/mime/attachment.png" 
+											 width="15em"
+										     sendXHR="true" 
+										     useMultipart="false" 
+										     sameFilenameAllowed="true" 
+										     iconOnly="true"
+											 id="idAQOtherFileUploader"  
+											 mimeType="application/pdf"/> 
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
