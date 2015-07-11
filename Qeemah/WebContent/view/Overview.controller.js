@@ -412,7 +412,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		     			        })]
 		     			      }));
 			             
-			             
+			        that.NSHPassPortCopy = that.getView().byId("idNSHPassportCopyFileUploader");
+			        var oRequestFinishedDeferredUploadNSHPassPortCopy = that.oModelHelper.uploadNSHPassPortCopy(that.oRef_id, oResponse.EntityNo, that.NSHPassPortCopy);
+			     	jQuery.when(oRequestFinishedDeferredUploadNSHPassPortCopy).then(jQuery.proxy(function(oResponse) {
+			     		
+			     		
 			             var oRequestFinishedDeferredcreateSHActivityAnswers = that.oModelHelper.createShareHolderActivityAnswers
 			 			(that.oRef_id, actvityQuestions, activityAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
 			  
@@ -455,8 +459,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			 							
 			 						}, this));
 			 					}, this));
-			     			}, this));
-			     			
+			     			}, this));//end of AQ creation
+			     	}, this));// end of Passport upload
 			     			
 	     				 
 	     			 }catch(error){

@@ -974,7 +974,42 @@ com.sagia.common.ModelHelper = {
 		
 		oBICIPowerofAttorneyFileUploader.upload();
 		}
-},
+		
+     },
+     /**
+ 	 * Upload NSH Passport Copy.
+ 	 * @author Abdul Waheed
+ 	 */
+ 	uploadNSHPassPortCopy : function(oRefID, oEntityNo, oNSHPassPortCopyFileUploader){
+ 		var oUploadNSHPassPortCopyRequestFinishedDeferred = jQuery.Deferred();
+ 		
+ 		if(oNSHPassPortCopyFileUploader.getValue() !== ""){
+ 			var csrf =  this.oShareHolderODataModel.getHeaders()['x-csrf-token'];
+ 		   oNSHPassPortCopyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+ 				{name: "Content-Type", value: "application/atom+xml" }));
+ 		   oNSHPassPortCopyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+ 				{name: "X-CSRF-Token", value: csrf }));        
+ 		   oNSHPassPortCopyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
+         		({name: "slug", value: oNSHPassPortCopyFileUploader.getValue() }));
+            
+         
+ 		   oNSHPassPortCopyFileUploader.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SHRHLDR_SRV/ZSHAREHOLDER_INFO_ENT(RefID='"+oRefID+"',EntityNo='"+oEntityNo+"',FileType='PASS')/InfoToFile");
+ 		                                                                   
+ 		   oNSHPassPortCopyFileUploader.attachUploadComplete(function(){
+ 				oNSHPassPortCopyFileUploader.removeAllHeaderParameters();
+ 				oNSHPassPortCopyFileUploader.clear();
+ 				oUploadNSHPassPortCopyRequestFinishedDeferred.resolve();
+
+         
+         });
+ 		oNSHPassPortCopyFileUploader.upload();
+ 		}else{
+				oUploadNSHPassPortCopyRequestFinishedDeferred.resolve();
+
+ 		}
+		return oUploadNSHPassPortCopyRequestFinishedDeferred;
+
+ 	},
 	/**
 	 * Create and update BICI.
 	 * @author Abdul Waheed

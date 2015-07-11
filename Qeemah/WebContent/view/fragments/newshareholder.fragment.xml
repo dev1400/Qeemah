@@ -157,10 +157,10 @@
 		<sap.ui.commons.layout:cells >
 		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
 		<sap.ui.commons.layout:content>
-		<!-- <VBox id="idAddShareHolderExperienceAnswersVBoxFragment" visible="true" width="78em">
+		<VBox id="idAddShareHolderExperienceAnswersVBoxFragment" visible="true" width="78em">
 		<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.ns_p_experiencequestions" 
 								type="XML" />
-		</VBox> -->
+		</VBox>
 		
 		<sap.ui.commons.layout:MatrixLayout
 		id="idNewShareHolderExperienceQuestionsMatrixLayout" layoutFixed="false">
