@@ -783,42 +783,53 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleSaveLinkPressSave : function(){
 	this.oValidationLILIStatus = false;
 	
-	    that = this;
-		if(this.oBICIFirstNameInputText.getValue() !== "" && this.oBICILastNameInputText.getValue() !== "")
-			{		
-		
-			if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== "" ){
-		
-				this.doThis();
-				
-				this.oValidationLILIStatus = true;
+	that = this;
+	if(this.oBICIFirstNameInputText.getValue() === "" || this.oBICILastNameInputText.getValue() === "")
+	 {		
+		 this.oValidationLILIStatus = false;
 
-		
-			}else if(this.oSurveyID !== "UNKNOWN" &&
-			this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
-			this.oLILILicenseActivityMultiComboBox.getSelectedItems().length !== 0 &&
-			this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
-			this.oLILIDivisionComboBox.getSelectedKey() !== "" &&
-			this.oLILISectionComboBox.getSelectedKey() !== "" &&
-			this.oRef_id !== "" &&		   
-			this.oLILIActivityDescriptionTextArea.getValue() !== ""){
-		
-				this.doThis();
-				
-				this.oValidationLILIStatus = true;
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("CIFNameAndLName"));
+			this.oShowAlertDialog.open();
+		 }
+			
+   	 }if(this.getView().byId("idBICIPowerofAttorneyFileUploader").getValue() === "" && this.getView().byId("idBICIPassportCopyFileUploader").getValue() === ""){
+		 this.oValidationLILIStatus = false;
 
+ 		if(!this.oShowAlertDialog.isOpen())
+		{
+		this.oAlertTextView.setText(this.oModelHelper.getText("AtleastOneAttachmentNeededBICI"));
+		this.oShowAlertDialog.open();
 		
-			}else {
-				
-				this.oValidationLILIStatus = false;
+		}
+	 }else if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== "" ){ 		
+			  this.doThis();			
+			  this.oValidationLILIStatus = true;				   
+   	 }else if(this.oSurveyID !== "UNKNOWN" &&
+   			  this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
+		      this.oLILILicenseActivityMultiComboBox.getSelectedItems().length !== 0 &&
+		  	  this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
+	  		  this.oLILIDivisionComboBox.getSelectedKey() !== "" &&
+	  		  this.oLILISectionComboBox.getSelectedKey() !== "" &&
+		   	  this.oRef_id !== "" &&		   
+	 		  this.oLILIActivityDescriptionTextArea.getValue() !== ""){
+	
+		   	  this.doThis();			
+	     	  this.oValidationLILIStatus = true;
+	  }else {
+		      this.oValidationLILIStatus = false;
 
-				if(!this.oShowAlertDialog.isOpen())
-				{
-					this.oAlertTextView.setText(this.oModelHelper.getText("ISICMandatory"));
-					this.oShowAlertDialog.open();
-				}
-			} 
-	}else{
+		      if(!this.oShowAlertDialog.isOpen())
+		       {
+		       this.oAlertTextView.setText(this.oModelHelper.getText("ISICMandatory"));
+		       this.oShowAlertDialog.open();
+			  }
+   		    } 
+	
+	
+	
+	/*else{
 		    this.oValidationLILIStatus = false;
 
 		    if(!this.oShowAlertDialog.isOpen())
@@ -827,7 +838,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oShowAlertDialog.open();
 				
 			}
-		}
+		}*/
 	return 	this.oValidationLILIStatus;
 
 },
