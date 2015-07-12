@@ -104,7 +104,7 @@
 								<sap.ui.core:Item />
 							</Select> -->
 							<Select width="25em" items="{/DetailsCollection}" id="idNSHCountryComboBox">
-								<sap.ui.core:ListItem text="{Landx50}"/>
+								<sap.ui.core:ListItem key="{Land1}" text="{Landx50}"/>
 						    </Select>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -156,8 +156,8 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							<Select id="idNSHGenderComboBox" width="25em">
-								<sap.ui.core:ListItem Key="1" text="{i18n>Male}" />
-								<sap.ui.core:ListItem key="2" text="{i18n>Female}" />
+								<sap.ui.core:ListItem key="2" text="{i18n>Male}" />
+								<sap.ui.core:ListItem key="1" text="{i18n>Female}" />
 							</Select>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -238,11 +238,11 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							<Select id="idNSHAcademicTitleInputText" width="25em">
-								<sap.ui.core:ListItem Key="1" text="{i18n>HighSchool}" />
+								<sap.ui.core:ListItem key="1" text="{i18n>HighSchool}" />
 								<sap.ui.core:ListItem key="2" text="{i18n>Diploma}" />
-								<sap.ui.core:ListItem Key="3" text="{i18n>BS}" />
+								<sap.ui.core:ListItem key="3" text="{i18n>BS}" />
 								<sap.ui.core:ListItem key="4" text="{i18n>Master}" />
-								<sap.ui.core:ListItem Key="5" text="{i18n>PhD}" />
+								<sap.ui.core:ListItem key="5" text="{i18n>PhD}" />
 								<sap.ui.core:ListItem key="6" text="{i18n>Professor}" />
 							</Select>
 						</sap.ui.commons.layout:content>
@@ -325,7 +325,7 @@
 						<sap.ui.commons.layout:content>
 							
 							<Select width="25em" items="{/DetailsCollection}" id="idNSHNationalityComboBox">
-								<sap.ui.core:ListItem text="{Natio50}"/>
+								<sap.ui.core:ListItem key="{Land1}" text="{Natio50}"/>
 						    </Select>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -360,7 +360,7 @@
 						<sap.ui.commons.layout:content>
 							
 							<Select width="25em" items="{/DetailsCollection}" id="idNSHPreviousNationalityInputText">
-								<sap.ui.core:ListItem text="{Natio50}"/>
+								<sap.ui.core:ListItem key="{Land1}" text="{Natio50}"/>
 						    </Select>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -396,11 +396,11 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							<Select id="idNSHCommMethodInputText" width="25em">
-								<sap.ui.core:ListItem Key="1" text="{i18n>Phone}" />
-															<sap.ui.core:ListItem key="2" text="{i18n>Email}" />
-															<sap.ui.core:ListItem Key="3" text="{i18n>Fax}" />
-															<sap.ui.core:ListItem key="4" text="{i18n>Pager}" />
-															<sap.ui.core:ListItem Key="5" text="{i18n>Post}" />
+								<sap.ui.core:ListItem key="TEL" text="{i18n>Phone}" />
+															<sap.ui.core:ListItem key="INT" text="{i18n>Email}" />
+															<sap.ui.core:ListItem key="FAX" text="{i18n>Fax}" />
+															<sap.ui.core:ListItem key="PAG" text="{i18n>Pager}" />
+															<sap.ui.core:ListItem key="LET" text="{i18n>Post}" />
 							</Select>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
