@@ -130,7 +130,7 @@
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										<sap.ui.commons.layout:content>
-											<TextArea width="25em" enabled="false" id="idLILIActivityDescriptionTextArea"/>
+											<TextArea width="25em"  id="idLILIActivityDescriptionTextArea"/>
 										</sap.ui.commons.layout:content>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:MatrixLayoutRow>

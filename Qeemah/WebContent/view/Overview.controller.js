@@ -331,9 +331,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 	     				that.oNSHCityNameInputText.getValue(),
 	     				that.oNSHGenderComboBox.getSelectedKey(),
 	     				that.oNSHPOBoxInputText.getValue(),
-	     				that.oNSHMaritalStatusComboBox.getSelectedItem().getText(),
+	     				that.oNSHMaritalStatusComboBox.getSelectedKey(),
 	     				that.oNSHPostalCodeInputText.getValue(),
-	     				that.oNSHAcademicTitleComboBox.getSelectedItem().getText(),
+	     				that.oNSHAcademicTitleComboBox.getSelectedKey(),
 	     				that.oNSHStreetInputText.getValue(),
 	     				that.oNSHDOBDate.getValue(),
 	     				that.oNSHWebsiteInputText.getValue(),
@@ -1650,61 +1650,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 						
 						var resultsI = 0, resultsJ = 0, howManyTimes = oResponse.data.results.length;
 						
-						  /*  (function myLoop (i) {          
-							   setTimeout(function () {  
-								   
-								   if(that.oLILISectionComboBox.getSelectedKey() === ""){
-										that.oLILISectionComboBox.setSelectedKey(oResponse.data.results[resultsI].IsicSection);
-										that.oLILISectionComboBox.fireSelectionChange(); 
-									}
-									
-									if(that.oLILIDivisionComboBox.getSelectedKey() === ""){
-										that.oLILIDivisionComboBox.setSelectedKey(oResponse.data.results[resultsI].IsicDivision);
-										that.oLILIDivisionComboBox.fireSelectionChange();
-									}*/
-									
-									
-									
-									/*(function myInnerLoop1 (i) {          
-										   setTimeout(function () {   
-										      
-												isicGroup[resultsJ] = oResponse.data.results[resultsJ].IsicGroup;
-												
-												var uniqueISISCGroupArray = isicGroup.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
-												
-												that.oLILIGroupComboBox.setSelectedKeys(uniqueISISCGroupArray);
-											
-											   
-											   resultsJ++;
-										      if (--i) myInnerLoop1(i);      
-										   }, 2000)
-										})(howManyTimes);   */
-									
-									/*for(var j=0; j < oResponse.data.results.length; j++){							
-										
-										isicGroup[j] = oResponse.data.results[j].IsicGroup;
-										
-										var uniqueISISCGroupArray = isicGroup.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
-										
-										this.oLILIGroupComboBox.setSelectedKeys(uniqueISISCGroupArray);
-										
-									}
-									
-						             for(var k=0; k < oResponse.data.results.length; k++){							
-										
-						                IsicClass[k] = oResponse.data.results[k].IsicClass;
-										
-										var uniqueIsicClassArray = IsicClass.filter(function(item, i, ar){ return ar.indexOf(item) === i; });
-										
-										this.oLILIClassMultiComboBox.setSelectedKeys(uniqueIsicClassArray);
-										
-									}*/  
-								   
-									/*resultsI++;
-								   
-							      if (--i) myLoop(i);     
-							   }, 2000)
-							})(howManyTimes); */  
 						
 						if(oResponse.data.results[0].Lic === "N"){
 							     
@@ -1791,34 +1736,63 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handlePreviewLicenseInfoTabStripSelect : function(oControlEvent){
 		//console.log(oControlEvent.getParameters().index);
 		that = this;
-		if(!this.PreviewBeenFired)
-	    {
-			/*this.oLILISectionComboBox = this.getView().byId("idLILISectionComboBox");
-			this.oLILIBusinessTypeComboBox = this.getView().byId("idLILIBusinessTypeComboBox");
-			this.oLILILicenceInfoContentVBox = this.getView().byId("LicenceInfoContentVBox");
-			this.oLicenseTypeInputText = this.getView().byId("idLicenseTypeInputText");
-			this.oLILIDivisionComboBox = this.getView().byId("idLILIDivisionComboBox");
-			this.oLILIGroupComboBox = this.getView().byId("idLILIGroupComboBox");
-			this.oLILILicenseActivityMultiComboBox = this.getView().byId("idLILILicenseActivityMultiComboBox");
-			this.oLILIActivityDescriptionTextArea = this.getView().byId("idLILIActivityDescriptionTextArea");
+		//if(!this.PreviewBeenFired)
+	    //{
+     		this.oLicenceInfoPreviewContentVBox = this.getView().byId("idLicenceInfoPreviewContentVBox");
+     		this.oLicenceInfoPreviewContentVBox.setVisible(true);
+
+			this.oPLILIBusinessType = this.getView().byId("idPLILIBusinessType");
+			this.oPLILIBusinessType.setText(this.oLILIBusinessTypeComboBox.getSelectedItem().getText());
 			
-			this.oLILIClassMultiComboBox = this.getView().byId("idLILIClassMultiComboBox");
-		*/
+			this.oPLILILicenseTypeTextView = this.getView().byId("idPLILILicenseTypeTextView");
+			this.oPLILILicenseTypeTextView.setText(this.oLicenseTypeInputText.getValue());
 			
-			this.oLILIPreviewBusinessTypeComboBox = this.getView().byId("idLILIPreviewBusinessTypeComboBox");
-			this.oLicenseTypePreviewInputText = this.getView().byId("idLicenseTypePreviewInputText");		
-			this.oLILIPreviewSectionComboBox = this.getView().byId("idLILIPreviewSectionComboBox");
-			this.oLILIDivisionComboBox = this.getView().byId("idLILIPreviewDivisionComboBox");
-			this.oLILIGroupComboBox = this.getView().byId("idLILIPreviewGroupComboBox");
-			this.oLILIClassMultiComboBox = this.getView().byId("idLILIPreviewClassMultiComboBox");
-			this.oLILILicenseActivityMultiComboBox = this.getView().byId("idLILIPreviewLicenseActivityMultiComboBox");
-			this.oLILIActivityDescriptionTextArea = this.getView().byId("idLILIPreviewActivityDescriptionTextArea");
+			if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== ""){
+	     		this.oLicenceInfoPreviewContentVBox.setVisible(false);
+			}else{
+				this.oLILIPreviewSectionTextView = this.getView().byId("idLILIPreviewSectionTextView");
+				this.oLILIPreviewSectionTextView.setText(this.oLILISectionComboBox.getValue());//getSelectedItem().getText());
+				
+				this.oLILIPreviewDivisionTextView = this.getView().byId("idLILIPreviewDivisionTextView");
+				this.oLILIPreviewDivisionTextView.setText(this.oLILIDivisionComboBox.getValue());//.getSelectedItem().getText());
+				
+				this.oLILIPreviewGroupTextView = this.getView().byId("idLILIPreviewGroupTextView");
+				
+				var oGroupText = "";
+				
+				for(var i=0; i < this.oLILIGroupComboBox.getSelectedItems().length; i++){
+					oGroupText += this.oLILIGroupComboBox.getSelectedItems()[i].getText()+" , ";
+				} 
+				
+				this.oLILIPreviewGroupTextView.setText(oGroupText);
+				
+				this.oLILIPreviewClassTextView = this.getView().byId("idLILIPreviewClassTextView");
+				
+                var oClassText = "";
+				
+				for(var i=0; i < this.oLILIClassMultiComboBox.getSelectedItems().length; i++){
+					oClassText += this.oLILIClassMultiComboBox.getSelectedItems()[i].getText()+" , ";
+				} 
+				
+				this.oLILIPreviewClassTextView.setText(oClassText);
+				
+				
+                this.oLILIPreviewLicenseActivityTextView = this.getView().byId("idLILIPreviewLicenseActivityTextView");
+				
+                var oLicenseActivityText = "";
+				
+				for(var i=0; i < this.oLILILicenseActivityMultiComboBox.getSelectedItems().length; i++){
+					oLicenseActivityText += this.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText()+" , ";
+				} 
+				
+				this.oLILIPreviewLicenseActivityTextView.setText(oLicenseActivityText);
+
+				this.oLILIPreviewActivityDescriptionTextView = this.getView().byId("idLILIPreviewActivityDescriptionTextView");
+				this.oLILIPreviewActivityDescriptionTextView.setText(this.oLILIActivityDescriptionTextArea.getValue());
+				
+				
+			}
 			
-		
-	       
-	    }
-		//this.oLILIPreviewBusinessTypeComboBox.setValue(this.oLILIBusinessTypeComboBox.getSelectedItem().getText());
-		
 		
 	},
 	getPreviewBAQ : function(){
@@ -2959,17 +2933,7 @@ userSignIn : function(userID, password){
 						}
 				}, this));
 				
-				    var getarray = [];
-			        getarray.push(oRequestFinishedDeferredBIOIChild);
-			        getarray.push(oRequestFinishedDeferredBICIChild);
-			        getarray.push(oRequestFinishedDeferredBAQAnswersReadChild);
-			        getarray.push(oRequestFinishedDeferredISICRecord);
-			        
-			        jQuery.when.apply($, getarray).done(function () {
-			        	
-			        	this.closeBusyDialog();
-			     		
-			        });
+				  
 				
 				/*var oRequestFinishedDeferredBAQAnswersAttachmentName = [];
 				for(var i=0; i < this.oTotalBAQQuestions; i++){
@@ -3020,11 +2984,7 @@ userSignIn : function(userID, password){
 			}
 			
 		}, this));		
-		
-		
-		
-		//this.handleLicenseInfoTabStripSelect();
-		
+			
 	
 },
 /**
@@ -3165,13 +3125,6 @@ handleRegisterUserButtonPress : function() {
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("LicenseInformationHTML"));
 		
-		//this.openBusyDialog();
-		//this.handleLicenseInfoTabStripSelect();
-		//var that = this;
-		//setTimeout(function() { 
-			//that.closeBusyDialog();
-			
-        //}, 5000);
 		
 	
 	},
@@ -3309,6 +3262,9 @@ handleRegisterUserButtonPress : function() {
 		//this.oBAQMatrixLayout.lock();
 		//sap.ui.getCore().getUIArea(sap.ui.getCore().byId("__xmlview0--idBAQDIV")).lock();
 		//sap.ui.getCore().getUIArea("content").lock();
+		//this.handleLicenseButtonClick();
+		
+		
 		this.getPreviewBAQ();
 		
 		this._oPreviewInfoButton.setSrc("common/mime/preview_hover.png");
@@ -3327,11 +3283,9 @@ handleRegisterUserButtonPress : function() {
 		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
 		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
 		
-		//this.handleLicenseInfoTabStripSelect();
-
 		
 		this.oValidationHelper.validateBasicInfo(this);
-		//this.handlePreviewLicenseInfoTabStripSelect();
+		this.handlePreviewLicenseInfoTabStripSelect();
 	},
 	handleTermsInfoButtonClick : function(){
 		this._oShareHoldersInfoContent.setVisible(false);

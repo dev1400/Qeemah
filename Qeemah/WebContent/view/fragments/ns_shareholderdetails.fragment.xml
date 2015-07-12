@@ -202,8 +202,8 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							<Select id="idNSHMaritalStatusComboBox" width="25em">
-								<sap.ui.core:ListItem key="1" text="{i18n>Single}" />
-								<sap.ui.core:ListItem key="2" text="{i18n>Married}" />
+								<sap.ui.core:ListItem key="0" text="{i18n>Single}" />
+								<sap.ui.core:ListItem key="1" text="{i18n>Married}" />
 								<sap.ui.core:ListItem key="3" text="{i18n>Widowed}" />
 								<sap.ui.core:ListItem key="4" text="{i18n>Divorced}" />
 								<sap.ui.core:ListItem key="5" text="{i18n>Other}" />
