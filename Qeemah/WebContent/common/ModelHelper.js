@@ -1010,6 +1010,142 @@ com.sagia.common.ModelHelper = {
 		return oUploadNSHPassPortCopyRequestFinishedDeferred;
 
  	},
+ 	/**
+ 	 * Upload Commercial Registration.
+ 	 * @author Abdul Waheed
+ 	 */
+ 	uploadCommercialRegAttachment : function(oRefID, oEntityNo, oNSHCommercialRegAttachment){
+ 		var oUploadNSHCommercialRegAttachmentRequestFinishedDeferred = jQuery.Deferred();
+ 		
+ 		if(oNSHCommercialRegAttachment.getValue() !== ""){
+ 			var csrf =  this.oShareHolderODataModel.getHeaders()['x-csrf-token'];
+ 			oNSHCommercialRegAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+ 				{name: "Content-Type", value: "application/atom+xml" }));
+ 			oNSHCommercialRegAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+ 				{name: "X-CSRF-Token", value: csrf }));        
+ 			oNSHCommercialRegAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
+         		({name: "slug", value: oNSHCommercialRegAttachment.getValue() }));
+            
+         
+ 			oNSHCommercialRegAttachment.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SHRHLDR_SRV/ZSHAREHOLDER_INFO_ENT(RefID='"+oRefID+"',EntityNo='"+oEntityNo+"',FileType='COMM')/InfoToFile");
+ 		                                                                   
+ 			oNSHCommercialRegAttachment.attachUploadComplete(function(){
+ 				oNSHCommercialRegAttachment.removeAllHeaderParameters();
+ 				oNSHCommercialRegAttachment.clear();
+ 				oUploadNSHCommercialRegAttachmentRequestFinishedDeferred.resolve();
+
+         
+         });
+ 			oNSHCommercialRegAttachment.upload();
+ 		}else{
+				oUploadNSHCommercialRegAttachmentRequestFinishedDeferred.resolve();
+
+ 		}
+		return oUploadNSHCommercialRegAttachmentRequestFinishedDeferred;
+
+ 	},
+ 	/**
+ 	 * Upload NSH Bank Statement.
+ 	 * @author Abdul Waheed
+ 	 */
+ 	uploadBankStatementAttachment : function(oRefID, oEntityNo, oNSHBankStatementAttachment){
+ 		var oUploadNSHBankStatementAttachmentRequestFinishedDeferred = jQuery.Deferred();
+ 		
+ 		if(oNSHBankStatementAttachment.getValue() !== ""){
+ 			var csrf =  this.oShareHolderODataModel.getHeaders()['x-csrf-token'];
+ 			oNSHBankStatementAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+ 				{name: "Content-Type", value: "application/atom+xml" }));
+ 			oNSHBankStatementAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+ 				{name: "X-CSRF-Token", value: csrf }));        
+ 			oNSHBankStatementAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
+         		({name: "slug", value: oNSHBankStatementAttachment.getValue() }));
+            
+         
+ 			oNSHBankStatementAttachment.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SHRHLDR_SRV/ZSHAREHOLDER_INFO_ENT(RefID='"+oRefID+"',EntityNo='"+oEntityNo+"',FileType='BANK')/InfoToFile");
+ 		                                                                   
+ 			oNSHBankStatementAttachment.attachUploadComplete(function(){
+ 				oNSHBankStatementAttachment.removeAllHeaderParameters();
+ 				oNSHBankStatementAttachment.clear();
+ 				oUploadNSHBankStatementAttachmentRequestFinishedDeferred.resolve();
+
+         
+         });
+ 			oNSHBankStatementAttachment.upload();
+ 		}else{
+ 			oUploadNSHBankStatementAttachmentRequestFinishedDeferred.resolve();
+
+ 		}
+		return oUploadNSHBankStatementAttachmentRequestFinishedDeferred;
+
+ 	},
+ 	/**
+ 	 * Upload NSH Balance Sheet 
+ 	 * @author Abdul Waheed
+ 	 */
+ 	uploadNSHBalanceSheetAttachment : function(oRefID, oEntityNo, oNSHBalanceSheetAttachment){
+ 		var oUploadNSHBalanceSheetAttachmentRequestFinishedDeferred = jQuery.Deferred();
+ 		
+ 		if(oNSHBalanceSheetAttachment.getValue() !== ""){
+ 			var csrf =  this.oShareHolderODataModel.getHeaders()['x-csrf-token'];
+ 			oNSHBalanceSheetAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+ 				{name: "Content-Type", value: "application/atom+xml" }));
+ 			oNSHBalanceSheetAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+ 				{name: "X-CSRF-Token", value: csrf }));        
+ 			oNSHBalanceSheetAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
+         		({name: "slug", value: oNSHBalanceSheetAttachment.getValue() }));
+            
+         
+ 			oNSHBalanceSheetAttachment.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SHRHLDR_SRV/ZSHAREHOLDER_INFO_ENT(RefID='"+oRefID+"',EntityNo='"+oEntityNo+"',FileType='BAL')/InfoToFile");
+ 		                                                                   
+ 			oNSHBalanceSheetAttachment.attachUploadComplete(function(){
+ 				oNSHBalanceSheetAttachment.removeAllHeaderParameters();
+ 				oNSHBalanceSheetAttachment.clear();
+ 				oUploadNSHBalanceSheetAttachmentRequestFinishedDeferred.resolve();
+
+         
+         });
+ 			oNSHBalanceSheetAttachment.upload();
+ 		}else{
+ 			oUploadNSHBalanceSheetAttachmentRequestFinishedDeferred.resolve();
+
+ 		}
+		return oUploadNSHBalanceSheetAttachmentRequestFinishedDeferred;
+
+ 	},
+ 	/**
+ 	 * Upload NSH Other Attachment
+ 	 * @author Abdul Waheed
+ 	 */
+ 	uploadOtherAttachment : function(oRefID, oEntityNo, oNSHOtherAttachment){
+ 		var oUploadNSHOtherAttachmentRequestFinishedDeferred = jQuery.Deferred();
+ 		
+ 		if(oNSHOtherAttachment.getValue() !== ""){
+ 			var csrf =  this.oShareHolderODataModel.getHeaders()['x-csrf-token'];
+ 			oNSHOtherAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+ 				{name: "Content-Type", value: "application/atom+xml" }));
+ 			oNSHOtherAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+ 				{name: "X-CSRF-Token", value: csrf }));        
+ 			oNSHOtherAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
+         		({name: "slug", value: oNSHOtherAttachment.getValue() }));
+            
+         
+ 			oNSHOtherAttachment.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SHRHLDR_SRV/ZSHAREHOLDER_INFO_ENT(RefID='"+oRefID+"',EntityNo='"+oEntityNo+"',FileType='OTHR')/InfoToFile");
+ 		                                                                   
+ 			oNSHOtherAttachment.attachUploadComplete(function(){
+ 				oNSHOtherAttachment.removeAllHeaderParameters();
+ 				oNSHOtherAttachment.clear();
+ 				oUploadNSHOtherAttachmentRequestFinishedDeferred.resolve();
+
+         
+         });
+ 			oNSHOtherAttachment.upload();
+ 		}else{
+ 			oUploadNSHOtherAttachmentRequestFinishedDeferred.resolve();
+
+ 		}
+		return oUploadNSHOtherAttachmentRequestFinishedDeferred;
+
+ 	},
 	/**
 	 * Create and update BICI.
 	 * @author Abdul Waheed

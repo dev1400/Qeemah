@@ -413,8 +413,29 @@ sap.ui.controller("com.sagia.view.Overview", {
 		     			      }));
 			             
 			        that.NSHPassPortCopy = that.getView().byId("idNSHPassportCopyFileUploader");
-			        var oRequestFinishedDeferredUploadNSHPassPortCopy = that.oModelHelper.uploadNSHPassPortCopy(that.oRef_id, oResponse.EntityNo, that.NSHPassPortCopy);
-			     	jQuery.when(oRequestFinishedDeferredUploadNSHPassPortCopy).then(jQuery.proxy(function(oResponse) {
+			        that.NSHCommercialRegAttachment = that.getView().byId("idNSHCommercialRegistFileUploader");
+			        that.NSHBankStatementAttachment = that.getView().byId("idNSHBankStatementFileUploader");
+			        that.NSHBalanceSheetAttachment = that.getView().byId("idNSHBalanceSheetFileUploader");
+			        that.NSHOtherAttachment = that.getView().byId("idNSHOtherFileUploader");
+			        
+			        that.NSHEntityNo = oResponse.EntityNo;
+			        
+		var oRequestFinishedDeferredUploadNSHPassPortCopy = that.oModelHelper.uploadNSHPassPortCopy(that.oRef_id, that.NSHEntityNo, that.NSHPassPortCopy);
+		jQuery.when(oRequestFinishedDeferredUploadNSHPassPortCopy).then(jQuery.proxy(function(oResponse) {
+			
+			var oRequestFinishedDeferredUploadNSHPCommercialReg = that.oModelHelper.uploadCommercialRegAttachment(that.oRef_id, that.NSHEntityNo, that.NSHCommercialRegAttachment);
+	     	jQuery.when(oRequestFinishedDeferredUploadNSHPCommercialReg).then(jQuery.proxy(function(oResponse) {
+	     		
+	     		var oRequestFinishedDeferredUploadNSHBankStatement = that.oModelHelper.uploadBankStatementAttachment(that.oRef_id, that.NSHEntityNo, that.NSHBankStatementAttachment);
+		     	jQuery.when(oRequestFinishedDeferredUploadNSHBankStatement).then(jQuery.proxy(function(oResponse) {
+		     		
+		     		var oRequestFinishedDeferredUploadNSHBalanceSheet = that.oModelHelper.uploadNSHBalanceSheetAttachment(that.oRef_id, that.NSHEntityNo, that.NSHBalanceSheetAttachment);
+			     	jQuery.when(oRequestFinishedDeferredUploadNSHBalanceSheet).then(jQuery.proxy(function(oResponse) {
+			     		
+			     		var oRequestFinishedDeferredUploadNSHOtherAttachments = that.oModelHelper.uploadOtherAttachment(that.oRef_id, that.NSHEntityNo, that.NSHOtherAttachment);
+				     	jQuery.when(oRequestFinishedDeferredUploadNSHOtherAttachments).then(jQuery.proxy(function(oResponse) {
+				     	
+	     	
 			     		
 			     		
 			             var oRequestFinishedDeferredcreateSHActivityAnswers = that.oModelHelper.createShareHolderActivityAnswers
@@ -446,11 +467,18 @@ sap.ui.controller("com.sagia.view.Overview", {
 			 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers2);
 			 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers3);
 			 							        getarray.push(oRequestFinishedDeferredcreateSHActivityAnswers);
+			 							        getarray.push(oRequestFinishedDeferredUploadNSHPassPortCopy);
+			 							        getarray.push(oRequestFinishedDeferredUploadNSHPCommercialReg);
+			 							        getarray.push(oRequestFinishedDeferredUploadNSHBankStatement);
+			 							        getarray.push(oRequestFinishedDeferredUploadNSHBalanceSheet);
+			 							        getarray.push(oRequestFinishedDeferredUploadNSHOtherAttachments);
+
 
 
 			 							        
 			 							        jQuery.when.apply($, getarray).done(function () {
-			 							             
+			 							        	sap.m.MessageToast.show(that.oModelHelper
+			 												.getText("NewShareHolderCreated"));	
 			 							        	that.closeBusyDialog();
 			 							     		
 			 							        });
@@ -460,7 +488,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			 						}, this));
 			 					}, this));
 			     			}, this));//end of AQ creation
-			     	}, this));// end of Passport upload
+				     	}, this));// end of Other upload
+			     	}, this));// end of Balance Sheet upload
+		     	}, this));// end of Bank Statement upload
+	     	}, this));// end of Commercial upload
+	    }, this));// end of Passport upload
 			     			
 	     				 
 	     			 }catch(error){
