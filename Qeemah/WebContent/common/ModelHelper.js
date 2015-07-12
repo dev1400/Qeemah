@@ -513,7 +513,7 @@ com.sagia.common.ModelHelper = {
 	 */
 	readBAQSavedAnswers : function(oRef_id) {
 		
-		this.openBusyDialog();
+		//this.openBusyDialog();
 
 		var that = this;
 		
@@ -524,14 +524,14 @@ com.sagia.common.ModelHelper = {
 			success : function(oData, response) {
 				
 				oRequestFinishedDeferred.resolve(response);
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				
 				oRequestFinishedDeferred.resolve();
 				sap.m.MessageToast.show(oResponse);
 
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			}});
 
 		return oRequestFinishedDeferred;
@@ -543,7 +543,7 @@ com.sagia.common.ModelHelper = {
 	 */
 	checkISICAvailability : function(oRef_id) {
 		
-		this.openBusyDialog();
+		//this.openBusyDialog();
 
 		var that = this;
 		
@@ -554,14 +554,14 @@ com.sagia.common.ModelHelper = {
 			success : function(oData, response) {
 				
 				oRequestFinishedDeferred.resolve(response);
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				
 				oRequestFinishedDeferred.resolve();
 				sap.m.MessageToast.show(oResponse);
 
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			}});
 
 		return oRequestFinishedDeferred;
@@ -863,7 +863,7 @@ com.sagia.common.ModelHelper = {
 	 */
 	readBICI : function(refid) {
 		
-		this.openBusyDialog();
+		//this.openBusyDialog();
 
 		var that = this;
 		
@@ -874,7 +874,7 @@ com.sagia.common.ModelHelper = {
 			success : function(oData, response) {
 				
 				oRequestFinishedDeferred.resolve(response);//that.BIOICollectionJSONModel);
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				//console.log(oResponse);				
@@ -882,7 +882,7 @@ com.sagia.common.ModelHelper = {
 				oRequestFinishedDeferred.resolve();
 				sap.m.MessageToast.show(oResponse);
 
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			}});
 
 		return oRequestFinishedDeferred;
@@ -1897,7 +1897,7 @@ com.sagia.common.ModelHelper = {
 	 */
 	readBIOI : function(refid) {
 		// Open busy dialog
-		this.openBusyDialog();
+		//this.openBusyDialog();
 
 		var that = this;
 		// Create deferred object so that calling program can wait till
@@ -1909,17 +1909,16 @@ com.sagia.common.ModelHelper = {
 			success : function(oData, response) {
 				
 				oRequestFinishedDeferred.resolve(response);//that.BIOICollectionJSONModel);
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				//console.log(oResponse);
 				
 				// Reject deferred object
 				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
-
+				
 				// close busy dialog
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 			}});
 
 		return oRequestFinishedDeferred;
