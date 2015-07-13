@@ -7,13 +7,9 @@
 
 														
 		<VBox id="idMainPageContent">
-		<!-- <sap.ui.commons:ComboBox width="25em" id="idRegionComboBox" selectionChange="handleRegionSelectionComboBox">
-															<sap.ui.core:ListItem/>
-														</sap.ui.commons:ComboBox>
-		<sap.ui.commons:ComboBox width="25em" id="idRegionComboBox2" selectionChange="handleRegionSelectionComboBox">
-															<sap.ui.core:ListItem/>
-														</sap.ui.commons:ComboBox>
-		 -->
+		<html:Marquee onmouseover="this.stop();" onmouseout="this.start();">
+		<sap.ui.commons:TextView text="{i18n>BrowserMessage}" class="textcolorwhite" accessibleRole="Marquee"></sap.ui.commons:TextView>
+		 </html:Marquee>
 		
 			<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
 				<html:br />

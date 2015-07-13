@@ -227,14 +227,17 @@ sap.ui.controller("com.sagia.view.Overview", {
     
     			thatContext.oExistingShareHolderTable.unbindItems();
     			
-    			thatContext.oESHCreateNewData.ESHCollection.push({
-    				"Bpno":thatoResponse.data.Bpno,
-    	 			"Bpname":thatoResponse.data.Bpname,
-    	 			"EntityNo" : oResponse.EntityNo});
     			var percentage = parseInt(thatContext.oESHPercentageInputText.getValue());
     			if(isNaN(percentage)){
     				percentage = 0;
     			}
+    			
+    			thatContext.oESHCreateNewData.ESHCollection.push({
+    				"Bpno":thatoResponse.data.Bpno,
+    	 			"Bpname":thatoResponse.data.Bpname,
+    	 			"EntityNo" : oResponse.EntityNo,
+    	 			"Percentage" : percentage});
+    			
     			
     			thatContext.oESHTotalShareHolderPercentage += percentage;
     			
@@ -249,7 +252,7 @@ sap.ui.controller("com.sagia.view.Overview", {
     		        }),new sap.ui.commons.TextView({
     		          text : "{Bpname}"
     		        }),  new sap.ui.commons.TextView({
-    		          text : percentage
+    		          text : "{Percentage}"
     		        })/*, 
     		        new sap.m.Button({ icon : "sap-icon://delete"})*/]
     		      }));
@@ -345,46 +348,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 	     				that.oNSHCommMethodInputText.getSelectedKey(),
 	     				that.oNSHEmailInputText.getValue(),
 	     				that.oNSHPercentageInputText.getValue(),
-	     				"",//that.oNSHActivityQ1ComboBox.getSelectedItem().getText(),
-	     				"",//that.oNSHActivityQ2ComboBox.getSelectedItem().getText(),
-	     				"",//that.oNSHActivityQ3ComboBox.getSelectedItem().getText(),
-	     				"",//this.oNSHExperienceQ1ComboBox.getSelectedItem().getText(),
-	     				"",//this.oNSHExperienceQ2ComboBox.getSelectedItem().getText(),
-	     				"",//this.oNSHExperienceQ3ComboBox.getSelectedItem().getText(),
-	     				"",//this.oNSHExperienceQ4ComboBox.getSelectedItem().getText(),
-	     		"",//		this.oNSHStock12InputText.getValue(),
-	     		"",//this.oNSHStock13InputText.getValue(),
-	     		"",//this.oNSHStock14InputText.getValue(),
-	     		"",//this.oNSHTotalCurrentAssets12InputText.getValue(),
-	     		"",//this.oNSHTotalCurrentAssets13InputText.getValue(),
-	     		"",//this.oNSHTotalCurrentAssets14InputText.getValue(),		
-	     		"",//this.oNSHTotalCurrentLiabialities12InputText.getValue(),
-	     		"",//this.oNSHTotalCurrentLiabialities13InputText.getValue(),
-	     		"",//this.oNSHTotalCurrentLiabialities14InputText.getValue(),
-	     		"",//this.oNSHNetSales12InputText.getValue(),
-	     		"",//this.oNSHNetSales13InputText.getValue(),
-	     		"",//this.oNSHNetSales14InputText.getValue(),
-	     		"",//this.oNSHTotalAssets12InputText.getValue(),
-	     		"",//this.oNSHTotalAssets13InputText.getValue(),
-	     		"",//this.oNSHTotalAssets14InputText.getValue(),
-	     		"",//this.oNSHTotalDebt12InputText.getValue(),
-	     		"",//this.oNSHTotalDebt13InputText.getValue(),
-	     		"",//this.oNSHTotalDebt14InputText.getValue(),
-	     		"",//this.oNSHDistributableNetIncome12InputText.getValue(),
-	     		"",//this.oNSHDistributableNetIncome13InputText.getValue(),
-	     		"",//this.oNSHDistributableNetIncome14InputText.getValue(),
-	     		"",//this.oNSHNetProfit12InputText.getValue(),
-	     		"",//this.oNSHNetProfit13InputText.getValue(),
-	     		"",//this.oNSHNetProfit14InputText.getValue(),
-	     		"",//this.oNSHInterests12InputText.getValue(),
-	     		"",//this.oNSHInterests13InputText.getValue(),
-	     		"",//this.oNSHInterests14InputText.getValue(),
-	     		"",//this.oNSHTotalAssetsInBalanceSheet12InputText.getValue(),
-	     		"",//this.oNSHTotalAssetsInBalanceSheet13InputText.getValue(),		
-	     		""//this.oNSHTotalAssetsInBalanceSheet14InputText.getValue()
-	     				
-	     			
-	     				);
+	     				"", "", "", "", "", "", "",
+	     		        "", "", "", "", "", "", "",
+	     		        "", "", "", "", "", "", "",
+	     		        "", "", "", "", "", "", "",
+	     		        "", "", "", "", "", "", "", "", "");
 
 	     		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {			
 	     
