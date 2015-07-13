@@ -125,10 +125,10 @@
 	color: white !important;
 	font-size: 1rem;
 }
-.sapUiTab, .sapUiTabSel, .sapUiTabDsbl {
+/* .sapUiTab, .sapUiTabSel, .sapUiTabDsbl {
   font-size: 1rem;
  
-}
+} */
  
 .sapUiTabSel{
 	height: 2rem !important;

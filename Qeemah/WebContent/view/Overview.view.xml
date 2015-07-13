@@ -8,8 +8,18 @@
 														
 		<VBox id="idMainPageContent">
 		<html:Marquee onmouseover="this.stop();" onmouseout="this.start();">
-		<sap.ui.commons:TextView text="{i18n>BrowserMessage}" class="textcolorwhite" accessibleRole="Marquee"></sap.ui.commons:TextView>
-		 </html:Marquee>
+		<sap.ui.commons:TextView text="{i18n>BrowserMessage}" class="textcolorwhite"></sap.ui.commons:TextView>
+		<html:a href="https://www.microsoft.com/en-in/download/internet-explorer.aspx" target="_blank">
+		<sap.ui.commons:TextView text="{i18n>DownloadIE}" class="textcolorwhite"></sap.ui.commons:TextView>		
+		</html:a>
+		<html:a href="http://www.google.com/chrome/" target="_blank">
+		<sap.ui.commons:TextView text="{i18n>DownloadChrome}" class="textcolorwhite"></sap.ui.commons:TextView>		
+		</html:a>
+		<html:a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">
+		<sap.ui.commons:TextView text="{i18n>DownloadFF}" class="textcolorwhite"></sap.ui.commons:TextView>		
+		</html:a>
+	<!-- 	<Link text="{i18n>DownloadIE}" href="https://www.microsoft.com/en-in/download/internet-explorer.aspx" target="_blank"></Link>
+	 -->	 </html:Marquee>
 		
 			<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
 				<html:br />
