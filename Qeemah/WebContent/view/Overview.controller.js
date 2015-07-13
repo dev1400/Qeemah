@@ -3312,13 +3312,21 @@ handleRegisterUserButtonPress : function() {
 		this._oTermsInfoButton.setSrc("common/mime/terms.png");
 		//this._oSubmitInfoButton.setSrc("common/mime/submit.png");
 		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
-		if((this.oNSHTotalShareHolderPercentage === 0 || this.oNSHTotalShareHolderPercentage === 100) && 
-				this.oESHTotalShareHolderPercentage === 0){
-			that.submit();			
-			
-		}else if((this.oESHTotalShareHolderPercentage === 0 || this.oESHTotalShareHolderPercentage === 100) && 
-				this.oNSHTotalShareHolderPercentage === 0){
-			that.submit();
+		this.oSumOfESHPercentage = 0;
+		this.oSumOfNSHPercentage = 0;
+
+
+		for(var i=0; i < this.oESHCreateNewData.ESHCollection.length; i++){
+			this.oSumOfESHPercentage += this.oESHCreateNewData.ESHCollection[i].Percentage;
+		}
+		for(var j=0; j < this.oNSHCreateNewData.NSHCollection.length; j++){
+			this.oSumOfNSHPercentage += this.oNSHCreateNewData.NSHCollection[j].Percentage;
+		}
+		
+		this.oTotalShareHolderPercentage = this.oSumOfESHPercentage + this.oSumOfNSHPercentage;
+		
+		if(this.oTotalShareHolderPercentage === 100){
+			that.submit();		
 		}else{
 			if(!this.oShowAlertDialog.isOpen())
 			{
