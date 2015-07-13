@@ -1355,6 +1355,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			var nodeID = [];
 			var surveyID = [];
 			var answers = [];
+			var unitsBAQ = [];
+
 			this.oBAQMatrixLayout = this.getView().byId("idLI_BAQ_1_to_6MAtrixLayoutz");
 			
 			this.oTotalBAQQuestions = 0;
@@ -1362,7 +1364,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 			for(var i=0; i < oResponse.data.results.length; i++){
 				questions[i] = oResponse.data.results[i].Qtxtlg;
 				nodeID[i] = oResponse.data.results[i].NodeGuid;
-				surveyID[i] = oResponse.data.results[i].SurveyID;				
+				surveyID[i] = oResponse.data.results[i].SurveyID;
+				unitsBAQ[i] = oResponse.data.results[i].Units;
+
 			}
 			
 			j = 0 ;
@@ -1382,6 +1386,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 							
 							var oTextView = new sap.ui.commons.TextView("idBAQuestion"+l,{
 								text : questions[l],
+								});
+							var oBAQUnitsTextView = new sap.ui.commons.TextView("idBAQuestionUnits"+l,{
+								text : unitsBAQ[l],
 								});
 							var oSelect = new sap.m.Select("idBAQAnswer"+l);
 							
@@ -1416,6 +1423,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 							
 							this.oBAQMatrixLayout.createRow( oTextView );
 							this.oBAQMatrixLayout.createRow( oSelect );
+							this.oBAQMatrixLayout.createRow( oBAQUnitsTextView );
 							this.oBAQMatrixLayout.createRow( oFileUploader );
 							this.oBAQMatrixLayout.createRow( oTextViewAttachment );
 						
