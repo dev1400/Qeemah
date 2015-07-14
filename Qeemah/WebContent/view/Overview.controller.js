@@ -1963,7 +1963,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleEmailEntryLiveChange : function(){
 		//var email = this._oEmailInputText.getValue();
-		this.handleEmailEntryValidation(this.oInputEmail.getValue());		
+		return this.handleEmailEntryValidation(this.oInputEmail.getValue());		
 	},
 	handleEmailEntryValidation : function(email){
 		/*if(email.length>20){
@@ -1972,30 +1972,40 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}else*/ if(!(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test( email ))){
 			//console.log(email.length);
 			this._oRegEmailErrorMsg.setText(this.oModelHelper.getText("InvalidEmailFormat"));
-			if(email.length > 0){
+			this._oRegEmailErrorMsg.setVisible(true);
+            return false;
+			/*if(email.length > 0){
 			this._oRegEmailErrorMsg.setVisible(true);
 			}else{
 				this._oRegEmailErrorMsg.setVisible(false);
-			}
+			}*/
 		}else{
 			this._oRegEmailErrorMsg.setVisible(false);
+			return true;
 		}
 	},
 	
 	handleContactNumberEntryLiveChange : function(){
 		//var mobile = this._oMobileNumberInputText.getValue();
-		this.handleContactNumberValidation(this.oContactNumber.getValue());		
+		return this.handleContactNumberValidation(this.oContactNumber.getValue());		
 	},
 	handleContactNumberValidation : function(mobile){
 		if(mobile.length>10){
 			this._oRegMobileErrorMsg.setText(this.oModelHelper.getText("MobileMoreThan10Chars"));
 			this._oRegMobileErrorMsg.setVisible(true);
+			return false;
 		}else if(!(/^\d*$/.test( mobile ))){
 			this._oRegMobileErrorMsg.setText(this.oModelHelper.getText("MobileNumberCanContainOnlyDigits"));
 			this._oRegMobileErrorMsg.setVisible(true);
+			return false;
 		}	
-		else{
+		else if(mobile.length === 0){
+			this._oRegMobileErrorMsg.setText(this.oModelHelper.getText("MobileNumberCanContainOnlyDigits"));
+			this._oRegMobileErrorMsg.setVisible(true);
+			return false;
+		}else{
 			this._oRegMobileErrorMsg.setVisible(false);
+			return true;
 		}
 	},
 	
@@ -2018,44 +2028,73 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},*/
 	handlePasswordEntryLiveChange : function(){
 		//var password = this._oPasswordInputText.getValue();
-		this.handlePasswordEntryValidation(this.oPassword.getValue());		
+		return this.handlePasswordEntryValidation(this.oPassword.getValue());		
 	},
 	handlePasswordEntryValidation : function(password){
 		if(password.length>10){
 			this._oPasswordErrorMsg.setText(this.oModelHelper.getText("PasswordMoreThan10Chars"));
 			this._oPasswordErrorMsg.setVisible(true);
+			return false;
+		}else if(password.length === 10){
+			this._oPasswordErrorMsg.setText(this.oModelHelper.getText("PasswordMoreThan0Chars"));
+			this._oPasswordErrorMsg.setVisible(true);
+			return false;
 		}else{
 			this._oPasswordErrorMsg.setVisible(false);
+			return true;
 		}
 	},
 	handleCompanyNameEntryLiveChange : function(){
 		//var firstName = this._oFirstNameInputText.getValue();
-		this.handleCompanyNameValidation(this.oCompany.getValue());		
+		return this.handleCompanyNameValidation(this.oCompany.getValue());		
 	},
 	handleContactNameEntryLiveChange : function(){
 		
-		this.handleContactNameValidation(this.oContactPersonName.getValue());		
+		return this.handleContactNameValidation(this.oContactPersonName.getValue());		
 	},
 	handleContactNameValidation : function(name){
 		if(name.length>40){
 			this._oLastNameErrorMsg.setText(this.oModelHelper.getText("LastNameTextMoreThan40Chars"));
 			this._oLastNameErrorMsg.setVisible(true);
+			
+			return false;
 		}else if(/[^a-zA-Z\s]/.test( name )){
 			this._oLastNameErrorMsg.setText(this.oModelHelper.getText("LastNameTextOnlyAlphabets"));
 			this._oLastNameErrorMsg.setVisible(true);
+			
+			return false;
+		}else if(name.length === 0){
+			this._oLastNameErrorMsg.setText(this.oModelHelper.getText("LastNameTextOnlyAlphabets"));
+			this._oLastNameErrorMsg.setVisible(true);
+			
+			return false;
 		}else{
 			this._oLastNameErrorMsg.setVisible(false);
+			
+			return true;
 		}
 	},
 	handleCompanyNameValidation : function(name){
 		if(name.length>40){
 			this._oFirstNameErrorMsg.setText(this.oModelHelper.getText("FirstNameTextMoreThan40Chars"));
 			this._oFirstNameErrorMsg.setVisible(true);
+			
+			return false;
 		}else if(/[^a-zA-Z\s]/.test( name )){
 			this._oFirstNameErrorMsg.setText(this.oModelHelper.getText("FirstNameTextOnlyAlphabets"));
 			this._oFirstNameErrorMsg.setVisible(true);
+			
+			return false;
+		}else if(name.length === 0){
+			this._oFirstNameErrorMsg.setText(this.oModelHelper.getText("FirstNameTextOnlyAlphabets"));
+			this._oFirstNameErrorMsg.setVisible(true);
+			
+			return false;
 		}else{
 			this._oFirstNameErrorMsg.setVisible(false);
+			
+			return true;
+
 		}
 	},
 	handleReadTermsandConditionsPress : function(){
@@ -2520,7 +2559,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oAlertTextView = sap.ui.getCore().byId("idAlertFragmentTextView");
 		
 		
-
+		 /*this.oUserID.attachBrowserEvent("blur", 
+		 function(){
+		     console.log("Handler");	    
+		 },function(){
+		     console.log("Listener");	    
+		 });*/
+		
 	},
 
 	/**
@@ -2969,6 +3014,12 @@ userSignIn : function(userID, password){
  */
 handleRegisterUserButtonPress : function() {
 		var that = this;
+		//console.log()
+		if(this.handleCompanyNameEntryLiveChange() &&
+		   this.handleContactNameEntryLiveChange() &&
+		   this.handleContactNumberEntryLiveChange() &&
+		   this.handleEmailEntryLiveChange() && 
+		   this.handlePasswordEntryLiveChange()){
 		var oUserID, oPassword, oInputEmail, oContactNumber, oContactPersonName, oCompany;
 		
 		oUserID = this.oUserID.getValue();
@@ -2976,27 +3027,14 @@ handleRegisterUserButtonPress : function() {
 		oInputEmail = this.oInputEmail.getValue();
 		oContactNumber = this.oContactNumber.getValue();
 		oContactPersonName = this.oContactPersonName.getValue();
-		oCompany = this.oCompany.getValue();
-		
-		/*var oInputFirstName = this.getView().byId("idFirstNameInputText")
-		.getValue();
-		var oInputLastName = this.getView().byId("idLastNameInputText")
-		.getValue();
-		
-		var oInputMobileNumber = this.getView().byId("idInputMobileNumber")
-				.getValue();
-		var oInputEmail = this.getView().byId("idInputEmail").getValue();
-		var oPassword = this.getView().byId("idInputPassword").getValue();*/
-		
+		oCompany = this.oCompany.getValue();	
+			
 		if (oUserID.length > 0 && oPassword.length > 0
 				&& oInputEmail.length > 0 && oContactNumber.length > 0 && oContactPersonName.length > 0) {
 			
 			var oRequestFinishedDeferred = this.oModelHelper.registerUser(oUserID, oPassword, oInputEmail, oContactNumber, oContactPersonName, oCompany);
 			
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-				
-				//console.log(oResponse.Return);
-				//console.dir(oResponse);
 				
 				this.oUserID.setValue("");
 				this.oPassword.setValue("");
@@ -3011,7 +3049,7 @@ handleRegisterUserButtonPress : function() {
 					that.handleLoginButtonPress();
 					
 					this.getView().byId("idSignInUsernameInput").setValue(oResponse.Userid);
-					//idSignInPasswordInput
+					
 				}
 				
 				
@@ -3023,6 +3061,7 @@ handleRegisterUserButtonPress : function() {
 		} else {
 			sap.m.MessageToast.show(this.oModelHelper
 					.getText("PleaseEnterRequiredFields"));
+		}
 		}
 	},
 	handleShowInvestorIDDialogCloseButton : function(oEvent) {

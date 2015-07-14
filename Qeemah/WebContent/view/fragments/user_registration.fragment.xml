@@ -76,7 +76,7 @@
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<Input type="Text" required="true" id="idCompanyInputText"
-							liveChange="handleCompanyNameEntryLiveChange" />
+							 /><!-- liveChange="handleCompanyNameEntryLiveChange" -->
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:MatrixLayoutRow>
@@ -97,7 +97,8 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" id="idContactNameInputText" liveChange="handleContactNameEntryLiveChange"/>
+						<Input type="Text" required="true" id="idContactNameInputText" />
+						<!-- liveChange="handleContactNameEntryLiveChange" -->
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				
@@ -143,7 +144,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" id="idContactNumberInputText" liveChange="handleContactNumberEntryLiveChange"/><!--  -->
+						<Input type="Text" required="true" id="idContactNumberInputText" /><!--liveChange="handleContactNumberEntryLiveChange"  -->
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				
@@ -168,7 +169,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" id="idEmailInputText" liveChange="handleEmailEntryLiveChange"/><!--  -->
+						<Input type="Text" required="true" id="idEmailInputText" /><!--liveChange="handleEmailEntryLiveChange"  -->
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				
@@ -205,7 +206,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Password" required="true" id="idPasswordInputText" liveChange="handlePasswordEntryLiveChange"/><!--  -->
+						<Input type="Password" required="true" id="idPasswordInputText" /><!--liveChange="handlePasswordEntryLiveChange"  -->
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				
