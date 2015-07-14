@@ -3301,6 +3301,40 @@ handleRegisterUserButtonPress : function() {
 		
 		this.oValidationHelper.validateBasicInfo(this);
 		this.handlePreviewLicenseInfoTabStripSelect();
+		
+		
+		
+		this.oPreviewESHCreateNSHTable = this.getView().byId("idPreviewESHCreateNSHTable");
+		this.oPreviewESHCreateNSHTable.unbindItems();
+
+		this.oPreviewESHCreateNSHTable.setModel(this.oESHCreateNewDataJSONData);
+		
+		this.oPreviewESHCreateNSHTable.bindItems("/ESHCollection",new sap.m.ColumnListItem({
+	        cells : [ new sap.ui.commons.TextView({
+	          text : "{Bpno}", enabled : false
+	        }),new sap.ui.commons.TextView({
+	          text : "{Bpname}", enabled : false
+	        }),  new sap.ui.commons.TextView({
+	          text : "{Percentage}", enabled : false
+	        })]
+	      }));
+		
+		this.oPreviewNSHCreateNSHTable = this.getView().byId("idPreviewNSHCreateNSHTable");
+		this.oPreviewNSHCreateNSHTable.unbindItems();		
+		this.oPreviewNSHCreateNSHTable.setModel(that.oNSHCreateNewDataJSONData);							         		
+		this.oPreviewNSHCreateNSHTable.bindItems("/NSHCollection", new sap.m.ColumnListItem({
+	        cells : [ new sap.ui.commons.TextView({
+		          text : "{EntityFname}", enabled : false
+		        }),new sap.ui.commons.TextView({
+		          text : "{EntityLname}", enabled : false
+		        }),  new sap.ui.commons.TextView({
+		          text : "{ShldrType}", enabled : false
+		        }),  new sap.ui.commons.TextView({
+		          text : "{Percentage}", enabled : false
+		        })]
+		      }));
+
+
 	},
 	handleTermsInfoButtonClick : function(){
 		this._oShareHoldersInfoContent.setVisible(false);

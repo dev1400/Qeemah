@@ -12,16 +12,17 @@
    
     
     </VBox> -->
-     
     <sap.ui.commons.layout:MatrixLayout
-		layoutFixed="false" columns="4" width="68.5rem">
+		layoutFixed="false" width="68.5rem">
+		<sap.ui.commons.layout:rows>
 		
-		<sap.ui.commons.layout:MatrixLayoutRow>
+		
+									<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin" colSpan="4">
+						hAlign="Begin" >
 						<sap.ui.commons.layout:content>
-							<sap.ui.commons:TextView text="{i18n>PreviewShareHolderInfo}" design="H1"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="{i18n>ShareHolderDetails}" design="H1"></sap.ui.commons:TextView>
 							<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -29,8 +30,110 @@
 					
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:rows>
+			</sap.ui.commons.layout:MatrixLayout>
+			
+     <VBox justifyContent="Center" alignItems="Center">
+     
+    <sap.ui.commons.layout:MatrixLayout
+		layoutFixed="false" id="idPReviewShareHolderMAtrixLayout">
 		
-		<sap.ui.commons.layout:rows>
+ 		<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="Begin" >
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>ExistingShareHolder}" design="H1"></sap.ui.commons:TextView>
+							<!-- <sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider> -->
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:cells>
+			<sap.ui.commons.layout:MatrixLayoutCell >
+			
+			<Table id="idPreviewESHCreateNSHTable" width="62rem">
+			<columns>
+				<Column width="5em">
+					<Text text="{i18n>ShareholderEntityNo}" />
+				</Column>
+				<Column width="5em">
+					<Text text="{i18n>ShareHolderName}" />
+				</Column>
+				<Column width="5em">
+					<Text text="{i18n>Percentage}" />
+				</Column>
+			</columns>
+			</Table>
+			
+			</sap.ui.commons.layout:MatrixLayoutCell >
+			</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="Begin" >
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>NewShareHolder}" design="H1"></sap.ui.commons:TextView>
+							<!-- <sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider> -->
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:cells>
+			<sap.ui.commons.layout:MatrixLayoutCell>
+			<Table id="idPreviewNSHCreateNSHTable" width="62rem">
+						<columns>
+			
+			<Column width="5em" hAlign = "Center">
+				<Text text="{i18n>FirstName}" />
+			</Column>
+			<Column width="5em" hAlign = "Center">
+				<Text text="{i18n>LastName}" />
+			</Column>
+			<Column width="7em" hAlign = "Center">
+				<Text text="{i18n>ShareholderType}" />
+			</Column>
+			<Column width="5em" hAlign = "Center">
+				<Text text="{i18n>Percentage}" />
+			</Column>
+			</columns>
+			</Table>
+			</sap.ui.commons.layout:MatrixLayoutCell>
+			</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			
+		<!-- 	
+			<sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:cells>
+			<sap.ui.commons.layout:MatrixLayoutCell>
+			
+			<Table id="idPreviewNSHCreateNSHTable" width="62rem">
+			<Column width="5em" hAlign = "Center">
+				<Text text="{i18n>FirstName}" />
+			</Column>
+			<Column width="5em" hAlign = "Center">
+				<Text text="{i18n>LastName}" />
+			</Column>
+			<Column width="7em" hAlign = "Center">
+				<Text text="{i18n>ShareholderType}" />
+			</Column>
+			<Column width="5em" hAlign = "Center">
+				<Text text="{i18n>Percentage}" />
+			</Column>
+			</Table>
+			
+			</sap.ui.commons.layout:MatrixLayoutCell>
+			</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow> -->
+		
+	<!--	<sap.ui.commons.layout:rows>
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
@@ -151,9 +254,9 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<!-- <HBox justifyContent="End"> -->
+							<HBox justifyContent="End">
 								<Input enabled="false" type="Text" width="25em" />
-							<!-- </HBox> -->
+							</HBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -184,9 +287,9 @@
 
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<!-- <HBox justifyContent="End"> -->
+							<HBox justifyContent="End">
 								<Input enabled="false" type="Text" width="25em" />
-							<!-- </HBox> -->
+							</HBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -203,11 +306,11 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<HBox justifyContent="End" alignItems="Center">
-							<!-- <Input enabled="false" type="Number" placeholder="{i18n>CountryCode}" enabled="false" 
-								width="8em" /> -->
-							<Input enabled="false" type="Number" width="25em" /><!-- placeholder="{i18n>Telephone}" -->
-							<!-- <Input enabled="false" type="Number" placeholder="{i18n>Extension}" width="8em" 
-								/> -->
+							<Input enabled="false" type="Number" placeholder="{i18n>CountryCode}" enabled="false" 
+								width="8em" />
+							<Input enabled="false" type="Number" width="25em" />placeholder="{i18n>Telephone}"
+							<Input enabled="false" type="Number" placeholder="{i18n>Extension}" width="8em" 
+								/>
 						</HBox>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
@@ -219,9 +322,9 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<!-- <HBox justifyContent="End"> -->
+							<HBox justifyContent="End">
 								<Input enabled="false" type="Text" width="25em" />
-							<!-- </HBox> -->
+							</HBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -241,9 +344,9 @@
 							<Input enabled="false" type="Text" width="25em" />
 						</HBox>
 
-						<!-- <HBox justifyContent="End" alignItems="Center"> <Input enabled="false" type="Number" 
+						<HBox justifyContent="End" alignItems="Center"> <Input enabled="false" type="Number" 
 							placeholder="{i18n>CountryCode}" enabled="false" width="8em" /> <Input enabled="false" type="Number" 
-							placeholder="{i18n>MobilePhone}" width="17em" /> </HBox> -->
+							placeholder="{i18n>MobilePhone}" width="17em" /> </HBox>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
@@ -254,9 +357,9 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<!-- <HBox justifyContent="End"> -->
+							<HBox justifyContent="End">
 								<Input enabled="false" type="Text" width="25em" />
-							<!-- </HBox> -->
+							</HBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -276,9 +379,9 @@
 							<Input enabled="false" type="Text" width="25em" />
 						</HBox>
 
-						<!-- <HBox justifyContent="End" alignItems="Center"> <Input enabled="false" type="Number" 
+						<HBox justifyContent="End" alignItems="Center"> <Input enabled="false" type="Number" 
 							placeholder="{i18n>CountryCode}" enabled="false" width="8em" /> <Input enabled="false" type="Number" 
-							placeholder="{i18n>Fax}" width="17em" /> </HBox> -->
+							placeholder="{i18n>Fax}" width="17em" /> </HBox>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
@@ -361,11 +464,12 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow>
-		</sap.ui.commons.layout:rows>
+		</sap.ui.commons.layout:rows> -->
 
 		
 
 	</sap.ui.commons.layout:MatrixLayout>
+	</VBox>
     
     
    
