@@ -1009,21 +1009,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 		*/
 		
 		}
-		
-		
-		
-
-		
-		
-		/*that = this;
-		setTimeout(function() {
-		
-		that.closeBusyDialog();
-		sap.m.MessageToast.show(that.oModelHelper
-					.getText("Saved"));
-					
-			
-        }, 8000);*/
 	},
 	saveLicenseInfoTab : function(){
 		var that = this;
@@ -1471,6 +1456,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			var surveyID = [];
 			var answers = [];
 			var unitsBAQ = [];
+			var attachmentFlag = [];
 
 			this.oBAQMatrixLayout = this.getView().byId("idLI_BAQ_1_to_6MAtrixLayoutz");
 			
@@ -1481,7 +1467,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 				nodeID[i] = oResponse.data.results[i].NodeGuid;
 				surveyID[i] = oResponse.data.results[i].SurveyID;
 				unitsBAQ[i] = oResponse.data.results[i].Units;
-
+				attachmentFlag[i] = oResponse.data.results[i].Attachment;
 			}
 			
 			j = 0 ;
@@ -1506,6 +1492,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 								text : unitsBAQ[l],
 								});
 							var oSelect = new sap.m.Select("idBAQAnswer"+l);
+							oSelect.setWidth("8rem");
 							
 							var oFileUploader = new sap.ui.unified.FileUploader("idBAQFileUploader"+l,{
 								icon : "common/mime/attachment.png",
@@ -1536,11 +1523,43 @@ sap.ui.controller("com.sagia.view.Overview", {
 							
 							oTextView.data("idBAQuestion"+l,nodeID[l]);
 							
-							this.oBAQMatrixLayout.createRow( oTextView );
-							this.oBAQMatrixLayout.createRow( oSelect );
-							this.oBAQMatrixLayout.createRow( oBAQUnitsTextView );
-							this.oBAQMatrixLayout.createRow( oFileUploader );
-							this.oBAQMatrixLayout.createRow( oTextViewAttachment );
+							//this.oBAQMatrixLayout.createRow( oTextView );
+							
+							var oRow0 = new sap.ui.commons.layout.MatrixLayoutRow();
+							
+							var oCell0 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell0.setColSpan(2);
+							oCell0.addContent(oTextView);
+							oRow0.addCell(oCell0);							
+							this.oBAQMatrixLayout.addRow(oRow0);
+
+							
+							var oRow = new sap.ui.commons.layout.MatrixLayoutRow();
+							
+							var oCell1 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell1.addContent(oSelect);
+							
+							var oCell2 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell2.addContent(oBAQUnitsTextView);							
+								
+							oRow.addCell(oCell1);
+							oRow.addCell(oCell2);
+							
+							this.oBAQMatrixLayout.addRow(oRow);
+
+							//this.oBAQMatrixLayout.createRow( oSelect );
+							//this.oBAQMatrixLayout.createRow( oBAQUnitsTextView );
+							if(attachmentFlag[l] === "X"){
+								var oRow2 = new sap.ui.commons.layout.MatrixLayoutRow();
+
+								var oCell3 = new sap.ui.commons.layout.MatrixLayoutCell();
+								oCell3.setColSpan(2);
+								oCell3.addContent(oFileUploader);
+								oRow2.addCell(oCell3);							
+								this.oBAQMatrixLayout.addRow(oRow2);
+							}
+							
+							//this.oBAQMatrixLayout.createRow( oTextViewAttachment );
 						
 							this.oTotalBAQQuestions++;
 						}			

@@ -15,7 +15,7 @@
   <html:br/>
 
     <sap.ui.commons.layout:MatrixLayout
-		id="idLI_BAQ_1_to_6MAtrixLayoutz" layoutFixed="false">
+		id="idLI_BAQ_1_to_6MAtrixLayoutz" layoutFixed="false" widths="5rem">
 		<sap.ui.commons.layout:rows>
 			<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
