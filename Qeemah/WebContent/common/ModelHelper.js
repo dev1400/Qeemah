@@ -603,7 +603,7 @@ com.sagia.common.ModelHelper = {
 	 */
 	Submit : function(oRefID) {
 		// Open busy dialog
-		//this.openBusyDialog();
+		this.openBusyDialog();
 
 		var that = this;
 		var oEntry = {};
@@ -621,13 +621,13 @@ com.sagia.common.ModelHelper = {
 				//console.log(oData);
 				oRequestFinishedDeferred.resolve(oData);
 				// close busy dialog
-				//that.closeBusyDialog();
+				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				/*console.log(oResponse);*/
 				oRequestFinishedDeferred.resolve();
 				// close busy dialog
-				//that.closeBusyDialog();
+				that.closeBusyDialog();
 			},
 			async : true,
 			urlParameters : oEntry
