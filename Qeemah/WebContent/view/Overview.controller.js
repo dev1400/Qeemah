@@ -596,6 +596,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 			this.oLILIDivisionComboBox.setModel(oResponse);
 			
+			//console.log(this.oLILIDivisionComboBox.getSelectedItem());
+			/*this.oLILIDivisionComboBox.attachSelectionChange(function(){
+				console.log(this.oLILIDivisionComboBox);
+			});*/
+			
 		}, this));	
 	},
 	handleLILIBusinessTypeComboBoxSelectionChange : function(){
@@ -1640,7 +1645,19 @@ sap.ui.controller("com.sagia.view.Overview", {
 							
 							if(this.oLILIDivisionComboBox.getSelectedKey() === ""){
 								this.oLILIDivisionComboBox.setSelectedKey(oResponse.data.results[i].IsicDivision);
+								
+								//console.log(this.oLILIDivisionComboBox.getDefaultSelectedItem());
+								var that = this;
+								/*this.oLILIDivisionComboBox.attachSelectionChange(function(){
+									console.log(that.oLILIDivisionComboBox.getSelectedKey());
+									console.log(that.oLILIDivisionComboBox.getSelectedItem());
+
+								});*/
+								
 								this.oLILIDivisionComboBox.fireSelectionChange();
+								
+
+								
 							}
 							
 							for(var j=0; j < oResponse.data.results.length; j++){							
@@ -1696,6 +1713,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 						 
 						//this.oLILIActivityDescriptionTextArea.setValue(oResponse.data.results[0].ActDesc);
 						
+						 //this.oLILIPreviewSectionTextView = this.getView().byId("idLILIPreviewSectionTextView");
+						// console.log(this.oLILIDivisionComboBox.getSelectedItem());
+						 //this.oLILIPreviewSectionTextView.setText(this.oLILIDivisionComboBox.getSelectedItem().getText());
+							
 						
 						}
 							
@@ -1713,7 +1734,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//console.log(oControlEvent.getParameters().index);
 		that = this;
 		//if(!this.PreviewBeenFired)
-	    //{
+	    //{		    
      		this.oLicenceInfoPreviewContentVBox = this.getView().byId("idLicenceInfoPreviewContentVBox");
      		this.oLicenceInfoPreviewContentVBox.setVisible(true);
 
@@ -1726,46 +1747,142 @@ sap.ui.controller("com.sagia.view.Overview", {
 			if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== ""){
 	     		this.oLicenceInfoPreviewContentVBox.setVisible(false);
 			}else{
-				this.oLILIPreviewSectionTextView = this.getView().byId("idLILIPreviewSectionTextView");
-				this.oLILIPreviewSectionTextView.setText(this.oLILISectionComboBox.getValue());//getSelectedItem().getText());
 				
-				this.oLILIPreviewDivisionTextView = this.getView().byId("idLILIPreviewDivisionTextView");
-				this.oLILIPreviewDivisionTextView.setText(this.oLILIDivisionComboBox.getValue());//.getSelectedItem().getText());
-				
-				this.oLILIPreviewGroupTextView = this.getView().byId("idLILIPreviewGroupTextView");
-				
-				var oGroupText = "";
-				
-				for(var i=0; i < this.oLILIGroupComboBox.getSelectedItems().length; i++){
-					oGroupText += this.oLILIGroupComboBox.getSelectedItems()[i].getText()+" , ";
-				} 
-				
-				this.oLILIPreviewGroupTextView.setText(oGroupText);
-				
-				this.oLILIPreviewClassTextView = this.getView().byId("idLILIPreviewClassTextView");
-				
-                var oClassText = "";
-				
-				for(var i=0; i < this.oLILIClassMultiComboBox.getSelectedItems().length; i++){
-					oClassText += this.oLILIClassMultiComboBox.getSelectedItems()[i].getText()+" , ";
-				} 
-				
-				this.oLILIPreviewClassTextView.setText(oClassText);
-				
-				
-                this.oLILIPreviewLicenseActivityTextView = this.getView().byId("idLILIPreviewLicenseActivityTextView");
-				
-                var oLicenseActivityText = "";
-				
-				for(var i=0; i < this.oLILILicenseActivityMultiComboBox.getSelectedItems().length; i++){
-					oLicenseActivityText += this.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText()+" , ";
-				} 
-				
-				this.oLILIPreviewLicenseActivityTextView.setText(oLicenseActivityText);
+				if(!this.previewLILIViewsCreated)
+					{
+						this.previewLILIViewsCreated = true;
+						this.oPreviewLicenseInfoMAtrixLayout = this.getView().byId("idPreviewLicenseInfoMAtrixLayout");
+					    
+					    
+					    this.oClonedLILISectionComboBox = this.oLILISectionComboBox.clone();
+					    this.oClonedLILISectionComboBox.setSelectedKey( this.oLILISectionComboBox.getSelectedKey());
+					    this.oClonedLILISectionComboBox.setEnabled(false);
+					    
+					    this.oClonedLILIDivisionComboBox = this.oLILIDivisionComboBox.clone();
+					    this.oClonedLILIDivisionComboBox.setSelectedKey( this.oLILIDivisionComboBox.getSelectedKey());
+					    this.oClonedLILIDivisionComboBox.setEnabled(false);
+					    
+					    this.oClonedLILIGroupComboBox = this.oLILIGroupComboBox.clone();
+					    this.oClonedLILIGroupComboBox.setSelectedKeys( this.oLILIGroupComboBox.getSelectedKeys());
+					    this.oClonedLILIGroupComboBox.setEnabled(false);
+					    
+					    this.oClonedLILIClassMultiComboBox = this.oLILIClassMultiComboBox.clone();
+					    this.oClonedLILIClassMultiComboBox.setSelectedKeys( this.oLILIClassMultiComboBox.getSelectedKeys());
+					    this.oClonedLILIClassMultiComboBox.setEnabled(false);
+					    
+					    this.oClonedLILILicenseActivityMultiComboBox = this.oLILILicenseActivityMultiComboBox.clone();
+					    this.oClonedLILILicenseActivityMultiComboBox.setSelectedKeys( this.oLILILicenseActivityMultiComboBox.getSelectedKeys());
+					    this.oClonedLILILicenseActivityMultiComboBox.setEnabled(false);
+					    
+					    this.oLILILicenseActivityDescTextViewContent = new sap.ui.commons.TextView({enabled : false});
+					    this.oLILILicenseActivityDescTextViewContent.setWidth("25rem");
+					    this.oLILILicenseActivityDescTextViewContent.setText(this.oLILIActivityDescriptionTextArea.getValue());
+					    
+					    var oLILISectionTextView = new sap.ui.commons.TextView({
+							text : this.oModelHelper.getText("Section")
+							});
+					    
+					    var oLILIDivisionTextView = new sap.ui.commons.TextView({
+							text : this.oModelHelper.getText("Division")
+							});
+					    
+					    var oLILIGroupTextView = new sap.ui.commons.TextView({
+							text : this.oModelHelper.getText("Group")
+							});
+					    var oLILIClassTextView = new sap.ui.commons.TextView({
+							text : this.oModelHelper.getText("Class")
+							});
+					    
+					    var oLILILicenseActivityTextView = new sap.ui.commons.TextView({
+							text : this.oModelHelper.getText("LicenseActivity")
+							});
+					    var oLILILicenseActivityDescTextView = new sap.ui.commons.TextView({
+							text : this.oModelHelper.getText("ActivityDescription")
+							});
+					    
+					    var oRow0 = new sap.ui.commons.layout.MatrixLayoutRow();
+					    
+					    var oCell0 = new sap.ui.commons.layout.MatrixLayoutCell();
+						oCell0.addContent(oLILISectionTextView);
+						
+						var oCell1 = new sap.ui.commons.layout.MatrixLayoutCell();
+						oCell1.addContent(this.oClonedLILISectionComboBox);
+						
+						oRow0.addCell(oCell0);
+						oRow0.addCell(oCell1);	
+						
+						this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow0);
+	
+					    var oRow1 = new sap.ui.commons.layout.MatrixLayoutRow();
+					    
+						var oCell2 = new sap.ui.commons.layout.MatrixLayoutCell();
+						oCell2.addContent(oLILIDivisionTextView);
+						
+						var oCell3 = new sap.ui.commons.layout.MatrixLayoutCell();
+						oCell3.addContent(this.oClonedLILIDivisionComboBox);
+						
+						oRow1.addCell(oCell2);
+						oRow1.addCell(oCell3);			
+						this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow1);
+						
+                        var oRow2 = new sap.ui.commons.layout.MatrixLayoutRow();
+					    
+						var oCell4 = new sap.ui.commons.layout.MatrixLayoutCell();
+						oCell4.addContent(oLILIGroupTextView);
+						
+						var oCell5 = new sap.ui.commons.layout.MatrixLayoutCell();
+						oCell5.addContent(this.oClonedLILIGroupComboBox);
+						
+						oRow2.addCell(oCell4);
+						oRow2.addCell(oCell5);			
+						this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow2);
+						
+                        var oRow3 = new sap.ui.commons.layout.MatrixLayoutRow();
+					    
+						var oCell6 = new sap.ui.commons.layout.MatrixLayoutCell();
+						oCell6.addContent(oLILIClassTextView);
+						
+						var oCell7 = new sap.ui.commons.layout.MatrixLayoutCell();
+						oCell7.addContent(this.oClonedLILIClassMultiComboBox);
+						
+						oRow3.addCell(oCell6);
+						oRow3.addCell(oCell7);			
+						this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow3);
+						
+                        var oRow4 = new sap.ui.commons.layout.MatrixLayoutRow();
+					    
+						var oCell8 = new sap.ui.commons.layout.MatrixLayoutCell();
+						oCell8.addContent(oLILILicenseActivityTextView);
+						
+						var oCell9 = new sap.ui.commons.layout.MatrixLayoutCell();
+						oCell9.addContent(this.oClonedLILILicenseActivityMultiComboBox);
+						
+						oRow4.addCell(oCell8);
+						oRow4.addCell(oCell9);			
+						this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow4);
+						
+                        var oRow5 = new sap.ui.commons.layout.MatrixLayoutRow();
+					    
+						var oCell10 = new sap.ui.commons.layout.MatrixLayoutCell();
+						oCell10.addContent(oLILILicenseActivityDescTextView);
+						
+						var oCell11 = new sap.ui.commons.layout.MatrixLayoutCell();
+						oCell11.addContent(this.oLILILicenseActivityDescTextViewContent);
+						
+						oRow5.addCell(oCell10);
+						oRow5.addCell(oCell11);			
+						this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow5);
+						
+						
+					}else{
+					    this.oClonedLILISectionComboBox.setSelectedKey( this.oLILISectionComboBox.getSelectedKey());
+					    this.oClonedLILIDivisionComboBox.setSelectedKey( this.oLILIDivisionComboBox.getSelectedKey());
+					    this.oClonedLILIGroupComboBox.setSelectedKeys( this.oLILIGroupComboBox.getSelectedKeys());
+					    this.oClonedLILIClassMultiComboBox.setSelectedKeys( this.oLILIClassMultiComboBox.getSelectedKeys());
+					    this.oClonedLILILicenseActivityMultiComboBox.setSelectedKeys( this.oLILILicenseActivityMultiComboBox.getSelectedKeys());
+					    this.oLILILicenseActivityDescTextViewContent.setText(this.oLILIActivityDescriptionTextArea.getValue());
 
-				this.oLILIPreviewActivityDescriptionTextView = this.getView().byId("idLILIPreviewActivityDescriptionTextView");
-				this.oLILIPreviewActivityDescriptionTextView.setText(this.oLILIActivityDescriptionTextArea.getValue());
-				
+					}
 				
 			}
 			
@@ -2565,6 +2682,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 		 },function(){
 		     console.log("Listener");	    
 		 });*/
+		
+		/*this.oLILISectionComboBox.attachChange(function(){
+			console.log("Changed");
+		})*/
+		
+		
+		/*this.oLILIDivisionComboBox.attachSelectionChange(function(){
+			console.log(this.oLILIDivisionComboBox);
+		});*/
+		
 		
 	},
 

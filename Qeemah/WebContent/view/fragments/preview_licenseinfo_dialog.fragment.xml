@@ -32,7 +32,7 @@
 	<!-- Child license activity Q start -->
 	
 							<sap.ui.commons.layout:MatrixLayout
-								layoutFixed="false">
+								layoutFixed="false" id="idPreviewLicenseInfoMAtrixLayout">
 								
 								
 								
@@ -70,16 +70,16 @@
 									
 	<sap.ui.commons.layout:MatrixLayout
 		layoutFixed="false">
-								<sap.ui.commons.layout:MatrixLayoutRow>
+								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons:TextView text="{i18n>Section}"></sap.ui.commons:TextView>
 											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<!-- <ComboBox enabled="false" width="25em" items="{/LILISectionCollection}" id="idLILIPreviewSectionComboBox" selectionChange="handleLILISectionSelectionComboBox">
+										<ComboBox enabled="false" width="25em" items="{/LILISectionCollection}" id="idLILIPreviewSectionComboBox" selectionChange="handleLILISectionSelectionComboBox">
 										     <sap.ui.core:ListItem key="{IsicSection}" text="{IsicDescription}" id="idLILIPreviewSectionComboBoxitem"/>
-										</ComboBox> -->
+										</ComboBox>
 									<sap.ui.commons:TextView id="idLILIPreviewSectionTextView" enabled="false"></sap.ui.commons:TextView>
 									
 									
@@ -93,17 +93,17 @@
 										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<!-- <ComboBox enabled="false" width="25em"  items="{/LILIDivisionCollection}" id="idLILIPreviewDivisionComboBox" selectionChange="handleLILIDivisionSelectionComboBox">
+										<ComboBox enabled="false" width="25em"  items="{/LILIDivisionCollection}" id="idLILIPreviewDivisionComboBox" selectionChange="handleLILIDivisionSelectionComboBox">
 										     <sap.ui.core:ListItem key="{IsicDivision}" text="{IsicDescription}" id="idLILIPreviewDivisionComboBoxListitem"/>
-										</ComboBox> -->
+										</ComboBox>
 										<sap.ui.commons:TextView id="idLILIPreviewDivisionTextView" enabled="false"></sap.ui.commons:TextView>
 									
 									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:MatrixLayoutRow> -->
 								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 									
 								</sap.ui.commons.layout:MatrixLayoutRow> -->
-								<sap.ui.commons.layout:MatrixLayoutRow>
+								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										
 											<sap.ui.commons:TextView text="{i18n>Group}"></sap.ui.commons:TextView>
@@ -111,14 +111,14 @@
 										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<!-- <MultiComboBox enabled="false" selectionChange="handleLILIGropuMultiSelectionComboBoxChange"  id="idLILIPreviewGroupComboBox"
+										<MultiComboBox enabled="false" selectionChange="handleLILIGropuMultiSelectionComboBoxChange"  id="idLILIPreviewGroupComboBox"
 										selectionFinish="handleSelectionFinish"    items="{/LILIGroupCollection}" width="25em">
                                         <sap.ui.core:ListItem key="{IsicGroup}" text="{IsicDescription}" id="idLILIPreviewGroupComboBoxListitem"/>
-                                     </MultiComboBox> -->
+                                     </MultiComboBox>
                                      <sap.ui.commons:TextView id="idLILIPreviewGroupTextView" enabled="false"></sap.ui.commons:TextView>
 									</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutRow>
+									</sap.ui.commons.layout:MatrixLayoutRow> -->
+									<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										
 											<sap.ui.commons:TextView text="{i18n>Class}"></sap.ui.commons:TextView>
@@ -126,28 +126,28 @@
 										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<!-- <MultiComboBox enabled="false" selectionChange="handleLILIClassMultiSelectionComboBoxChange"  id="idLILIPreviewClassMultiComboBox"
+										<MultiComboBox enabled="false" selectionChange="handleLILIClassMultiSelectionComboBoxChange"  id="idLILIPreviewClassMultiComboBox"
 										selectionFinish="handleSelectionFinish"    items="{/LILIClassCollection}" width="25em">
                                         <sap.ui.core:ListItem key="{IsicClass}" text="{IsicDescription}" id="idLILIPreviewClassMultiComboBoxListitem"/> key="{IsicClass}" 
-                                     </MultiComboBox> -->
+                                     </MultiComboBox>
                                       <sap.ui.commons:TextView id="idLILIPreviewClassTextView" enabled="false"></sap.ui.commons:TextView>
 									
 									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:MatrixLayoutRow> -->
 							<!-- 	<sap.ui.commons.layout:MatrixLayoutRow>
 									
 								</sap.ui.commons.layout:MatrixLayoutRow> -->
-								<sap.ui.commons.layout:MatrixLayoutRow>
+								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										
 											<sap.ui.commons:TextView text="{i18n>LicenseActivity}"></sap.ui.commons:TextView>
 											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<!-- <MultiComboBox enabled="false" selectionChange="handleLILILicenseActivityMultiSelectionComboBoxChange"  id="idLILIPreviewLicenseActivityMultiComboBox"
+										<MultiComboBox enabled="false" selectionChange="handleLILILicenseActivityMultiSelectionComboBoxChange"  id="idLILIPreviewLicenseActivityMultiComboBox"
 										selectionFinish="handleSelectionFinish"    items="{/LILILicenseActivityCollection}" width="25em">
                                         <sap.ui.core:ListItem key="{SurveyID}" text="{IsicDescription}" id="idLILIPreviewLicenseActivityMultiComboBoxListitem"/> key="{IsicClass}" 
-                                     </MultiComboBox> -->
+                                     </MultiComboBox>
                                      <sap.ui.commons:TextView id="idLILIPreviewLicenseActivityTextView" enabled="false"></sap.ui.commons:TextView>
                                      
 									</sap.ui.commons.layout:MatrixLayoutCell>
@@ -162,7 +162,7 @@
                                    
 										</sap.ui.commons.layout:content>
 									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:MatrixLayoutRow> -->
 		
 	</sap.ui.commons.layout:MatrixLayout>
 	
