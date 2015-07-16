@@ -205,66 +205,77 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 	},
 	handleValidateESHButtonPress : function(oEvent){
-		this.openBusyDialog();
 		var that = this;
+		var thatContext = this;
+
 		this.oExistingShareHolderEntityNo = this.getView().byId("idESHEntityNoInputText");
 		this.oExistingShareHolderEntityName = this.getView().byId("idESHEntityNameInputText");
 		this.oESHPercentageInputText = this.getView().byId("idESHPercentageInputText");
 		
+		if(this.oESHPercentageInputText.getValue() > 0 && this.oESHPercentageInputText.getValue() <= 100){
+			this.openBusyDialog();
+
+			var oRequestFinishedDeferredVESH = this.oModelHelper.readExistingSH(this.oExistingShareHolderEntityNo.getValue());
+
+			jQuery.when(oRequestFinishedDeferredVESH).then(jQuery.proxy(function(oResponse) {			
+				this.oExistingShareHolderEntityName.setValue(oResponse.data.Bpname);
+				
+				var thatoResponse = oResponse;
+				
+	            var oRequestFinishedDeferredVESHNSH = that.oModelHelper.createNewShareHolder(that.oRef_id,
+	                    "E", oResponse.data.Bpname,
+	                    "","","","","","","","","","","","","","","","","","","","","","",
+	    				"",	"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+	    				"", "", "", "", "", "", "", "", "", "", "", "", "", "");
+
+	    		jQuery.when(oRequestFinishedDeferredVESHNSH).then(jQuery.proxy(function(oResponse) {			
+	    
+	    			thatContext.oExistingShareHolderTable.unbindItems();
+	    			
+	    			var percentage = parseInt(thatContext.oESHPercentageInputText.getValue());
+	    			if(isNaN(percentage)){
+	    				percentage = 0;
+	    			}
+	    			
+	    			thatContext.oESHCreateNewData.ESHCollection.push({
+	    				"Bpno":thatoResponse.data.Bpno,
+	    	 			"Bpname":thatoResponse.data.Bpname,
+	    	 			"EntityNo" : oResponse.EntityNo,
+	    	 			"Percentage" : percentage});
+	    			
+	    			
+	    			thatContext.oESHTotalShareHolderPercentage += percentage;
+	    			
+	    			thatContext.oESHCreateNewDataJSONData.setData(thatContext.oESHCreateNewData);
+	    	 		
+	    	 		
+	    			thatContext.oExistingShareHolderTable.setModel(thatContext.oESHCreateNewDataJSONData);
+	    			
+	    			thatContext.oExistingShareHolderTable.bindItems("/ESHCollection",new sap.m.ColumnListItem({
+	    		        cells : [ new sap.ui.commons.TextView({
+	    		          text : "{Bpno}"
+	    		        }),new sap.ui.commons.TextView({
+	    		          text : "{Bpname}"
+	    		        }),  new sap.ui.commons.TextView({
+	    		          text : "{Percentage}"
+	    		        })/*, 
+	    		        new sap.m.Button({ icon : "sap-icon://delete"})*/]
+	    		      }));
+	    			that.closeBusyDialog();
+				
+	    		}, this));	
+				
+			}, this));	
+		}else{
+			if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("ESHPercentageValueRequired"));
+				this.oShowAlertDialog.open();
+			 }
+		}
 		
-		var oRequestFinishedDeferredVESH = this.oModelHelper.readExistingSH(this.oExistingShareHolderEntityNo.getValue());
-
-		jQuery.when(oRequestFinishedDeferredVESH).then(jQuery.proxy(function(oResponse) {			
-			//console.dir(oResponse);
-			this.oExistingShareHolderEntityName.setValue(oResponse.data.Bpname);
-			
-			var thatContext = this;
-			var thatoResponse = oResponse;
-			
-            var oRequestFinishedDeferredVESHNSH = that.oModelHelper.createNewShareHolder(that.oRef_id,
-                    "E", oResponse.data.Bpname,
-                    "","","","","","","","","","","","","","","","","","","","","","",
-    				"",	"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-    				"", "", "", "", "", "", "", "", "", "", "", "", "", "");
-
-    		jQuery.when(oRequestFinishedDeferredVESHNSH).then(jQuery.proxy(function(oResponse) {			
-    
-    			thatContext.oExistingShareHolderTable.unbindItems();
-    			
-    			var percentage = parseInt(thatContext.oESHPercentageInputText.getValue());
-    			if(isNaN(percentage)){
-    				percentage = 0;
-    			}
-    			
-    			thatContext.oESHCreateNewData.ESHCollection.push({
-    				"Bpno":thatoResponse.data.Bpno,
-    	 			"Bpname":thatoResponse.data.Bpname,
-    	 			"EntityNo" : oResponse.EntityNo,
-    	 			"Percentage" : percentage});
-    			
-    			
-    			thatContext.oESHTotalShareHolderPercentage += percentage;
-    			
-    			thatContext.oESHCreateNewDataJSONData.setData(thatContext.oESHCreateNewData);
-    	 		
-    	 		
-    			thatContext.oExistingShareHolderTable.setModel(thatContext.oESHCreateNewDataJSONData);
-    			
-    			thatContext.oExistingShareHolderTable.bindItems("/ESHCollection",new sap.m.ColumnListItem({
-    		        cells : [ new sap.ui.commons.TextView({
-    		          text : "{Bpno}"
-    		        }),new sap.ui.commons.TextView({
-    		          text : "{Bpname}"
-    		        }),  new sap.ui.commons.TextView({
-    		          text : "{Percentage}"
-    		        })/*, 
-    		        new sap.m.Button({ icon : "sap-icon://delete"})*/]
-    		      }));
-    			that.closeBusyDialog();
-			
-    		}, this));	
-			
-		}, this));	
+		
+		
 		
 	},
 	handleESHTableDeleteButtonPress : function(oEvent){
@@ -1039,51 +1050,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 				}
 				
 				if(this.oSubmitClicked){
-					sap.m.MessageToast.show(that.oModelHelper
-								.getText("SubmitApplicationMsg"));
 					
-					if(!this.oBAQError){
-							var oRequestSubmitFinishedDeferred = that.oModelHelper.Submit(that.oRef_id);
-
-							jQuery.when(oRequestSubmitFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-								//that.closeBusyDialog();			
-								
-								if(oResponse.LeadID !== ""){
-								
-								if (!that._ShowLeadIDFragment) {
-									that._ShowLeadIDFragment = sap.ui.xmlfragment(
-											"com.sagia.view.fragments.show_investorid_dialog", that.getView()
-													.getController());
-									this.getView().addDependent(that._ShowLeadIDFragment);
-								}		
-								
-								var oLeadIDTextView = sap.ui.getCore().byId("idLeadIDTextView");
-								
-								oLeadIDTextView.setText(oResponse.LeadID);
-
-								that._ShowLeadIDFragment.open();
-								}else{		
-									this.oSubmitClicked = false;
-
-									if(!this.oShowAlertDialog.isOpen())
-									{
-									this.oAlertTextView.setText(oResponse.Return);
-									this.oShowAlertDialog.open();
-									
-									}else{
-										this.oShowAlertDialog.close();
-										this.oAlertTextView.setText(oResponse.Return);
-										this.oShowAlertDialog.open();
-									}
-								}
-								
-								
-							}, that));
-						
-					}else{
-						this.closeBusyDialog();
-
-					}
+				       that.doSubmit();
 				}
 				
 				
@@ -1117,51 +1085,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					}
 					
 					if(this.oSubmitClicked){
-						sap.m.MessageToast.show(that.oModelHelper
-									.getText("SubmitApplicationMsg"));
-						
-						if(!this.oBAQError){
-								var oRequestSubmitFinishedDeferred = that.oModelHelper.Submit(that.oRef_id);
-
-								jQuery.when(oRequestSubmitFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-									//that.closeBusyDialog();			
-									
-									if(oResponse.LeadID !== ""){
-									
-									if (!that._ShowLeadIDFragment) {
-										that._ShowLeadIDFragment = sap.ui.xmlfragment(
-												"com.sagia.view.fragments.show_investorid_dialog", that.getView()
-														.getController());
-										this.getView().addDependent(that._ShowLeadIDFragment);
-									}		
-									
-									var oLeadIDTextView = sap.ui.getCore().byId("idLeadIDTextView");
-									
-									oLeadIDTextView.setText(oResponse.LeadID);
-
-									that._ShowLeadIDFragment.open();
-									}else{		
-										this.oSubmitClicked = false;
-
-										if(!this.oShowAlertDialog.isOpen())
-										{
-										this.oAlertTextView.setText(oResponse.Return);
-										this.oShowAlertDialog.open();
-										
-										}else{
-											this.oShowAlertDialog.close();
-											this.oAlertTextView.setText(oResponse.Return);
-											this.oShowAlertDialog.open();
-										}
-									}
-									
-									
-								}, that));
-							
-						}else{
-							this.closeBusyDialog();
-
-						}
+				       that.doSubmit();
 					}
 					
 				}, this));
@@ -1169,6 +1093,55 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}, this));				
 			
 			
+		}
+	},
+	doSubmit : function(){
+		
+		var that = this;
+		sap.m.MessageToast.show(that.oModelHelper
+				.getText("SubmitApplicationMsg"));
+	
+		if(!this.oBAQError){
+				var oRequestSubmitFinishedDeferred = that.oModelHelper.Submit(that.oRef_id);
+	
+				jQuery.when(oRequestSubmitFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+					//that.closeBusyDialog();			
+					
+					if(oResponse.LeadID !== ""){
+					
+					if (!that._ShowLeadIDFragment) {
+						that._ShowLeadIDFragment = sap.ui.xmlfragment(
+								"com.sagia.view.fragments.show_investorid_dialog", that.getView()
+										.getController());
+						this.getView().addDependent(that._ShowLeadIDFragment);
+					}		
+					
+					var oLeadIDTextView = sap.ui.getCore().byId("idLeadIDTextView");
+					
+					oLeadIDTextView.setText(oResponse.LeadID);
+	
+					that._ShowLeadIDFragment.open();
+					}else{		
+						this.oSubmitClicked = false;
+	
+						if(!this.oShowAlertDialog.isOpen())
+						{
+						this.oAlertTextView.setText(oResponse.Return);
+						this.oShowAlertDialog.open();
+						
+						}else{
+							this.oShowAlertDialog.close();
+							this.oAlertTextView.setText(oResponse.Return);
+							this.oShowAlertDialog.open();
+						}
+					}
+					
+					
+				}, that));
+			
+		}else{
+			this.closeBusyDialog();
+	
 		}
 	},
 	saveBAQInfoTab : function(){
@@ -3676,8 +3649,53 @@ handleRegisterUserButtonPress : function() {
 	},
 	
 	submit : function(){
-		this.oSubmitClicked = true;
-		this.handleSaveLinkPressSave();		
+		if(this.oBIOIOrganizationName.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BIONameRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(this.oBIOIEmailInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BIOIEmailRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(this.oBIOICapitalInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BIOICapitalRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(this.oBIOIMobilephoneCountryCodeInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BIOIMobileCountryCodeRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(this.oBIOIMobilephoneInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BIOIMobileNoRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(this.oBIOIWebSiteInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BIOIWebSiteRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else{
+	   		this.oSubmitClicked = true;
+			this.handleSaveLinkPressSave();
+	   	 }
+				
 	}
 	
 });
