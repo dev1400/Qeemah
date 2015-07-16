@@ -3734,6 +3734,34 @@ handleRegisterUserButtonPress : function() {
 				this.oShowAlertDialog.open();
 			 }
 				
+	   	 }else if(this.oBIOITelephoneCountryCodeInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BIOITelephoneCountryCodeRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(this.oBIOITelephoneInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BIOITelephoneNoRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(this.oBIOIFaxCountryCodeInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BIOIFaxCountryCodeRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(this.oBIOIFaxInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BIOIFaxNoRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
 	   	 }else if(this.oBIOIMobilephoneCountryCodeInputText.getValue() === ""){			
 			 if(!this.oShowAlertDialog.isOpen())
 			 {
@@ -3752,6 +3780,62 @@ handleRegisterUserButtonPress : function() {
 			 if(!this.oShowAlertDialog.isOpen())
 			 {
 				this.oAlertTextView.setText(this.oModelHelper.getText("BIOIWebSiteRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(this.oBICIEmailInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BICIEmailRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(this.oBICITelephoneCountryCodeInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BICITelephoneCountryCodeRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(this.oBICITelephoneInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BICITelephoneNoRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(this.oBICIFaxCountryCodeInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BICIFaxCountryCodeRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(this.oBICIFaxInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BICIFaxNoRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(this.oBICIMobileCountryCodeInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BICIMobileCountryCodeRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(this.oBICIMobilePhoneInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BICIMobileNoRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(this.oBICICityInputText.getValue() === ""){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BICICityRequired"));
 				this.oShowAlertDialog.open();
 			 }
 				
