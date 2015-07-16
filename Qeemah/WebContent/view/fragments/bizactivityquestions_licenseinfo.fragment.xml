@@ -18,7 +18,7 @@
 	<!-- Child license activity Q start -->
 	
 							<sap.ui.commons.layout:MatrixLayout
-								layoutFixed="false">
+								layoutFixed="false" widths="10rem">
 								
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
@@ -50,7 +50,7 @@
 	<VBox id="LicenceInfoContentVBox" visible="false" alignItems="Center">
 									
 	<sap.ui.commons.layout:MatrixLayout
-		layoutFixed="false">
+		layoutFixed="false" widths="10rem">
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons:TextView text="{i18n>Section}"></sap.ui.commons:TextView>
