@@ -212,58 +212,76 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oExistingShareHolderEntityName = this.getView().byId("idESHEntityNameInputText");
 		this.oESHPercentageInputText = this.getView().byId("idESHPercentageInputText");
 		
-		if(this.oESHPercentageInputText.getValue() > 0 && this.oESHPercentageInputText.getValue() <= 100){
+		if(this.oExistingShareHolderEntityNo.getValue() === ""){
+			if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("ESHEntityNoRequired"));
+				this.oShowAlertDialog.open();
+			 }
+		}else if(this.oESHPercentageInputText.getValue() > 0 && this.oESHPercentageInputText.getValue() <= 100){
 			this.openBusyDialog();
 
 			var oRequestFinishedDeferredVESH = this.oModelHelper.readExistingSH(this.oExistingShareHolderEntityNo.getValue());
 
-			jQuery.when(oRequestFinishedDeferredVESH).then(jQuery.proxy(function(oResponse) {			
-				this.oExistingShareHolderEntityName.setValue(oResponse.data.Bpname);
+			jQuery.when(oRequestFinishedDeferredVESH).then(jQuery.proxy(function(oResponse) {
 				
-				var thatoResponse = oResponse;
-				
-	            var oRequestFinishedDeferredVESHNSH = that.oModelHelper.createNewShareHolder(that.oRef_id,
-	                    "E", oResponse.data.Bpname,
-	                    "","","","","","","","","","","","","","","","","","","","","","",
-	    				"",	"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-	    				"", "", "", "", "", "", "", "", "", "", "", "", "", "");
-
-	    		jQuery.when(oRequestFinishedDeferredVESHNSH).then(jQuery.proxy(function(oResponse) {			
-	    
-	    			thatContext.oExistingShareHolderTable.unbindItems();
-	    			
-	    			var percentage = parseInt(thatContext.oESHPercentageInputText.getValue());
-	    			if(isNaN(percentage)){
-	    				percentage = 0;
-	    			}
-	    			
-	    			thatContext.oESHCreateNewData.ESHCollection.push({
-	    				"Bpno":thatoResponse.data.Bpno,
-	    	 			"Bpname":thatoResponse.data.Bpname,
-	    	 			"EntityNo" : oResponse.EntityNo,
-	    	 			"Percentage" : percentage});
-	    			
-	    			
-	    			thatContext.oESHTotalShareHolderPercentage += percentage;
-	    			
-	    			thatContext.oESHCreateNewDataJSONData.setData(thatContext.oESHCreateNewData);
-	    	 		
-	    	 		
-	    			thatContext.oExistingShareHolderTable.setModel(thatContext.oESHCreateNewDataJSONData);
-	    			
-	    			thatContext.oExistingShareHolderTable.bindItems("/ESHCollection",new sap.m.ColumnListItem({
-	    		        cells : [ new sap.ui.commons.TextView({
-	    		          text : "{Bpno}"
-	    		        }),new sap.ui.commons.TextView({
-	    		          text : "{Bpname}"
-	    		        }),  new sap.ui.commons.TextView({
-	    		          text : "{Percentage}"
-	    		        })/*, 
-	    		        new sap.m.Button({ icon : "sap-icon://delete"})*/]
-	    		      }));
+				if(oResponse.data.Return !== "BP Number does not exist"){
+					this.oExistingShareHolderEntityName.setValue(oResponse.data.Bpname);
+						
+						var thatoResponse = oResponse;
+						
+			            var oRequestFinishedDeferredVESHNSH = that.oModelHelper.createNewShareHolder(that.oRef_id,
+			                    "E", oResponse.data.Bpname,
+			                    "","","","","","","","","","","","","","","","","","","","","","",
+			    				"",	"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+			    				"", "", "", "", "", "", "", "", "", "", "", "", "", "");
+		
+			    		jQuery.when(oRequestFinishedDeferredVESHNSH).then(jQuery.proxy(function(oResponse) {			
+			    
+			    			thatContext.oExistingShareHolderTable.unbindItems();
+			    			
+			    			var percentage = parseInt(thatContext.oESHPercentageInputText.getValue());
+			    			if(isNaN(percentage)){
+			    				percentage = 0;
+			    			}
+			    			
+			    			thatContext.oESHCreateNewData.ESHCollection.push({
+			    				"Bpno":thatoResponse.data.Bpno,
+			    	 			"Bpname":thatoResponse.data.Bpname,
+			    	 			"EntityNo" : oResponse.EntityNo,
+			    	 			"Percentage" : percentage});
+			    			
+			    			
+			    			thatContext.oESHTotalShareHolderPercentage += percentage;
+			    			
+			    			thatContext.oESHCreateNewDataJSONData.setData(thatContext.oESHCreateNewData);
+			    	 		
+			    	 		
+			    			thatContext.oExistingShareHolderTable.setModel(thatContext.oESHCreateNewDataJSONData);
+			    			
+			    			thatContext.oExistingShareHolderTable.bindItems("/ESHCollection",new sap.m.ColumnListItem({
+			    		        cells : [ new sap.ui.commons.TextView({
+			    		          text : "{Bpno}"
+			    		        }),new sap.ui.commons.TextView({
+			    		          text : "{Bpname}"
+			    		        }),  new sap.ui.commons.TextView({
+			    		          text : "{Percentage}"
+			    		        })/*, 
+			    		        new sap.m.Button({ icon : "sap-icon://delete"})*/]
+			    		      }));
+			    			that.closeBusyDialog();
+					
+		    		}, this));	
+				}else{
 	    			that.closeBusyDialog();
-				
-	    		}, this));	
+
+					if(!this.oShowAlertDialog.isOpen())
+					 {
+						this.oAlertTextView.setText(this.oModelHelper.getText("ESHDoesNotExist"));
+						this.oShowAlertDialog.open();
+					 }
+				}
+	
 				
 			}, this));	
 		}else{
@@ -313,67 +331,96 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		
 		
-		try{			
-			var questions = [];
-			var answers1 = [];
-			var answers2 = [];
-			var answers3 = [];
-			for(var i=0; i < this.oTotalFinancialQuestions; i++){
-				 
-				 var oFinancialQuestion = sap.ui.getCore().byId("idFinancialQuestion"+i);
-				 var oFinancialAnswer1 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+1);
-				 var oFinancialAnswer2 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+2);
-				 var oFinancialAnswer3 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+3);
-				 questions.push(oFinancialQuestion.data("idFinancialQuestion"+i));
-				 answers1.push(oFinancialAnswer1.getValue());
-				 answers2.push(oFinancialAnswer2.getValue());
-				 answers3.push(oFinancialAnswer3.getValue());
+		try{
+			if(that.oNSHFirstNameInputText.getValue() === ""){	
+				that.closeBusyDialog();
+	  			 if(!that.oShowAlertDialog.isOpen())
+	  			 {
+	  				that.oAlertTextView.setText(this.oModelHelper.getText("NSHFirstNameRequired"));
+	  				that.oShowAlertDialog.open();
+	  			 }			 							  				
+  	   	     }else if(that.oNSHLastNameInputText.getValue() === ""){
+ 				that.closeBusyDialog();
 
-			}
-			
-		    
-		    var actvityQuestions = [];
-			var activityAnswers = [];
-			for(var j=0; j < this.oTotalActivityQuestions; j++){
-				 var oAQAnswer = sap.ui.getCore().byId("idAQAnswer"+j);
-				 var oAQuestion = sap.ui.getCore().byId("idAQuestion"+j);
-				 actvityQuestions.push(oAQuestion.data("idAQuestion"+j));
-				 activityAnswers.push(oAQAnswer.getSelectedItem().getText());
-			}
-			
-			  var oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(that.oRef_id,
-	            		 that.oShareHolderTypeComboBox.getSelectedItem().getText(),
-	     				that.oNSHFirstNameInputText.getValue(),
-	     				that.oNSHCountryComboBox.getSelectedKey(),
-	     				that.oNSHLastNameInputText.getValue(),
-	     				that.oNSHCityNameInputText.getValue(),
-	     				that.oNSHGenderComboBox.getSelectedKey(),
-	     				that.oNSHPOBoxInputText.getValue(),
-	     				that.oNSHMaritalStatusComboBox.getSelectedKey(),
-	     				that.oNSHPostalCodeInputText.getValue(),
-	     				that.oNSHAcademicTitleComboBox.getSelectedKey(),
-	     				that.oNSHStreetInputText.getValue(),
-	     				that.oNSHDOBDate.getValue(),
-	     				that.oNSHWebsiteInputText.getValue(),
-	     				that.oNSHTelephoneInputText.getValue(),
-	     				that.oNSHNationalityComboBox.getSelectedKey(),
-	     				that.oNSHMobilePhoneInputText.getValue(),
-	     				that.oNSHPreviousNationalityInputText.getSelectedKey(),
-	     				that.oNSHFaxInputText.getValue(),
-	     				that.oNSHCommMethodInputText.getSelectedKey(),
-	     				that.oNSHEmailInputText.getValue(),
-	     				that.oNSHPercentageInputText.getValue(),
-	     				"", "", "", "", "", "", "",
-	     		        "", "", "", "", "", "", "",
-	     		        "", "", "", "", "", "", "",
-	     		        "", "", "", "", "", "", "",
-	     		        "", "", "", "", "", "", "", "", "");
+	  			 if(!that.oShowAlertDialog.isOpen())
+	  			 {
+	  				that.oAlertTextView.setText(this.oModelHelper.getText("NSHLasttNameRequired"));
+	  				that.oShowAlertDialog.open();
+	  			 }			 							  				
+  	   	     }/*else if(that.oNSHPercentageInputText.getValue() === ""){	
+ 				that.closeBusyDialog();
 
-	     		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {			
-	     
-	     			 
+	  			 if(!that.oShowAlertDialog.isOpen())
+	  			 {
+	  				that.oAlertTextView.setText(this.oModelHelper.getText("NSHPercentageRequired"));
+	  				that.oShowAlertDialog.open();
+	  			 }			 							  				
+  	   	     }*/else if(that.oNSHPercentageInputText.getValue() === "" || that.oNSHPercentageInputText.getValue() < 1 || that.oNSHPercentageInputText.getValue() > 100){
+ 				that.closeBusyDialog();
+
+	  			 if(!that.oShowAlertDialog.isOpen())
+	  			 {
+	  				that.oAlertTextView.setText(this.oModelHelper.getText("NSHPercentageValueRange"));
+	  				that.oShowAlertDialog.open();
+	  			 }			 							  				
+  	   	     }else {
+	  	   	    var questions = [];
+				var answers1 = [];
+				var answers2 = [];
+				var answers3 = [];
+				for(var i=0; i < this.oTotalFinancialQuestions; i++){
+					 
+					 var oFinancialQuestion = sap.ui.getCore().byId("idFinancialQuestion"+i);
+					 var oFinancialAnswer1 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+1);
+					 var oFinancialAnswer2 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+2);
+					 var oFinancialAnswer3 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+3);
+					 questions.push(oFinancialQuestion.data("idFinancialQuestion"+i));
+					 answers1.push(oFinancialAnswer1.getValue());
+					 answers2.push(oFinancialAnswer2.getValue());
+					 answers3.push(oFinancialAnswer3.getValue());
+
+				}
+				var actvityQuestions = [];
+				var activityAnswers = [];
+				for(var j=0; j < this.oTotalActivityQuestions; j++){
+					 var oAQAnswer = sap.ui.getCore().byId("idAQAnswer"+j);
+					 var oAQuestion = sap.ui.getCore().byId("idAQuestion"+j);
+					 actvityQuestions.push(oAQuestion.data("idAQuestion"+j));
+					 activityAnswers.push(oAQAnswer.getSelectedItem().getText());
+				}
+					 var oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(
+							that.oRef_id,
+		            		that.oShareHolderTypeComboBox.getSelectedItem().getText(),
+		     				that.oNSHFirstNameInputText.getValue(),
+		     				that.oNSHCountryComboBox.getSelectedKey(),
+		     				that.oNSHLastNameInputText.getValue(),
+		     				that.oNSHCityNameInputText.getValue(),
+		     				that.oNSHGenderComboBox.getSelectedKey(),
+		     				that.oNSHPOBoxInputText.getValue(),
+		     				that.oNSHMaritalStatusComboBox.getSelectedKey(),
+		     				that.oNSHPostalCodeInputText.getValue(),
+		     				that.oNSHAcademicTitleComboBox.getSelectedKey(),
+		     				that.oNSHStreetInputText.getValue(),
+		     				that.oNSHDOBDate.getValue(),
+		     				that.oNSHWebsiteInputText.getValue(),
+		     				that.oNSHTelephoneInputText.getValue(),
+		     				that.oNSHNationalityComboBox.getSelectedKey(),
+		     				that.oNSHMobilePhoneInputText.getValue(),
+		     				that.oNSHPreviousNationalityInputText.getSelectedKey(),
+		     				that.oNSHFaxInputText.getValue(),
+		     				that.oNSHCommMethodInputText.getSelectedKey(),
+		     				that.oNSHEmailInputText.getValue(),
+		     				that.oNSHPercentageInputText.getValue(),
+		     				"", "", "", "", "", "", "",
+		     		        "", "", "", "", "", "", "",
+		     		        "", "", "", "", "", "", "",
+		     		        "", "", "", "", "", "", "",
+		     		        "", "", "", "", "", "", "", "", "");
+
+		     		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {
+		     			
 	     			 try{
-	     				that.oNSHCreateNSHTable.unbindItems();							     			
+	     				 that.oNSHCreateNSHTable.unbindItems();							     			
 			             that.oNSHCreateNewData.NSHCollection.push({
 		         			"EntityFname":oResponse.EntityFname, 
 		         			"EntityLname": oResponse.EntityLname, 
@@ -394,120 +441,94 @@ sap.ui.controller("com.sagia.view.Overview", {
 		     			          text : "{Percentage}"
 		     			        })]
 		     			      }));
-			             
-			        that.NSHPassPortCopy = that.getView().byId("idNSHPassportCopyFileUploader");
-			        that.NSHCommercialRegAttachment = that.getView().byId("idNSHCommercialRegistFileUploader");
-			        that.NSHBankStatementAttachment = that.getView().byId("idNSHBankStatementFileUploader");
-			        that.NSHBalanceSheetAttachment = that.getView().byId("idNSHBalanceSheetFileUploader");
-			        that.NSHOtherAttachment = that.getView().byId("idNSHOtherFileUploader");
-			        
-			        that.NSHEntityNo = oResponse.EntityNo;
-			        
-		var oRequestFinishedDeferredUploadNSHPassPortCopy = that.oModelHelper.uploadNSHPassPortCopy(that.oRef_id, that.NSHEntityNo, that.NSHPassPortCopy);
-		jQuery.when(oRequestFinishedDeferredUploadNSHPassPortCopy).then(jQuery.proxy(function(oResponse) {
-			
-			var oRequestFinishedDeferredUploadNSHPCommercialReg = that.oModelHelper.uploadCommercialRegAttachment(that.oRef_id, that.NSHEntityNo, that.NSHCommercialRegAttachment);
-	     	jQuery.when(oRequestFinishedDeferredUploadNSHPCommercialReg).then(jQuery.proxy(function(oResponse) {
-	     		
-	     		var oRequestFinishedDeferredUploadNSHBankStatement = that.oModelHelper.uploadBankStatementAttachment(that.oRef_id, that.NSHEntityNo, that.NSHBankStatementAttachment);
-		     	jQuery.when(oRequestFinishedDeferredUploadNSHBankStatement).then(jQuery.proxy(function(oResponse) {
-		     		
-		     		var oRequestFinishedDeferredUploadNSHBalanceSheet = that.oModelHelper.uploadNSHBalanceSheetAttachment(that.oRef_id, that.NSHEntityNo, that.NSHBalanceSheetAttachment);
-			     	jQuery.when(oRequestFinishedDeferredUploadNSHBalanceSheet).then(jQuery.proxy(function(oResponse) {
-			     		
-			     		var oRequestFinishedDeferredUploadNSHOtherAttachments = that.oModelHelper.uploadOtherAttachment(that.oRef_id, that.NSHEntityNo, that.NSHOtherAttachment);
-				     	jQuery.when(oRequestFinishedDeferredUploadNSHOtherAttachments).then(jQuery.proxy(function(oResponse) {
-				     	
-	     	
-			     		
-			     		
-			             var oRequestFinishedDeferredcreateSHActivityAnswers = that.oModelHelper.createShareHolderActivityAnswers
-			 			(that.oRef_id, actvityQuestions, activityAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
-			  
-			     			jQuery.when(oRequestFinishedDeferredcreateSHActivityAnswers).then(jQuery.proxy(function(oResponse) {
-			     			 
-			     			
-			     			
-			 	
-			 					var oRequestFinishedDeferredcreateFinancialAnswers1 = that.oModelHelper.createFinancialAnswers
-			 					(that.oRef_id, questions, answers1, "Year 1", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
-
-			 					jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers1).then(jQuery.proxy(function(oResponse) {
-			 						
-			 						var oRequestFinishedDeferredcreateFinancialAnswers2 = that.oModelHelper.createFinancialAnswers
-			 						(that.oRef_id, questions, answers2, "Year 2", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
-
-			 						jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers2).then(jQuery.proxy(function(oResponse) {
-			 							
-			 							var oRequestFinishedDeferredcreateFinancialAnswers3 = that.oModelHelper.createFinancialAnswers
-			 							(that.oRef_id, questions, answers3, "Year 3", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
-
-			 							jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers3).then(jQuery.proxy(function(oResponse) {
-			 							
-			 								 var getarray = [];
-			 							       
-			 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers1);
-			 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers2);
-			 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers3);
-			 							        getarray.push(oRequestFinishedDeferredcreateSHActivityAnswers);
-			 							        getarray.push(oRequestFinishedDeferredUploadNSHPassPortCopy);
-			 							        getarray.push(oRequestFinishedDeferredUploadNSHPCommercialReg);
-			 							        getarray.push(oRequestFinishedDeferredUploadNSHBankStatement);
-			 							        getarray.push(oRequestFinishedDeferredUploadNSHBalanceSheet);
-			 							        getarray.push(oRequestFinishedDeferredUploadNSHOtherAttachments);
-
-
-
-			 							        
-			 							        jQuery.when.apply($, getarray).done(function () {
-			 							        	sap.m.MessageToast.show(that.oModelHelper
-			 												.getText("NewShareHolderCreated"));	
-			 							        	that.closeBusyDialog();
-			 							     		
-			 							        });
-			 								
-			 							}, this));
-			 							
-			 						}, this));
-			 					}, this));
-			     			}, this));//end of AQ creation
-				     	}, this));// end of Other upload
-			     	}, this));// end of Balance Sheet upload
-		     	}, this));// end of Bank Statement upload
-	     	}, this));// end of Commercial upload
-	    }, this));// end of Passport upload
-			     			
-	     				 
-	     			 }catch(error){
-		     			 that.closeBusyDialog();
-
-	     			 }
-		             
-	     			
-	     		}, this));
-			
-			
-			
-			}catch(err){
-				console.log(err);
-	            that.closeBusyDialog();
-
+				             
+				        that.NSHPassPortCopy = that.getView().byId("idNSHPassportCopyFileUploader");
+				        that.NSHCommercialRegAttachment = that.getView().byId("idNSHCommercialRegistFileUploader");
+				        that.NSHBankStatementAttachment = that.getView().byId("idNSHBankStatementFileUploader");
+				        that.NSHBalanceSheetAttachment = that.getView().byId("idNSHBalanceSheetFileUploader");
+				        that.NSHOtherAttachment = that.getView().byId("idNSHOtherFileUploader");
+				        
+				        that.NSHEntityNo = oResponse.EntityNo;
+				        
+						var oRequestFinishedDeferredUploadNSHPassPortCopy = that.oModelHelper.uploadNSHPassPortCopy(that.oRef_id, that.NSHEntityNo, that.NSHPassPortCopy);
+						jQuery.when(oRequestFinishedDeferredUploadNSHPassPortCopy).then(jQuery.proxy(function(oResponse) {
+							
+							var oRequestFinishedDeferredUploadNSHPCommercialReg = that.oModelHelper.uploadCommercialRegAttachment(that.oRef_id, that.NSHEntityNo, that.NSHCommercialRegAttachment);
+					     	jQuery.when(oRequestFinishedDeferredUploadNSHPCommercialReg).then(jQuery.proxy(function(oResponse) {
+					     		
+					     		var oRequestFinishedDeferredUploadNSHBankStatement = that.oModelHelper.uploadBankStatementAttachment(that.oRef_id, that.NSHEntityNo, that.NSHBankStatementAttachment);
+						     	jQuery.when(oRequestFinishedDeferredUploadNSHBankStatement).then(jQuery.proxy(function(oResponse) {
+						     		
+						     		var oRequestFinishedDeferredUploadNSHBalanceSheet = that.oModelHelper.uploadNSHBalanceSheetAttachment(that.oRef_id, that.NSHEntityNo, that.NSHBalanceSheetAttachment);
+							     	jQuery.when(oRequestFinishedDeferredUploadNSHBalanceSheet).then(jQuery.proxy(function(oResponse) {
+							     		
+							     		var oRequestFinishedDeferredUploadNSHOtherAttachments = that.oModelHelper.uploadOtherAttachment(that.oRef_id, that.NSHEntityNo, that.NSHOtherAttachment);
+								     	jQuery.when(oRequestFinishedDeferredUploadNSHOtherAttachments).then(jQuery.proxy(function(oResponse) {
+								        		
+								             var oRequestFinishedDeferredcreateSHActivityAnswers = that.oModelHelper.createShareHolderActivityAnswers
+								 			(that.oRef_id, actvityQuestions, activityAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+								  
+								     			jQuery.when(oRequestFinishedDeferredcreateSHActivityAnswers).then(jQuery.proxy(function(oResponse) {
+								 	
+								 					var oRequestFinishedDeferredcreateFinancialAnswers1 = that.oModelHelper.createFinancialAnswers
+								 					(that.oRef_id, questions, answers1, "Year 1", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
 				
-				/*if(!this.oShowAlertDialog.isOpen())
-					{
-					this.oAlertTextView.setText(this.oModelHelper
-							.getText("ChooseBAQ"));
-					this.oShowAlertDialog.open();
-					
-					}*/
+								 					jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers1).then(jQuery.proxy(function(oResponse) {
+								 						
+								 						var oRequestFinishedDeferredcreateFinancialAnswers2 = that.oModelHelper.createFinancialAnswers
+								 						(that.oRef_id, questions, answers2, "Year 2", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
 				
-			}
-			
-			
+								 						jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers2).then(jQuery.proxy(function(oResponse) {
+								 							
+								 							var oRequestFinishedDeferredcreateFinancialAnswers3 = that.oModelHelper.createFinancialAnswers
+								 							(that.oRef_id, questions, answers3, "Year 3", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+
+									 							jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers3).then(jQuery.proxy(function(oResponse) {
+									 							
+								 								    var getarray = [];
+									 							       
+								 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers1);
+								 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers2);
+								 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers3);
+								 							        getarray.push(oRequestFinishedDeferredcreateSHActivityAnswers);
+								 							        getarray.push(oRequestFinishedDeferredUploadNSHPassPortCopy);
+								 							        getarray.push(oRequestFinishedDeferredUploadNSHPCommercialReg);
+								 							        getarray.push(oRequestFinishedDeferredUploadNSHBankStatement);
+								 							        getarray.push(oRequestFinishedDeferredUploadNSHBalanceSheet);
+								 							        getarray.push(oRequestFinishedDeferredUploadNSHOtherAttachments);
+										 							        
+									 							        jQuery.when.apply($, getarray).done(function () {
+									 							        	that.closeBusyDialog();
+									 							        	
+									 							        	 if(!that.oShowAlertDialog.isOpen())
+									 										 {
+									 							        		that.oAlertTextView.setText(that.oModelHelper.getText("NewShareHolderCreated"));
+									 							        		that.oShowAlertDialog.open();
+									 										 }		 							        						        	
+									 							     		
+									 							        });									 								
+				 							}, this));				 							
+				 						}, this));
+				 					}, this));
+				     			}, this));//end of AQ creation
+					     	}, this));// end of Other upload
+				     	}, this));// end of Balance Sheet upload
+			     	}, this));// end of Bank Statement upload
+		     	}, this));// end of Commercial upload
+		    }, this));// end of Passport upload				     			
+		     				 
+		 }catch(error){
+ 			 that.closeBusyDialog();
+
+		 }
+			 }, this));//end of create new share holder
+  	   	     }//end of else
+	}catch(err){
+		console.log(err);
+        that.closeBusyDialog();
+
 		
-			
-		
-		
+	}
 	},
 	handleNSHTableDeleteButtonPress : function(oEvent){
 		 
