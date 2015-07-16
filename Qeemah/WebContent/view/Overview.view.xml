@@ -40,7 +40,7 @@
 										hAlign="End" vAlign="Bottom">
 										<HBox justifyContent="End" alignItems="Center">
 											<Image src="common/mime/dot.png"></Image>
-											<Link text="{i18n>ServiceGuide}" class="linkColor" />
+											<Link text="{i18n>ServiceGuide}" href="https://www.sagia.gov.sa/en/Investor-tools/Licenses-Investors-Guide-/" class="linkColor" target="_blank"/>
 										</HBox>
 
 
@@ -49,7 +49,7 @@
 										hAlign="Begin" vAlign="Bottom">
 										<HBox justifyContent="Start" alignItems="Center">
 											<Image src="common/mime/dot.png"></Image>
-											<Link text="{i18n>DownloadForms}" class="linkColor" />
+											<Link text="{i18n>DownloadForms}" href="https://www.sagia.gov.sa/en/Investor-tools/E--Servoce-/Renew-Investment-license/Download-Forms-renew/" class="linkColor" target="_blank"/>
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 
