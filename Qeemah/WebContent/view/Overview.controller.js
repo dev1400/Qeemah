@@ -173,9 +173,46 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this.oSubmitClicked = false;
 		this.oSaveClicked = false
+		
+		this.oForgotPasswordMatrixLayout = this.getView().byId("idForgotPasswordMatrixLayout");
+		this.oResetPasswordMatrixLayout = this.getView().byId("idResetPasswordMatrixLayout");
+		
+		this.oForgotPasswordInput = this.getView().byId("idForgotPasswordInput");
+		
+		this.oResetRefIdInput = this.getView().byId("idResetRefIdInput");
+		this.oResetCurrentPasswordInput = this.getView().byId("idResetCurrentPasswordInput");
+		this.oResetNewPasswordInput = this.getView().byId("idResetNewPasswordInput");
+		this.oConfirmNewPasswordInput = this.getView().byId("idConfirmNewPasswordInput");
 
 
 		
+	},
+	handleSubmitPasswordForgotButtonPress : function(){
+		 var oRequestFinishedDeferredForgotPassword = this.oModelHelper.forgotPassword(this.oForgotPasswordInput.getValue());
+		 jQuery.when(oRequestFinishedDeferredForgotPassword).then(jQuery.proxy(function(oResponse) {	
+			 
+			 sap.m.MessageToast.show(oResponse.Return);
+			 
+			 if(oResponse.Password !== ""){
+				 
+				// sap.m.URLHelper.triggerEmail("abdul.w.mulla@gmail.com", this.oModelHelper.getText("EmailSubject"), this.oModelHelper.getText("EmailBodyMessage")+" "+oResponse.Password);
+			 }
+		 }, this));	
+	},
+	handleResetPwdLinkPress : function(){
+		this.oResetPasswordMatrixLayout.setVisible(true);
+		this.oForgotPasswordMatrixLayout.setVisible(false);
+
+	},
+	handleResetPasswordCancelButtonPress : function(){
+		this.oResetPasswordMatrixLayout.setVisible(false);
+	},	
+	handleForgotPwdLinkPress : function(){
+		this.oForgotPasswordMatrixLayout.setVisible(true);
+		this.oResetPasswordMatrixLayout.setVisible(false);
+	},
+	handleForgotPasswordCancelButtonPress : function(){
+		this.oForgotPasswordMatrixLayout.setVisible(false);
 	},
 	handleBIOINextButtonPress : function(){
 		this.oBasicInfoTab.setSelectedIndex(1);
@@ -2992,45 +3029,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var userID = this.getView().byId("idSignInUsernameInput").getValue();
 		var password = this.getView().byId("idSignInPasswordInput").getValue();
 		
-		//Remove later start
-		
-		//this.userSignIn(userID, password);
-		
-		//Remove later end
-		
 		if (userID.length > 0 && password.length > 0) {
 			this.userSignIn(userID, password);
-			
-		/*console.log("userID "+userID);
-		console.log("password "+password);
-		console.log("sessionStorage.getItem('userID') "+sessionStorage.getItem('userID'));
-		console.log("sessionStorage.getItem('password') "+sessionStorage.getItem('password'));
-	*/
-		
-		/*if(typeof(Storage) !== "undefined") {
-			
-			if(sessionStorage.getItem('userID') === "" || 
-			   sessionStorage.getItem('userID') === null || 
-			   sessionStorage.getItem('password') === "" ||
-			   sessionStorage.getItem('password') === null){
-			
-				
-				sessionStorage.setItem('userID', userID);
-				sessionStorage.setItem('password', password);
-				
-				
-				
-			}else{
-				userID = sessionStorage.getItem('userID');
-				password = sessionStorage.getItem('password');
-				
-				this.userSignIn(userID, password);
-			}
-			
-			
-		} else {
-		    console.log("Sorry! No Web Storage support..");
-		}*/
 		
 		} else {
 			sap.m.MessageToast.show(this.oModelHelper
@@ -3052,248 +3052,249 @@ userSignIn : function(userID, password){
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 			
 			
-			//console.dir(oResponse.Ref_id);
 			if(oResponse.Password !== password){
 				sap.m.MessageToast.show(this.oModelHelper.getText("AuthenticationFailedMessage"));
 			}else{
-				sap.m.MessageToast.show(this.oModelHelper
-						.getText("SignInSuccessful"));
 				
+				var oRequestFinishedDeferredStatusCheck = this.oModelHelper.checkUserStatus(oResponse.Ref_id);
 				
-				
-				
-				
-				this.oRef_id = oResponse.Ref_id;
-				//sessionStorage.setItem('ReferenceId', oResponse.InvestorId);
-				
-				//Uncomment later start
-				this._oidMainPageContent.setVisible(false);
-				this._oTopHeaderVBox.setVisible(true);
-				this._oidLicenseButtonsHBox.setVisible(true);
-				
-				this.oBasicInfoTab =  this.getView().byId("idBasicInfoTab");
-				this.oLicenseInfoTab =  this.getView().byId("idLicenseInfoTab");
-				
-				this.oLicenseInfoTab.setSelectedIndex(1);
-				this.oLicenseInfoTab.setSelectedIndex(0);
-				
-				/*var filters = [];
-				filters = new sap.ui.model.Filter([oFilter1, oFilter2]);*/
-				
-				this._oidRegionComboBox = this.getView().byId("idRegionComboBox");		
-				var oRegionComboBoxFilter = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
-				var oRegionComboBoxKeyFilter = new sap.ui.model.Filter("Bland_reg", sap.ui.model.FilterOperator.NE, "");
-				this._oidRegionComboBox.getBinding("items").filter([oRegionComboBoxFilter, oRegionComboBoxKeyFilter]);
-				
-				this._oBIILegalStatusCombobox = this.getView().byId("idBILegalStatusComboBox");
-				var oBIILegalStatusFilter = new sap.ui.model.Filter("Textlong", sap.ui.model.FilterOperator.NE, "");
-				var oBIILegalStatusKeyFilter = new sap.ui.model.Filter("Source", sap.ui.model.FilterOperator.NE, "");
-				this._oBIILegalStatusCombobox.getBinding("items").filter([oBIILegalStatusFilter,oBIILegalStatusKeyFilter]);
-				
-				this._oBICINationalityCombobox = this.getView().byId("idCINationalityComboBox");
-				var oBICINationalityFilter = new sap.ui.model.Filter("Natio50", sap.ui.model.FilterOperator.NE, "");
-				var oBICINationalityKeyFilter = new sap.ui.model.Filter("Land1", sap.ui.model.FilterOperator.NE, "");
-				this._oBICINationalityCombobox.getBinding("items").filter([oBICINationalityFilter,oBICINationalityKeyFilter]);
-				
-				
-				this._oBICICountryCombobox = this.getView().byId("idCICountryComboBox");
-				var oBICICountryFilter = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.NE, "");
-				var oBICICountryKeyFilter = new sap.ui.model.Filter("Land1", sap.ui.model.FilterOperator.NE, "");
-				this._oBICICountryCombobox.getBinding("items").filter([oBICICountryFilter,oBICICountryKeyFilter]);
-				
-				this._oBICityComboBox = this.getView().byId("idCityComboBox");
-				
-				//this.oBasicInfoTab.setSelectedIndex(0);
-				this.oBIOICommMethodComboBox = this.getView().byId("idBIOICommMethodComboBox");
-				
-				
-				
-				this.oBIOIOrganizationName = this.getView().byId("idBIOIOrganizationName");
-				this.oBIOIMultiNationalCompanyCombobox = this.getView().byId("idBIOIMultiNationalCompanyCombobox");
-				this.oBIOIEmailInputText = this.getView().byId("idBIOIEmailInputText");
-				this.oBIOILaborSizeInputText = this.getView().byId("idBIOILaborSizeInputText");
-				this.oBIOICapitalInputText = this.getView().byId("idBIOICapitalInputText");
-				this.oBIOITelephoneCountryCodeInputText = this.getView().byId("idBIOITelephoneCountryCodeInputText");
-				this.oBIOITelephoneInputText = this.getView().byId("idBIOITelephoneInputText");
-				this.oBIOIMobilephoneCountryCodeInputText = this.getView().byId("idBIOIMobilephoneCountryCodeInputText");
-				this.oBIOIMobilephoneInputText = this.getView().byId("idBIOIMobilephoneInputText");
-				this.oBIOIFaxCountryCodeInputText = this.getView().byId("idBIOIFaxCountryCodeInputText");
-				this.oBIOIFaxInputText = this.getView().byId("idBIOIFaxInputText");
-				this.oBIOIWebSiteInputText = this.getView().byId("idBIOIWebSiteInputText");
-				
-				
-				//this.oBasicInfoTab.setSelectedIndex(1);
-				
-				
-				this.oBICIFirstNameInputText = this.getView().byId("idBICIFirstNameInputText");
-				this.oBICILastNameInputText = this.getView().byId("idBICILastNameInputText");
-				this.oBICICityInputText = this.getView().byId("idBICICityInputText");
-				this.oBICIGenderComboBox = this.getView().byId("idBICIGenderComboBox");
-				this.oBICIPOBoxInputText = this.getView().byId("idBICIPOBoxInputText");
-				this.oBICITelephoneCountryCodeInputText = this.getView().byId("idBICITelephoneCountryCodeInputText");
-				this.oBICITelephoneInputText = this.getView().byId("idBICITelephoneInputText");
-				this.oBICIPostalCodeInputText = this.getView().byId("idBICIPostalCodeInputText");
-				this.oBICIMobileCountryCodeInputText = this.getView().byId("idBICIMobileCountryCodeInputText");
-				this.oBICIMobilePhoneInputText = this.getView().byId("idBICIMobilePhoneInputText");
-				this.oBICICommMethodComboBox = this.getView().byId("idBICICommMethodComboBox");
-				this.oBICIFaxCountryCodeInputText = this.getView().byId("idBICIFaxCountryCodeInputText");
-				this.oBICIFaxInputText = this.getView().byId("idBICIFaxInputText");
-				this.oBICIRoleInputText = this.getView().byId("idBICIRoleInputText");
-				this.oBICIEmailInputText = this.getView().byId("idBICIEmailInputText");
-				//this.oBICIPassportCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
-				this.oBICIStreet = this.getView().byId("idBICIStreetInputText");
-				this.oBICIPASSAttachmentName = this.getView().byId("idBICIPASSAttachmentName");
-				this.oBICIPASSAttachmentNameTextView = this.getView().byId("idBICIPASSAttachmentNameTextView");
-				this.oBICIPOAAttachmentName = this.getView().byId("idBICIPOAAttachmentName");
-				this.oBICIPOAAttachmentNameTextView = this.getView().byId("idBICIPOAAttachmentNameTextView");
-				
-				
-				
-				
-				
-				
-				var oRequestFinishedDeferredBIOIChild = this.oModelHelper.readBIOI(this.oRef_id);
-
-				jQuery.when(oRequestFinishedDeferredBIOIChild).then(jQuery.proxy(function(oResponse) {
-					if(oResponse.data.Return !== "Record does not exist"){
-						this.oBIOIOrganizationName.setValue(oResponse.data.OrgName);
-						this._oidRegionComboBox.setSelectedKey(oResponse.data.Region);
-						this._oBIILegalStatusCombobox.setSelectedKey(oResponse.data.LegalStatus);//.setSelectedItem(vItem);
-						this._oBICityComboBox.setSelectedKey(oResponse.data.City);//.setSelectedItem(vItem);
-						this.oBIOIMultiNationalCompanyCombobox.setValue(oResponse.data.MncComp);//.setSelectedItem(vItem);
-						this.oBIOIEmailInputText.setValue(oResponse.data.Email);
-						this.oBIOILaborSizeInputText.setValue(Number(oResponse.data.LbrSize).toString());
-						this.oBIOICommMethodComboBox.setSelectedKey(oResponse.data.CommMtd);//.setSelectedItem(vItem);
-						this.oBIOICapitalInputText.setValue(Number(oResponse.data.Capital).toString());
-						this.oBIOIWebSiteInputText.setValue(oResponse.data.Website);
-						this.oBIOITelephoneInputText.setValue(oResponse.data.Telephone);  
-						this.oBIOIMobilephoneInputText.setValue(oResponse.data.Mobile);
-						this.oBIOIFaxInputText.setValue(Number(oResponse.data.Fax).toString());
-						this.oBIOITelephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Tele);
-						this.oBIOIFaxCountryCodeInputText.setValue(oResponse.data.Ccode_Fax);
-						this.oBIOIMobilephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Mobile);					
-						
-						
-						this.oRecordExists = true;
-						}
+				jQuery.when(oRequestFinishedDeferredStatusCheck).then(jQuery.proxy(function(oResponseStatusCheck) {
+					console.dir(oResponseStatusCheck);
 					
-				}, this));		
-				
-				var oRequestFinishedDeferredBICIChild = this.oModelHelper.readBICI(this.oRef_id);
-
-				jQuery.when(oRequestFinishedDeferredBICIChild).then(jQuery.proxy(function(oResponse) {
-					if(oResponse.data.Return !== "Data does not exist"){
-						this.oBICIFirstNameInputText.setValue(oResponse.data.NameFirst);
-						this.oBICILastNameInputText.setValue(oResponse.data.NameLast);
-						this.oBICICityInputText.setValue(oResponse.data.City);
-						this.oBICIGenderComboBox.setSelectedKey(oResponse.data.Gender);
-						this.oBICIPOBoxInputText.setValue(oResponse.data.PoBox);
-						this.oBICITelephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Tele);
-						this.oBICITelephoneInputText.setValue(oResponse.data.Telephone);
-						this.oBICIPostalCodeInputText.setValue(oResponse.data.PostalCode);
-						this.oBICIMobileCountryCodeInputText.setValue(oResponse.data.Ccode_Mobile);
-						this.oBICIMobilePhoneInputText.setValue(oResponse.data.Mobile);
-						this.oBICICommMethodComboBox.setSelectedKey(oResponse.data.CommMtd);
-						this.oBICIFaxCountryCodeInputText.setValue(oResponse.data.Ccode_Fax);
-						this.oBICIFaxInputText.setValue(Number(oResponse.data.Fax).toString());
-						this.oBICIRoleInputText.setSelectedKey(oResponse.data.Role);
-						this.oBICIEmailInputText.setValue(oResponse.data.Email);
-						this._oBICICountryCombobox.setSelectedKey(oResponse.data.Country);
-						this._oBICINationalityCombobox.setSelectedKey(oResponse.data.Nationality);
-						this.oBICIStreet.setValue(oResponse.data.Street);
+					if(oResponseStatusCheck.results.length === 1){
 						
+						if(!this.oShowAlertDialog.isOpen())
+						{
+						this.oAlertTextView.setText(this.oModelHelper.getText("ApplicationStatus")+" "+oResponseStatusCheck.results[0].StatusDesc);
+						this.oShowAlertDialog.open();
 						
-						this.oContactInfoRecordExists = true;
 						}
-				}, this));	
-				
-				//that.readBICIPASSFileAttachemnts();
-				//that.readBICIPOAFileAttachemnts();
-				
-				var oRequestFinishedDeferredBAQAnswersReadChild = this.oModelHelper.readBAQSavedAnswers(this.oRef_id);
-
-				jQuery.when(oRequestFinishedDeferredBAQAnswersReadChild).then(jQuery.proxy(function(oResponse) {
-					
-					if(oResponse.data.results[0].Return !== "No Records"){						
 						
-						for(var i=0; i < this.oTotalBAQQuestions; i++){
-							 for (j=0; j < this.oTotalBAQQuestions; j++){
-								 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+j);
-								 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+j);
+					}else{
+						
+						sap.m.MessageToast.show(this.oModelHelper
+								.getText("SignInSuccessful"));
+						
+						
+						this.oRef_id = oResponse.Ref_id;
+			
+						this._oidMainPageContent.setVisible(false);
+						this._oTopHeaderVBox.setVisible(true);
+						this._oidLicenseButtonsHBox.setVisible(true);
+						
+						this.oBasicInfoTab =  this.getView().byId("idBasicInfoTab");
+						this.oLicenseInfoTab =  this.getView().byId("idLicenseInfoTab");
+						
+						this.oLicenseInfoTab.setSelectedIndex(1);
+						this.oLicenseInfoTab.setSelectedIndex(0);
+						
+						
+						this._oidRegionComboBox = this.getView().byId("idRegionComboBox");		
+						var oRegionComboBoxFilter = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
+						var oRegionComboBoxKeyFilter = new sap.ui.model.Filter("Bland_reg", sap.ui.model.FilterOperator.NE, "");
+						this._oidRegionComboBox.getBinding("items").filter([oRegionComboBoxFilter, oRegionComboBoxKeyFilter]);
+						
+						this._oBIILegalStatusCombobox = this.getView().byId("idBILegalStatusComboBox");
+						var oBIILegalStatusFilter = new sap.ui.model.Filter("Textlong", sap.ui.model.FilterOperator.NE, "");
+						var oBIILegalStatusKeyFilter = new sap.ui.model.Filter("Source", sap.ui.model.FilterOperator.NE, "");
+						this._oBIILegalStatusCombobox.getBinding("items").filter([oBIILegalStatusFilter,oBIILegalStatusKeyFilter]);
+						
+						this._oBICINationalityCombobox = this.getView().byId("idCINationalityComboBox");
+						var oBICINationalityFilter = new sap.ui.model.Filter("Natio50", sap.ui.model.FilterOperator.NE, "");
+						var oBICINationalityKeyFilter = new sap.ui.model.Filter("Land1", sap.ui.model.FilterOperator.NE, "");
+						this._oBICINationalityCombobox.getBinding("items").filter([oBICINationalityFilter,oBICINationalityKeyFilter]);
+						
+						
+						this._oBICICountryCombobox = this.getView().byId("idCICountryComboBox");
+						var oBICICountryFilter = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.NE, "");
+						var oBICICountryKeyFilter = new sap.ui.model.Filter("Land1", sap.ui.model.FilterOperator.NE, "");
+						this._oBICICountryCombobox.getBinding("items").filter([oBICICountryFilter,oBICICountryKeyFilter]);
+						
+						this._oBICityComboBox = this.getView().byId("idCityComboBox");
+						
+						this.oBIOICommMethodComboBox = this.getView().byId("idBIOICommMethodComboBox");
+						
+						
+						
+						this.oBIOIOrganizationName = this.getView().byId("idBIOIOrganizationName");
+						this.oBIOIMultiNationalCompanyCombobox = this.getView().byId("idBIOIMultiNationalCompanyCombobox");
+						this.oBIOIEmailInputText = this.getView().byId("idBIOIEmailInputText");
+						this.oBIOILaborSizeInputText = this.getView().byId("idBIOILaborSizeInputText");
+						this.oBIOICapitalInputText = this.getView().byId("idBIOICapitalInputText");
+						this.oBIOITelephoneCountryCodeInputText = this.getView().byId("idBIOITelephoneCountryCodeInputText");
+						this.oBIOITelephoneInputText = this.getView().byId("idBIOITelephoneInputText");
+						this.oBIOIMobilephoneCountryCodeInputText = this.getView().byId("idBIOIMobilephoneCountryCodeInputText");
+						this.oBIOIMobilephoneInputText = this.getView().byId("idBIOIMobilephoneInputText");
+						this.oBIOIFaxCountryCodeInputText = this.getView().byId("idBIOIFaxCountryCodeInputText");
+						this.oBIOIFaxInputText = this.getView().byId("idBIOIFaxInputText");
+						this.oBIOIWebSiteInputText = this.getView().byId("idBIOIWebSiteInputText");
+						
+						this.oBICIFirstNameInputText = this.getView().byId("idBICIFirstNameInputText");
+						this.oBICILastNameInputText = this.getView().byId("idBICILastNameInputText");
+						this.oBICICityInputText = this.getView().byId("idBICICityInputText");
+						this.oBICIGenderComboBox = this.getView().byId("idBICIGenderComboBox");
+						this.oBICIPOBoxInputText = this.getView().byId("idBICIPOBoxInputText");
+						this.oBICITelephoneCountryCodeInputText = this.getView().byId("idBICITelephoneCountryCodeInputText");
+						this.oBICITelephoneInputText = this.getView().byId("idBICITelephoneInputText");
+						this.oBICIPostalCodeInputText = this.getView().byId("idBICIPostalCodeInputText");
+						this.oBICIMobileCountryCodeInputText = this.getView().byId("idBICIMobileCountryCodeInputText");
+						this.oBICIMobilePhoneInputText = this.getView().byId("idBICIMobilePhoneInputText");
+						this.oBICICommMethodComboBox = this.getView().byId("idBICICommMethodComboBox");
+						this.oBICIFaxCountryCodeInputText = this.getView().byId("idBICIFaxCountryCodeInputText");
+						this.oBICIFaxInputText = this.getView().byId("idBICIFaxInputText");
+						this.oBICIRoleInputText = this.getView().byId("idBICIRoleInputText");
+						this.oBICIEmailInputText = this.getView().byId("idBICIEmailInputText");
+						this.oBICIStreet = this.getView().byId("idBICIStreetInputText");
+						this.oBICIPASSAttachmentName = this.getView().byId("idBICIPASSAttachmentName");
+						this.oBICIPASSAttachmentNameTextView = this.getView().byId("idBICIPASSAttachmentNameTextView");
+						this.oBICIPOAAttachmentName = this.getView().byId("idBICIPOAAttachmentName");
+						this.oBICIPOAAttachmentNameTextView = this.getView().byId("idBICIPOAAttachmentNameTextView");
+						
+						var oRequestFinishedDeferredBIOIChild = this.oModelHelper.readBIOI(this.oRef_id);
+
+						jQuery.when(oRequestFinishedDeferredBIOIChild).then(jQuery.proxy(function(oResponse) {
+							if(oResponse.data.Return !== "Record does not exist"){
+								this.oBIOIOrganizationName.setValue(oResponse.data.OrgName);
+								this._oidRegionComboBox.setSelectedKey(oResponse.data.Region);
+								this._oBIILegalStatusCombobox.setSelectedKey(oResponse.data.LegalStatus);//.setSelectedItem(vItem);
+								this._oBICityComboBox.setSelectedKey(oResponse.data.City);//.setSelectedItem(vItem);
+								this.oBIOIMultiNationalCompanyCombobox.setValue(oResponse.data.MncComp);//.setSelectedItem(vItem);
+								this.oBIOIEmailInputText.setValue(oResponse.data.Email);
+								this.oBIOILaborSizeInputText.setValue(Number(oResponse.data.LbrSize).toString());
+								this.oBIOICommMethodComboBox.setSelectedKey(oResponse.data.CommMtd);//.setSelectedItem(vItem);
+								this.oBIOICapitalInputText.setValue(Number(oResponse.data.Capital).toString());
+								this.oBIOIWebSiteInputText.setValue(oResponse.data.Website);
+								this.oBIOITelephoneInputText.setValue(oResponse.data.Telephone);  
+								this.oBIOIMobilephoneInputText.setValue(oResponse.data.Mobile);
+								this.oBIOIFaxInputText.setValue(Number(oResponse.data.Fax).toString());
+								this.oBIOITelephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Tele);
+								this.oBIOIFaxCountryCodeInputText.setValue(oResponse.data.Ccode_Fax);
+								this.oBIOIMobilephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Mobile);					
 								
-								 if(oBAQuestion.data("idBAQuestion"+j) === oResponse.data.results[i].NodeGuid){
-									 
-									 oBAQAnswer.setSelectedItem(oBAQAnswer.getItemByKey(oResponse.data.results[i].Atxtlg)); 
-								 }			 
-								 
-							 }									
-						}
-						this.oBAQExists = true;						
-						}else{
-							this.oBAQExists = false;	
-						}
-				}, this));
-				
-				var oRequestFinishedDeferredISICRecord = this.oModelHelper.checkISICAvailability(this.oRef_id);
+								
+								this.oRecordExists = true;
+								}
+							
+						}, this));		
+						
+						var oRequestFinishedDeferredBICIChild = this.oModelHelper.readBICI(this.oRef_id);
 
-				jQuery.when(oRequestFinishedDeferredISICRecord).then(jQuery.proxy(function(oResponse) {
-					
-					this.handleLicenseInfoTabStripSelect();
+						jQuery.when(oRequestFinishedDeferredBICIChild).then(jQuery.proxy(function(oResponse) {
+							if(oResponse.data.Return !== "Data does not exist"){
+								this.oBICIFirstNameInputText.setValue(oResponse.data.NameFirst);
+								this.oBICILastNameInputText.setValue(oResponse.data.NameLast);
+								this.oBICICityInputText.setValue(oResponse.data.City);
+								this.oBICIGenderComboBox.setSelectedKey(oResponse.data.Gender);
+								this.oBICIPOBoxInputText.setValue(oResponse.data.PoBox);
+								this.oBICITelephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Tele);
+								this.oBICITelephoneInputText.setValue(oResponse.data.Telephone);
+								this.oBICIPostalCodeInputText.setValue(oResponse.data.PostalCode);
+								this.oBICIMobileCountryCodeInputText.setValue(oResponse.data.Ccode_Mobile);
+								this.oBICIMobilePhoneInputText.setValue(oResponse.data.Mobile);
+								this.oBICICommMethodComboBox.setSelectedKey(oResponse.data.CommMtd);
+								this.oBICIFaxCountryCodeInputText.setValue(oResponse.data.Ccode_Fax);
+								this.oBICIFaxInputText.setValue(Number(oResponse.data.Fax).toString());
+								this.oBICIRoleInputText.setSelectedKey(oResponse.data.Role);
+								this.oBICIEmailInputText.setValue(oResponse.data.Email);
+								this._oBICICountryCombobox.setSelectedKey(oResponse.data.Country);
+								this._oBICINationalityCombobox.setSelectedKey(oResponse.data.Nationality);
+								this.oBICIStreet.setValue(oResponse.data.Street);
+								
+								
+								this.oContactInfoRecordExists = true;
+								}
+						}, this));	
+						
+						//that.readBICIPASSFileAttachemnts();
+						//that.readBICIPOAFileAttachemnts();
+						
+						var oRequestFinishedDeferredBAQAnswersReadChild = this.oModelHelper.readBAQSavedAnswers(this.oRef_id);
+
+						jQuery.when(oRequestFinishedDeferredBAQAnswersReadChild).then(jQuery.proxy(function(oResponse) {
+							
+							if(oResponse.data.results[0].Return !== "No Records"){						
+								
+								for(var i=0; i < this.oTotalBAQQuestions; i++){
+									 for (j=0; j < this.oTotalBAQQuestions; j++){
+										 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+j);
+										 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+j);
 										
-					if(oResponse.data.results[0].Return === "No Records"){					
+										 if(oBAQuestion.data("idBAQuestion"+j) === oResponse.data.results[i].NodeGuid){
+											 
+											 oBAQAnswer.setSelectedItem(oBAQAnswer.getItemByKey(oResponse.data.results[i].Atxtlg)); 
+										 }			 
+										 
+									 }									
+								}
+								this.oBAQExists = true;						
+								}else{
+									this.oBAQExists = false;	
+								}
+						}, this));
 						
-						this.oISICUnAvailable = true;						
-						
-						}
-				}, this));
-				
-				  
-				
-				/*var oRequestFinishedDeferredBAQAnswersAttachmentName = [];
-				for(var i=0; i < this.oTotalBAQQuestions; i++){
-					var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+i);
-					var oBAQAttachment = sap.ui.getCore().byId("idBAQAttachment"+i);
-					
+						var oRequestFinishedDeferredISICRecord = this.oModelHelper.checkISICAvailability(this.oRef_id);
 
-					oRequestFinishedDeferredBAQAnswersAttachmentName.push(this.oModelHelper.readBAQSavedAttachments(this.oRef_id, oBAQuestion.data("idBAQuestion"+i)));
-
-					
-					
-				}
-				
-				jQuery.when.apply($,oRequestFinishedDeferredBAQAnswersAttachmentName).then(jQuery.proxy(function(oResponse) {
-					//console.log(oResponse.data.FileName);
-					oBAQAttachment.setText(oResponse.data.FileName);
-					
-				}, this));
-				
-				
-				var oRequestFinishedDeferredFinancialAnswersReadChild; //= this.oModelHelper.readFinancialSavedAnswers(this.oRef_id);
-
-				jQuery.when(oRequestFinishedDeferredFinancialAnswersReadChild).then(jQuery.proxy(function(oResponse) {
-					
-					if(oResponse.data.results[0].Return !== "No Records"){	
-						
-						//console.log(oResponse);
-						
-						for(var i=0; i < this.oTotalBAQQuestions; i++){
-							 for (j=0; j < this.oTotalBAQQuestions; j++){
-								 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+j);
-								 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+j);
+						jQuery.when(oRequestFinishedDeferredISICRecord).then(jQuery.proxy(function(oResponse) {
+							
+							this.handleLicenseInfoTabStripSelect();
+												
+							if(oResponse.data.results[0].Return === "No Records"){					
 								
-								 if(oBAQuestion.data("idBAQuestion"+j) === oResponse.data.results[i].NodeGuid){
-									 
-									 oBAQAnswer.setSelectedItem(oBAQAnswer.getItemByKey(oResponse.data.results[i].Atxtlg)); 
-								 }			 
-								 
-							 }									
+								this.oISICUnAvailable = true;						
+								
+								}
+						}, this));
+						
+						  
+						
+						/*var oRequestFinishedDeferredBAQAnswersAttachmentName = [];
+						for(var i=0; i < this.oTotalBAQQuestions; i++){
+							var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+i);
+							var oBAQAttachment = sap.ui.getCore().byId("idBAQAttachment"+i);
+							
+
+							oRequestFinishedDeferredBAQAnswersAttachmentName.push(this.oModelHelper.readBAQSavedAttachments(this.oRef_id, oBAQuestion.data("idBAQuestion"+i)));
+
+							
+							
 						}
-						this.oFinancialAnswersExists = true;						
-						}
-				}, this));
-				*/
-				
-				
+						
+						jQuery.when.apply($,oRequestFinishedDeferredBAQAnswersAttachmentName).then(jQuery.proxy(function(oResponse) {
+							//console.log(oResponse.data.FileName);
+							oBAQAttachment.setText(oResponse.data.FileName);
+							
+						}, this));
+						
+						
+						var oRequestFinishedDeferredFinancialAnswersReadChild; //= this.oModelHelper.readFinancialSavedAnswers(this.oRef_id);
+
+						jQuery.when(oRequestFinishedDeferredFinancialAnswersReadChild).then(jQuery.proxy(function(oResponse) {
+							
+							if(oResponse.data.results[0].Return !== "No Records"){	
+								
+								//console.log(oResponse);
+								
+								for(var i=0; i < this.oTotalBAQQuestions; i++){
+									 for (j=0; j < this.oTotalBAQQuestions; j++){
+										 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+j);
+										 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+j);
+										
+										 if(oBAQuestion.data("idBAQuestion"+j) === oResponse.data.results[i].NodeGuid){
+											 
+											 oBAQAnswer.setSelectedItem(oBAQAnswer.getItemByKey(oResponse.data.results[i].Atxtlg)); 
+										 }			 
+										 
+									 }									
+								}
+								this.oFinancialAnswersExists = true;						
+								}
+						}, this));
+						*/
+						
+					}
+
+
+				}, this));					
 			
 			}
 			
@@ -3727,6 +3728,13 @@ handleRegisterUserButtonPress : function() {
 				this.oShowAlertDialog.open();
 			 }
 				
+	   	 }else if(!(/^\d*$/.test( this.oBIOILaborSizeInputText.getValue() ))){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BIOILaborSizeDigitOnly"));
+				this.oShowAlertDialog.open();
+			 }
+				
 	   	 }else if(this.oBIOICapitalInputText.getValue() === ""){			
 			 if(!this.oShowAlertDialog.isOpen())
 			 {
@@ -3734,10 +3742,24 @@ handleRegisterUserButtonPress : function() {
 				this.oShowAlertDialog.open();
 			 }
 				
+	   	 }else if(!(/^\d*$/.test( this.oBIOICapitalInputText.getValue() ))){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BIOICapitalDigitOnly"));
+				this.oShowAlertDialog.open();
+			 }
+				
 	   	 }else if(this.oBIOITelephoneCountryCodeInputText.getValue() === ""){			
 			 if(!this.oShowAlertDialog.isOpen())
 			 {
 				this.oAlertTextView.setText(this.oModelHelper.getText("BIOITelephoneCountryCodeRequired"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	   	 }else if(!(/^\d*$/.test( this.oBIOITelephoneCountryCodeInputText.getValue() ))){			
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BIOIMobileCountryCodeDigitsOnly"));
 				this.oShowAlertDialog.open();
 			 }
 				

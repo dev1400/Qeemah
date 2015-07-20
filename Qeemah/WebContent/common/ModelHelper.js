@@ -1892,6 +1892,56 @@ com.sagia.common.ModelHelper = {
 		return oRequestFinishedDeferred;
 	},
 	/**
+	 * Forgot Password
+	 */
+	forgotPassword : function(oEmail) {
+		
+		this.openBusyDialog();
+
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oODataModel.setUseBatch(false);
+
+		this.oODataModel.read("PASSWORD_FORGOT_ENT(Email='"+ oEmail + "',Lang='E')", {
+			success : function(oData) {
+				oRequestFinishedDeferred.resolve(oData);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				oRequestFinishedDeferred.resolve();
+				that.closeBusyDialog();
+			}
+		});
+
+		return oRequestFinishedDeferred;
+	},
+	/**
+	 * Check User Status
+	 */
+	checkUserStatus : function(oLeadID) {
+		
+		this.openBusyDialog();
+
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oODataModel.setUseBatch(false);
+
+		this.oODataModel.read("ZFM_CRM_ID_STATUS?InvId='"+ oLeadID + "'", {
+			success : function(oData) {
+				oRequestFinishedDeferred.resolve(oData);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				oRequestFinishedDeferred.resolve();
+				that.closeBusyDialog();
+			}
+		});
+
+		return oRequestFinishedDeferred;
+	},
+	/**
 	 * read BIOI UI
 	 * @author : Abdul Waheed
 	 */

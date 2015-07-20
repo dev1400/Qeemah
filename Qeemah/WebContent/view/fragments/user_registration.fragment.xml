@@ -294,6 +294,98 @@
 
 					</sap.ui.commons.layout:MatrixLayoutRow>
 				</sap.ui.commons.layout:MatrixLayout>
+				
+				<html:br/>
+				
+				<sap.ui.commons.layout:MatrixLayout
+				layoutFixed="false" columns="2">
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<Link text="{i18n>ForgotPassword}" press="handleForgotPwdLinkPress" class="textcolorwhite"/>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<Link text="{i18n>ResetPassword}" press="handleResetPwdLinkPress" class="textcolorwhite"/>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:MatrixLayout>
+			
+			<sap.ui.commons.layout:MatrixLayout
+				layoutFixed="false" columns="2" visible="false" id="idForgotPasswordMatrixLayout">
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons:TextView text="{i18n>EnterRegEmailAddress}"
+								class="textcolorwhite"></sap.ui.commons:TextView>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<Input id="idForgotPasswordInput" width="14rem" />
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutRow><sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+					<Button style="Accept" text="{i18n>Submit}" press="handleSubmitPasswordForgotButtonPress"></Button>
+										
+				</sap.ui.commons.layout:MatrixLayoutCell>
+				<sap.ui.commons.layout:MatrixLayoutCell>
+				<Button style="Accept" text="{i18n>Cancel}" press="handleForgotPasswordCancelButtonPress"></Button>
+				</sap.ui.commons.layout:MatrixLayoutCell>
+				
+				</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:MatrixLayout>
+			
+			<sap.ui.commons.layout:MatrixLayout
+				layoutFixed="false" columns="2" visible="false" id="idResetPasswordMatrixLayout">
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons:TextView text="{i18n>EnterRefID}"
+								class="textcolorwhite"></sap.ui.commons:TextView>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<Input id="idResetRefIdInput" width="14rem" />
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons:TextView text="{i18n>CurrentPassword}"
+								class="textcolorwhite"></sap.ui.commons:TextView>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<Input id="idResetCurrentPasswordInput" width="14rem" />
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons:TextView text="{i18n>NewPassword}"
+								class="textcolorwhite"></sap.ui.commons:TextView>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<Input id="idResetNewPasswordInput" width="14rem" />
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons:TextView text="{i18n>ConfirmPassword}"
+								class="textcolorwhite"></sap.ui.commons:TextView>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<Input id="idConfirmNewPasswordInput" width="14rem" />
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				
+				<sap.ui.commons.layout:MatrixLayoutRow><sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+					<Button style="Accept" text="{i18n>Submit}" press="handleSubmitPasswordResetButtonPress"></Button>
+										
+				</sap.ui.commons.layout:MatrixLayoutCell>
+				<sap.ui.commons.layout:MatrixLayoutCell>
+				<Button style="Accept" text="{i18n>Cancel}" press="handleResetPasswordCancelButtonPress"></Button>
+				</sap.ui.commons.layout:MatrixLayoutCell>
+				
+				</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:MatrixLayout>
+			
 			</VBox>
 
 
