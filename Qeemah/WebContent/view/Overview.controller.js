@@ -3698,7 +3698,7 @@ handleRegisterUserButtonPress : function() {
 					var attachmentFlag = [];
 
 					this.oExperienceQuestionsMatrixLayout = this.getView().byId("idNewShareHolderExperienceQuestionsMLAyout");
-					
+					this.oExperienceQuestionsMatrixLayout.destroyRows();
 					this.oTotalExperienceQuestions = 0;
 					
 					for(var i=0; i < oResponse.data.results.length; i++){
