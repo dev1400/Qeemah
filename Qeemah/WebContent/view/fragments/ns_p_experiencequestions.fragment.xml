@@ -10,7 +10,7 @@
 		<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin" colSpan="2">
+						hAlign="Begin" colSpan="3">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>ExperienceQuestions}" design="H1"></sap.ui.commons:TextView>
 							<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
