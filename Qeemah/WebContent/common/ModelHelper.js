@@ -980,6 +980,70 @@ com.sagia.common.ModelHelper = {
 		}
 	},
 	/**
+	 * Upload Activity Q Attachment.
+	 * @author Abdul Waheed
+	 */
+	
+	uploadActivityQAttachment : function(oRefID, oNodeGuid, oAQFileUploader){
+ 		var oUploadActivityQAttachmentRequestFinishedDeferred = jQuery.Deferred();
+ 		
+ 		if(oAQFileUploader.getValue() !== ""){
+ 			var csrf =  this.oShareHolderODataModel.getHeaders()['x-csrf-token'];
+ 			oAQFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+ 				{name: "Content-Type", value: "application/atom+xml" }));
+ 			oAQFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+ 				{name: "X-CSRF-Token", value: csrf }));        
+ 			 
+         
+ 			oAQFileUploader.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/Survey_Att_hdrSet(Investorid='"+oRefID+"',NodeGuid='"+oNodeGuid+"',FileName='"+oAQFileUploader.getValue()+"')/SurveyFile");
+ 		                                                                   
+ 			oAQFileUploader.attachUploadComplete(function(){
+ 				oAQFileUploader.removeAllHeaderParameters();
+ 				oAQFileUploader.clear();
+ 				oUploadActivityQAttachmentRequestFinishedDeferred.resolve();         
+ 				});
+ 			oAQFileUploader.upload();
+ 		}else{
+ 			oUploadActivityQAttachmentRequestFinishedDeferred.resolve();
+
+ 		}
+		return oUploadActivityQAttachmentRequestFinishedDeferred;
+
+ 	},
+ 	/**
+	 * Upload Experience Q Attachment.
+	 * @author Abdul Waheed
+	 */
+	
+ 	uploadExperienceQAttachment : function(oRefID, oNodeGuid, oEQFileUploader){
+ 		var oUploadExperienceQAttachmentRequestFinishedDeferred = jQuery.Deferred();
+ 		
+ 		if(oEQFileUploader.getValue() !== ""){
+ 			var csrf =  this.oShareHolderODataModel.getHeaders()['x-csrf-token'];
+ 			oEQFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+ 				{name: "Content-Type", value: "application/atom+xml" }));
+ 			oEQFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
+ 				{name: "X-CSRF-Token", value: csrf }));        
+ 			 
+         
+ 			oEQFileUploader.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/Survey_Att_hdrSet(Investorid='"+oRefID+"',NodeGuid='"+oNodeGuid+"',FileName='"+oEQFileUploader.getValue()+"')/SurveyFile");
+ 		                                                                   
+ 			oEQFileUploader.attachUploadComplete(function(){
+ 				oEQFileUploader.removeAllHeaderParameters();
+ 				oEQFileUploader.clear();
+ 				oUploadExperienceQAttachmentRequestFinishedDeferred.resolve();         
+ 				});
+ 			oEQFileUploader.upload();
+ 		}else{
+ 			oUploadExperienceQAttachmentRequestFinishedDeferred.resolve();
+
+ 		}
+		return oUploadExperienceQAttachmentRequestFinishedDeferred;
+
+ 	},
+ 	
+	
+	/**
 	 * Upload Proof Of Attorney.
 	 * @author Abdul Waheed
 	 */

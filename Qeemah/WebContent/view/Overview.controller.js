@@ -433,6 +433,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 				for(var j=0; j < this.oTotalActivityQuestions; j++){
 					 var oAQAnswer = sap.ui.getCore().byId("idAQAnswer"+j);
 					 var oAQuestion = sap.ui.getCore().byId("idAQuestion"+j);
+					 
 					 actvityQuestions.push(oAQuestion.data("idAQuestion"+j));
 					 activityAnswers.push(oAQAnswer.getSelectedItem().getText());
 				}
@@ -506,6 +507,22 @@ sap.ui.controller("com.sagia.view.Overview", {
 				        that.NSHOtherAttachment = that.getView().byId("idNSHOtherFileUploader");
 				        
 				        that.NSHEntityNo = oResponse.EntityNo;
+				        
+				        for(var j=0; j < this.oTotalActivityQuestions; j++){
+							 var oAQFileUploader = sap.ui.getCore().byId("idAQFileUploader"+j);
+							 var oAQuestion = sap.ui.getCore().byId("idAQuestion"+j);
+							 
+							 this.oModelHelper.uploadActivityQAttachment(this.oRef_id, oAQuestion.data("idAQuestion"+j), oAQFileUploader);		 
+						
+						}
+				        
+				        for(var j=0; j < this.oTotalExperienceQuestions; j++){
+							 var oEQFileUploader = sap.ui.getCore().byId("idEQFileUploader"+j);
+							 var oEQuestion = sap.ui.getCore().byId("idEQuestion"+j);
+							 
+							 this.oModelHelper.uploadExperienceQAttachment(this.oRef_id, oEQuestion.data("idEQuestion"+j), oEQFileUploader);		 
+						
+						}
 				        
 				        var oRequestFinishedDeferredExperienceQ = that.oModelHelper.createShareHolderExperienceAnswers
 				        (that.oRef_id, experienceQuestions, experienceAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(), this.oBusinessTypeSurveyID);
@@ -1717,6 +1734,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 				var surveyID = [];
 				var answers = [];
 				var units = [];
+				var attachmentFlag = [];
+
 				this.oActivityQuestionsMatrixLayout = this.getView().byId("idNewShareHolderActivityQuestionsMLAyout");
 				
 				this.oTotalActivityQuestions = 0;
@@ -1726,6 +1745,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 					nodeID[i] = oResponse.data.results[i].NodeGuid;
 					surveyID[i] = oResponse.data.results[i].SurveyID;
 					units[i] = oResponse.data.results[i].Units;
+					attachmentFlag[i] = oResponse.data.results[i].Attachment;
+
 					
 					++this.oTotalActivityQuestions;
 
@@ -1754,14 +1775,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 									});
 								var oSelect = new sap.m.Select("idAQAnswer"+l);
 								
-								/*var oFileUploader = new sap.ui.unified.FileUploader("idBAQFileUploader"+l,{
+								var oFileUploader = new sap.ui.unified.FileUploader("idAQFileUploader"+l,{
 									icon : "common/mime/attachment.png",
 									sendXHR : true,
 									useMultipart : false,
 									sameFilenameAllowed : true,
 									iconOnly : true,
 									mimeType : "application/pdf"
-								});*/
+								});
 								
 								//var oTextViewAttachment = new sap.ui.commons.TextView("idAQAttachment"+l,{});
 								
@@ -1798,6 +1819,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 								oRow1.addCell(oCell2);
 								
 								this.oActivityQuestionsMatrixLayout.addRow(oRow1);
+								
+								if(attachmentFlag[l] === "X"){
+									var oRow2 = new sap.ui.commons.layout.MatrixLayoutRow();
+
+									var oCell3 = new sap.ui.commons.layout.MatrixLayoutCell();
+									oCell3.setColSpan(2);
+									oCell3.addContent(oFileUploader);
+									oRow2.addCell(oCell3);							
+									this.oActivityQuestionsMatrixLayout.addRow(oRow2);
+								}
 								
 								//this.oActivityQuestionsMatrixLayout.createRow( oFileUploader );
 								//this.oActivityQuestionsMatrixLayout.createRow( oTextViewAttachment );
