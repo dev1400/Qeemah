@@ -721,10 +721,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleLILIBusinessTypeComboBoxSelectionChange : function(){
 		var that = this;
+		/*if(this.oExperienceQuestionsMatrixLayout){
+			this.oExperienceQuestionsMatrixLayout.removeAllRows();
+		}*/
+		
 		
 		var oRequestFinishedDeferredLILIBusinessType = this.oModelHelper.readLILIBusinessTypeIsicDescription(this.oLILIBusinessTypeComboBox.getSelectedKey());
 		jQuery.when(oRequestFinishedDeferredLILIBusinessType).then(jQuery.proxy(function(oResponse) {	
-			console.dir(oResponse);
+			//console.dir(oResponse);
 			try{
 				if(oResponse.data.results.length > 0){
 					this.oBusinessTypeSurveyID = oResponse.data.results[0].SurveyID;
@@ -3698,7 +3702,9 @@ handleRegisterUserButtonPress : function() {
 					var attachmentFlag = [];
 
 					this.oExperienceQuestionsMatrixLayout = this.getView().byId("idNewShareHolderExperienceQuestionsMLAyout");
-					this.oExperienceQuestionsMatrixLayout.destroyRows();
+					//this.oExperienceQuestionsMatrixLayout.removeAllRows();
+					//this.oExperienceQuestionsMatrixLayout = this.oExperienceQuestionsMatrixLayout.destroyRows();
+					
 					this.oTotalExperienceQuestions = 0;
 					
 					for(var i=0; i < oResponse.data.results.length; i++){
@@ -3712,6 +3718,23 @@ handleRegisterUserButtonPress : function() {
 						++this.oTotalExperienceQuestions;
 
 					}
+					
+					for(var q=0; q < questions.length; q++){
+						
+						if(sap.ui.getCore().byId("idEQuestion"+q)){
+							sap.ui.getCore().byId("idEQuestion"+q).destroy();
+						}						
+						if(sap.ui.getCore().byId("idEQuestionUnits"+q)){
+							sap.ui.getCore().byId("idEQuestionUnits"+q).destroy();
+						}						
+						if(sap.ui.getCore().byId("idEQAnswer"+q)){
+							sap.ui.getCore().byId("idEQAnswer"+q).destroy();
+						}
+						if(sap.ui.getCore().byId("idEQFileUploader"+q)){
+							sap.ui.getCore().byId("idEQFileUploader"+q).destroy();
+						}						
+					}
+
 					
 					n = 0 ;
 					for(var i=0; i < questions.length; i++){
