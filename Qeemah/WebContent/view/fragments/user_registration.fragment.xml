@@ -322,7 +322,7 @@
 					
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:MatrixLayoutRow><sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
-					<Button style="Accept" text="{i18n>Submit}" press="handleSubmitPasswordForgotButtonPress"></Button>
+					<Button style="Accept" text="{i18n>Generate}" press="handleSubmitPasswordForgotButtonPress"></Button>
 										
 				</sap.ui.commons.layout:MatrixLayoutCell>
 				<sap.ui.commons.layout:MatrixLayoutCell>
@@ -350,7 +350,7 @@
 								class="textcolorwhite"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input id="idResetCurrentPasswordInput" width="14rem" />
+						<Input type="Password" id="idResetCurrentPasswordInput" width="14rem" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					
 				</sap.ui.commons.layout:MatrixLayoutRow>
@@ -360,7 +360,7 @@
 								class="textcolorwhite"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input id="idResetNewPasswordInput" width="14rem" />
+						<Input type="Password" id="idResetNewPasswordInput" width="14rem" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					
 				</sap.ui.commons.layout:MatrixLayoutRow>
@@ -370,13 +370,13 @@
 								class="textcolorwhite"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input id="idConfirmNewPasswordInput" width="14rem" />
+						<Input type="Password" id="idConfirmNewPasswordInput" width="14rem" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				
 				<sap.ui.commons.layout:MatrixLayoutRow><sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
-					<Button style="Accept" text="{i18n>Submit}" press="handleSubmitPasswordResetButtonPress"></Button>
+					<Button style="Accept" text="{i18n>Reset}" press="handleSubmitPasswordResetButtonPress"></Button>
 										
 				</sap.ui.commons.layout:MatrixLayoutCell>
 				<sap.ui.commons.layout:MatrixLayoutCell>

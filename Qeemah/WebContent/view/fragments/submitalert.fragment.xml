@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core" xmlns:sap.ui.commons="sap.ui.commons"
+  xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+  <Dialog
+    icon="sap-icon://message-error"
+    title="{i18n>Information}"
+    class="sapUiPopupWithPadding" >
+    <content>
+      <VBox id="idSubmitAlert" justifyContent="Center" alignItems="Center">
+      
+        <sap.ui.commons:TextView id="idSubmitAlertFragmentTextView" text="{i18n>AreYouSure}"></sap.ui.commons:TextView>
+        
+	  </VBox>	 
+    </content>
+    <beginButton>
+    <Button text="{i18n>Yes}" app:dialogType="Std" press="handleSubmitAlertYesDialogButtonPress" />
+    </beginButton>
+    <endButton>      
+      <Button text="{i18n>No}" app:dialogType="Std" press="handleSubmitSlertNoDialogButtonPress" />
+    </endButton>
+  </Dialog>
+</core:FragmentDefinition>

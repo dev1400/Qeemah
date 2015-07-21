@@ -1894,7 +1894,7 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Forgot Password
 	 */
-	forgotPassword : function(oEmail) {
+	forgotPassword : function(oUserID) {
 		
 		this.openBusyDialog();
 
@@ -1903,7 +1903,32 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
         this.oODataModel.setUseBatch(false);
 
-		this.oODataModel.read("PASSWORD_FORGOT_ENT(Email='"+ oEmail + "',Lang='E')", {
+		this.oODataModel.read("PASSWORD_FORGOT_ENT(Userid='"+ oUserID + "',Lang='E')", {
+			success : function(oData) {
+				oRequestFinishedDeferred.resolve(oData);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				oRequestFinishedDeferred.resolve();
+				that.closeBusyDialog();
+			}
+		});
+
+		return oRequestFinishedDeferred;
+	},
+	/**
+	 * Reset Password
+	 */
+	resetPassword : function(oUserID, oCPassword, oNPassword) {
+		
+		this.openBusyDialog();
+
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oODataModel.setUseBatch(false);
+
+		this.oODataModel.read("PASSWORD_RESET_ENT(Investorid='"+oUserID+"',CurrPwd='"+oCPassword+"',NewPwd='"+oNPassword+"',Lang='E')", {
 			success : function(oData) {
 				oRequestFinishedDeferred.resolve(oData);
 				that.closeBusyDialog();

@@ -187,16 +187,27 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		
 	},
+	handleSubmitPasswordResetButtonPress : function(){
+		 var oRequestFinishedDeferredResetPassword = this.oModelHelper.resetPassword(this.oResetRefIdInput.getValue(),
+				 this.oResetCurrentPasswordInput.getValue(), this.oResetNewPasswordInput.getValue(),
+				 this.oConfirmNewPasswordInput.getValue());
+		 jQuery.when(oRequestFinishedDeferredResetPassword).then(jQuery.proxy(function(oResponse) {	
+			 
+			 //console.log(oResponse);
+			 sap.m.MessageToast.show(oResponse.Return);
+			 
+		 }, this));	
+	},
 	handleSubmitPasswordForgotButtonPress : function(){
 		 var oRequestFinishedDeferredForgotPassword = this.oModelHelper.forgotPassword(this.oForgotPasswordInput.getValue());
 		 jQuery.when(oRequestFinishedDeferredForgotPassword).then(jQuery.proxy(function(oResponse) {	
 			 
-			 sap.m.MessageToast.show(oResponse.Return);
-			 
-			 if(oResponse.Password !== ""){
-				 
-				// sap.m.URLHelper.triggerEmail("abdul.w.mulla@gmail.com", this.oModelHelper.getText("EmailSubject"), this.oModelHelper.getText("EmailBodyMessage")+" "+oResponse.Password);
+			 if(oResponse.Return === "User ID does not exist"){
+				 sap.m.MessageToast.show(this.oModelHelper.getText("UserIDdoesnotexist"));
+			 }else{
+				 sap.m.MessageToast.show(this.oModelHelper.getText("PasswordSentToEmail"));
 			 }
+			 
 		 }, this));	
 	},
 	handleResetPwdLinkPress : function(){
@@ -681,6 +692,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		var oRequestFinishedDeferredLILIBusinessType = this.oModelHelper.readLILIBusinessTypeIsicDescription(this.oLILIBusinessTypeComboBox.getSelectedKey());
 		jQuery.when(oRequestFinishedDeferredLILIBusinessType).then(jQuery.proxy(function(oResponse) {	
+			console.dir(oResponse);
 			try{
 				if(oResponse.data.results[0].IsicDescription !== "None of the above"){
 					this.oLicenseTypeInputText.setValue(oResponse.data.results[0].Activity);
@@ -807,6 +819,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 				if(oResponse !== undefined && oResponse.LILILicenseActivityType.length>0){
 				
 				that.oSurveyID = oResponse.LILILicenseActivityType[0].SurveyID;
+				
+				//console.log(that.oSurveyID);
 					
 				/*for(var k=0;k < oResponse.LILILicenseActivityType.length; k++){
 					console.log(oResponse.LILILicenseActivityType[k].SurveyID);
@@ -1155,52 +1169,70 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	doSubmit : function(){
 		
-		var that = this;
-		sap.m.MessageToast.show(that.oModelHelper
-				.getText("SubmitApplicationMsg"));
+		var that = this;		
 	
 		if(!this.oBAQError){
-				var oRequestSubmitFinishedDeferred = that.oModelHelper.Submit(that.oRef_id);
-	
-				jQuery.when(oRequestSubmitFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-					//that.closeBusyDialog();			
-					
-					if(oResponse.LeadID !== ""){
-					
-					if (!that._ShowLeadIDFragment) {
-						that._ShowLeadIDFragment = sap.ui.xmlfragment(
-								"com.sagia.view.fragments.show_investorid_dialog", that.getView()
-										.getController());
-						this.getView().addDependent(that._ShowLeadIDFragment);
-					}		
-					
-					var oLeadIDTextView = sap.ui.getCore().byId("idLeadIDTextView");
-					
-					oLeadIDTextView.setText(oResponse.LeadID);
-	
-					that._ShowLeadIDFragment.open();
-					}else{		
-						this.oSubmitClicked = false;
-	
-						if(!this.oShowAlertDialog.isOpen())
-						{
-						this.oAlertTextView.setText(oResponse.Return);
-						this.oShowAlertDialog.open();
-						
-						}else{
-							this.oShowAlertDialog.close();
-							this.oAlertTextView.setText(oResponse.Return);
-							this.oShowAlertDialog.open();
-						}
-					}
-					
-					
-				}, that));
+			
+			if(!this.oShowSubmitAlertDialog.isOpen())
+			{
+			this.oShowSubmitAlertDialog.open();
+			
+			}				
 			
 		}else{
 			this.closeBusyDialog();
 	
 		}
+	},
+	handleSubmitAlertYesDialogButtonPress : function(){
+		var that = this;
+
+		this.oShowSubmitAlertDialog.close();
+
+		sap.m.MessageToast.show(that.oModelHelper.getText("SubmitApplicationMsg"));
+				
+		
+		
+		var oRequestSubmitFinishedDeferred = that.oModelHelper.Submit(that.oRef_id);
+		
+		jQuery.when(oRequestSubmitFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+			//that.closeBusyDialog();			
+			
+			if(oResponse.LeadID !== ""){
+			
+			if (!that._ShowLeadIDFragment) {
+				that._ShowLeadIDFragment = sap.ui.xmlfragment(
+						"com.sagia.view.fragments.show_investorid_dialog", that.getView()
+								.getController());
+				this.getView().addDependent(that._ShowLeadIDFragment);
+			}		
+			
+			var oLeadIDTextView = sap.ui.getCore().byId("idLeadIDTextView");
+			
+			oLeadIDTextView.setText(oResponse.LeadID);
+
+			that._ShowLeadIDFragment.open();
+			}else{		
+				this.oSubmitClicked = false;
+
+				if(!this.oShowAlertDialog.isOpen())
+				{
+				this.oAlertTextView.setText(oResponse.Return);
+				this.oShowAlertDialog.open();
+				
+				}else{
+					this.oShowAlertDialog.close();
+					this.oAlertTextView.setText(oResponse.Return);
+					this.oShowAlertDialog.open();
+				}
+			}
+			
+			
+		}, that));
+
+	},
+	handleSubmitSlertNoDialogButtonPress : function(){
+		this.oShowSubmitAlertDialog.close();
 	},
 	saveBAQInfoTab : function(){
 		
@@ -2289,8 +2321,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 		/*if(email.length>20){
 			this._oRegEmailErrorMsg.setText(this.oModelHelper.getText("EmailMoreThan20Chars"));
 			this._oRegEmailErrorMsg.setVisible(true);
-		}else*/ if(!(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test( email ))){
+			///^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/
+		}else*/ if(!(/^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/.test( email ))){
 			//console.log(email.length);
+			/^(([^<>()[]\\.,;:\s@\"]+(\.[^<>()[]\\.,;:\s@\"]+)*)|(\".+\"))@(([[0-9]{1,3}\‌​.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 			this._oRegEmailErrorMsg.setText(this.oModelHelper.getText("InvalidEmailFormat"));
 			this._oRegEmailErrorMsg.setVisible(true);
             return false;
@@ -2310,7 +2344,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		return this.handleContactNumberValidation(this.oContactNumber.getValue());		
 	},
 	handleContactNumberValidation : function(mobile){
-		if(mobile.length>10){
+		if(mobile.length>30){
 			this._oRegMobileErrorMsg.setText(this.oModelHelper.getText("MobileMoreThan10Chars"));
 			this._oRegMobileErrorMsg.setVisible(true);
 			return false;
@@ -2874,6 +2908,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 					"com.sagia.view.fragments.alert", this.getView()
 							.getController());
 			this.getView().addDependent(this.oShowAlertDialog);
+		}		
+		
+		if (!this.oShowSubmitAlertDialog) {
+			this.oShowSubmitAlertDialog = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.submitalert", this.getView()
+							.getController());
+			this.getView().addDependent(this.oShowSubmitAlertDialog);
 		}		
 		
 		this.oAlertTextView = sap.ui.getCore().byId("idAlertFragmentTextView");
