@@ -434,7 +434,8 @@ com.sagia.common.ModelHelper = {
         	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',{Investorid : oRef_id,
         		 NodeGuid : questions[i], Atxtlg : answers[i], Flag : 'A', Lang : 'E',
         		 Shldr_FName : oFirstName,
-        		 Shldr_LName : oLastName} ));
+        		 Shldr_LName : oLastName
+        		 } ));
             }
          this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
          this.oBAQODataModel.setUseBatch(true);
@@ -446,6 +447,36 @@ com.sagia.common.ModelHelper = {
      	 }, true);
          
          return oRequestFinishedCreateAQDeferred; 
+		
+	},
+	/**
+	 * Create Share Holder Experience Answers
+	 * @Author Abdul Waheed 
+	 */
+	createShareHolderExperienceAnswers : function(oRef_id, questions, answers, oFirstName, oLastName, oSurveyID) {
+		
+		var that = this;
+		var oRequestFinishedCreateEQDeferred = jQuery.Deferred();
+
+		 var aBatchOperations = [];
+         for ( var i = 0; i < questions.length; i++) {
+        	 
+        	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',{Investorid : oRef_id,
+        		 NodeGuid : questions[i], Atxtlg : answers[i], Flag : 'E', Lang : 'E',
+        		 Shldr_FName : oFirstName,
+        		 Shldr_LName : oLastName,
+        		 Fin_value : oSurveyID} ));
+            }
+         this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
+         this.oBAQODataModel.setUseBatch(true);
+         this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {                  	 
+        	 oRequestFinishedCreateEQDeferred.resolve(oResponse);
+     	 }, 
+     	 function(oError) {
+     		console.log("E"+oError);
+     	 }, true);
+         
+         return oRequestFinishedCreateEQDeferred; 
 		
 	},
 	/**
@@ -1387,6 +1418,50 @@ com.sagia.common.ModelHelper = {
         this.oBAQODataModel.setUseBatch(false);
 
 		this.oBAQODataModel.read("SurveyAns?Lang='E'&Flag='A'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
+			success : function(oData, response) {
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				oRequestFinishedDeferred.resolve();
+				that.closeBusyDialog();
+			}
+		});
+		return oRequestFinishedDeferred;
+	},
+	/**
+	 * Read Experience Questions
+	 */
+	readExperienceQuestions : function(oSurveyID) {
+		this.openBusyDialog();
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oBAQODataModel.setUseBatch(false);
+
+		this.oBAQODataModel.read("SurveyQue?Lang='E'&Flag='E'&SurveyID='"+oSurveyID+"'", {
+			success : function(oData, response) {
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				oRequestFinishedDeferred.resolve();
+				that.closeBusyDialog();
+			}
+		});
+		return oRequestFinishedDeferred;
+	},
+	/**
+	 * Read Experience Q Answer Answer based on ID
+	 */
+	readEQAnswers : function(oNodeGuid, oSurveyID) {
+		this.openBusyDialog();
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oBAQODataModel.setUseBatch(false);
+
+		this.oBAQODataModel.read("SurveyAns?Lang='E'&Flag='E'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
 				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();

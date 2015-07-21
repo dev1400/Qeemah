@@ -436,6 +436,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 					 actvityQuestions.push(oAQuestion.data("idAQuestion"+j));
 					 activityAnswers.push(oAQAnswer.getSelectedItem().getText());
 				}
+				
+				var experienceQuestions = [];
+				var experienceAnswers = [];
+				for(var j=0; j < this.oTotalExperienceQuestions; j++){
+					 var oEQAnswer = sap.ui.getCore().byId("idEQAnswer"+j);
+					 var oEQuestion = sap.ui.getCore().byId("idEQuestion"+j);
+					 experienceQuestions.push(oEQuestion.data("idEQuestion"+j));
+					 experienceAnswers.push(oEQAnswer.getSelectedItem().getText());
+				}
 					 var oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(
 							that.oRef_id,
 		            		that.oShareHolderTypeComboBox.getSelectedItem().getText(),
@@ -498,72 +507,78 @@ sap.ui.controller("com.sagia.view.Overview", {
 				        
 				        that.NSHEntityNo = oResponse.EntityNo;
 				        
-						var oRequestFinishedDeferredUploadNSHPassPortCopy = that.oModelHelper.uploadNSHPassPortCopy(that.oRef_id, that.NSHEntityNo, that.NSHPassPortCopy);
-						jQuery.when(oRequestFinishedDeferredUploadNSHPassPortCopy).then(jQuery.proxy(function(oResponse) {
-							
-							var oRequestFinishedDeferredUploadNSHPCommercialReg = that.oModelHelper.uploadCommercialRegAttachment(that.oRef_id, that.NSHEntityNo, that.NSHCommercialRegAttachment);
-					     	jQuery.when(oRequestFinishedDeferredUploadNSHPCommercialReg).then(jQuery.proxy(function(oResponse) {
-					     		
-					     		var oRequestFinishedDeferredUploadNSHBankStatement = that.oModelHelper.uploadBankStatementAttachment(that.oRef_id, that.NSHEntityNo, that.NSHBankStatementAttachment);
-						     	jQuery.when(oRequestFinishedDeferredUploadNSHBankStatement).then(jQuery.proxy(function(oResponse) {
+				        var oRequestFinishedDeferredExperienceQ = that.oModelHelper.createShareHolderExperienceAnswers
+				        (that.oRef_id, experienceQuestions, experienceAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(), this.oBusinessTypeSurveyID);
+						jQuery.when(oRequestFinishedDeferredExperienceQ).then(jQuery.proxy(function(oResponse) {
+						
+							var oRequestFinishedDeferredUploadNSHPassPortCopy = that.oModelHelper.uploadNSHPassPortCopy(that.oRef_id, that.NSHEntityNo, that.NSHPassPortCopy);
+							jQuery.when(oRequestFinishedDeferredUploadNSHPassPortCopy).then(jQuery.proxy(function(oResponse) {
+								
+								var oRequestFinishedDeferredUploadNSHPCommercialReg = that.oModelHelper.uploadCommercialRegAttachment(that.oRef_id, that.NSHEntityNo, that.NSHCommercialRegAttachment);
+						     	jQuery.when(oRequestFinishedDeferredUploadNSHPCommercialReg).then(jQuery.proxy(function(oResponse) {
 						     		
-						     		var oRequestFinishedDeferredUploadNSHBalanceSheet = that.oModelHelper.uploadNSHBalanceSheetAttachment(that.oRef_id, that.NSHEntityNo, that.NSHBalanceSheetAttachment);
-							     	jQuery.when(oRequestFinishedDeferredUploadNSHBalanceSheet).then(jQuery.proxy(function(oResponse) {
+						     		var oRequestFinishedDeferredUploadNSHBankStatement = that.oModelHelper.uploadBankStatementAttachment(that.oRef_id, that.NSHEntityNo, that.NSHBankStatementAttachment);
+							     	jQuery.when(oRequestFinishedDeferredUploadNSHBankStatement).then(jQuery.proxy(function(oResponse) {
 							     		
-							     		var oRequestFinishedDeferredUploadNSHOtherAttachments = that.oModelHelper.uploadOtherAttachment(that.oRef_id, that.NSHEntityNo, that.NSHOtherAttachment);
-								     	jQuery.when(oRequestFinishedDeferredUploadNSHOtherAttachments).then(jQuery.proxy(function(oResponse) {
-								        		
-								             var oRequestFinishedDeferredcreateSHActivityAnswers = that.oModelHelper.createShareHolderActivityAnswers
-								 			(that.oRef_id, actvityQuestions, activityAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
-								  
-								     			jQuery.when(oRequestFinishedDeferredcreateSHActivityAnswers).then(jQuery.proxy(function(oResponse) {
-								 	
-								 					var oRequestFinishedDeferredcreateFinancialAnswers1 = that.oModelHelper.createFinancialAnswers
-								 					(that.oRef_id, questions, answers1, "Year 1", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
-				
-								 					jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers1).then(jQuery.proxy(function(oResponse) {
-								 						
-								 						var oRequestFinishedDeferredcreateFinancialAnswers2 = that.oModelHelper.createFinancialAnswers
-								 						(that.oRef_id, questions, answers2, "Year 2", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
-				
-								 						jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers2).then(jQuery.proxy(function(oResponse) {
-								 							
-								 							var oRequestFinishedDeferredcreateFinancialAnswers3 = that.oModelHelper.createFinancialAnswers
-								 							(that.oRef_id, questions, answers3, "Year 3", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
-
-									 							jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers3).then(jQuery.proxy(function(oResponse) {
+							     		var oRequestFinishedDeferredUploadNSHBalanceSheet = that.oModelHelper.uploadNSHBalanceSheetAttachment(that.oRef_id, that.NSHEntityNo, that.NSHBalanceSheetAttachment);
+								     	jQuery.when(oRequestFinishedDeferredUploadNSHBalanceSheet).then(jQuery.proxy(function(oResponse) {
+								     		
+								     		var oRequestFinishedDeferredUploadNSHOtherAttachments = that.oModelHelper.uploadOtherAttachment(that.oRef_id, that.NSHEntityNo, that.NSHOtherAttachment);
+									     	jQuery.when(oRequestFinishedDeferredUploadNSHOtherAttachments).then(jQuery.proxy(function(oResponse) {
+									        		
+									             var oRequestFinishedDeferredcreateSHActivityAnswers = that.oModelHelper.createShareHolderActivityAnswers
+									 			(that.oRef_id, actvityQuestions, activityAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+									  
+									     			jQuery.when(oRequestFinishedDeferredcreateSHActivityAnswers).then(jQuery.proxy(function(oResponse) {
+									 	
+									 					var oRequestFinishedDeferredcreateFinancialAnswers1 = that.oModelHelper.createFinancialAnswers
+									 					(that.oRef_id, questions, answers1, "Year 1", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+					
+									 					jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers1).then(jQuery.proxy(function(oResponse) {
+									 						
+									 						var oRequestFinishedDeferredcreateFinancialAnswers2 = that.oModelHelper.createFinancialAnswers
+									 						(that.oRef_id, questions, answers2, "Year 2", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+					
+									 						jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers2).then(jQuery.proxy(function(oResponse) {
 									 							
-								 								    var getarray = [];
-									 							       
-								 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers1);
-								 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers2);
-								 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers3);
-								 							        getarray.push(oRequestFinishedDeferredcreateSHActivityAnswers);
-								 							        getarray.push(oRequestFinishedDeferredUploadNSHPassPortCopy);
-								 							        getarray.push(oRequestFinishedDeferredUploadNSHPCommercialReg);
-								 							        getarray.push(oRequestFinishedDeferredUploadNSHBankStatement);
-								 							        getarray.push(oRequestFinishedDeferredUploadNSHBalanceSheet);
-								 							        getarray.push(oRequestFinishedDeferredUploadNSHOtherAttachments);
-										 							        
-									 							        jQuery.when.apply($, getarray).done(function () {
-									 							        	that.closeBusyDialog();
-									 							        	
-									 							        	 if(!that.oShowAlertDialog.isOpen())
-									 										 {
-									 							        		that.oAlertTextView.setText(that.oModelHelper.getText("NewShareHolderCreated"));
-									 							        		that.oShowAlertDialog.open();
-									 										 }		 							        						        	
-									 							     		
-									 							        });									 								
-				 							}, this));				 							
-				 						}, this));
-				 					}, this));
-				     			}, this));//end of AQ creation
-					     	}, this));// end of Other upload
-				     	}, this));// end of Balance Sheet upload
-			     	}, this));// end of Bank Statement upload
-		     	}, this));// end of Commercial upload
-		    }, this));// end of Passport upload				     			
+									 							var oRequestFinishedDeferredcreateFinancialAnswers3 = that.oModelHelper.createFinancialAnswers
+									 							(that.oRef_id, questions, answers3, "Year 3", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+	
+										 							jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers3).then(jQuery.proxy(function(oResponse) {
+										 							
+									 								    var getarray = [];
+									 							        getarray.push(oRequestFinishedDeferredExperienceQ);
+									 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers1);
+									 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers2);
+									 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers3);
+									 							        getarray.push(oRequestFinishedDeferredcreateSHActivityAnswers);
+									 							        getarray.push(oRequestFinishedDeferredUploadNSHPassPortCopy);
+									 							        getarray.push(oRequestFinishedDeferredUploadNSHPCommercialReg);
+									 							        getarray.push(oRequestFinishedDeferredUploadNSHBankStatement);
+									 							        getarray.push(oRequestFinishedDeferredUploadNSHBalanceSheet);
+									 							        getarray.push(oRequestFinishedDeferredUploadNSHOtherAttachments);
+											 							        
+										 							        jQuery.when.apply($, getarray).done(function () {
+										 							        	that.closeBusyDialog();
+										 							        	
+										 							        	 if(!that.oShowAlertDialog.isOpen())
+										 										 {
+										 							        		that.oAlertTextView.setText(that.oModelHelper.getText("NewShareHolderCreated"));
+										 							        		that.oShowAlertDialog.open();
+										 										 }		 							        						        	
+										 							     		
+										 							        });									 								
+					 							}, this));				 							
+					 						}, this));
+					 					}, this));
+					     			}, this));//end of AQ creation
+						     	}, this));// end of Other upload
+					     	}, this));// end of Balance Sheet upload
+				     	}, this));// end of Bank Statement upload
+			     	}, this));// end of Commercial upload
+			    }, this));// end of Passport upload	
+	     }, this));// end of EQ creation				     			
+
 		     				 
 		 }catch(error){
  			 that.closeBusyDialog();
@@ -624,7 +639,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			"product":this.oLILIProductComboBox.getValue(), 
 			"quantity": this.oLILIProductQuantityInputText.getValue(), 
 			"uom":this.oLILIProductUOMComboBox.getValue()});
-		console.dir(this.oLILIProductsdata);
+		//console.dir(this.oLILIProductsdata);
 		this.oLILIProductsTableJSONData.setData(this.oLILIProductsdata,true);	
 		//this.oLILIProductsTable.getModel().refresh(true);
 		//console.log(this.oLILIProductsTableJSONData);
@@ -694,6 +709,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		jQuery.when(oRequestFinishedDeferredLILIBusinessType).then(jQuery.proxy(function(oResponse) {	
 			console.dir(oResponse);
 			try{
+				if(oResponse.data.results.length > 0){
+					this.oBusinessTypeSurveyID = oResponse.data.results[0].SurveyID;
+				}
 				if(oResponse.data.results[0].IsicDescription !== "None of the above"){
 					this.oLicenseTypeInputText.setValue(oResponse.data.results[0].Activity);
 					this.oLILILicenceInfoContentVBox.setVisible(false);
@@ -1794,7 +1812,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 				}
 				
 			}, this));			
-			//end of Activity Questions			
+			//end of Activity Questions		
+			
+			
 			
 		}, this));	
 			
@@ -2849,6 +2869,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleCreateNewShareHolderButtonPress : function(){
 		this._oADD_ExistingShareHolderVBox.setVisible(false);
 		this._oCREATE_NewShareHolderVBox.setVisible(true);
+		
+		
 	},
 	handleAddExistingShareHolderCancelButtonPress: function(){
 		this._oADD_ExistingShareHolderVBox.setVisible(false);
@@ -3100,7 +3122,7 @@ userSignIn : function(userID, password){
 				var oRequestFinishedDeferredStatusCheck = this.oModelHelper.checkUserStatus(oResponse.Ref_id);
 				
 				jQuery.when(oRequestFinishedDeferredStatusCheck).then(jQuery.proxy(function(oResponseStatusCheck) {
-					console.dir(oResponseStatusCheck);
+					//console.dir(oResponseStatusCheck);
 					
 					if(oResponseStatusCheck.results.length === 1){
 						
@@ -3605,6 +3627,153 @@ handleRegisterUserButtonPress : function() {
 			
 		}, this));	
 		}
+		
+		if(!this.oBusinessTypeSurveyID){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("SelectBusinessTypeinLI"));
+			this.oShowAlertDialog.open();
+			
+			}
+			
+			this.oLicenseInfoTab.setSelectedIndex(1);			
+			this._oLicenseInfoContent.setVisible(true);
+			this._oBasicInfoContent.setVisible(false);
+			this._oShareHoldersInfoContent.setVisible(false);
+			this._oTermsAndConditionsInfoContent.setVisible(false);
+			this._oPreviewInfoContent.setVisible(false);
+			this._oLicenseInfoButton.setSrc("common/mime/license_hover.png");
+			this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
+			this._oPreviewInfoButton.setSrc("common/mime/preview.png");
+			this._oTermsInfoButton.setSrc("common/mime/terms.png");
+			this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+			this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+			
+			
+			this._oStagesHeading.setContent(this.oModelHelper
+					.getText("LicenseInformationHTML"));
+		}else{
+			//Start of Experience Questions
+			
+			   var oRequestFinishedExperienceQuestionsDeferred = this.oModelHelper.readExperienceQuestions(encodeURIComponent(this.oBusinessTypeSurveyID));
+				
+				jQuery.when(oRequestFinishedExperienceQuestionsDeferred).then(jQuery.proxy(function(oResponse) {
+					
+					var questions = [];
+					var nodeID = [];
+					var surveyID = [];
+					var answers = [];
+					var units = [];
+					var attachmentFlag = [];
+
+					this.oExperienceQuestionsMatrixLayout = this.getView().byId("idNewShareHolderExperienceQuestionsMLAyout");
+					
+					this.oTotalExperienceQuestions = 0;
+					
+					for(var i=0; i < oResponse.data.results.length; i++){
+						questions[i] = oResponse.data.results[i].Qtxtlg;
+						nodeID[i] = oResponse.data.results[i].NodeGuid;
+						surveyID[i] = oResponse.data.results[i].SurveyID;
+						units[i] = oResponse.data.results[i].Units;
+						attachmentFlag[i] = oResponse.data.results[i].Attachment;
+
+						
+						++this.oTotalExperienceQuestions;
+
+					}
+					
+					n = 0 ;
+					for(var i=0; i < questions.length; i++){
+						
+						var oRequestFinishedDeferred = this.oModelHelper.readEQAnswers(oResponse.data.results[i].NodeGuid, encodeURIComponent(this.oBusinessTypeSurveyID));
+
+						jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+							answers.push(oResponse.data.results);
+							
+							n++;
+			                
+							if(n === questions.length){
+								
+								p = 0;
+								for(var l=0; l < questions.length; l++){
+									
+									var oTextView = new sap.ui.commons.TextView("idEQuestion"+l,{
+										text : questions[l],
+										});
+									var oUnitsTextView = new sap.ui.commons.TextView("idEQuestionUnits"+l,{
+										text : units[l],
+										});
+									var oSelect = new sap.m.Select("idEQAnswer"+l);
+									
+									var oFileUploader = new sap.ui.unified.FileUploader("idEQFileUploader"+l,{
+										icon : "common/mime/attachment.png",
+										sendXHR : true,
+										useMultipart : false,
+										sameFilenameAllowed : true,
+										iconOnly : true,
+										mimeType : "application/pdf"
+									});
+									
+									//var oTextViewAttachment = new sap.ui.commons.TextView("idAQAttachment"+l,{});
+									
+									for(var m=0; m < answers.length; m++){								
+									
+										for(var t=0; t < answers[m].length; t++){
+											
+											if(nodeID[p] === answers[m][t].NodeGuid){
+											
+												var vItem = new sap.ui.core.Item();		    				
+							    				
+												vItem.setText(answers[m][t].Atxtlg);						
+												vItem.setKey(answers[m][t].Atxtlg);
+												oSelect.addItem(vItem);
+											}
+										}
+										
+									}p++;
+									
+									oTextView.data("idEQuestion"+l,nodeID[l]);
+									
+									var oRow1 = new sap.ui.commons.layout.MatrixLayoutRow();
+									
+									var oCell0 = new sap.ui.commons.layout.MatrixLayoutCell();
+									var oCell1 = new sap.ui.commons.layout.MatrixLayoutCell();
+									var oCell2 = new sap.ui.commons.layout.MatrixLayoutCell();
+									
+									oCell0.addContent(oTextView);
+									oCell1.addContent(oSelect);
+									oCell2.addContent(oUnitsTextView);	
+									
+									oRow1.addCell(oCell0);
+									oRow1.addCell(oCell1);
+									oRow1.addCell(oCell2);
+									
+									this.oExperienceQuestionsMatrixLayout.addRow(oRow1);	
+									
+									if(attachmentFlag[l] === "X"){
+										var oRow2 = new sap.ui.commons.layout.MatrixLayoutRow();
+
+										var oCell3 = new sap.ui.commons.layout.MatrixLayoutCell();
+										oCell3.setColSpan(2);
+										oCell3.addContent(oFileUploader);
+										oRow2.addCell(oCell3);							
+										this.oExperienceQuestionsMatrixLayout.addRow(oRow2);
+									}
+									
+								}			
+								
+								that.closeBusyDialog();		    				
+							}
+						}, this));				
+						
+					}
+					
+				}, this));			
+			
+			//End of Experience Questions
+		}
+		
+		
 		
 	},
 	handlePreviewInfoButtonClick : function(){
