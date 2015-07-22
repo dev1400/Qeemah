@@ -376,6 +376,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var that = this;
 		this.openBusyDialog();
 		
+		
 
 		
 		
@@ -395,15 +396,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 	  				that.oAlertTextView.setText(this.oModelHelper.getText("NSHLasttNameRequired"));
 	  				that.oShowAlertDialog.open();
 	  			 }			 							  				
-  	   	     }/*else if(that.oNSHPercentageInputText.getValue() === ""){	
+  	   	     }else if(that.oNSHDOBDate.getDateValue() === null){	
  				that.closeBusyDialog();
 
 	  			 if(!that.oShowAlertDialog.isOpen())
 	  			 {
-	  				that.oAlertTextView.setText(this.oModelHelper.getText("NSHPercentageRequired"));
+	  				that.oAlertTextView.setText(this.oModelHelper.getText("NSHDOBRequired"));
 	  				that.oShowAlertDialog.open();
 	  			 }			 							  				
-  	   	     }*/else if(that.oNSHPercentageInputText.getValue() === "" || that.oNSHPercentageInputText.getValue() < 1 || that.oNSHPercentageInputText.getValue() > 100){
+  	   	     }else if(that.oNSHPercentageInputText.getValue() === "" || that.oNSHPercentageInputText.getValue() < 1 || that.oNSHPercentageInputText.getValue() > 100){
  				that.closeBusyDialog();
 
 	  			 if(!that.oShowAlertDialog.isOpen())
@@ -446,6 +447,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 					 experienceQuestions.push(oEQuestion.data("idEQuestion"+j));
 					 experienceAnswers.push(oEQAnswer.getSelectedItem().getText());
 				}
+				var oDOBSplitted =that.oNSHDOBDate.getDateValue().toLocaleDateString().split("/");
+				if(oDOBSplitted[1] < 10){
+					oDOBSplitted[1] = "0"+oDOBSplitted[1];
+				}
+				if(oDOBSplitted[0] < 10){
+					oDOBSplitted[0] = "0"+oDOBSplitted[0];
+				}
+				oDOBSplittedString = oDOBSplitted[2]+""+oDOBSplitted[0]+""+oDOBSplitted[1];
+				
 					 var oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(
 							that.oRef_id,
 		            		that.oShareHolderTypeComboBox.getSelectedItem().getText(),
@@ -459,7 +469,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		     				that.oNSHPostalCodeInputText.getValue(),
 		     				that.oNSHAcademicTitleComboBox.getSelectedKey(),
 		     				that.oNSHStreetInputText.getValue(),
-		     				that.oNSHDOBDate.getDateValue().toISOString().substring(0,10).replace(/-/g,""),
+		     				oDOBSplittedString,
+		     				//that.oNSHDOBDate.getDateValue().toISOString().substring(0,10).replace(/-/g,""),
 		     				that.oNSHWebsiteInputText.getValue(),
 		     				that.oNSHTelephoneInputText.getValue(),
 		     				that.oNSHNationalityComboBox.getSelectedKey(),

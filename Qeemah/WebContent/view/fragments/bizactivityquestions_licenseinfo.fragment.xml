@@ -185,8 +185,8 @@
 								</sap.ui.commons.layout:MatrixLayoutRow>
 								
 		</sap.ui.commons.layout:MatrixLayout> -->
-					<html:br/>
-						<!-- <Table   delete="handleLILIProductDeleteButtonPress" mode="Delete" width="66rem"  id="idLILIProductsTable">
+		<VBox>
+		<!-- <Table   delete="handleLILIProductDeleteButtonPress" mode="Delete" width="66rem"  id="idLILIProductsTable">
 							mode="SingleSelect" delete="handleLILIProductDeleteButtonPress" mode="Delete"
 								<columns>
 									<Column width="2em" id="idLILIProductsTableColumn1">
@@ -209,7 +209,10 @@
 										<sap.ui.commons:TextView text="{i18n>Delete}" class="textcolorwhite"></sap.ui.commons:TextView>
 									</Column>
 								</columns>
-							</Table> -->
+							</Table>  -->
+		</VBox>
+					<html:br/>
+						<!-- -->
 				
 	
 	<sap.ui.commons.layout:MatrixLayout>
