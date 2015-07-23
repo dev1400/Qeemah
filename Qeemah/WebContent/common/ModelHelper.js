@@ -485,7 +485,7 @@ com.sagia.common.ModelHelper = {
 	 */
 	readBAQSavedAttachments : function(oRef_id, oNodeID) {
 		
-		this.openBusyDialog();
+		//this.openBusyDialog();
 
 		var that = this;
 		
@@ -494,16 +494,19 @@ com.sagia.common.ModelHelper = {
 		this.oBAQODataModel.read("SurveyAttSet(Investorid='"+oRef_id+"',NodeGuid='"+oNodeID+"',FileName=' ')", {
 			success : function(oData, response) {
 				
-				oRequestFinishedDeferred.resolve(response);
-				that.closeBusyDialog();
+				
+					oRequestFinishedDeferred.resolve(response);
+				
+				
+				//that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				
 				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(oResponse);
+				//sap.m.MessageToast.show(oResponse);
 
-				that.closeBusyDialog();
-			}});
+				//that.closeBusyDialog();
+			}, async : true});
 
 		return oRequestFinishedDeferred;
 		

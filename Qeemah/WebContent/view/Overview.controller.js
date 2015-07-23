@@ -1722,6 +1722,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 							}
 					}, this));	
 					
+					that.readBAQFileAttachments();
 				}, this));	
 				
 					
@@ -1789,6 +1790,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 								}
 						}, this));	
 						
+						that.readBAQFileAttachments();
+
 					}, this));	
 					
 					
@@ -2113,6 +2116,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}, this));	
 		
 	},
+	readBAQFileAttachments : function(){
+		var that = this;
+		var loop = 0;
+		var id = setInterval(function() {
+		    loop++;
+		    if(loop <= that.oTotalBAQQuestions)
+		    {
+		        clearInterval(id);
+		    }
+		    var oBAQFileUploader = sap.ui.getCore().byId("idBAQFileUploader"+loop);
+		    var oTextViewAttachment = sap.ui.getCore().byId("idBAQAttachment"+oBAQFileUploader.data("idBAQFileUploader"+loop));
+
+		    var oRequestFinishedDeferredBAQAnswersAttachmentNameDifferred= that.oModelHelper.readBAQSavedAttachments(that.oRef_id, oBAQFileUploader.data("idBAQFileUploader"+loop));
+			jQuery.when(oRequestFinishedDeferredBAQAnswersAttachmentNameDifferred).then(jQuery.proxy(function(oResponse) {
+				oTextViewAttachment.setText(oResponse.data.FileName);
+			}, that));
+		}, 3000);		
+	},
 	handleRegionSelectionComboBox : function(oControlEvent){
 		//console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.text);
 		
@@ -2207,7 +2228,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 								mimeType : "application/pdf"
 							});
 							
-							var oTextViewAttachment = new sap.ui.commons.TextView("idBAQAttachment"+l,{});
 							
 							for(var m=0; m < answers.length; m++){								
 							
@@ -2254,6 +2274,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 							//this.oBAQMatrixLayout.createRow( oSelect );
 							//this.oBAQMatrixLayout.createRow( oBAQUnitsTextView );
 							if(attachmentFlag[l] === "X"){
+								var oTextViewAttachment = new sap.ui.commons.TextView("idBAQAttachment"+nodeID[l]);
+
+								oFileUploader.data("idBAQFileUploader"+l,nodeID[l]);								
+
 								var oRow2 = new sap.ui.commons.layout.MatrixLayoutRow();
 
 								var oCell3 = new sap.ui.commons.layout.MatrixLayoutCell();
@@ -2261,9 +2285,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 								oCell3.addContent(oFileUploader);
 								oRow2.addCell(oCell3);							
 								this.oBAQMatrixLayout.addRow(oRow2);
+								this.oBAQMatrixLayout.createRow( oTextViewAttachment );
 							}
 							
-							//this.oBAQMatrixLayout.createRow( oTextViewAttachment );
+							
 						
 							this.oTotalBAQQuestions++;
 						}			
@@ -3954,29 +3979,10 @@ userSignIn : function(userID, password){
 				        jQuery.when.apply($, getarray).done(function () {				        	 							        						        	
 				        	that.readBICIPASSFileAttachemnts();
 							that.readBICIPOAFileAttachemnts();
-						
+							that.readBAQFileAttachments();						
 				        });				
 						
-						/*var oRequestFinishedDeferredBAQAnswersAttachmentName = [];
-						for(var i=0; i < this.oTotalBAQQuestions; i++){
-							var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+i);
-							var oBAQAttachment = sap.ui.getCore().byId("idBAQAttachment"+i);
-							
-
-							oRequestFinishedDeferredBAQAnswersAttachmentName.push(this.oModelHelper.readBAQSavedAttachments(this.oRef_id, oBAQuestion.data("idBAQuestion"+i)));
-
-							
-							
-						}
-						
-						jQuery.when.apply($,oRequestFinishedDeferredBAQAnswersAttachmentName).then(jQuery.proxy(function(oResponse) {
-							//console.log(oResponse.data.FileName);
-							oBAQAttachment.setText(oResponse.data.FileName);
-							
-						}, this));
-						
-						
-						var oRequestFinishedDeferredFinancialAnswersReadChild; //= this.oModelHelper.readFinancialSavedAnswers(this.oRef_id);
+						/*var oRequestFinishedDeferredFinancialAnswersReadChild; //= this.oModelHelper.readFinancialSavedAnswers(this.oRef_id);
 
 						jQuery.when(oRequestFinishedDeferredFinancialAnswersReadChild).then(jQuery.proxy(function(oResponse) {
 							
