@@ -993,7 +993,18 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oShowAlertDialog.open();
 		 }
 			
-   	 }if(this.getView().byId("idBICIPowerofAttorneyFileUploader").getValue() === "" && this.getView().byId("idBICIPassportCopyFileUploader").getValue() === ""){
+   	 }
+	
+	if(!(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test( this.oBIOIWebSiteInputText.getValue() ))){
+		 this.oValidationLILIStatus = false;
+
+		if(!this.oShowAlertDialog.isOpen())
+		{
+		this.oAlertTextView.setText(this.oModelHelper.getText("BIOIInvalidWebsite"));
+		this.oShowAlertDialog.open();
+		
+		}
+	 }else if(this.getView().byId("idBICIPowerofAttorneyFileUploader").getValue() === "" && this.getView().byId("idBICIPassportCopyFileUploader").getValue() === ""){
 		 this.oValidationLILIStatus = false;
 
  		if(!this.oShowAlertDialog.isOpen())
