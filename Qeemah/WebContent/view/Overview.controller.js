@@ -187,6 +187,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		
 	},
+	handleBIOILaborSizeInputTextChange : function(oEvent){
+		var value = oEvent.getSource().getValue();  
+        var floatValue = parseFloat(value);  
+        var formatter = new Intl.NumberFormat('en-US', {  
+          style: "decimal"
+        });  
+        this.oBIOILaborSizeInputText.setValue(formatter.format(floatValue));  
+	},
+	handleBIOICapitalInputTextChange : function(oEvent) {  
+        var value = oEvent.getSource().getValue();  
+        var floatValue = parseFloat(value);  
+        var formatter = new Intl.NumberFormat('en-US', {  
+          style: "currency",  
+          currency: "SAR"  
+        });  
+        this.oBIOICapitalInputText.setValue(formatter.format(floatValue));  
+      
+    }, 
 	handleSubmitPasswordResetButtonPress : function(){
 		 var oRequestFinishedDeferredResetPassword = this.oModelHelper.resetPassword(this.oResetRefIdInput.getValue(),
 				 this.oResetCurrentPasswordInput.getValue(), this.oResetNewPasswordInput.getValue(),
@@ -873,14 +891,21 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 			jQuery.when(oRequestFinishedDeferredLILILicenseType).then(jQuery.proxy(function(oResponse) {
 				
-				console.dir(oResponse);
+				//console.dir(oResponse);
 				if(oResponse !== undefined && oResponse.LILILicenseActivityType.length>0){
 				
 				that.oSurveyID = oResponse.LILILicenseActivityType[0].SurveyID;
 				
 				this.oBusinessTypeSurveyID = that.oSurveyID;
 				
-				console.log("> "+that.oSurveyID+" > "+oResponse.LILILicenseActivityType[0].Activity);
+				this.oProductsTableVBox = this.getView().byId("idProductsTableVBox");
+				if(oResponse.LILILicenseActivityType[0].Activity.substring(0, 10) === "INDUSTRIAL"){
+					//this.oProductsTableVBox.setVisible(true);
+				}else{
+					//this.oProductsTableVBox.setVisible(false);
+				}
+				
+				//console.log("> "+that.oSurveyID+" > "+oResponse.LILILicenseActivityType[0].Activity);
 				
 				//console.log(that.oSurveyID);
 					
@@ -1005,6 +1030,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 },
 	doThis : function(){
 		this.openBusyDialog();
+		
+		this.oBIOICapitalInputTextValue = this.oBIOICapitalInputText.getValue();
+		this.oBIOICapitalInputTextValue = this.oBIOICapitalInputTextValue.match(/\d/g);
+		this.oBIOICapitalInputTextValue = this.oBIOICapitalInputTextValue.join("");
+		
+		this.oBIOILaborSizeInputTextValue = this.oBIOILaborSizeInputText.getValue();
+		this.oBIOILaborSizeInputTextValue = this.oBIOILaborSizeInputTextValue.match(/\d/g);
+		this.oBIOILaborSizeInputTextValue = this.oBIOILaborSizeInputTextValue.join("");
+		
+		
 	       
 		if(this.oRecordExists){
 			try{
@@ -1016,9 +1051,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this._oBICityComboBox.getSelectedKey(),
 					this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
 					this.oBIOIEmailInputText.getValue(),
-					this.oBIOILaborSizeInputText.getValue(),
+					this.oBIOILaborSizeInputTextValue,
+					//this.oBIOILaborSizeInputText.getValue(),
 					this.oBIOICommMethodComboBox.getSelectedItem().getKey(),
-					this.oBIOICapitalInputText.getValue(),
+					this.oBIOICapitalInputTextValue,
+					//this.oBIOICapitalInputText.getValue(),
 					this.oBIOITelephoneCountryCodeInputText.getValue(),
 					this.oBIOITelephoneInputText.getValue(),
 					this.oBIOIMobilephoneCountryCodeInputText.getValue(),
@@ -1047,9 +1084,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this._oBICityComboBox.getSelectedKey(),
 					this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
 					this.oBIOIEmailInputText.getValue(),
-					this.oBIOILaborSizeInputText.getValue(),
+					this.oBIOILaborSizeInputTextValue,
+					//this.oBIOILaborSizeInputText.getValue(),
 					this.oBIOICommMethodComboBox.getSelectedKey(),
-					this.oBIOICapitalInputText.getValue(),
+					this.oBIOICapitalInputTextValue,
+					//this.oBIOICapitalInputText.getValue(),
 					this.oBIOITelephoneCountryCodeInputText.getValue(),
 					this.oBIOITelephoneInputText.getValue(),
 					this.oBIOIMobilephoneCountryCodeInputText.getValue(),
@@ -3310,6 +3349,8 @@ userSignIn : function(userID, password){
 								this.oBIOIFaxCountryCodeInputText.setValue(oResponse.data.Ccode_Fax);
 								this.oBIOIMobilephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Mobile);					
 								
+								this.oBIOICapitalInputText.fireChange();
+								this.oBIOILaborSizeInputText.fireChange();
 								
 								this.oRecordExists = true;
 								}
