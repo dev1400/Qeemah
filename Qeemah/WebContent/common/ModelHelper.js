@@ -1026,7 +1026,7 @@ com.sagia.common.ModelHelper = {
 		if(oBICIPassPortCopyFileUploader.getValue() !== ""){
 		
 		oBICIPassPortCopyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
-				{name: "Content-Type", value: "application/xml" }));
+				{name: "Content-Type", value: "application/atom+xml" }));
 		oBICIPassPortCopyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
 				{name: "X-CSRF-Token", value: this.getCSRFToken() }));        
 		oBICIPassPortCopyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter

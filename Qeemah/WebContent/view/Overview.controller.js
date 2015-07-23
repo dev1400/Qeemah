@@ -1482,7 +1482,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oBIOILaborSizeInputTextValue = this.oBIOILaborSizeInputTextValue.match(/\d/g);
 		this.oBIOILaborSizeInputTextValue = this.oBIOILaborSizeInputTextValue.join("");
 		
-		
+		var that = this;
 	       
 		if(this.oRecordExists){
 			try{
@@ -1516,12 +1516,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 				this.oBICIPassPortCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
 				
 				var oRequestFinishedDeferredUploadPOA = this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
-				jQuery.when(oRequestFinishedDeferredUploadPOA).then(jQuery.proxy(function(oResponse) {
-					var oRequestFinishedDeferredUploadPassPortCopy = this.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
-					jQuery.when(oRequestFinishedDeferredUploadPassPortCopy).then(jQuery.proxy(function(oResponse) {						
-						this.saveContactInfoTab();
-					}, this));
+				jQuery.when(oRequestFinishedDeferredUploadPOA).then(jQuery.proxy(function(oResponse) {					
+					
 				}, this));
+				
+				var oRequestFinishedDeferredUploadPassPortCopy = that.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
+				jQuery.when(oRequestFinishedDeferredUploadPassPortCopy).then(jQuery.proxy(function(oResponse) {						
+					that.saveContactInfoTab();
+				}, that));
 				
 				
 			}, this));	
@@ -1566,12 +1568,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 				this.oBICIPassPortCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
 				
 				var oRequestFinishedDeferredUploadPOA = this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
-				jQuery.when(oRequestFinishedDeferredUploadPOA).then(jQuery.proxy(function(oResponse) {
-					var oRequestFinishedDeferredUploadPassPortCopy = this.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
-					jQuery.when(oRequestFinishedDeferredUploadPassPortCopy).then(jQuery.proxy(function(oResponse) {						
-						this.saveContactInfoTab();
-					}, this));
+				jQuery.when(oRequestFinishedDeferredUploadPOA).then(jQuery.proxy(function(oResponse) {					
+					
 				}, this));
+				
+				var oRequestFinishedDeferredUploadPassPortCopy = that.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
+				jQuery.when(oRequestFinishedDeferredUploadPassPortCopy).then(jQuery.proxy(function(oResponse) {						
+					that.saveContactInfoTab();
+				}, that));
         
 			}, this));	
 			}
@@ -1691,6 +1695,37 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 			jQuery.when(oRequestFinishedDeferredcreateISIC).then(jQuery.proxy(function(oResponse) {
 				
+				var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
+
+				jQuery.when(oRequestFinishedDeferredReadPASSBICI).then(jQuery.proxy(function(oResponse) {
+					
+					if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
+						this.oBICIPASSAttachmentName.setVisible(true);
+						this.oBICIPASSAttachmentNameTextView.setVisible(true);
+						this.oBICIPASSAttachmentName.setText(oResponse.data.FileName);
+						}else{
+							this.oBICIPASSAttachmentName.setVisible(false);
+							this.oBICIPASSAttachmentNameTextView.setVisible(false);
+						}
+					
+					var oRequestFinishedDeferredReadPOABICI = this.oModelHelper.readBICIPPOAAttachment(this.oRef_id);
+
+					jQuery.when(oRequestFinishedDeferredReadPOABICI).then(jQuery.proxy(function(oResponse) {
+						
+						if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
+							this.oBICIPOAAttachmentName.setVisible(true);
+							this.oBICIPOAAttachmentNameTextView.setVisible(true);
+							this.oBICIPOAAttachmentName.setText(oResponse.data.FileName);
+							}else{
+								this.oBICIPOAAttachmentName.setVisible(false);
+								this.oBICIPOAAttachmentNameTextView.setVisible(false);
+							}
+					}, this));	
+					
+				}, this));	
+				
+					
+				
 				if(this.oSaveClicked){
 					that.closeBusyDialog();
 					sap.m.MessageToast.show(that.oModelHelper
@@ -1726,6 +1761,37 @@ sap.ui.controller("com.sagia.view.Overview", {
 						);
 
 				jQuery.when(oRequestFinishedDeferredcreateISIC).then(jQuery.proxy(function(oResponse) {
+					
+					var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
+
+					jQuery.when(oRequestFinishedDeferredReadPASSBICI).then(jQuery.proxy(function(oResponse) {
+						
+						if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
+							this.oBICIPASSAttachmentName.setVisible(true);
+							this.oBICIPASSAttachmentNameTextView.setVisible(true);
+							this.oBICIPASSAttachmentName.setText(oResponse.data.FileName);
+							}else{
+								this.oBICIPASSAttachmentName.setVisible(false);
+								this.oBICIPASSAttachmentNameTextView.setVisible(false);
+							}
+						
+						var oRequestFinishedDeferredReadPOABICI = this.oModelHelper.readBICIPPOAAttachment(this.oRef_id);
+
+						jQuery.when(oRequestFinishedDeferredReadPOABICI).then(jQuery.proxy(function(oResponse) {
+							
+							if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
+								this.oBICIPOAAttachmentName.setVisible(true);
+								this.oBICIPOAAttachmentNameTextView.setVisible(true);
+								this.oBICIPOAAttachmentName.setText(oResponse.data.FileName);
+								}else{
+									this.oBICIPOAAttachmentName.setVisible(false);
+									this.oBICIPOAAttachmentNameTextView.setVisible(false);
+								}
+						}, this));	
+						
+					}, this));	
+					
+					
 					if(this.oSaveClicked){
 						that.closeBusyDialog();
 						sap.m.MessageToast.show(that.oModelHelper
