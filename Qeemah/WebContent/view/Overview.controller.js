@@ -198,9 +198,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleBIOICapitalInputTextChange : function(oEvent) {  
         var value = oEvent.getSource().getValue();  
         var floatValue = parseFloat(value);  
-        var formatter = new Intl.NumberFormat('en-US', {  
-          style: "currency",  
-          currency: "SAR"  
+        var formatter = new Intl.NumberFormat('en-US', {
+            style: "decimal"
+          //style: "currency",  
+          //currency: "SAR"  
         });  
         this.oBIOICapitalInputText.setValue(formatter.format(floatValue));  
       
@@ -983,19 +984,233 @@ sap.ui.controller("com.sagia.view.Overview", {
 	this.oValidationLILIStatus = false;
 	
 	that = this;
-	if(this.oBICIFirstNameInputText.getValue() === "" || this.oBICILastNameInputText.getValue() === "")
-	 {		
+	
+	if(this.oBIOIOrganizationName.getValue() === ""){			
+		 this.oValidationLILIStatus = false;
+ 
+		if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIONameRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(this.oBIOIEmailInputText.getValue() === ""){			
+		 this.oValidationLILIStatus = false;
+
+  		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIEmailRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(/^[0-9.,]+$/.test( this.oBIOILaborSizeInputText.getValue() ))){			
+		 this.oValidationLILIStatus = false;
+
+  		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOILaborSizeDigitOnly"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(this.oBIOICapitalInputText.getValue() === ""){			
+		 this.oValidationLILIStatus = false;
+
+  		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOICapitalRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(/^[0-9.,]+$/.test( this.oBIOICapitalInputText.getValue() ))){			
+		 this.oValidationLILIStatus = false;
+
+  		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOICapitalDigitOnly"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(this.oBIOITelephoneCountryCodeInputText.getValue() === ""){			
+		 this.oValidationLILIStatus = false;
+
+  		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOITelephoneCountryCodeRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(this.oBIOITelephoneCountryCodeInputText.getValue().length <= 4 && this.oBIOITelephoneCountryCodeInputText.getValue().length >= 2)){			
+		 this.oValidationLILIStatus = false;
+
+  		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOITelephoneCountryCodeLength"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(/^\d*$/.test( this.oBIOITelephoneCountryCodeInputText.getValue() ))){	
 		 this.oValidationLILIStatus = false;
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
-			this.oAlertTextView.setText(this.oModelHelper.getText("CIFNameAndLName"));
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOITelephoneCountryCodeDigitsOnly"));
 			this.oShowAlertDialog.open();
 		 }
 			
-   	 }
-	
-	if(!(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test( this.oBIOIWebSiteInputText.getValue() ))){
+  	 }else if(this.oBIOITelephoneInputText.getValue() === ""){		
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOITelephoneNoRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(this.oBIOITelephoneInputText.getValue().length <= 15 && this.oBIOITelephoneInputText.getValue().length >= 5)){			
+		 this.oValidationLILIStatus = false;
+
+  		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOITelephoneNoLength"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(/^\d*$/.test( this.oBIOITelephoneInputText.getValue() ))){	
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOITelephoneNoNumeric"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(this.oBIOIFaxCountryCodeInputText.getValue() === ""){			
+		 this.oValidationLILIStatus = false;
+
+  		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIFaxCountryCodeRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(this.oBIOIFaxCountryCodeInputText.getValue().length <= 4 && this.oBIOIFaxCountryCodeInputText.getValue().length >= 2)){			
+		 this.oValidationLILIStatus = false;
+
+  		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIFaxCCNoLength"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(/^\d*$/.test( this.oBIOIFaxCountryCodeInputText.getValue() ))){	
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIFaxCCNoNumeric"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(this.oBIOIFaxInputText.getValue() === ""){	
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIFaxNoRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(this.oBIOIFaxInputText.getValue().length <= 15 && this.oBIOIFaxInputText.getValue().length >= 5)){			
+		 this.oValidationLILIStatus = false;
+
+  		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIFaxNoLength"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(/^\d*$/.test( this.oBIOIFaxInputText.getValue() ))){	
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIFaxNoNumeric"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(this.oBIOIMobilephoneCountryCodeInputText.getValue() === ""){		
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIMobileCountryCodeRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(this.oBIOIMobilephoneCountryCodeInputText.getValue().length <= 4 && this.oBIOIMobilephoneCountryCodeInputText.getValue().length >= 2)){			
+		 this.oValidationLILIStatus = false;
+
+  		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIMobileCountryCodeLength"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(/^\d*$/.test( this.oBIOIMobilephoneCountryCodeInputText.getValue() ))){	
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIMobileCountryCodeDigitsOnly"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(this.oBIOIMobilephoneInputText.getValue() === ""){	
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIMobileNoRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(this.oBIOIMobilephoneInputText.getValue().length <= 15 && this.oBIOIMobilephoneInputText.getValue().length >= 5)){
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIMobileNoLength"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(/^\d*$/.test( this.oBIOIMobilephoneInputText.getValue() ))){
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIMobileNoNumeric"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(this.oBIOIWebSiteInputText.getValue() === ""){	
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIWebSiteRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(/^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/.test( this.oBIOIEmailInputText.getValue() ))){
+		this.oValidationLILIStatus = false;
+
+		if(!this.oShowAlertDialog.isOpen())
+		{
+		this.oAlertTextView.setText(this.oModelHelper.getText("BIOIInvalidEmail"));
+		this.oShowAlertDialog.open();
+		
+		}
+	}else if(!(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test( this.oBIOIWebSiteInputText.getValue() ))){
 		 this.oValidationLILIStatus = false;
 
 		if(!this.oShowAlertDialog.isOpen())
@@ -1004,7 +1219,221 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oShowAlertDialog.open();
 		
 		}
-	 }else if(this.getView().byId("idBICIPowerofAttorneyFileUploader").getValue() === "" && this.getView().byId("idBICIPassportCopyFileUploader").getValue() === ""){
+	 }else if(this.oBICIEmailInputText.getValue() === ""){			
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICIEmailRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+   	 }else if(!(/^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/.test( this.oBICIEmailInputText.getValue() ))){
+		this.oValidationLILIStatus = false;
+
+		if(!this.oShowAlertDialog.isOpen())
+		{
+		this.oAlertTextView.setText(this.oModelHelper.getText("BICIInvalidEmail"));
+		this.oShowAlertDialog.open();
+		
+		}
+	}else if(this.oBICITelephoneCountryCodeInputText.getValue() === ""){
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICITelephoneCountryCodeRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+   	 }else if(!(this.oBICITelephoneCountryCodeInputText.getValue().length <= 4 && this.oBICITelephoneCountryCodeInputText.getValue().length >= 2)){			
+		 this.oValidationLILIStatus = false;
+
+  		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICITelephoneCountryCodeLength"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(/^\d*$/.test( this.oBICITelephoneCountryCodeInputText.getValue() ))){	
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICITelephoneCountryCodeDigitsOnly"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(this.oBICITelephoneInputText.getValue() === ""){		
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICITelephoneNoRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+   	 }else if(!(this.oBICITelephoneInputText.getValue().length <= 15 && this.oBICITelephoneInputText.getValue().length >= 5)){
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICITelephoneNoLength"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(/^\d*$/.test( this.oBICITelephoneInputText.getValue() ))){
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICITelephoneNoNumeric"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(this.oBICIFaxCountryCodeInputText.getValue() === ""){	
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICIFaxCountryCodeRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+   	 }else if(!(this.oBICIFaxCountryCodeInputText.getValue().length <= 4 && this.oBICIFaxCountryCodeInputText.getValue().length >= 2)){			
+		 this.oValidationLILIStatus = false;
+
+  		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICIFaxCCNoLength"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(/^\d*$/.test( this.oBICIFaxCountryCodeInputText.getValue() ))){	
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICIFaxCCNoNumeric"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(this.oBICIFaxInputText.getValue() === ""){		
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICIFaxNoRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+   	 }else if(!(this.oBICIFaxInputText.getValue().length <= 15 && this.oBICIFaxInputText.getValue().length >= 5)){
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICIFaxNoLength"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(/^\d*$/.test( this.oBICIFaxInputText.getValue() ))){
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICIFaxNoNumeric"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(this.oBICIMobileCountryCodeInputText.getValue() === ""){		
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICIMobileCountryCodeRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+   	 }else if(!(this.oBICIMobileCountryCodeInputText.getValue().length <= 4 && this.oBICIMobileCountryCodeInputText.getValue().length >= 2)){			
+		 this.oValidationLILIStatus = false;
+
+  		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICIMobileCountryCodeLength"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(/^\d*$/.test( this.oBICIMobileCountryCodeInputText.getValue() ))){	
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICIMobileCountryCodeDigitsOnly"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(this.oBICIMobilePhoneInputText.getValue() === ""){
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICIMobileNoRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+   	 }else if(!(this.oBICIMobilePhoneInputText.getValue().length <= 15 && this.oBICIMobilePhoneInputText.getValue().length >= 5)){
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICIMobileNoLength"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(!(/^\d*$/.test( this.oBICIMobilePhoneInputText.getValue() ))){
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICIMobileNoNumeric"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }else if(this.oBICICityInputText.getValue() === ""){	
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICICityRequired"));
+			this.oShowAlertDialog.open();
+		 }
+			
+   	 }else if(this.oBICIFirstNameInputText.getValue() === "" || this.oBICILastNameInputText.getValue() === ""){		
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("CIFNameAndLName"));
+			this.oShowAlertDialog.open();
+		 }
+			
+   	 }else if(!(/^[a-zA-Z ]*$/.test( this.oBICIFirstNameInputText.getValue() ))){
+   		this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICIFirstNameValidation"));
+			this.oShowAlertDialog.open();
+		 }
+   	 }else if(!(/^[a-zA-Z ]*$/.test( this.oBICILastNameInputText.getValue() ))){
+   		this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICILastNameValidation"));
+			this.oShowAlertDialog.open();
+		 }
+   	 }else if(this.getView().byId("idBICIPowerofAttorneyFileUploader").getValue() === "" && this.getView().byId("idBICIPassportCopyFileUploader").getValue() === ""){
 		 this.oValidationLILIStatus = false;
 
  		if(!this.oShowAlertDialog.isOpen())
@@ -4097,157 +4526,8 @@ handleRegisterUserButtonPress : function() {
 	},
 	
 	submit : function(){
-		if(this.oBIOIOrganizationName.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BIONameRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBIOIEmailInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BIOIEmailRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(!(/^\d*$/.test( this.oBIOILaborSizeInputText.getValue() ))){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BIOILaborSizeDigitOnly"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBIOICapitalInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BIOICapitalRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(!(/^\d*$/.test( this.oBIOICapitalInputText.getValue() ))){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BIOICapitalDigitOnly"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBIOITelephoneCountryCodeInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BIOITelephoneCountryCodeRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(!(/^\d*$/.test( this.oBIOITelephoneCountryCodeInputText.getValue() ))){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BIOIMobileCountryCodeDigitsOnly"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBIOITelephoneInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BIOITelephoneNoRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBIOIFaxCountryCodeInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BIOIFaxCountryCodeRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBIOIFaxInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BIOIFaxNoRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBIOIMobilephoneCountryCodeInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BIOIMobileCountryCodeRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBIOIMobilephoneInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BIOIMobileNoRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBIOIWebSiteInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BIOIWebSiteRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBICIEmailInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BICIEmailRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBICITelephoneCountryCodeInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BICITelephoneCountryCodeRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBICITelephoneInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BICITelephoneNoRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBICIFaxCountryCodeInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BICIFaxCountryCodeRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBICIFaxInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BICIFaxNoRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBICIMobileCountryCodeInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BICIMobileCountryCodeRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBICIMobilePhoneInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BICIMobileNoRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else if(this.oBICICityInputText.getValue() === ""){			
-			 if(!this.oShowAlertDialog.isOpen())
-			 {
-				this.oAlertTextView.setText(this.oModelHelper.getText("BICICityRequired"));
-				this.oShowAlertDialog.open();
-			 }
-				
-	   	 }else{
 	   		this.oSubmitClicked = true;
 			this.handleSaveLinkPressSave();
-	   	 }
 				
 	}
 	
