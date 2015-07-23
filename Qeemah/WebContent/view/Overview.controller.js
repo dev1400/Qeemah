@@ -1433,7 +1433,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oAlertTextView.setText(this.oModelHelper.getText("BICILastNameValidation"));
 			this.oShowAlertDialog.open();
 		 }
-   	 }else if(this.getView().byId("idBICIPowerofAttorneyFileUploader").getValue() === "" && this.getView().byId("idBICIPassportCopyFileUploader").getValue() === ""){
+   	 }else if(this.getView().byId("idBICIPowerofAttorneyFileUploader").getValue() === "" 
+   		 && this.getView().byId("idBICIPassportCopyFileUploader").getValue() === ""
+   	     && this.oBICIPASSAttachmentName.getText() === ""
+   	     && this.oBICIPOAAttachmentNameTextView.getText() === ""){
 		 this.oValidationLILIStatus = false;
 
  		if(!this.oShowAlertDialog.isOpen())
@@ -1508,7 +1511,19 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this.oBIOIMobilephoneCountryCodeInputText.getValue());
 
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-				this.saveContactInfoTab();
+				
+				this.oBICIPowerofAttorneyFileUploader = this.getView().byId("idBICIPowerofAttorneyFileUploader");
+				this.oBICIPassPortCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
+				
+				var oRequestFinishedDeferredUploadPOA = this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
+				jQuery.when(oRequestFinishedDeferredUploadPOA).then(jQuery.proxy(function(oResponse) {
+					var oRequestFinishedDeferredUploadPassPortCopy = this.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
+					jQuery.when(oRequestFinishedDeferredUploadPassPortCopy).then(jQuery.proxy(function(oResponse) {						
+						this.saveContactInfoTab();
+					}, this));
+				}, this));
+				
+				
 			}, this));	
 			}
 			catch(err){
@@ -1546,8 +1561,17 @@ sap.ui.controller("com.sagia.view.Overview", {
             jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
             	this.oRecordExists = true;
             	
-				this.saveContactInfoTab();
-
+            	
+            	this.oBICIPowerofAttorneyFileUploader = this.getView().byId("idBICIPowerofAttorneyFileUploader");
+				this.oBICIPassPortCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
+				
+				var oRequestFinishedDeferredUploadPOA = this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
+				jQuery.when(oRequestFinishedDeferredUploadPOA).then(jQuery.proxy(function(oResponse) {
+					var oRequestFinishedDeferredUploadPassPortCopy = this.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
+					jQuery.when(oRequestFinishedDeferredUploadPassPortCopy).then(jQuery.proxy(function(oResponse) {						
+						this.saveContactInfoTab();
+					}, this));
+				}, this));
         
 			}, this));	
 			}
@@ -1557,12 +1581,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}
 			
 		}
-		
-		this.oBICIPowerofAttorneyFileUploader = this.getView().byId("idBICIPowerofAttorneyFileUploader");
-		this.oBICIPassPortCopyFileUploader = this.getView().byId("idBICIPassportCopyFileUploader");
-		
-		this.oModelHelper.uploadPOA(this.oRef_id, this.oBICIPowerofAttorneyFileUploader);
-		this.oModelHelper.uploadBICIPassPortCopy(this.oRef_id, this.oBICIPassPortCopyFileUploader);
 		
 		
 	
@@ -1926,9 +1944,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this.oBICIEmailInputText.getValue(),
 					this._oBICICountryCombobox.getSelectedKey(),
 					this._oBICINationalityCombobox.getSelectedKey(),						
-					this.oBICIStreet.getValue(),
-					this.oBICIPowerofAttorneyFileUploader,
-					this.oBICIPassPortCopyFileUploader
+					this.oBICIStreet.getValue()
 							);
 			
 
@@ -3825,8 +3841,6 @@ userSignIn : function(userID, password){
 								}
 						}, this));	
 						
-						//that.readBICIPASSFileAttachemnts();
-						//that.readBICIPOAFileAttachemnts();
 						
 						var oRequestFinishedDeferredBAQAnswersReadChild = this.oModelHelper.readBAQSavedAnswers(this.oRef_id);
 
@@ -3865,7 +3879,17 @@ userSignIn : function(userID, password){
 								}
 						}, this));
 						
-						  
+						var getarray = [];
+				        getarray.push(oRequestFinishedDeferredBIOIChild);
+				        getarray.push(oRequestFinishedDeferredBICIChild);
+				        getarray.push(oRequestFinishedDeferredBAQAnswersReadChild);
+				        getarray.push(oRequestFinishedDeferredISICRecord);				        
+							        
+				        jQuery.when.apply($, getarray).done(function () {				        	 							        						        	
+				        	that.readBICIPASSFileAttachemnts();
+							that.readBICIPOAFileAttachemnts();
+						
+				        });				
 						
 						/*var oRequestFinishedDeferredBAQAnswersAttachmentName = [];
 						for(var i=0; i < this.oTotalBAQQuestions; i++){
