@@ -1825,6 +1825,36 @@ com.sagia.common.ModelHelper = {
 
 	},
 	/**
+	 * Delete Industrial Products
+	 * @author Abdul Waheed
+	 */
+	deleteIndustrialProducts : function(oRefID, oPrdCode) {	
+			
+		this.openBusyDialog();
+
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oODataModel.setUseBatch(false);
+
+		this.oODataModel.remove("ProdPsSet(Investorid='"+oRefID+"',PrdCode='"+oPrdCode+"')", {
+			success : function(oData, response) {
+				
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(oResponse);
+
+				that.closeBusyDialog();
+			}, async : true});
+
+		return oRequestFinishedDeferred;
+
+	},
+	/**
 	 * Read LI LI Section 
 	 */
 	readLILISection : function() {

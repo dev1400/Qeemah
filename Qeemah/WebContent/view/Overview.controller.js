@@ -673,18 +673,32 @@ sap.ui.controller("com.sagia.view.Overview", {
          
          
 	},
-	handleLILIProductDeleteButtonPress : function(oEvent){		
-		
-		var path = oEvent.getParameter('listItem').getBindingContext().sPath;
-		this.oLILIProductsdata.ProductsCollection.splice(path.slice(-1), 1);
-		//console.log(this.oLILIProductsdata.ProductsCollection);
-				
-		var obj = this.oLILIProductsTable.getModel().getProperty(path);		
-		
-        this.oLILIProductsTable.removeItem(oEvent.getParameter('listItem'));
+	handleLILIProductDeleteButtonPress : function(oEvent){
+		 var that = this;
+		 this.openBusyDialog();
+
+		try{
+
+	       	 var oRequestFinishedDeferredRemoveProductEntry = this.oModelHelper.deleteIndustrialProducts(this.oRef_id,this.oLILIProductsdata.ProductsCollection[this.oLILIProductsTable.indexOfItem(oEvent.getParameter('listItem'))].productcode);
+
+	    		 jQuery.when(oRequestFinishedDeferredRemoveProductEntry).then(jQuery.proxy(function(oResponse) {			
+	    			
+	   	             that.closeBusyDialog();
+	    			
+	    		 }, this));	
+	    		
+	    			this.oLILIProductsdata.ProductsCollection.splice(this.oLILIProductsTable.indexOfItem(oEvent.getParameter('listItem')),1);
+	    	        
+	    	        this.oLILIProductsTable.removeItem(oEvent.getParameter('listItem'));
+	    	        
+	       	 
+	        }catch(err){
+		            that.closeBusyDialog();
+
+	        }
 	},
 	handleLILIAddProductButtonPress : function(){		
-		
+		var that =this;
 		if(this.oLILIIndustrialProductComboBox.getValue() === ""){
 			if(!this.oShowAlertDialog.isOpen())
 			{
@@ -744,32 +758,49 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this.oLILIIndustrialProductUOMComboBox.getSelectedKey(),
 					this.oLILIIndustrialProductUOMComboBox.getSelectedItem().getText());
 			jQuery.when(oRequestFinishedDeferredAddIndustrialProductDiffer).then(jQuery.proxy(function(oResponse) {	
-			
+			    if(oResponse.Return !== "Product already exists"){
+			    	try{	
+			             
+			            this.oLILIProductsTable.unbindItems();
+			     		this.oLILIProductsdata.ProductsCollection.push({
+			     			"productcode":oResponse.PrdCode, 
+			     			"product":oResponse.Descr, 
+			     			"quantity": oResponse.Qty, 
+			     			"uom":oResponse.UomTxt});
+			     		this.oLILIProductsTableJSONData.setData(this.oLILIProductsdata);
+			    		this.oLILIProductsTable.setModel(this.oLILIProductsTableJSONData);
+			    		
+			    		this.oLILIProductsTable.bindItems("/ProductsCollection", new sap.m.ColumnListItem({
+			    	        cells : [ new sap.ui.commons.TextView({
+			    	          text : "{productcode}"
+			    	        }),new sap.ui.commons.TextView({
+			    	          text : "{product}"
+			    	        }),  new sap.ui.commons.TextView({
+			    	          text : "{quantity}"
+			    	        }),  new sap.ui.commons.TextView({
+			    	          text : "{uom}"
+			    	        })]
+			    	      }));		     		
+			           
+					}catch(err){
+						if(!this.oShowAlertDialog.isOpen())
+						{
+						this.oAlertTextView.setText(this.oModelHelper.getText("NetworkError"));
+						this.oShowAlertDialog.open();
+						
+						}
+					}
+			    }else{
+			    	if(!this.oShowAlertDialog.isOpen())
+					{
+					this.oAlertTextView.setText(oResponse.Return);
+					this.oShowAlertDialog.open();
+					
+					}
+			    }
 				
 			}, this));	
-		}
-		
-		
-		/*this.oLILIProductsTable.unbindItems();
-		this.oLILIProductsdata.ProductsCollection.push({
-			"product":this.oLILIProductComboBox.getValue(), 
-			"quantity": this.oLILIProductQuantityInputText.getValue(), 
-			"uom":this.oLILIProductUOMComboBox.getValue()});
-		this.oLILIProductsTableJSONData.setData(this.oLILIProductsdata,true);	
-		this.oLILIProductsTable.setModel(this.oLILIProductsTableJSONData);
-	
-		this.oLILIProductsTable.bindItems("/ProductsCollection", new sap.m.ColumnListItem({
-	        cells : [ new sap.ui.commons.TextView({
-	          text : "{product}"
-	        }),new sap.ui.commons.TextView({
-	          text : "{product}"
-	        }),  new sap.ui.commons.TextView({
-	          text : "{quantity}"
-	        }),  new sap.ui.commons.TextView({
-	          text : "{uom}"
-	        })]
-	      }));*/
-		
+		}		
 		
 	},
 	handleLILISectionSelectionComboBox : function(){
