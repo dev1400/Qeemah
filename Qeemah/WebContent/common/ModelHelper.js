@@ -174,11 +174,10 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				
-				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(oResponse);
-				
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve();
+				
 			}});
 
 		return oRequestFinishedDeferred;
@@ -317,11 +316,10 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				
-				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(oResponse);
-
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve();
+
 			}});
 
 		return oRequestFinishedDeferred;
@@ -347,7 +345,6 @@ com.sagia.common.ModelHelper = {
 			error : function(oResponse) {
 				
 				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(oResponse);
 
 				//that.closeBusyDialog();
 			}, async : true});
@@ -377,7 +374,6 @@ com.sagia.common.ModelHelper = {
 			error : function(oResponse) {
 				
 				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(oResponse);
 
 				//that.closeBusyDialog();
 			}, async : true});
@@ -501,11 +497,10 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				
+				that.closeBusyDialog();
 				oRequestFinishedDeferred.resolve();
 				//sap.m.MessageToast.show(oResponse);
 
-				that.closeBusyDialog();
 			}, async : true});
 
 		return oRequestFinishedDeferred;
@@ -531,11 +526,9 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				
-				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(oResponse);
-
 				that.closeBusyDialog();
+				oRequestFinishedDeferred.resolve();
+
 			}});
 
 		return oRequestFinishedDeferred;
@@ -563,7 +556,6 @@ com.sagia.common.ModelHelper = {
 			error : function(oResponse) {
 				
 				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(oResponse);
 
 				//that.closeBusyDialog();
 			}});
@@ -593,7 +585,6 @@ com.sagia.common.ModelHelper = {
 			error : function(oResponse) {
 				
 				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(oResponse);
 
 				//that.closeBusyDialog();
 			}});
@@ -621,11 +612,9 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				
-				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(oResponse);
-
 				that.closeBusyDialog();
+				oRequestFinishedDeferred.resolve();
+
 			}});
 
 		return oRequestFinishedDeferred;
@@ -658,10 +647,11 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
+				that.closeBusyDialog();
+
 				/*console.log(oResponse);*/
 				oRequestFinishedDeferred.resolve();
 				// close busy dialog
-				that.closeBusyDialog();
 			},
 			async : true,
 			urlParameters : oEntry
@@ -822,9 +812,8 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				console.log(oResponse);
-				oRequestFinishedDeferred.resolve();
 				that.closeBusyDialog();
+				oRequestFinishedDeferred.resolve();
 			},
 			async : true,
 			urlParameters : oEntry
@@ -855,9 +844,9 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(oResponse);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve();
 			}});
 
 		return oRequestFinishedDeferred;
@@ -888,7 +877,6 @@ com.sagia.common.ModelHelper = {
 				//console.log(oResponse);				
 				
 				oRequestFinishedDeferred2.resolve();
-				sap.m.MessageToast.show(oResponse);
 
 				//that.closeBusyDialog();
 			}});
@@ -917,7 +905,6 @@ com.sagia.common.ModelHelper = {
 				//console.log(oResponse);				
 				
 				oRequestFinishedDeferred1.resolve();
-				sap.m.MessageToast.show(oResponse);
 
 				//that.closeBusyDialog();
 			}});
@@ -947,7 +934,6 @@ com.sagia.common.ModelHelper = {
 				//console.log(oResponse);				
 				
 				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(oResponse);
 
 				//that.closeBusyDialog();
 			}});
@@ -1458,13 +1444,12 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				
+				that.closeBusyDialog();
+
 				// Reject deferred object
 				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(oResponse);
 
 				// close busy dialog
-				that.closeBusyDialog();
 			}
 		});
 
@@ -1486,8 +1471,9 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				oRequestFinishedDeferred.resolve();
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve();
 			}
 		});
 		return oRequestFinishedDeferred;
@@ -1508,8 +1494,9 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				oRequestFinishedDeferred.resolve();
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve();
 			}
 		});
 		return oRequestFinishedDeferred;
@@ -1530,8 +1517,9 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				oRequestFinishedDeferred.resolve();
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve();
 			}
 		});
 		return oRequestFinishedDeferred;
@@ -1552,8 +1540,9 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				oRequestFinishedDeferred.resolve();
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve();
 			}
 		});
 		return oRequestFinishedDeferred;
@@ -1574,8 +1563,9 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				oRequestFinishedDeferred.resolve();
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve();
 			}
 		});
 		return oRequestFinishedDeferred;
@@ -1600,9 +1590,9 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(oResponse);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve();
 			}
 		});
 		return oRequestFinishedDeferred;
@@ -1623,9 +1613,9 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(oResponse);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve();
 			}
 		});
 		return oRequestFinishedDeferred;
@@ -1655,14 +1645,12 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				console.log(oResponse);
+				that.closeBusyDialog();
 				
 				// Reject deferred object
 				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
 
 				// close busy dialog
-				that.closeBusyDialog();
 			}
 		});
 
@@ -1710,14 +1698,13 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				console.log(oResponse);
+				that.closeBusyDialog();
 				
 				// Reject deferred object
 				oRequestFinishedDeferred.resolve();
 				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
 
 				// close busy dialog
-				that.closeBusyDialog();
 			}
 		});
 
@@ -1745,11 +1732,10 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				console.log(oResponse);
+				that.closeBusyDialog();
 		
 				oRequestFinishedDeferred.resolve();
 				
-				that.closeBusyDialog();
 			}
 		});
 		return oRequestFinishedDeferred;
@@ -1775,11 +1761,10 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				console.log(oResponse);
+				that.closeBusyDialog();
 		
 				oRequestFinishedDeferred.resolve();
 				
-				that.closeBusyDialog();
 			}
 		});
 
@@ -1815,8 +1800,9 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				oRequestFinishedDeferred.resolve();
 				that.closeBusyDialog();
+				oRequestFinishedDeferred.resolve();
+				
 			},
 			async : true,
 			urlParameters : oEntry
@@ -1844,11 +1830,8 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				
-				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(oResponse);
-
 				that.closeBusyDialog();
+				oRequestFinishedDeferred.resolve();
 			}, async : true});
 
 		return oRequestFinishedDeferred;
@@ -2192,12 +2175,13 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
+				that.closeBusyDialog();
 				// Reject deferred object
 				oRequestFinishedDeferred.resolve();
-				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
+				//sap.m.MessageToast.show(that.getText("InvalidCredentials"));
 
 				// close busy dialog
-				that.closeBusyDialog();
+				
 			}
 		});
 
@@ -2221,8 +2205,9 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				oRequestFinishedDeferred.resolve();
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve();
 			}
 		});
 
@@ -2246,8 +2231,9 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				oRequestFinishedDeferred.resolve();
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve();
 			}
 		});
 
@@ -2271,8 +2257,9 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				oRequestFinishedDeferred.resolve();
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve();
 			}
 		});
 
@@ -2363,10 +2350,9 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
-				/*console.log(oResponse);*/
+				that.closeBusyDialog();
 				oRequestFinishedDeferred.resolve();
 				// close busy dialog
-				that.closeBusyDialog();
 			},
 			async : true,
 			urlParameters : oEntry
