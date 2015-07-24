@@ -183,7 +183,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oResetCurrentPasswordInput = this.getView().byId("idResetCurrentPasswordInput");
 		this.oResetNewPasswordInput = this.getView().byId("idResetNewPasswordInput");
 		this.oConfirmNewPasswordInput = this.getView().byId("idConfirmNewPasswordInput");
-
+		
+		this.oLILIIndustrialProductComboBox = this.getView().byId("idLILIIndustrialProductComboBox");
+		this.oLILIIndustrialProductUOMComboBox = this.getView().byId("idLILIIndustrialProductUOMComboBox");
+		
+		
 
 		
 	},
@@ -909,9 +913,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 				
 				this.oProductsTableVBox = this.getView().byId("idProductsTableVBox");
 				if(oResponse.LILILicenseActivityType[0].Activity.substring(0, 10) === "INDUSTRIAL"){
-					//this.oProductsTableVBox.setVisible(true);
+					this.oProductsTableVBox.setVisible(true);
 				}else{
-					//this.oProductsTableVBox.setVisible(false);
+					this.oProductsTableVBox.setVisible(false);
 				}
 				
 				//console.log("> "+that.oSurveyID+" > "+oResponse.LILILicenseActivityType[0].Activity);
@@ -2976,6 +2980,19 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		jQuery.when(oRequestFinishedDeferredLILIBusinessType).then(jQuery.proxy(function(oResponse) {			
 			this.oLILIBusinessTypeComboBox.setModel(oResponse);
+		}, this));
+		
+		var oRequestFinishedDeferredIndustrialProducts = this.oModelHelper.readIndustrialProducts();
+
+		jQuery.when(oRequestFinishedDeferredIndustrialProducts).then(jQuery.proxy(function(oResponse) {			
+			this.oLILIIndustrialProductComboBox.setModel(oResponse);
+		}, this));	
+		
+		
+		var oRequestFinishedDeferredIndustrialProductsUOM = this.oModelHelper.readIndustrialProductsUOM();
+
+		jQuery.when(oRequestFinishedDeferredIndustrialProductsUOM).then(jQuery.proxy(function(oResponse) {			
+			this.oLILIIndustrialProductUOMComboBox.setModel(oResponse);
 		}, this));	
 		
 		
@@ -3532,9 +3549,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oCREATE_NewShareHolderVBox.setVisible(false);
 		this._oADD_ExistingShareHolderVBox.setVisible(true);
 		
-		if (!this.oExistingShareHolderTable) {
-			this.oExistingShareHolderTable = this.getView().byId("idESHTable");
-		}
 	},
 	handleCreateNewShareHolderButtonPress : function(){
 		this._oADD_ExistingShareHolderVBox.setVisible(false);
@@ -3842,6 +3856,12 @@ userSignIn : function(userID, password){
 						var oBICICountryFilter = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.NE, "");
 						var oBICICountryKeyFilter = new sap.ui.model.Filter("Land1", sap.ui.model.FilterOperator.NE, "");
 						this._oBICICountryCombobox.getBinding("items").filter([oBICICountryFilter,oBICICountryKeyFilter]);
+						
+						var oLILIIndustrialProductComboBoxDescFilter = new sap.ui.model.Filter("Desc", sap.ui.model.FilterOperator.NE, "");
+						var oLILIIndustrialProductComboBoxPcodeFilter = new sap.ui.model.Filter("Pcode", sap.ui.model.FilterOperator.NE, "");
+						this.oLILIIndustrialProductComboBox.getBinding("items").filter([oLILIIndustrialProductComboBoxDescFilter,oLILIIndustrialProductComboBoxPcodeFilter]);
+						
+						
 						
 						this._oBICityComboBox = this.getView().byId("idCityComboBox");
 						
@@ -4477,6 +4497,45 @@ handleRegisterUserButtonPress : function() {
 				}, this));			
 			
 			//End of Experience Questions
+				if (!this.oExistingShareHolderTable) {
+					this.oExistingShareHolderTable = this.getView().byId("idESHTable");
+					this.oSavedSHData = {SavedShareHolderCollection: []};
+					this.oSavedSHDataJSONData = new sap.ui.model.json.JSONModel();
+					
+				}
+				//*******Read Exisitng share holders
+			    /*var thatContext = this;
+			    
+				var oRequestFinishedDeferredSavedSH = this.oModelHelper.readSavedShareHolders(this.oRef_id);
+
+				jQuery.when(oRequestFinishedDeferredSavedSH).then(jQuery.proxy(function(oResponse) {
+					
+					for(var i = 0; i < oResponse.data.results.length; i++){
+						if(oResponse.data.results[i].ShldrType === "Existing" 
+							&& oResponse.data.results[i].EntityFname !== "" 
+							&& oResponse.data.results[i].Exbpno !== ""
+							&& oResponse.data.results[i].Percentage !== ""){
+							thatContext.oSavedSHData.SavedShareHolderCollection.push({
+			    				"Bpno":oResponse.data.results[i].Exbpno,
+			    	 			"Bpname":oResponse.data.results[i].EntityFname,
+			    	 			"Percentage" : oResponse.data.results[i].Percentage});
+						}								    			
+					}
+					
+	    			thatContext.oSavedSHDataJSONData.setData(thatContext.oSavedSHData);
+	    	 		thatContext.oExistingShareHolderTable.setModel(this.oSavedSHDataJSONData);
+					
+					thatContext.oExistingShareHolderTable.bindItems("/SavedShareHolderCollection",new sap.m.ColumnListItem({
+				        cells : [ new sap.ui.commons.TextView({
+				          text : "{Bpno}"
+				        }),new sap.ui.commons.TextView({
+				          text : "{Bpname}"
+				        }),  new sap.ui.commons.TextView({
+				          text : "{Percentage}"
+				        })]
+				      }));
+				}, this));*/
+			
 		}
 		
 		

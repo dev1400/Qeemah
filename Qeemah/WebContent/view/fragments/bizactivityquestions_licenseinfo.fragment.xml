@@ -203,10 +203,10 @@
 				<sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons:TextView text="{i18n>Product}"></sap.ui.commons:TextView>
 				</sap.ui.commons.layout:MatrixLayoutCell>
-				<sap.ui.commons.layout:MatrixLayoutCell>				
-					<Select width="20em" id="idLILIProductComboBox">
-						<sap.ui.core:Item />
-					</Select>
+				<sap.ui.commons.layout:MatrixLayoutCell>					
+					<ComboBox width="25em" items="{/IndustrialProductsCollection}" id="idLILIIndustrialProductComboBox" selectionChange="handleLILIIndustrialProductsComboBoxSelectionChange">
+						<sap.ui.core:ListItem key="{Pcode}" text="{Desc}" id="idLILIIndustrialProductComboBoxitem"/>
+					</ComboBox>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 			</sap.ui.commons.layout:cells>
 		</sap.ui.commons.layout:MatrixLayoutRow>
@@ -226,9 +226,9 @@
 					<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}"></sap.ui.commons:TextView>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 				<sap.ui.commons.layout:MatrixLayoutCell>				
-					<Select width="20em" id="idLILIProductUOMComboBox">
-						<sap.ui.core:Item />
-					</Select>
+					<ComboBox width="25em" items="{/IndustrialProductsCollectionUOM}" id="idLILIIndustrialProductUOMComboBox" selectionChange="handleLILIIndustrialProductsUOMComboBoxSelectionChange">
+						<sap.ui.core:ListItem key="{Msehi}" text="{Msehl}" id="idLILIIndustrialProductUOMComboBoxitem"/>
+					</ComboBox>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 			</sap.ui.commons.layout:cells>
 		</sap.ui.commons.layout:MatrixLayoutRow>
@@ -243,9 +243,9 @@
 		
 		<Table   delete="handleLILIProductDeleteButtonPress" mode="Delete" width="66rem"  id="idLILIProductsTable">
 								<columns>
-									<Column width="2em" id="idLILIProductsTableColumn1">
+									<!-- <Column width="2em" id="idLILIProductsTableColumn1">
 										<sap.ui.commons:TextView text="#" class="textcolorwhite"></sap.ui.commons:TextView>
-									</Column>
+									</Column> -->
 									<Column width="5em">
 										<sap.ui.commons:TextView text="{i18n>ProductCode}" class="textcolorwhite"></sap.ui.commons:TextView>
 									</Column>

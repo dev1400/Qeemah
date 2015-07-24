@@ -832,6 +832,37 @@ com.sagia.common.ModelHelper = {
 		return oRequestFinishedDeferred;
 		
 	},
+	/**
+	 * read Saved Share Holders
+	 * @author : Abdul Waheed
+	 */
+	readSavedShareHolders : function(oRefID) {
+		
+		this.openBusyDialog();
+
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oODataModel.setUseBatch(false);
+
+		this.oShareHolderODataModel.read("ZSHAREHOLDER_INF?RefID='"+oRefID+"'&FileType=''&EntityNo=''", {
+			success : function(oData, response) {
+				
+				//that.oSavedShareHoldersCollectionModel = new sap.ui.model.json.JSONModel();
+				//that.oSavedShareHoldersCollectionModel.setData({SavedShareHolderCollection:oData});
+				
+				oRequestFinishedDeferred.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				oRequestFinishedDeferred.resolve();
+				sap.m.MessageToast.show(oResponse);
+				that.closeBusyDialog();
+			}});
+
+		return oRequestFinishedDeferred;
+	},
+
 	
 	/**
 	 * read BICI Pass Port Attachment Name
@@ -1691,6 +1722,67 @@ com.sagia.common.ModelHelper = {
 		});
 
 		//return oRequestFinishedDeferred;
+		return oRequestFinishedDeferred;
+	},
+	/**
+	 * Read Industrial Products
+	 */
+	readIndustrialProducts : function() {
+		this.openBusyDialog();
+		
+		var that = this;
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+     	this.oODataModel.setUseBatch(false);
+		this.oODataModel.read("ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27&lv_flag=%27PR%27&lv_region=%27%20%27", {
+			success : function(oData, response) {
+		
+				that.oIndustrialProductsCollectionModel = new sap.ui.model.json.JSONModel();
+				that.oIndustrialProductsCollectionModel.setData({IndustrialProductsCollection:oData.results});
+				
+				oRequestFinishedDeferred.resolve(that.oIndustrialProductsCollectionModel);
+
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				console.log(oResponse);
+		
+				oRequestFinishedDeferred.resolve();
+				
+				that.closeBusyDialog();
+			}
+		});
+		return oRequestFinishedDeferred;
+	},
+	/**
+	 * Read Industrial Products UOM
+	 */
+	readIndustrialProductsUOM : function() {
+		this.openBusyDialog();
+		
+		var that = this;
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+     	this.oODataModel.setUseBatch(false);
+		this.oODataModel.read("ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27&lv_flag=%27UM%27&lv_region=%27%20%27", {
+			success : function(oData, response) {
+		
+				that.oIndustrialProductsCollectionModelUOM = new sap.ui.model.json.JSONModel();
+				that.oIndustrialProductsCollectionModelUOM.setData({IndustrialProductsCollectionUOM:oData.results});
+				
+				oRequestFinishedDeferred.resolve(that.oIndustrialProductsCollectionModelUOM);
+
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				console.log(oResponse);
+		
+				oRequestFinishedDeferred.resolve();
+				
+				that.closeBusyDialog();
+			}
+		});
+
 		return oRequestFinishedDeferred;
 	},
 	/**
