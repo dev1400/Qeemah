@@ -240,6 +240,7 @@
 								</sap.ui.commons.layout:MatrixLayoutRow>
 								
 		</sap.ui.commons.layout:MatrixLayout>
+		     <html:br/>
 		
 		<Table   delete="handleLILIProductDeleteButtonPress" mode="Delete" width="66rem"  id="idLILIProductsTable">
 								<columns>

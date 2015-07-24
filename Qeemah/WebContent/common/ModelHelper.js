@@ -1786,6 +1786,45 @@ com.sagia.common.ModelHelper = {
 		return oRequestFinishedDeferred;
 	},
 	/**
+	 * Save Industrial Products
+	 * @author Abdul Waheed
+	 */
+	saveIndustrialProducts : function(oRefID, oPrdCode, oDescr , oQty , oUom, oUomTxt) {
+		
+		this.openBusyDialog();
+
+		var that = this;
+		var oEntry = {};
+		
+		oEntry.Investorid=oRefID;
+		oEntry.PrdCode=oPrdCode;
+		oEntry.Descr=oDescr;
+		oEntry.Qty=oQty;
+		oEntry.Uom=oUom;
+		oEntry.UomTxt=oUomTxt;
+
+
+
+		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oODataModel.setUseBatch(false);
+       
+		this.oODataModel.create("ProdPsSet", oEntry , {
+		
+			success : function(oData) {
+				oRequestFinishedDeferred.resolve(oData);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				oRequestFinishedDeferred.resolve();
+				that.closeBusyDialog();
+			},
+			async : true,
+			urlParameters : oEntry
+		});
+		return oRequestFinishedDeferred;
+
+	},
+	/**
 	 * Read LI LI Section 
 	 */
 	readLILISection : function() {

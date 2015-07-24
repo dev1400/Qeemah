@@ -684,20 +684,80 @@ sap.ui.controller("com.sagia.view.Overview", {
         this.oLILIProductsTable.removeItem(oEvent.getParameter('listItem'));
 	},
 	handleLILIAddProductButtonPress : function(){		
-		this.oLILIProductsTable.unbindItems();
-		//this.oLILIProductsdata.ProductsCollection.push({"sno":this.oLILIProductsdataSerialNo,"product":this.oLILIProductComboBox.getValue(), "quantity": this.oLILIProductQuantityInputText.getValue(), "uom":this.oLILIProductUOMComboBox.getValue()});
-		//console.log(this.oLILIProductsdata);
+		
+		if(this.oLILIIndustrialProductComboBox.getValue() === ""){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("SelectProduct"));
+			this.oShowAlertDialog.open();
+			
+			}
+		}else if(this.oLILIIndustrialProductComboBox.getSelectedKey() === ""){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("SelectProduct"));
+			this.oShowAlertDialog.open();
+			
+			}
+		}else if(this.oLILIProductQuantityInputText.getValue() === ""){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("ProductQuantityMandatory"));
+			this.oShowAlertDialog.open();
+			
+			}
+		}else if(this.oLILIProductQuantityInputText.getValue().length > 10){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("ProductQuantityInvalidLength"));
+			this.oShowAlertDialog.open();
+			
+			}
+		}else if(!(/^\d*$/.test( this.oLILIProductQuantityInputText.getValue() ))){	
+			 this.oValidationLILIStatus = false;
+
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("ProductQuantityNumericOnly"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	  	 }else if(this.oLILIIndustrialProductUOMComboBox.getValue() === ""){
+				if(!this.oShowAlertDialog.isOpen())
+				{
+				this.oAlertTextView.setText(this.oModelHelper.getText("SelectProductUOM"));
+				this.oShowAlertDialog.open();
+				
+				}
+		}else if(this.oLILIIndustrialProductUOMComboBox.getSelectedKey() === ""){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("SelectProductUOM"));
+			this.oShowAlertDialog.open();
+			
+			}
+		}else{
+			var oRequestFinishedDeferredAddIndustrialProductDiffer = this.oModelHelper.saveIndustrialProducts(this.oRef_id, 
+					this.oLILIIndustrialProductComboBox.getSelectedKey(),
+					this.oLILIIndustrialProductComboBox.getSelectedItem().getText(),
+					this.oLILIProductQuantityInputText.getValue(),
+					this.oLILIIndustrialProductUOMComboBox.getSelectedKey(),
+					this.oLILIIndustrialProductUOMComboBox.getSelectedItem().getText());
+			jQuery.when(oRequestFinishedDeferredAddIndustrialProductDiffer).then(jQuery.proxy(function(oResponse) {	
+			
+				
+			}, this));	
+		}
+		
+		
+		/*this.oLILIProductsTable.unbindItems();
 		this.oLILIProductsdata.ProductsCollection.push({
-			//"sno":this.oLILIProductsdataSerialNo,
 			"product":this.oLILIProductComboBox.getValue(), 
 			"quantity": this.oLILIProductQuantityInputText.getValue(), 
 			"uom":this.oLILIProductUOMComboBox.getValue()});
-		//console.dir(this.oLILIProductsdata);
 		this.oLILIProductsTableJSONData.setData(this.oLILIProductsdata,true);	
-		//this.oLILIProductsTable.getModel().refresh(true);
-		//console.log(this.oLILIProductsTableJSONData);
 		this.oLILIProductsTable.setModel(this.oLILIProductsTableJSONData);
-		//this.oLILIProductsTable.setModel("");items="{/ProductsCollection}"
+	
 		this.oLILIProductsTable.bindItems("/ProductsCollection", new sap.m.ColumnListItem({
 	        cells : [ new sap.ui.commons.TextView({
 	          text : "{product}"
@@ -708,9 +768,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 	        }),  new sap.ui.commons.TextView({
 	          text : "{uom}"
 	        })]
-	      }));
+	      }));*/
 		
-		//this.oLILIProductsdataSerialNo++;
+		
 	},
 	handleLILISectionSelectionComboBox : function(){
 	
