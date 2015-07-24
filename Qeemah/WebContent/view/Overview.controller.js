@@ -298,7 +298,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 						var thatoResponse = oResponse;
 						
 			            var oRequestFinishedDeferredVESHNSH = that.oModelHelper.createNewShareHolder(that.oRef_id,
-			                    "E", oResponse.data.Bpname,
+			                    "Existing", oResponse.data.Bpname,
 			                    "","","","","","","","","","","","","","","","","","","","","","",
 			    				"",	"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
 			    				"", "", "", "", "", "", "", "", "", "", "", "", "", "");
