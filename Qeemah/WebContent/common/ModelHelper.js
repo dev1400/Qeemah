@@ -485,7 +485,7 @@ com.sagia.common.ModelHelper = {
 	 */
 	readBAQSavedAttachments : function(oRef_id, oNodeID) {
 		
-		//this.openBusyDialog();
+		this.openBusyDialog();
 
 		var that = this;
 		
@@ -498,14 +498,14 @@ com.sagia.common.ModelHelper = {
 					oRequestFinishedDeferred.resolve(response);
 				
 				
-				//that.closeBusyDialog();
+				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				
 				oRequestFinishedDeferred.resolve();
 				//sap.m.MessageToast.show(oResponse);
 
-				//that.closeBusyDialog();
+				that.closeBusyDialog();
 			}, async : true});
 
 		return oRequestFinishedDeferred;
@@ -1802,9 +1802,9 @@ com.sagia.common.ModelHelper = {
 				
 				
 				
-				//setTimeout(function() {
+				setTimeout(function() {
 					oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
-				//},2000);
+				},2000);
 				
 				//that.closeBusyDialog();
 			},

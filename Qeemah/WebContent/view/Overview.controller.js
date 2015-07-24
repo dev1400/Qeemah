@@ -735,19 +735,25 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//this.oLILIClassMultiComboBox.removeAllSelectedItems();
 		
 
-		
-		var oRequestFinishedDeferredLILIDivision = this.oModelHelper.readLILIDivision(this.oLILISectionComboBox.getSelectedKey());
+		var that = this;
+		this.openBusyDialog();
+
+		setTimeout(function() {
+		var oRequestFinishedDeferredLILIDivision = that.oModelHelper.readLILIDivision(that.oLILISectionComboBox.getSelectedKey());
 
 		jQuery.when(oRequestFinishedDeferredLILIDivision).then(jQuery.proxy(function(oResponse) {			
 			
-			this.oLILIDivisionComboBox.setModel(oResponse);
+			that.oLILIDivisionComboBox.setModel(oResponse);
 			
 			//console.log(this.oLILIDivisionComboBox.getSelectedItem());
 			/*this.oLILIDivisionComboBox.attachSelectionChange(function(){
 				console.log(this.oLILIDivisionComboBox);
 			});*/
+			that.closeBusyDialog();
 			
-		}, this));	
+		}, that));
+		},2000);
+
 	},
 	handleLILIBusinessTypeComboBoxSelectionChange : function(){
 		var that = this;
@@ -2132,7 +2138,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			jQuery.when(oRequestFinishedDeferredBAQAnswersAttachmentNameDifferred).then(jQuery.proxy(function(oResponse) {
 				oTextViewAttachment.setText(oResponse.data.FileName);
 			}, that));
-		}, 3000);		
+		}, 1000);		
 	},
 	handleRegionSelectionComboBox : function(oControlEvent){
 		//console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.text);
