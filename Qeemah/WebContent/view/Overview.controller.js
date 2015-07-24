@@ -297,20 +297,22 @@ sap.ui.controller("com.sagia.view.Overview", {
 						
 						var thatoResponse = oResponse;
 						
+						var percentage = parseInt(thatContext.oESHPercentageInputText.getValue());
+		    			if(isNaN(percentage)){
+		    				percentage = 0;
+		    			}
+						
 			            var oRequestFinishedDeferredVESHNSH = that.oModelHelper.createNewShareHolder(that.oRef_id,
 			                    "Existing", oResponse.data.Bpname,
-			                    "","","","","","","","","","","","","","","","","","","","","","",
+			                    "","","","","","","","","","","","","","","","","","",percentage, "","","",
 			    				"",	"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-			    				"", "", "", "", "", "", "", "", "", "", "", "", "", "");
+			    				"", "", "", "", "", "", "", "", "", "", "", "", "", "", thatoResponse.data.Bpno);
 		
 			    		jQuery.when(oRequestFinishedDeferredVESHNSH).then(jQuery.proxy(function(oResponse) {			
 			    
 			    			thatContext.oExistingShareHolderTable.unbindItems();
 			    			
-			    			var percentage = parseInt(thatContext.oESHPercentageInputText.getValue());
-			    			if(isNaN(percentage)){
-			    				percentage = 0;
-			    			}
+			    			
 			    			
 			    			thatContext.oESHCreateNewData.ESHCollection.push({
 			    				"Bpno":thatoResponse.data.Bpno,
@@ -503,7 +505,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		     		        "", "", "", "", "", "", "",
 		     		        "", "", "", "", "", "", "",
 		     		        "", "", "", "", "", "", "",
-		     		        "", "", "", "", "", "", "", "", "");
+		     		        "", "", "", "", "", "", "", "", "", "");
 
 		     		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {
 		     			

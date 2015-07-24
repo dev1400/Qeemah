@@ -726,7 +726,7 @@ com.sagia.common.ModelHelper = {
 			oNSHInterests14InputText,
 			oNSHTotalAssetsInBalanceSheet12InputText,
 			oNSHTotalAssetsInBalanceSheet13InputText,		
-			oNSHTotalAssetsInBalanceSheet14InputText
+			oNSHTotalAssetsInBalanceSheet14InputText, oBpno
 			
 				
 	){
@@ -798,6 +798,8 @@ com.sagia.common.ModelHelper = {
 		oEntry.BalShtAssest12 = oNSHTotalAssetsInBalanceSheet12InputText;
 		oEntry.BalShtAssest13 = oNSHTotalAssetsInBalanceSheet13InputText;
 		oEntry.BalShtAssest14 = oNSHTotalAssetsInBalanceSheet14InputText;
+		oEntry.Exbpno = oBpno;
+
 		
 		var that = this;
 		
