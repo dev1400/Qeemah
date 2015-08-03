@@ -1,6 +1,196 @@
 jQuery.sap.declare("com.sagia.common.js.validate");
 
 com.sagia.common.js.validate = {
+		validateNewShareHolder : function(thisContext){
+			thisContext.oNewShareHolderValidation = true;
+
+			if(!(/^[a-zA-Z ]*$/.test( thisContext.oNSHFirstNameInputText.getValue() ))){
+				thisContext.oNewShareHolderValidation = false;
+
+				 if(!thisContext.oShowAlertDialog.isOpen())
+				 {
+					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHFNameValidation"));
+					 thisContext.oShowAlertDialog.open();
+				 }
+		   	 }else if(thisContext.oNSHFirstNameInputText.getValue() === ""){
+					thisContext.oNewShareHolderValidation = false;
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHFirstNameRequired"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+  	   	     }else if(thisContext.oNSHLastNameInputText.getValue() === ""){
+ 				thisContext.oNewShareHolderValidation = false;
+
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHLasttNameRequired"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+  	   	     }else if(!(/^[a-zA-Z ]*$/.test( thisContext.oNSHLastNameInputText.getValue() ))){
+ 				thisContext.oNewShareHolderValidation = false;
+
+				 if(!thisContext.oShowAlertDialog.isOpen())
+				 {
+					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHLNameValidation"));
+					 thisContext.oShowAlertDialog.open();
+				 }
+		   	 }else if(thisContext.oNSHCityNameInputText.getValue() === ""){
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHCityNameMandatory"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(!(/^[a-zA-Z ]*$/.test( thisContext.oNSHCityNameInputText.getValue() ))){
+	 				thisContext.oNewShareHolderValidation = false;
+
+					 if(!thisContext.oShowAlertDialog.isOpen())
+					 {
+						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHCityNameValidation"));
+						 thisContext.oShowAlertDialog.open();
+					 }
+			 }else if(!(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test( thisContext.oNSHWebsiteInputText.getValue() )) ){
+	 				thisContext.oNewShareHolderValidation = false;
+
+					 if(!thisContext.oShowAlertDialog.isOpen())
+					 {
+						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHInvalidWebsite"));
+						 thisContext.oShowAlertDialog.open();
+					 }
+			 }else if(thisContext.oNSHTelephoneInputText.getValue() === ""){	
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHTelephoneNoRequired"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(thisContext.oNSHTelephoneInputText.getValue().length > 12){	
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHTelephoneNoLength"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(!(/^\d*$/.test( thisContext.oNSHTelephoneInputText.getValue()))){	
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHTelephoneNoVadidation"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(thisContext.oNSHMobilePhoneInputText.getValue() === ""){	
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHMobilephoneNoRequired"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(thisContext.oNSHMobilePhoneInputText.getValue().length > 12){	
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHMobilephoneNoLength"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(!(/^\d*$/.test( thisContext.oNSHMobilePhoneInputText.getValue()))){	
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHMobilephoneNoValidation"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(thisContext.oNSHFaxInputText.getValue().length > 12){	
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHFaxNoLength"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(thisContext.oNSHFaxInputText.getValue() === ""){	
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHFaxNoRequired"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(!(/^\d*$/.test( thisContext.oNSHFaxInputText.getValue()))){	
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHFaxNoValidation"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(!(/^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/.test( thisContext.oNSHEmailInputText.getValue() ))){
+			  	   	thisContext.oNewShareHolderValidation = false;
+			
+					 if(!thisContext.oShowAlertDialog.isOpen())
+					 {
+						thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHInvalidEmail"));
+						thisContext.oShowAlertDialog.open();
+					 }	
+	  	   		 
+	  	   	 }else if(thisContext.oNSHDOBDate.getDateValue() === null){	
+ 				thisContext.oNewShareHolderValidation = false;
+
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHDOBRequired"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+  	   	     }else if(!(/^\d*$/.test( thisContext.oNSHPercentageInputText.getValue()))){	
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHInvalidPercentage"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(thisContext.oNSHPercentageInputText.getValue() === "" || thisContext.oNSHPercentageInputText.getValue() < 1 || thisContext.oNSHPercentageInputText.getValue() > 100){
+ 				thisContext.oNewShareHolderValidation = false;
+
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHPercentageValueRange"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+  	   	     }
+		
+			return thisContext.oNewShareHolderValidation;
+			
+			/*this.oShareHolderTypeComboBox = this.getView().byId("idNSHTypeComboBox");
+			this. = this.getView().byId("idNSHFirstNameInputText");
+			this.oNSHCountryComboBox = this.getView().byId("idNSHCountryComboBox");
+			this.oNSHLastNameInputText = this.getView().byId("idNSHLastNameInputText");
+			this. = this.getView().byId("idNSHCityNameInputText");
+			this.oNSHGenderComboBox = this.getView().byId("idNSHGenderComboBox");
+			this.oNSHPOBoxInputText = this.getView().byId("idNSHPOBoxInputText");
+			this.oNSHMaritalStatusComboBox = this.getView().byId("idNSHMaritalStatusComboBox");
+			this.oNSHPostalCodeInputText = this.getView().byId("idNSHPostalCodeInputText");
+			this.oNSHAcademicTitleComboBox = this.getView().byId("idNSHAcademicTitleInputText");
+			this.oNSHStreetInputText = this.getView().byId("idNSHStreetInputText");
+			this.oNSHDOBDate = this.getView().byId("idNSHDOBDate");
+			this. = this.getView().byId("idNSHWebsiteInputText");
+			this. = this.getView().byId("idNSHTelephoneInputText");
+			this.oNSHNationalityComboBox = this.getView().byId("idNSHNationalityComboBox");
+			this. = this.getView().byId("idNSHMobilePhoneInputText");
+			this.oNSHPreviousNationalityInputText = this.getView().byId("idNSHPreviousNationalityInputText");
+			this. = this.getView().byId("idNSHFaxInputText");
+			this.oNSHCommMethodInputText = this.getView().byId("idNSHCommMethodInputText");
+			this. = this.getView().byId("idNSHEmailInputText");
+			this.oNSHPercentageInputText = this.getView().byId("idNSHPercentageInputText");*/
+			
+		},
 		validateBasicInfo : function(context){
 			//console.log("Reached Validate");
 			var oBIOIOrganizationName = context.getView().byId("idBIOIOrganizationName");	

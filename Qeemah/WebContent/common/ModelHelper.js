@@ -169,9 +169,9 @@ com.sagia.common.ModelHelper = {
 
 		this.oODataModel.read("VALIDATE_SHAREHOLDER_ENT(Bpno='"+entityNo+"')", {
 			success : function(oData, response) {
-				
-				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -311,9 +311,9 @@ com.sagia.common.ModelHelper = {
         this.oODataModel.setUseBatch(false);
 		this.oODataModel.read("IsicDetPs?Investorid='"+oRef_id+"'", {
 			success : function(oData, response) {
-				
-				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -490,11 +490,11 @@ com.sagia.common.ModelHelper = {
 		this.oBAQODataModel.read("SurveyAttSet(Investorid='"+oRef_id+"',NodeGuid='"+oNodeID+"',FileName=' ')", {
 			success : function(oData, response) {
 				
-				
+				that.closeBusyDialog();
+
 					oRequestFinishedDeferred.resolve(response);
 				
 				
-				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -521,9 +521,9 @@ com.sagia.common.ModelHelper = {
 
 		this.oBAQODataModel.read("SurChg?Investorid='"+oRef_id+"'", {
 			success : function(oData, response) {
-				
-				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -607,9 +607,9 @@ com.sagia.common.ModelHelper = {
 
 		this.oODataModel.remove("IsicDetPsSet(Investorid='"+oRef_id+"')", {
 			success : function(oData, response) {
-				
-				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -642,9 +642,10 @@ com.sagia.common.ModelHelper = {
 		
 			success : function(oData) {
 				//console.log(oData);
-				oRequestFinishedDeferred.resolve(oData);
 				// close busy dialog
 				that.closeBusyDialog();
+				oRequestFinishedDeferred.resolve(oData);
+				
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -807,9 +808,10 @@ com.sagia.common.ModelHelper = {
 				//oRequestFinishedDeferred.resolve(oData);
 				//that.oNSHCollectionModel = new sap.ui.model.json.JSONModel();
 				//that.oNSHCollectionModel.setData({NSHCollection:oData});
+				that.closeBusyDialog();
+
 				oRequestFinishedDeferred.resolve(oData);
 				
-				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -839,9 +841,9 @@ com.sagia.common.ModelHelper = {
 				
 				//that.oSavedShareHoldersCollectionModel = new sap.ui.model.json.JSONModel();
 				//that.oSavedShareHoldersCollectionModel.setData({SavedShareHolderCollection:oData});
-				
-				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -1440,8 +1442,9 @@ com.sagia.common.ModelHelper = {
 
 		this.oBAQODataModel.read("SurveyQue?Lang=%27E%27&Flag=%27B%27&SurveyID=%27QUEEMAH_BUS_PLAN%27", {
 			success : function(oData, response) {
-				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -1467,8 +1470,9 @@ com.sagia.common.ModelHelper = {
 
 		this.oBAQODataModel.read("SurveyQue?Lang=%27E%27&Flag=%27F%27&SurveyID=%27QUEEMAH_BUS_PLAN%27", {
 			success : function(oData, response) {
-				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -1490,8 +1494,9 @@ com.sagia.common.ModelHelper = {
 
 		this.oBAQODataModel.read("SurveyQue?Lang='E'&Flag='A'&SurveyID='QUEEMAH_GENERAL_QUESTIONS'", {
 			success : function(oData, response) {
-				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -1513,8 +1518,9 @@ com.sagia.common.ModelHelper = {
 
 		this.oBAQODataModel.read("SurveyAns?Lang='E'&Flag='A'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
-				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -1536,8 +1542,9 @@ com.sagia.common.ModelHelper = {
 
 		this.oBAQODataModel.read("SurveyQue?Lang='E'&Flag='E'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
-				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -1559,8 +1566,9 @@ com.sagia.common.ModelHelper = {
 
 		this.oBAQODataModel.read("SurveyAns?Lang='E'&Flag='E'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
-				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -1586,8 +1594,9 @@ com.sagia.common.ModelHelper = {
 
 		this.oBAQODataModel.read("SurveyAns?Lang='E'&Flag='B'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
-				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -1609,8 +1618,9 @@ com.sagia.common.ModelHelper = {
 
 		this.oBAQODataModel.read("SurveyAns?Lang='E'&Flag='F'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
-				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -1637,12 +1647,14 @@ com.sagia.common.ModelHelper = {
 		this.oODataModel.read("ZCRM_TELECODE_ENT(CounKey='"+countryTelCode+"')", {
 			success : function(oData, response) {
 				
+				// close busy dialog
+				that.closeBusyDialog();
+				
 				that.oCountryCodeCollectionModel = new sap.ui.model.json.JSONModel();
 				that.oCountryCodeCollectionModel.setData({CountryCodeCollection:oData});
 				oRequestFinishedDeferred.resolve(that.oCountryCodeCollectionModel);
 
-				// close busy dialog
-				that.closeBusyDialog();
+				
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -1679,6 +1691,8 @@ com.sagia.common.ModelHelper = {
 		//this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27&lv_flag=%27%27&lv_region=%27%27", {
 		this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN?lvkey=%27AR%27&lv_flag=%27%27&lv_region=%27%27", {
 			success : function(oData, response) {
+				// close busy dialog
+				that.closeBusyDialog();
 				//oRequestFinishedDeferred.resolve(oData);
 				
 				
@@ -1694,8 +1708,7 @@ com.sagia.common.ModelHelper = {
 				
 				oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
 
-				// close busy dialog
-				that.closeBusyDialog();
+				
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -1723,13 +1736,41 @@ com.sagia.common.ModelHelper = {
      	this.oODataModel.setUseBatch(false);
 		this.oODataModel.read("ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27&lv_flag=%27PR%27&lv_region=%27%20%27", {
 			success : function(oData, response) {
+				that.closeBusyDialog();
+
 		
 				that.oIndustrialProductsCollectionModel = new sap.ui.model.json.JSONModel();
 				that.oIndustrialProductsCollectionModel.setData({IndustrialProductsCollection:oData.results});
 				
 				oRequestFinishedDeferred.resolve(that.oIndustrialProductsCollectionModel);
 
+			},
+			error : function(oResponse) {
 				that.closeBusyDialog();
+		
+				oRequestFinishedDeferred.resolve();
+				
+			}
+		});
+		return oRequestFinishedDeferred;
+	},
+	/**
+	 * Read Saved Industrial Products
+	 */
+	readSavedIndustrialProducts : function(oRefID) {
+		this.openBusyDialog();
+		
+		var that = this;
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+     	this.oODataModel.setUseBatch(false);
+		this.oODataModel.read("Prod?Investorid='"+oRefID+"'", {
+			success : function(oData, response) {
+				that.closeBusyDialog();
+
+		
+				oRequestFinishedDeferred.resolve(response);
+
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -1752,13 +1793,14 @@ com.sagia.common.ModelHelper = {
      	this.oODataModel.setUseBatch(false);
 		this.oODataModel.read("ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27&lv_flag=%27UM%27&lv_region=%27%20%27", {
 			success : function(oData, response) {
+				that.closeBusyDialog();
+
 		
 				that.oIndustrialProductsCollectionModelUOM = new sap.ui.model.json.JSONModel();
 				that.oIndustrialProductsCollectionModelUOM.setData({IndustrialProductsCollectionUOM:oData.results});
 				
 				oRequestFinishedDeferred.resolve(that.oIndustrialProductsCollectionModelUOM);
 
-				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -1796,8 +1838,9 @@ com.sagia.common.ModelHelper = {
 		this.oODataModel.create("ProdPsSet", oEntry , {
 		
 			success : function(oData) {
-				oRequestFinishedDeferred.resolve(oData);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(oData);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -1825,9 +1868,9 @@ com.sagia.common.ModelHelper = {
 
 		this.oODataModel.remove("ProdPsSet(Investorid='"+oRefID+"',PrdCode='"+oPrdCode+"')", {
 			success : function(oData, response) {
-				
-				oRequestFinishedDeferred.resolve(response);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -2169,10 +2212,11 @@ com.sagia.common.ModelHelper = {
 
 		this.oODataModel.read("/REGISTER_USER_ENT('"+ userid + "')", {
 			success : function(oData) {
-				oRequestFinishedDeferred.resolve(oData);
-
 				// close busy dialog
 				that.closeBusyDialog();
+				oRequestFinishedDeferred.resolve(oData);
+
+				
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -2201,8 +2245,9 @@ com.sagia.common.ModelHelper = {
 
 		this.oODataModel.read("PASSWORD_FORGOT_ENT(Userid='"+ oUserID + "',Lang='E')", {
 			success : function(oData) {
-				oRequestFinishedDeferred.resolve(oData);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(oData);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -2227,8 +2272,9 @@ com.sagia.common.ModelHelper = {
 
 		this.oODataModel.read("PASSWORD_RESET_ENT(Investorid='"+oUserID+"',CurrPwd='"+oCPassword+"',NewPwd='"+oNPassword+"',Lang='E')", {
 			success : function(oData) {
-				oRequestFinishedDeferred.resolve(oData);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(oData);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -2253,8 +2299,9 @@ com.sagia.common.ModelHelper = {
 
 		this.oODataModel.read("ZFM_CRM_ID_STATUS?InvId='"+ oLeadID + "'", {
 			success : function(oData) {
-				oRequestFinishedDeferred.resolve(oData);
 				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(oData);
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();
@@ -2344,10 +2391,11 @@ com.sagia.common.ModelHelper = {
 		this.oODataModel.create("/REGISTER_USER_ENT", oEntry , {
 		
 			success : function(oData) {
+				that.closeBusyDialog();
+
 				/*console.log(oData);*/
 				oRequestFinishedDeferred.resolve(oData);
 				// close busy dialog
-				that.closeBusyDialog();
 			},
 			error : function(oResponse) {
 				that.closeBusyDialog();

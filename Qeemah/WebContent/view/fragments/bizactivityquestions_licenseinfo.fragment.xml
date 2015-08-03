@@ -72,7 +72,7 @@
 										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em"  items="{/LILIDivisionCollection}" id="idLILIDivisionComboBox" selectionChange="handleLILIDivisionSelectionComboBox">
+										<ComboBox width="25em"  change="handleLILIDivisionComboBoxChange" items="{/LILIDivisionCollection}" id="idLILIDivisionComboBox" selectionChange="handleLILIDivisionSelectionComboBox">
 										     <sap.ui.core:ListItem key="{IsicDivision}" text="{IsicDescription}" id="idLILIDivisionComboBoxListitem"/>
 										</ComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
@@ -88,7 +88,7 @@
 										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<MultiComboBox selectionChange="handleLILIGropuMultiSelectionComboBoxChange"  id="idLILIGroupComboBox"
+										<MultiComboBox change="handleLILIGropuMultiComboBoxChange" selectionChange="handleLILIGropuMultiSelectionComboBoxChange"  id="idLILIGroupComboBox"
 										selectionFinish="handleSelectionFinish"    items="{/LILIGroupCollection}" width="25em">
                                         <sap.ui.core:ListItem key="{IsicGroup}" text="{IsicDescription}" id="idLILIGroupComboBoxListitem"/>
                                      </MultiComboBox>
@@ -102,7 +102,7 @@
 										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell>
-										<MultiComboBox selectionChange="handleLILIClassMultiSelectionComboBoxChange"  id="idLILIClassMultiComboBox"
+										<MultiComboBox change="handleLILIClassMultiComboBoxChange" selectionChange="handleLILIClassMultiSelectionComboBoxChange"  id="idLILIClassMultiComboBox"
 										selectionFinish="handleSelectionFinish"    items="{/LILIClassCollection}" width="25em">
                                         <sap.ui.core:ListItem key="{IsicClass}" text="{IsicDescription}" id="idLILIClassMultiComboBoxListitem"/> <!-- key="{IsicClass}"  -->
                                      </MultiComboBox>
