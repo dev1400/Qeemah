@@ -43,6 +43,19 @@
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell
+													hAlign="End">
+													<sap.ui.commons.layout:content>
+														<sap.ui.commons:TextView text="{i18n>Region}"></sap.ui.commons:TextView>
+													</sap.ui.commons.layout:content>
+												</sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:MatrixLayoutCell>
+													<sap.ui.commons.layout:content>
+														<ComboBox enabled="false" width="25em" id="idBIOIPreviewRegionComboBox">
+															<sap.ui.core:Item />
+														</ComboBox>
+													</sap.ui.commons.layout:content>
+												</sap.ui.commons.layout:MatrixLayoutCell>
+												<!-- <sap.ui.commons.layout:MatrixLayoutCell
 													vAlign="Middle" hAlign="End">
 													<sap.ui.commons.layout:content>
 														<sap.ui.commons:TextView text="{i18n>Country}"></sap.ui.commons:TextView>
@@ -54,7 +67,7 @@
 															<sap.ui.core:Item key="1" text="Kingdom of Saudi Arabia"/>
 														</ComboBox>
 													</sap.ui.commons.layout:content>
-												</sap.ui.commons.layout:MatrixLayoutCell>
+												</sap.ui.commons.layout:MatrixLayoutCell> -->
 											</sap.ui.commons.layout:cells>
 										</sap.ui.commons.layout:MatrixLayoutRow>
 									</sap.ui.commons.layout:rows>
@@ -80,18 +93,19 @@
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell
-													hAlign="End">
+													vAlign="Middle" hAlign="End">
 													<sap.ui.commons.layout:content>
-														<sap.ui.commons:TextView text="{i18n>Region}"></sap.ui.commons:TextView>
+														<sap.ui.commons:TextView text="{i18n>City}"></sap.ui.commons:TextView>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-														<ComboBox enabled="false" width="25em" id="idBIOIPreviewRegionComboBox">
+														<ComboBox enabled="false" width="25em" id="idBIOIPreviewCityComboBox">
 															<sap.ui.core:Item />
 														</ComboBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
+												
 											</sap.ui.commons.layout:cells>
 										</sap.ui.commons.layout:MatrixLayoutRow>
 									</sap.ui.commons.layout:rows>
@@ -112,18 +126,20 @@
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell
-													vAlign="Middle" hAlign="End">
+													hAlign="End">
 													<sap.ui.commons.layout:content>
-														<sap.ui.commons:TextView text="{i18n>City}"></sap.ui.commons:TextView>
+														<sap.ui.commons:TextView text="{i18n>Email}"></sap.ui.commons:TextView>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:MatrixLayoutCell
+													vAlign="Middle" hAlign="Begin">
 													<sap.ui.commons.layout:content>
-														<ComboBox enabled="false" width="25em" id="idBIOIPreviewCityComboBox">
-															<sap.ui.core:Item />
-														</ComboBox>
+														<HBox justifyContent="Start">
+															<Input enabled="false" type="Text" width="25em" id="idBIOIPReviewEmailInputText"/>
+														</HBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
+												
 											</sap.ui.commons.layout:cells>
 										</sap.ui.commons.layout:MatrixLayoutRow>
 									</sap.ui.commons.layout:rows>
@@ -143,7 +159,21 @@
 														</HBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
+												
 												<sap.ui.commons.layout:MatrixLayoutCell
+													vAlign="Middle" hAlign="End">
+													<sap.ui.commons.layout:content>
+														<sap.ui.commons:TextView text="{i18n>CommMethod}" ></sap.ui.commons:TextView>
+													</sap.ui.commons.layout:content>
+												</sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:MatrixLayoutCell>
+													<sap.ui.commons.layout:content>
+														<ComboBox enabled="false" width="25em" id="idBIOIPreviewCommMethodComboBox">
+															<sap.ui.core:Item />
+														</ComboBox>
+													</sap.ui.commons.layout:content>
+												</sap.ui.commons.layout:MatrixLayoutCell>
+												<!-- <sap.ui.commons.layout:MatrixLayoutCell
 													hAlign="End">
 													<sap.ui.commons.layout:content>
 														<sap.ui.commons:TextView text="{i18n>POBox}"></sap.ui.commons:TextView>
@@ -155,7 +185,7 @@
 															<Input enabled="false" type="Text" width="25em" id="idBIOIPreviewPOBoxInputText"/>
 														</HBox>
 													</sap.ui.commons.layout:content>
-												</sap.ui.commons.layout:MatrixLayoutCell>
+												</sap.ui.commons.layout:MatrixLayoutCell> -->
 											</sap.ui.commons.layout:cells>
 										</sap.ui.commons.layout:MatrixLayoutRow>
 									</sap.ui.commons.layout:rows>
@@ -175,7 +205,7 @@
 														</HBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:MatrixLayoutCell
+												<!-- <sap.ui.commons.layout:MatrixLayoutCell
 													hAlign="End">
 													<sap.ui.commons.layout:content>
 														<sap.ui.commons:TextView text="{i18n>PostalCode}"></sap.ui.commons:TextView>
@@ -188,7 +218,7 @@
 															<Input enabled="false" type="Text" width="25em" id="idBIOIPreviewPostalCodeInputText"/>
 														</HBox>
 													</sap.ui.commons.layout:content>
-												</sap.ui.commons.layout:MatrixLayoutCell>
+												</sap.ui.commons.layout:MatrixLayoutCell> -->
 											</sap.ui.commons.layout:cells>
 										</sap.ui.commons.layout:MatrixLayoutRow>
 									</sap.ui.commons.layout:rows>
@@ -211,7 +241,7 @@
 															width="17em" />
 													</HBox>
 												</sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:MatrixLayoutCell
+												<!-- <sap.ui.commons.layout:MatrixLayoutCell
 													hAlign="End">
 													<sap.ui.commons.layout:content>
 														<sap.ui.commons:TextView text="{i18n>Street}"></sap.ui.commons:TextView>
@@ -224,7 +254,7 @@
 															<Input enabled="false" type="Text" width="25em" id="idBIOIPreviewStreetInputText"/>
 														</HBox>
 													</sap.ui.commons.layout:content>
-												</sap.ui.commons.layout:MatrixLayoutCell>
+												</sap.ui.commons.layout:MatrixLayoutCell> -->
 											</sap.ui.commons.layout:cells>
 										</sap.ui.commons.layout:MatrixLayoutRow>
 									</sap.ui.commons.layout:rows>
@@ -245,7 +275,7 @@
 															width="17em" />
 													</HBox>
 												</sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:MatrixLayoutCell
+												<!-- <sap.ui.commons.layout:MatrixLayoutCell
 													hAlign="End">
 													<sap.ui.commons.layout:content>
 														<sap.ui.commons:TextView text="{i18n>BuildingNo}"></sap.ui.commons:TextView>
@@ -258,7 +288,7 @@
 															<Input enabled="false" type="Text" width="25em"  id="idBIOIPreviewBuildingNoInputText"/>
 														</HBox>
 													</sap.ui.commons.layout:content>
-												</sap.ui.commons.layout:MatrixLayoutCell>
+												</sap.ui.commons.layout:MatrixLayoutCell> -->
 											</sap.ui.commons.layout:cells>
 										</sap.ui.commons.layout:MatrixLayoutRow>
 									</sap.ui.commons.layout:rows>
@@ -278,20 +308,7 @@
 														<Input enabled="false" tzype="Text" id="idBIOIPreviewFaxInputText" width="17em" />
 													</HBox>
 												</sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:MatrixLayoutCell
-													hAlign="End">
-													<sap.ui.commons.layout:content>
-														<sap.ui.commons:TextView text="{i18n>Email}"></sap.ui.commons:TextView>
-													</sap.ui.commons.layout:content>
-												</sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:MatrixLayoutCell
-													vAlign="Middle" hAlign="Begin">
-													<sap.ui.commons.layout:content>
-														<HBox justifyContent="Start">
-															<Input enabled="false" type="Text" width="25em" id="idBIOIPReviewEmailInputText"/>
-														</HBox>
-													</sap.ui.commons.layout:content>
-												</sap.ui.commons.layout:MatrixLayoutCell>
+												
 											</sap.ui.commons.layout:cells>
 										</sap.ui.commons.layout:MatrixLayoutRow>
 									</sap.ui.commons.layout:rows>
@@ -312,23 +329,11 @@
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 
-												<sap.ui.commons.layout:MatrixLayoutCell
-													vAlign="Middle" hAlign="End">
-													<sap.ui.commons.layout:content>
-														<sap.ui.commons:TextView text="{i18n>CommMethod}" ></sap.ui.commons:TextView>
-													</sap.ui.commons.layout:content>
-												</sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:MatrixLayoutCell>
-													<sap.ui.commons.layout:content>
-														<ComboBox enabled="false" width="25em" id="idBIOIPreviewCommMethodComboBox">
-															<sap.ui.core:Item />
-														</ComboBox>
-													</sap.ui.commons.layout:content>
-												</sap.ui.commons.layout:MatrixLayoutCell>
+												
 											</sap.ui.commons.layout:cells>
 										</sap.ui.commons.layout:MatrixLayoutRow>
 									</sap.ui.commons.layout:rows>
-									<sap.ui.commons.layout:rows>
+									<!-- <sap.ui.commons.layout:rows>
 										<sap.ui.commons.layout:MatrixLayoutRow>
 											<sap.ui.commons.layout:cells>
 												<sap.ui.commons.layout:MatrixLayoutCell
@@ -351,7 +356,7 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 											</sap.ui.commons.layout:cells>
 										</sap.ui.commons.layout:MatrixLayoutRow>
-									</sap.ui.commons.layout:rows>
+									</sap.ui.commons.layout:rows> -->
 								</sap.ui.commons.layout:MatrixLayout>
 								<!-- Org reg layout end -->
     

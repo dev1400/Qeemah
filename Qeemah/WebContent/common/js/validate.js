@@ -240,10 +240,10 @@ com.sagia.common.js.validate = {
             context._oBIOIPreviewCapitalInputText = context.getView().byId("idBIOIPreviewCapitalInputText");			
             context._oBIOIPreviewCapitalInputText.setValue(context.oBIOICapitalInputText.getValue());
             
-            context.oBIOIPostalCodeInputText = context.getView().byId("idBICIPostalCodeInputText");	
+            /*context.oBIOIPostalCodeInputText = context.getView().byId("idBICIPostalCodeInputText");	
             context._oBIOIPreviewPostalCodeInputText = context.getView().byId("idBIOIPreviewPostalCodeInputText");			
             context._oBIOIPreviewPostalCodeInputText.setValue(context.oBIOIPostalCodeInputText.getValue());
-            
+         */   
             context.oBIOITelephoneCCInputText = context.getView().byId("idBIOITelephoneCountryCodeInputText");	
             context._oBIOIPreviewTelephoneCCInputText = context.getView().byId("idBIOIPreviewTelephoneCountryCode");			
             context._oBIOIPreviewTelephoneCCInputText.setValue(context.oBIOITelephoneCCInputText.getValue());
@@ -270,10 +270,10 @@ com.sagia.common.js.validate = {
             
             
             
-            context.oBIOIStreetInputText = context.getView().byId("idBICIStreetInputText");	
+            /*context.oBIOIStreetInputText = context.getView().byId("idBICIStreetInputText");	
             context._oBIOIPreviewStreetInputText = context.getView().byId("idBIOIPreviewStreetInputText");			
             context._oBIOIPreviewStreetInputText.setValue(context.oBIOIStreetInputText.getValue());
-			
+			*/
             context.oBIOIMobilePhoneInputText = context.getView().byId("idBIOIMobilephoneInputText");	
             context._oBIOIPreviewMobilePhoneInputText = context.getView().byId("idBIOIPreviewMobilephoneInputText");			
             context._oBIOIPreviewMobilePhoneInputText.setValue(context.oBIOIMobilePhoneInputText.getValue());
