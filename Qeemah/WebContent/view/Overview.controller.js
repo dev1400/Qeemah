@@ -355,6 +355,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 			    		        })/*, 
 			    		        new sap.m.Button({ icon : "sap-icon://delete"})*/]
 			    		      }));
+			    			this.oExistingShareHolderEntityNo.setValue("");
+			    			this.oExistingShareHolderEntityName.setValue("");
+			    			this.oESHPercentageInputText.setValue("");
 			    			that.closeBusyDialog();
 					
 		    		}, this));	
