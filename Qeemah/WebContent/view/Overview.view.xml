@@ -103,14 +103,14 @@
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:cells>
 									
-									<sap.ui.commons.layout:MatrixLayoutCell>
+								<!-- 	<sap.ui.commons.layout:MatrixLayoutCell>
 											<ComboBox width="9em" id="idLanguageSelectionComboBox" selectionChange="handleLanguageChange">
 												<sap.ui.core:Item id="idE" key="E" text="{i18n>English}" />
 												<sap.ui.core:Item id="idA" key="A" text="{i18n>Arabic}" />
 											</ComboBox>
 
 										</sap.ui.commons.layout:MatrixLayoutCell>
-										
+										 -->
 										
 										<sap.ui.commons.layout:MatrixLayoutCell
 											vAlign="Middle">

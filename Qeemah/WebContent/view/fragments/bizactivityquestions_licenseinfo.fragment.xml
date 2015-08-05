@@ -38,7 +38,7 @@
 									<sap.ui.commons.layout:MatrixLayoutCell >
 										
 											<sap.ui.commons:TextView text="{i18n>LicenseType}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+											<!-- <sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView> -->
 										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell >

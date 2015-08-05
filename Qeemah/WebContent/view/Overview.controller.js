@@ -120,7 +120,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		
 		
-		this._oLanguageSelectionComboBox = this.getView().byId("idLanguageSelectionComboBox");
+		//this._oLanguageSelectionComboBox = this.getView().byId("idLanguageSelectionComboBox");
 		
 		this._basicInfo_OrganizationFragmentChild = sap.ui.xmlfragment("com.sagia.view.fragments.bi_organization", this.getView()
 				.getController());
@@ -2577,15 +2577,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 							oSelect.setWidth("8rem");
 							
 							var oFileUploader = new sap.ui.unified.FileUploader("idBAQFileUploader"+l,{
-								icon : "common/mime/attachment.png",
+								
 								sendXHR : true,
 								useMultipart : false,
 								sameFilenameAllowed : true,
-								iconOnly : true,
 								mimeType : "application/pdf"
 							});
-							
-							
+							/*icon : "common/mime/attachment.png",
+							iconOnly : true,*/
+
 							for(var m=0; m < answers.length; m++){								
 							
 								for(var t=0; t < answers[m].length; t++){
@@ -2627,6 +2627,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 							oRow.addCell(oCell2);
 							
 							this.oBAQMatrixLayout.addRow(oRow);
+							var oTextViewSpaceAttachment = new sap.ui.commons.TextView("idBAQSpaceAttachment"+nodeID[l]);
+							this.oBAQMatrixLayout.createRow(oTextViewSpaceAttachment);
+
 
 							//this.oBAQMatrixLayout.createRow( oSelect );
 							//this.oBAQMatrixLayout.createRow( oBAQUnitsTextView );
@@ -2764,14 +2767,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 								var oSelect = new sap.m.Select("idAQAnswer"+l);
 								
 								var oFileUploader = new sap.ui.unified.FileUploader("idAQFileUploader"+l,{
-									icon : "common/mime/attachment.png",
 									sendXHR : true,
 									useMultipart : false,
 									sameFilenameAllowed : true,
-									iconOnly : true,
+									
 									mimeType : "application/pdf"
 								});
-								
+								/*iconOnly : true,
+								icon : "common/mime/attachment.png",*/
+
 								//var oTextViewAttachment = new sap.ui.commons.TextView("idAQAttachment"+l,{});
 								
 								for(var m=0; m < answers.length; m++){								
@@ -3256,14 +3260,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 							oSelect.setWidth("8rem");
 
 							var oFileUploader = new sap.ui.unified.FileUploader("idPBAQFileUploader"+l,{
-								icon : "common/mime/attachment.png",
 								sendXHR : true,
 								useMultipart : false,
 								sameFilenameAllowed : true,
-								iconOnly : true,
 								mimeType : "application/pdf",
 								enabled : false
 							});
+							
+							/*iconOnly : true,
+							icon : "common/mime/attachment.png",*/
+
+
 							
 							
 							for(var m=0; m < answers.length; m++){								
@@ -4028,7 +4035,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oLanguageSelect = sap.ui.getCore().byId("idLanguageSelect");
 		
 
-		this._oLanguageSelectionComboBox.setSelectedKey("E");
+		//this._oLanguageSelectionComboBox.setSelectedKey("E");
 		
 		
 		//this.getBAQ();
@@ -4956,14 +4963,16 @@ handleRegisterUserButtonPress : function() {
 								var oSelect = new sap.m.Select("idEQAnswer"+l);
 								
 								var oFileUploader = new sap.ui.unified.FileUploader("idEQFileUploader"+l,{
-									icon : "common/mime/attachment.png",
 									sendXHR : true,
 									useMultipart : false,
 									sameFilenameAllowed : true,
-									iconOnly : true,
 									mimeType : "application/pdf"
 								});
 								
+								/*iconOnly : true,
+								icon : "common/mime/attachment.png",*/
+
+
 								//var oTextViewAttachment = new sap.ui.commons.TextView("idAQAttachment"+l,{});
 								
 								for(var m=0; m < answers.length; m++){								

@@ -40,7 +40,7 @@
 									<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 										
 											<sap.ui.commons:TextView text="{i18n>BusinessType}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+											<!-- <sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView> -->
 										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell >
@@ -52,11 +52,16 @@
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									</sap.ui.commons.layout:MatrixLayoutRow>
 								<sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:cells>
+								
+								</sap.ui.commons.layout:cells>
+								</sap.ui.commons.layout:MatrixLayoutRow>
+								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell >
 										
 											<sap.ui.commons:TextView text="{i18n>LicenseType}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										
+<!-- 											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+ -->										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell >
 										  <!-- <Input type="Text" id="idLicenseTypePreviewInputText" enabled="false"></Input> -->
