@@ -4468,6 +4468,7 @@ handleRegisterUserButtonPress : function() {
 	
 	},
 	handleShareholderInfoButtonClick : function(){
+		//this.handleLILIClassMultiSelectionComboBoxChange();
 		that = this;
 		this._oShareholderInfoButton.setSrc("common/mime/shareholder_hover.png");
 		
@@ -4648,139 +4649,18 @@ handleRegisterUserButtonPress : function() {
 		}else{
 			//Start of Experience Questions
 			
-			   var oRequestFinishedExperienceQuestionsDeferred = this.oModelHelper.readExperienceQuestions(encodeURIComponent(this.oBusinessTypeSurveyID));
+			if(this.oLILIBusinessTypeComboBox.getValue() === "None of the above"){
+				var oRequestFinishedDeferredLILILicenseType = that.oModelHelper.readLILILicenseType(that.oLILISectionComboBox.getSelectedKey(),that.oLILIDivisionComboBox.getSelectedKey(), that.oLILIGroupComboBox.getSelectedKeys(), that.oLILIClassMultiComboBox.getSelectedKeys());
 				
-				jQuery.when(oRequestFinishedExperienceQuestionsDeferred).then(jQuery.proxy(function(oResponse) {
-					
-					var questions = [];
-					var nodeID = [];
-					var surveyID = [];
-					var answers = [];
-					var units = [];
-					var attachmentFlag = [];
-
-					this.oExperienceQuestionsMatrixLayout = this.getView().byId("idNewShareHolderExperienceQuestionsMLAyout");
-					//this.oExperienceQuestionsMatrixLayout.removeAllRows();
-					//this.oExperienceQuestionsMatrixLayout = this.oExperienceQuestionsMatrixLayout.destroyRows();
-					
-					this.oTotalExperienceQuestions = 0;
-					
-					for(var i=0; i < oResponse.data.results.length; i++){
-						questions[i] = oResponse.data.results[i].Qtxtlg;
-						nodeID[i] = oResponse.data.results[i].NodeGuid;
-						surveyID[i] = oResponse.data.results[i].SurveyID;
-						units[i] = oResponse.data.results[i].Units;
-						attachmentFlag[i] = oResponse.data.results[i].Attachment;
-
-						
-						++this.oTotalExperienceQuestions;
-
+				jQuery.when(oRequestFinishedDeferredLILILicenseType).then(jQuery.proxy(function(oResponseLicenseType) {
+					var that = this;
+					if(oResponseLicenseType !== undefined && oResponseLicenseType.LILILicenseActivityType.length>0){			
+						this.loadExperienceQuestions("None of the above", oResponseLicenseType);						
 					}
-					
-					for(var q=0; q < questions.length; q++){
-						
-						if(sap.ui.getCore().byId("idEQuestion"+q)){
-							sap.ui.getCore().byId("idEQuestion"+q).destroy();
-						}						
-						if(sap.ui.getCore().byId("idEQuestionUnits"+q)){
-							sap.ui.getCore().byId("idEQuestionUnits"+q).destroy();
-						}						
-						if(sap.ui.getCore().byId("idEQAnswer"+q)){
-							sap.ui.getCore().byId("idEQAnswer"+q).destroy();
-						}
-						if(sap.ui.getCore().byId("idEQFileUploader"+q)){
-							sap.ui.getCore().byId("idEQFileUploader"+q).destroy();
-						}						
-					}
-
-					
-					n = 0 ;
-					for(var i=0; i < questions.length; i++){
-						
-						var oRequestFinishedDeferred = this.oModelHelper.readEQAnswers(oResponse.data.results[i].NodeGuid, encodeURIComponent(this.oBusinessTypeSurveyID));
-
-						jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-							answers.push(oResponse.data.results);
-							
-							n++;
-			                
-							if(n === questions.length){
-								
-								p = 0;
-								for(var l=0; l < questions.length; l++){
-									
-									var oTextView = new sap.ui.commons.TextView("idEQuestion"+l,{
-										text : questions[l],
-										});
-									var oUnitsTextView = new sap.ui.commons.TextView("idEQuestionUnits"+l,{
-										text : units[l],
-										});
-									var oSelect = new sap.m.Select("idEQAnswer"+l);
-									
-									var oFileUploader = new sap.ui.unified.FileUploader("idEQFileUploader"+l,{
-										icon : "common/mime/attachment.png",
-										sendXHR : true,
-										useMultipart : false,
-										sameFilenameAllowed : true,
-										iconOnly : true,
-										mimeType : "application/pdf"
-									});
-									
-									//var oTextViewAttachment = new sap.ui.commons.TextView("idAQAttachment"+l,{});
-									
-									for(var m=0; m < answers.length; m++){								
-									
-										for(var t=0; t < answers[m].length; t++){
-											
-											if(nodeID[p] === answers[m][t].NodeGuid){
-											
-												var vItem = new sap.ui.core.Item();		    				
-							    				
-												vItem.setText(answers[m][t].Atxtlg);						
-												vItem.setKey(answers[m][t].Atxtlg);
-												oSelect.addItem(vItem);
-											}
-										}
-										
-									}p++;
-									
-									oTextView.data("idEQuestion"+l,nodeID[l]);
-									
-									var oRow1 = new sap.ui.commons.layout.MatrixLayoutRow();
-									
-									var oCell0 = new sap.ui.commons.layout.MatrixLayoutCell();
-									var oCell1 = new sap.ui.commons.layout.MatrixLayoutCell();
-									var oCell2 = new sap.ui.commons.layout.MatrixLayoutCell();
-									
-									oCell0.addContent(oTextView);
-									oCell1.addContent(oSelect);
-									oCell2.addContent(oUnitsTextView);	
-									
-									oRow1.addCell(oCell0);
-									oRow1.addCell(oCell1);
-									oRow1.addCell(oCell2);
-									
-									this.oExperienceQuestionsMatrixLayout.addRow(oRow1);	
-									
-									if(attachmentFlag[l] === "X"){
-										var oRow2 = new sap.ui.commons.layout.MatrixLayoutRow();
-
-										var oCell3 = new sap.ui.commons.layout.MatrixLayoutCell();
-										oCell3.setColSpan(2);
-										oCell3.addContent(oFileUploader);
-										oRow2.addCell(oCell3);							
-										this.oExperienceQuestionsMatrixLayout.addRow(oRow2);
-									}
-									
-								}			
-								
-								that.closeBusyDialog();		    				
-							}
-						}, this));				
-						
-					}
-					
-				}, this));			
+				}, this));	
+			}else{
+				this.loadExperienceQuestions("Not None of the above", this.oBusinessTypeSurveyID);			
+			}   
 			
 			//End of Experience Questions
 				if (!this.oExistingShareHolderTable) {
@@ -4826,6 +4706,149 @@ handleRegisterUserButtonPress : function() {
 		
 		
 		
+	},
+	loadExperienceQuestions : function(oLicenseType, oResponseLicenseType){
+		var oRequestFinishedExperienceQuestionsDeferred;
+		
+		if(oLicenseType === "None of the above"){
+			oRequestFinishedExperienceQuestionsDeferred = this.oModelHelper.readExperienceQuestions(encodeURIComponent(oResponseLicenseType.LILILicenseActivityType[0].SurveyID));
+		   //var oRequestFinishedExperienceQuestionsDeferred = this.oModelHelper.readExperienceQuestions(encodeURIComponent(this.oLicenseTypeInputText.getValue()));
+		}else{
+			oRequestFinishedExperienceQuestionsDeferred = this.oModelHelper.readExperienceQuestions(encodeURIComponent(oResponseLicenseType));
+		}
+	
+			
+			jQuery.when(oRequestFinishedExperienceQuestionsDeferred).then(jQuery.proxy(function(oResponse) {
+				
+				var questions = [];
+				var nodeID = [];
+				var surveyID = [];
+				var answers = [];
+				var units = [];
+				var attachmentFlag = [];
+
+				this.oExperienceQuestionsMatrixLayout = this.getView().byId("idNewShareHolderExperienceQuestionsMLAyout");
+				//this.oExperienceQuestionsMatrixLayout.removeAllRows();
+				//this.oExperienceQuestionsMatrixLayout = this.oExperienceQuestionsMatrixLayout.destroyRows();
+				
+				this.oTotalExperienceQuestions = 0;
+				
+				for(var i=0; i < oResponse.data.results.length; i++){
+					questions[i] = oResponse.data.results[i].Qtxtlg;
+					nodeID[i] = oResponse.data.results[i].NodeGuid;
+					surveyID[i] = oResponse.data.results[i].SurveyID;
+					units[i] = oResponse.data.results[i].Units;
+					attachmentFlag[i] = oResponse.data.results[i].Attachment;
+
+					
+					++this.oTotalExperienceQuestions;
+
+				}
+				
+				for(var q=0; q < questions.length; q++){
+					
+					if(sap.ui.getCore().byId("idEQuestion"+q)){
+						sap.ui.getCore().byId("idEQuestion"+q).destroy();
+					}						
+					if(sap.ui.getCore().byId("idEQuestionUnits"+q)){
+						sap.ui.getCore().byId("idEQuestionUnits"+q).destroy();
+					}						
+					if(sap.ui.getCore().byId("idEQAnswer"+q)){
+						sap.ui.getCore().byId("idEQAnswer"+q).destroy();
+					}
+					if(sap.ui.getCore().byId("idEQFileUploader"+q)){
+						sap.ui.getCore().byId("idEQFileUploader"+q).destroy();
+					}						
+				}
+
+				
+				n = 0 ;
+				for(var i=0; i < questions.length; i++){
+					
+					var oRequestFinishedDeferred = this.oModelHelper.readEQAnswers(oResponse.data.results[i].NodeGuid, encodeURIComponent(this.oBusinessTypeSurveyID));
+
+					jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+						answers.push(oResponse.data.results);
+						
+						n++;
+		                
+						if(n === questions.length){
+							
+							p = 0;
+							for(var l=0; l < questions.length; l++){
+								
+								var oTextView = new sap.ui.commons.TextView("idEQuestion"+l,{
+									text : questions[l],
+									});
+								var oUnitsTextView = new sap.ui.commons.TextView("idEQuestionUnits"+l,{
+									text : units[l],
+									});
+								var oSelect = new sap.m.Select("idEQAnswer"+l);
+								
+								var oFileUploader = new sap.ui.unified.FileUploader("idEQFileUploader"+l,{
+									icon : "common/mime/attachment.png",
+									sendXHR : true,
+									useMultipart : false,
+									sameFilenameAllowed : true,
+									iconOnly : true,
+									mimeType : "application/pdf"
+								});
+								
+								//var oTextViewAttachment = new sap.ui.commons.TextView("idAQAttachment"+l,{});
+								
+								for(var m=0; m < answers.length; m++){								
+								
+									for(var t=0; t < answers[m].length; t++){
+										
+										if(nodeID[p] === answers[m][t].NodeGuid){
+										
+											var vItem = new sap.ui.core.Item();		    				
+						    				
+											vItem.setText(answers[m][t].Atxtlg);						
+											vItem.setKey(answers[m][t].Atxtlg);
+											oSelect.addItem(vItem);
+										}
+									}
+									
+								}p++;
+								
+								oTextView.data("idEQuestion"+l,nodeID[l]);
+								
+								var oRow1 = new sap.ui.commons.layout.MatrixLayoutRow();
+								
+								var oCell0 = new sap.ui.commons.layout.MatrixLayoutCell();
+								var oCell1 = new sap.ui.commons.layout.MatrixLayoutCell();
+								var oCell2 = new sap.ui.commons.layout.MatrixLayoutCell();
+								
+								oCell0.addContent(oTextView);
+								oCell1.addContent(oSelect);
+								oCell2.addContent(oUnitsTextView);	
+								
+								oRow1.addCell(oCell0);
+								oRow1.addCell(oCell1);
+								oRow1.addCell(oCell2);
+								
+								this.oExperienceQuestionsMatrixLayout.addRow(oRow1);	
+								
+								if(attachmentFlag[l] === "X"){
+									var oRow2 = new sap.ui.commons.layout.MatrixLayoutRow();
+
+									var oCell3 = new sap.ui.commons.layout.MatrixLayoutCell();
+									oCell3.setColSpan(2);
+									oCell3.addContent(oFileUploader);
+									oRow2.addCell(oCell3);							
+									this.oExperienceQuestionsMatrixLayout.addRow(oRow2);
+								}
+								
+							}			
+							
+							that.closeBusyDialog();		    				
+						}
+					}, this));				
+					
+				}
+				
+			}, this));			
 	},
 	handlePreviewInfoButtonClick : function(){
 		//sap.ui.getCore().getUIArea(sap.ui.getCore().byId("idLI_BAQ_1_to_6MAtrixLayoutz")).lock();
