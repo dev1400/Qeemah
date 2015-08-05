@@ -289,7 +289,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 				this.oAlertTextView.setText(this.oModelHelper.getText("ESHEntityNoRequired"));
 				this.oShowAlertDialog.open();
 			 }
-		}else if(this.oESHTotalShareHolderPercentage >= 100){
+		}else if((this.oESHTotalShareHolderPercentage + this.oNSHTotalShareHolderPercentage) >= 100){
+			if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("TotalSHCannotExceed"));
+				this.oShowAlertDialog.open();
+			 }
+        }else if(this.oESHTotalShareHolderPercentage >= 100){
 			if(!this.oShowAlertDialog.isOpen())
 			 {
 				this.oAlertTextView.setText(this.oModelHelper.getText("ESHTotalPercentageCannotExceed"));
@@ -444,6 +450,25 @@ sap.ui.controller("com.sagia.view.Overview", {
 		  				that.oShowAlertDialog.open();
 		  			 }			 							  				
 	  	   	     }else {*/
+				 if((this.oESHTotalShareHolderPercentage + this.oNSHTotalShareHolderPercentage) >= 100){
+						if(!this.oShowAlertDialog.isOpen())
+						 {
+							this.oAlertTextView.setText(this.oModelHelper.getText("TotalSHCannotExceed"));
+							this.oShowAlertDialog.open();
+						 }
+	    	            this.closeBusyDialog();
+
+				 
+			     }else if(this.oNSHTotalShareHolderPercentage >= 100){
+						if(!this.oShowAlertDialog.isOpen())
+						 {
+							this.oAlertTextView.setText(this.oModelHelper.getText("NSHTotalPercentageCannotExceed"));
+							this.oShowAlertDialog.open();
+						 }
+	    	            this.closeBusyDialog();
+
+				 
+			     }else{
 		  	   	    var questions = [];
 					var answers1 = [];
 					var answers2 = [];
@@ -645,6 +670,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			 }
 				 }, this));//end of create new share holder
 	  	   	 //    }//end of else
+			     }
 			}catch(err){
 				console.log(err);
 		        that.closeBusyDialog();
@@ -653,6 +679,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}
 		}
 		
+		
 	},
 	handleNSHTableDeleteButtonPress : function(oEvent){
 		 
@@ -660,6 +687,8 @@ sap.ui.controller("com.sagia.view.Overview", {
          var that = this;
          try{
      		 this.openBusyDialog();
+     		 
+     		 this.oNSHTotalShareHolderPercentage -= this.oNSHCreateNewData.NSHCollection[this.oNSHCreateNSHTable.indexOfItem(oEvent.getParameter('listItem'))].Percentage;
 
         	 var oRequestFinishedDeferredRemoveNSHEntry = this.oModelHelper.deleteNewShareHolderEntry(this.oRef_id,this.oNSHCreateNewData.NSHCollection[this.oNSHCreateNSHTable.indexOfItem(oEvent.getParameter('listItem'))].EntityNo);
 
