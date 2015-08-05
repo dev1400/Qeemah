@@ -805,7 +805,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleLILISectionSelectionComboBox : function(){
 		var that = this;
 
-		if(that.oISICLoaded){
+		if(that.oISICLoaded || this.oLILIBusinessTypeComboBox.getValue() === "None of the above"){
 			if(this.oLILIDivisionComboBox){
 				this.oLILIDivisionComboBox.setSelectedKey("");
 			}
@@ -890,7 +890,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//this.oLILIClassMultiComboBox.removeAllSelectedItems();
 		var that = this;
 
-		if(that.oISICLoaded){
+		if(that.oISICLoaded || this.oLILIBusinessTypeComboBox.getValue() === "None of the above"){
 			if(this.oLILIGroupComboBox){
 				this.oLILIGroupComboBox.setModel(null);
 			}
@@ -919,7 +919,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 				//console.dir(oResponse);
 				
 				that.oLILIGroupComboBox.setModel(oResponse);
-				if(that.oISICLoaded){
+				if(that.oISICLoaded || this.oLILIBusinessTypeComboBox.getValue() === "None of the above"){
 					that.oLILIGroupComboBox.removeSelectedKeys(that.oLILIGroupComboBox.getSelectedKeys());
 				}
 				//that.oLILIGroupComboBox.removeSelectedKeys(that.oLILIGroupComboBox.getSelectedKeys());
@@ -944,7 +944,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		var that = this;
 		
-		if(that.oISICLoaded){
+		if(that.oISICLoaded || this.oLILIBusinessTypeComboBox.getValue() === "None of the above"){
 			if(this.oLILIClassMultiComboBox){
 				this.oLILIClassMultiComboBox.setModel(null);
 			}		
@@ -972,7 +972,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 				
 				that.oLILIClassMultiComboBox.setModel(oResponse);
-				if(that.oISICLoaded){
+				if(that.oISICLoaded || this.oLILIBusinessTypeComboBox.getValue() === "None of the above"){
 				that.oLILIClassMultiComboBox.removeSelectedKeys(that.oLILIClassMultiComboBox.getSelectedKeys());
 				}
 				
@@ -1002,7 +1002,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},*/
 	handleLILIClassMultiSelectionComboBoxChange : function(){
 		var that = this;
-		if(that.oISICLoaded){
+		if(that.oISICLoaded || this.oLILIBusinessTypeComboBox.getValue() === "None of the above"){
 			if(this.oLILILicenseActivityMultiComboBox){
 				this.oLILILicenseActivityMultiComboBox.setModel(null);
 			}
@@ -1025,7 +1025,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			//console.dir(oResponse);
 			
 			that.oLILILicenseActivityMultiComboBox.setModel(oResponse);
-			if(that.oISICLoaded){
+			if(that.oISICLoaded || this.oLILIBusinessTypeComboBox.getValue() === "None of the above"){
 			that.oLILILicenseActivityMultiComboBox.removeSelectedKeys(that.oLILILicenseActivityMultiComboBox.getSelectedKeys());
 			}
 			
@@ -2855,7 +2855,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 											//console.log(oResponse);
 											that.oLILIGroupComboBox.setModel(oReadGroupResponse);
 											
-											if(that.oISICLoaded){
+											if(that.oISICLoaded || this.oLILIBusinessTypeComboBox.getValue() === "None of the above"){
 												that.oLILIGroupComboBox.removeSelectedKeys(that.oLILIGroupComboBox.getSelectedKeys());
 											}
 										
@@ -2879,7 +2879,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 												
 												that.oLILIClassMultiComboBox.setModel(oReadClassResponse);
-												if(that.oISICLoaded){
+												if(that.oISICLoaded || this.oLILIBusinessTypeComboBox.getValue() === "None of the above"){
 												that.oLILIClassMultiComboBox.removeSelectedKeys(that.oLILIClassMultiComboBox.getSelectedKeys());
 												}
 												
