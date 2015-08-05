@@ -145,11 +145,11 @@
 									<sap.ui.commons.layout:MatrixLayoutCell
 										vAlign="Middle" hAlign="Begin">
 										<!-- <Button text="{i18n>Save}" id="idSaveButton" /> -->
-										<Image src="common/mime/save.png" class="SaveIconStyling"></Image>
+										<Image src="common/mime/save.png" class="SaveIconStyling" id="idSaveImage"></Image>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell
 										hAlign="Begin" vAlign="Bottom">
-										<Link text="{i18n>Save}" class="linkColorWhite" press="handleSaveLinkPressSave"/><html:span>&#160;&#160;</html:span>
+										<Link text="{i18n>Save}" class="linkColorWhite" press="handleSaveLinkPressSave" id="idSaveLink"/><html:span>&#160;&#160;</html:span>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									
 									<sap.ui.commons.layout:MatrixLayoutCell

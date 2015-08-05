@@ -1433,13 +1433,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oShowAlertDialog.open();
 		
 		}
-	 }else{
+	 }/*else{
 		 this.doThis();
 	     this.oValidationLILIStatus = true;
 
-	 }
+	 }*/
 	
-	if(this.oBICIEmailInputText.getValue() === ""){			
+	else if(this.oBICIEmailInputText.getValue() === ""){			
 		 this.oValidationLILIStatus = false;
 
 		 if(!this.oShowAlertDialog.isOpen())
@@ -1666,32 +1666,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		}
 	 }else{
-		this.saveContactInfoTab();
-   	    this.oValidationLILIStatus = true;
+		//this.saveContactInfoTab();
+   	    //this.oValidationLILIStatus = true;
+		 this.doThis();
+	     this.oValidationLILIStatus = true;
+
 
   
 	 }
    	 
    	 
-   	 if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== "" ){ 
-   		      this.saveLicenseInfoTab();
-   		      
-			  //this.doThis();			
-			  this.oValidationLILIStatus = true;				   
-   	 }else if(this.oSurveyID !== "UNKNOWN" &&
-   			  this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
-		      this.oLILILicenseActivityMultiComboBox.getSelectedItems().length !== 0 &&
-		  	  this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
-	  		  this.oLILIDivisionComboBox.getSelectedKey() !== "" &&
-	  		  this.oLILISectionComboBox.getSelectedKey() !== "" &&
-		   	  this.oRef_id !== "" &&		   
-	 		  this.oLILIActivityDescriptionTextArea.getValue() !== ""){
-   		 
-		      this.saveLicenseInfoTab();
-		      
-		   	  //this.doThis();			
-	     	  this.oValidationLILIStatus = true;
-	  }
+   
 		
 	return 	this.oValidationLILIStatus;
 },
@@ -1748,12 +1733,19 @@ sap.ui.controller("com.sagia.view.Overview", {
 				jQuery.when(oRequestFinishedDeferredUploadPassPortCopy).then(jQuery.proxy(function(oResponse) {						
 					//that.saveContactInfoTab();
 				}, that));
+
 				
 				this.closeBusyDialog();
+            	sap.m.MessageToast.show(that.oModelHelper.getText("OrgInfoSaved"), {duration : 1000});
+
+				
+				this.saveContactInfoTab();
 				
 			}, this));	
 			}
 			catch(err){
+				this.closeBusyDialog();
+
 				console.log(err);
 			}
 			
@@ -1801,13 +1793,20 @@ sap.ui.controller("com.sagia.view.Overview", {
 				jQuery.when(oRequestFinishedDeferredUploadPassPortCopy).then(jQuery.proxy(function(oResponse) {						
 					//that.saveContactInfoTab();
 				}, that));
+            	
 				
 				this.closeBusyDialog();
+            	sap.m.MessageToast.show(that.oModelHelper.getText("OrgInfoSaved"), {duration : 1000});
+
+				
+				this.saveContactInfoTab();
 
         
 			}, this));	
 			}
 			catch(err){
+				this.closeBusyDialog();
+
 				sap.m.MessageToast.show(this.oModelHelper
     					.getText("AllFieldsAreRequired"));	
 			}
@@ -1855,11 +1854,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 		}else{
 			
-			this.oBasicInfoTab.setSelectedIndex(1);
+			/*this.oBasicInfoTab.setSelectedIndex(1);
 			this.oBasicInfoTab.setSelectedIndex(0);
 			
 			this.oLicenseInfoTab.setSelectedIndex(1);
-			this.oLicenseInfoTab.setSelectedIndex(0);
+			this.oLicenseInfoTab.setSelectedIndex(0);*/
 			
 			/*try{			
 			var questions = [];
@@ -1903,78 +1902,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}
 	},
 	saveLicenseInfoTab : function(){
+		this.openBusyDialog();
 		var that = this;
-
-		if(this.oISICUnAvailable){
+		
+		try{
 			
-			
-			var oRequestFinishedDeferredcreateISIC = this.oModelHelper.createLILIBusiness(
-					this.oLicenseTypeInputText.getValue(),
-					this.oSurveyID,
-					this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean),
-					this.oLILILicenseActivityMultiComboBox.getSelectedKeys().filter(Boolean),
-					this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean),
-					this.oLILIDivisionComboBox.getSelectedKey(),
-					this.oLILISectionComboBox.getSelectedKey(),
-					this.oRef_id,
-					this.oLILIBusinessTypeComboBox.getSelectedKey(),
-					this.oLILIActivityDescriptionTextArea.getValue()
-					);
-
-			jQuery.when(oRequestFinishedDeferredcreateISIC).then(jQuery.proxy(function(oResponse) {
+		
+			if(this.oISICUnAvailable){
 				
-				var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
-
-				jQuery.when(oRequestFinishedDeferredReadPASSBICI).then(jQuery.proxy(function(oResponse) {
-					
-					if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
-						this.oBICIPASSAttachmentName.setVisible(true);
-						this.oBICIPASSAttachmentNameTextView.setVisible(true);
-						this.oBICIPASSAttachmentName.setText(oResponse.data.FileName);
-						}else{
-							this.oBICIPASSAttachmentName.setVisible(false);
-							this.oBICIPASSAttachmentNameTextView.setVisible(false);
-						}
-					
-					var oRequestFinishedDeferredReadPOABICI = this.oModelHelper.readBICIPPOAAttachment(this.oRef_id);
-
-					jQuery.when(oRequestFinishedDeferredReadPOABICI).then(jQuery.proxy(function(oResponse) {
-						
-						if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
-							this.oBICIPOAAttachmentName.setVisible(true);
-							this.oBICIPOAAttachmentNameTextView.setVisible(true);
-							this.oBICIPOAAttachmentName.setText(oResponse.data.FileName);
-							}else{
-								this.oBICIPOAAttachmentName.setVisible(false);
-								this.oBICIPOAAttachmentNameTextView.setVisible(false);
-							}
-					}, this));	
-					
-					that.readBAQFileAttachments();
-				}, this));	
-				
-					
-				
-				if(this.oSaveClicked){
-					that.closeBusyDialog();
-					sap.m.MessageToast.show(that.oModelHelper
-								.getText("Saved"));
-					this.oSaveClicked = false;
-				}
-				
-				if(this.oSubmitClicked){
-					
-				       that.doSubmit();
-				}
-				
-				
-			}, this));
-			
-		}else{
-			
-			var oRequestFinishedDeferredDeleteISICEntry = this.oModelHelper.deleteISICEntry(this.oRef_id);
-
-			jQuery.when(oRequestFinishedDeferredDeleteISICEntry).then(jQuery.proxy(function(oResponse) {
 				
 				var oRequestFinishedDeferredcreateISIC = this.oModelHelper.createLILIBusiness(
 						this.oLicenseTypeInputText.getValue(),
@@ -1988,13 +1923,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 						this.oLILIBusinessTypeComboBox.getSelectedKey(),
 						this.oLILIActivityDescriptionTextArea.getValue()
 						);
-
+	
 				jQuery.when(oRequestFinishedDeferredcreateISIC).then(jQuery.proxy(function(oResponse) {
-					
-					var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
+					this.closeBusyDialog();
+					this.openBusyDialog();
 
+					var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
+	
 					jQuery.when(oRequestFinishedDeferredReadPASSBICI).then(jQuery.proxy(function(oResponse) {
-						
+						this.closeBusyDialog();
+
 						if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
 							this.oBICIPASSAttachmentName.setVisible(true);
 							this.oBICIPASSAttachmentNameTextView.setVisible(true);
@@ -2003,11 +1941,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 								this.oBICIPASSAttachmentName.setVisible(false);
 								this.oBICIPASSAttachmentNameTextView.setVisible(false);
 							}
-						
-						var oRequestFinishedDeferredReadPOABICI = this.oModelHelper.readBICIPPOAAttachment(this.oRef_id);
+						this.openBusyDialog();
 
+						var oRequestFinishedDeferredReadPOABICI = this.oModelHelper.readBICIPPOAAttachment(this.oRef_id);
+	
 						jQuery.when(oRequestFinishedDeferredReadPOABICI).then(jQuery.proxy(function(oResponse) {
-							
+							this.closeBusyDialog();
+
 							if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
 								this.oBICIPOAAttachmentName.setVisible(true);
 								this.oBICIPOAAttachmentNameTextView.setVisible(true);
@@ -2019,9 +1959,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 						}, this));	
 						
 						that.readBAQFileAttachments();
-
 					}, this));	
 					
+						
 					
 					if(this.oSaveClicked){
 						that.closeBusyDialog();
@@ -2031,15 +1971,101 @@ sap.ui.controller("com.sagia.view.Overview", {
 					}
 					
 					if(this.oSubmitClicked){
-				       that.doSubmit();
+						
+					       that.doSubmit();
 					}
+					
 					
 				}, this));
 				
-			}, this));				
-			
-			
+			}else{
+				this.openBusyDialog();
+
+				var oRequestFinishedDeferredDeleteISICEntry = this.oModelHelper.deleteISICEntry(this.oRef_id);
+	
+				jQuery.when(oRequestFinishedDeferredDeleteISICEntry).then(jQuery.proxy(function(oResponse) {
+					this.closeBusyDialog();
+					
+					this.openBusyDialog();
+
+					var oRequestFinishedDeferredcreateISIC = this.oModelHelper.createLILIBusiness(
+							this.oLicenseTypeInputText.getValue(),
+							this.oSurveyID,
+							this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean),
+							this.oLILILicenseActivityMultiComboBox.getSelectedKeys().filter(Boolean),
+							this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean),
+							this.oLILIDivisionComboBox.getSelectedKey(),
+							this.oLILISectionComboBox.getSelectedKey(),
+							this.oRef_id,
+							this.oLILIBusinessTypeComboBox.getSelectedKey(),
+							this.oLILIActivityDescriptionTextArea.getValue()
+							);
+	
+					jQuery.when(oRequestFinishedDeferredcreateISIC).then(jQuery.proxy(function(oResponse) {
+						this.closeBusyDialog();
+						
+						this.openBusyDialog();
+
+
+						var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
+	
+						jQuery.when(oRequestFinishedDeferredReadPASSBICI).then(jQuery.proxy(function(oResponse) {
+							this.closeBusyDialog();
+
+							if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
+								this.oBICIPASSAttachmentName.setVisible(true);
+								this.oBICIPASSAttachmentNameTextView.setVisible(true);
+								this.oBICIPASSAttachmentName.setText(oResponse.data.FileName);
+								}else{
+									this.oBICIPASSAttachmentName.setVisible(false);
+									this.oBICIPASSAttachmentNameTextView.setVisible(false);
+								}
+							
+							this.openBusyDialog();
+
+							
+							var oRequestFinishedDeferredReadPOABICI = this.oModelHelper.readBICIPPOAAttachment(this.oRef_id);
+	
+							jQuery.when(oRequestFinishedDeferredReadPOABICI).then(jQuery.proxy(function(oResponse) {
+								this.closeBusyDialog();
+
+								if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
+									this.oBICIPOAAttachmentName.setVisible(true);
+									this.oBICIPOAAttachmentNameTextView.setVisible(true);
+									this.oBICIPOAAttachmentName.setText(oResponse.data.FileName);
+									}else{
+										this.oBICIPOAAttachmentName.setVisible(false);
+										this.oBICIPOAAttachmentNameTextView.setVisible(false);
+									}
+							}, this));	
+							
+							that.readBAQFileAttachments();
+	
+						}, this));	
+						
+						
+						if(this.oSaveClicked){
+							that.closeBusyDialog();
+							sap.m.MessageToast.show(that.oModelHelper
+										.getText("Saved"));
+							this.oSaveClicked = false;
+						}
+						
+						if(this.oSubmitClicked){
+					       that.doSubmit();
+						}
+						
+					}, this));
+					
+				}, this));				
+				
+				
+			}
 		}
+		catch(error){
+			this.closeBusyDialog();
+		}
+
 	},
 	doSubmit : function(){
 		
@@ -2109,8 +2135,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oShowSubmitAlertDialog.close();
 	},
 	saveBAQInfoTab : function(){
-		
+		this.openBusyDialog();
+
 		if(this.oBAQExists){
+			
+			try{
+				
+			
 			
 			this.oBasicInfoTab.setSelectedIndex(1);
 			this.oBasicInfoTab.setSelectedIndex(0);
@@ -2157,19 +2188,44 @@ sap.ui.controller("com.sagia.view.Overview", {
 					jQuery.when(oRequestFinishedDeferredcreateBAQAnswers).then(jQuery.proxy(function(oResponse) {
 						
 						//this.saveLicenseInfoTab();
+						
+						this.closeBusyDialog();
 
 						this.oBAQError = false;
+		            	sap.m.MessageToast.show(this.oModelHelper.getText("BAQInfoSaved"), {duration : 1000});
+		            	
+				           	 if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== "" ){ 
+				      		      this.saveLicenseInfoTab();				      		      
+				   			  	
+				   			      this.oValidationLILIStatus = true;				   
+					      	 }else if(this.oSurveyID !== "UNKNOWN" &&
+					      			  this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
+					   		      this.oLILILicenseActivityMultiComboBox.getSelectedItems().length !== 0 &&
+					   		  	  this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
+					   	  		  this.oLILIDivisionComboBox.getSelectedKey() !== "" &&
+					   	  		  this.oLILISectionComboBox.getSelectedKey() !== "" &&
+					   		   	  this.oRef_id !== "" &&		   
+					   	 		  this.oLILIActivityDescriptionTextArea.getValue() !== ""){
+					      		 
+					   		      this.saveLicenseInfoTab();					   		      
+					   		   	  	
+					   	     	  this.oValidationLILIStatus = true;
+					      	 }
+
 						
 					}, this));
 					
 					
 					}catch(err){
-						
+						this.closeBusyDialog();
 						this.oBAQError = true;
 					}
 					
 				
 			}, this));
+			}catch(err){
+				this.closeBusyDialog();
+			}
 			
 		}else{
 			
@@ -2199,8 +2255,30 @@ sap.ui.controller("com.sagia.view.Overview", {
 			jQuery.when(oRequestFinishedDeferredcreateBAQAnswers).then(jQuery.proxy(function(oResponse) {
 				
 				//this.saveLicenseInfoTab();
+				
 
 				this.oBAQError = false;
+				this.closeBusyDialog();
+            	sap.m.MessageToast.show(this.oModelHelper.getText("BAQInfoSaved"), {duration : 1000});
+            	
+            	 if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== "" ){ 
+	      		      this.saveLicenseInfoTab();				      		      
+	   			  	
+	   			      this.oValidationLILIStatus = true;				   
+		      	 }else if(this.oSurveyID !== "UNKNOWN" &&
+		      			  this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
+		   		      this.oLILILicenseActivityMultiComboBox.getSelectedItems().length !== 0 &&
+		   		  	  this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
+		   	  		  this.oLILIDivisionComboBox.getSelectedKey() !== "" &&
+		   	  		  this.oLILISectionComboBox.getSelectedKey() !== "" &&
+		   		   	  this.oRef_id !== "" &&		   
+		   	 		  this.oLILIActivityDescriptionTextArea.getValue() !== ""){
+		      		 
+		   		      this.saveLicenseInfoTab();					   		      
+		   		   	  	
+		   	     	  this.oValidationLILIStatus = true;
+		      	 }
+
 				
 			}, this));
 			
@@ -2208,6 +2286,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}catch(err){
 				
 				this.oBAQError = true;
+				this.closeBusyDialog();
 			
 			}
 			
@@ -2216,6 +2295,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 	},
 	saveContactInfoTab : function(){
+		this.openBusyDialog();
+
 		if(this.oContactInfoRecordExists){
 			this.oBasicInfoTab.setSelectedIndex(1);
 			this.oBasicInfoTab.setSelectedIndex(0);			
@@ -2247,7 +2328,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {    	
                 
+				this.closeBusyDialog();
+            	sap.m.MessageToast.show(that.oModelHelper.getText("ContactInfoSaved"), {duration : 1000});
 				this.saveBAQInfoTab();
+
 				
 			}, this));	
 		    
@@ -2292,11 +2376,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 				
             jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
             	//this.readBICIFileAttachemnts();
+				this.closeBusyDialog();
+            	sap.m.MessageToast.show(that.oModelHelper.getText("ContactInfoSaved"), {duration : 1000});
 				this.saveBAQInfoTab();
-
+				
 			}, this));	
 			}
 			catch(err){
+				this.closeBusyDialog();
+
 				sap.m.MessageToast.show(this.oModelHelper
     					.getText("AllFieldsAreRequired"));	
 			}
@@ -4189,6 +4277,10 @@ userSignIn : function(userID, password){
 						this.oBICIPOAAttachmentName = this.getView().byId("idBICIPOAAttachmentName");
 						this.oBICIPOAAttachmentNameTextView = this.getView().byId("idBICIPOAAttachmentNameTextView");
 						
+						this.oSaveImage = this.getView().byId("idSaveImage");
+						this.oSaveLink = this.getView().byId("idSaveLink");
+
+						
 						var oRequestFinishedDeferredBIOIChild = this.oModelHelper.readBIOI(this.oRef_id);
 
 						jQuery.when(oRequestFinishedDeferredBIOIChild).then(jQuery.proxy(function(oResponse) {
@@ -4415,9 +4507,14 @@ handleRegisterUserButtonPress : function() {
 	
 	handleBasicInfoButtonClick : function(){
 		
+		this.oBasicInfoButtonClicked = true;
+		this.oLicenseInfoButtonClicked = false;
 		
 		this.oLicenseInfoTab.setSelectedIndex(1);
 		this.oLicenseInfoTab.setSelectedIndex(0);
+		
+		this.oSaveImage.setVisible(true);
+		this.oSaveLink.setVisible(true);
 		
 		this._oBasicInfoButton.setSrc("common/mime/basicinfo_hover.png");
 
@@ -4437,6 +4534,12 @@ handleRegisterUserButtonPress : function() {
 		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
 	},
 	handleLicenseButtonClick : function(){
+		
+		this.oBasicInfoButtonClicked = false;
+		this.oLicenseInfoButtonClicked = true;
+		
+		this.oSaveImage.setVisible(true);
+		this.oSaveLink.setVisible(true);
 		
 		//this.getBAQ();
 		
@@ -4469,6 +4572,10 @@ handleRegisterUserButtonPress : function() {
 	},
 	handleShareholderInfoButtonClick : function(){
 		//this.handleLILIClassMultiSelectionComboBoxChange();
+		
+		this.oSaveImage.setVisible(false);
+		this.oSaveLink.setVisible(false);
+		
 		that = this;
 		this._oShareholderInfoButton.setSrc("common/mime/shareholder_hover.png");
 		
@@ -4646,6 +4753,9 @@ handleRegisterUserButtonPress : function() {
 			
 			this._oStagesHeading.setContent(this.oModelHelper
 					.getText("LicenseInformationHTML"));
+			
+			this.oSaveImage.setVisible(true);
+			this.oSaveLink.setVisible(true);
 		}else{
 			//Start of Experience Questions
 			
@@ -4856,7 +4966,8 @@ handleRegisterUserButtonPress : function() {
 		//sap.ui.getCore().getUIArea(sap.ui.getCore().byId("__xmlview0--idBAQDIV")).lock();
 		//sap.ui.getCore().getUIArea("content").lock();
 		//this.handleLicenseButtonClick();
-		
+		this.oSaveImage.setVisible(false);
+		this.oSaveLink.setVisible(false);
 		
 		this.getPreviewBAQ();
 		
@@ -4915,6 +5026,11 @@ handleRegisterUserButtonPress : function() {
 
 	},
 	handleTermsInfoButtonClick : function(){
+		
+		this.oSaveImage.setVisible(false);
+		this.oSaveLink.setVisible(false);
+		
+		
 		this._oShareHoldersInfoContent.setVisible(false);
 		this._oLicenseInfoContent.setVisible(false);
 		this._oBasicInfoContent.setVisible(false);
@@ -4958,6 +5074,9 @@ handleRegisterUserButtonPress : function() {
 		
 	},
 	handleSubmitInfoButtonClick : function(){
+		
+		this.oSaveImage.setVisible(false);
+		this.oSaveLink.setVisible(false);
 		
 		that = this;
 		
