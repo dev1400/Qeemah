@@ -289,7 +289,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 				this.oAlertTextView.setText(this.oModelHelper.getText("ESHEntityNoRequired"));
 				this.oShowAlertDialog.open();
 			 }
+		}else if(this.oESHTotalShareHolderPercentage >= 100){
+			if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("ESHTotalPercentageCannotExceed"));
+				this.oShowAlertDialog.open();
+			 }
 		}else if(this.oESHPercentageInputText.getValue() > 0 && this.oESHPercentageInputText.getValue() <= 100){
+		
 			this.openBusyDialog();
 
 			var oRequestFinishedDeferredVESH = this.oModelHelper.readExistingSH(this.oExistingShareHolderEntityNo.getValue());
@@ -376,6 +383,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		 
         try{
+        //console.log(this.oESHCreateNewData.ESHCollection[this.oExistingShareHolderTable.indexOfItem(oEvent.getParameter('listItem'))].Percentage);
+        this.oESHTotalShareHolderPercentage -= this.oESHCreateNewData.ESHCollection[this.oExistingShareHolderTable.indexOfItem(oEvent.getParameter('listItem'))].Percentage; 
 
        	 var oRequestFinishedDeferredRemoveESHEntry = this.oModelHelper.deleteNewShareHolderEntry(this.oRef_id,this.oESHCreateNewData.ESHCollection[this.oExistingShareHolderTable.indexOfItem(oEvent.getParameter('listItem'))].EntityNo);
 
