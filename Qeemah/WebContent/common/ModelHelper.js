@@ -1673,7 +1673,7 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Read Country 
 	 */
-	readCountry : function() {
+	readCountry : function(oLanguage) {
 		// Open busy dialog
 		this.openBusyDialog();
 		
@@ -1689,7 +1689,7 @@ com.sagia.common.ModelHelper = {
 
 		//this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27", {   //ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27&lv_flag=%27%27&lv_region=%27%27
 		//this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27&lv_flag=%27%27&lv_region=%27%27", {
-		this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN?lvkey=%27AR%27&lv_flag=%27%27&lv_region=%27%27", {
+		this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN?lvkey='"+oLanguage+"'&lv_flag=%27%27&lv_region=%27%27", {
 			success : function(oData, response) {
 				// close busy dialog
 				that.closeBusyDialog();

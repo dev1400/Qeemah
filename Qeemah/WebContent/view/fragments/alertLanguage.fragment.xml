@@ -1,0 +1,29 @@
+<sap.ui.core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:sap.ui.core="sap.ui.core" xmlns:sap.ui.commons="sap.ui.commons"
+  xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+  <Dialog
+    icon="sap-icon://message-error"
+    title="{i18n>Information}"
+    class="sapUiPopupWithPadding" >
+    <content>
+      <VBox id="idLanguageIdMsg" justifyContent="Center" alignItems="Center">
+     <!--  <Label text="{i18n>PleaseNoteYourInvestorId}"></Label>
+       <Label id="idInvestIDText" design="Bold" class="InvestorIDLabelStyling"></Label> -->
+       <!-- <sap.ui.commons:TextView text="{i18n>PleaseNoteYourInvestorId}"></sap.ui.commons:TextView>
+        <sap.ui.commons:TextView id="idLeadIDTextView" ></sap.ui.commons:TextView> -->
+        <sap.ui.commons:TextView id="idLanguageAlertFragmentTextView" text="{i18n>Choosepreferredlanguage}"></sap.ui.commons:TextView>
+        <Select id="idLanguageSelect" change="handleAlertLanguageSelectionChange">
+				<sap.ui.core:ListItem key="EN" text="{i18n>English}"/>
+				<sap.ui.core:ListItem key="AR" text="{i18n>Arabic}"/>
+		</Select>
+	  </VBox>	 
+    </content>
+    <beginButton>
+    <Button text="{i18n>Ok}" app:dialogType="Std" press="handleCloseLanguageAlertDialogButtonPress" />
+    </beginButton>
+    <!-- <endButton>      
+      <Button text="{i18n>Exit}" app:dialogType="Std" press="handleShowInvestorIDDialogCloseButton" />
+    </endButton> -->
+  </Dialog>
+</sap.ui.core:FragmentDefinition>

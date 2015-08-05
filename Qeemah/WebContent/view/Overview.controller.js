@@ -3362,9 +3362,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 	},
 
-	handleSaveLinkPress : function(){
+	handleSaveLinkPress : function(oLanguage){
 				
-		var oRequestFinishedDeferred = this.oModelHelper.readCountry();
+		var oRequestFinishedDeferred = this.oModelHelper.readCountry(oLanguage);
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 			
@@ -4016,12 +4016,22 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		console.log("onAfterRendering");
 		
+		if (!this.oShowLanguageAlertDialog) {
+			this.oShowLanguageAlertDialog = sap.ui.xmlfragment(
+					"com.sagia.view.fragments.alertLanguage", this.getView()
+							.getController());
+			this.getView().addDependent(this.oShowLanguageAlertDialog);
+			
+		}	
+		this.oShowLanguageAlertDialog.open();
+		
+		this.oLanguageSelect = sap.ui.getCore().byId("idLanguageSelect");
+		
 
 		this._oLanguageSelectionComboBox.setSelectedKey("E");
 		
-		this.handleSaveLinkPress();		
 		
-		this.getBAQ();
+		//this.getBAQ();
 		//this.getPreviewBAQ();
 		
 		if (!this.oShowAlertDialog) {
@@ -4041,6 +4051,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oAlertTextView = sap.ui.getCore().byId("idAlertFragmentTextView");
 		
 		
+
 		 /*this.oUserID.attachBrowserEvent("blur", 
 		 function(){
 		     console.log("Handler");	    
@@ -4527,6 +4538,14 @@ handleRegisterUserButtonPress : function() {
 	},
 	handleCloseAlertDialogButtonPress : function(oEvent) {
 		this.oShowAlertDialog.close();		
+	},
+	handleCloseLanguageAlertDialogButtonPress : function(oEvent){
+		this.oShowLanguageAlertDialog.close();	
+		
+		this.handleSaveLinkPress(this.oLanguageSelect.getSelectedKey());
+		this.getBAQ();
+
+
 	},
 	handleCancelButtonPress : function(oEvent) {
 	},
