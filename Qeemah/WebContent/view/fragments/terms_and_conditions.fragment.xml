@@ -25,8 +25,8 @@
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
 													<sap.ui.commons:TextView text="{i18n>Name}"></sap.ui.commons:TextView>
-													<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-												</sap.ui.commons.layout:content>
+<!-- 													<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+ -->												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
@@ -41,8 +41,8 @@
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
 													<sap.ui.commons:TextView text="{i18n>Role}"></sap.ui.commons:TextView>
-													<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-												</sap.ui.commons.layout:content>
+<!-- 													<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+ -->												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
@@ -88,7 +88,7 @@
 										<sap.ui.commons.layout:cells>
 											<sap.ui.commons.layout:MatrixLayoutCell colSpan="2" hAlign="Center">
 												<sap.ui.commons.layout:content>
-													<CheckBox text="{i18n>AgreeToAllTermsandConditions}" />
+													<CheckBox text="{i18n>AgreeToAllTermsandConditions}" id="idTermsAndConditionsCheckBox"/>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											

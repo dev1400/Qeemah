@@ -99,7 +99,7 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-														<Select enabled="false" width="25em" items="{/DetailsCollection}" id="idCityComboBox">
+														<Select enabled="false" width="25em" items="{/CityCollection}" id="idCityComboBox">
 															<sap.ui.core:ListItem key="{CityCode_cty}" text="{CityName_cty}"/>
 														</Select>
 													</sap.ui.commons.layout:content>

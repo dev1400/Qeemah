@@ -128,8 +128,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._licenseInfo_BAQFragmentChild = sap.ui.xmlfragment("com.sagia.view.fragments.bizactivityquestions", this.getView()
 				.getController());
 		
-		/*this.oParentShareHolderFragment = sap.ui.xmlfragment("com.sagia.view.fragments.newshareholder", this.getView()
-				.getController());*/
+		this.oTermsAndConditionsFragment = sap.ui.xmlfragment("com.sagia.view.fragments.terms_and_conditions", this.getView()
+				.getController());
 		/*this.oShareHolderNewShareHolderFragment = sap.ui.xmlfragment("com.sagia.view.fragments.ns_shareholderdetails", this.getView()
 				.getController());*/
 		
@@ -188,6 +188,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oLILIIndustrialProductUOMComboBox = this.getView().byId("idLILIIndustrialProductUOMComboBox");
 		
 		this.oISICLoaded = false;
+		
+		
+
 
 		
 	},
@@ -2494,23 +2497,23 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleRegionSelectionComboBox : function(oControlEvent){
 		//console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.text);
 		
+		var oRequestFinishedDeferredReadCity = this.oModelHelper.readRegion(this._oidRegionComboBox.getSelectedItem().getKey());
+
+		jQuery.when(oRequestFinishedDeferredReadCity).then(jQuery.proxy(function(oResponse) {			
+			this._oBICityComboBox.setModel(oResponse);
+		}, this));	
+		
 		this._oBICityComboBox.setEnabled(true);
 		this._oBICityComboBox.setValue("");
 		var filters = [];
-		//console.log(oControlEvent.getParameters('selectedItem').selectedItem);
-		//console.log(oControlEvent.getParameters('selectedItem').selectedItem+" "+oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
-		//var oFilter1 = new sap.ui.model.Filter("CityName_cty", sap.ui.model.FilterOperator.NE, "");
 		
-		if(oControlEvent.getParameters('selectedItem').selectedItem !== null){
+		/*if(oControlEvent.getParameters('selectedItem').selectedItem !== null){
 		var oFilter2 = new sap.ui.model.Filter("Bland_cty", sap.ui.model.FilterOperator.EQ, oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
 		this._oBICityComboBox.getBinding("items").filter(oFilter2);
 		
-		}
-		
-		//this._oBICityComboBox.getBinding("items").filter(oFilter2);
+		}*/
 		
 		
-		//filters = new sap.ui.model.Filter([oFilter1, oFilter2]);
 		
 	},
 	
@@ -5173,7 +5176,18 @@ handleRegisterUserButtonPress : function() {
 		this.oTotalShareHolderPercentage = this.oSumOfESHPercentage + this.oSumOfNSHPercentage;
 		
 		if(this.oTotalShareHolderPercentage === 100){
-			that.submit();		
+			this.oTermsAndConditionsCheckBox = this.getView().byId("idTermsAndConditionsCheckBox");
+
+			if(this.oTermsAndConditionsCheckBox.getSelected()){
+				that.submit();		
+			}else{
+				if(!this.oShowAlertDialog.isOpen())
+				{
+				this.oAlertTextView.setText(this.oModelHelper.getText("AcceptTC"));
+				this.oShowAlertDialog.open();
+				
+				}
+			}
 		}else{
 			if(!this.oShowAlertDialog.isOpen())
 			{

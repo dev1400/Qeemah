@@ -1725,6 +1725,36 @@ com.sagia.common.ModelHelper = {
 		return oRequestFinishedDeferred;
 	},
 	/**
+	 * Read Region 
+	 */
+	readRegion : function(oRegionCode) {
+		this.openBusyDialog();
+		
+		var that = this;
+		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oODataModel.setUseBatch(false);
+
+		this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN?lvkey='AR'&lv_flag='CT'&lv_region='"+oRegionCode+"'", {
+			success : function(oData, response) {
+				that.closeBusyDialog();
+				
+				that.oCityCollectionModel = new sap.ui.model.json.JSONModel();
+				
+				that.oCityCollectionModel.setData({CityCollection:oData.results});				
+				
+				oRequestFinishedDeferred.resolve(that.oCityCollectionModel);
+
+				
+			},
+			error : function(oResponse) {
+				that.closeBusyDialog();
+				oRequestFinishedDeferred.resolve();
+			}
+		});
+
+		return oRequestFinishedDeferred;
+	},
+	/**
 	 * Read Industrial Products
 	 */
 	readIndustrialProducts : function() {

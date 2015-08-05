@@ -31,12 +31,10 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 												<sap.ui.commons.layout:content>
 										   <sap.ui.unified:FileUploader
-											 icon="common/mime/attachment.png" 
 											 width="15em"
 										     sendXHR="true" 
 										     useMultipart="false" 
 										     sameFilenameAllowed="true" 
-										     iconOnly="true"
 											 id="idNSHPassportCopyFileUploader"  
 											 mimeType="application/pdf"/> 
 												</sap.ui.commons.layout:content>
@@ -56,12 +54,10 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 												<sap.ui.commons.layout:content>
 												<sap.ui.unified:FileUploader
-											 icon="common/mime/attachment.png" 
 											 width="15em"
 										     sendXHR="true" 
 										     useMultipart="false" 
 										     sameFilenameAllowed="true" 
-										     iconOnly="true"
 											 id="idNSHCommercialRegistFileUploader"  
 											 mimeType="application/pdf"/> 
 												</sap.ui.commons.layout:content>
@@ -81,12 +77,10 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 												<sap.ui.commons.layout:content>
 												<sap.ui.unified:FileUploader
-											 icon="common/mime/attachment.png" 
 											 width="15em"
 										     sendXHR="true" 
 										     useMultipart="false" 
 										     sameFilenameAllowed="true" 
-										     iconOnly="true"
 											 id="idNSHBankStatementFileUploader"  
 											 mimeType="application/pdf"/> 
 												</sap.ui.commons.layout:content>
@@ -106,12 +100,10 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 												<sap.ui.commons.layout:content>
 												<sap.ui.unified:FileUploader
-											 icon="common/mime/attachment.png" 
 											 width="15em"
 										     sendXHR="true" 
 										     useMultipart="false" 
 										     sameFilenameAllowed="true" 
-										     iconOnly="true"
 											 id="idNSHBalanceSheetFileUploader"  
 											 mimeType="application/pdf"/> 
 												</sap.ui.commons.layout:content>
@@ -131,12 +123,10 @@
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 												<sap.ui.commons.layout:content>
 												<sap.ui.unified:FileUploader
-											 icon="common/mime/attachment.png" 
 											 width="15em"
 										     sendXHR="true" 
 										     useMultipart="false" 
 										     sameFilenameAllowed="true" 
-										     iconOnly="true"
 											 id="idNSHOtherFileUploader"  
 											 mimeType="application/pdf"/> 
 												</sap.ui.commons.layout:content>

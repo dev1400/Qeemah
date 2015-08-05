@@ -53,7 +53,9 @@
 									</sap.ui.commons.layout:MatrixLayoutRow>
 								<sap.ui.commons.layout:MatrixLayoutRow>
 								<sap.ui.commons.layout:cells>
-								
+								<sap.ui.commons.layout:MatrixLayoutCell colSpan="2">
+								<sap.ui.commons:TextView text=""></sap.ui.commons:TextView>
+								</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:cells>
 								</sap.ui.commons.layout:MatrixLayoutRow>
 								<sap.ui.commons.layout:MatrixLayoutRow>
