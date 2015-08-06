@@ -1790,7 +1790,7 @@ sap.ui.controller("com.sagia.view.Overview", {
    			this.oAlertTextView.setText(this.oModelHelper.getText("BICICityValidation"));
    			this.oShowAlertDialog.open();
    		 }
-      }else if(this.getView().byId("idBICIPowerofAttorneyFileUploader").getValue() === "" 
+      }/*else if(this.getView().byId("idBICIPowerofAttorneyFileUploader").getValue() === "" 
    		 && this.getView().byId("idBICIPassportCopyFileUploader").getValue() === ""
    	     && this.oBICIPASSAttachmentName.getText() === ""
    	     && this.oBICIPOAAttachmentName.getText() === ""){
@@ -1802,7 +1802,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oShowAlertDialog.open();
 		
 		}
-	 }else{
+	 }*/else{
 		//this.saveContactInfoTab();
    	    //this.oValidationLILIStatus = true;
 		 this.doThis();
