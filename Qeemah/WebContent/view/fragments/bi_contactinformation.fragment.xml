@@ -39,9 +39,9 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
-													<Select width="25em" items="{/DetailsCollection}" id="idCINationalityComboBox">
+													<ComboBox width="25em" items="{/DetailsCollection}" id="idCINationalityComboBox">
 															<sap.ui.core:ListItem key="{Land1}" text="{Natio50}"/>
-														</Select>
+														</ComboBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -93,10 +93,10 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
-													<Select width="25em" id="idBICIGenderComboBox">
+													<ComboBox width="25em" id="idBICIGenderComboBox">
 														<sap.ui.core:ListItem key="2" text="{i18n>Male}" />
 															<sap.ui.core:ListItem key="1" text="{i18n>Female}" />
-													</Select>
+													</ComboBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell
@@ -127,9 +127,9 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
-													<Select width="25em" items="{/DetailsCollection}" id="idCICountryComboBox">
+													<ComboBox width="25em" items="{/DetailsCollection}" id="idCICountryComboBox">
 															<sap.ui.core:ListItem key="{Land1}" text="{Landx50}"/>
-														</Select>
+														</ComboBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell
@@ -209,11 +209,13 @@
 												vAlign="Middle" hAlign="End">
 												<sap.ui.commons.layout:content>
 													<sap.ui.commons:TextView text="{i18n>CommMethod}"></sap.ui.commons:TextView>
+													<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+													
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
-													<Select width="25em" id="idBICICommMethodComboBox">
+													<ComboBox width="25em" id="idBICICommMethodComboBox">
 														<items>
 															<sap.ui.core:ListItem key="TEL" text="{i18n>Phone}" />
 															<sap.ui.core:ListItem key="INT" text="{i18n>Email}" />
@@ -221,7 +223,7 @@
 															<sap.ui.core:ListItem key="PAG" text="{i18n>Pager}" />
 															<sap.ui.core:ListItem key="LET" text="{i18n>Post}" />
 															</items>
-													</Select>
+													</ComboBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -254,12 +256,12 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 												<sap.ui.commons.layout:content>
-													<Select width="25em" id="idBICIRoleInputText">
+													<ComboBox width="25em" id="idBICIRoleInputText">
 														    <sap.ui.core:ListItem key="1" text="{i18n>Agent}" />
 															<sap.ui.core:ListItem key="2" text="{i18n>Employee}" />
 															<sap.ui.core:ListItem key="3" text="{i18n>Invester}" />
 															<sap.ui.core:ListItem key="4" text="{i18n>GM}" />
-													</Select>
+													</ComboBox>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>

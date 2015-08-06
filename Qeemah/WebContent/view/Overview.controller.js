@@ -1518,7 +1518,56 @@ sap.ui.controller("com.sagia.view.Overview", {
 	     this.oValidationLILIStatus = true;
 
 	 }*/
-	
+	else if(this.oBICIRoleInputText.getSelectedKey() === ""){			
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICIRole"));
+			this.oShowAlertDialog.open();
+		 }
+			
+	 }
+	else if(this.oBICICommMethodComboBox.getSelectedKey() === ""){			
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICICommunicationMethod"));
+			this.oShowAlertDialog.open();
+		 }
+			
+	 }
+	else if(this._oBICICountryCombobox.getSelectedKey() === ""){			
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICICountry"));
+			this.oShowAlertDialog.open();
+		 }
+			
+	 }
+	else if(this.oBICIGenderComboBox.getSelectedKey() === ""){			
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICIGender"));
+			this.oShowAlertDialog.open();
+		 }
+			
+ 	 }
+	else if(this._oBICINationalityCombobox.getSelectedKey() === ""){			
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BICINationality"));
+			this.oShowAlertDialog.open();
+		 }
+			
+  	 }
 	else if(this.oBICIEmailInputText.getValue() === ""){			
 		 this.oValidationLILIStatus = false;
 
@@ -1769,43 +1818,47 @@ sap.ui.controller("com.sagia.view.Overview", {
 	return 	this.oValidationLILIStatus;
 },
 	doThis : function(){
-		
-		this.openBusyDialog();
-
-
-		var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
-
-		jQuery.when(oRequestFinishedDeferredReadPASSBICI).then(jQuery.proxy(function(oResponse) {
-			this.closeBusyDialog();
-
-			if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
-				this.oBICIPASSAttachmentName.setVisible(true);
-				this.oBICIPASSAttachmentNameTextView.setVisible(true);
-				this.oBICIPASSAttachmentName.setText(oResponse.data.FileName);
-				}else{
-					this.oBICIPASSAttachmentName.setVisible(false);
-					this.oBICIPASSAttachmentNameTextView.setVisible(false);
-				}
-			
+		try{
 			this.openBusyDialog();
 
-			
-			var oRequestFinishedDeferredReadPOABICI = this.oModelHelper.readBICIPPOAAttachment(this.oRef_id);
 
-			jQuery.when(oRequestFinishedDeferredReadPOABICI).then(jQuery.proxy(function(oResponse) {
+			var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
+
+			jQuery.when(oRequestFinishedDeferredReadPASSBICI).then(jQuery.proxy(function(oResponse) {
 				this.closeBusyDialog();
 
 				if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
-					this.oBICIPOAAttachmentName.setVisible(true);
-					this.oBICIPOAAttachmentNameTextView.setVisible(true);
-					this.oBICIPOAAttachmentName.setText(oResponse.data.FileName);
+					this.oBICIPASSAttachmentName.setVisible(true);
+					this.oBICIPASSAttachmentNameTextView.setVisible(true);
+					this.oBICIPASSAttachmentName.setText(oResponse.data.FileName);
 					}else{
-						this.oBICIPOAAttachmentName.setVisible(false);
-						this.oBICIPOAAttachmentNameTextView.setVisible(false);
+						this.oBICIPASSAttachmentName.setVisible(false);
+						this.oBICIPASSAttachmentNameTextView.setVisible(false);
 					}
-			}, this));	
+				
+				this.openBusyDialog();
 
-		}, this));	
+				
+				var oRequestFinishedDeferredReadPOABICI = this.oModelHelper.readBICIPPOAAttachment(this.oRef_id);
+
+				jQuery.when(oRequestFinishedDeferredReadPOABICI).then(jQuery.proxy(function(oResponse) {
+					this.closeBusyDialog();
+
+					if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
+						this.oBICIPOAAttachmentName.setVisible(true);
+						this.oBICIPOAAttachmentNameTextView.setVisible(true);
+						this.oBICIPOAAttachmentName.setText(oResponse.data.FileName);
+						}else{
+							this.oBICIPOAAttachmentName.setVisible(false);
+							this.oBICIPOAAttachmentNameTextView.setVisible(false);
+						}
+				}, this));	
+
+			}, this));	
+		}catch(error){
+			this.closeBusyDialog();
+		}
+
 		
 		this.openBusyDialog();
 		
@@ -2462,8 +2515,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {    	
                 
 				this.closeBusyDialog();
-/*            	sap.m.MessageToast.show(that.oModelHelper.getText("ContactInfoSaved"), {duration : 1000});
-*/				this.saveBAQInfoTab();
+            	sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});
+				this.saveBAQInfoTab();
 
 				
 			}, this));	
@@ -2510,8 +2563,8 @@ sap.ui.controller("com.sagia.view.Overview", {
             jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
             	//this.readBICIFileAttachemnts();
 				this.closeBusyDialog();
-/*            	sap.m.MessageToast.show(that.oModelHelper.getText("ContactInfoSaved"), {duration : 1000});
-*/				this.saveBAQInfoTab();
+            	sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});
+				this.saveBAQInfoTab();
 				
 			}, this));	
 			}
@@ -4613,7 +4666,7 @@ handleRegisterUserButtonPress : function() {
 				
 				sap.m.MessageToast.show(oResponse.Return);
 				
-				if(oResponse.Return="Data Saved Successfully"){
+				if(oResponse.Return === "Successfully Registered"){
 					that.handleLoginButtonPress();
 					
 					this.getView().byId("idSignInUsernameInput").setValue(oResponse.Userid);
