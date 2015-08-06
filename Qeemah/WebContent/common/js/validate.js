@@ -19,7 +19,21 @@ com.sagia.common.js.validate = {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHFirstNameRequired"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
-  	   	     }else if(thisContext.oNSHLastNameInputText.getValue() === ""){
+  	   	     }else if(thisContext.oNSHFirstNameInputText.getValue().length > 80){
+					thisContext.oNewShareHolderValidation = false;
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHFirstNameLength"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(thisContext.oNSHLastNameInputText.getValue().length > 80){
+					thisContext.oNewShareHolderValidation = false;
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHLastNameLength"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(thisContext.oNSHLastNameInputText.getValue() === ""){
  				thisContext.oNewShareHolderValidation = false;
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
@@ -41,6 +55,14 @@ com.sagia.common.js.validate = {
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
 		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHCityNameMandatory"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(thisContext.oNSHCityNameInputText.getValue().length > 40){
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHCityLength"));
 		  				thisContext.oShowAlertDialog.open();
 		  			 }			 							  				
 	  	   	 }else if(!(/^[a-zA-Z ]*$/.test( thisContext.oNSHCityNameInputText.getValue() ))){
@@ -67,7 +89,7 @@ com.sagia.common.js.validate = {
 		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHTelephoneNoRequired"));
 		  				thisContext.oShowAlertDialog.open();
 		  			 }			 							  				
-	  	   	 }else if(thisContext.oNSHTelephoneInputText.getValue().length > 12){	
+	  	   	 }else if(thisContext.oNSHTelephoneInputText.getValue().length > 30){	
 	 				thisContext.oNewShareHolderValidation = false;
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
@@ -91,7 +113,7 @@ com.sagia.common.js.validate = {
 		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHMobilephoneNoRequired"));
 		  				thisContext.oShowAlertDialog.open();
 		  			 }			 							  				
-	  	   	 }else if(thisContext.oNSHMobilePhoneInputText.getValue().length > 12){	
+	  	   	 }else if(thisContext.oNSHMobilePhoneInputText.getValue().length > 30){	
 	 				thisContext.oNewShareHolderValidation = false;
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
@@ -107,7 +129,7 @@ com.sagia.common.js.validate = {
 		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHMobilephoneNoValidation"));
 		  				thisContext.oShowAlertDialog.open();
 		  			 }			 							  				
-	  	   	 }else if(thisContext.oNSHFaxInputText.getValue().length > 12){	
+	  	   	 }else if(thisContext.oNSHFaxInputText.getValue().length > 20){	
 	 				thisContext.oNewShareHolderValidation = false;
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
@@ -164,7 +186,55 @@ com.sagia.common.js.validate = {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHPercentageValueRange"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
-  	   	     }
+  	   	     }else if(thisContext.oNSHPOBoxInputText.getValue().length > 10){	
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHPOBoxLength"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(thisContext.oNSHPostalCodeInputText.getValue().length > 10){	
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHPostalCodeLength"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(thisContext.oNSHStreetInputText.getValue().length > 60){	
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHStreetLength"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(thisContext.oNSHEmailInputText.getValue().length > 241){	
+				thisContext.oNewShareHolderValidation = false;
+
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHEmailLength"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+ 	   	    }else if(thisContext.oNSHWebsiteInputText.getValue().length > 255){	
+			thisContext.oNewShareHolderValidation = false;
+
+  			 if(!thisContext.oShowAlertDialog.isOpen())
+  			 {
+  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHWebsiteLength"));
+  				thisContext.oShowAlertDialog.open();
+  			 }			 							  				
+	   	    }else if(thisContext.oNSHPercentageInputText.getValue().length > 3){	
+				thisContext.oNewShareHolderValidation = false;
+
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHPercentageLength"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+		   	    }
 		
 			return thisContext.oNewShareHolderValidation;
 			
@@ -178,7 +248,7 @@ com.sagia.common.js.validate = {
 			this.oNSHMaritalStatusComboBox = this.getView().byId("idNSHMaritalStatusComboBox");
 			this.oNSHPostalCodeInputText = this.getView().byId("idNSHPostalCodeInputText");
 			this.oNSHAcademicTitleComboBox = this.getView().byId("idNSHAcademicTitleInputText");
-			this.oNSHStreetInputText = this.getView().byId("idNSHStreetInputText");
+			this. = this.getView().byId("idNSHStreetInputText");
 			this.oNSHDOBDate = this.getView().byId("idNSHDOBDate");
 			this. = this.getView().byId("idNSHWebsiteInputText");
 			this. = this.getView().byId("idNSHTelephoneInputText");
