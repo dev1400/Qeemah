@@ -1733,7 +1733,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oAlertTextView.setText(this.oModelHelper.getText("BICILastNameValidation"));
 			this.oShowAlertDialog.open();
 		 }
-   	 }else if(this.getView().byId("idBICIPowerofAttorneyFileUploader").getValue() === "" 
+   	 }else if(!(/^[a-zA-Z ]*$/.test( this.oBICICityInputText.getValue() ))){
+    		this.oValidationLILIStatus = false;
+
+   		 if(!this.oShowAlertDialog.isOpen())
+   		 {
+   			this.oAlertTextView.setText(this.oModelHelper.getText("BICICityValidation"));
+   			this.oShowAlertDialog.open();
+   		 }
+      }else if(this.getView().byId("idBICIPowerofAttorneyFileUploader").getValue() === "" 
    		 && this.getView().byId("idBICIPassportCopyFileUploader").getValue() === ""
    	     && this.oBICIPASSAttachmentName.getText() === ""
    	     && this.oBICIPOAAttachmentName.getText() === ""){
