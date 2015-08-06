@@ -273,12 +273,10 @@
 							<sap.ui.commons:TextView text="{i18n>DOB}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
-						<HBox>
 							<DatePicker id="idNSHDOBDate"  change="handleChange"
                              class="sapUiSmallMarginBottom"/>
-							</HBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell

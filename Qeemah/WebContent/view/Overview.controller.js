@@ -1252,7 +1252,43 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oShowAlertDialog.open();
 		 }
 			
-  	 }else if(this.oBIOIEmailInputText.getValue() === ""){			
+  	 }else if(this._oidRegionComboBox.getSelectedKey() === ""){			
+		 this.oValidationLILIStatus = false;
+		 
+			if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BIOIRegion"));
+				this.oShowAlertDialog.open();
+			 }
+				
+	  }else if(this._oBICityComboBox.getSelectedKey() === ""){			
+			 this.oValidationLILIStatus = false;
+			 
+				if(!this.oShowAlertDialog.isOpen())
+				 {
+					this.oAlertTextView.setText(this.oModelHelper.getText("BIOICityMandatory"));
+					this.oShowAlertDialog.open();
+				 }
+					
+	  }else if(this._oBIILegalStatusCombobox.getSelectedKey() === ""){			
+			 this.oValidationLILIStatus = false;
+			 
+				if(!this.oShowAlertDialog.isOpen())
+				 {
+					this.oAlertTextView.setText(this.oModelHelper.getText("BIOILegalStatus"));
+					this.oShowAlertDialog.open();
+				 }
+					
+	  }else if(this.oBIOIMultiNationalCompanyCombobox.getSelectedKey() === ""){			
+			 this.oValidationLILIStatus = false;
+			 
+				if(!this.oShowAlertDialog.isOpen())
+				 {
+					this.oAlertTextView.setText(this.oModelHelper.getText("BIOIMNC"));
+					this.oShowAlertDialog.open();
+				 }
+					
+	  }else if(this.oBIOIEmailInputText.getValue() === ""){			
 		 this.oValidationLILIStatus = false;
 
   		 if(!this.oShowAlertDialog.isOpen())
@@ -1725,6 +1761,44 @@ sap.ui.controller("com.sagia.view.Overview", {
 	return 	this.oValidationLILIStatus;
 },
 	doThis : function(){
+		
+		this.openBusyDialog();
+
+
+		var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
+
+		jQuery.when(oRequestFinishedDeferredReadPASSBICI).then(jQuery.proxy(function(oResponse) {
+			this.closeBusyDialog();
+
+			if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
+				this.oBICIPASSAttachmentName.setVisible(true);
+				this.oBICIPASSAttachmentNameTextView.setVisible(true);
+				this.oBICIPASSAttachmentName.setText(oResponse.data.FileName);
+				}else{
+					this.oBICIPASSAttachmentName.setVisible(false);
+					this.oBICIPASSAttachmentNameTextView.setVisible(false);
+				}
+			
+			this.openBusyDialog();
+
+			
+			var oRequestFinishedDeferredReadPOABICI = this.oModelHelper.readBICIPPOAAttachment(this.oRef_id);
+
+			jQuery.when(oRequestFinishedDeferredReadPOABICI).then(jQuery.proxy(function(oResponse) {
+				this.closeBusyDialog();
+
+				if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
+					this.oBICIPOAAttachmentName.setVisible(true);
+					this.oBICIPOAAttachmentNameTextView.setVisible(true);
+					this.oBICIPOAAttachmentName.setText(oResponse.data.FileName);
+					}else{
+						this.oBICIPOAAttachmentName.setVisible(false);
+						this.oBICIPOAAttachmentNameTextView.setVisible(false);
+					}
+			}, this));	
+
+		}, this));	
+		
 		this.openBusyDialog();
 		
 		this.oBIOICapitalInputTextValue = this.oBIOICapitalInputText.getValue();
@@ -1740,12 +1814,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 		if(this.oRecordExists){
 			try{
 				
+		
+				
 			var oRequestFinishedDeferred = this.oModelHelper.saveBIOI(this.oRef_id, 
 					this.oBIOIOrganizationName.getValue(),
 					this._oidRegionComboBox.getSelectedKey(),
 					this._oBIILegalStatusCombobox.getSelectedKey(),
 					this._oBICityComboBox.getSelectedKey(),
-					this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
+					this.oBIOIMultiNationalCompanyCombobox.getSelectedKey(),
 					this.oBIOIEmailInputText.getValue(),
 					this.oBIOILaborSizeInputTextValue,
 					//this.oBIOILaborSizeInputText.getValue(),
@@ -1780,8 +1856,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 				
 				this.closeBusyDialog();
-            	sap.m.MessageToast.show(that.oModelHelper.getText("OrgInfoSaved"), {duration : 1000});
-
+/*            	sap.m.MessageToast.show(that.oModelHelper.getText("OrgInfoSaved"), {duration : 1000});
+*/
 				
 				this.saveContactInfoTab();
 				
@@ -1800,7 +1876,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this._oidRegionComboBox.getSelectedKey(),
 					this._oBIILegalStatusCombobox.getSelectedKey(),
 					this._oBICityComboBox.getSelectedKey(),
-					this.oBIOIMultiNationalCompanyCombobox.getSelectedItem().getText(),
+					this.oBIOIMultiNationalCompanyCombobox.getSelectedKey(),
 					this.oBIOIEmailInputText.getValue(),
 					this.oBIOILaborSizeInputTextValue,
 					//this.oBIOILaborSizeInputText.getValue(),
@@ -1840,8 +1916,8 @@ sap.ui.controller("com.sagia.view.Overview", {
             	
 				
 				this.closeBusyDialog();
-            	sap.m.MessageToast.show(that.oModelHelper.getText("OrgInfoSaved"), {duration : 1000});
-
+/*            	sap.m.MessageToast.show(that.oModelHelper.getText("OrgInfoSaved"), {duration : 1000});
+*/
 				
 				this.saveContactInfoTab();
 
@@ -1970,7 +2046,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	
 				jQuery.when(oRequestFinishedDeferredcreateISIC).then(jQuery.proxy(function(oResponse) {
 					this.closeBusyDialog();
-					this.openBusyDialog();
+/*					this.openBusyDialog();
 
 					var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
 	
@@ -2003,14 +2079,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 						}, this));	
 						
 						that.readBAQFileAttachments();
-					}, this));	
+					}, this));	*/
 					
 						
 					
 					if(this.oSaveClicked){
 						that.closeBusyDialog();
 						sap.m.MessageToast.show(that.oModelHelper
-									.getText("Saved"));
+									.getText("Saved"), {duration : 1000});
 						this.oSaveClicked = false;
 					}
 					
@@ -2019,6 +2095,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 					       that.doSubmit();
 					}
 					
+					sap.m.MessageToast.show(that.oModelHelper
+							.getText("Saved"), {duration : 1000});
 					
 				}, this));
 				
@@ -2048,7 +2126,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					jQuery.when(oRequestFinishedDeferredcreateISIC).then(jQuery.proxy(function(oResponse) {
 						this.closeBusyDialog();
 						
-						this.openBusyDialog();
+						/*this.openBusyDialog();
 
 
 						var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
@@ -2085,13 +2163,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 							
 							that.readBAQFileAttachments();
 	
-						}, this));	
+						}, this));	*/
 						
 						
 						if(this.oSaveClicked){
 							that.closeBusyDialog();
 							sap.m.MessageToast.show(that.oModelHelper
-										.getText("Saved"));
+										.getText("Saved"), {duration : 1000});
 							this.oSaveClicked = false;
 						}
 						
@@ -2100,6 +2178,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 						}
 						
 					}, this));
+					
+					sap.m.MessageToast.show(that.oModelHelper
+							.getText("Saved"), {duration : 1000});
 					
 				}, this));				
 				
@@ -2236,8 +2317,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 						this.closeBusyDialog();
 
 						this.oBAQError = false;
-		            	sap.m.MessageToast.show(this.oModelHelper.getText("BAQInfoSaved"), {duration : 1000});
-		            	
+		            /*	sap.m.MessageToast.show(this.oModelHelper.getText("BAQInfoSaved"), {duration : 1000});
+		            */	
 				           	 if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== "" ){ 
 				      		      this.saveLicenseInfoTab();				      		      
 				   			  	
@@ -2303,8 +2384,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 				this.oBAQError = false;
 				this.closeBusyDialog();
-            	sap.m.MessageToast.show(this.oModelHelper.getText("BAQInfoSaved"), {duration : 1000});
-            	
+/*            	sap.m.MessageToast.show(this.oModelHelper.getText("BAQInfoSaved"), {duration : 1000});
+*/            	
             	 if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== "" ){ 
 	      		      this.saveLicenseInfoTab();				      		      
 	   			  	
@@ -2373,8 +2454,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {    	
                 
 				this.closeBusyDialog();
-            	sap.m.MessageToast.show(that.oModelHelper.getText("ContactInfoSaved"), {duration : 1000});
-				this.saveBAQInfoTab();
+/*            	sap.m.MessageToast.show(that.oModelHelper.getText("ContactInfoSaved"), {duration : 1000});
+*/				this.saveBAQInfoTab();
 
 				
 			}, this));	
@@ -2421,8 +2502,8 @@ sap.ui.controller("com.sagia.view.Overview", {
             jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
             	//this.readBICIFileAttachemnts();
 				this.closeBusyDialog();
-            	sap.m.MessageToast.show(that.oModelHelper.getText("ContactInfoSaved"), {duration : 1000});
-				this.saveBAQInfoTab();
+/*            	sap.m.MessageToast.show(that.oModelHelper.getText("ContactInfoSaved"), {duration : 1000});
+*/				this.saveBAQInfoTab();
 				
 			}, this));	
 			}
@@ -2503,8 +2584,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this._oBICityComboBox.setModel(oResponse);
 		}, this));	
 		
-		this._oBICityComboBox.setEnabled(true);
-		this._oBICityComboBox.setValue("");
+		//this._oBICityComboBox.setEnabled(true);
+		//this._oBICityComboBox.setValue("");
 		var filters = [];
 		
 		/*if(oControlEvent.getParameters('selectedItem').selectedItem !== null){
@@ -4351,7 +4432,7 @@ userSignIn : function(userID, password){
 								this._oidRegionComboBox.setSelectedKey(oResponse.data.Region);
 								this._oBIILegalStatusCombobox.setSelectedKey(oResponse.data.LegalStatus);//.setSelectedItem(vItem);
 								this._oBICityComboBox.setSelectedKey(oResponse.data.City);//.setSelectedItem(vItem);
-								this.oBIOIMultiNationalCompanyCombobox.setValue(oResponse.data.MncComp);//.setSelectedItem(vItem);
+								this.oBIOIMultiNationalCompanyCombobox.setSelectedKey(oResponse.data.MncComp);//.setSelectedItem(vItem);
 								this.oBIOIEmailInputText.setValue(oResponse.data.Email);
 								this.oBIOILaborSizeInputText.setValue(Number(oResponse.data.LbrSize).toString());
 								this.oBIOICommMethodComboBox.setSelectedKey(oResponse.data.CommMtd);//.setSelectedItem(vItem);
@@ -4364,6 +4445,7 @@ userSignIn : function(userID, password){
 								this.oBIOIFaxCountryCodeInputText.setValue(oResponse.data.Ccode_Fax);
 								this.oBIOIMobilephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Mobile);					
 								
+								this._oidRegionComboBox.fireSelectionChange();
 								this.oBIOICapitalInputText.fireChange();
 								this.oBIOILaborSizeInputText.fireChange();
 								

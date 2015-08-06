@@ -62,9 +62,9 @@
 													<sap.ui.commons.layout:content>
 													
 														
-														<Select width="25em" items="{/DetailsCollection}" id="idRegionComboBox" change="handleRegionSelectionComboBox">
+														<ComboBox width="25em" items="{/DetailsCollection}" id="idRegionComboBox" selectionChange="handleRegionSelectionComboBox" selectedKey="">
 															<sap.ui.core:ListItem key="{Bland_reg}" text="{Bezei_reg}" id="idRegionComboBoxitem"/>
-														</Select>
+														</ComboBox>
 														
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
@@ -84,9 +84,9 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-														<Select width="25em" items="{/DetailsCollection}" id="idBILegalStatusComboBox">
+														<ComboBox width="25em" items="{/DetailsCollection}" id="idBILegalStatusComboBox">
 															<sap.ui.core:ListItem key="{Source}" text="{Textlong}"/>
-														</Select>
+														</ComboBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												
@@ -99,7 +99,7 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-														<Select enabled="false" width="25em" items="{/CityCollection}" id="idCityComboBox">
+														<Select width="25em" items="{/CityCollection}" id="idCityComboBox">
 															<sap.ui.core:ListItem key="{CityCode_cty}" text="{CityName_cty}"/>
 														</Select>
 													</sap.ui.commons.layout:content>
@@ -137,10 +137,10 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-														<Select width="25em" id="idBIOIMultiNationalCompanyCombobox">
-															<sap.ui.core:ListItem Key="1" text="{i18n>Yes}" />
+														<ComboBox width="25em" id="idBIOIMultiNationalCompanyCombobox">
+															<sap.ui.core:ListItem key="1" text="{i18n>Yes}" />
 															<sap.ui.core:ListItem key="2" text="{i18n>No}" />
-														</Select>
+														</ComboBox>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell
@@ -213,7 +213,7 @@
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
 													<sap.ui.commons.layout:content>
-														<Select width="25em" id="idBIOICommMethodComboBox">
+														<ComboBox width="25em" id="idBIOICommMethodComboBox">
 														<items>
 															<sap.ui.core:ListItem key="TEL" text="{i18n>Phone}" />
 															<sap.ui.core:ListItem key="INT" text="{i18n>Email}" />
@@ -221,7 +221,7 @@
 															<sap.ui.core:ListItem key="PAG" text="{i18n>Pager}" />
 															<sap.ui.core:ListItem key="LET" text="{i18n>Post}" />
 															</items>
-														</Select>
+														</ComboBox>
 														
 														<!-- <ComboBox width="25em" items="{/CommMethodCollection}" id="idBIOICommMethodComboBox">
 															<sap.ui.core:ListItem key="{methodKey}" text="{methodText}" />
