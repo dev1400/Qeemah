@@ -3,8 +3,15 @@ jQuery.sap.declare("com.sagia.common.js.validate");
 com.sagia.common.js.validate = {
 		validateNewShareHolder : function(thisContext){
 			thisContext.oNewShareHolderValidation = true;
-
-			if(!(/^[a-zA-Z ]*$/.test( thisContext.oNSHFirstNameInputText.getValue() ))){
+			
+			if(thisContext.oShareHolderTypeComboBox.getSelectedKey() === ""){
+				thisContext.oNewShareHolderValidation = false;
+				 if(!thisContext.oShowAlertDialog.isOpen())
+				 {
+					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHShareHolderType"));
+					 thisContext.oShowAlertDialog.open();
+				 }
+		   	 }else if(!(/^[a-zA-Z ]*$/.test( thisContext.oNSHFirstNameInputText.getValue() ))){
 				thisContext.oNewShareHolderValidation = false;
 
 				 if(!thisContext.oShowAlertDialog.isOpen())
@@ -49,12 +56,64 @@ com.sagia.common.js.validate = {
 					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHLNameValidation"));
 					 thisContext.oShowAlertDialog.open();
 				 }
-		   	 }else if(thisContext.oNSHCityNameInputText.getValue() === ""){
+		   	 }else if(thisContext.oNSHCountryComboBox.getSelectedKey() === ""){
+					thisContext.oNewShareHolderValidation = false;
+					 if(!thisContext.oShowAlertDialog.isOpen())
+					 {
+						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHShareHolderCountryRequired"));
+						 thisContext.oShowAlertDialog.open();
+					 }
+			 }else if(thisContext.oNSHGenderComboBox.getSelectedKey() === ""){
+					thisContext.oNewShareHolderValidation = false;
+					 if(!thisContext.oShowAlertDialog.isOpen())
+					 {
+						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHShareHolderGenderRequired"));
+						 thisContext.oShowAlertDialog.open();
+					 }
+			 }else if(thisContext.oNSHMaritalStatusComboBox.getSelectedKey() === ""){
+					thisContext.oNewShareHolderValidation = false;
+					 if(!thisContext.oShowAlertDialog.isOpen())
+					 {
+						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHShareHolderMaritalStatusRequired"));
+						 thisContext.oShowAlertDialog.open();
+					 }
+			 }else if(thisContext.oNSHAcademicTitleComboBox.getSelectedKey() === ""){
+					thisContext.oNewShareHolderValidation = false;
+					 if(!thisContext.oShowAlertDialog.isOpen())
+					 {
+						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHShareHolderAcademicTitleRequired"));
+						 thisContext.oShowAlertDialog.open();
+					 }
+			 }else if(thisContext.oNSHCityNameInputText.getValue() === ""){
 	 				thisContext.oNewShareHolderValidation = false;
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
 		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHCityNameMandatory"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(thisContext.oNSHCommMethodInputText.getValue() === ""){
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHShareHolderCommMethoRequired"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(thisContext.oNSHNationalityComboBox.getValue() === ""){
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHShareHolderCurrNationRequired"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	 }else if(thisContext.oNSHPreviousNationalityInputText.getValue() === ""){
+	 				thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHShareHolderPreviousNationRequired"));
 		  				thisContext.oShowAlertDialog.open();
 		  			 }			 							  				
 	  	   	 }else if(thisContext.oNSHCityNameInputText.getValue().length > 40){
@@ -218,7 +277,15 @@ com.sagia.common.js.validate = {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHEmailLength"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
- 	   	    }else if(thisContext.oNSHWebsiteInputText.getValue().length > 255){	
+ 	   	    }else if(thisContext.oNSHEmailInputText.getValue() === ""){	
+				thisContext.oNewShareHolderValidation = false;
+
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHEmailLength"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+	   	    }else if(thisContext.oNSHWebsiteInputText.getValue().length > 255){	
 			thisContext.oNewShareHolderValidation = false;
 
   			 if(!thisContext.oShowAlertDialog.isOpen())
@@ -240,23 +307,23 @@ com.sagia.common.js.validate = {
 			
 			/*this.oShareHolderTypeComboBox = this.getView().byId("idNSHTypeComboBox");
 			this. = this.getView().byId("idNSHFirstNameInputText");
-			this.oNSHCountryComboBox = this.getView().byId("idNSHCountryComboBox");
+			this. = this.getView().byId("idNSHCountryComboBox");
 			this.oNSHLastNameInputText = this.getView().byId("idNSHLastNameInputText");
 			this. = this.getView().byId("idNSHCityNameInputText");
 			this.oNSHGenderComboBox = this.getView().byId("idNSHGenderComboBox");
 			this.oNSHPOBoxInputText = this.getView().byId("idNSHPOBoxInputText");
-			this.oNSHMaritalStatusComboBox = this.getView().byId("idNSHMaritalStatusComboBox");
+			this. = this.getView().byId("idNSHMaritalStatusComboBox");
 			this.oNSHPostalCodeInputText = this.getView().byId("idNSHPostalCodeInputText");
-			this.oNSHAcademicTitleComboBox = this.getView().byId("idNSHAcademicTitleInputText");
+			this. = this.getView().byId("idNSHAcademicTitleInputText");
 			this. = this.getView().byId("idNSHStreetInputText");
 			this.oNSHDOBDate = this.getView().byId("idNSHDOBDate");
 			this. = this.getView().byId("idNSHWebsiteInputText");
 			this. = this.getView().byId("idNSHTelephoneInputText");
-			this.oNSHNationalityComboBox = this.getView().byId("idNSHNationalityComboBox");
+			this. = this.getView().byId("idNSHNationalityComboBox");
 			this. = this.getView().byId("idNSHMobilePhoneInputText");
-			this.oNSHPreviousNationalityInputText = this.getView().byId("idNSHPreviousNationalityInputText");
+			this. = this.getView().byId("idNSHPreviousNationalityInputText");
 			this. = this.getView().byId("idNSHFaxInputText");
-			this.oNSHCommMethodInputText = this.getView().byId("idNSHCommMethodInputText");
+			this. = this.getView().byId("idNSHCommMethodInputText");
 			this. = this.getView().byId("idNSHEmailInputText");
 			this.oNSHPercentageInputText = this.getView().byId("idNSHPercentageInputText");*/
 			

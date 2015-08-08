@@ -168,9 +168,9 @@
 													<Input enabled="false" type="Text" id="idBICIPreviewTelephoneCountryCodeInputText"
 														 width="8em" />
 													<Input enabled="false" type="Text" id="idBICIPreviewTelephoneInputText"
-														width="9em" />
-													<Input enabled="false" type="Text" id="idBICIPreviewExtensionInputText"
-														width="8em" />
+														width="17em" />
+													<!-- <Input enabled="false" type="Text" id="idBICIPreviewExtensionInputText"
+														width="8em" /> -->
 												</HBox>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell

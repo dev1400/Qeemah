@@ -217,27 +217,102 @@ sap.ui.controller("com.sagia.view.Overview", {
       
     }, 
 	handleSubmitPasswordResetButtonPress : function(){
-		 var oRequestFinishedDeferredResetPassword = this.oModelHelper.resetPassword(this.oResetRefIdInput.getValue(),
-				 this.oResetCurrentPasswordInput.getValue(), this.oResetNewPasswordInput.getValue(),
-				 this.oConfirmNewPasswordInput.getValue());
-		 jQuery.when(oRequestFinishedDeferredResetPassword).then(jQuery.proxy(function(oResponse) {	
-			 
-			 //console.log(oResponse);
-			 sap.m.MessageToast.show(oResponse.Return);
-			 
-		 }, this));	
+		
+		if(this.oResetRefIdInput.getValue().length > 10){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("UserIDLength"));
+			this.oShowAlertDialog.open();
+			
+			}			
+		}else if(this.oResetRefIdInput.getValue() === ""){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("UserIDRequired"));
+			this.oShowAlertDialog.open();
+			
+			}			
+		}else if(this.oResetCurrentPasswordInput.getValue() === ""){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("ResetCurrRequired"));
+			this.oShowAlertDialog.open();
+			
+			}			
+		}else if(this.oResetNewPasswordInput.getValue() === ""){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("ResetNewPassRequired"));
+			this.oShowAlertDialog.open();
+			
+			}			
+		}else if(this.oConfirmNewPasswordInput.getValue() === ""){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("ResetConfirmNewRequired"));
+			this.oShowAlertDialog.open();
+			
+			}			
+		}else if(this.oResetCurrentPasswordInput.getValue().length > 255){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("ResetCurrPwdLength"));
+			this.oShowAlertDialog.open();
+			
+			}			
+		}else if(this.oResetNewPasswordInput.getValue().length > 255){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("NewPwdLength"));
+			this.oShowAlertDialog.open();
+			
+			}			
+		}else if(this.oConfirmNewPasswordInput.getValue().length > 255){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("ConfirmedCurrPwdLength"));
+			this.oShowAlertDialog.open();
+			
+			}			
+		}else{
+			 var oRequestFinishedDeferredResetPassword = this.oModelHelper.resetPassword(this.oResetRefIdInput.getValue(),
+					 this.oResetCurrentPasswordInput.getValue(), this.oResetNewPasswordInput.getValue(),
+					 this.oConfirmNewPasswordInput.getValue());
+			 jQuery.when(oRequestFinishedDeferredResetPassword).then(jQuery.proxy(function(oResponse) {	
+				 sap.m.MessageToast.show(oResponse.Return);				 
+			 }, this));	
+		}
+		
+		
 	},
 	handleSubmitPasswordForgotButtonPress : function(){
-		 var oRequestFinishedDeferredForgotPassword = this.oModelHelper.forgotPassword(this.oForgotPasswordInput.getValue());
-		 jQuery.when(oRequestFinishedDeferredForgotPassword).then(jQuery.proxy(function(oResponse) {	
-			 
-			 if(oResponse.Return === "User ID does not exist"){
-				 sap.m.MessageToast.show(this.oModelHelper.getText("UserIDdoesnotexist"));
-			 }else{
-				 sap.m.MessageToast.show(this.oModelHelper.getText("PasswordSentToEmail"));
-			 }
-			 
-		 }, this));	
+		if(this.oForgotPasswordInput.getValue().length > 10){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("UserIDLength"));
+			this.oShowAlertDialog.open();
+			
+			}			
+		}else if(this.oForgotPasswordInput.getValue() === ""){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("UserIDRequired"));
+			this.oShowAlertDialog.open();
+			
+			}			
+		}else{
+			var oRequestFinishedDeferredForgotPassword = this.oModelHelper.forgotPassword(this.oForgotPasswordInput.getValue());
+			 jQuery.when(oRequestFinishedDeferredForgotPassword).then(jQuery.proxy(function(oResponse) {	
+				 
+				 if(oResponse.Return === "User ID does not exist"){
+					 sap.m.MessageToast.show(this.oModelHelper.getText("UserIDdoesnotexist"));
+				 }else{
+					 sap.m.MessageToast.show(this.oModelHelper.getText("PasswordSentToEmail"));
+				 }
+				 
+			 }, this));	
+		}
+		 
 	},
 	handleResetPwdLinkPress : function(){
 		this.oResetPasswordMatrixLayout.setVisible(true);
@@ -500,8 +575,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 						 var oAQAnswer = sap.ui.getCore().byId("idAQAnswer"+j);
 						 var oAQuestion = sap.ui.getCore().byId("idAQuestion"+j);
 						 
-						 actvityQuestions.push(oAQuestion.data("idAQuestion"+j));
-						 activityAnswers.push(oAQAnswer.getSelectedItem().getText());
+						 
+						 if(oAQAnswer.getSelectedKey() !== ""){
+							 actvityQuestions.push(oAQuestion.data("idAQuestion"+j));
+							 activityAnswers.push(oAQAnswer.getSelectedItem().getText()); 
+						 }
 					}
 					
 					var experienceQuestions = [];
@@ -509,8 +587,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 					for(var j=0; j < this.oTotalExperienceQuestions; j++){
 						 var oEQAnswer = sap.ui.getCore().byId("idEQAnswer"+j);
 						 var oEQuestion = sap.ui.getCore().byId("idEQuestion"+j);
+						 
+						 if(oEQAnswer.getSelectedKey() !== ""){
 						 experienceQuestions.push(oEQuestion.data("idEQuestion"+j));
 						 experienceAnswers.push(oEQAnswer.getSelectedItem().getText());
+						 }
 					}
 					var oDOBSplitted =that.oNSHDOBDate.getDateValue().toLocaleDateString().split("/");
 					if(oDOBSplitted[1] < 10){
@@ -588,7 +669,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 								 var oAQFileUploader = sap.ui.getCore().byId("idAQFileUploader"+j);
 								 var oAQuestion = sap.ui.getCore().byId("idAQuestion"+j);
 								 
-								 this.oModelHelper.uploadActivityQAttachment(this.oRef_id, oAQuestion.data("idAQuestion"+j), oAQFileUploader);		 
+								 this.oModelHelper.uploadActivityQAttachment(this.oRef_id, 
+										 oAQuestion.data("idAQuestion"+j), 
+										 oAQFileUploader, 
+										 oResponse.EntityFname,
+										 oResponse.EntityLname);		 
 							
 							}
 					        
@@ -596,7 +681,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 								 var oEQFileUploader = sap.ui.getCore().byId("idEQFileUploader"+j);
 								 var oEQuestion = sap.ui.getCore().byId("idEQuestion"+j);
 								 
-								 this.oModelHelper.uploadExperienceQAttachment(this.oRef_id, oEQuestion.data("idEQuestion"+j), oEQFileUploader);		 
+								 this.oModelHelper.uploadExperienceQAttachment(this.oRef_id, 
+										 oEQuestion.data("idEQuestion"+j), 
+										 oEQFileUploader, 
+										 oResponse.EntityFname,
+										 oResponse.EntityLname);		 
 							
 							}
 					        
@@ -653,6 +742,27 @@ sap.ui.controller("com.sagia.view.Overview", {
 												 							        
 											 							        jQuery.when.apply($, getarray).done(function () {
 											 							        	that.closeBusyDialog();
+											 							        	
+											 							        	that.oShareHolderTypeComboBox.setValue("");
+											 					     				that.oNSHFirstNameInputText.setValue("");
+											 					     				that.oNSHCountryComboBox.setValue("");
+											 					     				that.oNSHLastNameInputText.setValue("");
+											 					     				that.oNSHCityNameInputText.setValue("");
+											 					     				that.oNSHGenderComboBox.setValue("");
+											 					     				that.oNSHPOBoxInputText.setValue("");
+											 					     				that.oNSHMaritalStatusComboBox.setValue("");
+											 					     				that.oNSHPostalCodeInputText.setValue("");
+											 					     				that.oNSHAcademicTitleComboBox.setValue("");
+											 					     				that.oNSHStreetInputText.setValue("");
+											 					     				that.oNSHWebsiteInputText.setValue("");
+											 					     				that.oNSHTelephoneInputText.setValue("");
+											 					     				that.oNSHNationalityComboBox.setValue("");
+											 					     				that.oNSHMobilePhoneInputText.setValue("");
+											 					     				that.oNSHPreviousNationalityInputText.setValue("");
+											 					     				that.oNSHFaxInputText.setValue("");
+											 					     				that.oNSHCommMethodInputText.setValue("");
+											 					     				that.oNSHEmailInputText.setValue("");
+											 					     				that.oNSHPercentageInputText.setValue("");
 											 							        	
 											 							        	 if(!that.oShowAlertDialog.isOpen())
 											 										 {
@@ -1566,6 +1676,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 	     this.oValidationLILIStatus = true;
 
 	 }*/
+	 else if(this.oBIOICommMethodComboBox.getSelectedKey() === ""){			
+		 this.oValidationLILIStatus = false;
+
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOICommMethod"));
+			this.oShowAlertDialog.open();
+		 }
+			
+	 }
 	else if(this.oBICIRoleInputText.getSelectedKey() === ""){			
 		 this.oValidationLILIStatus = false;
 
@@ -1886,9 +2006,26 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oAlertTextView.setText(this.oModelHelper.getText("BICIStreetLength"));
 			this.oShowAlertDialog.open();
 		 }
-	   }
+	   }/*else if(sap.ui.getCore().byId("idBICIPowerofAttorneyFileUploader").getValue().length > 255){
+	  		this.oValidationLILIStatus = false;
+	  		
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BICIPOALength"));
+				this.oShowAlertDialog.open();
+			 }
+	   }else if(sap.ui.getCore().byId("idBICIPassportCopyFileUploader").getValue().length > 255){
+	  		this.oValidationLILIStatus = false;
+	  		
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("BICIPASSLength"));
+				this.oShowAlertDialog.open();
+			 }
+	   }*/
 	
 	/*
+	 			
      
      	this.oBICIPOBoxInputText.getValue(),
 		this..getValue(),
@@ -2450,9 +2587,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 				 
 				 this.oModelHelper.uploadBAQAttachment(this.oRef_id, oBAQuestion.data("idBAQuestion"+i), oBAQFileUploader);		 
 				 
-				 questions.push(oBAQuestion.data("idBAQuestion"+i));
 				 
-				 answers.push(oBAQAnswer.getSelectedItem().getText());
+				 
+				 if(oBAQAnswer.getSelectedKey() !== ""){	
+					 questions.push(oBAQuestion.data("idBAQuestion"+i));
+					 answers.push(oBAQAnswer.getSelectedItem().getText());
+				 }
+				 
 			}			
 			
 			/*var oRequestFinishedDeferredUpdateBAQAnswers = this.oModelHelper.updateBAQAnswers(this.oRef_id, questions, answers, this.oBICIFirstNameInputText.getValue(), this.oBICILastNameInputText.getValue());
@@ -2471,40 +2612,79 @@ sap.ui.controller("com.sagia.view.Overview", {
 					for(var i=0; i < this.oTotalBAQQuestions; i++){
 						 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+i);
 						 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+i);
-						 questions.push(oBAQuestion.data("idBAQuestion"+i));
+						 
+						 if(oBAQAnswer.getSelectedKey() !== ""){	
+					     questions.push(oBAQuestion.data("idBAQuestion"+i));
 						 answers.push(oBAQAnswer.getSelectedItem().getText());
+						 }
 					}
-					var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers, this.oBICIFirstNameInputText.getValue(), this.oBICILastNameInputText.getValue());
+					if(answers.length > 0){
+						var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers, this.oBICIFirstNameInputText.getValue(), this.oBICILastNameInputText.getValue());
 
-					jQuery.when(oRequestFinishedDeferredcreateBAQAnswers).then(jQuery.proxy(function(oResponse) {
-						
-						//this.saveLicenseInfoTab();
-						
-						this.closeBusyDialog();
+						jQuery.when(oRequestFinishedDeferredcreateBAQAnswers).then(jQuery.proxy(function(oResponse) {
+							
+							//this.saveLicenseInfoTab();
+							
+							this.closeBusyDialog();
 
-						this.oBAQError = false;
-		            /*	sap.m.MessageToast.show(this.oModelHelper.getText("BAQInfoSaved"), {duration : 1000});
-		            */	
-				           	 if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== "" ){ 
-				      		      this.saveLicenseInfoTab();				      		      
-				   			  	
-				   			      this.oValidationLILIStatus = true;				   
-					      	 }else if(this.oSurveyID !== "UNKNOWN" &&
-					      			  this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
-					   		      this.oLILILicenseActivityMultiComboBox.getSelectedItems().length !== 0 &&
-					   		  	  this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
-					   	  		  this.oLILIDivisionComboBox.getSelectedKey() !== "" &&
-					   	  		  this.oLILISectionComboBox.getSelectedKey() !== "" &&
-					   		   	  this.oRef_id !== "" &&		   
-					   	 		  this.oLILIActivityDescriptionTextArea.getValue() !== ""){
-					      		 
-					   		      this.saveLicenseInfoTab();					   		      
-					   		   	  	
-					   	     	  this.oValidationLILIStatus = true;
-					      	 }
+							this.oBAQError = false;
+			            /*	sap.m.MessageToast.show(this.oModelHelper.getText("BAQInfoSaved"), {duration : 1000});
+			            */	
+					           	 if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== "" ){ 
+					      		      this.saveLicenseInfoTab();				      		      
+					   			  	
+					   			      this.oValidationLILIStatus = true;				   
+						      	 }else if(this.oSurveyID !== "UNKNOWN" &&
+						      			  this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
+						   		      this.oLILILicenseActivityMultiComboBox.getSelectedItems().length !== 0 &&
+						   		  	  this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
+						   	  		  this.oLILIDivisionComboBox.getSelectedKey() !== "" &&
+						   	  		  this.oLILISectionComboBox.getSelectedKey() !== "" &&
+						   		   	  this.oRef_id !== "" &&		   
+						   	 		  this.oLILIActivityDescriptionTextArea.getValue() !== ""){
+						      		 
+						   		      this.saveLicenseInfoTab();					   		      
+						   		   	  	
+						   	     	  this.oValidationLILIStatus = true;
+						      	 }else{
+							      		if(!this.oShowAlertDialog.isOpen())
+										{
+										this.oAlertTextView.setText(this.oModelHelper.getText("AllLIFieldsMandatory"));
+										this.oShowAlertDialog.open();
+										
+										}
+							      		sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});
+							      }
 
+							
+						}, this));
+					}else  if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== "" ){ 
+		      		      this.saveLicenseInfoTab();				      		      
+			   			  	
+		   			      this.oValidationLILIStatus = true;				   
+			      	 }else if(this.oSurveyID !== "UNKNOWN" &&
+			      			  this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
+			   		      this.oLILILicenseActivityMultiComboBox.getSelectedItems().length !== 0 &&
+			   		  	  this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
+			   	  		  this.oLILIDivisionComboBox.getSelectedKey() !== "" &&
+			   	  		  this.oLILISectionComboBox.getSelectedKey() !== "" &&
+			   		   	  this.oRef_id !== "" &&		   
+			   	 		  this.oLILIActivityDescriptionTextArea.getValue() !== ""){
+			      		 
+			   		      this.saveLicenseInfoTab();					   		      
+			   		   	  	
+			   	     	  this.oValidationLILIStatus = true;
+			      	 }else{
+			      		if(!this.oShowAlertDialog.isOpen())
+						{
+						this.oAlertTextView.setText(this.oModelHelper.getText("AllLIFieldsMandatory"));
+						this.oShowAlertDialog.open();
 						
-					}, this));
+						}
+			      		
+			      		sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});
+			      	 }
+	
 					
 					
 					}catch(err){
@@ -2537,41 +2717,76 @@ sap.ui.controller("com.sagia.view.Overview", {
 				 
 				 this.oModelHelper.uploadBAQAttachment(this.oRef_id, oBAQuestion.data("idBAQuestion"+i), oBAQFileUploader);
 				 
-				 questions.push(oBAQuestion.data("idBAQuestion"+i));
-				 answers.push(oBAQAnswer.getSelectedItem().getText());
-			}		
+				 
+
+				 if(oBAQAnswer.getSelectedKey() !== ""){		
+					 questions.push(oBAQuestion.data("idBAQuestion"+i));
+					 answers.push(oBAQAnswer.getSelectedItem().getText());
+				 }
+			}	
 			
-			var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers, this.oBICIFirstNameInputText.getValue(), this.oBICILastNameInputText.getValue());
+			if(answers.length > 0){
+				var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers, this.oBICIFirstNameInputText.getValue(), this.oBICILastNameInputText.getValue());
 
-			jQuery.when(oRequestFinishedDeferredcreateBAQAnswers).then(jQuery.proxy(function(oResponse) {
-				
-				//this.saveLicenseInfoTab();
-				
+				jQuery.when(oRequestFinishedDeferredcreateBAQAnswers).then(jQuery.proxy(function(oResponse) {
+					
+					//this.saveLicenseInfoTab();
+					
 
-				this.oBAQError = false;
-				this.closeBusyDialog();
-/*            	sap.m.MessageToast.show(this.oModelHelper.getText("BAQInfoSaved"), {duration : 1000});
-*/            	
-            	 if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== "" ){ 
-	      		      this.saveLicenseInfoTab();				      		      
+					this.oBAQError = false;
+					this.closeBusyDialog();
+	/*            	sap.m.MessageToast.show(this.oModelHelper.getText("BAQInfoSaved"), {duration : 1000});
+	*/            	
+	            	 if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== "" ){ 
+		      		      this.saveLicenseInfoTab();				      		      
+		   			  	
+		   			      this.oValidationLILIStatus = true;				   
+			      	 }else if(this.oSurveyID !== "UNKNOWN" &&
+			      			  this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
+			   		      this.oLILILicenseActivityMultiComboBox.getSelectedItems().length !== 0 &&
+			   		  	  this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
+			   	  		  this.oLILIDivisionComboBox.getSelectedKey() !== "" &&
+			   	  		  this.oLILISectionComboBox.getSelectedKey() !== "" &&
+			   		   	  this.oRef_id !== "" &&		   
+			   	 		  this.oLILIActivityDescriptionTextArea.getValue() !== ""){
+			      		 
+			   		      this.saveLicenseInfoTab();					   		      
+			   		   	  	
+			   	     	  this.oValidationLILIStatus = true;
+			      	 }else{
+			      		if(!this.oShowAlertDialog.isOpen())
+						{
+						this.oAlertTextView.setText(this.oModelHelper.getText("AllLIFieldsMandatory"));
+						this.oShowAlertDialog.open();
+						
+						}
+			      		sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});
+			      	 }
+
+					
+				}, this));
+			}else  if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== "" ){ 
+    		      this.saveLicenseInfoTab();				      		      
 	   			  	
-	   			      this.oValidationLILIStatus = true;				   
-		      	 }else if(this.oSurveyID !== "UNKNOWN" &&
-		      			  this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
-		   		      this.oLILILicenseActivityMultiComboBox.getSelectedItems().length !== 0 &&
-		   		  	  this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
-		   	  		  this.oLILIDivisionComboBox.getSelectedKey() !== "" &&
-		   	  		  this.oLILISectionComboBox.getSelectedKey() !== "" &&
-		   		   	  this.oRef_id !== "" &&		   
-		   	 		  this.oLILIActivityDescriptionTextArea.getValue() !== ""){
-		      		 
-		   		      this.saveLicenseInfoTab();					   		      
-		   		   	  	
-		   	     	  this.oValidationLILIStatus = true;
-		      	 }
+   			      this.oValidationLILIStatus = true;				   
+	      	 }else if(this.oSurveyID !== "UNKNOWN" &&
+	      			  this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
+	   		      this.oLILILicenseActivityMultiComboBox.getSelectedItems().length !== 0 &&
+	   		  	  this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean).length !== 0 &&
+	   	  		  this.oLILIDivisionComboBox.getSelectedKey() !== "" &&
+	   	  		  this.oLILISectionComboBox.getSelectedKey() !== "" &&
+	   		   	  this.oRef_id !== "" &&		   
+	   	 		  this.oLILIActivityDescriptionTextArea.getValue() !== ""){
+	      		 
+	   		      this.saveLicenseInfoTab();					   		      
+	   		   	  	
+	   	     	  this.oValidationLILIStatus = true;
+	      	 }else{
 
-				
-			}, this));
+	      		sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});
+	      	 }
+			
+			
 			
 			
 			}catch(err){
@@ -2620,7 +2835,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {    	
                 
 				this.closeBusyDialog();
-            	sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});
+            	/*sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});*/
 				this.saveBAQInfoTab();
 
 				
@@ -2668,7 +2883,7 @@ sap.ui.controller("com.sagia.view.Overview", {
             jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
             	//this.readBICIFileAttachemnts();
 				this.closeBusyDialog();
-            	sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});
+            	/*sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});*/
 				this.saveBAQInfoTab();
 				
 			}, this));	
@@ -2737,7 +2952,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		    var oRequestFinishedDeferredBAQAnswersAttachmentNameDifferred= that.oModelHelper.readBAQSavedAttachments(that.oRef_id, oBAQFileUploader.data("idBAQFileUploader"+loop));
 			jQuery.when(oRequestFinishedDeferredBAQAnswersAttachmentNameDifferred).then(jQuery.proxy(function(oResponse) {
-				oTextViewAttachment.setText(oResponse.data.FileName);
+				if(oTextViewAttachment){
+					oTextViewAttachment.setText(oResponse.data.FileName);
+				}
 			}, that));
 		}, 1000);		
 	},
@@ -4677,11 +4894,13 @@ userSignIn : function(userID, password){
 									 for (j=0; j < this.oTotalBAQQuestions; j++){
 										 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+j);
 										 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+j);
-										
-										 if(oBAQuestion.data("idBAQuestion"+j) === oResponse.data.results[i].NodeGuid){
-											 
-											 oBAQAnswer.setSelectedItem(oBAQAnswer.getItemByKey(oResponse.data.results[i].Atxtlg)); 
-										 }			 
+
+										 if(oResponse.data.results[i] !== undefined){
+											 if(oBAQuestion.data("idBAQuestion"+j) === oResponse.data.results[i].NodeGuid){
+												 
+												 oBAQAnswer.setSelectedItem(oBAQAnswer.getItemByKey(oResponse.data.results[i].Atxtlg)); 
+											 }	
+										 }									 		 
 										 
 									 }									
 								}
@@ -4783,7 +5002,7 @@ handleRegisterUserButtonPress : function() {
 				this.oShowAlertDialog.open();
 				
 				}
-			}else if(!(/^[a-zA-Z ]*$/.test(oUserID))){
+			}else if(!(/^[a-zA-Z0-9]*$/.test(oUserID))){
 				if(!this.oShowAlertDialog.isOpen())
 				{
 				this.oAlertTextView.setText(this.oModelHelper.getText("UserIDInvalid"));

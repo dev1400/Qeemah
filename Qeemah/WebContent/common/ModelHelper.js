@@ -983,7 +983,7 @@ com.sagia.common.ModelHelper = {
 	 * @author Abdul Waheed
 	 */
 	
-	uploadActivityQAttachment : function(oRefID, oNodeGuid, oAQFileUploader){
+	uploadActivityQAttachment : function(oRefID, oNodeGuid, oAQFileUploader, oFirstName, oLastName){
  		var oUploadActivityQAttachmentRequestFinishedDeferred = jQuery.Deferred();
  		
  		if(oAQFileUploader.getValue() !== ""){
@@ -993,8 +993,8 @@ com.sagia.common.ModelHelper = {
  			oAQFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
  				{name: "X-CSRF-Token", value: csrf }));        
  			 
-         
- 			oAQFileUploader.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/Survey_Att_hdrSet(Investorid='"+oRefID+"',NodeGuid='"+oNodeGuid+"',FileName='"+oAQFileUploader.getValue()+"')/SurveyFile");
+            var oFileName = oFirstName+"_"+oLastName+"_"+oAQFileUploader.getValue(); 
+ 			oAQFileUploader.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/Survey_Att_hdrSet(Investorid='"+oRefID+"',NodeGuid='"+oNodeGuid+"',FileName='"+oFileName+"')/SurveyFile");
  		                                                                   
  			oAQFileUploader.attachUploadComplete(function(){
  				oAQFileUploader.removeAllHeaderParameters();
@@ -1014,7 +1014,7 @@ com.sagia.common.ModelHelper = {
 	 * @author Abdul Waheed
 	 */
 	
- 	uploadExperienceQAttachment : function(oRefID, oNodeGuid, oEQFileUploader){
+ 	uploadExperienceQAttachment : function(oRefID, oNodeGuid, oEQFileUploader, oFirstName, oLastName){
  		var oUploadExperienceQAttachmentRequestFinishedDeferred = jQuery.Deferred();
  		
  		if(oEQFileUploader.getValue() !== ""){
@@ -1024,8 +1024,9 @@ com.sagia.common.ModelHelper = {
  			oEQFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
  				{name: "X-CSRF-Token", value: csrf }));        
  			 
-         
- 			oEQFileUploader.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/Survey_Att_hdrSet(Investorid='"+oRefID+"',NodeGuid='"+oNodeGuid+"',FileName='"+oEQFileUploader.getValue()+"')/SurveyFile");
+            var oFileName = oFirstName+"_"+oLastName+"_"+oEQFileUploader.getValue(); 
+
+ 			oEQFileUploader.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SURVEY_SRV/Survey_Att_hdrSet(Investorid='"+oRefID+"',NodeGuid='"+oNodeGuid+"',FileName='"+oFileName+"')/SurveyFile");
  		                                                                   
  			oEQFileUploader.attachUploadComplete(function(){
  				oEQFileUploader.removeAllHeaderParameters();

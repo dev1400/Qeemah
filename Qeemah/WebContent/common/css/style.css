@@ -20,6 +20,12 @@
 	top: 14em !important; 
 	left: 36em !important; #00A19C #E0E0E0
 } */
+.sapMIBar-CTX .sapMBtnContent {
+    line-height: 2rem;
+}
+.sapMDP>.sapUiIcon, .sapMDP.sapMInputIE9>.sapUiIcon {
+    height: 2rem;
+}
 .SaveIconStyling{
 	padding-top: .5rem;
 }

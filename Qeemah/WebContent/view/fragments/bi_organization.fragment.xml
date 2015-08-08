@@ -182,6 +182,7 @@
 													hAlign="Begin">
 													<sap.ui.commons.layout:content>
 														<sap.ui.commons:TextView text="{i18n>LaborSize}"></sap.ui.commons:TextView>
+														<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
@@ -209,6 +210,7 @@
 													vAlign="Middle" hAlign="End">
 													<sap.ui.commons.layout:content>
 														<sap.ui.commons:TextView text="{i18n>CommMethod}"></sap.ui.commons:TextView>
+														<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 													</sap.ui.commons.layout:content>
 												</sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:MatrixLayoutCell>
