@@ -124,31 +124,36 @@ com.sagia.common.ModelHelper = {
 		
 		var that = this;
 		var oRequestFinishedCreateBAQDeferred = jQuery.Deferred();
+		
+		if(answers.length > 0){
+			var aBatchOperations = [];
+	         for ( var i = 0; i < questions.length; i++) {
+	        	 
+	        	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',
+	        	{    Investorid : oRef_id,
+	        		 NodeGuid : questions[i], 
+	        		 Atxtlg : oAtxtlg, 
+	        		 Flag : 'F', 
+	        		 Lang : 'E', 
+	        		 Fin_value : answers[i],        		 
+	        		 Shldr_FName : oFirstName,
+	        		 Shldr_LName : oLastName} ));
+	            }
+	         this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
+	         this.oBAQODataModel.setUseBatch(true);
+	         this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {
+	        	 //console.log(" SH "+oResponse);
+	             //that.closeBusyDialog();             
+	        	        	 
+	        	 oRequestFinishedCreateBAQDeferred.resolve(oResponse);
+	     	 }, 
+	     	 function(oError) {
+	     		console.log("E"+oError);
+	     	 }, true);
+		}else{
+       	 	oRequestFinishedCreateBAQDeferred.resolve();
+		}
 
-		 var aBatchOperations = [];
-         for ( var i = 0; i < questions.length; i++) {
-        	 
-        	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',
-        	{    Investorid : oRef_id,
-        		 NodeGuid : questions[i], 
-        		 Atxtlg : oAtxtlg, 
-        		 Flag : 'F', 
-        		 Lang : 'E', 
-        		 Fin_value : answers[i],        		 
-        		 Shldr_FName : oFirstName,
-        		 Shldr_LName : oLastName} ));
-            }
-         this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
-         this.oBAQODataModel.setUseBatch(true);
-         this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {
-        	 //console.log(" SH "+oResponse);
-             //that.closeBusyDialog();             
-        	        	 
-        	 oRequestFinishedCreateBAQDeferred.resolve(oResponse);
-     	 }, 
-     	 function(oError) {
-     		console.log("E"+oError);
-     	 }, true);
          
          return oRequestFinishedCreateBAQDeferred; 
 		
@@ -423,25 +428,29 @@ com.sagia.common.ModelHelper = {
 		
 		var that = this;
 		var oRequestFinishedCreateAQDeferred = jQuery.Deferred();
-
-		 var aBatchOperations = [];
-         for ( var i = 0; i < questions.length; i++) {
-        	 
-        	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',{Investorid : oRef_id,
-        		 NodeGuid : questions[i], Atxtlg : answers[i], Flag : 'A', Lang : 'E',
-        		 Shldr_FName : oFirstName,
-        		 Shldr_LName : oLastName
-        		 } ));
-            }
-         this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
-         this.oBAQODataModel.setUseBatch(true);
-         this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {                  	 
-        	 oRequestFinishedCreateAQDeferred.resolve(oResponse);
-     	 }, 
-     	 function(oError) {
-     		console.log("E"+oError);
-     	 }, true);
-         
+		
+		if(answers.length > 0){
+			var aBatchOperations = [];
+	         for ( var i = 0; i < questions.length; i++) {
+	        	 
+	        	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',{Investorid : oRef_id,
+	        		 NodeGuid : questions[i], Atxtlg : answers[i], Flag : 'A', Lang : 'E',
+	        		 Shldr_FName : oFirstName,
+	        		 Shldr_LName : oLastName
+	        		 } ));
+	            }
+	         this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
+	         this.oBAQODataModel.setUseBatch(true);
+	         this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {                  	 
+	        	 oRequestFinishedCreateAQDeferred.resolve(oResponse);
+	     	 }, 
+	     	 function(oError) {
+	     		console.log("E"+oError);
+	     	 }, true);
+		}else{
+			oRequestFinishedCreateAQDeferred.resolve();
+		}
+		
          return oRequestFinishedCreateAQDeferred; 
 		
 	},
@@ -453,24 +462,28 @@ com.sagia.common.ModelHelper = {
 		
 		var that = this;
 		var oRequestFinishedCreateEQDeferred = jQuery.Deferred();
-
-		 var aBatchOperations = [];
-         for ( var i = 0; i < questions.length; i++) {
-        	 
-        	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',{Investorid : oRef_id,
-        		 NodeGuid : questions[i], Atxtlg : answers[i], Flag : 'E', Lang : 'E',
-        		 Shldr_FName : oFirstName,
-        		 Shldr_LName : oLastName,
-        		 Fin_value : oSurveyID} ));
-            }
-         this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
-         this.oBAQODataModel.setUseBatch(true);
-         this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {                  	 
-        	 oRequestFinishedCreateEQDeferred.resolve(oResponse);
-     	 }, 
-     	 function(oError) {
-     		console.log("E"+oError);
-     	 }, true);
+		
+		if(answers.length > 0){
+			var aBatchOperations = [];
+	         for ( var i = 0; i < questions.length; i++) {
+	        	 
+	        	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',{Investorid : oRef_id,
+	        		 NodeGuid : questions[i], Atxtlg : answers[i], Flag : 'E', Lang : 'E',
+	        		 Shldr_FName : oFirstName,
+	        		 Shldr_LName : oLastName,
+	        		 Fin_value : oSurveyID} ));
+	            }
+	         this.oBAQODataModel.addBatchChangeOperations(aBatchOperations);
+	         this.oBAQODataModel.setUseBatch(true);
+	         this.oBAQODataModel.submitBatch( function(oData, oResponse, aErrorResponse) {                  	 
+	        	 oRequestFinishedCreateEQDeferred.resolve(oResponse);
+	     	 }, 
+	     	 function(oError) {
+	     		console.log("E"+oError);
+	     	 }, true);
+		}else{
+       	 	oRequestFinishedCreateEQDeferred.resolve();
+		}	 
          
          return oRequestFinishedCreateEQDeferred; 
 		

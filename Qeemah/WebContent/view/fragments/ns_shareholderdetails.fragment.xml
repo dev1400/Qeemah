@@ -55,7 +55,7 @@
 						hAlign="Begin" colSpan="3">
 						<sap.ui.commons.layout:content>
 						<ComboBox id="idNSHTypeComboBox" width="25em">
-								<sap.ui.core:ListItem Key="1" text="{i18n>Person}" />
+								<sap.ui.core:ListItem key="1" text="{i18n>Person}" />
 								<sap.ui.core:ListItem key="2" text="{i18n>Organization}" />
 							</ComboBox>
 						</sap.ui.commons.layout:content>
