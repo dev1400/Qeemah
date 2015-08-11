@@ -803,6 +803,7 @@ com.sagia.common.ModelHelper = {
 		oEntry.BalShtAssest13 = oNSHTotalAssetsInBalanceSheet13InputText;
 		oEntry.BalShtAssest14 = oNSHTotalAssetsInBalanceSheet14InputText;
 		oEntry.Exbpno = oBpno;
+		oEntry.Email = oNSHEmailInputText;
 
 		
 		var that = this;
@@ -865,6 +866,63 @@ com.sagia.common.ModelHelper = {
 			}});
 
 		return oRequestFinishedDeferred;
+	},
+	/**
+	 * Edit Saved Share Holders
+	 * @author : Abdul Waheed
+	 */
+	editSavedShareHolders : function(oRefID, oEntityNo) {
+		
+		this.openBusyDialog();
+
+		var that = this;
+		
+		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oODataModel.setUseBatch(false);
+
+		this.oShareHolderODataModel.read("ZSHAREHOLDER_INFO_ENT(RefID='"+oRefID+"',EntityNo='"+oEntityNo+"',FileType='')", {
+			
+			
+			success : function(oData, response) {
+				
+				//that.oSavedShareHoldersCollectionModel = new sap.ui.model.json.JSONModel();
+				//that.oSavedShareHoldersCollectionModel.setData({SavedShareHolderCollection:oData});
+				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve(response);
+			},
+			error : function(oResponse) {
+				that.closeBusyDialog();
+
+				oRequestFinishedDeferred.resolve();
+			}});
+
+		return oRequestFinishedDeferred;
+	},
+	
+	/**
+	 * read Saved Share holder  attachment name
+	 * @author : Abdul Waheed
+	 */
+	checkIfNSHtAttached : function(refid, oEntityNo, oFipleType) {
+		this.openBusyDialog();
+
+		var that = this;
+		
+		var oRequestFinishedDeferred2 = jQuery.Deferred();
+		
+        this.oShareHolderODataModel.setUseBatch(false);
+		this.oShareHolderODataModel.read("ZSHAREHOLDER_ATT_ENT(RefID='"+refid+"',EntityNo='"+oEntityNo+"',FileType='"+oFipleType+"')", {
+			success : function(oData, response) {
+				oRequestFinishedDeferred2.resolve(response);
+				that.closeBusyDialog();
+			},
+			error : function(oResponse) {
+				oRequestFinishedDeferred2.resolve();
+				that.closeBusyDialog();
+			}});
+
+		return oRequestFinishedDeferred2;
 	},
 
 	
@@ -1058,7 +1116,7 @@ com.sagia.common.ModelHelper = {
 	 * Upload Passport Copy.
 	 * @author Abdul Waheed
 	 */
-	uploadBICIPassPortCopy : function(oRefID, oBICIPassPortCopyFileUploader){
+	uploadBICIPassPortCopy : function(oRefID, oBICIPassPortCopyFileUploader, oOrgName){
 		var oUploadBICIPassPortCopyRequestFinishedDeferred = jQuery.Deferred();
 		
 		if(oBICIPassPortCopyFileUploader.getValue() !== ""){
@@ -1068,18 +1126,18 @@ com.sagia.common.ModelHelper = {
 		oBICIPassPortCopyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
 				{name: "X-CSRF-Token", value: this.getCSRFToken() }));        
 		oBICIPassPortCopyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
-        		({name: "slug", value: oBICIPassPortCopyFileUploader.getValue() }));
+        		({name: "slug", value: oOrgName+"_"+oBICIPassPortCopyFileUploader.getValue() }));
            
         
 		oBICIPassPortCopyFileUploader.setUploadUrl(this.getServiceUrl()+"ZBASIC_CONT_INFO_ENT(RefID='"+oRefID+"',FileType='PASS')/InfoToPoa");
 		oBICIPassPortCopyFileUploader.attachUploadComplete(function(){
 			oBICIPassPortCopyFileUploader.removeAllHeaderParameters();
 			oBICIPassPortCopyFileUploader.clear();
-			oUploadBICIPassPortCopyRequestFinishedDeferred.resolve();       
+			oUploadBICIPassPortCopyRequestFinishedDeferred.resolve("Uploaded");       
         });
         oBICIPassPortCopyFileUploader.upload();
 		}else{
-			oUploadBICIPassPortCopyRequestFinishedDeferred.resolve();
+			oUploadBICIPassPortCopyRequestFinishedDeferred.resolve("FileNotAvailable");
  		}
 		return oUploadBICIPassPortCopyRequestFinishedDeferred;
 	},
@@ -1089,7 +1147,7 @@ com.sagia.common.ModelHelper = {
 	 * Upload Proof Of Attorney.
 	 * @author Abdul Waheed
 	 */	
-     uploadPOA : function(oRefID, oBICIPowerofAttorneyFileUploader){
+     uploadPOA : function(oRefID, oBICIPowerofAttorneyFileUploader, oOrgName){
  		var oUploadPOARequestFinishedDeferred = jQuery.Deferred();
  		
  		if(oBICIPowerofAttorneyFileUploader.getValue() !== ""){
@@ -1099,7 +1157,7 @@ com.sagia.common.ModelHelper = {
  			oBICIPowerofAttorneyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
  				{name: "X-CSRF-Token", value: this.getCSRFToken() }));        
  			oBICIPowerofAttorneyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
-         		({name: "slug", value: oBICIPowerofAttorneyFileUploader.getValue() }));
+         		({name: "slug", value: oOrgName+"_"+oBICIPowerofAttorneyFileUploader.getValue() }));
             
          
  			oBICIPowerofAttorneyFileUploader.setUploadUrl(this.getServiceUrl()+"ZBASIC_CONT_INFO_ENT(RefID='"+oRefID+"',FileType='POA')/InfoToPoa");
@@ -1107,11 +1165,11 @@ com.sagia.common.ModelHelper = {
  			oBICIPowerofAttorneyFileUploader.attachUploadComplete(function(){
  				oBICIPowerofAttorneyFileUploader.removeAllHeaderParameters();
  				oBICIPowerofAttorneyFileUploader.clear();
- 				oUploadPOARequestFinishedDeferred.resolve();         
+ 				oUploadPOARequestFinishedDeferred.resolve("Uploaded");         
          });
  			oBICIPowerofAttorneyFileUploader.upload();
  		}else{
- 			oUploadPOARequestFinishedDeferred.resolve();
+ 			oUploadPOARequestFinishedDeferred.resolve("FileNotAvailable");
  		}
 		return oUploadPOARequestFinishedDeferred;
 
@@ -1120,7 +1178,7 @@ com.sagia.common.ModelHelper = {
  	 * Upload NSH Passport Copy.
  	 * @author Abdul Waheed
  	 */
- 	uploadNSHPassPortCopy : function(oRefID, oEntityNo, oNSHPassPortCopyFileUploader){
+ 	uploadNSHPassPortCopy : function(oNSHName, oRefID, oEntityNo, oNSHPassPortCopyFileUploader){
  		var oUploadNSHPassPortCopyRequestFinishedDeferred = jQuery.Deferred();
  		
  		if(oNSHPassPortCopyFileUploader.getValue() !== ""){
@@ -1130,7 +1188,7 @@ com.sagia.common.ModelHelper = {
  		   oNSHPassPortCopyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
  				{name: "X-CSRF-Token", value: csrf }));        
  		   oNSHPassPortCopyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
-         		({name: "slug", value: oNSHPassPortCopyFileUploader.getValue() }));
+         		({name: "slug", value: oNSHName+""+oNSHPassPortCopyFileUploader.getValue() }));
             
          
  		   oNSHPassPortCopyFileUploader.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SHRHLDR_SRV/ZSHAREHOLDER_INFO_ENT(RefID='"+oRefID+"',EntityNo='"+oEntityNo+"',FileType='PASS')/InfoToFile");
@@ -1154,7 +1212,7 @@ com.sagia.common.ModelHelper = {
  	 * Upload Commercial Registration.
  	 * @author Abdul Waheed
  	 */
- 	uploadCommercialRegAttachment : function(oRefID, oEntityNo, oNSHCommercialRegAttachment){
+ 	uploadCommercialRegAttachment : function(oNSHName, oRefID, oEntityNo, oNSHCommercialRegAttachment){
  		var oUploadNSHCommercialRegAttachmentRequestFinishedDeferred = jQuery.Deferred();
  		
  		if(oNSHCommercialRegAttachment.getValue() !== ""){
@@ -1164,7 +1222,7 @@ com.sagia.common.ModelHelper = {
  			oNSHCommercialRegAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
  				{name: "X-CSRF-Token", value: csrf }));        
  			oNSHCommercialRegAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
-         		({name: "slug", value: oNSHCommercialRegAttachment.getValue() }));
+         		({name: "slug", value: oNSHName+""+oNSHCommercialRegAttachment.getValue() }));
             
          
  			oNSHCommercialRegAttachment.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SHRHLDR_SRV/ZSHAREHOLDER_INFO_ENT(RefID='"+oRefID+"',EntityNo='"+oEntityNo+"',FileType='COMM')/InfoToFile");
@@ -1188,7 +1246,7 @@ com.sagia.common.ModelHelper = {
  	 * Upload NSH Bank Statement.
  	 * @author Abdul Waheed
  	 */
- 	uploadBankStatementAttachment : function(oRefID, oEntityNo, oNSHBankStatementAttachment){
+ 	uploadBankStatementAttachment : function(oNSHName, oRefID, oEntityNo, oNSHBankStatementAttachment){
  		var oUploadNSHBankStatementAttachmentRequestFinishedDeferred = jQuery.Deferred();
  		
  		if(oNSHBankStatementAttachment.getValue() !== ""){
@@ -1198,7 +1256,7 @@ com.sagia.common.ModelHelper = {
  			oNSHBankStatementAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
  				{name: "X-CSRF-Token", value: csrf }));        
  			oNSHBankStatementAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
-         		({name: "slug", value: oNSHBankStatementAttachment.getValue() }));
+         		({name: "slug", value: oNSHName+""+oNSHBankStatementAttachment.getValue() }));
             
          
  			oNSHBankStatementAttachment.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SHRHLDR_SRV/ZSHAREHOLDER_INFO_ENT(RefID='"+oRefID+"',EntityNo='"+oEntityNo+"',FileType='BANK')/InfoToFile");
@@ -1222,7 +1280,7 @@ com.sagia.common.ModelHelper = {
  	 * Upload NSH Balance Sheet 
  	 * @author Abdul Waheed
  	 */
- 	uploadNSHBalanceSheetAttachment : function(oRefID, oEntityNo, oNSHBalanceSheetAttachment){
+ 	uploadNSHBalanceSheetAttachment : function(oNSHName, oRefID, oEntityNo, oNSHBalanceSheetAttachment){
  		var oUploadNSHBalanceSheetAttachmentRequestFinishedDeferred = jQuery.Deferred();
  		
  		if(oNSHBalanceSheetAttachment.getValue() !== ""){
@@ -1232,7 +1290,7 @@ com.sagia.common.ModelHelper = {
  			oNSHBalanceSheetAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
  				{name: "X-CSRF-Token", value: csrf }));        
  			oNSHBalanceSheetAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
-         		({name: "slug", value: oNSHBalanceSheetAttachment.getValue() }));
+         		({name: "slug", value: oNSHName+""+oNSHBalanceSheetAttachment.getValue() }));
             
          
  			oNSHBalanceSheetAttachment.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SHRHLDR_SRV/ZSHAREHOLDER_INFO_ENT(RefID='"+oRefID+"',EntityNo='"+oEntityNo+"',FileType='BAL')/InfoToFile");
@@ -1256,7 +1314,7 @@ com.sagia.common.ModelHelper = {
  	 * Upload NSH Other Attachment
  	 * @author Abdul Waheed
  	 */
- 	uploadOtherAttachment : function(oRefID, oEntityNo, oNSHOtherAttachment){
+ 	uploadOtherAttachment : function(oNSHName, oRefID, oEntityNo, oNSHOtherAttachment){
  		var oUploadNSHOtherAttachmentRequestFinishedDeferred = jQuery.Deferred();
  		
  		if(oNSHOtherAttachment.getValue() !== ""){
@@ -1266,7 +1324,7 @@ com.sagia.common.ModelHelper = {
  			oNSHOtherAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
  				{name: "X-CSRF-Token", value: csrf }));        
  			oNSHOtherAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter
-         		({name: "slug", value: oNSHOtherAttachment.getValue() }));
+         		({name: "slug", value: oNSHName+""+oNSHOtherAttachment.getValue() }));
             
          
  			oNSHOtherAttachment.setUploadUrl("proxy/sap/opu/odata/sap/ZQEEMAH_SHRHLDR_SRV/ZSHAREHOLDER_INFO_ENT(RefID='"+oRefID+"',EntityNo='"+oEntityNo+"',FileType='OTHR')/InfoToFile");

@@ -251,12 +251,12 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							<ComboBox id="idNSHAcademicTitleInputText" width="25em">
-								<sap.ui.core:ListItem key="001" text="{i18n>HighSchool}" />
-								<sap.ui.core:ListItem key="002" text="{i18n>Diploma}" />
-								<sap.ui.core:ListItem key="003" text="{i18n>BS}" />
-								<sap.ui.core:ListItem key="004" text="{i18n>Master}" />
-								<sap.ui.core:ListItem key="005" text="{i18n>PhD}" />
-								<sap.ui.core:ListItem key="006" text="{i18n>Professor}" />
+								<sap.ui.core:ListItem key="0001" text="{i18n>HighSchool}" />
+								<sap.ui.core:ListItem key="0002" text="{i18n>Diploma}" />
+								<sap.ui.core:ListItem key="0003" text="{i18n>BS}" />
+								<sap.ui.core:ListItem key="0004" text="{i18n>Master}" />
+								<sap.ui.core:ListItem key="0005" text="{i18n>PhD}" />
+								<sap.ui.core:ListItem key="0006" text="{i18n>Professor}" />
 							</ComboBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>

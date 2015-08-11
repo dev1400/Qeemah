@@ -89,6 +89,8 @@
 											<sap.ui.commons.layout:MatrixLayoutCell colSpan="2" hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<CheckBox text="{i18n>AgreeToAllTermsandConditions}" id="idTermsAndConditionsCheckBox"/>
+<!-- 												    <sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+ -->													
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											

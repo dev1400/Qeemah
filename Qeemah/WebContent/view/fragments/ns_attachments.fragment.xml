@@ -4,11 +4,11 @@
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<sap.ui.commons.layout:MatrixLayout
-								layoutFixed="false" columns="2" width="78em">
+								layoutFixed="false" columns="3" width="78em">
 								<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin" colSpan="2">
+						hAlign="Begin" colSpan="3">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>Attachments}" design="H1"></sap.ui.commons:TextView>
 							<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
@@ -39,6 +39,11 @@
 											 mimeType="application/pdf"/> 
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:content>
+												<sap.ui.commons:TextView id="idNSHPassPortAttachmentName" visible="false"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
 									</sap.ui.commons.layout:MatrixLayoutRow>
 								</sap.ui.commons.layout:rows>
@@ -60,6 +65,11 @@
 										     sameFilenameAllowed="true" 
 											 id="idNSHCommercialRegistFileUploader"  
 											 mimeType="application/pdf"/> 
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:content>
+												<sap.ui.commons:TextView id="idNSHCommercialAttachmentName" visible="false"></sap.ui.commons:TextView>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -85,6 +95,11 @@
 											 mimeType="application/pdf"/> 
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:content>
+												<sap.ui.commons:TextView id="idNSHBankStatementAttachmentName" visible="false"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
 									</sap.ui.commons.layout:MatrixLayoutRow>
 								</sap.ui.commons.layout:rows>
@@ -108,6 +123,11 @@
 											 mimeType="application/pdf"/> 
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:content>
+												<sap.ui.commons:TextView id="idNSHBalanceSheetAttachmentName" visible="false"></sap.ui.commons:TextView>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
 									</sap.ui.commons.layout:MatrixLayoutRow>
 								</sap.ui.commons.layout:rows>
@@ -129,6 +149,11 @@
 										     sameFilenameAllowed="true" 
 											 id="idNSHOtherFileUploader"  
 											 mimeType="application/pdf"/> 
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											<sap.ui.commons.layout:MatrixLayoutCell>
+												<sap.ui.commons.layout:content>
+												<sap.ui.commons:TextView id="idNSHOtherAttachmentName" visible="false"></sap.ui.commons:TextView>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>

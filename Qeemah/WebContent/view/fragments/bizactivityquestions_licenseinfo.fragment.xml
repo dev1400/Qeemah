@@ -94,6 +94,16 @@
                                      </MultiComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+									<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+									  <sap.ui.commons:TextView id="idGroupMultiSelectionTextView" enabled="false" width="18em"></sap.ui.commons:TextView>									
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+									
 									<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell>
 										
@@ -108,6 +118,16 @@
                                      </MultiComboBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:MatrixLayoutRow>
+								
+								<sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									<sap.ui.commons.layout:MatrixLayoutCell>
+									  <sap.ui.commons:TextView id="idClassMultiSelectionTextView" width="18em" enabled="false"></sap.ui.commons:TextView>									
+									</sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+									
 							<!-- 	<sap.ui.commons.layout:MatrixLayoutRow>
 									
 								</sap.ui.commons.layout:MatrixLayoutRow> -->
@@ -204,6 +224,8 @@
 			<sap.ui.commons.layout:cells>
 				<sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons:TextView text="{i18n>Product}"></sap.ui.commons:TextView>
+					<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+					
 				</sap.ui.commons.layout:MatrixLayoutCell>
 				<sap.ui.commons.layout:MatrixLayoutCell>					
 					<ComboBox width="25em" items="{/IndustrialProductsCollection}" id="idLILIIndustrialProductComboBox" selectionChange="handleLILIIndustrialProductsComboBoxSelectionChange">
@@ -216,6 +238,8 @@
 			<sap.ui.commons.layout:cells>
 				<sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons:TextView text="{i18n>Quantity}"></sap.ui.commons:TextView>
+																<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+					
 				</sap.ui.commons.layout:MatrixLayoutCell>
 				<sap.ui.commons.layout:MatrixLayoutCell>				
 					<Input type="Text" id="idLILIProductQuantityInputText"></Input>
@@ -226,6 +250,8 @@
 			<sap.ui.commons.layout:cells>
 				<sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}"></sap.ui.commons:TextView>
+																<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+					
 				</sap.ui.commons.layout:MatrixLayoutCell>
 				<sap.ui.commons.layout:MatrixLayoutCell>				
 					<ComboBox width="25em" items="{/IndustrialProductsCollectionUOM}" id="idLILIIndustrialProductUOMComboBox" selectionChange="handleLILIIndustrialProductsUOMComboBoxSelectionChange">

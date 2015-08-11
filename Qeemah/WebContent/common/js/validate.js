@@ -301,7 +301,47 @@ com.sagia.common.js.validate = {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHPercentageLength"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
-		   	    }
+		   	 }else if(thisContext.NSHPassPortCopy.getValue().length > 90){	
+					thisContext.oNewShareHolderValidation = false;
+
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("PassportFileNameExceed"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+			 }else if(thisContext.NSHOtherAttachment.getValue().length > 90){	
+				thisContext.oNewShareHolderValidation = false;
+
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("OtherFileNameExceed"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+		    }else if(thisContext.NSHCommercialRegAttachment.getValue().length > 90){	
+				thisContext.oNewShareHolderValidation = false;
+
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("CommercialRegFileNameExceed"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+		    }else if(thisContext.NSHBankStatementAttachment.getValue().length > 90){	
+				thisContext.oNewShareHolderValidation = false;
+
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("BankStmtFileNameExceed"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+		    }else if(thisContext.NSHBalanceSheetAttachment.getValue().length > 90){	
+				thisContext.oNewShareHolderValidation = false;
+
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("BalanceSheetFileNameExceed"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+		    }
 		
 			return thisContext.oNewShareHolderValidation;
 			

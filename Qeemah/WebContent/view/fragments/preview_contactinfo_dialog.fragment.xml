@@ -285,9 +285,11 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												vAlign="Middle" hAlign="Begin">
 												<sap.ui.commons.layout:content>
-													<sap.ui.unified:FileUploader enabled="false"
+													<!-- <sap.ui.unified:FileUploader enabled="false"
 															uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
-															iconOnly="true" id="idBICIPreviewPAssportCopyFileUploader"/>
+															iconOnly="true" id="idBICIPreviewPAssportCopyFileUploader"/> -->
+													<sap.ui.commons:TextView id="idPreviewBICIPASSAttachmentName" enabled="false" visible="false"></sap.ui.commons:TextView>
+													
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											
@@ -301,9 +303,10 @@
 										<sap.ui.commons.layout:MatrixLayoutCell><sap.ui.commons:TextView text="{i18n>PowerofAttorney}"></sap.ui.commons:TextView>
 										</sap.ui.commons.layout:MatrixLayoutCell>
 										<sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.unified:FileUploader enabled="false"
+										<!-- <sap.ui.unified:FileUploader enabled="false"
 														uploadUrl="upload/" width="15em" icon="common/mime/attachment.png"
-														iconOnly="true" id="idBICIPreviewPowerofAttorneyFileUploader"/>
+														iconOnly="true" id="idBICIPreviewPowerofAttorneyFileUploader"/> -->
+										<sap.ui.commons:TextView id="idPreviewBICIPOAAttachmentName" enabled="false" visible="false"></sap.ui.commons:TextView>
 										</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
 									</sap.ui.commons.layout:MatrixLayoutRow>
