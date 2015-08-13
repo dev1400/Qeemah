@@ -269,7 +269,7 @@ com.sagia.common.js.validate = {
 		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHStreetLength"));
 		  				thisContext.oShowAlertDialog.open();
 		  			 }			 							  				
-	  	   	 }else if(thisContext.oNSHEmailInputText.getValue().length > 241){	
+	  	   	 }else if(thisContext.oNSHEmailInputText.getValue().length > 20){	
 				thisContext.oNewShareHolderValidation = false;
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())

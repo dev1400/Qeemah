@@ -556,8 +556,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 				
 				this.oGlobalLocalNSHTotalShareHolderPercentage = (this.oTotalLocalNSHNewShareHolderPercentage + this.oTotalLocalNSHExistingShareHolderPercentage);
 				
-		
-				 if((Number(this.oNSHPercentageInputText.getValue()) + this.oGlobalLocalNSHTotalShareHolderPercentage) > 100){
+				 if(this.oNSHDOBDate.getDateValue() > new Date()){
+					 if(!this.oShowAlertDialog.isOpen())
+					 {
+						this.oAlertTextView.setText(this.oModelHelper.getText("NSHDOBFutureDate"));
+						this.oShowAlertDialog.open();
+					 }
+    	            this.closeBusyDialog();
+					 
+				 }else if((Number(this.oNSHPercentageInputText.getValue()) + this.oGlobalLocalNSHTotalShareHolderPercentage) > 100){
 						if(!this.oShowAlertDialog.isOpen())
 						 {
 							this.oAlertTextView.setText(this.oModelHelper.getText("TotalSHCannotExceed"));
@@ -3345,11 +3352,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 		    }
 		    var oBAQFileUploader = sap.ui.getCore().byId("idBAQFileUploader"+loop);
 		    var oTextViewAttachment = sap.ui.getCore().byId("idBAQAttachment"+oBAQFileUploader.data("idBAQFileUploader"+loop));
+		    var oPTextViewAttachment = sap.ui.getCore().byId("idPBAQAttachment"+oBAQFileUploader.data("idPBAQFileUploader"+loop));
 
 		    var oRequestFinishedDeferredBAQAnswersAttachmentNameDifferred= that.oModelHelper.readBAQSavedAttachments(that.oRef_id, oBAQFileUploader.data("idBAQFileUploader"+loop));
 			jQuery.when(oRequestFinishedDeferredBAQAnswersAttachmentNameDifferred).then(jQuery.proxy(function(oResponse) {
 				if(oTextViewAttachment){
 					oTextViewAttachment.setText(oResponse.data.FileName);
+					oPTextViewAttachment.setText(oResponse.data.FileName);
 				}
 			}, that));
 		}, 1000);		
@@ -3923,225 +3932,244 @@ sap.ui.controller("com.sagia.view.Overview", {
      		this.oLicenceInfoPreviewContentVBox.setVisible(true);
 
 			this.oPLILIBusinessType = this.getView().byId("idPLILIBusinessType");
-			this.oPLILIBusinessType.setText(this.oLILIBusinessTypeComboBox.getSelectedItem().getText());
-			
-			this.oPLILILicenseTypeTextView = this.getView().byId("idPLILILicenseTypeTextView");
-			this.oPLILILicenseTypeTextView.setText(this.oLicenseTypeInputText.getValue());
-			
-			if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== ""){
-	     		this.oLicenceInfoPreviewContentVBox.setVisible(false);
-			}else{
+			if(this.oLILIBusinessTypeComboBox.getSelectedKey() !== ""){
+				this.oPLILIBusinessType.setText(this.oLILIBusinessTypeComboBox.getSelectedItem().getText());
 				
-				if(!this.previewLILIViewsCreated)
-					{
-						this.previewLILIViewsCreated = true;
-						this.oPreviewLicenseInfoMAtrixLayout = this.getView().byId("idPreviewLicenseInfoMAtrixLayout");
-					    
-					    
-					    this.oClonedLILISectionComboBox = this.oLILISectionComboBox.clone();
-					    this.oClonedLILISectionComboBox.setSelectedKey( this.oLILISectionComboBox.getSelectedKey());
-					    this.oClonedLILISectionComboBox.setEnabled(false);
-					    
-					    this.oLILIPreviewSectionTextView = new sap.ui.commons.TextView({enabled : false});
-					    this.oLILIPreviewSectionTextView.setWidth("25rem");
-					    this.oLILIPreviewSectionTextView.setText(this.oLILISectionComboBox.getSelectedItem().getText());
-					    
-					    this.oClonedLILIDivisionComboBox = this.oLILIDivisionComboBox.clone();
-					    this.oClonedLILIDivisionComboBox.setSelectedKey( this.oLILIDivisionComboBox.getSelectedKey());
-					    this.oClonedLILIDivisionComboBox.setEnabled(false);
-					    
-					    this.oLILIPreviewDivisionTextView = new sap.ui.commons.TextView({enabled : false});
-					    this.oLILIPreviewDivisionTextView.setWidth("25rem");
-					    this.oLILIPreviewDivisionTextView.setText(this.oLILIDivisionComboBox.getSelectedItem().getText());
-					    
-					    
-					    
-					    this.oClonedLILIGroupComboBox = this.oLILIGroupComboBox.clone();
-					    /*this.oClonedLILIGroupComboBox.setSelectedKeys( this.oLILIGroupComboBox.getSelectedKeys());
-					    this.oClonedLILIGroupComboBox.setEnabled(false);*/		    
-					    
-					    var oTempPreviewGroupTextView = "";
-					    for(var i = 0 ; i < this.oClonedLILIGroupComboBox.getSelectedKeys().length; i++){
-					    	oTempPreviewGroupTextView += this.oLILIGroupComboBox.getSelectedItems()[i].getText()+" , ";
-					    }
-					    this.oLILIPreviewGroupTextView = new sap.ui.commons.TextView({enabled : false});
-					    this.oLILIPreviewGroupTextView.setWidth("25rem");
-					    this.oLILIPreviewGroupTextView.setText(oTempPreviewGroupTextView);
-					    
-					    this.oClonedLILIClassMultiComboBox = this.oLILIClassMultiComboBox.clone();
-					    /*this.oClonedLILIClassMultiComboBox.setSelectedKeys( this.oLILIClassMultiComboBox.getSelectedKeys());
-					    this.oClonedLILIClassMultiComboBox.setEnabled(false);*/
-					    var oTempPreviewClassTextViewText = "";
-					    for(var i = 0 ; i < this.oClonedLILIClassMultiComboBox.getSelectedKeys().length; i++){
-					    	oTempPreviewClassTextViewText += this.oLILIClassMultiComboBox.getSelectedItems()[i].getText()+" , ";
-					    }
-					    this.oLILIPreviewClassTextView = new sap.ui.commons.TextView({enabled : false});
-					    this.oLILIPreviewClassTextView.setWidth("25rem");
-					    this.oLILIPreviewClassTextView.setText(oTempPreviewClassTextViewText);
-					    
-					    /*this.oClonedLILILicenseActivityMultiComboBox = this.oLILILicenseActivityMultiComboBox.clone();
-					    this.oClonedLILILicenseActivityMultiComboBox.setSelectedKeys( this.oLILILicenseActivityMultiComboBox.getSelectedKeys());
-					    this.oClonedLILILicenseActivityMultiComboBox.setEnabled(false);*/
-					    this.oClonedLILILicenseActivityMultiComboBox = this.oLILILicenseActivityMultiComboBox.clone();
-					    /*this.oClonedLILIClassMultiComboBox.setSelectedKeys( this.oLILIClassMultiComboBox.getSelectedKeys());
-					    this.oClonedLILIClassMultiComboBox.setEnabled(false);*/
-					    var oTempPreviewLATextViewText = "";
-					    for(var i = 0 ; i < this.oClonedLILILicenseActivityMultiComboBox.getSelectedKeys().length; i++){
-					    	oTempPreviewLATextViewText += this.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText()+" , ";
-					    }
-					    this.oLILIPreviewLATextView = new sap.ui.commons.TextView({enabled : false});
-					    this.oLILIPreviewLATextView.setWidth("25rem");
-					    this.oLILIPreviewLATextView.setText(oTempPreviewLATextViewText);
-					 
-					    
-					    this.oLILILicenseActivityDescTextViewContent = new sap.ui.commons.TextView({enabled : false});
-					    this.oLILILicenseActivityDescTextViewContent.setWidth("25rem");
-					    this.oLILILicenseActivityDescTextViewContent.setText(this.oLILIActivityDescriptionTextArea.getValue());
-					    
-					    var oLILISectionTextView = new sap.ui.commons.TextView({
-							text : this.oModelHelper.getText("Section")
-							});
-					    
-					    var oLILIDivisionTextView = new sap.ui.commons.TextView({
-							text : this.oModelHelper.getText("Division")
-							});
-					    
-					    var oLILIGroupTextView = new sap.ui.commons.TextView({
-							text : this.oModelHelper.getText("Group")
-							});
-					    var oLILIClassTextView = new sap.ui.commons.TextView({
-							text : this.oModelHelper.getText("Class")
-							});
-					    
-					    var oLILILicenseActivityTextView = new sap.ui.commons.TextView({
-							text : this.oModelHelper.getText("LicenseActivity")
-							});
-					    var oLILILicenseActivityDescTextView = new sap.ui.commons.TextView({
-							text : this.oModelHelper.getText("ActivityDescription")
-							});
-					    
-					    var oRow0 = new sap.ui.commons.layout.MatrixLayoutRow();
-					    
-					    var oCell0 = new sap.ui.commons.layout.MatrixLayoutCell();
-						oCell0.addContent(oLILISectionTextView);
-						
-						var oCell1 = new sap.ui.commons.layout.MatrixLayoutCell();
-						//oCell1.addContent(this.oClonedLILISectionComboBox);
-						oCell1.addContent(this.oLILIPreviewSectionTextView);
-						
-						oRow0.addCell(oCell0);
-						oRow0.addCell(oCell1);	
-						
-						this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow0);
-	
-					    var oRow1 = new sap.ui.commons.layout.MatrixLayoutRow();
-					    
-						var oCell2 = new sap.ui.commons.layout.MatrixLayoutCell();
-						oCell2.addContent(oLILIDivisionTextView);
-						
-						var oCell3 = new sap.ui.commons.layout.MatrixLayoutCell();
-						//oCell3.addContent(this.oClonedLILIDivisionComboBox);
-						oCell3.addContent(this.oLILIPreviewDivisionTextView);
-						
-						oRow1.addCell(oCell2);
-						oRow1.addCell(oCell3);			
-						this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow1);
-						
-                        var oRow2 = new sap.ui.commons.layout.MatrixLayoutRow();
-					    
-						var oCell4 = new sap.ui.commons.layout.MatrixLayoutCell();
-						oCell4.addContent(oLILIGroupTextView);
-						
-						var oCell5 = new sap.ui.commons.layout.MatrixLayoutCell();
-						//oCell5.addContent(this.oClonedLILIGroupComboBox);
-						oCell5.addContent(this.oLILIPreviewGroupTextView);
-						
-						oRow2.addCell(oCell4);
-						oRow2.addCell(oCell5);			
-						this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow2);
-						
-                        var oRow3 = new sap.ui.commons.layout.MatrixLayoutRow();
-					    
-						var oCell6 = new sap.ui.commons.layout.MatrixLayoutCell();
-						oCell6.addContent(oLILIClassTextView);
-						
-						var oCell7 = new sap.ui.commons.layout.MatrixLayoutCell();
-						oCell7.addContent(this.oLILIPreviewClassTextView);
-						//oCell7.addContent(this.oClonedLILIClassMultiComboBox);
-						
-						oRow3.addCell(oCell6);
-						oRow3.addCell(oCell7);			
-						this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow3);
-						
-                        var oRow4 = new sap.ui.commons.layout.MatrixLayoutRow();
-					    
-						var oCell8 = new sap.ui.commons.layout.MatrixLayoutCell();
-						oCell8.addContent(oLILILicenseActivityTextView);
-						
-						var oCell9 = new sap.ui.commons.layout.MatrixLayoutCell();
-						oCell9.addContent(this.oLILIPreviewLATextView);
-						
-						oRow4.addCell(oCell8);
-						oRow4.addCell(oCell9);			
-						this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow4);
-						
-                        var oRow5 = new sap.ui.commons.layout.MatrixLayoutRow();
-					    
-						var oCell10 = new sap.ui.commons.layout.MatrixLayoutCell();
-						oCell10.addContent(oLILILicenseActivityDescTextView);
-						
-						var oCell11 = new sap.ui.commons.layout.MatrixLayoutCell();
-						oCell11.addContent(this.oLILILicenseActivityDescTextViewContent);
-						
-						oRow5.addCell(oCell10);
-						oRow5.addCell(oCell11);			
-						this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow5);
-						
-						
-					}else{
-					    //this.oClonedLILISectionComboBox.setSelectedKey( this.oLILISectionComboBox.getSelectedKey());
-					    //this.oClonedLILIDivisionComboBox.setSelectedKey( this.oLILIDivisionComboBox.getSelectedKey());
-					    //this.oClonedLILIGroupComboBox.setSelectedKeys( this.oLILIGroupComboBox.getSelectedKeys());
-						 if(this.oLILISectionComboBox.getSelectedKey() !== ""){
-							 this.oLILIPreviewSectionTextView.setText(this.oLILISectionComboBox.getSelectedItem().getText());							 
-						 }else{
-							 this.oLILIPreviewSectionTextView.setText("");
-						 }
-						 
-						 if(this.oLILIDivisionComboBox.getSelectedKey() !== ""){
-							 this.oLILIPreviewDivisionTextView.setText(this.oLILIDivisionComboBox.getSelectedItem().getText());							 
-						 }else{
-							 this.oLILIPreviewDivisionTextView.setText("");
-						 }
-						 
+				this.oPLILILicenseTypeTextView = this.getView().byId("idPLILILicenseTypeTextView");
+				this.oPLILILicenseTypeTextView.setText(this.oLicenseTypeInputText.getValue());
+				
+				if(this.oLILIBusinessTypeComboBox.getValue() !== "None of the above" && this.oLicenseTypeInputText.getValue() !== ""){
+		     		this.oLicenceInfoPreviewContentVBox.setVisible(false);
+				}else{
+					
+					if(!this.previewLILIViewsCreated)
+						{
+							this.previewLILIViewsCreated = true;
+							this.oPreviewLicenseInfoMAtrixLayout = this.getView().byId("idPreviewLicenseInfoMAtrixLayout");
+						    
+						    
+						    this.oClonedLILISectionComboBox = this.oLILISectionComboBox.clone();
+						    this.oClonedLILISectionComboBox.setSelectedKey( this.oLILISectionComboBox.getSelectedKey());
+						    this.oClonedLILISectionComboBox.setEnabled(false);
+						    
+						    this.oLILIPreviewSectionTextView = new sap.ui.commons.TextView({enabled : false});
+						    this.oLILIPreviewSectionTextView.setWidth("25rem");
+						    this.oLILIPreviewSectionTextView.setText(this.oLILISectionComboBox.getSelectedItem().getText());
+						    
+						    this.oClonedLILIDivisionComboBox = this.oLILIDivisionComboBox.clone();
+						    this.oClonedLILIDivisionComboBox.setSelectedKey( this.oLILIDivisionComboBox.getSelectedKey());
+						    this.oClonedLILIDivisionComboBox.setEnabled(false);
+						    
+						    this.oLILIPreviewDivisionTextView = new sap.ui.commons.TextView({enabled : false});
+						    this.oLILIPreviewDivisionTextView.setWidth("25rem");
+						    this.oLILIPreviewDivisionTextView.setText(this.oLILIDivisionComboBox.getSelectedItem().getText());
+						    
+						    
+						    
+						    this.oClonedLILIGroupComboBox = this.oLILIGroupComboBox.clone();
+						    /*this.oClonedLILIGroupComboBox.setSelectedKeys( this.oLILIGroupComboBox.getSelectedKeys());
+						    this.oClonedLILIGroupComboBox.setEnabled(false);*/		    
+						    
+						    var oTempPreviewGroupTextView = "";
+						    for(var i = 0 ; i < this.oClonedLILIGroupComboBox.getSelectedKeys().length; i++){
+						    	oTempPreviewGroupTextView += this.oLILIGroupComboBox.getSelectedItems()[i].getText()+" , ";
+						    }
+						    this.oLILIPreviewGroupTextView = new sap.ui.commons.TextView({enabled : false});
+						    this.oLILIPreviewGroupTextView.setWidth("25rem");
+						    this.oLILIPreviewGroupTextView.setText(oTempPreviewGroupTextView);
+						    
+						    this.oClonedLILIClassMultiComboBox = this.oLILIClassMultiComboBox.clone();
+						    /*this.oClonedLILIClassMultiComboBox.setSelectedKeys( this.oLILIClassMultiComboBox.getSelectedKeys());
+						    this.oClonedLILIClassMultiComboBox.setEnabled(false);*/
+						    var oTempPreviewClassTextViewText = "";
+						    for(var i = 0 ; i < this.oClonedLILIClassMultiComboBox.getSelectedKeys().length; i++){
+						    	oTempPreviewClassTextViewText += this.oLILIClassMultiComboBox.getSelectedItems()[i].getText()+" , ";
+						    }
+						    this.oLILIPreviewClassTextView = new sap.ui.commons.TextView({enabled : false});
+						    this.oLILIPreviewClassTextView.setWidth("25rem");
+						    this.oLILIPreviewClassTextView.setText(oTempPreviewClassTextViewText);
+						    
+						    /*this.oClonedLILILicenseActivityMultiComboBox = this.oLILILicenseActivityMultiComboBox.clone();
+						    this.oClonedLILILicenseActivityMultiComboBox.setSelectedKeys( this.oLILILicenseActivityMultiComboBox.getSelectedKeys());
+						    this.oClonedLILILicenseActivityMultiComboBox.setEnabled(false);*/
+						    this.oClonedLILILicenseActivityMultiComboBox = this.oLILILicenseActivityMultiComboBox.clone();
+						    /*this.oClonedLILIClassMultiComboBox.setSelectedKeys( this.oLILIClassMultiComboBox.getSelectedKeys());
+						    this.oClonedLILIClassMultiComboBox.setEnabled(false);*/
+						    var oTempPreviewLATextViewText = "";
+						    for(var i = 0 ; i < this.oClonedLILILicenseActivityMultiComboBox.getSelectedKeys().length; i++){
+						    	oTempPreviewLATextViewText += this.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText()+" , ";
+						    }
+						    this.oLILIPreviewLATextView = new sap.ui.commons.TextView({enabled : false});
+						    this.oLILIPreviewLATextView.setWidth("25rem");
+						    this.oLILIPreviewLATextView.setText(oTempPreviewLATextViewText);
 						 
 						    
-					    var oTempPreviewGroupTextView = "";
-					    for(var i = 0 ; i < this.oLILIGroupComboBox.getSelectedKeys().length; i++){
-					    	oTempPreviewGroupTextView += this.oLILIGroupComboBox.getSelectedItems()[i].getText()+" , ";
-					    }
-					    this.oLILIPreviewGroupTextView.setText(oTempPreviewGroupTextView);
-					    
-					    //this.oClonedLILIClassMultiComboBox.setSelectedKeys( this.oLILIClassMultiComboBox.getSelectedKeys());
-					    var oTempPreviewClassTextViewText = "";
-					    for(var i = 0 ; i < this.oLILIClassMultiComboBox.getSelectedKeys().length; i++){
-					    	oTempPreviewClassTextViewText += this.oLILIClassMultiComboBox.getSelectedItems()[i].getText()+" , ";
-					    }
-					    this.oLILIPreviewClassTextView.setText(oTempPreviewClassTextViewText);
-					    
-					    //this.oClonedLILILicenseActivityMultiComboBox.setSelectedKeys( this.oLILILicenseActivityMultiComboBox.getSelectedKeys());
-					    var oTempPreviewLATextViewText = "";
-					    for(var i = 0 ; i < this.oLILILicenseActivityMultiComboBox.getSelectedKeys().length; i++){
-					    	oTempPreviewLATextViewText += this.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText()+" , ";
-					    }
-					    this.oLILIPreviewLATextView.setText(oTempPreviewLATextViewText);
-					    
-					    this.oLILILicenseActivityDescTextViewContent.setText(this.oLILIActivityDescriptionTextArea.getValue());
+						    this.oLILILicenseActivityDescTextViewContent = new sap.ui.commons.TextView({enabled : false});
+						    this.oLILILicenseActivityDescTextViewContent.setWidth("25rem");
+						    this.oLILILicenseActivityDescTextViewContent.setText(this.oLILIActivityDescriptionTextArea.getValue());
+						    
+						    var oLILISectionTextView = new sap.ui.commons.TextView({
+								text : this.oModelHelper.getText("Section")
+								});
+						    
+						    var oLILIDivisionTextView = new sap.ui.commons.TextView({
+								text : this.oModelHelper.getText("Division")
+								});
+						    
+						    var oLILIGroupTextView = new sap.ui.commons.TextView({
+								text : this.oModelHelper.getText("Group")
+								});
+						    var oLILIClassTextView = new sap.ui.commons.TextView({
+								text : this.oModelHelper.getText("Class")
+								});
+						    
+						    var oLILILicenseActivityTextView = new sap.ui.commons.TextView({
+								text : this.oModelHelper.getText("LicenseActivity")
+								});
+						    var oLILILicenseActivityDescTextView = new sap.ui.commons.TextView({
+								text : this.oModelHelper.getText("ActivityDescription")
+								});
+						    
+						    var oRow0 = new sap.ui.commons.layout.MatrixLayoutRow();
+						    
+						    var oCell0 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell0.addContent(oLILISectionTextView);
+							
+							var oCell1 = new sap.ui.commons.layout.MatrixLayoutCell();
+							//oCell1.addContent(this.oClonedLILISectionComboBox);
+							oCell1.addContent(this.oLILIPreviewSectionTextView);
+							
+							oRow0.addCell(oCell0);
+							oRow0.addCell(oCell1);	
+							
+							this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow0);
+		
+						    var oRow1 = new sap.ui.commons.layout.MatrixLayoutRow();
+						    
+							var oCell2 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell2.addContent(oLILIDivisionTextView);
+							
+							var oCell3 = new sap.ui.commons.layout.MatrixLayoutCell();
+							//oCell3.addContent(this.oClonedLILIDivisionComboBox);
+							oCell3.addContent(this.oLILIPreviewDivisionTextView);
+							
+							oRow1.addCell(oCell2);
+							oRow1.addCell(oCell3);			
+							this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow1);
+							
+	                        var oRow2 = new sap.ui.commons.layout.MatrixLayoutRow();
+						    
+							var oCell4 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell4.addContent(oLILIGroupTextView);
+							
+							var oCell5 = new sap.ui.commons.layout.MatrixLayoutCell();
+							//oCell5.addContent(this.oClonedLILIGroupComboBox);
+							oCell5.addContent(this.oLILIPreviewGroupTextView);
+							
+							oRow2.addCell(oCell4);
+							oRow2.addCell(oCell5);			
+							this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow2);
+							
+	                        var oRow3 = new sap.ui.commons.layout.MatrixLayoutRow();
+						    
+							var oCell6 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell6.addContent(oLILIClassTextView);
+							
+							var oCell7 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell7.addContent(this.oLILIPreviewClassTextView);
+							//oCell7.addContent(this.oClonedLILIClassMultiComboBox);
+							
+							oRow3.addCell(oCell6);
+							oRow3.addCell(oCell7);			
+							this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow3);
+							
+	                        var oRow4 = new sap.ui.commons.layout.MatrixLayoutRow();
+						    
+							var oCell8 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell8.addContent(oLILILicenseActivityTextView);
+							
+							var oCell9 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell9.addContent(this.oLILIPreviewLATextView);
+							
+							oRow4.addCell(oCell8);
+							oRow4.addCell(oCell9);			
+							this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow4);
+							
+	                        var oRow5 = new sap.ui.commons.layout.MatrixLayoutRow();
+						    
+							var oCell10 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell10.addContent(oLILILicenseActivityDescTextView);
+							
+							var oCell11 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell11.addContent(this.oLILILicenseActivityDescTextViewContent);
+							
+							oRow5.addCell(oCell10);
+							oRow5.addCell(oCell11);			
+							this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow5);
+							
+							
+						}else{
+						    //this.oClonedLILISectionComboBox.setSelectedKey( this.oLILISectionComboBox.getSelectedKey());
+						    //this.oClonedLILIDivisionComboBox.setSelectedKey( this.oLILIDivisionComboBox.getSelectedKey());
+						    //this.oClonedLILIGroupComboBox.setSelectedKeys( this.oLILIGroupComboBox.getSelectedKeys());
+							 this.oLILIPreviewSectionTextView.setText("");
+							 this.oLILIPreviewDivisionTextView.setText("");
+							 this.oLILIPreviewGroupTextView.setText("");
+							 this.oLILIPreviewClassTextView.setText("");
+							 this.oLILIPreviewLATextView.setText("");
+							 this.oLILILicenseActivityDescTextViewContent.setText("");
 
-					}
-				
+ 
+							if(this.oLILISectionComboBox.getSelectedKey() !== ""){
+								 this.oLILIPreviewSectionTextView.setText(this.oLILISectionComboBox.getSelectedItem().getText());							 
+							 }else{
+								 this.oLILIPreviewSectionTextView.setText("");
+							 }
+							 
+							 if(this.oLILIDivisionComboBox.getSelectedKey() !== ""){
+								 this.oLILIPreviewDivisionTextView.setText(this.oLILIDivisionComboBox.getSelectedItem().getText());							 
+							 }else{
+								 this.oLILIPreviewDivisionTextView.setText("");
+							 }
+							 
+							 
+							    
+						    var oTempPreviewGroupTextView = "";
+						    for(var i = 0 ; i < this.oLILIGroupComboBox.getSelectedKeys().length; i++){
+						    	oTempPreviewGroupTextView += this.oLILIGroupComboBox.getSelectedItems()[i].getText()+" , ";
+						    }
+						    this.oLILIPreviewGroupTextView.setText(oTempPreviewGroupTextView);
+						    
+						    //this.oClonedLILIClassMultiComboBox.setSelectedKeys( this.oLILIClassMultiComboBox.getSelectedKeys());
+						    var oTempPreviewClassTextViewText = "";
+						    for(var i = 0 ; i < this.oLILIClassMultiComboBox.getSelectedKeys().length; i++){
+						    	oTempPreviewClassTextViewText += this.oLILIClassMultiComboBox.getSelectedItems()[i].getText()+" , ";
+						    }
+						    this.oLILIPreviewClassTextView.setText(oTempPreviewClassTextViewText);
+						    
+						    //this.oClonedLILILicenseActivityMultiComboBox.setSelectedKeys( this.oLILILicenseActivityMultiComboBox.getSelectedKeys());
+						    var oTempPreviewLATextViewText = "";
+						    for(var i = 0 ; i < this.oLILILicenseActivityMultiComboBox.getSelectedKeys().length; i++){
+						    	oTempPreviewLATextViewText += this.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText()+" , ";
+						    }
+						    this.oLILIPreviewLATextView.setText(oTempPreviewLATextViewText);
+						    
+						    this.oLILILicenseActivityDescTextViewContent.setText(this.oLILIActivityDescriptionTextArea.getValue());
+
+						}
+					
+				}
 			}
-			
+		
+			if(!this.oShareHolderNewShareHolderFragment){
+				if(!this.oShowAlertDialog.isOpen())
+				{
+				this.oAlertTextView.setText(this.oModelHelper.getText("ReviewPreviewShareHolderDetails"));
+				this.oShowAlertDialog.open();
+				
+				}
+				this. handleShareholderInfoButtonClick();
+			}
 		
 	},
 	getPreviewBAQ : function(){
@@ -4274,6 +4302,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 							this.oBAQPreviewMatrixLayout.addRow(oRow);
 							
 							if(attachmentFlag[l] === "X"){
+								
+								var oTextViewAttachment = new sap.ui.commons.TextView("idPBAQAttachment"+nodeID[l]);
+
+								oFileUploader.data("idPBAQFileUploader"+l,nodeID[l]);	
+								
 								var oRow2 = new sap.ui.commons.layout.MatrixLayoutRow();
 
 								var oCell3 = new sap.ui.commons.layout.MatrixLayoutCell();
@@ -4281,6 +4314,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 								oCell3.addContent(oFileUploader);
 								oRow2.addCell(oCell3);							
 								this.oBAQPreviewMatrixLayout.addRow(oRow2);
+								this.oBAQPreviewMatrixLayout.createRow( oTextViewAttachment );
+								
 							}
 							this.oTotalBAQQuestions++;
 						}			
@@ -4325,9 +4360,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 		if(oLanguage === "EN"){
 			var i18nModel =	com.sagia.common.ModelHelper.getI18nModel("i18n/messageBundle.properties","en");
 			this.getView().setModel(i18nModel, "i18n");
+			sap.ui.getCore().getConfiguration().setLanguage("en");
 		}else{
 			var i18nModel =	com.sagia.common.ModelHelper.getI18nModel("i18n/messageBundle.properties","ar");
 			this.getView().setModel(i18nModel, "i18n");
+			sap.ui.getCore().getConfiguration().setLanguage("ar");
+
 		}
 				
 		var oRequestFinishedDeferred = this.oModelHelper.readCountry(oLanguage);
@@ -4375,6 +4413,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 		jQuery.when(oRequestFinishedDeferredIndustrialProductsUOM).then(jQuery.proxy(function(oResponse) {			
 			this.oLILIIndustrialProductUOMComboBox.setModel(oResponse);
 		}, this));	
+		
+		if(sap.ui.getCore().getConfiguration().getRTL()){
+			
+			this._oBasicInfoButton.setSrc("common/mime/basicinfo_hover_ar.png");
+			this._oLicenseInfoButton.setSrc("common/mime/license_ar.png");
+			this._oShareholderInfoButton.setSrc("common/mime/shareholder_ar.png");
+			this._oPreviewInfoButton.setSrc("common/mime/preview_ar.png");
+			this._oTermsInfoButton.setSrc("common/mime/terms_ar.png");
+			this._oSubmitInfoButton.setSrc("common/mime/submit_ar.png");
+		}
 		
 		
 	},
@@ -5627,7 +5675,7 @@ handleRegisterUserButtonPress : function() {
 		this.oSaveImage.setVisible(true);
 		this.oSaveLink.setVisible(true);
 		
-		this._oBasicInfoButton.setSrc("common/mime/basicinfo_hover.png");
+		
 
 		this._oBasicInfoContent.setVisible(true);
 		this._oLicenseInfoContent.setVisible(false);
@@ -5638,11 +5686,23 @@ handleRegisterUserButtonPress : function() {
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("BasicInformationHTML"));
 		
-		this._oLicenseInfoButton.setSrc("common/mime/license.png");
-		this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
-		this._oPreviewInfoButton.setSrc("common/mime/preview.png");
-		this._oTermsInfoButton.setSrc("common/mime/terms.png");
-		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+		if(sap.ui.getCore().getConfiguration().getRTL()){
+			
+			this._oBasicInfoButton.setSrc("common/mime/basicinfo_hover_ar.png");
+			this._oLicenseInfoButton.setSrc("common/mime/license_ar.png");
+			this._oShareholderInfoButton.setSrc("common/mime/shareholder_ar.png");
+			this._oPreviewInfoButton.setSrc("common/mime/preview_ar.png");
+			this._oTermsInfoButton.setSrc("common/mime/terms_ar.png");
+			this._oSubmitInfoButton.setSrc("common/mime/submit_ar.png");
+		}else{
+			this._oBasicInfoButton.setSrc("common/mime/basicinfo_hover.png");
+			this._oLicenseInfoButton.setSrc("common/mime/license.png");
+			this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
+			this._oPreviewInfoButton.setSrc("common/mime/preview.png");
+			this._oTermsInfoButton.setSrc("common/mime/terms.png");
+			this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+		}
+		
 	},
 	handleLicenseButtonClick : function(){
 		
@@ -5665,18 +5725,27 @@ handleRegisterUserButtonPress : function() {
 		this._oShareHoldersInfoContent.setVisible(false);
 		this._oTermsAndConditionsInfoContent.setVisible(false);
 		this._oPreviewInfoContent.setVisible(false);
-		this._oLicenseInfoButton.setSrc("common/mime/license_hover.png");
 		
-		//this._oLicenseInfoButton.setSrc("common/mime/license.png");
-		this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
-		this._oPreviewInfoButton.setSrc("common/mime/preview.png");
-		this._oTermsInfoButton.setSrc("common/mime/terms.png");
-		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
-		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
 		
 		
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("LicenseInformationHTML"));
+		
+		if(sap.ui.getCore().getConfiguration().getRTL()){			
+			this._oLicenseInfoButton.setSrc("common/mime/license_hover_ar.png");
+			this._oShareholderInfoButton.setSrc("common/mime/shareholder_ar.png");
+			this._oPreviewInfoButton.setSrc("common/mime/preview_ar.png");
+			this._oTermsInfoButton.setSrc("common/mime/terms_ar.png");
+			this._oSubmitInfoButton.setSrc("common/mime/submit_ar.png");
+			this._oBasicInfoButton.setSrc("common/mime/basicinfo_ar.png");
+		}else{
+			this._oLicenseInfoButton.setSrc("common/mime/license_hover.png");
+			this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
+			this._oPreviewInfoButton.setSrc("common/mime/preview.png");
+			this._oTermsInfoButton.setSrc("common/mime/terms.png");
+			this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+			this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+		}
 		
 		
 	
@@ -5688,7 +5757,6 @@ handleRegisterUserButtonPress : function() {
 		this.oSaveLink.setVisible(false);
 		
 		that = this;
-		this._oShareholderInfoButton.setSrc("common/mime/shareholder_hover.png");
 		
 		this._oShareHoldersInfoContent.setVisible(true);
 		this._oLicenseInfoContent.setVisible(false);
@@ -5698,12 +5766,23 @@ handleRegisterUserButtonPress : function() {
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("ShareHolderInformationHTML"));
 		
-		this._oLicenseInfoButton.setSrc("common/mime/license.png");
-		//this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
-		this._oPreviewInfoButton.setSrc("common/mime/preview.png");
-		this._oTermsInfoButton.setSrc("common/mime/terms.png");
-		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
-		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+		
+		
+		if(sap.ui.getCore().getConfiguration().getRTL()){			
+			this._oShareholderInfoButton.setSrc("common/mime/shareholder_hover_ar.png");
+			this._oLicenseInfoButton.setSrc("common/mime/license_ar.png");
+			this._oPreviewInfoButton.setSrc("common/mime/preview_ar.png");
+			this._oTermsInfoButton.setSrc("common/mime/terms_ar.png");
+			this._oSubmitInfoButton.setSrc("common/mime/submit_ar.png");
+			this._oBasicInfoButton.setSrc("common/mime/basicinfo_ar.png");
+		}else{
+			this._oShareholderInfoButton.setSrc("common/mime/shareholder_hover.png");
+			this._oLicenseInfoButton.setSrc("common/mime/license.png");
+			this._oPreviewInfoButton.setSrc("common/mime/preview.png");
+			this._oTermsInfoButton.setSrc("common/mime/terms.png");
+			this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+			this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+		}
 		
 		if (!this.oShareHolderNewShareHolderFragment) {
 		this.oShareHolderNewShareHolderFragment = sap.ui.xmlfragment("com.sagia.view.fragments.ns_shareholderdetails", this.getView()
@@ -5772,6 +5851,7 @@ handleRegisterUserButtonPress : function() {
 		this.oNSHTotalAssetsInBalanceSheet13InputText = this.getView().byId("idNSHTotalAssetsInBalanceSheet13InputText");		
 		this.oNSHTotalAssetsInBalanceSheet14InputText = this.getView().byId("idNSHTotalAssetsInBalanceSheet14InputText");
 		this.oNSHCreateNSHTable = this.getView().byId("idNSHCreateNSHTable");
+		this.oExistingShareHolderTable = this.getView().byId("idESHTable");
 		
 		this.NSHPassPortAttachmentName = this.getView().byId("idNSHPassPortAttachmentName");
 		this.NSHCommercialAttachmentName = this.getView().byId("idNSHCommercialAttachmentName");
@@ -5840,12 +5920,23 @@ handleRegisterUserButtonPress : function() {
 			this._oShareHoldersInfoContent.setVisible(false);
 			this._oTermsAndConditionsInfoContent.setVisible(false);
 			this._oPreviewInfoContent.setVisible(false);
-			this._oLicenseInfoButton.setSrc("common/mime/license_hover.png");
-			this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
-			this._oPreviewInfoButton.setSrc("common/mime/preview.png");
-			this._oTermsInfoButton.setSrc("common/mime/terms.png");
-			this._oSubmitInfoButton.setSrc("common/mime/submit.png");
-			this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+			
+			if(sap.ui.getCore().getConfiguration().getRTL()){			
+				this._oLicenseInfoButton.setSrc("common/mime/license_hover_ar.png");
+				this._oShareholderInfoButton.setSrc("common/mime/shareholder_ar.png");
+				this._oPreviewInfoButton.setSrc("common/mime/preview_ar.png");
+				this._oTermsInfoButton.setSrc("common/mime/terms_ar.png");
+				this._oSubmitInfoButton.setSrc("common/mime/submit_ar.png");
+				this._oBasicInfoButton.setSrc("common/mime/basicinfo_ar.png");
+			}else{
+				this._oLicenseInfoButton.setSrc("common/mime/license_hover.png");
+				this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
+				this._oPreviewInfoButton.setSrc("common/mime/preview.png");
+				this._oTermsInfoButton.setSrc("common/mime/terms.png");
+				this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+				this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+			}
+			
 			
 			
 			this._oStagesHeading.setContent(this.oModelHelper
@@ -5865,12 +5956,23 @@ handleRegisterUserButtonPress : function() {
 			this._oShareHoldersInfoContent.setVisible(false);
 			this._oTermsAndConditionsInfoContent.setVisible(false);
 			this._oPreviewInfoContent.setVisible(false);
-			this._oLicenseInfoButton.setSrc("common/mime/license_hover.png");
-			this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
-			this._oPreviewInfoButton.setSrc("common/mime/preview.png");
-			this._oTermsInfoButton.setSrc("common/mime/terms.png");
-			this._oSubmitInfoButton.setSrc("common/mime/submit.png");
-			this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+			
+			if(sap.ui.getCore().getConfiguration().getRTL()){			
+				this._oLicenseInfoButton.setSrc("common/mime/license_hover_ar.png");
+				this._oShareholderInfoButton.setSrc("common/mime/shareholder_ar.png");
+				this._oPreviewInfoButton.setSrc("common/mime/preview_ar.png");
+				this._oTermsInfoButton.setSrc("common/mime/terms_ar.png");
+				this._oSubmitInfoButton.setSrc("common/mime/submit_ar.png");
+				this._oBasicInfoButton.setSrc("common/mime/basicinfo_ar.png");
+			}else{
+				this._oLicenseInfoButton.setSrc("common/mime/license_hover.png");
+				this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
+				this._oPreviewInfoButton.setSrc("common/mime/preview.png");
+				this._oTermsInfoButton.setSrc("common/mime/terms.png");
+				this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+				this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+			}
+			
 			
 			
 			this._oStagesHeading.setContent(this.oModelHelper
@@ -5906,11 +6008,11 @@ handleRegisterUserButtonPress : function() {
 		
 	},
 	loadSavedShareHolderDetails : function(){
-		if (!this.oExistingShareHolderTable) {
-			this.oExistingShareHolderTable = this.getView().byId("idESHTable");
+		/*if (!this.oExistingShareHolderTable) {
 			
 			
-		}
+			
+		}*/
 		//*******Read Exisitng share holders
 	    var thatContext = this;
 	    
@@ -6128,7 +6230,6 @@ handleRegisterUserButtonPress : function() {
 		
 		this.getPreviewBAQ();
 		
-		this._oPreviewInfoButton.setSrc("common/mime/preview_hover.png");
 		this._oPreviewInfoContent.setVisible(true);
 		this._oShareHoldersInfoContent.setVisible(false);
 		this._oLicenseInfoContent.setVisible(false);
@@ -6137,12 +6238,23 @@ handleRegisterUserButtonPress : function() {
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("PreviewInformationHTML"));
 		
-		this._oLicenseInfoButton.setSrc("common/mime/license.png");
-		this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
-		//this._oPreviewInfoButton.setSrc("common/mime/preview.png");
-		this._oTermsInfoButton.setSrc("common/mime/terms.png");
-		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
-		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+		
+		
+		if(sap.ui.getCore().getConfiguration().getRTL()){			
+			this._oPreviewInfoButton.setSrc("common/mime/preview_hover_ar.png");
+			this._oLicenseInfoButton.setSrc("common/mime/license_ar.png");
+			this._oShareholderInfoButton.setSrc("common/mime/shareholder_ar.png");
+			this._oTermsInfoButton.setSrc("common/mime/terms_ar.png");
+			this._oSubmitInfoButton.setSrc("common/mime/submit_ar.png");
+			this._oBasicInfoButton.setSrc("common/mime/basicinfo_ar.png");
+		}else{
+			this._oPreviewInfoButton.setSrc("common/mime/preview_hover.png");
+			this._oLicenseInfoButton.setSrc("common/mime/license.png");
+			this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
+			this._oTermsInfoButton.setSrc("common/mime/terms.png");
+			this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+			this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+		}
 		
 		
 		this.oValidationHelper.validateBasicInfo(this);
@@ -6153,9 +6265,9 @@ handleRegisterUserButtonPress : function() {
 		this.oPreviewESHCreateNSHTable = this.getView().byId("idPreviewESHCreateNSHTable");
 		this.oPreviewESHCreateNSHTable.unbindItems();
 
-		this.oPreviewESHCreateNSHTable.setModel(this.oESHCreateNewDataJSONData);
+		this.oPreviewESHCreateNSHTable.setModel(this.oSavedSHDataJSONData);
 		
-		this.oPreviewESHCreateNSHTable.bindItems("/ESHCollection",new sap.m.ColumnListItem({
+		this.oPreviewESHCreateNSHTable.bindItems("/SavedShareHolderCollection",new sap.m.ColumnListItem({
 	        cells : [ new sap.ui.commons.TextView({
 	          text : "{Bpno}", enabled : false
 	        }),new sap.ui.commons.TextView({
@@ -6194,17 +6306,26 @@ handleRegisterUserButtonPress : function() {
 		this._oTermsAndConditionsInfoContent.setVisible(true);
 		this._oPreviewInfoContent.setVisible(false);
 		
-		this._oTermsInfoButton.setSrc("common/mime/terms_hover.png");
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("TermsnCondInformationHTML"));
 		
 		
-		this._oLicenseInfoButton.setSrc("common/mime/license.png");
-		this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
-		this._oPreviewInfoButton.setSrc("common/mime/preview.png");
-		//this._oTermsInfoButton.setSrc("common/mime/terms.png");
-		this._oSubmitInfoButton.setSrc("common/mime/submit.png");
-		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+		
+		if(sap.ui.getCore().getConfiguration().getRTL()){			
+			this._oTermsInfoButton.setSrc("common/mime/terms_hover_ar.png");
+			this._oLicenseInfoButton.setSrc("common/mime/license_ar.png");
+			this._oShareholderInfoButton.setSrc("common/mime/shareholder_ar.png");
+			this._oPreviewInfoButton.setSrc("common/mime/preview_ar.png");
+			this._oSubmitInfoButton.setSrc("common/mime/submit_ar.png");
+			this._oBasicInfoButton.setSrc("common/mime/basicinfo_ar.png");
+		}else{
+			this._oTermsInfoButton.setSrc("common/mime/terms_hover.png");
+			this._oLicenseInfoButton.setSrc("common/mime/license.png");
+			this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
+			this._oPreviewInfoButton.setSrc("common/mime/preview.png");
+			this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+			this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+		}
 		
 		if (!this.oTermsAndConditionsFragment) {
 			this.oTermsAndConditionsFragment = sap.ui.xmlfragment("com.sagia.view.fragments.terms_and_conditions", this.getView()
@@ -6237,18 +6358,29 @@ handleRegisterUserButtonPress : function() {
 		
 		that = this;
 		
-		this._oSubmitInfoButton.setSrc("common/mime/submit_hover.png");
 		this._oStagesHeading.setContent(this.oModelHelper
 				.getText("SubmitInformationHTML"));
 		
-		this._oLicenseInfoButton.setSrc("common/mime/license.png");
-		this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
-		this._oPreviewInfoButton.setSrc("common/mime/preview.png");
-		this._oTermsInfoButton.setSrc("common/mime/terms.png");
-		//this._oSubmitInfoButton.setSrc("common/mime/submit.png");
-		this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+		
+		
 		this.oSumOfESHPercentage = 0;
 		this.oSumOfNSHPercentage = 0;
+		
+		if(sap.ui.getCore().getConfiguration().getRTL()){			
+			this._oSubmitInfoButton.setSrc("common/mime/submit_hover_ar.png");
+			this._oLicenseInfoButton.setSrc("common/mime/license_ar.png");
+			this._oShareholderInfoButton.setSrc("common/mime/shareholder_ar.png");
+			this._oPreviewInfoButton.setSrc("common/mime/preview_ar.png");
+			this._oTermsInfoButton.setSrc("common/mime/terms_ar.png");
+			this._oBasicInfoButton.setSrc("common/mime/basicinfo_ar.png");
+		}else{
+			this._oSubmitInfoButton.setSrc("common/mime/submit_hover.png");
+			this._oLicenseInfoButton.setSrc("common/mime/license.png");
+			this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
+			this._oPreviewInfoButton.setSrc("common/mime/preview.png");
+			this._oTermsInfoButton.setSrc("common/mime/terms.png");
+			this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+		}
 
 
 		/*for(var i=0; i < this.oESHCreateNewData.ESHCollection.length; i++){
@@ -6282,7 +6414,6 @@ handleRegisterUserButtonPress : function() {
 			
 			}
 			this. handleShareholderInfoButtonClick();
-            //this.handleShareholderInfoButtonClick();
 		}else if(this.oGlobalTotalShareHolderPercentage === 100){
 			this.oTermsAndConditionsCheckBox = this.getView().byId("idTermsAndConditionsCheckBox");
 

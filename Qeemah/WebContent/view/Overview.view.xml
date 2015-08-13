@@ -114,14 +114,14 @@
 										
 										<sap.ui.commons.layout:MatrixLayoutCell
 											vAlign="Middle">
-											<SearchField width="12em" />
+											<!-- <SearchField width="12em" /> -->
 										</sap.ui.commons.layout:MatrixLayoutCell>
 										
 										<sap.ui.commons.layout:MatrixLayoutCell
 											vAlign="Middle">
-											<ComboBox width="10em">
+											<!-- <ComboBox width="10em">
 												<sap.ui.core:Item />
-											</ComboBox>
+											</ComboBox> -->
 										</sap.ui.commons.layout:MatrixLayoutCell>
 										
 									</sap.ui.commons.layout:cells>
