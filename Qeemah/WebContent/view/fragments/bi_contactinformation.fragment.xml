@@ -396,13 +396,22 @@
 									<sap.ui.commons.layout:MatrixLayoutRow>
 										<sap.ui.commons.layout:cells>
 											<sap.ui.commons.layout:MatrixLayoutCell
-												colSpan="2" hAlign="Center">
+												 hAlign="End">
 												<sap.ui.commons.layout:content>
 													<!-- <Button style="Accept" text="{i18n>BackToBAQ}"
 														press="" icon="sap-icon://navigation-up-arrow">
 													</Button> -->
 													<Button style="Accept" text="{i18n>Previous}" id="idContactInfoPreviousButton"
 									press="handleBICIPreviousButtonPress" icon="sap-icon://navigation-left-arrow">
+								</Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											
+											<sap.ui.commons.layout:MatrixLayoutCell
+												 hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<Button style="Accept" text="{i18n>Next}" id="idContactInfoNextButton"
+									press="handleBICINextButtonPress" icon="sap-icon://navigation-right-arrow">
 								</Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>

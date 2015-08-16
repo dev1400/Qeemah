@@ -13,10 +13,10 @@
        <!-- <sap.ui.commons:TextView text="{i18n>PleaseNoteYourInvestorId}"></sap.ui.commons:TextView>
         <sap.ui.commons:TextView id="idLeadIDTextView" ></sap.ui.commons:TextView> -->
         <sap.ui.commons:TextView id="idLanguageAlertFragmentTextView" text="{i18n>Choosepreferredlanguage}"></sap.ui.commons:TextView>
-        <Select id="idLanguageSelect" change="handleAlertLanguageSelectionChange">
+        <!-- <Select id="idLanguageSelect" change="handleAlertLanguageSelectionChange">
 				<sap.ui.core:ListItem key="EN" text="{i18n>English}"/>
 				<sap.ui.core:ListItem key="AR" text="{i18n>Arabic}"/>
-		</Select>
+		</Select> -->
 	  </VBox>	 
     </content>
     <beginButton>

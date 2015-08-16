@@ -20,6 +20,13 @@
 		</html:a>
 	<!-- 	<Link text="{i18n>DownloadIE}" href="https://www.microsoft.com/en-in/download/internet-explorer.aspx" target="_blank"></Link>
 	 -->	 </html:Marquee>
+	 
+	     <html:div align="right">
+	     <Select id="idLanguageSelect" change="handleLanguageSelectionChange">
+				<sap.ui.core:ListItem key="EN" text="{i18n>English}"/>
+				<sap.ui.core:ListItem key="AR" text="{i18n>Arabic}"/>
+	     </Select>
+		 </html:div>
 		
 			<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
 				<html:br />
@@ -202,7 +209,7 @@
 											<Image src="common/mime/terms.png" id="idTermsInfoButton"
 												press="handleTermsInfoButtonClick" />
 											<Image src="common/mime/submit.png" id="idSubmitInfoButton"
-												press="handleSubmitInfoButtonClick" />
+												press="handleSubmitInfoButtonMainClick" />
 										</VBox>
 
 

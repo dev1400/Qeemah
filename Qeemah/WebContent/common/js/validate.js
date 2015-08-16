@@ -1,6 +1,248 @@
 jQuery.sap.declare("com.sagia.common.js.validate");
 
 com.sagia.common.js.validate = {
+		signInWorker : function(thisContext, oResponse){
+			
+			//this.handleSaveLinkPress(this.oLanguageSelect.getSelectedKey());
+			//this.getBAQ();	
+			
+			sap.m.MessageToast.show(thisContext.oModelHelper
+					.getText("SignInSuccessful"));
+			
+			
+			thisContext.oRef_id = oResponse.Ref_id;
+
+			thisContext._oidMainPageContent.setVisible(false);
+			thisContext._oTopHeaderVBox.setVisible(true);
+			thisContext._oidLicenseButtonsHBox.setVisible(true);
+			
+			thisContext.oBasicInfoTab =  thisContext.getView().byId("idBasicInfoTab");
+			thisContext.oLicenseInfoTab =  thisContext.getView().byId("idLicenseInfoTab");
+			
+			thisContext.oLicenseInfoTab.setSelectedIndex(1);
+			thisContext.oLicenseInfoTab.setSelectedIndex(0);
+			
+			
+			thisContext._oidRegionComboBox = thisContext.getView().byId("idRegionComboBox");		
+			var oRegionComboBoxFilter = new sap.ui.model.Filter("Bezei_reg", sap.ui.model.FilterOperator.NE, "");
+			var oRegionComboBoxKeyFilter = new sap.ui.model.Filter("Bland_reg", sap.ui.model.FilterOperator.NE, "");
+			thisContext._oidRegionComboBox.getBinding("items").filter([oRegionComboBoxFilter, oRegionComboBoxKeyFilter]);
+			
+			thisContext._oBIILegalStatusCombobox = thisContext.getView().byId("idBILegalStatusComboBox");
+			var oBIILegalStatusFilter = new sap.ui.model.Filter("Textlong", sap.ui.model.FilterOperator.NE, "");
+			var oBIILegalStatusKeyFilter = new sap.ui.model.Filter("Source", sap.ui.model.FilterOperator.NE, "");
+			thisContext._oBIILegalStatusCombobox.getBinding("items").filter([oBIILegalStatusFilter,oBIILegalStatusKeyFilter]);
+			
+			thisContext._oBICINationalityCombobox = thisContext.getView().byId("idCINationalityComboBox");
+			var oBICINationalityFilter = new sap.ui.model.Filter("Natio50", sap.ui.model.FilterOperator.NE, "");
+			var oBICINationalityKeyFilter = new sap.ui.model.Filter("Land1", sap.ui.model.FilterOperator.NE, "");
+			thisContext._oBICINationalityCombobox.getBinding("items").filter([oBICINationalityFilter,oBICINationalityKeyFilter]);
+			
+			
+			thisContext._oBICICountryCombobox = thisContext.getView().byId("idCICountryComboBox");
+			var oBICICountryFilter = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.NE, "");
+			var oBICICountryKeyFilter = new sap.ui.model.Filter("Land1", sap.ui.model.FilterOperator.NE, "");
+			thisContext._oBICICountryCombobox.getBinding("items").filter([oBICICountryFilter,oBICICountryKeyFilter]);
+			
+			var oLILIIndustrialProductComboBoxDescFilter = new sap.ui.model.Filter("Desc", sap.ui.model.FilterOperator.NE, "");
+			var oLILIIndustrialProductComboBoxPcodeFilter = new sap.ui.model.Filter("Pcode", sap.ui.model.FilterOperator.NE, "");
+			thisContext.oLILIIndustrialProductComboBox.getBinding("items").filter([oLILIIndustrialProductComboBoxDescFilter,oLILIIndustrialProductComboBoxPcodeFilter]);
+			
+			
+			
+			thisContext._oBICityComboBox = thisContext.getView().byId("idCityComboBox");
+			
+			thisContext.oBIOICommMethodComboBox = thisContext.getView().byId("idBIOICommMethodComboBox");
+			
+			
+			
+			thisContext.oBIOIOrganizationName = thisContext.getView().byId("idBIOIOrganizationName");
+			thisContext.oBIOIMultiNationalCompanyCombobox = thisContext.getView().byId("idBIOIMultiNationalCompanyCombobox");
+			thisContext.oBIOIEmailInputText = thisContext.getView().byId("idBIOIEmailInputText");
+			thisContext.oBIOILaborSizeInputText = thisContext.getView().byId("idBIOILaborSizeInputText");
+			thisContext.oBIOICapitalInputText = thisContext.getView().byId("idBIOICapitalInputText");
+			thisContext.oBIOITelephoneCountryCodeInputText = thisContext.getView().byId("idBIOITelephoneCountryCodeInputText");
+			thisContext.oBIOITelephoneInputText = thisContext.getView().byId("idBIOITelephoneInputText");
+			thisContext.oBIOIMobilephoneCountryCodeInputText = thisContext.getView().byId("idBIOIMobilephoneCountryCodeInputText");
+			thisContext.oBIOIMobilephoneInputText = thisContext.getView().byId("idBIOIMobilephoneInputText");
+			thisContext.oBIOIFaxCountryCodeInputText = thisContext.getView().byId("idBIOIFaxCountryCodeInputText");
+			thisContext.oBIOIFaxInputText = thisContext.getView().byId("idBIOIFaxInputText");
+			thisContext.oBIOIWebSiteInputText = thisContext.getView().byId("idBIOIWebSiteInputText");
+			
+			thisContext.oBICIFirstNameInputText = thisContext.getView().byId("idBICIFirstNameInputText");
+			thisContext.oBICILastNameInputText = thisContext.getView().byId("idBICILastNameInputText");
+			thisContext.oBICICityInputText = thisContext.getView().byId("idBICICityInputText");
+			thisContext.oBICIGenderComboBox = thisContext.getView().byId("idBICIGenderComboBox");
+			thisContext.oBICIPOBoxInputText = thisContext.getView().byId("idBICIPOBoxInputText");
+			thisContext.oBICITelephoneCountryCodeInputText = thisContext.getView().byId("idBICITelephoneCountryCodeInputText");
+			thisContext.oBICITelephoneInputText = thisContext.getView().byId("idBICITelephoneInputText");
+			thisContext.oBICIPostalCodeInputText = thisContext.getView().byId("idBICIPostalCodeInputText");
+			thisContext.oBICIMobileCountryCodeInputText = thisContext.getView().byId("idBICIMobileCountryCodeInputText");
+			thisContext.oBICIMobilePhoneInputText = thisContext.getView().byId("idBICIMobilePhoneInputText");
+			thisContext.oBICICommMethodComboBox = thisContext.getView().byId("idBICICommMethodComboBox");
+			thisContext.oBICIFaxCountryCodeInputText = thisContext.getView().byId("idBICIFaxCountryCodeInputText");
+			thisContext.oBICIFaxInputText = thisContext.getView().byId("idBICIFaxInputText");
+			thisContext.oBICIRoleInputText = thisContext.getView().byId("idBICIRoleInputText");
+			thisContext.oBICIEmailInputText = thisContext.getView().byId("idBICIEmailInputText");
+			thisContext.oBICIStreet = thisContext.getView().byId("idBICIStreetInputText");
+			thisContext.oBICIPASSAttachmentName = thisContext.getView().byId("idBICIPASSAttachmentName");
+			thisContext.oBICIPASSAttachmentNameTextView = thisContext.getView().byId("idBICIPASSAttachmentNameTextView");
+			thisContext.oBICIPOAAttachmentName = thisContext.getView().byId("idBICIPOAAttachmentName");
+			thisContext.oBICIPOAAttachmentNameTextView = thisContext.getView().byId("idBICIPOAAttachmentNameTextView");
+			
+			
+			thisContext.oPreviewBICIPOAAttachmentName = thisContext.getView().byId("idPreviewBICIPOAAttachmentName");
+			thisContext.oPreviewBICIPASSAttachmentName = thisContext.getView().byId("idPreviewBICIPASSAttachmentName");
+			
+			
+			
+			
+			thisContext.oSaveImage = thisContext.getView().byId("idSaveImage");
+			thisContext.oSaveLink = thisContext.getView().byId("idSaveLink");
+
+			
+			var oRequestFinishedDeferredBIOIChild = thisContext.oModelHelper.readBIOI(thisContext.oRef_id);
+
+			jQuery.when(oRequestFinishedDeferredBIOIChild).then(jQuery.proxy(function(oResponse) {
+				if(oResponse.data.Return !== "Record does not exist"){
+					thisContext.oBIOIOrganizationName.setValue(oResponse.data.OrgName);
+					thisContext._oidRegionComboBox.setSelectedKey(oResponse.data.Region);
+					thisContext._oBIILegalStatusCombobox.setSelectedKey(oResponse.data.LegalStatus);//.setSelectedItem(vItem);
+					thisContext._oBICityComboBox.setSelectedKey(oResponse.data.City);//.setSelectedItem(vItem);
+					thisContext.oBIOIMultiNationalCompanyCombobox.setSelectedKey(oResponse.data.MncComp);//.setSelectedItem(vItem);
+					thisContext.oBIOIEmailInputText.setValue(oResponse.data.Email);
+					thisContext.oBIOILaborSizeInputText.setValue(Number(oResponse.data.LbrSize).toString());
+					thisContext.oBIOICommMethodComboBox.setSelectedKey(oResponse.data.CommMtd);//.setSelectedItem(vItem);
+					thisContext.oBIOICapitalInputText.setValue(Number(oResponse.data.Capital).toString());
+					thisContext.oBIOIWebSiteInputText.setValue(oResponse.data.Website);
+					thisContext.oBIOITelephoneInputText.setValue(oResponse.data.Telephone);  
+					thisContext.oBIOIMobilephoneInputText.setValue(oResponse.data.Mobile);
+					thisContext.oBIOIFaxInputText.setValue(Number(oResponse.data.Fax).toString());
+					thisContext.oBIOITelephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Tele);
+					thisContext.oBIOIFaxCountryCodeInputText.setValue(oResponse.data.Ccode_Fax);
+					thisContext.oBIOIMobilephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Mobile);					
+					
+					thisContext._oidRegionComboBox.fireSelectionChange();
+					thisContext.oBIOICapitalInputText.fireChange();
+					thisContext.oBIOILaborSizeInputText.fireChange();
+					
+					thisContext.oRecordExists = true;
+					}
+				
+			}, thisContext));		
+			
+			var oRequestFinishedDeferredBICIChild = thisContext.oModelHelper.readBICI(thisContext.oRef_id);
+
+			jQuery.when(oRequestFinishedDeferredBICIChild).then(jQuery.proxy(function(oResponse) {
+				if(oResponse.data.Return !== "Data does not exist"){
+					thisContext.oBICIFirstNameInputText.setValue(oResponse.data.NameFirst);
+					thisContext.oBICILastNameInputText.setValue(oResponse.data.NameLast);
+					thisContext.oBICICityInputText.setValue(oResponse.data.City);
+					thisContext.oBICIGenderComboBox.setSelectedKey(oResponse.data.Gender);
+					thisContext.oBICIPOBoxInputText.setValue(oResponse.data.PoBox);
+					thisContext.oBICITelephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Tele);
+					thisContext.oBICITelephoneInputText.setValue(oResponse.data.Telephone);
+					thisContext.oBICIPostalCodeInputText.setValue(oResponse.data.PostalCode);
+					thisContext.oBICIMobileCountryCodeInputText.setValue(oResponse.data.Ccode_Mobile);
+					thisContext.oBICIMobilePhoneInputText.setValue(oResponse.data.Mobile);
+					thisContext.oBICICommMethodComboBox.setSelectedKey(oResponse.data.CommMtd);
+					thisContext.oBICIFaxCountryCodeInputText.setValue(oResponse.data.Ccode_Fax);
+					thisContext.oBICIFaxInputText.setValue(Number(oResponse.data.Fax).toString());
+					thisContext.oBICIRoleInputText.setSelectedKey(oResponse.data.Role);
+					thisContext.oBICIEmailInputText.setValue(oResponse.data.Email);
+					thisContext._oBICICountryCombobox.setSelectedKey(oResponse.data.Country);
+					thisContext._oBICINationalityCombobox.setSelectedKey(oResponse.data.Nationality);
+					thisContext.oBICIStreet.setValue(oResponse.data.Street);
+					
+					
+					thisContext.oContactInfoRecordExists = true;
+					}
+			}, thisContext));	
+			
+			
+			var oRequestFinishedDeferredBAQAnswersReadChild = thisContext.oModelHelper.readBAQSavedAnswers(thisContext.oRef_id);
+
+			jQuery.when(oRequestFinishedDeferredBAQAnswersReadChild).then(jQuery.proxy(function(oResponse) {
+				
+				if(oResponse.data.results[0].Return !== "No Records"){						
+					
+					for(var i=0; i < thisContext.oTotalBAQQuestions; i++){
+						 for (j=0; j < thisContext.oTotalBAQQuestions; j++){
+							 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+j);
+							 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+j);
+
+							 if(oResponse.data.results[i] !== undefined){
+								 if(oBAQuestion.data("idBAQuestion"+j) === oResponse.data.results[i].NodeGuid){
+									 
+									 oBAQAnswer.setSelectedItem(oBAQAnswer.getItemByKey(oResponse.data.results[i].Atxtlg)); 
+								 }	
+							 }									 		 
+							 
+						 }									
+					}
+					thisContext.oBAQExists = true;						
+					}else{
+						thisContext.oBAQExists = false;	
+					}
+			}, thisContext));
+			
+			thisContext.oGroupMultiSelectionTextView = thisContext.getView().byId("idGroupMultiSelectionTextView");
+			thisContext.oClassMultiSelectionTextView = thisContext.getView().byId("idClassMultiSelectionTextView");
+
+			
+			var oRequestFinishedDeferredISICRecord = thisContext.oModelHelper.checkISICAvailability(thisContext.oRef_id);
+
+			jQuery.when(oRequestFinishedDeferredISICRecord).then(jQuery.proxy(function(oResponse) {
+				
+				thisContext.handleLicenseInfoTabStripSelect();
+									
+				if(oResponse.data.results[0].Return === "No Records"){					
+					
+					thisContext.oISICUnAvailable = true;						
+					
+					}
+			}, thisContext));
+			
+			var getarray = [];
+	        getarray.push(oRequestFinishedDeferredBIOIChild);
+	        getarray.push(oRequestFinishedDeferredBICIChild);
+	        getarray.push(oRequestFinishedDeferredBAQAnswersReadChild);
+	        getarray.push(oRequestFinishedDeferredISICRecord);				        
+				        
+	        jQuery.when.apply($, getarray).done(function () {				        	 							        						        	
+	        	thisContext.readBICIPASSFileAttachemnts();
+	        	thisContext.readBICIPOAFileAttachemnts();
+	        	thisContext.readBAQFileAttachments();	
+				
+				
+	        });				
+			
+			/*var oRequestFinishedDeferredFinancialAnswersReadChild; //= this.oModelHelper.readFinancialSavedAnswers(this.oRef_id);
+
+			jQuery.when(oRequestFinishedDeferredFinancialAnswersReadChild).then(jQuery.proxy(function(oResponse) {
+				
+				if(oResponse.data.results[0].Return !== "No Records"){	
+					
+					//console.log(oResponse);
+					
+					for(var i=0; i < this.oTotalBAQQuestions; i++){
+						 for (j=0; j < this.oTotalBAQQuestions; j++){
+							 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+j);
+							 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+j);
+							
+							 if(oBAQuestion.data("idBAQuestion"+j) === oResponse.data.results[i].NodeGuid){
+								 
+								 oBAQAnswer.setSelectedItem(oBAQAnswer.getItemByKey(oResponse.data.results[i].Atxtlg)); 
+							 }			 
+							 
+						 }									
+					}
+					this.oFinancialAnswersExists = true;						
+					}
+			}, this));
+			*/
+			
+		},
 		validateNewShareHolder : function(thisContext){
 			thisContext.oNewShareHolderValidation = true;
 			

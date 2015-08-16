@@ -1501,7 +1501,7 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Read BAQ
 	 */
-	readBAQ : function() {
+	readBAQ : function(oLanguage) {
 		
 		
 		this.openBusyDialog();
@@ -1512,7 +1512,7 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
         this.oBAQODataModel.setUseBatch(false);
 
-		this.oBAQODataModel.read("SurveyQue?Lang=%27E%27&Flag=%27B%27&SurveyID=%27QUEEMAH_BUS_PLAN%27", {
+		this.oBAQODataModel.read("SurveyQue?Lang='"+oLanguage+"'&Flag=%27B%27&SurveyID=%27QUEEMAH_BUS_PLAN%27", {
 			success : function(oData, response) {
 				that.closeBusyDialog();
 
@@ -1534,13 +1534,13 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Read Financial Questions
 	 */
-	readFinancialQuestions : function() {
+	readFinancialQuestions : function(oLanguage) {
 		this.openBusyDialog();
 		var that = this;
 		var oRequestFinishedDeferred = jQuery.Deferred();
         this.oBAQODataModel.setUseBatch(false);
 
-		this.oBAQODataModel.read("SurveyQue?Lang=%27E%27&Flag=%27F%27&SurveyID=%27QUEEMAH_BUS_PLAN%27", {
+		this.oBAQODataModel.read("SurveyQue?Lang='"+oLanguage+"'&Flag=%27F%27&SurveyID=%27QUEEMAH_BUS_PLAN%27", {
 			success : function(oData, response) {
 				that.closeBusyDialog();
 
@@ -1557,14 +1557,14 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Read Activity Questions
 	 */
-	readActivityQuestions : function() {
+	readActivityQuestions : function(oLanguage) {
 		this.openBusyDialog();
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
         this.oBAQODataModel.setUseBatch(false);
 
-		this.oBAQODataModel.read("SurveyQue?Lang='E'&Flag='A'&SurveyID='QUEEMAH_GENERAL_QUESTIONS'", {
+		this.oBAQODataModel.read("SurveyQue?Lang='"+oLanguage+"'&Flag='A'&SurveyID='QUEEMAH_GENERAL_QUESTIONS'", {
 			success : function(oData, response) {
 				that.closeBusyDialog();
 
@@ -1581,14 +1581,14 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Read Activity Q Answer Answer based on ID
 	 */
-	readAQAnswers : function(oNodeGuid, oSurveyID) {
+	readAQAnswers : function(oNodeGuid, oSurveyID, oLanguage) {
 		this.openBusyDialog();
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
         this.oBAQODataModel.setUseBatch(false);
 
-		this.oBAQODataModel.read("SurveyAns?Lang='E'&Flag='A'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
+		this.oBAQODataModel.read("SurveyAns?Lang='"+oLanguage+"'&Flag='A'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
 				that.closeBusyDialog();
 
@@ -1605,14 +1605,14 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Read Experience Questions
 	 */
-	readExperienceQuestions : function(oSurveyID) {
+	readExperienceQuestions : function(oSurveyID, oLanguage) {
 		this.openBusyDialog();
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
         this.oBAQODataModel.setUseBatch(false);
 
-		this.oBAQODataModel.read("SurveyQue?Lang='E'&Flag='E'&SurveyID='"+oSurveyID+"'", {
+		this.oBAQODataModel.read("SurveyQue?Lang='"+oLanguage+"'&Flag='E'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
 				that.closeBusyDialog();
 
@@ -1629,14 +1629,14 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Read Experience Q Answer Answer based on ID
 	 */
-	readEQAnswers : function(oNodeGuid, oSurveyID) {
+	readEQAnswers : function(oNodeGuid, oSurveyID, oLanguage) {
 		this.openBusyDialog();
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
         this.oBAQODataModel.setUseBatch(false);
 
-		this.oBAQODataModel.read("SurveyAns?Lang='E'&Flag='E'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
+		this.oBAQODataModel.read("SurveyAns?Lang='"+oLanguage+"'&Flag='E'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
 				that.closeBusyDialog();
 
@@ -1653,7 +1653,7 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Read BAQ Answer based on ID
 	 */
-	readBAQAnswer : function(oNodeGuid, oSurveyID) {
+	readBAQAnswer : function(oNodeGuid, oSurveyID, oLanguage) {
 		// Open busy dialog
 		this.openBusyDialog();
 		
@@ -1664,7 +1664,7 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
         this.oBAQODataModel.setUseBatch(false);
 
-		this.oBAQODataModel.read("SurveyAns?Lang='E'&Flag='B'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
+		this.oBAQODataModel.read("SurveyAns?Lang='"+oLanguage+"'&Flag='B'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
 				that.closeBusyDialog();
 

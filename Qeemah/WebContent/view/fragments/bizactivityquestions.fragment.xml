@@ -378,6 +378,28 @@
 	</sap.ui.commons.layout:rows> -->
 	
 	</sap.ui.commons.layout:MatrixLayout>
+	
+	<VBox alignItems="Center" justifyContent="Center">
+	
+	<sap.ui.commons.layout:MatrixLayout>
+	
+		<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												hAlign="Center">
+												<sap.ui.commons.layout:content>
+												<Button style="Accept" text="{i18n>Next}" id="idLIBAQInfoNextButton"
+									press="handleBAQNextButtonPress" icon="sap-icon://navigation-right-arrow" iconFirst="false"></Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+	</sap.ui.commons.layout:MatrixLayout>
+	</VBox>
+	
+	
 </ScrollContainer>
     
 <!-- </ScrollContainer> -->

@@ -286,7 +286,7 @@
 															 width="8em" enabled="false" id="idbi_TCountryCode"/>
 													 -->
 													 <Input type="Text" 
-															 width="8em" id="idBIOITelephoneCountryCodeInputText" /> 		 
+															value="966"  enabled="false" width="8em" id="idBIOITelephoneCountryCodeInputText" /> 		 
 													 
 														<Input type="Text" 
 															width="17em" id="idBIOITelephoneInputText"/>
@@ -326,7 +326,7 @@
 														<!-- <Input type="Number" placeholder="{CCModel>/CountryCodeCollection/TelNo}"
 															enabled="false" width="8em" /> -->
 															<Input type="Text" 
-															 width="8em" id="idBIOIMobilephoneCountryCodeInputText"/>
+															 value="966"  enabled="false" width="8em" id="idBIOIMobilephoneCountryCodeInputText"/>
 													
 														<Input type="Text"
 															width="17em" id="idBIOIMobilephoneInputText"/>
@@ -363,7 +363,7 @@
 													<HBox justifyContent="Start" alignItems="Center">
 														<!-- <Input type="Number" placeholder="{CCModel>/CountryCodeCollection/TelNo}"
 															enabled="false" width="8em" /> -->
-														 <Input type="Text" 
+														 <Input type="Text"  value="966"  enabled="false"
 															 width="8em" id="idBIOIFaxCountryCodeInputText"/>
 													
 														<Input type="Text" width="17em" id="idBIOIFaxInputText"/>
