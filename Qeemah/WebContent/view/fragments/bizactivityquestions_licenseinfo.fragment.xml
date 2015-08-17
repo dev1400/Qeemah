@@ -4,382 +4,340 @@
 	xmlns:sap.ui.commons="sap.ui.commons"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns:html="http://www.w3.org/1999/xhtml">
-	<!-- <ScrollContainer
-    height="40rem"
-    width="65rem"
-    vertical="true" > -->
-   
-    <ScrollContainer
-    
-    width="69rem"
-    vertical="true" ><!-- height="39.88rem" -->
-     <html:br/>
-    <VBox  alignItems="Center">
-	<!-- Child license activity Q start -->
-	
-							<sap.ui.commons.layout:MatrixLayout
-								layoutFixed="false" widths="10rem">
-								
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
-										
-											<sap.ui.commons:TextView text="{i18n>BusinessType}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell >
-										<ComboBox width="25em" items="{/LILIBusinessTypeCollection}" id="idLILIBusinessTypeComboBox" selectionChange="handleLILIBusinessTypeComboBoxSelectionChange">
-										     <sap.ui.core:ListItem key="{Flag}" text="{IsicDescription}" id="idLILIBusinessTypeComboBoxitem"/>
-										</ComboBox>
-									
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell >
-										
-											<sap.ui.commons:TextView text="{i18n>LicenseType}"></sap.ui.commons:TextView>
-											<!-- <sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView> -->
-										
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell >
-										  <Input type="Text" id="idLicenseTypeInputText" enabled="false"></Input>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-									</sap.ui.commons.layout:MatrixLayout>
-									
-	<VBox id="LicenceInfoContentVBox" visible="false" alignItems="Center">
-									
-	<sap.ui.commons.layout:MatrixLayout
-		layoutFixed="false" widths="10rem">
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons:TextView text="{i18n>Section}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em" items="{/LILISectionCollection}" id="idLILISectionComboBox" selectionChange="handleLILISectionSelectionComboBox">
-										     <sap.ui.core:ListItem key="{IsicSection}" text="{IsicDescription}" id="idLILISectionComboBoxitem"/>
-										</ComboBox>
-									
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										
-											<sap.ui.commons:TextView text="{i18n>Division}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox width="25em"  change="handleLILIDivisionComboBoxChange" items="{/LILIDivisionCollection}" id="idLILIDivisionComboBox" selectionChange="handleLILIDivisionSelectionComboBox">
-										     <sap.ui.core:ListItem key="{IsicDivision}" text="{IsicDescription}" id="idLILIDivisionComboBoxListitem"/>
-										</ComboBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow>
-								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
-									
-								</sap.ui.commons.layout:MatrixLayoutRow> -->
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										
-											<sap.ui.commons:TextView text="{i18n>Group}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<MultiComboBox change="handleLILIGropuMultiComboBoxChange" selectionChange="handleLILIGropuMultiSelectionComboBoxChange"  id="idLILIGroupComboBox"
-										selectionFinish="handleSelectionFinish"    items="{/LILIGroupCollection}" width="25em">
-                                        <sap.ui.core:ListItem key="{IsicGroup}" text="{IsicDescription}" id="idLILIGroupComboBoxListitem"/>
-                                     </MultiComboBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-									
-									<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-									  <sap.ui.commons:TextView id="idGroupMultiSelectionTextView" enabled="false" width="18em"></sap.ui.commons:TextView>									
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-									
-									
-									<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										
-											<sap.ui.commons:TextView text="{i18n>Class}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<MultiComboBox change="handleLILIClassMultiComboBoxChange" selectionChange="handleLILIClassMultiSelectionComboBoxChange"  id="idLILIClassMultiComboBox"
-										selectionFinish="handleSelectionFinish"    items="{/LILIClassCollection}" width="25em">
-                                        <sap.ui.core:ListItem key="{IsicClass}" text="{IsicDescription}" id="idLILIClassMultiComboBoxListitem"/> <!-- key="{IsicClass}"  -->
-                                     </MultiComboBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow>
-								
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-									  <sap.ui.commons:TextView id="idClassMultiSelectionTextView" width="18em" enabled="false"></sap.ui.commons:TextView>									
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-									
-									
-							<!-- 	<sap.ui.commons.layout:MatrixLayoutRow>
-									
-								</sap.ui.commons.layout:MatrixLayoutRow> -->
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										
-											<sap.ui.commons:TextView text="{i18n>LicenseActivity}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<MultiComboBox selectionChange="handleLILILicenseActivityMultiSelectionComboBoxChange"  id="idLILILicenseActivityMultiComboBox"
-										selectionFinish="handleSelectionFinish"    items="{/LILILicenseActivityCollection}" width="25em">
-                                        <sap.ui.core:ListItem key="{Act}" text="{IsicDescription}" id="idLILILicenseActivityMultiComboBoxListitem"/> <!-- key="{IsicClass}"  -->
-                                     </MultiComboBox>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons:TextView text="{i18n>ActivityDescription}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:content>
-											<TextArea width="25em"  id="idLILIActivityDescriptionTextArea"/>
-										</sap.ui.commons.layout:content>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow>
-		
-	</sap.ui.commons.layout:MatrixLayout>
-	<!-- <VBox><Button style="Accept" text="{i18n>Add}" press="" >
-							</Button><html:br/></VBox> -->
-	
-	<!-- <VBox alignItems="Center"> -->					
-	<!-- <sap.ui.commons.layout:MatrixLayout
-		layoutFixed="false">
-		
-		<sap.ui.commons.layout:MatrixLayoutRow>
-			<sap.ui.commons.layout:cells>
-				<sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons:TextView text="{i18n>Product}"></sap.ui.commons:TextView>
-				</sap.ui.commons.layout:MatrixLayoutCell>
-				<sap.ui.commons.layout:MatrixLayoutCell>				
-					<Select width="20em" id="idLILIProductComboBox">
-						<sap.ui.core:Item />
-					</Select>
-				</sap.ui.commons.layout:MatrixLayoutCell>
-			</sap.ui.commons.layout:cells>
-		</sap.ui.commons.layout:MatrixLayoutRow>
-		<sap.ui.commons.layout:MatrixLayoutRow>
-			<sap.ui.commons.layout:cells>
-				<sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons:TextView text="{i18n>Quantity}"></sap.ui.commons:TextView>
-				</sap.ui.commons.layout:MatrixLayoutCell>
-				<sap.ui.commons.layout:MatrixLayoutCell>				
-					<Input type="Text" id="idLILIProductQuantityInputText"></Input>
-				</sap.ui.commons.layout:MatrixLayoutCell>
-			</sap.ui.commons.layout:cells>
-		</sap.ui.commons.layout:MatrixLayoutRow>
-		<sap.ui.commons.layout:MatrixLayoutRow>
-			<sap.ui.commons.layout:cells>
-				<sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}"></sap.ui.commons:TextView>
-				</sap.ui.commons.layout:MatrixLayoutCell>
-				<sap.ui.commons.layout:MatrixLayoutCell>				
-					<Select width="20em" id="idLILIProductUOMComboBox">
-						<sap.ui.core:Item />
-					</Select>
-				</sap.ui.commons.layout:MatrixLayoutCell>
-			</sap.ui.commons.layout:cells>
-		</sap.ui.commons.layout:MatrixLayoutRow>
-		<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell colSpan="2" hAlign="Center">
-										<Button style="Accept" text="{i18n>Add}" press="handleLILIAddProductButtonPress" />
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									
-								</sap.ui.commons.layout:MatrixLayoutRow>
-								
-		</sap.ui.commons.layout:MatrixLayout> -->
 
-					<html:br/>
-						<!-- -->
-				
-	
 
-	</VBox>
-	
-			<VBox id="idProductsTableVBox" visible="false" alignItems="Center">
-		
+
+	<VBox alignItems="Center">
+		<!-- Child license activity Q start -->
+
 		<sap.ui.commons.layout:MatrixLayout
-		layoutFixed="false">
+			layoutFixed="true" columns="2" widths="30%,50%">
+
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutCell
+					hAlign="End">
+
+					<sap.ui.commons:TextView text="{i18n>BusinessType}"></sap.ui.commons:TextView>
+					<sap.ui.commons:TextView text="*"
+						class="textcolorred"></sap.ui.commons:TextView>
+
+				</sap.ui.commons.layout:MatrixLayoutCell>
+				<sap.ui.commons.layout:MatrixLayoutCell>
+					<ComboBox width="50%" items="{/LILIBusinessTypeCollection}"
+						id="idLILIBusinessTypeComboBox" selectionChange="handleLILIBusinessTypeComboBoxSelectionChange">
+						<sap.ui.core:ListItem key="{Flag}" text="{IsicDescription}"
+							id="idLILIBusinessTypeComboBoxitem" />
+					</ComboBox>
+
+				</sap.ui.commons.layout:MatrixLayoutCell>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+
+					<sap.ui.commons:TextView text="{i18n>LicenseType}"></sap.ui.commons:TextView>
 		
-		<sap.ui.commons.layout:MatrixLayoutRow>
-			<sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutCell>
 				<sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons:TextView text="{i18n>Product}"></sap.ui.commons:TextView>
-					<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-					
+					<Input type="Text" width="50%" id="idLicenseTypeInputText" enabled="false"></Input>
 				</sap.ui.commons.layout:MatrixLayoutCell>
-				<sap.ui.commons.layout:MatrixLayoutCell>					
-					<ComboBox width="25em" items="{/IndustrialProductsCollection}" id="idLILIIndustrialProductComboBox" selectionChange="handleLILIIndustrialProductsComboBoxSelectionChange">
-						<sap.ui.core:ListItem key="{Pcode}" text="{Desc}" id="idLILIIndustrialProductComboBoxitem"/>
-					</ComboBox>
-				</sap.ui.commons.layout:MatrixLayoutCell>
-			</sap.ui.commons.layout:cells>
-		</sap.ui.commons.layout:MatrixLayoutRow>
-		<sap.ui.commons.layout:MatrixLayoutRow>
-			<sap.ui.commons.layout:cells>
-				<sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons:TextView text="{i18n>Quantity}"></sap.ui.commons:TextView>
-																<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-					
-				</sap.ui.commons.layout:MatrixLayoutCell>
-				<sap.ui.commons.layout:MatrixLayoutCell>				
-					<Input type="Text" id="idLILIProductQuantityInputText"></Input>
-				</sap.ui.commons.layout:MatrixLayoutCell>
-			</sap.ui.commons.layout:cells>
-		</sap.ui.commons.layout:MatrixLayoutRow>
-		<sap.ui.commons.layout:MatrixLayoutRow>
-			<sap.ui.commons.layout:cells>
-				<sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}"></sap.ui.commons:TextView>
-																<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-					
-				</sap.ui.commons.layout:MatrixLayoutCell>
-				<sap.ui.commons.layout:MatrixLayoutCell>				
-					<ComboBox width="25em" items="{/IndustrialProductsCollectionUOM}" id="idLILIIndustrialProductUOMComboBox" selectionChange="handleLILIIndustrialProductsUOMComboBoxSelectionChange">
-						<sap.ui.core:ListItem key="{Msehi}" text="{Msehl}" id="idLILIIndustrialProductUOMComboBoxitem"/>
-					</ComboBox>
-				</sap.ui.commons.layout:MatrixLayoutCell>
-			</sap.ui.commons.layout:cells>
-		</sap.ui.commons.layout:MatrixLayoutRow>
-		<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell colSpan="2" hAlign="Center">
-										<Button style="Accept" text="{i18n>Add}" press="handleLILIAddProductButtonPress" />
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									
-								</sap.ui.commons.layout:MatrixLayoutRow>
-								
+			</sap.ui.commons.layout:MatrixLayoutRow>
 		</sap.ui.commons.layout:MatrixLayout>
-		     <html:br/>
-		
-		<Table  mode="Delete" delete="handleLILIProductDeleteButtonPress" width="66rem"  id="idLILIProductsTable">
-								<columns>
-									<!-- <Column width="2em" id="idLILIProductsTableColumn1">
-										<sap.ui.commons:TextView text="#" class="textcolorwhite"></sap.ui.commons:TextView>
-									</Column> -->
-									<Column width="5em">
-										<sap.ui.commons:TextView text="{i18n>ProductCode}" class="textcolorwhite"></sap.ui.commons:TextView>
-									</Column>
-									<Column width="5em">
-										
-										<sap.ui.commons:TextView text="{i18n>ProductName}" class="textcolorwhite"></sap.ui.commons:TextView>
-									</Column>
-									<Column width="5em">
-										<sap.ui.commons:TextView text="{i18n>Quantity}" class="textcolorwhite"></sap.ui.commons:TextView>
-									</Column>
-									<Column width="10em">
-										<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}" class="textcolorwhite"></sap.ui.commons:TextView>
-									</Column>									
-								</columns>
-							</Table> 
+
+		<VBox id="LicenceInfoContentVBox" visible="false" alignItems="Center">
+
+			<sap.ui.commons.layout:MatrixLayout
+				layoutFixed="true" columns="2" widths="30%,50%">
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+						<sap.ui.commons:TextView text="{i18n>Section}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*"
+							class="textcolorred"></sap.ui.commons:TextView>
+
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<ComboBox width="50%" items="{/LILISectionCollection}"
+							id="idLILISectionComboBox" selectionChange="handleLILISectionSelectionComboBox">
+							<sap.ui.core:ListItem key="{IsicSection}"
+								text="{IsicDescription}" id="idLILISectionComboBoxitem" />
+						</ComboBox>
+
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+
+						<sap.ui.commons:TextView text="{i18n>Division}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*"
+							class="textcolorred"></sap.ui.commons:TextView>
+
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<ComboBox width="50%" change="handleLILIDivisionComboBoxChange"
+							items="{/LILIDivisionCollection}" id="idLILIDivisionComboBox"
+							selectionChange="handleLILIDivisionSelectionComboBox">
+							<sap.ui.core:ListItem key="{IsicDivision}"
+								text="{IsicDescription}" id="idLILIDivisionComboBoxListitem" />
+						</ComboBox>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+
+						<sap.ui.commons:TextView text="{i18n>Group}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*"
+							class="textcolorred"></sap.ui.commons:TextView>
+
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<MultiComboBox change="handleLILIGropuMultiComboBoxChange"
+							selectionChange="handleLILIGropuMultiSelectionComboBoxChange" id="idLILIGroupComboBox"
+							selectionFinish="handleSelectionFinish" items="{/LILIGroupCollection}"
+							width="50%">
+							<sap.ui.core:ListItem key="{IsicGroup}"
+								text="{IsicDescription}" id="idLILIGroupComboBoxListitem" />
+						</MultiComboBox>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons:TextView id="idGroupMultiSelectionTextView"
+							enabled="false" width="18em"></sap.ui.commons:TextView>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+
+						<sap.ui.commons:TextView text="{i18n>Class}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*"
+							class="textcolorred"></sap.ui.commons:TextView>
+
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<MultiComboBox change="handleLILIClassMultiComboBoxChange"
+							selectionChange="handleLILIClassMultiSelectionComboBoxChange" id="idLILIClassMultiComboBox"
+							selectionFinish="handleSelectionFinish" items="{/LILIClassCollection}"
+							width="50%">
+							<sap.ui.core:ListItem key="{IsicClass}"
+								text="{IsicDescription}" id="idLILIClassMultiComboBoxListitem" /> <!-- key="{IsicClass}" -->
+						</MultiComboBox>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons:TextView id="idClassMultiSelectionTextView"
+							width="20%" enabled="false"></sap.ui.commons:TextView>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+
+						<sap.ui.commons:TextView text="{i18n>LicenseActivity}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*"
+							class="textcolorred"></sap.ui.commons:TextView>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<MultiComboBox
+							selectionChange="handleLILILicenseActivityMultiSelectionComboBoxChange"
+							id="idLILILicenseActivityMultiComboBox" selectionFinish="handleSelectionFinish"
+							items="{/LILILicenseActivityCollection}" width="50%">
+							<sap.ui.core:ListItem key="{Act}"
+								text="{IsicDescription}" id="idLILILicenseActivityMultiComboBoxListitem" /> <!-- key="{IsicClass}" -->
+						</MultiComboBox>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+						<sap.ui.commons:TextView text="{i18n>ActivityDescription}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*"
+							class="textcolorred"></sap.ui.commons:TextView>
+
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<TextArea width="50%" id="idLILIActivityDescriptionTextArea" />
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+			</sap.ui.commons.layout:MatrixLayout>
+			
+			<html:br />
 		</VBox>
-		
-		
-			<sap.ui.commons.layout:MatrixLayout>
-	
-		<sap.ui.commons.layout:rows>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-										<sap.ui.commons.layout:cells>
-											<sap.ui.commons.layout:MatrixLayoutCell
-												colSpan="2" hAlign="Center">
-												<sap.ui.commons.layout:content>
-													<!-- <Button style="Accept" text="{i18n>BackToBAQ}"
-														press="" icon="sap-icon://navigation-up-arrow">
-													</Button> -->
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-										</sap.ui.commons.layout:cells>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-								</sap.ui.commons.layout:rows>
+
+		<VBox id="idProductsTableVBox" visible="false" alignItems="Center">
+
+			<sap.ui.commons.layout:MatrixLayout
+				layoutFixed="true" columns="2" widths="30%,50%">
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+							<sap.ui.commons:TextView text="{i18n>Product}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView>
+
+						</sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:MatrixLayoutCell>
+							<ComboBox width="50%" items="{/IndustrialProductsCollection}"
+								id="idLILIIndustrialProductComboBox" selectionChange="handleLILIIndustrialProductsComboBoxSelectionChange">
+								<sap.ui.core:ListItem key="{Pcode}" text="{Desc}"
+									id="idLILIIndustrialProductComboBoxitem" />
+							</ComboBox>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+							<sap.ui.commons:TextView text="{i18n>Quantity}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView>
+
+						</sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:MatrixLayoutCell>
+							<Input width="50%" type="Text" id="idLILIProductQuantityInputText"></Input>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+							<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView>
+
+						</sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:MatrixLayoutCell>
+							<ComboBox width="50%" items="{/IndustrialProductsCollectionUOM}"
+								id="idLILIIndustrialProductUOMComboBox" selectionChange="handleLILIIndustrialProductsUOMComboBoxSelectionChange">
+								<sap.ui.core:ListItem key="{Msehi}" text="{Msehl}"
+									id="idLILIIndustrialProductUOMComboBoxitem" />
+							</ComboBox>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						colSpan="2" hAlign="Center">
+						<Button style="Accept" text="{i18n>Add}"
+							press="handleLILIAddProductButtonPress" />
+					</sap.ui.commons.layout:MatrixLayoutCell>
+
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+			</sap.ui.commons.layout:MatrixLayout>
+			<html:br />
+
+			<Table mode="Delete" delete="handleLILIProductDeleteButtonPress"
+				width="100%" id="idLILIProductsTable">
+				<columns>
+					
+					<Column width="5%">
+						<sap.ui.commons:TextView text="{i18n>ProductCode}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
+					</Column>
+					<Column width="5%">
+
+						<sap.ui.commons:TextView text="{i18n>ProductName}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
+					</Column>
+					<Column width="5%">
+						<sap.ui.commons:TextView text="{i18n>Quantity}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
+					</Column>
+					<Column width="10%">
+						<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
+					</Column>
+				</columns>
+			</Table>
+		</VBox>
+
+
+		<sap.ui.commons.layout:MatrixLayout>
+
+			<sap.ui.commons.layout:rows>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							colSpan="2" hAlign="Center">
+							<sap.ui.commons.layout:content>
 								
-								<sap.ui.commons.layout:rows>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-										<sap.ui.commons.layout:cells>
-											<sap.ui.commons.layout:MatrixLayoutCell
-												hAlign="Center">
-												<sap.ui.commons.layout:content>
-												<!-- <Button style="Accept" text="{i18n>Previous}" id="idLicenseInfoPreviousButton"
-									press="" icon="sap-icon://navigation-left-arrow">
-								</Button> -->
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell
-												hAlign="Center">
-												<sap.ui.commons.layout:content>
-												<!-- <Button style="Accept" text="{i18n>Next}" id="idLicenseInfoNextButton"
-									press="" icon="sap-icon://navigation-right-arrow" iconFirst="false"></Button> -->
-												</sap.ui.commons.layout:content>
-												</sap.ui.commons.layout:MatrixLayoutCell>
-										</sap.ui.commons.layout:cells>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-									
-								</sap.ui.commons.layout:rows>
-	
-	</sap.ui.commons.layout:MatrixLayout>
-	
-	
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:rows>
+
+			<sap.ui.commons.layout:rows>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							hAlign="Center">
+							<sap.ui.commons.layout:content>
+								
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							hAlign="Center">
+							<sap.ui.commons.layout:content>
 							
-							
-							<sap.ui.commons.layout:MatrixLayout>
-	
-		<sap.ui.commons.layout:rows>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-										<sap.ui.commons.layout:cells>
-											<sap.ui.commons.layout:MatrixLayoutCell
-												 hAlign="End">
-												<sap.ui.commons.layout:content>
-													<Button style="Accept" text="{i18n>Previous}" id="idLicenseInfoPreviousButton"
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+			</sap.ui.commons.layout:rows>
+
+		</sap.ui.commons.layout:MatrixLayout>
+
+
+
+
+		<sap.ui.commons.layout:MatrixLayout>
+
+			<sap.ui.commons.layout:rows>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							hAlign="End">
+							<sap.ui.commons.layout:content>
+								<Button style="Accept" text="{i18n>Previous}" id="idLicenseInfoPreviousButton"
 									press="handleLILIPreviousButtonPress" icon="sap-icon://navigation-left-arrow">
 								</Button>
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											
-											<sap.ui.commons.layout:MatrixLayoutCell
-												 hAlign="Begin">
-												<sap.ui.commons.layout:content>
-													<Button style="Accept" text="{i18n>Next}" id="idLicenseInfoNextButton"
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+
+						<sap.ui.commons.layout:MatrixLayoutCell
+							hAlign="Begin">
+							<sap.ui.commons.layout:content>
+								<Button style="Accept" text="{i18n>Next}" id="idLicenseInfoNextButton"
 									press="handleLILINextButtonPress" icon="sap-icon://navigation-right-arrow">
 								</Button>
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-										</sap.ui.commons.layout:cells>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-								</sap.ui.commons.layout:rows>
-								
-							
-	
-	</sap.ui.commons.layout:MatrixLayout>
-	
-							
-							
-	
-	
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:rows>
+
+
+
+		</sap.ui.commons.layout:MatrixLayout>
+
+
+
+
+
 	</VBox>
-	<!-- Business Activity Questions End -->
-	<!-- Child license activity Q end -->
-	<!-- <VBox alignItems="Center">
-	<Button style="Accept" text="{i18n>Next}" press="" >
-							</Button>
-	</VBox> -->
-	<!-- </ScrollContainer> -->
-	<!-- </VBox> -->
-	</ScrollContainer>
+	
 </sap.ui.core:FragmentDefinition>

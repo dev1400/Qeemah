@@ -2093,9 +2093,9 @@ com.sagia.common.ModelHelper = {
 				
 				
 				
-				setTimeout(function() {
+				//setTimeout(function() {
 					oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
-				},2000);
+				//},2000);
 				
 				//that.closeBusyDialog();
 			},
@@ -2127,9 +2127,9 @@ com.sagia.common.ModelHelper = {
 				that.oCountryCollectionModel.setData({LILIGroupCollection:oData.results});		
 				
 				
-				setTimeout(function() {
+				//setTimeout(function() {
 					oRequestFinishedDeferred.resolve(that.oCountryCollectionModel);
-				},2000);
+				//},2000);
 				
 				//that.closeBusyDialog();
 			},
@@ -2178,9 +2178,9 @@ com.sagia.common.ModelHelper = {
 			 that.oLILIClassCollection.setData(oLocalLILIClassCollection);
 				
 			
-			 setTimeout(function() {
+			 //setTimeout(function() {
 				 oRequestFinishedDeferred.resolve(that.oLILIClassCollection);
-				},2000);
+				//},2000);
      	 }, 
      	 function(oError) {
      		console.log("E"+oError);
@@ -2232,9 +2232,9 @@ com.sagia.common.ModelHelper = {
 			 that.oLILILicenceActivityCollection.setData(oLocalLILILicenseActivityCollection);
 				
 			 //oRequestFinishedDeferred.resolve(that.oLILILicenceActivityCollection);
-			 setTimeout(function() {
+			 //setTimeout(function() {
 				 oRequestFinishedDeferred.resolve(that.oLILILicenceActivityCollection);
-				},2000);
+				//},2000);
      	 }, 
      	 function(oError) {
      		console.log("E"+oError);
@@ -2283,9 +2283,9 @@ com.sagia.common.ModelHelper = {
 				
 			 //oRequestFinishedDeferred.resolve(oLocalLILILicenseTypeCollection);
 			 
-			 setTimeout(function() {
+			 //setTimeout(function() {
 				 oRequestFinishedDeferred.resolve(oLocalLILILicenseTypeCollection);
-				},2000);
+				//},2000);
 			 
 			 
      	 }, 

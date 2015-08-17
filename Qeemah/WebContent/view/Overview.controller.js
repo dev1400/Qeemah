@@ -79,7 +79,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oOrgTabFilter = this.getView().byId("idIconTabFilterOrg");
 		this._oTermsAndConditionsInfoContent = this.getView().byId("idTermsAndConditionsInfoContent");
 		this._oPreviewInfoContent = this.getView().byId("idPreviewInfoContent");
-		this._oLI_BAQ_1_to_6 = this.getView().byId("idLI_BAQ_1_to_6MAtrixLayoutz");
 		this._oLI_BAQ_7_to_10 = this.getView().byId("idLI_BAQ_7_to_10MatrixLayout");
 		
 			
@@ -6102,11 +6101,7 @@ handleRegisterUserButtonPress : function() {
 			}, this));			
 	},
 	handlePreviewInfoButtonClick : function(){
-		//sap.ui.getCore().getUIArea(sap.ui.getCore().byId("idLI_BAQ_1_to_6MAtrixLayoutz")).lock();
-		//this.oBAQMatrixLayout.lock();
-		//sap.ui.getCore().getUIArea(sap.ui.getCore().byId("__xmlview0--idBAQDIV")).lock();
-		//sap.ui.getCore().getUIArea("content").lock();
-		//this.handleLicenseButtonClick();
+		
 		this.oSaveImage.setVisible(false);
 		this.oSaveLink.setVisible(false);
 		

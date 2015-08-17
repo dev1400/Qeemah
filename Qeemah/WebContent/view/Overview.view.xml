@@ -183,22 +183,14 @@
 			</HBox>
 
 		</VBox>
-
-
-
 		<!-- Left hand buttons start -->
 
-
-
-
 		<VBox id="idLicenseButtonsHBox" visible="false" width="100%">
-
-
 
 			<HBox>
 
 				<sap.ui.commons.layout:MatrixLayout
-					layoutFixed="false">
+					layoutFixed="true" columns="2" widths="15%,60%">
 					<sap.ui.commons.layout:rows>
 						<sap.ui.commons.layout:MatrixLayoutRow>
 							<sap.ui.commons.layout:cells>
@@ -207,52 +199,33 @@
 									<VBox class="BasicInfoButtonBGVBOX">
 										<VBox class="BasicInfoButtonBG" justifyContent="Center">
 											<Image src="common/mime/basicinfo_hover.png" id="idBasicInfoButton"
-												press="handleBasicInfoButtonClick" class="ButtonImagesClass" />
+												press="handleBasicInfoButtonClick"  />
 											<Image src="common/mime/license.png" id="idLicenseInfoButton"
-												press="handleLicenseButtonClick" class="ButtonImagesClass" />
+												press="handleLicenseButtonClick"  />
 											<Image src="common/mime/shareholder.png" id="idShareholderInfoButton"
-												press="handleShareholderInfoButtonClick" class="ButtonImagesClass"  />
+												press="handleShareholderInfoButtonClick"  />
 											<Image src="common/mime/preview.png" id="idPreviewInfoButton"
-												press="handlePreviewInfoButtonClick" class="ButtonImagesClass"  />
+												press="handlePreviewInfoButtonClick"  />
 											<Image src="common/mime/terms.png" id="idTermsInfoButton"
-												press="handleTermsInfoButtonClick" class="ButtonImagesClass"  />
+												press="handleTermsInfoButtonClick"  />
 											<Image src="common/mime/submit.png" id="idSubmitInfoButton"
-												press="handleSubmitInfoButtonMainClick" class="ButtonImagesClass"  />
+												press="handleSubmitInfoButtonMainClick"  />
 										</VBox>
 
 
 									</VBox>
 								</sap.ui.commons.layout:MatrixLayoutCell>
 								<sap.ui.commons.layout:MatrixLayoutCell
-									hAlign="Begin" vAlign="Top"><!-- hAlign="Begin" -->
+									hAlign="Begin" vAlign="Top">
 
 									<VBox id="idBasicInfoContent" justifyContent="Center"
-										alignItems="Center"><!-- alignItems="Center" -->
-
-										<!-- <sap.ui.core:Fragment id="idBasicInfoContentFragment" fragmentName="com.sagia.view.fragments.basicinfo" 
-											type="XML" /> -->
-										<!-- <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bi_organization" 
-											type="XML" /> -->
+										alignItems="Center">
 										<VBox class="HeadingBGVBOX">
 
 											<HBox id="idBasicInfoBoxContent" justifyContent="Center"
 												width="100%">
 
-												<!-- <IconTabBar  expanded="{device>/isNoPhone}"
-													class="sapUiResponsiveContentPadding" id="idBasicInfoTab" select="handleBasicInfoTabsSelection">
-													<items>
-														<IconTabFilter text="Info">
-															<sap.ui.core:Fragment
-																	fragmentName="com.sagia.view.fragments.bi_organization"
-																	type="XML" />
-														</IconTabFilter>
-														<IconTabFilter text="Attachments">
-															<sap.ui.core:Fragment
-																	fragmentName="com.sagia.view.fragments.bi_contactinformation"
-																	type="XML" />														</IconTabFilter>
-														
-													</items>
-												</IconTabBar> -->
+
 
 												<sap.ui.commons:TabStrip class="IconTabBarStyling"
 													id="idBasicInfoTab" select="handleBasicInfoTabsSelection">
@@ -279,8 +252,7 @@
 
 									</VBox>
 									<VBox id="idLicenseInfoContent" visible="false">
-										<!-- <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.licenseinfo" 
-											type="XML" /> -->
+
 
 										<VBox id="idLicenseInfoParentVBox" class="HeadingBGVBOX">
 											<HBox justifyContent="Center">
@@ -327,12 +299,6 @@
 						</sap.ui.commons.layout:MatrixLayoutRow>
 					</sap.ui.commons.layout:rows>
 				</sap.ui.commons.layout:MatrixLayout>
-
-
-
-
-
-
 			</HBox>
 
 		</VBox>
