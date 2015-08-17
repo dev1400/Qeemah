@@ -203,6 +203,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		
 	},
+	handleTCPreviousButtonPress : function(){
+		this.handlePreviewInfoButtonClick();
+	},
+	handlePreviewNextButtonPress : function(){
+		this.handleTermsInfoButtonClick();
+	},
+	handlePreviewPreviousButtonPress : function(){
+		this.handleShareholderInfoButtonClick();
+	},
+	handleSHNextButtonPress : function(){
+		this.handlePreviewInfoButtonClick();
+	},
+	handleSHPreviousButtonPress : function(){
+		this.handleLicenseButtonClick();
+	},
+	handleLIBAQPreviousButtonPress : function(){
+		this.handleBasicInfoButtonClick();
+	},
 	handleLILINextButtonPress : function(){
 		this.handleShareholderInfoButtonClick();
 	},
@@ -297,10 +315,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 			}			
 		}else{
+			var oLanguage;
+			if(this.oLanguageSelect.getSelectedKey() === "EN")
+			{
+				oLanguage="E";
+			}else{
+				oLanguage="A";
+			}			
+			
 			 var oRequestFinishedDeferredResetPassword = this.oModelHelper.resetPassword(this.oResetRefIdInput.getValue(),
 					 this.oResetCurrentPasswordInput.getValue(), this.oResetNewPasswordInput.getValue(),
-					 this.oConfirmNewPasswordInput.getValue());
+					 this.oConfirmNewPasswordInput.getValue(), oLanguage);
 			 jQuery.when(oRequestFinishedDeferredResetPassword).then(jQuery.proxy(function(oResponse) {	
+				 
+				 this.oResetRefIdInput.setValue("");
+				 this.oResetCurrentPasswordInput.setValue("");
+				 this.oResetNewPasswordInput.setValue("");
+				 this.oConfirmNewPasswordInput.setValue("");
+				 
 				 sap.m.MessageToast.show(oResponse.Return);				 
 			 }, this));	
 		}
@@ -323,8 +355,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 			}			
 		}else{
-			var oRequestFinishedDeferredForgotPassword = this.oModelHelper.forgotPassword(this.oForgotPasswordInput.getValue());
-			 jQuery.when(oRequestFinishedDeferredForgotPassword).then(jQuery.proxy(function(oResponse) {	
+			var oLanguage;
+			if(this.oLanguageSelect.getSelectedKey() === "EN")
+			{
+				oLanguage="E";
+			}else{
+				oLanguage="A";
+			}
+			var oRequestFinishedDeferredForgotPassword = this.oModelHelper.forgotPassword(this.oForgotPasswordInput.getValue(), oLanguage);
+			 jQuery.when(oRequestFinishedDeferredForgotPassword).then(jQuery.proxy(function(oResponse) {
+				 
+				 this.oForgotPasswordInput.setValue("");
 				 
 				 if(oResponse.Return === "User ID does not exist"){
 					 sap.m.MessageToast.show(this.oModelHelper.getText("UserIDdoesnotexist"));
@@ -795,8 +836,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 							
 							}
 					        try{
+					        	var oLanguage;
+								if(this.oLanguageSelect.getSelectedKey() === "EN")
+								{
+									oLanguage="E";
+								}else{
+									oLanguage="A";
+								}
 					        var oRequestFinishedDeferredExperienceQ = that.oModelHelper.createShareHolderExperienceAnswers
-					        (that.oRef_id, experienceQuestions, experienceAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(), this.oBusinessTypeSurveyID);
+					        (that.oRef_id, experienceQuestions, experienceAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(), this.oBusinessTypeSurveyID, oLanguage);
 							jQuery.when(oRequestFinishedDeferredExperienceQ).then(jQuery.proxy(function(oResponse) {
 							    try{
 								var oRequestFinishedDeferredUploadNSHPassPortCopy = that.oModelHelper.uploadNSHPassPortCopy(that.NSHFullName+"_PassPort_",that.oRef_id, that.NSHEntityNo, that.NSHPassPortCopy);
@@ -814,8 +862,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 									     		var oRequestFinishedDeferredUploadNSHOtherAttachments = that.oModelHelper.uploadOtherAttachment(that.NSHFullName+"_Othr_", that.oRef_id, that.NSHEntityNo, that.NSHOtherAttachment);
 										     	jQuery.when(oRequestFinishedDeferredUploadNSHOtherAttachments).then(jQuery.proxy(function(oResponse) {
 										        	try{	
+										        		var oLanguage;
+														if(this.oLanguageSelect.getSelectedKey() === "EN")
+														{
+															oLanguage="E";
+														}else{
+															oLanguage="A";
+														}
 										             var oRequestFinishedDeferredcreateSHActivityAnswers = that.oModelHelper.createShareHolderActivityAnswers
-										 			(that.oRef_id, actvityQuestions, activityAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+										 			(that.oRef_id, actvityQuestions, activityAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(),oLanguage);
 										  
 										     			jQuery.when(oRequestFinishedDeferredcreateSHActivityAnswers).then(jQuery.proxy(function(oResponse) {
 										     				
@@ -3023,7 +3078,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 						 }
 					}
 					if(answers.length > 0){
-						var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers, this.oBICIFirstNameInputText.getValue(), this.oBICILastNameInputText.getValue());
+						var oLanguage;
+						if(this.oLanguageSelect.getSelectedKey() === "EN")
+						{
+							oLanguage="E";
+						}else{
+							oLanguage="A";
+						}
+						var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers, this.oBICIFirstNameInputText.getValue(), this.oBICILastNameInputText.getValue(), oLanguage);
 
 						jQuery.when(oRequestFinishedDeferredcreateBAQAnswers).then(jQuery.proxy(function(oResponse) {
 							
@@ -4435,14 +4497,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oLILIBusinessTypeComboBox.setModel(oResponse);
 		}, this));
 		
-		var oRequestFinishedDeferredIndustrialProducts = this.oModelHelper.readIndustrialProducts();
+		
+		
+		var oRequestFinishedDeferredIndustrialProducts = this.oModelHelper.readIndustrialProducts(oLanguage);
 
 		jQuery.when(oRequestFinishedDeferredIndustrialProducts).then(jQuery.proxy(function(oResponse) {			
 			this.oLILIIndustrialProductComboBox.setModel(oResponse);
 		}, this));	
 		
 		
-		var oRequestFinishedDeferredIndustrialProductsUOM = this.oModelHelper.readIndustrialProductsUOM();
+		var oRequestFinishedDeferredIndustrialProductsUOM = this.oModelHelper.readIndustrialProductsUOM(oLanguage);
 
 		jQuery.when(oRequestFinishedDeferredIndustrialProductsUOM).then(jQuery.proxy(function(oResponse) {			
 			this.oLILIIndustrialProductUOMComboBox.setModel(oResponse);

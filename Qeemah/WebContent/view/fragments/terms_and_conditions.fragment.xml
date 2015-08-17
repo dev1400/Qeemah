@@ -97,6 +97,19 @@
 											
 										</sap.ui.commons.layout:cells>
 									</sap.ui.commons.layout:MatrixLayoutRow>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell colSpan="2" hAlign="Center">
+												<sap.ui.commons.layout:content>
+													<!-- <CheckBox text="{i18n>AgreeToAllTermsandConditions}" id="idTermsAndConditionsCheckBox"/>
+												    <sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+												 -->	
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											
+											
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
 									
 									<sap.ui.commons.layout:MatrixLayoutRow>
 										<sap.ui.commons.layout:cells>
@@ -106,6 +119,19 @@
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											
+											
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+									
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell colSpan="2" hAlign="Center">
+												<sap.ui.commons.layout:content>
+													<Button style="Accept" text="{i18n>Previous}" id="idTCInfoPreviousButton"
+														press="handleTCPreviousButtonPress" icon="sap-icon://navigation-left-arrow">
+													</Button>												
+													</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>										
 											
 										</sap.ui.commons.layout:cells>
 									</sap.ui.commons.layout:MatrixLayoutRow>

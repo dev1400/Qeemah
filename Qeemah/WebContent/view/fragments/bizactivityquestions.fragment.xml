@@ -389,13 +389,44 @@
 											<sap.ui.commons.layout:MatrixLayoutCell
 												hAlign="Center">
 												<sap.ui.commons.layout:content>
-												<Button style="Accept" text="{i18n>Next}" id="idLIBAQInfoNextButton"
+												
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+	</sap.ui.commons.layout:MatrixLayout>
+	
+	<sap.ui.commons.layout:MatrixLayout>
+	
+		<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												 hAlign="End">
+												<sap.ui.commons.layout:content>
+													<!-- <Button style="Accept" text="{i18n>BackToBAQ}"
+														press="" icon="sap-icon://navigation-up-arrow">
+													</Button> -->
+													<Button style="Accept" text="{i18n>Previous}" id="idLicenseInfoBAQPreviousButton"
+									press="handleLIBAQPreviousButtonPress" icon="sap-icon://navigation-left-arrow">
+								</Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											
+											<sap.ui.commons.layout:MatrixLayoutCell
+												 hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<Button style="Accept" text="{i18n>Next}" id="idLIBAQInfoNextButton"
 									press="handleBAQNextButtonPress" icon="sap-icon://navigation-right-arrow" iconFirst="false"></Button>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
 									</sap.ui.commons.layout:MatrixLayoutRow>
 								</sap.ui.commons.layout:rows>
+								
+							
+	
 	</sap.ui.commons.layout:MatrixLayout>
 	</VBox>
 	

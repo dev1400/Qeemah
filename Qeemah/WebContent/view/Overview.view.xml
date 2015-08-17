@@ -5,29 +5,37 @@
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page id="idPage" enableScrolling="true" showHeader="false"><!-- backgroundDesign="Transparent" -->
 
-														
+
 		<VBox id="idMainPageContent">
-		<html:Marquee onmouseover="this.stop();" onmouseout="this.start();">
-		<sap.ui.commons:TextView text="{i18n>BrowserMessage}" class="textcolorwhite"></sap.ui.commons:TextView>
-		<html:a href="https://www.microsoft.com/en-in/download/internet-explorer.aspx" target="_blank">
-		<sap.ui.commons:TextView text="{i18n>DownloadIE}" class="textcolorwhite"></sap.ui.commons:TextView>		
-		</html:a>
-		<html:a href="http://www.google.com/chrome/" target="_blank">
-		<sap.ui.commons:TextView text="{i18n>DownloadChrome}" class="textcolorwhite"></sap.ui.commons:TextView>		
-		</html:a>
-		<html:a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">
-		<sap.ui.commons:TextView text="{i18n>DownloadFF}" class="textcolorwhite"></sap.ui.commons:TextView>		
-		</html:a>
-	<!-- 	<Link text="{i18n>DownloadIE}" href="https://www.microsoft.com/en-in/download/internet-explorer.aspx" target="_blank"></Link>
-	 -->	 </html:Marquee>
-	 
-	     <html:div align="right">
-	     <Select id="idLanguageSelect" change="handleLanguageSelectionChange">
-				<sap.ui.core:ListItem key="EN" text="{i18n>English}"/>
-				<sap.ui.core:ListItem key="AR" text="{i18n>Arabic}"/>
-	     </Select>
-		 </html:div>
-		
+			<html:Marquee onmouseover="this.stop();" onmouseout="this.start();">
+				<sap.ui.commons:TextView text="{i18n>BrowserMessage}"
+					class="textcolorwhite"></sap.ui.commons:TextView>
+				<html:a
+					href="https://www.microsoft.com/en-in/download/internet-explorer.aspx"
+					target="_blank">
+					<sap.ui.commons:TextView text="{i18n>DownloadIE}"
+						class="textcolorwhite"></sap.ui.commons:TextView>
+				</html:a>
+				<html:a href="http://www.google.com/chrome/" target="_blank">
+					<sap.ui.commons:TextView text="{i18n>DownloadChrome}"
+						class="textcolorwhite"></sap.ui.commons:TextView>
+				</html:a>
+				<html:a href="https://www.mozilla.org/en-US/firefox/new/"
+					target="_blank">
+					<sap.ui.commons:TextView text="{i18n>DownloadFF}"
+						class="textcolorwhite"></sap.ui.commons:TextView>
+				</html:a>
+				<!-- <Link text="{i18n>DownloadIE}" href="https://www.microsoft.com/en-in/download/internet-explorer.aspx" 
+					target="_blank"></Link> -->
+			</html:Marquee>
+
+			<html:div align="center">
+				<Select id="idLanguageSelect" change="handleLanguageSelectionChange">
+					<sap.ui.core:ListItem key="EN" text="{i18n>English}" />
+					<sap.ui.core:ListItem key="AR" text="{i18n>Arabic}" />
+				</Select>
+			</html:div>
+
 			<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
 				<html:br />
 				<!-- <html:br /> -->
@@ -47,7 +55,9 @@
 										hAlign="End" vAlign="Bottom">
 										<HBox justifyContent="End" alignItems="Center">
 											<Image src="common/mime/dot.png"></Image>
-											<Link text="{i18n>ServiceGuide}" href="https://www.sagia.gov.sa/en/Investor-tools/Licenses-Investors-Guide-/" class="linkColor" target="_blank"/>
+											<Link text="{i18n>ServiceGuide}"
+												href="https://www.sagia.gov.sa/en/Investor-tools/Licenses-Investors-Guide-/"
+												class="linkColor" target="_blank" />
 										</HBox>
 
 
@@ -56,7 +66,9 @@
 										hAlign="Begin" vAlign="Bottom">
 										<HBox justifyContent="Start" alignItems="Center">
 											<Image src="common/mime/dot.png"></Image>
-											<Link text="{i18n>DownloadForms}" href="https://www.sagia.gov.sa/en/Investor-tools/E--Servoce-/Renew-Investment-license/Download-Forms-renew/" class="linkColor" target="_blank"/>
+											<Link text="{i18n>DownloadForms}"
+												href="https://www.sagia.gov.sa/en/Investor-tools/E--Servoce-/Renew-Investment-license/Download-Forms-renew/"
+												class="linkColor" target="_blank" />
 										</HBox>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 
@@ -109,28 +121,22 @@
 							<sap.ui.commons.layout:rows>
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:cells>
-									
-								<!-- 	<sap.ui.commons.layout:MatrixLayoutCell>
-											<ComboBox width="9em" id="idLanguageSelectionComboBox" selectionChange="handleLanguageChange">
-												<sap.ui.core:Item id="idE" key="E" text="{i18n>English}" />
-												<sap.ui.core:Item id="idA" key="A" text="{i18n>Arabic}" />
-											</ComboBox>
 
-										</sap.ui.commons.layout:MatrixLayoutCell>
-										 -->
-										
+										<!-- <sap.ui.commons.layout:MatrixLayoutCell> <ComboBox width="9em" 
+											id="idLanguageSelectionComboBox" selectionChange="handleLanguageChange"> 
+											<sap.ui.core:Item id="idE" key="E" text="{i18n>English}" /> <sap.ui.core:Item 
+											id="idA" key="A" text="{i18n>Arabic}" /> </ComboBox> </sap.ui.commons.layout:MatrixLayoutCell> -->
+
 										<sap.ui.commons.layout:MatrixLayoutCell
 											vAlign="Middle">
 											<!-- <SearchField width="12em" /> -->
 										</sap.ui.commons.layout:MatrixLayoutCell>
-										
+
 										<sap.ui.commons.layout:MatrixLayoutCell
 											vAlign="Middle">
-											<!-- <ComboBox width="10em">
-												<sap.ui.core:Item />
-											</ComboBox> -->
+											<!-- <ComboBox width="10em"> <sap.ui.core:Item /> </ComboBox> -->
 										</sap.ui.commons.layout:MatrixLayoutCell>
-										
+
 									</sap.ui.commons.layout:cells>
 								</sap.ui.commons.layout:MatrixLayoutRow>
 							</sap.ui.commons.layout:rows>
@@ -140,32 +146,34 @@
 			</HBox>
 
 
-			<HBox class="MainLicenseRegBGIMG2" 
-				justifyContent="SpaceBetween">
+			<HBox class="MainLicenseRegBGIMG2" justifyContent="SpaceBetween">
 				<sap.ui.core:HTML id="idStagesHeading" content="{i18n>BasicInformationHTML}"></sap.ui.core:HTML>
 				<HBox alignItems="Center" justifyContent="Center">
 					<sap.ui.commons.layout:MatrixLayout
-						layoutFixed="false" >
+						layoutFixed="false">
 						<sap.ui.commons.layout:rows>
 							<sap.ui.commons.layout:MatrixLayoutRow>
 								<sap.ui.commons.layout:cells>
 									<sap.ui.commons.layout:MatrixLayoutCell
 										vAlign="Middle" hAlign="Begin">
 										<!-- <Button text="{i18n>Save}" id="idSaveButton" /> -->
-										<Image src="common/mime/save.png" class="SaveIconStyling" id="idSaveImage"></Image>
+										<Image src="common/mime/save.png" class="SaveIconStyling"
+											id="idSaveImage"></Image>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell
 										hAlign="Begin" vAlign="Bottom">
-										<Link text="{i18n>Save}" class="linkColorWhite" press="handleSaveLinkPressSave" id="idSaveLink"/><html:span>&#160;&#160;</html:span>
+										<Link text="{i18n>Save}" class="linkColorWhite" press="handleSaveLinkPressSave"
+											id="idSaveLink" />
+										<html:span>&#160;&#160;</html:span>
 									</sap.ui.commons.layout:MatrixLayoutCell>
-									
+
 									<sap.ui.commons.layout:MatrixLayoutCell
 										vAlign="Bottom">
 										<Image src="common/mime/logout.png"></Image>
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell
 										vAlign="Bottom">
-										<Link text="{i18n>Logout}" class="linkColorWhite" press="handleLogoutLinkPress"/>
+										<Link text="{i18n>Logout}" class="linkColorWhite" press="handleLogoutLinkPress" />
 									</sap.ui.commons.layout:MatrixLayoutCell>
 								</sap.ui.commons.layout:cells>
 							</sap.ui.commons.layout:MatrixLayoutRow>
@@ -199,103 +207,119 @@
 									<VBox class="BasicInfoButtonBGVBOX">
 										<VBox class="BasicInfoButtonBG" justifyContent="Center">
 											<Image src="common/mime/basicinfo_hover.png" id="idBasicInfoButton"
-												press="handleBasicInfoButtonClick" />
+												press="handleBasicInfoButtonClick" class="ButtonImagesClass" />
 											<Image src="common/mime/license.png" id="idLicenseInfoButton"
-												press="handleLicenseButtonClick" />
+												press="handleLicenseButtonClick" class="ButtonImagesClass" />
 											<Image src="common/mime/shareholder.png" id="idShareholderInfoButton"
-												press="handleShareholderInfoButtonClick" />
+												press="handleShareholderInfoButtonClick" class="ButtonImagesClass"  />
 											<Image src="common/mime/preview.png" id="idPreviewInfoButton"
-												press="handlePreviewInfoButtonClick" />
+												press="handlePreviewInfoButtonClick" class="ButtonImagesClass"  />
 											<Image src="common/mime/terms.png" id="idTermsInfoButton"
-												press="handleTermsInfoButtonClick" />
+												press="handleTermsInfoButtonClick" class="ButtonImagesClass"  />
 											<Image src="common/mime/submit.png" id="idSubmitInfoButton"
-												press="handleSubmitInfoButtonMainClick" />
+												press="handleSubmitInfoButtonMainClick" class="ButtonImagesClass"  />
 										</VBox>
 
 
 									</VBox>
 								</sap.ui.commons.layout:MatrixLayoutCell>
 								<sap.ui.commons.layout:MatrixLayoutCell
-									 hAlign="Begin" vAlign="Top" ><!-- hAlign="Begin" -->
+									hAlign="Begin" vAlign="Top"><!-- hAlign="Begin" -->
 
-									<VBox id="idBasicInfoContent" justifyContent="Center" alignItems="Center"><!-- alignItems="Center" -->
-										
-											<!-- <sap.ui.core:Fragment  id="idBasicInfoContentFragment" fragmentName="com.sagia.view.fragments.basicinfo"
-												type="XML" /> -->
-												<!-- <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bi_organization"
-							type="XML" /> -->
-							<VBox class="HeadingBGVBOX">
+									<VBox id="idBasicInfoContent" justifyContent="Center"
+										alignItems="Center"><!-- alignItems="Center" -->
 
-		<HBox id="idBasicInfoBoxContent" justifyContent="Center" width="100%">
-	
-							<sap.ui.commons:TabStrip class="IconTabBarStyling" id="idBasicInfoTab" select="handleBasicInfoTabsSelection"
-				>
-				<sap.ui.commons:tabs>
-					<sap.ui.commons:Tab  text="{i18n>Organization}">
-						<sap.ui.commons:content>
-						<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bi_organization"
-							type="XML" />
-						</sap.ui.commons:content>
-					</sap.ui.commons:Tab>
-					<sap.ui.commons:Tab  text="{i18n>ContactInformation}">
-						<sap.ui.commons:content>
-						<sap.ui.core:Fragment
-							fragmentName="com.sagia.view.fragments.bi_contactinformation"
-							type="XML" />
-
-						</sap.ui.commons:content>
-					</sap.ui.commons:Tab>
-				</sap.ui.commons:tabs>
-			</sap.ui.commons:TabStrip>
-			</HBox></VBox>
-										
-									</VBox>
-									<VBox id="idLicenseInfoContent" 
-										visible="false">
-										<!-- <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.licenseinfo"
+										<!-- <sap.ui.core:Fragment id="idBasicInfoContentFragment" fragmentName="com.sagia.view.fragments.basicinfo" 
 											type="XML" /> -->
-											
-											<VBox  id="idLicenseInfoParentVBox" class="HeadingBGVBOX">
- <HBox justifyContent="Center">
- <sap.ui.commons:TabStrip class="IconTabBarStyling" id="idLicenseInfoTab" select=""
-				><!-- handleLicenseInfoTabStripSelect -->
-				<sap.ui.commons:tabs>
-					<sap.ui.commons:Tab  text="{i18n>BusinessActivityQuestions}">
-						<sap.ui.commons:content>
-						 <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bizactivityquestions"
-		type="XML" />
-						</sap.ui.commons:content>
-					</sap.ui.commons:Tab>
-					<sap.ui.commons:Tab  text="{i18n>LicenseInformation}">
-						<sap.ui.commons:content>
-						 <sap.ui.core:Fragment
-		fragmentName="com.sagia.view.fragments.bizactivityquestions_licenseinfo"
-		type="XML" />
-						</sap.ui.commons:content>
-					</sap.ui.commons:Tab>
-				</sap.ui.commons:tabs>
-			</sap.ui.commons:TabStrip>
-	</HBox>
-	</VBox>
+										<!-- <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.bi_organization" 
+											type="XML" /> -->
+										<VBox class="HeadingBGVBOX">
+
+											<HBox id="idBasicInfoBoxContent" justifyContent="Center"
+												width="100%">
+
+												<!-- <IconTabBar  expanded="{device>/isNoPhone}"
+													class="sapUiResponsiveContentPadding" id="idBasicInfoTab" select="handleBasicInfoTabsSelection">
+													<items>
+														<IconTabFilter text="Info">
+															<sap.ui.core:Fragment
+																	fragmentName="com.sagia.view.fragments.bi_organization"
+																	type="XML" />
+														</IconTabFilter>
+														<IconTabFilter text="Attachments">
+															<sap.ui.core:Fragment
+																	fragmentName="com.sagia.view.fragments.bi_contactinformation"
+																	type="XML" />														</IconTabFilter>
+														
+													</items>
+												</IconTabBar> -->
+
+												<sap.ui.commons:TabStrip class="IconTabBarStyling"
+													id="idBasicInfoTab" select="handleBasicInfoTabsSelection">
+													<sap.ui.commons:tabs>
+														<sap.ui.commons:Tab text="{i18n>Organization}">
+															<sap.ui.commons:content>
+																<sap.ui.core:Fragment
+																	fragmentName="com.sagia.view.fragments.bi_organization"
+																	type="XML" />
+															</sap.ui.commons:content>
+														</sap.ui.commons:Tab>
+														<sap.ui.commons:Tab text="{i18n>ContactInformation}">
+															<sap.ui.commons:content>
+																<sap.ui.core:Fragment
+																	fragmentName="com.sagia.view.fragments.bi_contactinformation"
+																	type="XML" />
+
+															</sap.ui.commons:content>
+														</sap.ui.commons:Tab>
+													</sap.ui.commons:tabs>
+												</sap.ui.commons:TabStrip>
+											</HBox>
+										</VBox>
+
 									</VBox>
-									<VBox id="idShareHoldersInfoContent" 
-										visible="false">
+									<VBox id="idLicenseInfoContent" visible="false">
+										<!-- <sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.licenseinfo" 
+											type="XML" /> -->
+
+										<VBox id="idLicenseInfoParentVBox" class="HeadingBGVBOX">
+											<HBox justifyContent="Center">
+												<sap.ui.commons:TabStrip class="IconTabBarStyling"
+													id="idLicenseInfoTab" select=""><!-- handleLicenseInfoTabStripSelect -->
+													<sap.ui.commons:tabs>
+														<sap.ui.commons:Tab text="{i18n>BusinessActivityQuestions}">
+															<sap.ui.commons:content>
+																<sap.ui.core:Fragment
+																	fragmentName="com.sagia.view.fragments.bizactivityquestions"
+																	type="XML" />
+															</sap.ui.commons:content>
+														</sap.ui.commons:Tab>
+														<sap.ui.commons:Tab text="{i18n>LicenseInformation}">
+															<sap.ui.commons:content>
+																<sap.ui.core:Fragment
+																	fragmentName="com.sagia.view.fragments.bizactivityquestions_licenseinfo"
+																	type="XML" />
+															</sap.ui.commons:content>
+														</sap.ui.commons:Tab>
+													</sap.ui.commons:tabs>
+												</sap.ui.commons:TabStrip>
+											</HBox>
+										</VBox>
+									</VBox>
+									<VBox id="idShareHoldersInfoContent" visible="false">
 										<sap.ui.core:Fragment
 											fragmentName="com.sagia.view.fragments.shareholders_tabstrip"
 											type="XML" />
 									</VBox>
-									
-									<VBox id="idTermsAndConditionsInfoContent" 
-										visible="false">
+
+									<VBox id="idTermsAndConditionsInfoContent" visible="false">
 										<sap.ui.core:Fragment
 											fragmentName="com.sagia.view.fragments.terms_and_conditions"
 											type="XML" />
 									</VBox>
-									
-									<VBox id="idPreviewInfoContent" 
-										visible="false">
-										<sap.ui.core:Fragment
-											fragmentName="com.sagia.view.fragments.preview"
+
+									<VBox id="idPreviewInfoContent" visible="false">
+										<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.preview"
 											type="XML" />
 									</VBox>
 								</sap.ui.commons.layout:MatrixLayoutCell>

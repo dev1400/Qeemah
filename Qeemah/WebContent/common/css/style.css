@@ -104,6 +104,10 @@
 	background-image: url("mime/topbg.png") !important;
 	background-repeat: no-repeat;	
 }
+.ButtonImagesClass {
+	background-repeat: no-repeat !important;
+	background-size: 100% 100% !important;		
+}
 .BasicInfoButtonBGLogo {
 	padding: 1em 2em;
 	border: none;
@@ -131,10 +135,10 @@
 	color: white !important;
 	font-size: 1rem;
 }
-/* .sapUiTab, .sapUiTabSel, .sapUiTabDsbl {
-  font-size: 1rem;
- 
-} */
+.sapUiTab, .sapUiTabSel, .sapUiTabDsbl {
+  border: none !important;
+  background-color: #B2C0BB !important;
+}
  
 .sapUiTabSel{
 	height: 2rem !important;

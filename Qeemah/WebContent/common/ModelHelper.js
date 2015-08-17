@@ -390,7 +390,7 @@ com.sagia.common.ModelHelper = {
 	 * Create BAQ Answers
 	 * @Author Abdul Waheed 
 	 */
-	createBAQAnswers : function(oRef_id, questions, answers, oFirstName, oLastName) {
+	createBAQAnswers : function(oRef_id, questions, answers, oFirstName, oLastName, oLanguage) {
 		//if(IsicSelectedGroups.length>0){
 		
 		//this.openBusyDialog();
@@ -402,7 +402,7 @@ com.sagia.common.ModelHelper = {
          for ( var i = 0; i < questions.length; i++) {
         	 
         	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',{Investorid : oRef_id,
-        		 NodeGuid : questions[i], Atxtlg : answers[i], Flag : 'B', Lang : 'E',
+        		 NodeGuid : questions[i], Atxtlg : answers[i], Flag : 'B', Lang : oLanguage,
         		 Shldr_FName : oFirstName,
         		 Shldr_LName : oLastName} ));
             }
@@ -424,7 +424,7 @@ com.sagia.common.ModelHelper = {
 	 * Create Share Holder Activity Answers
 	 * @Author Abdul Waheed 
 	 */
-	createShareHolderActivityAnswers : function(oRef_id, questions, answers, oFirstName, oLastName) {
+	createShareHolderActivityAnswers : function(oRef_id, questions, answers, oFirstName, oLastName, oLanguage) {
 		
 		var that = this;
 		var oRequestFinishedCreateAQDeferred = jQuery.Deferred();
@@ -434,7 +434,7 @@ com.sagia.common.ModelHelper = {
 	         for ( var i = 0; i < questions.length; i++) {
 	        	 
 	        	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',{Investorid : oRef_id,
-	        		 NodeGuid : questions[i], Atxtlg : answers[i], Flag : 'A', Lang : 'E',
+	        		 NodeGuid : questions[i], Atxtlg : answers[i], Flag : 'A', Lang : oLanguage,
 	        		 Shldr_FName : oFirstName,
 	        		 Shldr_LName : oLastName
 	        		 } ));
@@ -458,7 +458,7 @@ com.sagia.common.ModelHelper = {
 	 * Create Share Holder Experience Answers
 	 * @Author Abdul Waheed 
 	 */
-	createShareHolderExperienceAnswers : function(oRef_id, questions, answers, oFirstName, oLastName, oSurveyID) {
+	createShareHolderExperienceAnswers : function(oRef_id, questions, answers, oFirstName, oLastName, oSurveyID, oLanguage) {
 		
 		var that = this;
 		var oRequestFinishedCreateEQDeferred = jQuery.Deferred();
@@ -468,7 +468,7 @@ com.sagia.common.ModelHelper = {
 	         for ( var i = 0; i < questions.length; i++) {
 	        	 
 	        	 aBatchOperations.push(this.oBAQODataModel.createBatchOperation("SurChgSet", 'POST',{Investorid : oRef_id,
-	        		 NodeGuid : questions[i], Atxtlg : answers[i], Flag : 'E', Lang : 'E',
+	        		 NodeGuid : questions[i], Atxtlg : answers[i], Flag : 'E', Lang : oLanguage,
 	        		 Shldr_FName : oFirstName,
 	        		 Shldr_LName : oLastName,
 	        		 Fin_value : oSurveyID} ));
@@ -1829,14 +1829,14 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Read Industrial Products
 	 */
-	readIndustrialProducts : function() {
+	readIndustrialProducts : function(oLanguage) {
 		this.openBusyDialog();
 		
 		var that = this;
 		var oRequestFinishedDeferred = jQuery.Deferred();
 		
      	this.oODataModel.setUseBatch(false);
-		this.oODataModel.read("ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27&lv_flag=%27PR%27&lv_region=%27%20%27", {
+		this.oODataModel.read("ZFM_CRM_QMH_DROPDOWN?lvkey='"+oLanguage+"'&lv_flag=%27PR%27&lv_region=%27%20%27", {
 			success : function(oData, response) {
 				that.closeBusyDialog();
 
@@ -1886,14 +1886,14 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Read Industrial Products UOM
 	 */
-	readIndustrialProductsUOM : function() {
+	readIndustrialProductsUOM : function(oLanguage) {
 		this.openBusyDialog();
 		
 		var that = this;
 		var oRequestFinishedDeferred = jQuery.Deferred();
 		
      	this.oODataModel.setUseBatch(false);
-		this.oODataModel.read("ZFM_CRM_QMH_DROPDOWN?lvkey=%27EN%27&lv_flag=%27UM%27&lv_region=%27%20%27", {
+		this.oODataModel.read("ZFM_CRM_QMH_DROPDOWN?lvkey='"+oLanguage+"'&lv_flag=%27UM%27&lv_region=%27%20%27", {
 			success : function(oData, response) {
 				that.closeBusyDialog();
 
@@ -2336,7 +2336,7 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Forgot Password
 	 */
-	forgotPassword : function(oUserID) {
+	forgotPassword : function(oUserID, oLanguage) {
 		
 		this.openBusyDialog();
 
@@ -2345,7 +2345,7 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
         this.oODataModel.setUseBatch(false);
 
-		this.oODataModel.read("PASSWORD_FORGOT_ENT(Userid='"+ oUserID + "',Lang='E')", {
+		this.oODataModel.read("PASSWORD_FORGOT_ENT(Userid='"+ oUserID + "',Lang='"+oLanguage+"')", {
 			success : function(oData) {
 				that.closeBusyDialog();
 
@@ -2363,7 +2363,7 @@ com.sagia.common.ModelHelper = {
 	/**
 	 * Reset Password
 	 */
-	resetPassword : function(oUserID, oCPassword, oNPassword) {
+	resetPassword : function(oUserID, oCPassword, oNPassword, oLanguage) {
 		
 		this.openBusyDialog();
 
@@ -2372,7 +2372,7 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
         this.oODataModel.setUseBatch(false);
 
-		this.oODataModel.read("PASSWORD_RESET_ENT(Investorid='"+oUserID+"',CurrPwd='"+oCPassword+"',NewPwd='"+oNPassword+"',Lang='E')", {
+		this.oODataModel.read("PASSWORD_RESET_ENT(Investorid='"+oUserID+"',CurrPwd='"+oCPassword+"',NewPwd='"+oNPassword+"',Lang='"+oLanguage+"')", {
 			success : function(oData) {
 				that.closeBusyDialog();
 

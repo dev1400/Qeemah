@@ -14,8 +14,8 @@
 					<sap.ui.commons:Tab  text="{i18n>Preview}">
 						<sap.ui.commons:content>
 						
-							<ScrollContainer  width="69rem"
-						vertical="true"><!-- height="39.88rem" -->
+							<!-- <ScrollContainer  width="69rem"
+						vertical="true"> --><!-- height="39.88rem" -->
 						
 						<VBox justifyContent="Center" alignItems="Center">
 
@@ -279,10 +279,49 @@
 
 								</sap.ui.commons.layout:rows>
 							</sap.ui.commons.layout:MatrixLayout>
+							
+							
+							<VBox>
+							
+							
+							<sap.ui.commons.layout:MatrixLayout>
+	
+		<sap.ui.commons.layout:rows>
+									<sap.ui.commons.layout:MatrixLayoutRow>
+										<sap.ui.commons.layout:cells>
+											<sap.ui.commons.layout:MatrixLayoutCell
+												 hAlign="End">
+												<sap.ui.commons.layout:content>
+													<Button style="Accept" text="{i18n>Previous}" id="idPreviewInfoPreviousButton"
+									press="handlePreviewPreviousButtonPress" icon="sap-icon://navigation-left-arrow">
+								</Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+											
+											<sap.ui.commons.layout:MatrixLayoutCell
+												 hAlign="Begin">
+												<sap.ui.commons.layout:content>
+													<Button style="Accept" text="{i18n>Next}" id="idPreviewInfoNextButton"
+									press="handlePreviewNextButtonPress" icon="sap-icon://navigation-right-arrow">
+								</Button>
+												</sap.ui.commons.layout:content>
+											</sap.ui.commons.layout:MatrixLayoutCell>
+										</sap.ui.commons.layout:cells>
+									</sap.ui.commons.layout:MatrixLayoutRow>
+								</sap.ui.commons.layout:rows>
+								
+							
+	
+	</sap.ui.commons.layout:MatrixLayout>
+	
+							
+							</VBox>
+							
+							
 						</VBox>
 
-					</ScrollContainer>
-						
+<!-- 					</ScrollContainer>
+ -->						
 						</sap.ui.commons:content>
 					</sap.ui.commons:Tab>
 				</sap.ui.commons:tabs>
