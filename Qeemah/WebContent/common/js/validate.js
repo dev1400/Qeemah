@@ -99,6 +99,8 @@ com.sagia.common.js.validate = {
 			
 			thisContext.oSaveImage = thisContext.getView().byId("idSaveImage");
 			thisContext.oSaveLink = thisContext.getView().byId("idSaveLink");
+			
+			thisContext.oBIOIOrganizationName.setValue(oResponse.Company);
 
 			
 			var oRequestFinishedDeferredBIOIChild = thisContext.oModelHelper.readBIOI(thisContext.oRef_id);
@@ -334,7 +336,7 @@ com.sagia.common.js.validate = {
 		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHCityNameMandatory"));
 		  				thisContext.oShowAlertDialog.open();
 		  			 }			 							  				
-	  	   	 }else if(thisContext.oNSHCommMethodInputText.getValue() === ""){
+	  	   	 }/*else if(thisContext.oNSHCommMethodInputText.getValue() === ""){
 	 				thisContext.oNewShareHolderValidation = false;
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
@@ -342,7 +344,7 @@ com.sagia.common.js.validate = {
 		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHShareHolderCommMethoRequired"));
 		  				thisContext.oShowAlertDialog.open();
 		  			 }			 							  				
-	  	   	 }else if(thisContext.oNSHNationalityComboBox.getValue() === ""){
+	  	   	 }*/else if(thisContext.oNSHNationalityComboBox.getValue() === ""){
 	 				thisContext.oNewShareHolderValidation = false;
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
@@ -374,7 +376,8 @@ com.sagia.common.js.validate = {
 						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHCityNameValidation"));
 						 thisContext.oShowAlertDialog.open();
 					 }
-			 }else if(!(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test( thisContext.oNSHWebsiteInputText.getValue() )) ){
+			 }else if(!(/^(http:\/\/www\.|https:\/\/www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test( "http://"+thisContext.oNSHWebsiteInputText.getValue() )) ){
+				 //|http:\/\/|https:\/\/
 	 				thisContext.oNewShareHolderValidation = false;
 
 					 if(!thisContext.oShowAlertDialog.isOpen())
@@ -581,6 +584,47 @@ com.sagia.common.js.validate = {
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("BalanceSheetFileNameExceed"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+		    }
+		    else if(thisContext.NSHPassPortCopy.getValue() === ""){	
+				thisContext.oNewShareHolderValidation = false;
+
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHPPCopyRequired"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+		    }else if(thisContext.NSHCommercialRegAttachment.getValue() === ""){	
+				thisContext.oNewShareHolderValidation = false;
+
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHCRCopyRequired"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+		    }else if(thisContext.NSHBankStatementAttachment.getValue() === ""){	
+				thisContext.oNewShareHolderValidation = false;
+
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHBSCopyRequired"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+		    }else if(thisContext.NSHBalanceSheetAttachment.getValue() === ""){	
+				thisContext.oNewShareHolderValidation = false;
+
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHBLSCopyRequired"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+		    }else if(thisContext.NSHOtherAttachment.getValue() === ""){	
+				thisContext.oNewShareHolderValidation = false;
+
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHOTRCopyRequired"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
 		    }

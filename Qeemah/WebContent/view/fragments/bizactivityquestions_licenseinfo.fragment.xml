@@ -133,7 +133,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons:TextView id="idClassMultiSelectionTextView"
-							width="20%" enabled="false"></sap.ui.commons:TextView>
+							width="18em" enabled="false"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 
@@ -190,7 +190,7 @@
 						<sap.ui.commons.layout:MatrixLayoutCell>
 							<ComboBox width="50%" items="{/IndustrialProductsCollection}"
 								id="idLILIIndustrialProductComboBox" selectionChange="handleLILIIndustrialProductsComboBoxSelectionChange">
-								<sap.ui.core:ListItem key="{Pcode}" text="{Desc}"
+								<sap.ui.core:ListItem key="{Pcode}" text="{Item}"
 									id="idLILIIndustrialProductComboBoxitem" />
 							</ComboBox>
 						</sap.ui.commons.layout:MatrixLayoutCell>

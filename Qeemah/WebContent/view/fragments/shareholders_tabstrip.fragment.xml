@@ -5,87 +5,247 @@
 	xmlns:sap.ui.commons.layout="sap.ui.commons.layout"
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.core.mvc="sap.ui.core.mvc"
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml">
-	
+
 	<VBox id="idShareHoldersContentVBox" class="HeadingBGVBOX">
 		<HBox justifyContent="Center">
-		<sap.ui.commons:TabStrip class="IconTabBarStyling"
-				>
+			<sap.ui.commons:TabStrip class="IconTabBarStyling">
 				<sap.ui.commons:tabs>
-					<sap.ui.commons:Tab  text="{i18n>Shareholder}">
+					<sap.ui.commons:Tab text="{i18n>Shareholder}">
 						<sap.ui.commons:content>
-						<VBox justifyContent="Center" alignItems="Center">
+								<VBox alignItems="Center" justifyContent="Center">
+								
+		<sap.ui.commons.layout:MatrixLayout
+			layoutFixed="true"  >
+			<sap.ui.commons.layout:rows>
 
-							<sap.ui.core:Fragment
-								fragmentName="com.sagia.view.fragments.existingshareholder"
-								type="XML" />
-								</VBox>
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							>
+							<sap.ui.commons.layout:content>
+								<Table width="100%" id="idSHTable" mode="Delete"
+									delete="handleSHTableDeleteButtonPress">
+									<columns>								
+										<Column width="5em">
+											<Text text="{i18n>ShareHolderName}" />
+										</Column>
+										<Column width="5em">
+											<Text text="{i18n>Percentage}" />
+										</Column>
+										<Column width="5em">
+											<Text text="{i18n>Nationality}" />
+										</Column>
+									</columns>									
+								</Table>
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:rows>
+		</sap.ui.commons.layout:MatrixLayout>
 		
 		
 		
-			<VBox>
-		
-		
-				<sap.ui.commons.layout:MatrixLayout>
-		
-					<sap.ui.commons.layout:rows>
-						<sap.ui.commons.layout:MatrixLayoutRow>
-							<sap.ui.commons.layout:cells>
-								<sap.ui.commons.layout:MatrixLayoutCell
-									hAlign="End">
-									<sap.ui.commons.layout:content>
-										<!-- <Button style="Accept" text="{i18n>BackToBAQ}" press="" icon="sap-icon://navigation-up-arrow"> 
-											</Button> -->
-										<Button style="Accept" text="{i18n>Previous}" id="idSHInfoPreviousButton"
-											press="handleSHPreviousButtonPress" icon="sap-icon://navigation-left-arrow">
-										</Button>
-									</sap.ui.commons.layout:content>
-								</sap.ui.commons.layout:MatrixLayoutCell>
-		
-								<sap.ui.commons.layout:MatrixLayoutCell
-									hAlign="Begin">
-									<sap.ui.commons.layout:content>
-										<Button style="Accept" text="{i18n>Next}" id="idSHInfoNextButton"
-											press="handleSHNextButtonPress" icon="sap-icon://navigation-right-arrow">
-										</Button>
-									</sap.ui.commons.layout:content>
-								</sap.ui.commons.layout:MatrixLayoutCell>
-							</sap.ui.commons.layout:cells>
-						</sap.ui.commons.layout:MatrixLayoutRow>
-					</sap.ui.commons.layout:rows>
-		
-		
-		
-				</sap.ui.commons.layout:MatrixLayout>
-		
-		
-			</VBox>
-							
-							
-							
+
+		<sap.ui.commons.layout:MatrixLayout
+			layoutFixed="true" columns="2" widths="50%,50%">
+			<sap.ui.commons.layout:rows>
+
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell colSpan="2">
+							<sap.ui.commons.layout:content>
+								<html:br />
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+							<sap.ui.commons.layout:content>
+
+								<Button style="Accept" text="{i18n>AddExistingShareHolder}"
+									id="idAddExistingShareHolderButton" press="handleAddExistingShareHolderButtonPress"></Button>
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+
+						<sap.ui.commons.layout:MatrixLayoutCell>
+							<sap.ui.commons.layout:content>
+								<Button style="Accept" text="{i18n>CreateNewShareHolder}"
+									id="idAddNewShareHolderButton" press="handleCreateNewShareHolderButtonPress"></Button>
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell colSpan="2">
+							<sap.ui.commons.layout:content>
+								<html:br />
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+			</sap.ui.commons.layout:rows>
+		</sap.ui.commons.layout:MatrixLayout>
+	</VBox>
+	<VBox id="idCREATE_NewShareHolderVBox" justifyContent="Center"
+		alignItems="Center" visible="false">
+		<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.newshareholder"
+			type="XML" />
+	</VBox>
+
+
+	<VBox id="idADD_ExistingShareHolderVBox" justifyContent="Center"
+		alignItems="Center" visible="false">
+
+		<sap.ui.commons.layout:MatrixLayout
+			layoutFixed="true" columns="3" widths="40%,20%,50%"><!-- > -->
+			<sap.ui.commons.layout:rows>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+							<sap.ui.commons.layout:content>
+								<sap.ui.commons:TextView text="{i18n>EnterShareholderEntityNo}"></sap.ui.commons:TextView>
+								<sap.ui.commons:TextView text="*"
+									class="textcolorred"></sap.ui.commons:TextView>
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:MatrixLayoutCell>
+							<sap.ui.commons.layout:content>
+								<Input type="Text" id="idESHEntityNoInputText"></Input>
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							vAlign="Top">
+							<sap.ui.commons.layout:content>
+								<Button text="{i18n>Validate}" press="handleValidateESHButtonPress"></Button>
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+							<sap.ui.commons.layout:content>
+								<sap.ui.commons:TextView text="{i18n>Name}"></sap.ui.commons:TextView>
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:MatrixLayoutCell colSpan="2">
+							<sap.ui.commons.layout:content>
+								<Input width="28%" type="Text" id="idESHEntityNameInputText" enabled="false"></Input>
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+							<sap.ui.commons.layout:content>
+								<sap.ui.commons:TextView text="{i18n>Percentage}"></sap.ui.commons:TextView>
+								<sap.ui.commons:TextView text="*"
+									class="textcolorred"></sap.ui.commons:TextView>
+
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:MatrixLayoutCell colSpan="2">
+							<sap.ui.commons.layout:content>
+								<Input width="28%" type="Text" id="idESHPercentageInputText"></Input>
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+
+
+			</sap.ui.commons.layout:rows>
+		</sap.ui.commons.layout:MatrixLayout>
+		<html:br />
+
+
+		<!-- <sap.ui.commons.layout:MatrixLayout
+			layoutFixed="true" >
+			<sap.ui.commons.layout:rows>
+
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							colSpan="2">
+							<sap.ui.commons.layout:content>
+								<Table width="100%" id="idESHTable" mode="Delete"
+									delete="handleESHTableDeleteButtonPress">
+									<columns>
+										<Column width="2em"> <Text text="#" /> </Column>
+										<Column width="5em">
+											<Text text="{i18n>ShareholderEntityNo}" />
+										</Column>
+										<Column width="5em">
+											<Text text="{i18n>ShareHolderName}" />
+										</Column>
+										<Column width="5em">
+											<Text text="{i18n>Percentage}" />
+										</Column>
+									</columns>
+									
+								</Table>
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:rows>
+		</sap.ui.commons.layout:MatrixLayout> -->
+	</VBox>
+
+
+
+							<VBox>
+								<sap.ui.commons.layout:MatrixLayout>
+
+									<sap.ui.commons.layout:rows>
+										<sap.ui.commons.layout:MatrixLayoutRow>
+											<sap.ui.commons.layout:cells>
+												<sap.ui.commons.layout:MatrixLayoutCell
+													hAlign="End">
+													<sap.ui.commons.layout:content>
+														<!-- <Button style="Accept" text="{i18n>BackToBAQ}" press="" 
+															icon="sap-icon://navigation-up-arrow"> </Button> -->
+														<Button style="Accept" text="{i18n>Previous}"
+															id="idSHInfoPreviousButton" press="handleSHPreviousButtonPress"
+															icon="sap-icon://navigation-left-arrow">
+														</Button>
+													</sap.ui.commons.layout:content>
+												</sap.ui.commons.layout:MatrixLayoutCell>
+
+												<sap.ui.commons.layout:MatrixLayoutCell
+													hAlign="Begin">
+													<sap.ui.commons.layout:content>
+														<Button style="Accept" text="{i18n>Next}" id="idSHInfoNextButton"
+															press="handleSHNextButtonPress" icon="sap-icon://navigation-right-arrow">
+														</Button>
+													</sap.ui.commons.layout:content>
+												</sap.ui.commons.layout:MatrixLayoutCell>
+											</sap.ui.commons.layout:cells>
+										</sap.ui.commons.layout:MatrixLayoutRow>
+									</sap.ui.commons.layout:rows>
+								</sap.ui.commons.layout:MatrixLayout>
+							</VBox>
 						</sap.ui.commons:content>
 					</sap.ui.commons:Tab>
-					
+
 				</sap.ui.commons:tabs>
 			</sap.ui.commons:TabStrip>
-			<!-- <IconTabBar class="iconTabBarPaddingTop IconTabBarStyling"
-				expanded="true" expandable="false">
-				<items>
-					<IconTabFilter text="{i18n>ShareHolder}">
 
-						<VBox justifyContent="Center" alignItems="Center">
-
-							<sap.ui.core:Fragment
-								fragmentName="com.sagia.view.fragments.existingshareholder"
-								type="XML" />
-						</VBox>
-						
-					</IconTabFilter>
-					
-				</items>
-			</IconTabBar> -->
 		</HBox>
 	</VBox>
-	
-	<!-- </ScrollContainer> -->
-
 </core:FragmentDefinition>

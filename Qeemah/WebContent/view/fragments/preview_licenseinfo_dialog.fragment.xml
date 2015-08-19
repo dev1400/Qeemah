@@ -173,7 +173,29 @@
 		
 	</sap.ui.commons.layout:MatrixLayout>
 	
-				
+				<Table 
+				width="100%" id="idLILIPreviewProductsTable">
+				<columns>
+					
+					<Column width="5%">
+						<sap.ui.commons:TextView text="{i18n>ProductCode}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
+					</Column>
+					<Column width="5%">
+
+						<sap.ui.commons:TextView text="{i18n>ProductName}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
+					</Column>
+					<Column width="5%">
+						<sap.ui.commons:TextView text="{i18n>Quantity}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
+					</Column>
+					<Column width="10%">
+						<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
+					</Column>
+				</columns>
+			</Table>
 	
 	
 	</VBox>

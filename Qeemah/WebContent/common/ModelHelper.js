@@ -1482,7 +1482,7 @@ com.sagia.common.ModelHelper = {
 		
 		success : function(oData, response) { 
 			//console.log(" saveBICI >"+response);
-			oRequestFinishedDeferred.resolve(response);
+			oRequestFinishedDeferred.resolve();
 			// 
 			//that.closeBusyDialog();
 			
@@ -1491,7 +1491,9 @@ com.sagia.common.ModelHelper = {
 		    error : function(oResponse) {
 		    	oRequestFinishedDeferred.resolve();
 				//that.closeBusyDialog();
-		    }
+		    },
+			async : true,
+			urlParameters : oEntry
 		
 		});
 		return oRequestFinishedDeferred;
@@ -2560,14 +2562,16 @@ com.sagia.common.ModelHelper = {
 		this.oODataModel.update("ZBASIC_ORG_INFO_ENT('"+oEntry.RefID+"')",oEntry,{//urlParameters : oEntry,		
 		
 		success : function(oData, response) { //console.dir(response);
-			oRequestFinishedDeferred.resolve(oData);
+			oRequestFinishedDeferred.resolve();
 			//console.log(response.x-csrf-token); 
 			//that.closeBusyDialog();
 			},
 		    error : function(oResponse) {// console.log("error"+response);
 		    	oRequestFinishedDeferred.resolve();
 		    //that.closeBusyDialog();
-		    }
+		    },
+			async : true,
+			urlParameters : oEntry
 		
 		});
 		

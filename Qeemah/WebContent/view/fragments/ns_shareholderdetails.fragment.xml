@@ -55,8 +55,8 @@
 						hAlign="Begin" colSpan="3">
 						<sap.ui.commons.layout:content>
 						<ComboBox id="idNSHTypeComboBox" width="25em">
-								<sap.ui.core:ListItem key="1" text="{i18n>Person}" />
-								<sap.ui.core:ListItem key="2" text="{i18n>Organization}" />
+								<sap.ui.core:ListItem icon="sap-icon://employee" text="{i18n>Person}" key="1"/><!--  --> 
+								<sap.ui.core:ListItem  icon="sap-icon://factory" text="{i18n>Organization}" key="2"/><!--  -->
 							</ComboBox>
 						</sap.ui.commons.layout:content>
 						</sap.ui.commons.layout:MatrixLayoutCell>
@@ -215,10 +215,10 @@
 						<sap.ui.commons.layout:content>
 							<ComboBox id="idNSHMaritalStatusComboBox" width="25em">
 								<sap.ui.core:ListItem key="0" text="{i18n>Single}" />
-								<sap.ui.core:ListItem key="1" text="{i18n>Married}" />
+								<sap.ui.core:ListItem key="1" text="{i18n>Married}" /><!-- 
 								<sap.ui.core:ListItem key="3" text="{i18n>Widowed}" />
 								<sap.ui.core:ListItem key="4" text="{i18n>Divorced}" />
-								<sap.ui.core:ListItem key="5" text="{i18n>Other}" />
+								<sap.ui.core:ListItem key="5" text="{i18n>Other}" /> -->
 							</ComboBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -304,7 +304,8 @@
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
 							<HBox justifyContent="End">
-								<Input id="idNSHWebsiteInputText" type="Text" width="25em" />
+								<Input value="http://" enabled="false" type="Text" width="6em" />
+								<Input id="idNSHWebsiteInputText" type="Text" width="19em" />
 							</HBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -408,19 +409,24 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
-							<sap.ui.commons:TextView text="{i18n>CommMethod}"></sap.ui.commons:TextView>
+							<!-- <sap.ui.commons:TextView text="{i18n>CommMethod}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView> -->
+							<sap.ui.commons:TextView text="{i18n>Percentage}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+						
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<ComboBox id="idNSHCommMethodInputText" width="25em">
+							<ComboBox visible="false" id="idNSHCommMethodInputText" width="25em" setSelectedKey="INT">
 								<sap.ui.core:ListItem key="TEL" text="{i18n>Phone}" />
 															<sap.ui.core:ListItem key="INT" text="{i18n>Email}" />
 															<sap.ui.core:ListItem key="FAX" text="{i18n>Fax}" />
 															<sap.ui.core:ListItem key="PAG" text="{i18n>Pager}" />
 															<sap.ui.core:ListItem key="LET" text="{i18n>Post}" />
 							</ComboBox>
+							<Input id="idNSHPercentageInputText" type="Text" width="25em" />
+							
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -448,16 +454,16 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
-							<sap.ui.commons:TextView text="{i18n>Percentage}"></sap.ui.commons:TextView>
-							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+							<!-- <sap.ui.commons:TextView text="{i18n>Percentage}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView> -->
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
 							<HBox justifyContent="End">
-								<Input id="idNSHPercentageInputText" type="Text" width="25em" />
-							</HBox>
+<!-- 								<Input id="idNSHPercentageInputText" type="Text" width="25em" />
+ -->							</HBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					

@@ -2,6 +2,7 @@ jQuery.sap.require("com.sagia.common.ModelHelper");
 jQuery.sap.require("sap.ui.model.FilterOperator");
 jQuery.sap.require("com.sagia.common.js.validate");
 jQuery.sap.require("com.sagia.common.js.editnshworker");
+jQuery.sap.require("com.sagia.common.js.bioivalidateworker");
 
 
 
@@ -22,6 +23,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oModelHelper = com.sagia.common.ModelHelper;
 		this.oValidationHelper = com.sagia.common.js.validate;
 		this.oEditNSHHelper = com.sagia.common.js.editnshworker;
+		this.oBIOIvalidateworker = com.sagia.common.js.bioivalidateworker;
 
 		
 
@@ -161,6 +163,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oNSHCreateNewData = {NSHCollection: []};
 		this.oNSHCreateNewDataJSONData = new sap.ui.model.json.JSONModel();
 		
+		this.oSHJSONModel = new sap.ui.model.json.JSONModel();
+		this.oSHTable = this.getView().byId("idSHTable"); 
+
+		
 		this.oSavedSHData = {SavedShareHolderCollection: []};
 		this.oSavedSHDataJSONData = new sap.ui.model.json.JSONModel();
 		
@@ -197,11 +203,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oLanguageSelect = this.getView().byId("idLanguageSelect");
 
 		
-		
+		this.oPreviewLILIPreviewProductsTable = this.getView().byId("idLILIPreviewProductsTable");
+		this.oProductsTableVBox = this.getView().byId("idProductsTableVBox");
+
+
 
 
 		
 	},
+	/*handleSHTableDeleteButtonPress : function(){
+		
+	},*/
 	handleTCPreviousButtonPress : function(){
 		this.handlePreviewInfoButtonClick();
 	},
@@ -392,7 +404,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oForgotPasswordMatrixLayout.setVisible(false);
 	},
 	handleBIOINextButtonPress : function(){
+		
+		/*if(this.oBIOIvalidateworker.validateDataBIOI(this)){
+			if(this.oBIOIvalidateworker.validatePresenceBIOI(this)){
+				this.oBIOIvalidateworker.saveData(this);
+				
+			}
+		}*/
+		
 		this.oBasicInfoTab.setSelectedIndex(1);
+		
+		
 
 	},
 	handleBICIPreviousButtonPress : function(){
@@ -437,7 +459,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oTotalLocalESHExistingShareHolderPercentage += Number(this.oSavedSHData.SavedShareHolderCollection[m].Percentage);			
 		}
 		
-		this.oGlobalLocalESHTotalShareHolderPercentage = (this.oTotalLocalESHNewShareHolderPercentage + this.oTotalLocalESHExistingShareHolderPercentage);
+		//this.oGlobalLocalESHTotalShareHolderPercentage = (this.oTotalLocalESHNewShareHolderPercentage + this.oTotalLocalESHExistingShareHolderPercentage);
+		this.oGlobalLocalESHTotalShareHolderPercentage = this.oTotalLocalESHExistingShareHolderPercentage;
 	
 		
 		
@@ -455,6 +478,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 				this.oShowAlertDialog.open();
 			 }
 		}else if((Number(this.oESHPercentageInputText.getValue()) + this.oGlobalLocalESHTotalShareHolderPercentage) > 100){
+	   	//}else if(this.oGlobalLocalESHTotalShareHolderPercentage > 100){
 			if(!this.oShowAlertDialog.isOpen())
 			 {
 				this.oAlertTextView.setText(this.oModelHelper.getText("TotalSHCannotExceed"));
@@ -492,7 +516,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 			    		jQuery.when(oRequestFinishedDeferredVESHNSH).then(jQuery.proxy(function(oResponse) {			
 			    
-			    			thatContext.oExistingShareHolderTable.unbindItems();
+			    			//thatContext.oExistingShareHolderTable.unbindItems();
 			    			
 			    			
 							//thatContext.oSavedSHData.SavedShareHolderCollection.push({
@@ -502,11 +526,18 @@ sap.ui.controller("com.sagia.view.Overview", {
 			    	 			"Bpname":thatoResponse.data.Bpname,
 			    	 			"EntityNo" : oResponse.EntityNo,
 			    	 			"Percentage" : percentage});*/
+			    			thatContext.oSHTable.unbindItems();
 			    			thatContext.oSavedSHData.SavedShareHolderCollection.push({
-			    				"Bpno":thatoResponse.data.Bpno,
-			    	 			"Bpname":thatoResponse.data.Bpname,
-			    	 			"EntityNo" : oResponse.EntityNo,
-			    	 			"Percentage" : percentage});
+/*			    				"Bpno":thatoResponse.data.Bpno,
+*/			    	 			"ShareHolderName":thatoResponse.data.Bpname,
+								"Nationalty" : "",			    	 			
+			    	 			"Percentage" : percentage,
+			    	 			"EntityNo" : oResponse.EntityNo});
+			    			/*thatContext.oSavedSHData.SavedShareHolderCollection.push({
+			    	 			"ShareHolderName":oResponse.EntityFname,	    	 			
+			    	 			"Nationalty" : oResponse.CurrNationalty,
+			    	 			"Percentage" : oResponse.Percentage,
+			    	 			"EntityNo" : oResponse.EntityNo});*/
 			    			
 			    			
 			    			thatContext.oESHTotalShareHolderPercentage += percentage;
@@ -514,7 +545,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			    			thatContext.oESHCreateNewDataJSONData.setData(thatContext.oSavedSHData);
 			    	 		
 			    	 		
-			    			thatContext.oExistingShareHolderTable.setModel(thatContext.oESHCreateNewDataJSONData);
+			    			/*thatContext.oExistingShareHolderTable.setModel(thatContext.oESHCreateNewDataJSONData);
 			    			
 			    			thatContext.oExistingShareHolderTable.bindItems("/SavedShareHolderCollection",new sap.m.ColumnListItem({
 			    		        cells : [ new sap.ui.commons.TextView({
@@ -523,13 +554,30 @@ sap.ui.controller("com.sagia.view.Overview", {
 			    		          text : "{Bpname}"
 			    		        }),  new sap.ui.commons.TextView({
 			    		          text : "{Percentage}"
-			    		        })/*, 
-			    		        new sap.m.Button({ icon : "sap-icon://delete"})*/]
+			    		        })]
+			    		      }));*/
+			    			
+			    			thatContext.oSHJSONModel.setData(thatContext.oSavedSHData);
+			    			thatContext.oSHTable.setModel(thatContext.oSHJSONModel);
+			    			thatContext.oSHTable.bindItems("/SavedShareHolderCollection",new sap.m.ColumnListItem({
+			    				cells : [ new sap.ui.commons.TextView({
+			    			          text : "{ShareHolderName}"
+			    			        }),new sap.ui.commons.TextView({
+			    			          text : "{Percentage}"
+			    			        }),  new sap.ui.commons.TextView({
+			    			          text : "{Nationalty}"
+			    			        })]
 			    		      }));
+
+
 			    			this.oExistingShareHolderEntityNo.setValue("");
 			    			this.oExistingShareHolderEntityName.setValue("");
 			    			this.oESHPercentageInputText.setValue("");
 			    			that.closeBusyDialog();
+			    			
+					        that.oSavedSHData.SavedShareHolderCollection.length = 0;
+
+			    			that.loadSavedShareHolderDetails();
 					
 		    		}, this));	
 				}else{
@@ -556,7 +604,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		
 	},
-	handleESHTableDeleteButtonPress : function(oEvent){
+	handleSHTableDeleteButtonPress : function(oEvent){
 		
 		 var that = this;
 		 this.openBusyDialog();
@@ -564,9 +612,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		 
         try{
         //console.log(this.oESHCreateNewData.ESHCollection[this.oExistingShareHolderTable.indexOfItem(oEvent.getParameter('listItem'))].Percentage);
-        this.oESHTotalShareHolderPercentage -= this.oSavedSHData.SavedShareHolderCollection[this.oExistingShareHolderTable.indexOfItem(oEvent.getParameter('listItem'))].Percentage; 
+        this.oESHTotalShareHolderPercentage -= this.oSavedSHData.SavedShareHolderCollection[this.oSHTable.indexOfItem(oEvent.getParameter('listItem'))].Percentage; 
 
-       	 var oRequestFinishedDeferredRemoveESHEntry = this.oModelHelper.deleteNewShareHolderEntry(this.oRef_id,this.oSavedSHData.SavedShareHolderCollection[this.oExistingShareHolderTable.indexOfItem(oEvent.getParameter('listItem'))].EntityNo);
+       	 var oRequestFinishedDeferredRemoveESHEntry = this.oModelHelper.deleteNewShareHolderEntry(this.oRef_id,this.oSavedSHData.SavedShareHolderCollection[this.oSHTable.indexOfItem(oEvent.getParameter('listItem'))].EntityNo);
 
     		 jQuery.when(oRequestFinishedDeferredRemoveESHEntry).then(jQuery.proxy(function(oResponse) {			
     			
@@ -575,9 +623,9 @@ sap.ui.controller("com.sagia.view.Overview", {
     		 }, this));	
     		 
 
-    			this.oSavedSHData.SavedShareHolderCollection.splice(this.oExistingShareHolderTable.indexOfItem(oEvent.getParameter('listItem')),1);
+    			this.oSavedSHData.SavedShareHolderCollection.splice(this.oSHTable.indexOfItem(oEvent.getParameter('listItem')),1);
     	        
-    	        this.oExistingShareHolderTable.removeItem(oEvent.getParameter('listItem'));
+    	        this.oSHTable.removeItem(oEvent.getParameter('listItem'));
     	        
        	 
         }catch(err){
@@ -610,7 +658,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this.oTotalLocalNSHExistingShareHolderPercentage += Number(this.oSavedSHData.SavedShareHolderCollection[m].Percentage);			
 				}
 				
-				this.oGlobalLocalNSHTotalShareHolderPercentage = (this.oTotalLocalNSHNewShareHolderPercentage + this.oTotalLocalNSHExistingShareHolderPercentage);
+				//this.oGlobalLocalNSHTotalShareHolderPercentage = (this.oTotalLocalNSHNewShareHolderPercentage + this.oTotalLocalNSHExistingShareHolderPercentage);
+				this.oGlobalLocalNSHTotalShareHolderPercentage = this.oTotalLocalNSHExistingShareHolderPercentage;
 				
 				 if(this.oNSHDOBDate.getDateValue() > new Date()){
 					 if(!this.oShowAlertDialog.isOpen())
@@ -621,6 +670,7 @@ sap.ui.controller("com.sagia.view.Overview", {
     	            this.closeBusyDialog();
 					 
 				 }else if((Number(this.oNSHPercentageInputText.getValue()) + this.oGlobalLocalNSHTotalShareHolderPercentage) > 100){
+				 //}else if(this.oGlobalLocalNSHTotalShareHolderPercentage > 100){
 						if(!this.oShowAlertDialog.isOpen())
 						 {
 							this.oAlertTextView.setText(this.oModelHelper.getText("TotalSHCannotExceed"));
@@ -747,6 +797,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 					}
 					oDOBSplittedString = oDOBSplitted[2]+""+oDOBSplitted[0]+""+oDOBSplitted[1];
 					
+					sap.m.MessageToast.show(this.oModelHelper.getText("CreatingNewSH"));
+					
 						 var oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(
 								that.oRef_id,
 			            		that.oShareHolderTypeComboBox.getSelectedItem().getText(),
@@ -762,9 +814,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 			     				that.oNSHStreetInputText.getValue(),
 			     				oDOBSplittedString,
 			     				//that.oNSHDOBDate.getDateValue().toISOString().substring(0,10).replace(/-/g,""),
-			     				that.oNSHWebsiteInputText.getValue(),
+			     				"http://"+that.oNSHWebsiteInputText.getValue(),
 			     				that.oNSHTelephoneInputText.getValue(),
-			     				that.oNSHNationalityComboBox.getSelectedKey(),
+			     				that.oNSHNationalityComboBox.getSelectedItem().getText(),
 			     				that.oNSHMobilePhoneInputText.getValue(),
 			     				that.oNSHPreviousNationalityInputText.getSelectedKey(),
 			     				that.oNSHFaxInputText.getValue(),
@@ -780,13 +832,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 			     		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {
 			     			
 		     			 try{
-		     				 that.oNSHCreateNSHTable.unbindItems();							     			
+		     				/* that.oNSHCreateNSHTable.unbindItems();							     			
 				             that.oNSHCreateNewData.NSHCollection.push({
 			         			"EntityFname":oResponse.EntityFname, 
 			         			"EntityLname": oResponse.EntityLname, 
 			         			"ShldrType":oResponse.ShldrType,
 			         			"Percentage":oResponse.Percentage,
 			         			"EntityNo": oResponse.EntityNo});
+				             
 				             that.oNSHTotalShareHolderPercentage += oResponse.Percentage;							         		
 				             that.oNSHCreateNewDataJSONData.setData(that.oNSHCreateNewData);							                 
 				             that.oNSHCreateNSHTable.setModel(that.oNSHCreateNewDataJSONData);							         		
@@ -805,8 +858,34 @@ sap.ui.controller("com.sagia.view.Overview", {
 			     			          visible : false,
 			     			          press : [oResponse.EntityNo, this.handleNSHEditButtonPress, this]
 			     			        })]
-			     			      }));
-					             
+			     			      }));*/
+		     				that.oSHTable.unbindItems();
+
+				            that.oSavedSHData.SavedShareHolderCollection.push({
+				    				/*"Bpno":oResponse.EntityFname,
+				    	 			"Bpname":oResponse.ShldrType,
+				    	 			"EntityNo" : oResponse.EntityNo,
+				    	 			"Percentage" : oResponse.Percentage*/
+				            	"ShareHolderName":oResponse.EntityFname,
+								"Nationalty" : oResponse.CurrNationalty,			    	 			
+			    	 			"Percentage" : oResponse.Percentage,
+			    	 			"EntityNo" : oResponse.EntityNo
+				            	
+				            });
+				             
+				            that.oSHJSONModel.setData(that.oSavedSHData, true);
+				    		that.oSHTable.setModel(that.oSHJSONModel);
+				    		that.oSHTable.bindItems("/SavedShareHolderCollection",new sap.m.ColumnListItem({
+				    			cells : [ new sap.ui.commons.TextView({
+			    			          text : "{ShareHolderName}"
+			    			        }),new sap.ui.commons.TextView({
+			    			          text : "{Percentage}"
+			    			        }),  new sap.ui.commons.TextView({
+			    			          text : "{Nationalty}"
+			    			        })]
+				    		      }));
+				             
+
 					            
 					        that.NSHEntityNo = oResponse.EntityNo;
 					        that.NSHFullName = oResponse.EntityFname+"_"+oResponse.EntityLname;
@@ -905,6 +984,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 														 							        
 													 							        jQuery.when.apply($, getarray).done(function () {
 													 							        	that.closeBusyDialog();
+													 							        	
+													 							        	that.oSavedSHData.SavedShareHolderCollection.length = 0;
+													 							        	that.loadSavedShareHolderDetails();
 													 							        	
 													 							        	that.oShareHolderTypeComboBox.setValue("");
 													 					     				that.oNSHFirstNameInputText.setValue("");
@@ -1291,7 +1373,18 @@ sap.ui.controller("com.sagia.view.Overview", {
 			if(this.oLicenseTypeInputText){
 				this.oLicenseTypeInputText.setValue("");
 			}
+		
 		}
+		
+		if(this.oLILIProductsTable.getVisible()){
+			this.oLILIProductsTable.unbindItems();
+			this.oLILIProductsTable.setVisible(false);	
+			this.oProductsTableVBox.setVisible(false);	
+		}
+		
+		
+        
+
 		
 		if(this.oGroupMultiSelectionTextView){
 			this.oGroupMultiSelectionTextView.setText("");
@@ -1356,6 +1449,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oProductsTableVBox.setVisible(false);
 		}
 		
+		if(this.oLILIProductsTable.getVisible()){
+			this.oLILIProductsTable.unbindItems();
+			this.oLILIProductsTable.setVisible(false);
+			this.oProductsTableVBox.setVisible(false);	
+
+		}
+		
 		
 		if(this.oGroupMultiSelectionTextView){
 			this.oGroupMultiSelectionTextView.setText("");
@@ -1408,6 +1508,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 			if(this.oLicenseTypeInputText){
 				this.oLicenseTypeInputText.setValue("");
 			}
+		}
+		
+		if(this.oLILIProductsTable.getVisible()){
+			this.oLILIProductsTable.unbindItems();
+			this.oLILIProductsTable.setVisible(false);	
+			this.oProductsTableVBox.setVisible(false);	
+
 		}
 		
 		if(this.oGroupMultiSelectionTextView){
@@ -1465,6 +1572,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 			if(this.oLicenseTypeInputText){
 				this.oLicenseTypeInputText.setValue("");
 			}
+		}
+		
+		if(this.oLILIProductsTable.getVisible()){
+			this.oLILIProductsTable.unbindItems();
+			this.oLILIProductsTable.setVisible(false);	
+			this.oProductsTableVBox.setVisible(false);	
+
 		}
 		
 		var oTempGroupTextViewText = "";
@@ -1532,6 +1646,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}
 		}
 		
+		if(this.oLILIProductsTable.getVisible()){
+			this.oLILIProductsTable.unbindItems();
+			this.oLILIProductsTable.setVisible(false);	
+			this.oProductsTableVBox.setVisible(false);	
+
+		}
+		
 		var oTempClassTextViewText = "";
 	    for(var i = 0 ; i < this.oLILIClassMultiComboBox.getSelectedKeys().length; i++){
 	    	oTempClassTextViewText += this.oLILIClassMultiComboBox.getSelectedItems()[i].getText()+" , ";
@@ -1569,7 +1690,6 @@ sap.ui.controller("com.sagia.view.Overview", {
 						
 			           // this.productsTableOperation();
 						
-						this.oProductsTableVBox = this.getView().byId("idProductsTableVBox");
 						if(oResponse.LILILicenseActivityType[0].Activity.substring(0, 10) === "INDUSTRIAL"){
 							this.oProductsTableVBox.setVisible(true);
 							
@@ -1578,6 +1698,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 								
 								try{
 									//this.oLILIProductsTable.unbindItems();
+									this.oProductsTableVBox.setVisible(true);	
+
+									this.oLILIProductsTable.setVisible(true);			
+
 									for(var i = 0; i < oResponse.data.results.length; i++){
 						     		this.oLILIProductsdata.ProductsCollection.push({
 						     			"productcode":oResponse.data.results[i].PrdCode, 
@@ -2607,7 +2731,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this.oBIOIFaxCountryCodeInputText.getValue(),
 					this.oBIOIMobilephoneCountryCodeInputText.getValue());
 
-			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function() {
 				
 				this.basicInfoFileAttachmentOperations(this.oBIOIOrganizationName.getValue());
 				
@@ -3191,7 +3315,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}	
 			
 			if(answers.length > 0){
-				var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers, this.oBICIFirstNameInputText.getValue(), this.oBICILastNameInputText.getValue());
+				var oLanguage;
+				if(this.oLanguageSelect.getSelectedKey() === "EN")
+				{
+					oLanguage="E";
+				}else{
+					oLanguage="A";
+				}
+				var oRequestFinishedDeferredcreateBAQAnswers = this.oModelHelper.createBAQAnswers(this.oRef_id, questions, answers, this.oBICIFirstNameInputText.getValue(), this.oBICILastNameInputText.getValue(), oLanguage);
 
 				jQuery.when(oRequestFinishedDeferredcreateBAQAnswers).then(jQuery.proxy(function(oResponse) {
 					
@@ -3297,7 +3428,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 							);
 			
 
-			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {    	
+			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function() {    	
                 
 				this.closeBusyDialog();
             	/*sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});*/
@@ -4193,6 +4324,26 @@ sap.ui.controller("com.sagia.view.Overview", {
 							this.oPreviewLicenseInfoMAtrixLayout.addRow(oRow5);
 							
 							
+							/*if(this.oLILIProductsTable.getVisible()){
+								
+									
+								this.oPreviewLILIPreviewProductsTable = this.getView().byId("idLILIPreviewProductsTable");
+								this.oPreviewLILIPreviewProductsTable.unbindItems();		
+								this.oPreviewLILIPreviewProductsTable.setModel(this.oLILIProductsTableJSONData);							         		
+								this.oPreviewLILIPreviewProductsTable.bindItems("/ProductsCollection", new sap.m.ColumnListItem({
+									cells : [ new sap.ui.commons.TextView({
+						    	          text : "{productcode}", enabled : false
+						    	        }),new sap.ui.commons.TextView({
+						    	          text : "{product}", enabled : false
+						    	        }),  new sap.ui.commons.TextView({
+						    	          text : "{quantity}", enabled : false
+						    	        }),  new sap.ui.commons.TextView({
+						    	          text : "{uom}", enabled : false
+						    	        })]
+						    	      }));									
+								}*/
+							
+							
 						}else{
 						    //this.oClonedLILISectionComboBox.setSelectedKey( this.oLILISectionComboBox.getSelectedKey());
 						    //this.oClonedLILIDivisionComboBox.setSelectedKey( this.oLILIDivisionComboBox.getSelectedKey());
@@ -4254,6 +4405,25 @@ sap.ui.controller("com.sagia.view.Overview", {
 				
 				}
 				this.handleShareholderInfoButtonClick();
+			}
+			
+			if(this.oLILIProductsTable.getVisible()){				
+				
+				this.oPreviewLILIPreviewProductsTable.unbindItems();		
+				this.oPreviewLILIPreviewProductsTable.setModel(this.oLILIProductsTableJSONData);							         		
+				this.oPreviewLILIPreviewProductsTable.bindItems("/ProductsCollection", new sap.m.ColumnListItem({
+					cells : [ new sap.ui.commons.TextView({
+		    	          text : "{productcode}", enabled : false
+		    	        }),new sap.ui.commons.TextView({
+		    	          text : "{product}", enabled : false
+		    	        }),  new sap.ui.commons.TextView({
+		    	          text : "{quantity}", enabled : false
+		    	        }),  new sap.ui.commons.TextView({
+		    	          text : "{uom}", enabled : false
+		    	        })]
+		    	      }));									
+			}else{
+				this.oPreviewLILIPreviewProductsTable.unbindItems();
 			}
 		
 	},
@@ -5723,8 +5893,8 @@ handleRegisterUserButtonPress : function() {
 		this.oNSHTotalAssetsInBalanceSheet12InputText = this.getView().byId("idNSHTotalAssetsInBalanceSheet12InputText");
 		this.oNSHTotalAssetsInBalanceSheet13InputText = this.getView().byId("idNSHTotalAssetsInBalanceSheet13InputText");		
 		this.oNSHTotalAssetsInBalanceSheet14InputText = this.getView().byId("idNSHTotalAssetsInBalanceSheet14InputText");
-		this.oNSHCreateNSHTable = this.getView().byId("idNSHCreateNSHTable");
-		this.oExistingShareHolderTable = this.getView().byId("idESHTable");
+		//this.oNSHCreateNSHTable = this.getView().byId("idNSHCreateNSHTable");
+		//this.oExistingShareHolderTable = this.getView().byId("idESHTable");
 		
 		this.NSHPassPortAttachmentName = this.getView().byId("idNSHPassPortAttachmentName");
 		this.NSHCommercialAttachmentName = this.getView().byId("idNSHCommercialAttachmentName");
@@ -5893,8 +6063,17 @@ handleRegisterUserButtonPress : function() {
 
 		jQuery.when(oRequestFinishedDeferredSavedSH).then(jQuery.proxy(function(oResponse) {
 			
+			
+			
 			for(var i = 0; i < oResponse.data.results.length; i++){
-				if(oResponse.data.results[i].ShldrType === "Existing" 
+				
+				thatContext.oSavedSHData.SavedShareHolderCollection.push({
+    	 			"ShareHolderName":oResponse.data.results[i].EntityFname,	    	 			
+    	 			"Nationalty" : oResponse.data.results[i].CurrNationalty,
+    	 			"Percentage" : oResponse.data.results[i].Percentage,
+    	 			"EntityNo" : oResponse.data.results[i].EntityNo});
+				
+				/*if(oResponse.data.results[i].ShldrType === "Existing" 
 					&& oResponse.data.results[i].EntityFname !== "" 
 					&& oResponse.data.results[i].Exbpno !== ""
 					&& oResponse.data.results[i].Percentage !== ""){
@@ -5911,10 +6090,22 @@ handleRegisterUserButtonPress : function() {
 	         			"ShldrType":oResponse.data.results[i].ShldrType,
 	         			"Percentage":oResponse.data.results[i].Percentage,
 	         			"EntityNo": oResponse.data.results[i].EntityNo});
-				}
+				}*/
 			}
 			
-			 that.oNSHCreateNewDataJSONData.setData(that.oNSHCreateNewData);							                 
+			that.oSHJSONModel.setData(that.oSavedSHData);
+			that.oSHTable.setModel(that.oSHJSONModel);
+			that.oSHTable.bindItems("/SavedShareHolderCollection",new sap.m.ColumnListItem({
+		        cells : [ new sap.ui.commons.TextView({
+		          text : "{ShareHolderName}"
+		        }),new sap.ui.commons.TextView({
+		          text : "{Percentage}"
+		        }),  new sap.ui.commons.TextView({
+		          text : "{Nationalty}"
+		        })]
+		      }));
+			
+			/* that.oNSHCreateNewDataJSONData.setData(that.oNSHCreateNewData);							                 
              that.oNSHCreateNSHTable.setModel(that.oNSHCreateNewDataJSONData);							         		
              that.oNSHCreateNSHTable.bindItems("/NSHCollection", new sap.m.ColumnListItem({
             	vAlign : "Top",
@@ -5944,7 +6135,7 @@ handleRegisterUserButtonPress : function() {
 		        }),  new sap.ui.commons.TextView({
 		          text : "{Percentage}"
 		        })]
-		      }));
+		      }));*/
 		}, this));
 	},
 	loadExperienceQuestions : function(oLicenseType, oResponseLicenseType){
@@ -6247,6 +6438,8 @@ handleRegisterUserButtonPress : function() {
 			this._oTermsInfoButton.setSrc("common/mime/terms.png");
 			this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
 		}
+		
+		this.handleTermsInfoButtonClick();
 
 	},
 	handleSubmitInfoButtonClick : function(){
@@ -6293,14 +6486,16 @@ handleRegisterUserButtonPress : function() {
 		this.oTotalNewShareHolderPercentage = 0;
 		this.oTotalExistingShareHolderPercentage = 0;
 		
-		for(k = 0; k < this.oNSHCreateNewData.NSHCollection.length; k++){			
+		/*for(k = 0; k < this.oNSHCreateNewData.NSHCollection.length; k++){			
 			this.oTotalNewShareHolderPercentage += Number(this.oNSHCreateNewData.NSHCollection[k].Percentage);			
-		}
+		}*/
 		for(m = 0; m < this.oSavedSHData.SavedShareHolderCollection.length; m++){			
 			this.oTotalExistingShareHolderPercentage += Number(this.oSavedSHData.SavedShareHolderCollection[m].Percentage);			
 		}
 		
-		this.oGlobalTotalShareHolderPercentage = (this.oTotalNewShareHolderPercentage + this.oTotalExistingShareHolderPercentage);
+		//this.oGlobalTotalShareHolderPercentage = (this.oTotalNewShareHolderPercentage + this.oTotalExistingShareHolderPercentage);
+		
+		this.oGlobalTotalShareHolderPercentage = this.oTotalExistingShareHolderPercentage;
 		
 		//console.log(this.oGlobalTotalShareHolderPercentage);
 		if(!this.oShareHolderNewShareHolderFragment){

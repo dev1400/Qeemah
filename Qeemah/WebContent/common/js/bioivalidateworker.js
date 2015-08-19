@@ -349,5 +349,88 @@ com.sagia.common.js.bioivalidateworker = {
 		return othis.oValidationLILIStatus;
 
 	},
+	saveData : function(othis){		
 		
+		othis.openBusyDialog();
+		
+		othis.oBIOICapitalInputTextValue = othis.oBIOICapitalInputText.getValue();
+		othis.oBIOICapitalInputTextValue = othis.oBIOICapitalInputTextValue.match(/\d/g);
+		othis.oBIOICapitalInputTextValue = othis.oBIOICapitalInputTextValue.join("");
+		
+		othis.oBIOILaborSizeInputTextValue = othis.oBIOILaborSizeInputText.getValue();
+		othis.oBIOILaborSizeInputTextValue = othis.oBIOILaborSizeInputTextValue.match(/\d/g);
+		othis.oBIOILaborSizeInputTextValue = othis.oBIOILaborSizeInputTextValue.join("");
+		
+		var that = othis;
+	       
+		if(othis.oRecordExists){
+			try{
+				
+			var oRequestFinishedDeferred = othis.oModelHelper.saveBIOI(othis.oRef_id, 
+					othis.oBIOIOrganizationName.getValue(),
+					othis._oidRegionComboBox.getSelectedKey(),
+					othis._oBIILegalStatusCombobox.getSelectedKey(),
+					othis._oBICityComboBox.getSelectedKey(),
+					othis.oBIOIMultiNationalCompanyCombobox.getSelectedKey(),
+					othis.oBIOIEmailInputText.getValue(),
+					othis.oBIOILaborSizeInputTextValue,
+					othis.oBIOICommMethodComboBox.getSelectedItem().getKey(),
+					othis.oBIOICapitalInputTextValue,					
+					othis.oBIOITelephoneCountryCodeInputText.getValue(),
+					othis.oBIOITelephoneInputText.getValue(),
+					othis.oBIOIMobilephoneCountryCodeInputText.getValue(),
+					othis.oBIOIMobilephoneInputText.getValue(),
+					othis.oBIOIFaxCountryCodeInputText.getValue(),
+					othis.oBIOIFaxInputText.getValue(),
+					othis.oBIOIWebSiteInputText.getValue(),
+					othis.oBIOITelephoneCountryCodeInputText.getValue(),
+					othis.oBIOIFaxCountryCodeInputText.getValue(),
+					othis.oBIOIMobilephoneCountryCodeInputText.getValue());
+
+			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function() {				
+				//this.basicInfoFileAttachmentOperations(this.oBIOIOrganizationName.getValue());				
+				othis.closeBusyDialog();
+			}, othis));	
+			}
+			catch(err){
+				othis.closeBusyDialog();
+				console.log(err);
+			}
+			
+		}else{
+			try{
+			var oRequestFinishedDeferred = othis.oModelHelper.createAndUpdateBIOI(othis.oRef_id, 
+					othis.oBIOIOrganizationName.getValue(),
+					othis._oidRegionComboBox.getSelectedKey(),
+					othis._oBIILegalStatusCombobox.getSelectedKey(),
+					othis._oBICityComboBox.getSelectedKey(),
+					othis.oBIOIMultiNationalCompanyCombobox.getSelectedKey(),
+					othis.oBIOIEmailInputText.getValue(),
+					othis.oBIOILaborSizeInputTextValue,
+					othis.oBIOICommMethodComboBox.getSelectedKey(),
+					othis.oBIOICapitalInputTextValue,
+					othis.oBIOITelephoneCountryCodeInputText.getValue(),
+					othis.oBIOITelephoneInputText.getValue(),
+					othis.oBIOIMobilephoneCountryCodeInputText.getValue(),
+					othis.oBIOIMobilephoneInputText.getValue(),
+					othis.oBIOIFaxCountryCodeInputText.getValue(),
+					othis.oBIOIFaxInputText.getValue(),
+					othis.oBIOIWebSiteInputText.getValue(),
+					othis.oBIOITelephoneCountryCodeInputText.getValue(),
+					othis.oBIOIFaxCountryCodeInputText.getValue(),
+					othis.oBIOIMobilephoneCountryCodeInputText.getValue()								
+					);				
+            jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+            	othis.oRecordExists = true;            	
+				//this.basicInfoFileAttachmentOperations(this.oBIOIOrganizationName.getValue());
+            	othis.closeBusyDialog();
+			}, othis));	
+			}
+			catch(err){
+				othis.closeBusyDialog();
+				console.log(err);
+			}
+			
+		}
+	},	
 };

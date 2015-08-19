@@ -4,389 +4,154 @@
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 
-	<!-- <ScrollContainer height="39.88rem" width="69rem" vertical="true"> -->
-<VBox justifyContent="Center" alignItems="Center">
-		<!-- <HBox alignItems="Center">
-			<Label text="{i18n>SelectShareHolderType}"></Label>
-			<RadioButton groupName="NewShareHolderGroup" text="{i18n>Person}" />
-			<RadioButton groupName="NewShareHolderGroup" text="{i18n>Organization}" />
-		</HBox> -->
-		
-		<sap.ui.commons.layout:MatrixLayout
-				layoutFixed="false">
-				<sap.ui.commons.layout:rows>
-					<sap.ui.commons.layout:MatrixLayoutRow>
-						<sap.ui.commons.layout:cells>
-							<sap.ui.commons.layout:MatrixLayoutCell>
-								<sap.ui.commons.layout:content>
-									<Table id="idNSHCreateNSHTable" width="62rem" mode="Delete" delete="handleNSHTableDeleteButtonPress">
-										<columns>
-											
-											<Column width="5em" hAlign = "Center">
-												<Text text="{i18n>FirstName}" />
-											</Column>
-											<Column width="5em" hAlign = "Center">
-												<Text text="{i18n>LastName}" />
-											</Column>
-											<Column width="7em" hAlign = "Center">
-												<Text text="{i18n>ShareholderType}" />
-											</Column>
-											<Column width="5em" hAlign = "Center">
-												<Text text="{i18n>Percentage}" />
-											</Column>
-											<Column width="5em" hAlign = "Center">
-												<Text text="{i18n>Edit}" visible="false"/>
-											</Column>
-											<!-- <Column width="5em" hAlign = "Center">
-												<Text text="{i18n>Delete}" />
-											</Column> -->
-										</columns>
-										<!-- <items>
-											<ColumnListItem>
-												<cells>
-													<Input type="Text" />
-													<Input type="Text" />
-													<Input type="Text" />
-													<Input type="Text" />
-													<Input type="Text" />
-													<Input type="Text" />
-													<Input type="Text" />
-												</cells>
-											</ColumnListItem>
-										</items> -->
-									</Table>
-								</sap.ui.commons.layout:content>
-							</sap.ui.commons.layout:MatrixLayoutCell>
-						</sap.ui.commons.layout:cells>
-					</sap.ui.commons.layout:MatrixLayoutRow>
-				</sap.ui.commons.layout:rows>
-			</sap.ui.commons.layout:MatrixLayout>
-			
+
+	<VBox justifyContent="Center" alignItems="Center">
+
+		<!-- <sap.ui.commons.layout:MatrixLayout
+			layoutFixed="false">
+			<sap.ui.commons.layout:rows>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell>
+							<sap.ui.commons.layout:content>
+								<Table id="idNSHCreateNSHTable" width="62rem" mode="Delete"
+									delete="handleNSHTableDeleteButtonPress">
+									<columns>
+
+										<Column width="5em" hAlign="Center">
+											<Text text="{i18n>FirstName}" />
+										</Column>
+										<Column width="5em" hAlign="Center">
+											<Text text="{i18n>LastName}" />
+										</Column>
+										<Column width="7em" hAlign="Center">
+											<Text text="{i18n>ShareholderType}" />
+										</Column>
+										<Column width="5em" hAlign="Center">
+											<Text text="{i18n>Percentage}" />
+										</Column>
+										<Column width="5em" hAlign="Center">
+											<Text text="{i18n>Edit}" visible="false" />
+										</Column>
+									</columns>
+								</Table>
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:rows>
+		</sap.ui.commons.layout:MatrixLayout> -->
+
 		<sap.ui.commons.layout:MatrixLayout>
-		<sap.ui.commons.layout:rows>
-		
-		<!-- <sap.ui.commons.layout:MatrixLayoutRow>
-		<sap.ui.commons.layout:cells >
-		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
-		<sap.ui.commons.layout:content>
-		<Button width="15rem" style="Accept" text="{i18n>AddShareHolderDetails}" id="idCreateNewShareHolderAddShareHolderDetailsButton"
-									press="handleCreateNewShareHolderAddShareHolderDetailsButtonPress"></Button>
-		</sap.ui.commons.layout:content>
-		</sap.ui.commons.layout:MatrixLayoutCell>
-		</sap.ui.commons.layout:cells>
-		</sap.ui.commons.layout:MatrixLayoutRow> -->
-		
-		<sap.ui.commons.layout:MatrixLayoutRow>
-		<sap.ui.commons.layout:cells >
-		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
-		<sap.ui.commons.layout:content>
-		<VBox id="idAddShareHolderDetailsVBoxFragment" visible="true">
-		<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.ns_shareholderdetails" 
-								type="XML" />
-		</VBox>
-								
-		</sap.ui.commons.layout:content>
-		</sap.ui.commons.layout:MatrixLayoutCell>
-		</sap.ui.commons.layout:cells>
-		</sap.ui.commons.layout:MatrixLayoutRow>
-		
-		
-		<!-- <sap.ui.commons.layout:MatrixLayoutRow>
-		<sap.ui.commons.layout:cells>
-		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
-		<sap.ui.commons.layout:content>
-		<Button width="15rem" style="Accept" text="{i18n>AddAttachments}" id="idCreateNewShareHolderAddAttachmentsButton"
-									press="handleCreateNewShareHolderAddAttachmentssButtonPress"></Button>
-		</sap.ui.commons.layout:content>
-		</sap.ui.commons.layout:MatrixLayoutCell>
-		</sap.ui.commons.layout:cells>
-		</sap.ui.commons.layout:MatrixLayoutRow> -->
-		
-		<sap.ui.commons.layout:MatrixLayoutRow>
-		<sap.ui.commons.layout:cells >
-		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
-		<sap.ui.commons.layout:content>
-		<VBox id="idAddShareHolderAttachmentssVBoxFragment" visible="true" width="78em"> 
-		<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.ns_attachments" 
-								type="XML" />
-		</VBox>
-								
-		</sap.ui.commons.layout:content>
-		</sap.ui.commons.layout:MatrixLayoutCell>
-		</sap.ui.commons.layout:cells>
-		</sap.ui.commons.layout:MatrixLayoutRow>
-		
-		<!-- <sap.ui.commons.layout:MatrixLayoutRow>
-		<sap.ui.commons.layout:cells>
-		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
-		<sap.ui.commons.layout:content>
-		<Button width="15rem" style="Accept" text="{i18n>AnswerActivityQuestions}" id="idCreateNewShareHolderAnswerActivityQuestionsButton"
-									press="handleCreateNewShareHolderAnswerActivityQuestionsButtonPress"></Button>
-		</sap.ui.commons.layout:content>
-		</sap.ui.commons.layout:MatrixLayoutCell>
-		</sap.ui.commons.layout:cells>
-		</sap.ui.commons.layout:MatrixLayoutRow> -->
-		
-		<sap.ui.commons.layout:MatrixLayoutRow>
-		<sap.ui.commons.layout:cells >
-		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
-		<sap.ui.commons.layout:content>
-		<VBox id="idAddShareHolderActivityAnswersVBoxFragment" visible="true" width="78em">
-		<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.ns_activityquestions" 
-								type="XML" />
-		</VBox>
-								
-		</sap.ui.commons.layout:content>
-		</sap.ui.commons.layout:MatrixLayoutCell>
-		</sap.ui.commons.layout:cells>
-		</sap.ui.commons.layout:MatrixLayoutRow>
-		
-		<!-- <sap.ui.commons.layout:MatrixLayoutRow>
-		<sap.ui.commons.layout:cells>
-		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
-		<sap.ui.commons.layout:content>
-		<Button width="15rem" style="Accept" text="{i18n>AnswerExperienceQuestions}" id="idCreateNewShareHolderAnswerExperienceQuestionsButton"
-									press="handleCreateNewShareHolderAnswerExperienceQuestionsButtonPress"></Button>
-		</sap.ui.commons.layout:content>
-		</sap.ui.commons.layout:MatrixLayoutCell>
-		</sap.ui.commons.layout:cells>
-		</sap.ui.commons.layout:MatrixLayoutRow> -->
-		
-		
-		<sap.ui.commons.layout:MatrixLayoutRow>
-		<sap.ui.commons.layout:cells >
-		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
-		<sap.ui.commons.layout:content>
-		<VBox id="idAddShareHolderExperienceAnswersVBoxFragment" visible="true" width="78em">
-		<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.ns_p_experiencequestions" 
-								type="XML" />
-		</VBox>
-		
-		<sap.ui.commons.layout:MatrixLayout
-		id="idNewShareHolderExperienceQuestionsMatrixLayout" layoutFixed="false">
-		<sap.ui.commons.layout:rows>
-		</sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:rows>
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							hAlign="Center">
+							<sap.ui.commons.layout:content>
+								<VBox id="idAddShareHolderDetailsVBoxFragment" visible="true">
+									<sap.ui.core:Fragment
+										fragmentName="com.sagia.view.fragments.ns_shareholderdetails"
+										type="XML" />
+								</VBox>
+
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							hAlign="Center">
+							<sap.ui.commons.layout:content>
+								<VBox id="idAddShareHolderAttachmentssVBoxFragment"
+									visible="true" width="78em">
+									<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.ns_attachments"
+										type="XML" />
+								</VBox>
+
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							hAlign="Center">
+							<sap.ui.commons.layout:content>
+								<VBox id="idAddShareHolderActivityAnswersVBoxFragment"
+									visible="true" width="78em">
+									<sap.ui.core:Fragment
+										fragmentName="com.sagia.view.fragments.ns_activityquestions"
+										type="XML" />
+								</VBox>
+
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+
+
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							hAlign="Center">
+							<sap.ui.commons.layout:content>
+								<VBox id="idAddShareHolderExperienceAnswersVBoxFragment"
+									visible="true" width="78em">
+									<sap.ui.core:Fragment
+										fragmentName="com.sagia.view.fragments.ns_p_experiencequestions"
+										type="XML" />
+								</VBox>
+
+								<sap.ui.commons.layout:MatrixLayout
+									id="idNewShareHolderExperienceQuestionsMatrixLayout"
+									layoutFixed="false">
+									<sap.ui.commons.layout:rows>
+									</sap.ui.commons.layout:rows>
+								</sap.ui.commons.layout:MatrixLayout>
+
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+
+
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							hAlign="Center">
+							<sap.ui.commons.layout:content>
+								<VBox id="idAddShareHolderFinancialAnswersVBoxFragment"
+									visible="true" width="78em">
+									<sap.ui.core:Fragment
+										fragmentName="com.sagia.view.fragments.ns_p_financialquestions"
+										type="XML" />
+								</VBox>
+
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+			</sap.ui.commons.layout:rows>
 		</sap.ui.commons.layout:MatrixLayout>
-								
-		</sap.ui.commons.layout:content>
-		</sap.ui.commons.layout:MatrixLayoutCell>
-		</sap.ui.commons.layout:cells>
-		</sap.ui.commons.layout:MatrixLayoutRow>
-		
-		
-		<!-- <sap.ui.commons.layout:MatrixLayoutRow>
-		<sap.ui.commons.layout:cells>
-		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
-		<sap.ui.commons.layout:content>
-		<Button width="15rem" style="Accept" text="{i18n>AnswerFinancialQuestions}" id="idCreateNewShareHolderAnswerFinancialQuestionsButton"
-									press="handleCreateNewShareHolderAnswerFinancialQuestionsButtonPress"></Button>		
-		</sap.ui.commons.layout:content>
-		</sap.ui.commons.layout:MatrixLayoutCell>
-		</sap.ui.commons.layout:cells>
-		</sap.ui.commons.layout:MatrixLayoutRow> -->
-		
-		<sap.ui.commons.layout:MatrixLayoutRow>
-		<sap.ui.commons.layout:cells >
-		<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
-		<sap.ui.commons.layout:content>
-		<VBox id="idAddShareHolderFinancialAnswersVBoxFragment" visible="true" width="78em">
-		<sap.ui.core:Fragment fragmentName="com.sagia.view.fragments.ns_p_financialquestions" 
-								type="XML" />
-		</VBox>
-								
-		</sap.ui.commons.layout:content>
-		</sap.ui.commons.layout:MatrixLayoutCell>
-		</sap.ui.commons.layout:cells>
-		</sap.ui.commons.layout:MatrixLayoutRow>
-		
-		</sap.ui.commons.layout:rows>
-		</sap.ui.commons.layout:MatrixLayout>
-		
-		
-		
-		
-		
-									
-		
 
 
-		
+		<html:br />
 
 
-			<!-- <sap.ui.commons:Accordion id="accordionA"
-				openedSectionsId="section1" width="62rem">
-				<sap.ui.commons:sections>
-					<sap.ui.commons:AccordionSection
-						id="idShareHolderDetails" maxHeight="30rem" collapsed="true"
-						title="{i18n>ShareHolderDetails}" tooltip="{i18n>ShareHolderDetails}">
-						<sap.ui.commons:content>
-							<sap.ui.core:Fragment
-								fragmentName="com.sagia.view.fragments.ns_shareholderdetails"
-								type="XML" />
-						</sap.ui.commons:content>
-					</sap.ui.commons:AccordionSection>
-					<sap.ui.commons:AccordionSection
-						id="idNewShareHolderAttachments" maxHeight="17.3rem" collapsed="true"
-						title="{i18n>Attachments}" tooltip="{i18n>Attachments}">
-
-						<sap.ui.commons:content>
-						
-						<sap.ui.core:Fragment
-								fragmentName="com.sagia.view.fragments.ns_attachments"
-								type="XML" />							
-
-						</sap.ui.commons:content>
-					</sap.ui.commons:AccordionSection>
-					<sap.ui.commons:AccordionSection
-						maxHeight="17.4rem" id="idActivityQuestions" collapsed="true" title="{i18n>ActivityQuestions}">
-						
-						<sap.ui.commons:content>
-						
-						<sap.ui.core:Fragment
-								fragmentName="com.sagia.view.fragments.ns_activityquestions"
-								type="XML" />	
-
-						</sap.ui.commons:content>
-					</sap.ui.commons:AccordionSection>
-
-					<sap.ui.commons:AccordionSection
-						id="idExperienceQuestions" maxHeight="18.4rem" collapsed="true" title="{i18n>ExperienceQuestions}">
-						<sap.ui.commons:content>
-						<sap.ui.core:Fragment
-								fragmentName="com.sagia.view.fragments.ns_p_experiencequestions"
-								type="XML" />	
-
-						</sap.ui.commons:content>
-					</sap.ui.commons:AccordionSection>
-					<sap.ui.commons:AccordionSection
-						id="idNewShareholderFinancialQuestions" collapsed="true" maxHeight="18.4rem"
-						title="{i18n>FinancialQuestions}">						
-						<sap.ui.commons:content>
-						<sap.ui.core:Fragment
-								fragmentName="com.sagia.view.fragments.ns_p_financialquestions"
-								type="XML" />	
-
-						</sap.ui.commons:content>
-					</sap.ui.commons:AccordionSection>
-				</sap.ui.commons:sections>
-			</sap.ui.commons:Accordion>
-			<html:br /> -->
-			
-			<!-- <sap.ui.commons:Accordion id="idOrganizationRegistrationAccordation"
-				openedSectionsId="section1" width="62rem">
-				<sap.ui.commons:sections>
-					<sap.ui.commons:AccordionSection
-						id="idOrganizationShareHolderDetailsAS" maxHeight="30rem" collapsed="true"
-						title="{i18n>ShareHolderDetails}" tooltip="{i18n>ShareHolderDetails}">
-						<sap.ui.commons:content>
-							<sap.ui.core:Fragment
-								fragmentName="com.sagia.view.fragments.ns_o_shareholderdetails"
-								type="XML" />
-						</sap.ui.commons:content>
-					</sap.ui.commons:AccordionSection>
-					<sap.ui.commons:AccordionSection
-						id="idOrganizationNewShareHolderAttachmentsAS" maxHeight="17.3rem" collapsed="true"
-						title="{i18n>Attachments}" tooltip="{i18n>Attachments}">
-
-						<sap.ui.commons:content>
-						
-						<sap.ui.core:Fragment
-								fragmentName="com.sagia.view.fragments.ns_attachments"
-								type="XML" />							
-
-						</sap.ui.commons:content>
-					</sap.ui.commons:AccordionSection>
-					<sap.ui.commons:AccordionSection
-						maxHeight="17.4rem" id="idOrganizationActivityQuestionsAS" collapsed="true" title="{i18n>ActivityQuestions}">
-						
-						<sap.ui.commons:content>
-						
-						<sap.ui.core:Fragment
-								fragmentName="com.sagia.view.fragments.ns_activityquestions"
-								type="XML" />	
-
-						</sap.ui.commons:content>
-					</sap.ui.commons:AccordionSection>
-
-					<sap.ui.commons:AccordionSection
-						id="idOrganizationExperienceQuestionsAS" maxHeight="18.4rem" collapsed="true" title="{i18n>ExperienceQuestions}">
-						<sap.ui.commons:content>
-						<sap.ui.core:Fragment
-								fragmentName="com.sagia.view.fragments.ns_p_experiencequestions"
-								type="XML" />	
-
-						</sap.ui.commons:content>
-					</sap.ui.commons:AccordionSection>
-					<sap.ui.commons:AccordionSection
-						id="idOrganizationNewShareholderFinancialQuestionsAS" collapsed="true" maxHeight="18.4rem"
-						title="{i18n>FinancialQuestions}">						
-						<sap.ui.commons:content>
-						<sap.ui.core:Fragment
-								fragmentName="com.sagia.view.fragments.ns_p_financialquestions"
-								type="XML" />	
-
-						</sap.ui.commons:content>
-					</sap.ui.commons:AccordionSection>
-				</sap.ui.commons:sections>
-			</sap.ui.commons:Accordion>
-			<html:br /> -->
-			
-			<html:br />
-
-			<!-- <sap.ui.commons.layout:MatrixLayout
-				layoutFixed="false">
-				<sap.ui.commons.layout:rows>
-					<sap.ui.commons.layout:MatrixLayoutRow>
-						<sap.ui.commons.layout:cells>
-							<sap.ui.commons.layout:MatrixLayoutCell>
-								<sap.ui.commons.layout:content>
-									<Table width="62rem">
-										<columns>
-											<Column width="2em">
-												<Text text="#" />
-											</Column>
-											<Column width="5em">
-												<Text text="{i18n>FirstName}" />
-											</Column>
-											<Column width="5em">
-												<Text text="{i18n>LastName}" />
-											</Column>
-											<Column width="7em">
-												<Text text="{i18n>ShareholderType}" />
-											</Column>
-											<Column width="5em">
-												<Text text="{i18n>Percentage}" />
-											</Column>
-											<Column width="5em">
-												<Text text="{i18n>Edit}" />
-											</Column>
-											<Column width="5em">
-												<Text text="{i18n>Delete}" />
-											</Column>
-										</columns>
-										<items>
-											<ColumnListItem>
-												<cells>
-													<Input type="Text" />
-													<Input type="Text" />
-													<Input type="Text" />
-													<Input type="Text" />
-													<Input type="Text" />
-													<Input type="Text" />
-													<Input type="Text" />
-												</cells>
-											</ColumnListItem>
-										</items>
-									</Table>
-								</sap.ui.commons.layout:content>
-							</sap.ui.commons.layout:MatrixLayoutCell>
-						</sap.ui.commons.layout:cells>
-					</sap.ui.commons.layout:MatrixLayoutRow>
-				</sap.ui.commons.layout:rows>
-			</sap.ui.commons.layout:MatrixLayout> -->
-		</VBox>
+	</VBox>
 
 
-	<!-- </ScrollContainer> -->
 </sap.ui.core:FragmentDefinition>
 
