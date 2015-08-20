@@ -29,7 +29,7 @@
 					target="_blank"></Link> -->
 			</html:Marquee>
 
-			<html:div align="center">
+			<html:div align="left">
 				<Select id="idLanguageSelect" change="handleLanguageSelectionChange">
 					<sap.ui.core:ListItem key="EN" text="{i18n>English}" />
 					<sap.ui.core:ListItem key="AR" text="{i18n>Arabic}" />
@@ -40,7 +40,7 @@
 				<html:br />
 				<!-- <html:br /> -->
 				<html:br />
-				<sap.ui.commons.layout:MatrixLayout>
+				<sap.ui.commons.layout:MatrixLayout layoutFixed="true">
 					<sap.ui.commons.layout:MatrixLayoutRow>
 						<sap.ui.commons.layout:MatrixLayoutCell>
 							<sap.ui.core:Fragment
@@ -49,7 +49,7 @@
 					</sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutRow>
 						<sap.ui.commons.layout:MatrixLayoutCell>
-							<sap.ui.commons.layout:MatrixLayout>
+							<sap.ui.commons.layout:MatrixLayout layoutFixed="true">
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell
 										hAlign="End" vAlign="Bottom">

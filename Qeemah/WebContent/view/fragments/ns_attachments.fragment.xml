@@ -4,192 +4,168 @@
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<sap.ui.commons.layout:MatrixLayout
-								layoutFixed="false" columns="3" width="78em">
-								<sap.ui.commons.layout:MatrixLayoutRow>
-				<sap.ui.commons.layout:cells>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin" colSpan="3">
-						<sap.ui.commons.layout:content>
-							<sap.ui.commons:TextView text="{i18n>Attachments}" design="H1"></sap.ui.commons:TextView>
-							<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
-						</sap.ui.commons.layout:content>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					
-					
-				</sap.ui.commons.layout:cells>
-			</sap.ui.commons.layout:MatrixLayoutRow>
-			
-			
-								<sap.ui.commons.layout:rows>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-										<sap.ui.commons.layout:cells>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:content>
-												<sap.ui.commons:TextView text="{i18n>PassportCopyIDCopy}"></sap.ui.commons:TextView>
-												<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-												
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
-												<sap.ui.commons.layout:content>
-										   <sap.ui.unified:FileUploader
-											 width="15em"
-										     sendXHR="true" 
-										     useMultipart="false" 
-										     sameFilenameAllowed="true" 
-											 id="idNSHPassportCopyFileUploader"  
-											 mimeType="application/pdf"/> 
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:content>
-												<sap.ui.commons:TextView id="idNSHPassPortAttachmentName" visible="false"></sap.ui.commons:TextView>
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-										</sap.ui.commons.layout:cells>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-								</sap.ui.commons.layout:rows>
-								
-								<sap.ui.commons.layout:rows>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-										<sap.ui.commons.layout:cells>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:content>
-												<sap.ui.commons:TextView text="{i18n>CommercialRegistration}"></sap.ui.commons:TextView>
-																			<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-												
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
-												<sap.ui.commons.layout:content>
-												<sap.ui.unified:FileUploader
-											 width="15em"
-										     sendXHR="true" 
-										     useMultipart="false" 
-										     sameFilenameAllowed="true" 
-											 id="idNSHCommercialRegistFileUploader"  
-											 mimeType="application/pdf"/> 
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:content>
-												<sap.ui.commons:TextView id="idNSHCommercialAttachmentName" visible="false"></sap.ui.commons:TextView>
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-										</sap.ui.commons.layout:cells>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-								</sap.ui.commons.layout:rows>
-								
-								<sap.ui.commons.layout:rows>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-										<sap.ui.commons.layout:cells>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:content>
-												<sap.ui.commons:TextView text="{i18n>BankStatement}"></sap.ui.commons:TextView>
-																			<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-												
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
-												<sap.ui.commons.layout:content>
-												<sap.ui.unified:FileUploader
-											 width="15em"
-										     sendXHR="true" 
-										     useMultipart="false" 
-										     sameFilenameAllowed="true" 
-											 id="idNSHBankStatementFileUploader"  
-											 mimeType="application/pdf"/> 
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:content>
-												<sap.ui.commons:TextView id="idNSHBankStatementAttachmentName" visible="false"></sap.ui.commons:TextView>
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-										</sap.ui.commons.layout:cells>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-								</sap.ui.commons.layout:rows>
-								
-								<sap.ui.commons.layout:rows>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-										<sap.ui.commons.layout:cells>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:content>
-												<sap.ui.commons:TextView text="{i18n>ThreeYearsBalanceSheet}"></sap.ui.commons:TextView>
-																			<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-												
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
-												<sap.ui.commons.layout:content>
-												<sap.ui.unified:FileUploader
-											 width="15em"
-										     sendXHR="true" 
-										     useMultipart="false" 
-										     sameFilenameAllowed="true" 
-											 id="idNSHBalanceSheetFileUploader"  
-											 mimeType="application/pdf"/> 
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:content>
-												<sap.ui.commons:TextView id="idNSHBalanceSheetAttachmentName" visible="false"></sap.ui.commons:TextView>
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-										</sap.ui.commons.layout:cells>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-								</sap.ui.commons.layout:rows>
-								
-								<sap.ui.commons.layout:rows>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-										<sap.ui.commons.layout:cells>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:content>
-												<sap.ui.commons:TextView text="{i18n>Other}"></sap.ui.commons:TextView>
-																			<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-												
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
-												<sap.ui.commons.layout:content>
-												<sap.ui.unified:FileUploader
-											 width="15em"
-										     sendXHR="true" 
-										     useMultipart="false" 
-										     sameFilenameAllowed="true" 
-											 id="idNSHOtherFileUploader"  
-											 mimeType="application/pdf"/> 
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons.layout:MatrixLayoutCell>
-												<sap.ui.commons.layout:content>
-												<sap.ui.commons:TextView id="idNSHOtherAttachmentName" visible="false"></sap.ui.commons:TextView>
-												</sap.ui.commons.layout:content>
-											</sap.ui.commons.layout:MatrixLayoutCell>
-										</sap.ui.commons.layout:cells>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-								</sap.ui.commons.layout:rows>
-								
-								<!-- <sap.ui.commons.layout:rows>
+		layoutFixed="true" columns="3" widths="50%,50%,3%">
+		<sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:cells>
+				<sap.ui.commons.layout:MatrixLayoutCell
+					hAlign="Begin" colSpan="3">
+					<sap.ui.commons.layout:content>
+						<sap.ui.commons:TextView text="{i18n>Attachments}"
+							design="H1"></sap.ui.commons:TextView>
+						<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
+					</sap.ui.commons.layout:content>
+				</sap.ui.commons.layout:MatrixLayoutCell>
+
+
+			</sap.ui.commons.layout:cells>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+
+
+		<sap.ui.commons.layout:rows>
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
-					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End"
-						>
+					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<Button style="Accept" text="{i18n>Save}" press="">
-							</Button>
+							<sap.ui.commons:TextView text="{i18n>PassportCopyIDCopy}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView>
+
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						>
+						hAlign="End">
 						<sap.ui.commons.layout:content>
-							<Button style="Accept" text="{i18n>GoToActivityQuestions}" press="">
-							</Button>
+							<sap.ui.unified:FileUploader width="50%"
+								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
+								id="idNSHPassportCopyFileUploader" mimeType="application/pdf" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
-					
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView id="idNSHPassPortAttachmentName"
+								visible="false"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow>
-		</sap.ui.commons.layout:rows> -->
-							</sap.ui.commons.layout:MatrixLayout>
+		</sap.ui.commons.layout:rows>
+
+		<sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>CommercialRegistration}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView>
+
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<sap.ui.commons.layout:content>
+							<sap.ui.unified:FileUploader width="50%"
+								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
+								id="idNSHCommercialRegistFileUploader" mimeType="application/pdf" />
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView id="idNSHCommercialAttachmentName"
+								visible="false"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:rows>
+
+		<sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>BankStatement}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView>
+
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<sap.ui.commons.layout:content>
+							<sap.ui.unified:FileUploader width="50%"
+								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
+								id="idNSHBankStatementFileUploader" mimeType="application/pdf" />
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView id="idNSHBankStatementAttachmentName"
+								visible="false"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:rows>
+
+		<sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>ThreeYearsBalanceSheet}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView>
+
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<sap.ui.commons.layout:content>
+							<sap.ui.unified:FileUploader width="50%"
+								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
+								id="idNSHBalanceSheetFileUploader" mimeType="application/pdf" />
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView id="idNSHBalanceSheetAttachmentName"
+								visible="false"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:rows>
+
+		<sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>Other}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView>
+
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<sap.ui.commons.layout:content>
+							<sap.ui.unified:FileUploader width="50%"
+								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
+								id="idNSHOtherFileUploader" mimeType="application/pdf" />
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView id="idNSHOtherAttachmentName"
+								visible="false"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:rows>
+
+
+	</sap.ui.commons.layout:MatrixLayout>
 </sap.ui.core:FragmentDefinition>

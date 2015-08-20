@@ -61,7 +61,7 @@ com.sagia.common.js.bioivalidateworker = {
 			}
 		}
 
-		else if(!(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test( othis.oBIOIWebSiteInputText.getValue() ))){
+		else if(!(/^(http:\/\/www\.|https:\/\/www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test( "http://"+othis.oBIOIWebSiteInputText.getValue() ))){
 			 othis.oValidationLILIStatus = false;
 
 			if(!othis.oShowAlertDialog.isOpen())
@@ -382,7 +382,7 @@ com.sagia.common.js.bioivalidateworker = {
 					othis.oBIOIMobilephoneInputText.getValue(),
 					othis.oBIOIFaxCountryCodeInputText.getValue(),
 					othis.oBIOIFaxInputText.getValue(),
-					othis.oBIOIWebSiteInputText.getValue(),
+					"http://"+othis.oBIOIWebSiteInputText.getValue(),
 					othis.oBIOITelephoneCountryCodeInputText.getValue(),
 					othis.oBIOIFaxCountryCodeInputText.getValue(),
 					othis.oBIOIMobilephoneCountryCodeInputText.getValue());
@@ -415,7 +415,7 @@ com.sagia.common.js.bioivalidateworker = {
 					othis.oBIOIMobilephoneInputText.getValue(),
 					othis.oBIOIFaxCountryCodeInputText.getValue(),
 					othis.oBIOIFaxInputText.getValue(),
-					othis.oBIOIWebSiteInputText.getValue(),
+					"http://"+othis.oBIOIWebSiteInputText.getValue(),
 					othis.oBIOITelephoneCountryCodeInputText.getValue(),
 					othis.oBIOIFaxCountryCodeInputText.getValue(),
 					othis.oBIOIMobilephoneCountryCodeInputText.getValue()								

@@ -9,7 +9,7 @@
 	
 	
 	<sap.ui.commons.layout:MatrixLayout
-		layoutFixed="false" columns="4" widths="13em,25em,15em,25em">
+		layoutFixed="true" columns="4" widths="35%,50%,50%,50%">
 		
 		<sap.ui.commons.layout:rows>
 		
@@ -54,9 +54,9 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Begin" colSpan="3">
 						<sap.ui.commons.layout:content>
-						<ComboBox id="idNSHTypeComboBox" width="25em">
-								<sap.ui.core:ListItem icon="sap-icon://employee" text="{i18n>Person}" key="1"/><!--  --> 
-								<sap.ui.core:ListItem  icon="sap-icon://factory" text="{i18n>Organization}" key="2"/><!--  -->
+						<ComboBox id="idNSHTypeComboBox" width="33%">
+								<sap.ui.core:ListItem icon="common/mime/dot.png" text="{i18n>Person}" key="1"/><!--  --> 
+								<sap.ui.core:ListItem  icon="common/mime/dot.png" text="{i18n>Organization}" key="2"/><!--  -->
 							</ComboBox>
 						</sap.ui.commons.layout:content>
 						</sap.ui.commons.layout:MatrixLayoutCell>
@@ -91,9 +91,8 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<HBox justifyContent="End">
-								<Input id="idNSHFirstNameInputText" type="Text" width="25em" />
-							</HBox>
+								<Input id="idNSHFirstNameInputText" type="Text" width="100%" />
+
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
@@ -109,7 +108,7 @@
 							<!-- <Select id="idNSHCountryComboBox" width="25em">
 								<sap.ui.core:Item />
 							</Select> -->
-							<ComboBox width="25em" items="{/DetailsCollection}" id="idNSHCountryComboBox">
+							<ComboBox width="100%" items="{/DetailsCollection}" id="idNSHCountryComboBox">
 								<sap.ui.core:ListItem key="{Land1}" text="{Landx50}"/>
 						    </ComboBox>
 						</sap.ui.commons.layout:content>
@@ -131,9 +130,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<HBox justifyContent="End">
-								<Input id="idNSHLastNameInputText" type="Text" width="25em" />
-							</HBox>
+								<Input id="idNSHLastNameInputText" type="Text" width="100%" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
@@ -146,9 +143,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<HBox justifyContent="End">
-								<Input id="idNSHCityNameInputText" type="Text" width="25em" />
-							</HBox>
+								<Input id="idNSHCityNameInputText" type="Text" width="100%" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -166,7 +161,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<ComboBox id="idNSHGenderComboBox" width="25em">
+							<ComboBox id="idNSHGenderComboBox" width="100%">
 								<sap.ui.core:ListItem key="2" text="{i18n>Male}" />
 								<sap.ui.core:ListItem key="1" text="{i18n>Female}" />
 							</ComboBox>
@@ -180,24 +175,10 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<HBox justifyContent="End">
-								<Input id="idNSHPOBoxInputText" type="Text" width="25em" />
-							</HBox>
+								<Input id="idNSHPOBoxInputText" type="Text" width="100%" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
-					<!-- <sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="End">
-						<sap.ui.commons.layout:content>
-							<sap.ui.commons:TextView text="{i18n>Street}"></sap.ui.commons:TextView>
-						</sap.ui.commons.layout:content>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell>
-						<sap.ui.commons.layout:content>
-							<HBox justifyContent="End">
-								<Input type="Text" width="25em" />
-							</HBox>
-						</sap.ui.commons.layout:content>
-					</sap.ui.commons.layout:MatrixLayoutCell> -->
+					
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow>
 		</sap.ui.commons.layout:rows>
@@ -213,7 +194,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<ComboBox id="idNSHMaritalStatusComboBox" width="25em">
+							<ComboBox id="idNSHMaritalStatusComboBox" width="100%">
 								<sap.ui.core:ListItem key="0" text="{i18n>Single}" />
 								<sap.ui.core:ListItem key="1" text="{i18n>Married}" /><!-- 
 								<sap.ui.core:ListItem key="3" text="{i18n>Widowed}" />
@@ -230,9 +211,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<HBox justifyContent="End">
-								<Input id="idNSHPostalCodeInputText" type="Text" width="25em" />
-							</HBox>
+								<Input id="idNSHPostalCodeInputText" type="Text" width="100%" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -250,7 +229,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<ComboBox id="idNSHAcademicTitleInputText" width="25em">
+							<ComboBox id="idNSHAcademicTitleInputText" width="100%">
 								<sap.ui.core:ListItem key="0001" text="{i18n>HighSchool}" />
 								<sap.ui.core:ListItem key="0002" text="{i18n>Diploma}" />
 								<sap.ui.core:ListItem key="0003" text="{i18n>BS}" />
@@ -269,9 +248,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
-							<HBox justifyContent="End">
-								<Input id="idNSHStreetInputText" type="Text" width="25em" />
-							</HBox>
+								<Input id="idNSHStreetInputText" type="Text" width="100%" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -303,10 +280,8 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
-							<HBox justifyContent="End">
-								<Input value="http://" enabled="false" type="Text" width="6em" />
-								<Input id="idNSHWebsiteInputText" type="Text" width="19em" />
-							</HBox>
+								<Input value="http://" enabled="false" type="Text" width="22%" />
+								<Input id="idNSHWebsiteInputText" type="Text" width="78%" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:cells>
@@ -325,9 +300,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<HBox justifyContent="End">
-								<Input id="idNSHTelephoneInputText" type="Text" width="25em" />
-							</HBox>
+								<Input id="idNSHTelephoneInputText" type="Text" width="100%" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
@@ -340,7 +313,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							
-							<ComboBox width="25em" items="{/DetailsCollection}" id="idNSHNationalityComboBox">
+							<ComboBox width="100%" items="{/DetailsCollection}" id="idNSHNationalityComboBox">
 								<sap.ui.core:ListItem key="{Land1}" text="{Natio50}"/>
 						    </ComboBox>
 						</sap.ui.commons.layout:content>
@@ -362,9 +335,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<HBox justifyContent="End">
-								<Input id="idNSHMobilePhoneInputText" type="Text" width="25em" />
-							</HBox>
+								<Input id="idNSHMobilePhoneInputText" type="Text" width="100%" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
@@ -377,7 +348,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							
-							<ComboBox width="25em" items="{/DetailsCollection}" id="idNSHPreviousNationalityInputText">
+							<ComboBox width="100%" items="{/DetailsCollection}" id="idNSHPreviousNationalityInputText">
 								<sap.ui.core:ListItem key="{Land1}" text="{Natio50}"/>
 						    </ComboBox>
 						</sap.ui.commons.layout:content>
@@ -402,9 +373,7 @@
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<HBox justifyContent="End">
-								<Input id="idNSHFaxInputText" type="Text" width="25em" />
-							</HBox>
+								<Input id="idNSHFaxInputText" type="Text" width="100%" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
@@ -418,14 +387,14 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<ComboBox visible="false" id="idNSHCommMethodInputText" width="25em" setSelectedKey="INT">
+							<ComboBox visible="false" id="idNSHCommMethodInputText" width="100%" setSelectedKey="INT">
 								<sap.ui.core:ListItem key="TEL" text="{i18n>Phone}" />
 															<sap.ui.core:ListItem key="INT" text="{i18n>Email}" />
 															<sap.ui.core:ListItem key="FAX" text="{i18n>Fax}" />
 															<sap.ui.core:ListItem key="PAG" text="{i18n>Pager}" />
 															<sap.ui.core:ListItem key="LET" text="{i18n>Post}" />
 							</ComboBox>
-							<Input id="idNSHPercentageInputText" type="Text" width="25em" />
+							<Input id="idNSHPercentageInputText" type="Text" width="100%" />
 							
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -446,9 +415,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
-							<HBox justifyContent="End">
-								<Input id="idNSHEmailInputText" type="Text" width="25em" />
-							</HBox>
+								<Input id="idNSHEmailInputText" type="Text" width="100%" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
@@ -461,38 +428,14 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
-							<HBox justifyContent="End">
 <!-- 								<Input id="idNSHPercentageInputText" type="Text" width="25em" />
- -->							</HBox>
+ -->							
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow>
-		</sap.ui.commons.layout:rows>
-		
-
-		<!-- <sap.ui.commons.layout:rows>
-			<sap.ui.commons.layout:MatrixLayoutRow>
-				<sap.ui.commons.layout:cells>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						colSpan="2" hAlign="End">
-						<sap.ui.commons.layout:content>
-							<Button style="Accept" text="{i18n>Save}" press="">
-							</Button>
-						</sap.ui.commons.layout:content>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						colSpan="2">
-						<sap.ui.commons.layout:content>
-							<Button style="Accept" text="{i18n>GoToAttachments}" press="">
-							</Button>
-						</sap.ui.commons.layout:content>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					
-				</sap.ui.commons.layout:cells>
-			</sap.ui.commons.layout:MatrixLayoutRow>
-		</sap.ui.commons.layout:rows> -->
+		</sap.ui.commons.layout:rows>		
 
 	</sap.ui.commons.layout:MatrixLayout>
 	</VBox>

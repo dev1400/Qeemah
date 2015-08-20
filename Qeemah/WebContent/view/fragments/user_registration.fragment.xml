@@ -10,7 +10,7 @@
 
 
 			<sap.ui.commons.layout:MatrixLayout
-				layoutFixed="false">
+				layoutFixed="true">
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						colSpan="2">
@@ -24,20 +24,9 @@
 
 				</sap.ui.commons.layout:MatrixLayoutRow>
 
-				<!-- <sap.ui.commons.layout:MatrixLayoutRow> <sap.ui.commons.layout:MatrixLayoutCell 
-					colSpan="2"> <HBox justifyContent="Center"><Button text="{i18n>NewRegistration}" 
-					id="idNewRegistrationButton" press="handleNewRegistrationButtonPress" class="RegisterButtonWidth"/> 
-					<Button text="{i18n>Login}" id="idLoginButton" class="LoginButtonWidth" press="handleLoginButtonPress" 
-					/> </HBox> </sap.ui.commons.layout:MatrixLayoutCell> </sap.ui.commons.layout:MatrixLayoutRow> -->
-
 				<sap.ui.commons.layout:MatrixLayoutRow>
-					<!-- <sap.ui.commons.layout:MatrixLayoutCell hAlign="End"> <Button text="{i18n>NewRegistration}" 
-						id="idNewRegistrationButton" press="handleNewRegistrationButtonPress" width="11rem" 
-						/> </sap.ui.commons.layout:MatrixLayoutCell> <sap.ui.commons.layout:MatrixLayoutCell 
-						hAlign="Begin"> <Button text="{i18n>Login}" id="idLoginButton" width="11rem" 
-						press="handleLoginButtonPress" /> </sap.ui.commons.layout:MatrixLayoutCell> -->
-
-					<sap.ui.commons.layout:MatrixLayoutCell>
+	
+					<sap.ui.commons.layout:MatrixLayoutCell colSpan="2">
 						<VBox alignItems="Center">
 							<SegmentedButton selectedButton="idLoginButton">
 								<Button class="SegmentedRegisterButtonStyling" width="9.5rem"
@@ -60,13 +49,13 @@
 
 
 			<sap.ui.commons.layout:MatrixLayout
-				layoutFixed="false" columns="2" id="idRegistrationMatrixLayout"
+				layoutFixed="true" columns="2" width="27%" id="idRegistrationMatrixLayout"
 				visible="false">
 
 
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
-					<sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons:TextView text="*"
 							class="redcolortext"></sap.ui.commons:TextView>
 						<sap.ui.commons:TextView id="idFirstNameTextView"
@@ -75,7 +64,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" id="idCompanyInputText"
+						<Input width="100%" type="Text" required="true" id="idCompanyInputText"
 							 /><!-- liveChange="handleCompanyNameEntryLiveChange" -->
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
@@ -89,7 +78,7 @@
 
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
-					<sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons:TextView text="*"
 							class="redcolortext"></sap.ui.commons:TextView>
 						<sap.ui.commons:TextView text="{i18n>EnterContactPersonName}"
@@ -97,7 +86,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" id="idContactNameInputText" />
+						<Input width="100%" type="Text" required="true" id="idContactNameInputText" />
 						<!-- liveChange="handleContactNameEntryLiveChange" -->
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
@@ -111,32 +100,10 @@
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				
 				
-				
-				<!-- <sap.ui.commons.layout:MatrixLayoutRow>
-
-					<sap.ui.commons.layout:MatrixLayoutCell>
-						<sap.ui.commons:TextView text="*"
-							class="redcolortext"></sap.ui.commons:TextView>
-						<sap.ui.commons:TextView text="{i18n>PleaseReEnterPassword}"
-							class="textcolorwhite"></sap.ui.commons:TextView>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-
-					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Password" required="true" id="idInputRePassword" liveChange="handleRePasswordEntryLive" />
-					</sap.ui.commons.layout:MatrixLayoutCell>
-				</sap.ui.commons.layout:MatrixLayoutRow>
-				
-				<sap.ui.commons.layout:MatrixLayoutRow>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						colSpan="2" vAlign="Middle" hAlign="Center">
-						<sap.ui.commons:TextView visible="false"
-							id="idRegRePasswordErrorMsg" class="textcolorred"></sap.ui.commons:TextView>
-					</sap.ui.commons.layout:MatrixLayoutCell> 
-				</sap.ui.commons.layout:MatrixLayoutRow>-->
 
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
-					<sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons:TextView text="*"
 							class="redcolortext"></sap.ui.commons:TextView>
 						<sap.ui.commons:TextView text="{i18n>PleaseEnterMobileNumber}"
@@ -144,7 +111,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" id="idContactNumberInputText" /><!--liveChange="handleContactNumberEntryLiveChange"  -->
+						<Input width="100%" type="Text" required="true" id="idContactNumberInputText" /><!--liveChange="handleContactNumberEntryLiveChange"  -->
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				
@@ -161,7 +128,7 @@
 
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
-					<sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons:TextView text="*"
 							class="redcolortext"></sap.ui.commons:TextView>
 						<sap.ui.commons:TextView text="{i18n>PleaseEnterEmail}"
@@ -169,7 +136,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" required="true" id="idEmailInputText" /><!--liveChange="handleEmailEntryLiveChange"  -->
+						<Input width="100%" type="Text" required="true" id="idEmailInputText" /><!--liveChange="handleEmailEntryLiveChange"  -->
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				
@@ -183,7 +150,7 @@
 				
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
-					<sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons:TextView text="*"
 							class="redcolortext"></sap.ui.commons:TextView>
 						<sap.ui.commons:TextView text="{i18n>PleaseEnterUserID}"
@@ -191,14 +158,14 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Text" id="idUserIDInputText" required="true" />
+						<Input width="100%" type="Text" id="idUserIDInputText" required="true" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				
 				
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
-					<sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
 						<sap.ui.commons:TextView text="*"
 							class="redcolortext"></sap.ui.commons:TextView>
 						<sap.ui.commons:TextView text="{i18n>PleaseEnterPassword}"
@@ -206,7 +173,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input type="Password" required="true" id="idPasswordInputText" /><!--liveChange="handlePasswordEntryLiveChange"  -->
+						<Input width="100%" type="Password" required="true" id="idPasswordInputText" /><!--liveChange="handlePasswordEntryLiveChange"  -->
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				
@@ -229,7 +196,7 @@
 						colSpan="2" hAlign="Center">
 						<VBox justifyContent="Inherit" alignItems="Stretch" width="100%">
 							<Button style="Accept" text="{i18n>Register}"
-								press="handleRegisterUserButtonPress" width="100%" class="buttonsBackGround">
+								press="handleRegisterUserButtonPress" width="30%" class="buttonsBackGround">
 							</Button>
 						</VBox>
 

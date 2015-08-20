@@ -155,6 +155,16 @@
 						</MultiComboBox>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
+				
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons:TextView id="idLAMultiSelectionTextView"
+							enabled="false" width="18em"></sap.ui.commons:TextView>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons:TextView text="{i18n>ActivityDescription}"></sap.ui.commons:TextView>
@@ -241,6 +251,11 @@
 			<Table mode="Delete" delete="handleLILIProductDeleteButtonPress"
 				width="100%" id="idLILIProductsTable">
 				<columns>
+				
+				   <!-- <Column width="5%">
+						<sap.ui.commons:TextView text="{i18n>SerialNumber}"
+							class="textcolorwhite" ></sap.ui.commons:TextView>
+					</Column> -->
 					
 					<Column width="5%">
 						<sap.ui.commons:TextView text="{i18n>ProductCode}"

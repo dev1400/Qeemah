@@ -79,10 +79,10 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<Select width="100%" items="{/CityCollection}" id="idCityComboBox">
+							<ComboBox width="100%" items="{/CityCollection}" id="idCityComboBox">
 								<sap.ui.core:ListItem key="{CityCode_cty}"
 									text="{CityName_cty}" />
-							</Select>
+							</ComboBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
@@ -315,7 +315,8 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<Input type="Text" width="100%" id="idBIOIWebSiteInputText" />
+						   <Input value="http://" enabled="false" type="Text" width="22%" />
+							<Input type="Text" width="78%" id="idBIOIWebSiteInputText" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>

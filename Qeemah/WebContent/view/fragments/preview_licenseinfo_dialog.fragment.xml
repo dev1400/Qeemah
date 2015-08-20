@@ -3,180 +3,75 @@
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.commons="sap.ui.commons"
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-	<!-- <Dialog
-    class="sapUiPopupWithPadding" showHeader="false">
-    <content> -->
-    <sap.ui.commons.layout:MatrixLayout
-		layoutFixed="false" width="68.5rem">
+
+	<sap.ui.commons.layout:MatrixLayout
+		layoutFixed="true" width="100%">
 		<sap.ui.commons.layout:rows>
-		
-		
-									<sap.ui.commons.layout:MatrixLayoutRow>
+
+
+			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin" >
+						hAlign="Begin">
 						<sap.ui.commons.layout:content>
-							<sap.ui.commons:TextView text="{i18n>LicenseInfo}" design="H1"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="{i18n>LicenseInfo}"
+								design="H1"></sap.ui.commons:TextView>
 							<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
-					
-					
+
+
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow>
-			</sap.ui.commons.layout:rows>
-			</sap.ui.commons.layout:MatrixLayout>
-			
-    
-    	<VBox  alignItems="Center">
-	<!-- Child license activity Q start -->
-	
-							<sap.ui.commons.layout:MatrixLayout
-								layoutFixed="false" id="idPreviewLicenseInfoMAtrixLayout">
-								
-								
-								
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell hAlign="Begin">
-										
-											<sap.ui.commons:TextView text="{i18n>BusinessType}"></sap.ui.commons:TextView>
-											<!-- <sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView> -->
-										
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell >
-									<sap.ui.commons:TextView id="idPLILIBusinessType" enabled="false"></sap.ui.commons:TextView>
-										<!-- <ComboBox width="25em" enabled="false" items="{/LILIBusinessTypeCollection}" id="idLILIPreviewBusinessTypeComboBox" selectionChange="handleLILIBusinessTypeComboBoxSelectionChange">
-										     <sap.ui.core:ListItem key="{Flag}" text="{IsicDescription}" id="idLILIPreviewBusinessTypeComboBoxitem"/>
-										</ComboBox> -->
-									
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
-								<sap.ui.commons.layout:cells>
-								<sap.ui.commons.layout:MatrixLayoutCell colSpan="2">
-								<sap.ui.commons:TextView text=""></sap.ui.commons:TextView>
-								</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:cells>
-								</sap.ui.commons.layout:MatrixLayoutRow> -->
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell >
-										
-											<sap.ui.commons:TextView text="{i18n>LicenseType}"></sap.ui.commons:TextView>
-<!-- 											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
- -->										
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell >
-										  <!-- <Input type="Text" id="idLicenseTypePreviewInputText" enabled="false"></Input> -->
-									<sap.ui.commons:TextView id="idPLILILicenseTypeTextView" enabled="false"></sap.ui.commons:TextView>
-									
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-									</sap.ui.commons.layout:MatrixLayout>
-									
-	<VBox id="idLicenceInfoPreviewContentVBox"  alignItems="Center">
-									
-	<sap.ui.commons.layout:MatrixLayout
-		layoutFixed="false">
-								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons:TextView text="{i18n>Section}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox enabled="false" width="25em" items="{/LILISectionCollection}" id="idLILIPreviewSectionComboBox" selectionChange="handleLILISectionSelectionComboBox">
-										     <sap.ui.core:ListItem key="{IsicSection}" text="{IsicDescription}" id="idLILIPreviewSectionComboBoxitem"/>
-										</ComboBox>
-									<sap.ui.commons:TextView id="idLILIPreviewSectionTextView" enabled="false"></sap.ui.commons:TextView>
-									
-									
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										
-											<sap.ui.commons:TextView text="{i18n>Division}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<ComboBox enabled="false" width="25em"  items="{/LILIDivisionCollection}" id="idLILIPreviewDivisionComboBox" selectionChange="handleLILIDivisionSelectionComboBox">
-										     <sap.ui.core:ListItem key="{IsicDivision}" text="{IsicDescription}" id="idLILIPreviewDivisionComboBoxListitem"/>
-										</ComboBox>
-										<sap.ui.commons:TextView id="idLILIPreviewDivisionTextView" enabled="false"></sap.ui.commons:TextView>
-									
-									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow> -->
-								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
-									
-								</sap.ui.commons.layout:MatrixLayoutRow> -->
-								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										
-											<sap.ui.commons:TextView text="{i18n>Group}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<MultiComboBox enabled="false" selectionChange="handleLILIGropuMultiSelectionComboBoxChange"  id="idLILIPreviewGroupComboBox"
-										selectionFinish="handleSelectionFinish"    items="{/LILIGroupCollection}" width="25em">
-                                        <sap.ui.core:ListItem key="{IsicGroup}" text="{IsicDescription}" id="idLILIPreviewGroupComboBoxListitem"/>
-                                     </MultiComboBox>
-                                     <sap.ui.commons:TextView id="idLILIPreviewGroupTextView" enabled="false"></sap.ui.commons:TextView>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:MatrixLayoutRow> -->
-									<!-- <sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										
-											<sap.ui.commons:TextView text="{i18n>Class}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-										
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<MultiComboBox enabled="false" selectionChange="handleLILIClassMultiSelectionComboBoxChange"  id="idLILIPreviewClassMultiComboBox"
-										selectionFinish="handleSelectionFinish"    items="{/LILIClassCollection}" width="25em">
-                                        <sap.ui.core:ListItem key="{IsicClass}" text="{IsicDescription}" id="idLILIPreviewClassMultiComboBoxListitem"/> key="{IsicClass}" 
-                                     </MultiComboBox>
-                                      <sap.ui.commons:TextView id="idLILIPreviewClassTextView" enabled="false"></sap.ui.commons:TextView>
-									
-									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow> -->
-							<!-- 	<sap.ui.commons.layout:MatrixLayoutRow>
-									
-								</sap.ui.commons.layout:MatrixLayoutRow> -->
-								<!-- <sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										
-											<sap.ui.commons:TextView text="{i18n>LicenseActivity}"></sap.ui.commons:TextView>
-											<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<MultiComboBox enabled="false" selectionChange="handleLILILicenseActivityMultiSelectionComboBoxChange"  id="idLILIPreviewLicenseActivityMultiComboBox"
-										selectionFinish="handleSelectionFinish"    items="{/LILILicenseActivityCollection}" width="25em">
-                                        <sap.ui.core:ListItem key="{SurveyID}" text="{IsicDescription}" id="idLILIPreviewLicenseActivityMultiComboBoxListitem"/> key="{IsicClass}" 
-                                     </MultiComboBox>
-                                     <sap.ui.commons:TextView id="idLILIPreviewLicenseActivityTextView" enabled="false"></sap.ui.commons:TextView>
-                                     
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									</sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-											<sap.ui.commons:TextView text="{i18n>ActivityDescription}"></sap.ui.commons:TextView>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell>
-										<sap.ui.commons.layout:content>
-											 <sap.ui.commons:TextView id="idLILIPreviewActivityDescriptionTextView" enabled="false"></sap.ui.commons:TextView>
-                                   
-										</sap.ui.commons.layout:content>
-									</sap.ui.commons.layout:MatrixLayoutCell>
-								</sap.ui.commons.layout:MatrixLayoutRow> -->
-		
+		</sap.ui.commons.layout:rows>
 	</sap.ui.commons.layout:MatrixLayout>
-	
-				<Table 
-				width="100%" id="idLILIPreviewProductsTable">
+
+
+	<VBox alignItems="Center">
+		<!-- Child license activity Q start -->
+
+		<sap.ui.commons.layout:MatrixLayout
+			layoutFixed="true" width="100%" id="idPreviewLicenseInfoMAtrixLayout">
+
+
+
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutCell
+					hAlign="End">
+
+					<sap.ui.commons:TextView text="{i18n>BusinessType}"></sap.ui.commons:TextView>
+
+				</sap.ui.commons.layout:MatrixLayoutCell>
+				<sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons:TextView id="idPLILIBusinessType"
+						enabled="false"></sap.ui.commons:TextView>
+
+				</sap.ui.commons.layout:MatrixLayoutCell>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+
+					<sap.ui.commons:TextView text="{i18n>LicenseType}"></sap.ui.commons:TextView>
+
+				</sap.ui.commons.layout:MatrixLayoutCell>
+				<sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons:TextView id="idPLILILicenseTypeTextView"
+						enabled="false"></sap.ui.commons:TextView>
+
+				</sap.ui.commons.layout:MatrixLayoutCell>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:MatrixLayout>
+
+		<VBox id="idLicenceInfoPreviewContentVBox" alignItems="Center">
+
+			<sap.ui.commons.layout:MatrixLayout
+				layoutFixed="true" width="100%">
+
+			</sap.ui.commons.layout:MatrixLayout>
+
+			<Table width="100%" id="idLILIPreviewProductsTable">
 				<columns>
-					
+
 					<Column width="5%">
 						<sap.ui.commons:TextView text="{i18n>ProductCode}"
 							class="textcolorwhite"></sap.ui.commons:TextView>
@@ -196,15 +91,9 @@
 					</Column>
 				</columns>
 			</Table>
-	
-	
+
+
+		</VBox>
+
 	</VBox>
-	
-	</VBox>
-   
-    <!-- </content>
-    <endButton>      
-      <Button text="{i18n>Close}"  press="handlePreview_LicenseInfo_ClosePress" />
-    </endButton>
-  </Dialog> -->
 </sap.ui.core:FragmentDefinition>

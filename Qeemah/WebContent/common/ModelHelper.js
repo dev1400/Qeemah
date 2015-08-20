@@ -183,7 +183,7 @@ com.sagia.common.ModelHelper = {
 
 				oRequestFinishedDeferred.resolve();
 				
-			}});
+			}, async : true});
 
 		return oRequestFinishedDeferred;
 	},
@@ -308,7 +308,7 @@ com.sagia.common.ModelHelper = {
 	 */
 	readISIC : function(oRef_id) {
 		
-		this.openBusyDialog();
+		//this.openBusyDialog();
 
 		var that = this;
 		
@@ -316,16 +316,16 @@ com.sagia.common.ModelHelper = {
         this.oODataModel.setUseBatch(false);
 		this.oODataModel.read("IsicDetPs?Investorid='"+oRef_id+"'", {
 			success : function(oData, response) {
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve();
 
-			}});
+			}, async : true});
 
 		return oRequestFinishedDeferred;
 		
@@ -542,7 +542,7 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 				oRequestFinishedDeferred.resolve();
 
-			}});
+			}, async : true});
 
 		return oRequestFinishedDeferred;
 		
@@ -571,7 +571,7 @@ com.sagia.common.ModelHelper = {
 				oRequestFinishedDeferred.resolve();
 
 				//that.closeBusyDialog();
-			}});
+			}, async : true});
 
 		return oRequestFinishedDeferred;
 		
@@ -600,7 +600,7 @@ com.sagia.common.ModelHelper = {
 				oRequestFinishedDeferred.resolve();
 
 				//that.closeBusyDialog();
-			}});
+			}, async : true});
 
 		return oRequestFinishedDeferred;
 		
@@ -863,7 +863,7 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve();
-			}});
+			}, async : true});
 
 		return oRequestFinishedDeferred;
 	},
@@ -895,7 +895,7 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve();
-			}});
+			}, async : true});
 
 		return oRequestFinishedDeferred;
 	},
@@ -920,7 +920,7 @@ com.sagia.common.ModelHelper = {
 			error : function(oResponse) {
 				oRequestFinishedDeferred2.resolve();
 				that.closeBusyDialog();
-			}});
+			}, async : true});
 
 		return oRequestFinishedDeferred2;
 	},
@@ -952,7 +952,7 @@ com.sagia.common.ModelHelper = {
 				oRequestFinishedDeferred2.resolve();
 
 				//that.closeBusyDialog();
-			}});
+			}, async : true});
 
 		return oRequestFinishedDeferred2;
 	},
@@ -980,7 +980,7 @@ com.sagia.common.ModelHelper = {
 				oRequestFinishedDeferred1.resolve();
 
 				//that.closeBusyDialog();
-			}});
+			}, async : true});
 
 		return oRequestFinishedDeferred1;
 	},
@@ -1009,7 +1009,7 @@ com.sagia.common.ModelHelper = {
 				oRequestFinishedDeferred.resolve();
 
 				//that.closeBusyDialog();
-			}});
+			}, async : true});
 
 		return oRequestFinishedDeferred;
 	},
@@ -1506,7 +1506,7 @@ com.sagia.common.ModelHelper = {
 	readBAQ : function(oLanguage) {
 		
 		
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		
 		var that = this;
 		
@@ -1516,18 +1516,18 @@ com.sagia.common.ModelHelper = {
 
 		this.oBAQODataModel.read("SurveyQue?Lang='"+oLanguage+"'&Flag=%27B%27&SurveyID=%27QUEEMAH_BUS_PLAN%27", {
 			success : function(oData, response) {
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 
 				// Reject deferred object
 				oRequestFinishedDeferred.resolve();
 
 				// close busy dialog
-			}
+			}, async : true
 		});
 
 		//return oRequestFinishedDeferred;
@@ -1552,7 +1552,7 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve();
-			}
+			}, async : true
 		});
 		return oRequestFinishedDeferred;
 	},
@@ -1560,7 +1560,7 @@ com.sagia.common.ModelHelper = {
 	 * Read Activity Questions
 	 */
 	readActivityQuestions : function(oLanguage) {
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
@@ -1568,15 +1568,15 @@ com.sagia.common.ModelHelper = {
 
 		this.oBAQODataModel.read("SurveyQue?Lang='"+oLanguage+"'&Flag='A'&SurveyID='QUEEMAH_GENERAL_QUESTIONS'", {
 			success : function(oData, response) {
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve();
-			}
+			}, async : true
 		});
 		return oRequestFinishedDeferred;
 	},
@@ -1584,7 +1584,7 @@ com.sagia.common.ModelHelper = {
 	 * Read Activity Q Answer Answer based on ID
 	 */
 	readAQAnswers : function(oNodeGuid, oSurveyID, oLanguage) {
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
@@ -1592,15 +1592,15 @@ com.sagia.common.ModelHelper = {
 
 		this.oBAQODataModel.read("SurveyAns?Lang='"+oLanguage+"'&Flag='A'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve();
-			}
+			}, async : true
 		});
 		return oRequestFinishedDeferred;
 	},
@@ -1624,7 +1624,7 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve();
-			}
+			}, async : true
 		});
 		return oRequestFinishedDeferred;
 	},
@@ -1648,7 +1648,7 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve();
-			}
+			}, async : true
 		});
 		return oRequestFinishedDeferred;
 	},
@@ -1657,7 +1657,7 @@ com.sagia.common.ModelHelper = {
 	 */
 	readBAQAnswer : function(oNodeGuid, oSurveyID, oLanguage) {
 		// Open busy dialog
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		
 		
 		
@@ -1668,15 +1668,15 @@ com.sagia.common.ModelHelper = {
 
 		this.oBAQODataModel.read("SurveyAns?Lang='"+oLanguage+"'&Flag='B'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve();
-			}
+			}, async : true
 		});
 		return oRequestFinishedDeferred;
 	},
@@ -1684,7 +1684,7 @@ com.sagia.common.ModelHelper = {
 	 * Read Financial Answer based on ID
 	 */
 	readFinancialQuestionsAnswer : function(oNodeGuid, oSurveyID) {
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		var that = this;
 		
 		var oRequestFinishedDeferred = jQuery.Deferred();
@@ -1692,15 +1692,15 @@ com.sagia.common.ModelHelper = {
 
 		this.oBAQODataModel.read("SurveyAns?Lang='E'&Flag='F'&NodeGuid='"+oNodeGuid+"'&SurveyID='"+oSurveyID+"'", {
 			success : function(oData, response) {
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve(response);
 			},
 			error : function(oResponse) {
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve();
-			}
+			}, async : true
 		});
 		return oRequestFinishedDeferred;
 	},
@@ -1737,7 +1737,7 @@ com.sagia.common.ModelHelper = {
 				oRequestFinishedDeferred.resolve();
 
 				// close busy dialog
-			}
+			}, async : true
 		});
 
 		//return oRequestFinishedDeferred;
@@ -1749,7 +1749,7 @@ com.sagia.common.ModelHelper = {
 	 */
 	readCountry : function(oLanguage) {
 		// Open busy dialog
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		
 		var that = this;
 		// Create deferred object so that calling program can wait till
@@ -1766,7 +1766,7 @@ com.sagia.common.ModelHelper = {
 		this.oODataModel.read("/ZFM_CRM_QMH_DROPDOWN?lvkey='"+oLanguage+"'&lv_flag=%27%27&lv_region=%27%27", {
 			success : function(oData, response) {
 				// close busy dialog
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 				//oRequestFinishedDeferred.resolve(oData);
 				
 				
@@ -1792,7 +1792,7 @@ com.sagia.common.ModelHelper = {
 				sap.m.MessageToast.show(that.getText("InvalidCredentials"));
 
 				// close busy dialog
-			}
+			}, async : true
 		});
 
 		//return oRequestFinishedDeferred;
@@ -1823,7 +1823,7 @@ com.sagia.common.ModelHelper = {
 			error : function(oResponse) {
 				that.closeBusyDialog();
 				oRequestFinishedDeferred.resolve();
-			}
+			}, async : true
 		});
 
 		return oRequestFinishedDeferred;
@@ -1832,7 +1832,7 @@ com.sagia.common.ModelHelper = {
 	 * Read Industrial Products
 	 */
 	readIndustrialProducts : function(oLanguage) {
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		
 		var that = this;
 		var oRequestFinishedDeferred = jQuery.Deferred();
@@ -1840,7 +1840,7 @@ com.sagia.common.ModelHelper = {
      	this.oODataModel.setUseBatch(false);
 		this.oODataModel.read("ZFM_CRM_QMH_DROPDOWN?lvkey='"+oLanguage+"'&lv_flag=%27PR%27&lv_region=%27%20%27", {
 			success : function(oData, response) {
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 
 		
 				that.oIndustrialProductsCollectionModel = new sap.ui.model.json.JSONModel();
@@ -1850,11 +1850,11 @@ com.sagia.common.ModelHelper = {
 
 			},
 			error : function(oResponse) {
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 		
 				oRequestFinishedDeferred.resolve();
 				
-			}
+			}, async : true
 		});
 		return oRequestFinishedDeferred;
 	},
@@ -1881,7 +1881,7 @@ com.sagia.common.ModelHelper = {
 		
 				oRequestFinishedDeferred.resolve();
 				
-			}
+			}, async : true
 		});
 		return oRequestFinishedDeferred;
 	},
@@ -1889,7 +1889,7 @@ com.sagia.common.ModelHelper = {
 	 * Read Industrial Products UOM
 	 */
 	readIndustrialProductsUOM : function(oLanguage) {
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		
 		var that = this;
 		var oRequestFinishedDeferred = jQuery.Deferred();
@@ -1897,7 +1897,7 @@ com.sagia.common.ModelHelper = {
      	this.oODataModel.setUseBatch(false);
 		this.oODataModel.read("ZFM_CRM_QMH_DROPDOWN?lvkey='"+oLanguage+"'&lv_flag=%27UM%27&lv_region=%27%20%27", {
 			success : function(oData, response) {
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 
 		
 				that.oIndustrialProductsCollectionModelUOM = new sap.ui.model.json.JSONModel();
@@ -1907,11 +1907,11 @@ com.sagia.common.ModelHelper = {
 
 			},
 			error : function(oResponse) {
-				that.closeBusyDialog();
+				//that.closeBusyDialog();
 		
 				oRequestFinishedDeferred.resolve();
 				
-			}
+			}, async : true
 		});
 
 		return oRequestFinishedDeferred;
@@ -2026,7 +2026,7 @@ com.sagia.common.ModelHelper = {
 				
 				// close busy dialog
 				//that.closeBusyDialog();
-			}
+			}, async : true
 		});
 
 		//return oRequestFinishedDeferred;
@@ -2051,7 +2051,7 @@ com.sagia.common.ModelHelper = {
 			error : function(oResponse) {
 				oRequestFinishedDeferred.resolve();
 				//that.closeBusyDialog();
-			}
+			}, async : true
 		});
 		return oRequestFinishedDeferred;
 	},
@@ -2071,7 +2071,7 @@ com.sagia.common.ModelHelper = {
 			error : function(oResponse) {
 				oRequestFinishedDeferred.resolve();
 			//	that.closeBusyDialog();
-			}
+			}, async : true
 		});
 		return oRequestFinishedDeferred;
 		
@@ -2106,7 +2106,7 @@ com.sagia.common.ModelHelper = {
 				oRequestFinishedDeferred.resolve();
 				
 				//that.closeBusyDialog();
-			}
+			}, async : true
 		});
 		
 		return oRequestFinishedDeferred;
@@ -2140,7 +2140,7 @@ com.sagia.common.ModelHelper = {
 				oRequestFinishedDeferred.resolve();
 				
 				//that.closeBusyDialog();
-			}
+			}, async : true
 		});
 		
 		return oRequestFinishedDeferred;
@@ -2330,7 +2330,7 @@ com.sagia.common.ModelHelper = {
 
 				// close busy dialog
 				
-			}
+			}, async : true
 		});
 
 		return oRequestFinishedDeferred;
@@ -2357,7 +2357,7 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve();
-			}
+			}, async : true
 		});
 
 		return oRequestFinishedDeferred;
@@ -2384,7 +2384,7 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve();
-			}
+			}, async : true
 		});
 
 		return oRequestFinishedDeferred;
@@ -2411,7 +2411,7 @@ com.sagia.common.ModelHelper = {
 				that.closeBusyDialog();
 
 				oRequestFinishedDeferred.resolve();
-			}
+			}, async : true
 		});
 
 		return oRequestFinishedDeferred;
@@ -2444,7 +2444,7 @@ com.sagia.common.ModelHelper = {
 				
 				// close busy dialog
 				//that.closeBusyDialog();
-			}});
+			}, async : true});
 
 		return oRequestFinishedDeferred;
 	},

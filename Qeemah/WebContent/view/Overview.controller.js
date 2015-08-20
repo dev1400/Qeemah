@@ -196,15 +196,34 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oConfirmNewPasswordInput = this.getView().byId("idConfirmNewPasswordInput");
 		
 		this.oLILIIndustrialProductComboBox = this.getView().byId("idLILIIndustrialProductComboBox");
+		
+		
 		this.oLILIIndustrialProductUOMComboBox = this.getView().byId("idLILIIndustrialProductUOMComboBox");
 		
 		this.oISICLoaded = false;
 		
 		this.oLanguageSelect = this.getView().byId("idLanguageSelect");
-
+		
+			
 		
 		this.oPreviewLILIPreviewProductsTable = this.getView().byId("idLILIPreviewProductsTable");
 		this.oProductsTableVBox = this.getView().byId("idProductsTableVBox");
+		
+		
+		/*this.oLILIIndustrialProductComboBox.onAfterRendering = function() {
+	        this.$().bind("mouseover", jQuery.proxy(function(){
+				console.log("onmouseover");
+			}, this));  
+	     }*/
+		var thatLocal = this;
+		this.oLILIIndustrialProductComboBox.attachBrowserEvent("mouseover", function() {
+			//console.log(thatLocal.oLILIIndustrialProductComboBox.getValue());
+			//console.log(thatLocal.oLILIIndustrialProductComboBox.getFocusInfo());
+			//thatLocal.oLILIIndustrialProductComboBox.setTooltip(thatLocal.oLILIIndustrialProductComboBox.getValue());
+			sap.m.MessageToast.show(that.oModelHelper.getText("SelectAProduct"), {duration : 1000});
+			
+		});
+		
 
 
 
@@ -214,6 +233,21 @@ sap.ui.controller("com.sagia.view.Overview", {
 	/*handleSHTableDeleteButtonPress : function(){
 		
 	},*/
+	handleLILIIndustrialProductsComboBoxSelectionChange : function(){
+		
+		/*if(that.oLILIIndustrialProductComboBox.getValue() !== ""){
+			sap.m.MessageToast.show(that.oLILIIndustrialProductComboBox.getValue());		
+		}*/
+		//console.log(this.oLILIIndustrialProductComboBox.getValue());
+		if(!this.oShowAlertDialog.isOpen())
+		{
+			this.oAlertTextView.setText(this.oModelHelper.getText(this.oLILIIndustrialProductComboBox.getValue()));
+			this.oShowAlertDialog.open();
+			
+		}
+		
+		
+	},
 	handleTCPreviousButtonPress : function(){
 		this.handlePreviewInfoButtonClick();
 	},
@@ -471,6 +505,13 @@ sap.ui.controller("com.sagia.view.Overview", {
   				this.oAlertTextView.setText(this.oModelHelper.getText("ESHInvalidPercentage"));
   				this.oShowAlertDialog.open();
   			 }			 							  				
+	   	 }else if(!(/^\d*$/.test( this.oExistingShareHolderEntityNo.getValue()))){
+			  
+  			 if(!this.oShowAlertDialog.isOpen())
+  			 {
+  				this.oAlertTextView.setText(this.oModelHelper.getText("ESHInvalidEntityNo"));
+  				this.oShowAlertDialog.open();
+  			 }			 							  				
 	   	 }else if(this.oExistingShareHolderEntityNo.getValue() === ""){
 			if(!this.oShowAlertDialog.isOpen())
 			 {
@@ -493,12 +534,22 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}*/else if(this.oESHPercentageInputText.getValue() > 0 && this.oESHPercentageInputText.getValue() <= 100){
 		
 			this.openBusyDialog();
+			
+			var oLanguage;
+			if(this.oLanguageSelect.getSelectedKey() === "EN")
+			{
+				oLanguage="E";
+			}else{
+				oLanguage="A";
+			}
 
 			var oRequestFinishedDeferredVESH = this.oModelHelper.readExistingSH(this.oExistingShareHolderEntityNo.getValue());
 
 			jQuery.when(oRequestFinishedDeferredVESH).then(jQuery.proxy(function(oResponse) {
 				
-				if(oResponse.data.Return !== "BP Number does not exist"){
+				if(oResponse.data.Return !== "E"){
+					
+					
 					this.oExistingShareHolderEntityName.setValue(oResponse.data.Bpname);
 						
 						var thatoResponse = oResponse;
@@ -507,10 +558,19 @@ sap.ui.controller("com.sagia.view.Overview", {
 		    			if(isNaN(percentage)){
 		    				percentage = 0;
 		    			}
+		    			
+		    			/*var nationality = [];
+		    			nationality = thatoResponse.data.Return.split("~");
+		    			
+		    			if(oLanguage === "E"){
+		    				nationality = nationality[0];
+		    			}else{
+		    				nationality = nationality[1];
+		    			}*/
 						
 			            var oRequestFinishedDeferredVESHNSH = that.oModelHelper.createNewShareHolder(that.oRef_id,
 			                    "Existing", oResponse.data.Bpname,
-			                    "","","","","","","","","","","","","","","","","","",percentage, "","","",
+			                    "","","","","","","","","","","","",thatoResponse.data.Return,"","","","","",percentage, "","","",
 			    				"",	"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
 			    				"", "", "", "", "", "", "", "", "", "", "", "", "", "", thatoResponse.data.Bpno);
 		
@@ -530,7 +590,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			    			thatContext.oSavedSHData.SavedShareHolderCollection.push({
 /*			    				"Bpno":thatoResponse.data.Bpno,
 */			    	 			"ShareHolderName":thatoResponse.data.Bpname,
-								"Nationalty" : "",			    	 			
+								"Nationalty" : thatoResponse.data.Return,			    	 			
 			    	 			"Percentage" : percentage,
 			    	 			"EntityNo" : oResponse.EntityNo});
 			    			/*thatContext.oSavedSHData.SavedShareHolderCollection.push({
@@ -575,7 +635,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			    			this.oESHPercentageInputText.setValue("");
 			    			that.closeBusyDialog();
 			    			
-					        that.oSavedSHData.SavedShareHolderCollection.length = 0;
+			    			that.oSavedSHData.SavedShareHolderCollection.length = 0;
 
 			    			that.loadSavedShareHolderDetails();
 					
@@ -1392,6 +1452,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		if(this.oClassMultiSelectionTextView){
 			this.oClassMultiSelectionTextView.setText("");
 		}	
+		if(this.oLAMultiSelectionTextView){
+			this.oLAMultiSelectionTextView.setText("");
+		}
 		
 
 		//this.oLILIGroupComboBox.removeAllSelectedItems();//removeAllItems()
@@ -1462,7 +1525,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}
 		if(this.oClassMultiSelectionTextView){
 			this.oClassMultiSelectionTextView.setText("");
-		}	
+		}
+		if(this.oLAMultiSelectionTextView){
+			this.oLAMultiSelectionTextView.setText("");
+		}
 		
 		var oRequestFinishedDeferredLILIBusinessType = this.oModelHelper.readLILIBusinessTypeIsicDescription(this.oLILIBusinessTypeComboBox.getSelectedKey());
 		jQuery.when(oRequestFinishedDeferredLILIBusinessType).then(jQuery.proxy(function(oResponse) {	
@@ -1522,7 +1588,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}
 		if(this.oClassMultiSelectionTextView){
 			this.oClassMultiSelectionTextView.setText("");
-		}	
+		}
+		if(this.oLAMultiSelectionTextView){
+			this.oLAMultiSelectionTextView.setText("");
+		}
 		
 		
 		this.openBusyDialog();
@@ -1589,6 +1658,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 	    
 	    if(this.oLILIGroupComboBox.getSelectedKeys().length === 0){
 	    	this.oClassMultiSelectionTextView.setText("");
+	    	this.oLAMultiSelectionTextView.setText("");
+
+	    	
 	    }
 
 
@@ -1652,6 +1724,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oProductsTableVBox.setVisible(false);	
 
 		}
+		if(this.oLILIClassMultiComboBox.getSelectedKeys().length === 0){
+	    	this.oLAMultiSelectionTextView.setText("");	    	
+	    }
 		
 		var oTempClassTextViewText = "";
 	    for(var i = 0 ; i < this.oLILIClassMultiComboBox.getSelectedKeys().length; i++){
@@ -1835,6 +1910,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 			//console.log(this.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText());
 			oDescription += this.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText()+" , ";
 		}
+		
+		var oTempLATextViewText = "";
+	    for(var i = 0 ; i < this.oLILILicenseActivityMultiComboBox.getSelectedKeys().length; i++){
+	    	oTempLATextViewText += this.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText()+" , ";
+	    }
+	    this.oLAMultiSelectionTextView.setText(oTempLATextViewText);
+	    
 		if(oDescription !== undefined){
 			this.oLILIActivityDescriptionTextArea.setValue(oDescription);			
 		}
@@ -1850,6 +1932,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 	
 	if(this.oBIOIOrganizationName.getValue() === ""){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOIOrganizationName.setValueState("Error");
+		 this.oBIOIOrganizationName.setShowValueStateMessage(false);
  
 		if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -1859,6 +1946,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(this.oBIOIOrganizationName.getValue().length > 100){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOIOrganizationName.setValueState("Error");
+		 this.oBIOIOrganizationName.setShowValueStateMessage(false);
 		 
 			if(!this.oShowAlertDialog.isOpen())
 			 {
@@ -1868,6 +1960,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 				
 	  }else if(this._oidRegionComboBox.getSelectedKey() === ""){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this._oidRegionComboBox.setValueState("Error");
+		 this._oidRegionComboBox.setShowValueStateMessage(false);
 		 
 			if(!this.oShowAlertDialog.isOpen())
 			 {
@@ -1877,6 +1974,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 				
 	  }else if(this._oBICityComboBox.getSelectedKey() === ""){			
 			 this.oValidationLILIStatus = false;
+			 this.handleBasicInfoButtonClick();
+			 this.oBasicInfoTab.setSelectedIndex(0);
+			 
+			 this._oBICityComboBox.setValueState("Error");
+			 this._oBICityComboBox.setShowValueStateMessage(false);
 			 
 				if(!this.oShowAlertDialog.isOpen())
 				 {
@@ -1886,6 +1988,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 					
 	  }else if(this._oBIILegalStatusCombobox.getSelectedKey() === ""){			
 			 this.oValidationLILIStatus = false;
+			 this.handleBasicInfoButtonClick();
+			 this.oBasicInfoTab.setSelectedIndex(0);
+			 
+			 this._oBIILegalStatusCombobox.setValueState("Error");
+			 this._oBIILegalStatusCombobox.setShowValueStateMessage(false);
 			 
 				if(!this.oShowAlertDialog.isOpen())
 				 {
@@ -1895,6 +2002,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 					
 	  }else if(this.oBIOIMultiNationalCompanyCombobox.getSelectedKey() === ""){			
 			 this.oValidationLILIStatus = false;
+			 this.handleBasicInfoButtonClick();
+			 this.oBasicInfoTab.setSelectedIndex(0);
+			 
+			 this.oBIOIMultiNationalCompanyCombobox.setValueState("Error");
+			 this.oBIOIMultiNationalCompanyCombobox.setShowValueStateMessage(false);
 			 
 				if(!this.oShowAlertDialog.isOpen())
 				 {
@@ -1904,6 +2016,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 					
 	  }else if(this.oBIOIEmailInputText.getValue() === ""){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOIEmailInputText.setValueState("Error");
+		 this.oBIOIEmailInputText.setShowValueStateMessage(false);
 
   		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -1913,6 +2030,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(/^[0-9.,]+$/.test( this.oBIOILaborSizeInputText.getValue() ))){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOILaborSizeInputText.setValueState("Error");
+		 this.oBIOILaborSizeInputText.setShowValueStateMessage(false);
 
   		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -1922,6 +2044,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(this.oOriginalBIOILaborSizeInputTextValue > 10){
   		this.oValidationLILIStatus = false;
+  		this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+  		
+  		 this.oBIOILaborSizeInputText.setValueState("Error");
+		 this.oBIOILaborSizeInputText.setShowValueStateMessage(false);
 
  		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -1930,6 +2057,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		 }
   	 }else if(this.oOriginalBIOICapitalInputTextValue > 25){
   		this.oValidationLILIStatus = false;
+  		this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+  		
+  		 this.oBIOICapitalInputText.setValueState("Error");
+		 this.oBIOICapitalInputText.setShowValueStateMessage(false);
 
  		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -1937,9 +2069,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oShowAlertDialog.open();
 		 }
   	 }
-  	 else if(this.oBIOICapitalInputText.getValue() === ""){			
-  	 
+  	 else if(this.oBIOICapitalInputText.getValue() === ""){	
+  		   	 
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOICapitalInputText.setValueState("Error");
+		 this.oBIOICapitalInputText.setShowValueStateMessage(false);
 
   		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -1949,6 +2086,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(/^[0-9.,]+$/.test( this.oBIOICapitalInputText.getValue() ))){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOICapitalInputText.setValueState("Error");
+		 this.oBIOICapitalInputText.setShowValueStateMessage(false);
 
   		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -1958,6 +2100,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(this.oBIOITelephoneCountryCodeInputText.getValue() === ""){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
 
   		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -1967,6 +2111,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(this.oBIOITelephoneCountryCodeInputText.getValue().length <= 5 && this.oBIOITelephoneCountryCodeInputText.getValue().length >= 2)){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
 
   		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -1985,6 +2131,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }*/else if(this.oBIOITelephoneInputText.getValue() === ""){		
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOITelephoneInputText.setValueState("Error");
+		 this.oBIOITelephoneInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -1994,6 +2145,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(this.oBIOITelephoneInputText.getValue().length <= 30 && this.oBIOITelephoneInputText.getValue().length >= 5)){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOITelephoneInputText.setValueState("Error");
+		 this.oBIOITelephoneInputText.setShowValueStateMessage(false);
 
   		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2003,6 +2159,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(/^\d*$/.test( this.oBIOITelephoneInputText.getValue() ))){	
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOITelephoneInputText.setValueState("Error");
+		 this.oBIOITelephoneInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2012,6 +2173,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(this.oBIOIFaxCountryCodeInputText.getValue() === ""){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
 
   		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2021,6 +2184,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(this.oBIOIFaxCountryCodeInputText.getValue().length <= 5 && this.oBIOIFaxCountryCodeInputText.getValue().length >= 2)){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
 
   		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2039,6 +2204,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }*/else if(this.oBIOIFaxInputText.getValue() === ""){	
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOIFaxInputText.setValueState("Error");
+		 this.oBIOIFaxInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2048,6 +2218,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(this.oBIOIFaxInputText.getValue().length <= 20 && this.oBIOIFaxInputText.getValue().length >= 5)){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOIFaxInputText.setValueState("Error");
+		 this.oBIOIFaxInputText.setShowValueStateMessage(false);
 
   		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2057,6 +2232,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(/^\d*$/.test( this.oBIOIFaxInputText.getValue() ))){	
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOIFaxInputText.setValueState("Error");
+		 this.oBIOIFaxInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2066,6 +2246,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(this.oBIOIMobilephoneCountryCodeInputText.getValue() === ""){		
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2075,6 +2257,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(this.oBIOIMobilephoneCountryCodeInputText.getValue().length <= 5 && this.oBIOIMobilephoneCountryCodeInputText.getValue().length >= 2)){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
 
   		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2093,6 +2277,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }*/else if(this.oBIOIMobilephoneInputText.getValue() === ""){	
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOIMobilephoneInputText.setValueState("Error");
+		 this.oBIOIMobilephoneInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2102,6 +2291,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(this.oBIOIMobilephoneInputText.getValue().length <= 30 && this.oBIOIMobilephoneInputText.getValue().length >= 5)){
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOIMobilephoneInputText.setValueState("Error");
+		 this.oBIOIMobilephoneInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2111,6 +2305,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(/^\d*$/.test( this.oBIOIMobilephoneInputText.getValue() ))){
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOIMobilephoneInputText.setValueState("Error");
+		 this.oBIOIMobilephoneInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2120,6 +2319,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(this.oBIOIWebSiteInputText.getValue() === ""){	
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOIWebSiteInputText.setValueState("Error");
+		 this.oBIOIWebSiteInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2129,6 +2333,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(this.oBIOIWebSiteInputText.getValue().length > 60){	
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOIWebSiteInputText.setValueState("Error");
+		 this.oBIOIWebSiteInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2138,6 +2347,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(/^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/.test( this.oBIOIEmailInputText.getValue() ))){
 		this.oValidationLILIStatus = false;
+		
+		this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		
+		this.oBIOIEmailInputText.setValueState("Error");
+		this.oBIOIEmailInputText.setShowValueStateMessage(false);
 
 		if(!this.oShowAlertDialog.isOpen())
 		{
@@ -2147,6 +2362,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}
 	}else if(this.oBIOIEmailInputText.getValue().length > 241){
 		this.oValidationLILIStatus = false;
+		
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		
+		this.oBIOIEmailInputText.setValueState("Error");
+		this.oBIOIEmailInputText.setShowValueStateMessage(false);
 
 		if(!this.oShowAlertDialog.isOpen())
 		{
@@ -2154,8 +2375,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oShowAlertDialog.open();
 		
 		}
-	}else if(!(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test( this.oBIOIWebSiteInputText.getValue() ))){
+	}else if(!(/^(http:\/\/www\.|https:\/\/www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test( "http://"+this.oBIOIWebSiteInputText.getValue() ))){
 		 this.oValidationLILIStatus = false;
+		 
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOIWebSiteInputText.setValueState("Error");
+		 this.oBIOIWebSiteInputText.setShowValueStateMessage(false);
 
 		if(!this.oShowAlertDialog.isOpen())
 		{
@@ -2170,6 +2397,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 }*/
 	 else if(this.oBIOICommMethodComboBox.getSelectedKey() === ""){			
 		 this.oValidationLILIStatus = false;
+		 
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBIOICommMethodComboBox.setValueState("Error");
+		 this.oBIOICommMethodComboBox.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2180,6 +2413,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 }
 	else if(this.oBICIRoleInputText.getSelectedKey() === ""){			
 		 this.oValidationLILIStatus = false;
+		 
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIRoleInputText.setValueState("Error");
+		 this.oBICIRoleInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2190,6 +2429,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 }
 	else if(this.oBICICommMethodComboBox.getSelectedKey() === ""){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(0);
+		 
+		 this.oBICICommMethodComboBox.setValueState("Error");
+		 this.oBICICommMethodComboBox.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2200,6 +2444,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 }
 	else if(this._oBICICountryCombobox.getSelectedKey() === ""){			
 		 this.oValidationLILIStatus = false;
+		 
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this._oBICICountryCombobox.setValueState("Error");
+		 this._oBICICountryCombobox.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2210,6 +2460,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 	 }
 	else if(this.oBICIGenderComboBox.getSelectedKey() === ""){			
 		 this.oValidationLILIStatus = false;
+		 
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIGenderComboBox.setValueState("Error");
+		 this.oBICIGenderComboBox.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2220,6 +2476,12 @@ sap.ui.controller("com.sagia.view.Overview", {
  	 }
 	else if(this._oBICINationalityCombobox.getSelectedKey() === ""){			
 		 this.oValidationLILIStatus = false;
+		 
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this._oBICINationalityCombobox.setValueState("Error");
+		 this._oBICINationalityCombobox.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2230,6 +2492,12 @@ sap.ui.controller("com.sagia.view.Overview", {
   	 }
 	else if(this.oBICIEmailInputText.getValue() === ""){			
 		 this.oValidationLILIStatus = false;
+		 
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIEmailInputText.setValueState("Error");
+		 this.oBICIEmailInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2239,6 +2507,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
    	 }else if(!(/^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/.test( this.oBICIEmailInputText.getValue() ))){
 		this.oValidationLILIStatus = false;
+		
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIEmailInputText.setValueState("Error");
+		 this.oBICIEmailInputText.setShowValueStateMessage(false);
 
 		if(!this.oShowAlertDialog.isOpen())
 		{
@@ -2248,6 +2522,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}
 	}else if(this.oBICITelephoneCountryCodeInputText.getValue() === ""){
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICITelephoneCountryCodeInputText.setValueState("Error");
+		 this.oBICITelephoneCountryCodeInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2257,6 +2536,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
    	 }else if(!(this.oBICITelephoneCountryCodeInputText.getValue().length <= 5 && this.oBICITelephoneCountryCodeInputText.getValue().length >= 2)){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICITelephoneCountryCodeInputText.setValueState("Error");
+		 this.oBICITelephoneCountryCodeInputText.setShowValueStateMessage(false);
 
   		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2266,6 +2550,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(/^\d*$/.test( this.oBICITelephoneCountryCodeInputText.getValue() ))){	
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICITelephoneCountryCodeInputText.setValueState("Error");
+		 this.oBICITelephoneCountryCodeInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2275,6 +2564,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(this.oBICITelephoneInputText.getValue() === ""){		
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICITelephoneInputText.setValueState("Error");
+		 this.oBICITelephoneInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2284,6 +2578,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
    	 }else if(!(this.oBICITelephoneInputText.getValue().length <= 30 && this.oBICITelephoneInputText.getValue().length >= 5)){
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICITelephoneInputText.setValueState("Error");
+		 this.oBICITelephoneInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2293,6 +2592,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(/^\d*$/.test( this.oBICITelephoneInputText.getValue() ))){
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICITelephoneInputText.setValueState("Error");
+		 this.oBICITelephoneInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2302,6 +2606,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(this.oBICIFaxCountryCodeInputText.getValue() === ""){	
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIFaxCountryCodeInputText.setValueState("Error");
+		 this.oBICIFaxCountryCodeInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2311,6 +2620,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
    	 }else if(!(this.oBICIFaxCountryCodeInputText.getValue().length <= 5 && this.oBICIFaxCountryCodeInputText.getValue().length >= 2)){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIFaxCountryCodeInputText.setValueState("Error");
+		 this.oBICIFaxCountryCodeInputText.setShowValueStateMessage(false);
 
   		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2320,6 +2634,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(/^\d*$/.test( this.oBICIFaxCountryCodeInputText.getValue() ))){	
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIFaxCountryCodeInputText.setValueState("Error");
+		 this.oBICIFaxCountryCodeInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2329,6 +2648,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(this.oBICIFaxInputText.getValue() === ""){		
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIFaxInputText.setValueState("Error");
+		 this.oBICIFaxInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2338,6 +2662,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
    	 }else if(!(this.oBICIFaxInputText.getValue().length <= 20 && this.oBICIFaxInputText.getValue().length >= 5)){
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIFaxInputText.setValueState("Error");
+		 this.oBICIFaxInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2347,6 +2676,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(/^\d*$/.test( this.oBICIFaxInputText.getValue() ))){
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIFaxInputText.setValueState("Error");
+		 this.oBICIFaxInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2356,6 +2690,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(this.oBICIMobileCountryCodeInputText.getValue() === ""){		
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIMobileCountryCodeInputText.setValueState("Error");
+		 this.oBICIMobileCountryCodeInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2365,6 +2704,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
    	 }else if(!(this.oBICIMobileCountryCodeInputText.getValue().length <= 5 && this.oBICIMobileCountryCodeInputText.getValue().length >= 2)){			
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIMobileCountryCodeInputText.setValueState("Error");
+		 this.oBICIMobileCountryCodeInputText.setShowValueStateMessage(false);
 
   		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2374,6 +2718,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(/^\d*$/.test( this.oBICIMobileCountryCodeInputText.getValue() ))){	
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIMobileCountryCodeInputText.setValueState("Error");
+		 this.oBICIMobileCountryCodeInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2383,6 +2732,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(this.oBICIMobilePhoneInputText.getValue() === ""){
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIMobilePhoneInputText.setValueState("Error");
+		 this.oBICIMobilePhoneInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2392,6 +2746,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
    	 }else if(!(this.oBICIMobilePhoneInputText.getValue().length <= 30 && this.oBICIMobilePhoneInputText.getValue().length >= 5)){
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIMobilePhoneInputText.setValueState("Error");
+		 this.oBICIMobilePhoneInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2401,6 +2760,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(!(/^\d*$/.test( this.oBICIMobilePhoneInputText.getValue() ))){
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIMobilePhoneInputText.setValueState("Error");
+		 this.oBICIMobilePhoneInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2410,6 +2774,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
   	 }else if(this.oBICICityInputText.getValue() === ""){	
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICICityInputText.setValueState("Error");
+		 this.oBICICityInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2419,6 +2788,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
    	 }else if(this.oBICIFirstNameInputText.getValue() === "" || this.oBICILastNameInputText.getValue() === ""){		
 		 this.oValidationLILIStatus = false;
+		 this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIFirstNameInputText.setValueState("Error");
+		 this.oBICIFirstNameInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2428,6 +2802,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
    	 }else if(!(/^[a-zA-Z ]*$/.test( this.oBICIFirstNameInputText.getValue() ))){
    		this.oValidationLILIStatus = false;
+   		this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIFirstNameInputText.setValueState("Error");
+		 this.oBICIFirstNameInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2436,6 +2815,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		 }
    	 }else if(!(/^[a-zA-Z ]*$/.test( this.oBICILastNameInputText.getValue() ))){
    		this.oValidationLILIStatus = false;
+   		this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICILastNameInputText.setValueState("Error");
+		 this.oBICILastNameInputText.setShowValueStateMessage(false);
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2444,6 +2828,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		 }
    	 }else if(this.oBICIFirstNameInputText.getValue().length > 40){
  		this.oValidationLILIStatus = false;
+ 		this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIFirstNameInputText.setValueState("Error");
+		 this.oBICIFirstNameInputText.setShowValueStateMessage(false);
 
   		 if(!this.oShowAlertDialog.isOpen())
   		 {
@@ -2452,6 +2841,11 @@ sap.ui.controller("com.sagia.view.Overview", {
   		 }
     }else if(this.oBICILastNameInputText.getValue().length > 40){
     		this.oValidationLILIStatus = false;
+    		this.handleBasicInfoButtonClick();
+   		 this.oBasicInfoTab.setSelectedIndex(1);
+   		 
+   		 this.oBICILastNameInputText.setValueState("Error");
+   		 this.oBICILastNameInputText.setShowValueStateMessage(false);
 
    		 if(!this.oShowAlertDialog.isOpen())
    		 {
@@ -2460,6 +2854,11 @@ sap.ui.controller("com.sagia.view.Overview", {
    		 }
      }else if(!(/^[a-zA-Z ]*$/.test( this.oBICICityInputText.getValue() ))){
     		this.oValidationLILIStatus = false;
+    		this.handleBasicInfoButtonClick();
+   		 this.oBasicInfoTab.setSelectedIndex(1);
+   		 
+   		 this.oBICICityInputText.setValueState("Error");
+   		 this.oBICICityInputText.setShowValueStateMessage(false);
 
    		 if(!this.oShowAlertDialog.isOpen())
    		 {
@@ -2468,6 +2867,11 @@ sap.ui.controller("com.sagia.view.Overview", {
    		 }
       }else if(this.oBICICityInputText.getValue().length > 40){
   		this.oValidationLILIStatus = false;
+  		this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICICityInputText.setValueState("Error");
+		 this.oBICICityInputText.setShowValueStateMessage(false);
 
   		 if(!this.oShowAlertDialog.isOpen())
   		 {
@@ -2476,6 +2880,11 @@ sap.ui.controller("com.sagia.view.Overview", {
   		 }
       }else if(this.oBICIPOBoxInputText.getValue().length > 10){
     		this.oValidationLILIStatus = false;
+    		this.handleBasicInfoButtonClick();
+   		 this.oBasicInfoTab.setSelectedIndex(1);
+   		 
+   		 this.oBICIPOBoxInputText.setValueState("Error");
+   		 this.oBICIPOBoxInputText.setShowValueStateMessage(false);
 
      		 if(!this.oShowAlertDialog.isOpen())
      		 {
@@ -2484,6 +2893,11 @@ sap.ui.controller("com.sagia.view.Overview", {
      		 }
 	   }else if(this.oBICIPostalCodeInputText.getValue().length > 10){
 		this.oValidationLILIStatus = false;
+		this.handleBasicInfoButtonClick();
+		 this.oBasicInfoTab.setSelectedIndex(1);
+		 
+		 this.oBICIPostalCodeInputText.setValueState("Error");
+		 this.oBICIPostalCodeInputText.setShowValueStateMessage(false);
 	
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
@@ -2492,14 +2906,24 @@ sap.ui.controller("com.sagia.view.Overview", {
 		 }
 	   }else if(this.oBICIStreet.getValue().length > 60){
 	  		this.oValidationLILIStatus = false;
+	  		this.handleBasicInfoButtonClick();
+			 this.oBasicInfoTab.setSelectedIndex(1);
+			 
+			 this.oBICIStreet.setValueState("Error");
+			 this.oBICIStreet.setShowValueStateMessage(false);
 	
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
 			this.oAlertTextView.setText(this.oModelHelper.getText("BICIStreetLength"));
 			this.oShowAlertDialog.open();
 		 }
-	   }else if(this.oLILIBusinessTypeComboBox.getSelectedKey() === ""){
+	   }/*else if(this.oLILIBusinessTypeComboBox.getSelectedKey() === ""){
 	  		this.oValidationLILIStatus = false;
+	  		this.handleBasicInfoButtonClick();
+			 this.oBasicInfoTab.setSelectedIndex(1);
+			 
+			 this.oLILIBusinessTypeComboBox.setValueState("Error");
+			 this.oLILIBusinessTypeComboBox.setShowValueStateMessage(false);
 	  		
 			 if(!this.oShowAlertDialog.isOpen())
 			 {
@@ -2508,8 +2932,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 			 }
 			 
 				
-	   }else if(this.getView().byId("idBICIPowerofAttorneyFileUploader").getValue().length > 90){
+	   }*/else if(this.getView().byId("idBICIPowerofAttorneyFileUploader").getValue().length > 90){
 	  		this.oValidationLILIStatus = false;
+	  		this.handleBasicInfoButtonClick();
+			 this.oBasicInfoTab.setSelectedIndex(1);
+			 
+			 this.getView().byId("idBICIPowerofAttorneyFileUploader").setValueState("Error");
+			 this.getView().byId("idBICIPowerofAttorneyFileUploader").setShowValueStateMessage(false);
 	  		
 			 if(!this.oShowAlertDialog.isOpen())
 			 {
@@ -2518,16 +2947,39 @@ sap.ui.controller("com.sagia.view.Overview", {
 			 }
 	   }else if(this.getView().byId("idBICIPassportCopyFileUploader").getValue().length > 90){
 	  		this.oValidationLILIStatus = false;
+	  		this.handleBasicInfoButtonClick();
+			 this.oBasicInfoTab.setSelectedIndex(1);
+			 
+			 this.getView().byId("idBICIPassportCopyFileUploader").setValueState("Error");
+			 this.getView().byId("idBICIPassportCopyFileUploader").setShowValueStateMessage(false);
 	  		
 			 if(!this.oShowAlertDialog.isOpen())
 			 {
 				this.oAlertTextView.setText(this.oModelHelper.getText("BasicInfoPassportFileNameExceed"));
 				this.oShowAlertDialog.open();
 			 }
+	   }else if(this.oLILIBusinessTypeComboBox.getSelectedKey() === ""){
+	  		this.oValidationLILIStatus = false;
+	  		this.handleLicenseButtonClick();
+			this.oLicenseInfoTab.setSelectedIndex(1);
+			 
+			 this.oLILIBusinessTypeComboBox.setValueState("Error");
+			 this.oLILIBusinessTypeComboBox.setShowValueStateMessage(false);
+	  		
+			 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("LILIBizTypeRequired"));
+				this.oShowAlertDialog.open();
+			 }
 	   }else if(this.oLILIBusinessTypeComboBox.getSelectedKey() === "N"){
 			
 		   if(this.oLILISectionComboBox.getSelectedKey() === ""){
 			     this.oValidationLILIStatus = false;
+			     this.handleLicenseButtonClick();
+					this.oLicenseInfoTab.setSelectedIndex(1);
+				 
+				 this.oLILISectionComboBox.setValueState("Error");
+				 this.oLILISectionComboBox.setShowValueStateMessage(false);
 				
 				 if(!this.oShowAlertDialog.isOpen())
 				 {
@@ -2536,6 +2988,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 				 }
 		   }else if(this.oLILIDivisionComboBox.getSelectedKey() === ""){
 			    this.oValidationLILIStatus = false;
+			    this.handleLicenseButtonClick();
+				this.oLicenseInfoTab.setSelectedIndex(1);
+				 
+				 this.oLILIDivisionComboBox.setValueState("Error");
+				 this.oLILIDivisionComboBox.setShowValueStateMessage(false);
 				
 				 if(!this.oShowAlertDialog.isOpen())
 				 {
@@ -2544,6 +3001,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 				 }
 		   }else if(this.oLILIGroupComboBox.getSelectedKeys().filter(Boolean).length === 0){
 			    this.oValidationLILIStatus = false;
+			    this.handleLicenseButtonClick();
+				this.oLicenseInfoTab.setSelectedIndex(1);
+				 
+				 this.oLILIGroupComboBox.setValueState("Error");
+				 this.oLILIGroupComboBox.setShowValueStateMessage(false);
 				
 				 if(!this.oShowAlertDialog.isOpen())
 				 {
@@ -2552,6 +3014,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 				 }
 		   }else if(this.oLILIClassMultiComboBox.getSelectedKeys().filter(Boolean).length === 0){
 			    this.oValidationLILIStatus = false;
+			    this.handleLicenseButtonClick();
+				this.oLicenseInfoTab.setSelectedIndex(1);
+				 
+				 this.oLILIClassMultiComboBox.setValueState("Error");
+				 this.oLILIClassMultiComboBox.setShowValueStateMessage(false);
 				
 				 if(!this.oShowAlertDialog.isOpen())
 				 {
@@ -2560,6 +3027,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 				 }
 		   }else if(this.oLILILicenseActivityMultiComboBox.getSelectedKeys().filter(Boolean).length === 0){
 			    this.oValidationLILIStatus = false;
+			    this.handleLicenseButtonClick();
+				this.oLicenseInfoTab.setSelectedIndex(1);
+				 
+				 this.oLILILicenseActivityMultiComboBox.setValueState("Error");
+				 this.oLILILicenseActivityMultiComboBox.setShowValueStateMessage(false);
 				
 				 if(!this.oShowAlertDialog.isOpen())
 				 {
@@ -2726,7 +3198,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this.oBIOIMobilephoneInputText.getValue(),
 					this.oBIOIFaxCountryCodeInputText.getValue(),
 					this.oBIOIFaxInputText.getValue(),
-					this.oBIOIWebSiteInputText.getValue(),
+					"http://"+this.oBIOIWebSiteInputText.getValue(),
 					this.oBIOITelephoneCountryCodeInputText.getValue(),
 					this.oBIOIFaxCountryCodeInputText.getValue(),
 					this.oBIOIMobilephoneCountryCodeInputText.getValue());
@@ -2772,7 +3244,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this.oBIOIMobilephoneInputText.getValue(),
 					this.oBIOIFaxCountryCodeInputText.getValue(),
 					this.oBIOIFaxInputText.getValue(),
-					this.oBIOIWebSiteInputText.getValue(),
+					"http://"+this.oBIOIWebSiteInputText.getValue(),
 					this.oBIOITelephoneCountryCodeInputText.getValue(),
 					this.oBIOIFaxCountryCodeInputText.getValue(),
 					this.oBIOIMobilephoneCountryCodeInputText.getValue()								
@@ -3582,6 +4054,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this._oBICityComboBox.setModel(oResponse);
 		}, this));	
 		
+		this._oBICityComboBox.fireSelectionChange();
+		
 		//this._oBICityComboBox.setEnabled(true);
 		//this._oBICityComboBox.setValue("");
 		var filters = [];
@@ -3615,7 +4089,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}else{
 			oLanguage="A";
 		}
-		this.openBusyDialog();
+		//this.openBusyDialog();
 		that = this;
 		var oRequestFinishedDeferred = this.oModelHelper.readBAQ(oLanguage);
 		
@@ -3742,7 +4216,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 							this.oTotalBAQQuestions++;
 						}			
 						
-						that.closeBusyDialog();		    				
+						//that.closeBusyDialog();		    				
 					}
 				}, this));				
 				
@@ -3917,7 +4391,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 								//this.oTotalActivityQuestions++;
 							}			
 							
-							that.closeBusyDialog();		    				
+							//that.closeBusyDialog();		    				
 						}
 					}, this));				
 					
@@ -3963,7 +4437,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 							if(this.oLILISectionComboBox.getSelectedKey() === ""){
 								this.oLILISectionComboBox.setSelectedKey(oResponse.data.results[i].IsicSection);
 								//this.oLILISectionComboBox.fireSelectionChange();
-								this.openBusyDialog();
+								//this.openBusyDialog();
 								
 								//read Division
 
@@ -3976,11 +4450,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 										that.oLILIDivisionComboBox.setSelectedKey(oReadDivisionResponse.oData.LILIDivisionCollection[d].IsicDivision);								
 										
 									}
-									that.closeBusyDialog();
+									//that.closeBusyDialog();
 									//read Group
 									//if(this.oLILIDivisionComboBox.getSelectedKey() === ""){
 									
-									that.openBusyDialog();
+									//that.openBusyDialog();
 										var oRequestFinishedDeferredLILIGroup = that.oModelHelper.readLILIGroup(that.oLILISectionComboBox.getSelectedKey(),that.oLILIDivisionComboBox.getSelectedKey());
 										
 										jQuery.when(oRequestFinishedDeferredLILIGroup).then(jQuery.proxy(function(oReadGroupResponse) {
@@ -4011,10 +4485,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 										    this.oGroupMultiSelectionTextView.setText(oTempGroupTextViewText);
 
 										    
-											that.closeBusyDialog();
+											//that.closeBusyDialog();
 											
 										    //read Class	
-											that.openBusyDialog();
+											//that.openBusyDialog();
 											var oRequestFinishedDeferredLILIClass = that.oModelHelper.readLILIClass(that.oLILISectionComboBox.getSelectedKey(),that.oLILIDivisionComboBox.getSelectedKey(), that.oLILIGroupComboBox.getSelectedKeys());
 
 											jQuery.when(oRequestFinishedDeferredLILIClass).then(jQuery.proxy(function(oReadClassResponse) {
@@ -4059,6 +4533,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 													 }
 													 
+													    var oTempLATextViewText = "";
+													    for(var i = 0 ; i < that.oLILILicenseActivityMultiComboBox.getSelectedKeys().length; i++){
+													    	oTempLATextViewText += that.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText()+" , ";
+													    }
+													    that.oLAMultiSelectionTextView.setText(oTempLATextViewText);
+													 
 														//set License Type and Activity Description
 
 													 
@@ -4073,11 +4553,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 													 
 														that.oISICLoaded = true;
 
-														that.closeBusyDialog();
+														//that.closeBusyDialog();
 
 													
 												}, that));												
-												that.closeBusyDialog();
+												//that.closeBusyDialog();
 											}, that));											
 										}, that));										
 								}, that));
@@ -4249,6 +4729,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 						    var oRow0 = new sap.ui.commons.layout.MatrixLayoutRow();
 						    
 						    var oCell0 = new sap.ui.commons.layout.MatrixLayoutCell();
+						    oCell0.setHAlign("End");
 							oCell0.addContent(oLILISectionTextView);
 							
 							var oCell1 = new sap.ui.commons.layout.MatrixLayoutCell();
@@ -4263,6 +4744,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 						    var oRow1 = new sap.ui.commons.layout.MatrixLayoutRow();
 						    
 							var oCell2 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell2.setHAlign("End");
 							oCell2.addContent(oLILIDivisionTextView);
 							
 							var oCell3 = new sap.ui.commons.layout.MatrixLayoutCell();
@@ -4276,6 +4758,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	                        var oRow2 = new sap.ui.commons.layout.MatrixLayoutRow();
 						    
 							var oCell4 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell4.setHAlign("End");
 							oCell4.addContent(oLILIGroupTextView);
 							
 							var oCell5 = new sap.ui.commons.layout.MatrixLayoutCell();
@@ -4289,6 +4772,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	                        var oRow3 = new sap.ui.commons.layout.MatrixLayoutRow();
 						    
 							var oCell6 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell6.setHAlign("End");
 							oCell6.addContent(oLILIClassTextView);
 							
 							var oCell7 = new sap.ui.commons.layout.MatrixLayoutCell();
@@ -4302,6 +4786,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	                        var oRow4 = new sap.ui.commons.layout.MatrixLayoutRow();
 						    
 							var oCell8 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell8.setHAlign("End");
 							oCell8.addContent(oLILILicenseActivityTextView);
 							
 							var oCell9 = new sap.ui.commons.layout.MatrixLayoutCell();
@@ -4314,6 +4799,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	                        var oRow5 = new sap.ui.commons.layout.MatrixLayoutRow();
 						    
 							var oCell10 = new sap.ui.commons.layout.MatrixLayoutCell();
+							oCell10.setHAlign("End");
 							oCell10.addContent(oLILILicenseActivityDescTextView);
 							
 							var oCell11 = new sap.ui.commons.layout.MatrixLayoutCell();
@@ -4672,7 +5158,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		jQuery.when(oRequestFinishedDeferredIndustrialProducts).then(jQuery.proxy(function(oResponse) {			
 			this.oLILIIndustrialProductComboBox.setModel(oResponse);
+			 
+			
 		}, this));	
+		
+		
 		
 		
 		var oRequestFinishedDeferredIndustrialProductsUOM = this.oModelHelper.readIndustrialProductsUOM(oLanguage);
@@ -5316,6 +5806,18 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//this.getBAQ();
 		//this.getPreviewBAQ();
 		
+		
+		
+		/*this.oLanguageSelect.onAfterRendering = function() {  
+	        if (sap.ui.commons.Tree.prototype.onAfterRendering) {  
+	          sap.ui.commons.Tree.prototype.onAfterRendering.apply(this, arguments);  
+	        }  
+	        // Your code...  
+	    }  */
+		
+		
+		
+		
 		if (!this.oShowAlertDialog) {
 			this.oShowAlertDialog = sap.ui.xmlfragment(
 					"com.sagia.view.fragments.alert", this.getView()
@@ -5349,6 +5851,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		/*this.oLILIComboBox.attachSelectionChange(function(){
 			console.log(this.oLILIDivisionComboBox);
 		});*/
+		
+		
 		
 		
 	},
@@ -5544,16 +6048,30 @@ userSignIn : function(userID, password){
 						
 					}else{
 						
+						try{
+							
+							this.openBusyDialog();
+							this._oidMainPageContent.setVisible(false);
+							this._oTopHeaderVBox.setVisible(true);
+							this._oidLicenseButtonsHBox.setVisible(true);
+							
 
+							
+							this.handleSaveLinkPress(this.oLanguageSelect.getSelectedKey());
+							this.getBAQ(this.oLanguageSelect.getSelectedKey());
+							
+							var that = this;
+							
+							setTimeout(function(){ 
+								that.oValidationHelper.signInWorker(that, oResponse);
+								that.closeBusyDialog();
+							}, 8000);
+							
+						}catch(err){
+							this.closeBusyDialog();
+						}
 						
-						this.handleSaveLinkPress(this.oLanguageSelect.getSelectedKey());
-						this.getBAQ(this.oLanguageSelect.getSelectedKey());
 						
-						var that = this;
-						
-						setTimeout(function(){ 
-							that.oValidationHelper.signInWorker(that, oResponse);
-						}, 8000);
 						
 					}
 
@@ -6063,13 +6581,29 @@ handleRegisterUserButtonPress : function() {
 
 		jQuery.when(oRequestFinishedDeferredSavedSH).then(jQuery.proxy(function(oResponse) {
 			
+			var oLanguage;
+			if(this.oLanguageSelect.getSelectedKey() === "EN")
+			{
+				oLanguage="E";
+			}else{
+				oLanguage="A";
+			}
 			
 			
 			for(var i = 0; i < oResponse.data.results.length; i++){
 				
+				var nationality = [];
+    			nationality = oResponse.data.results[i].CurrNationalty.split("~");
+    			
+    			if(oLanguage === "E"){
+    				nationality = nationality[0];
+    			}else{
+    				nationality = nationality[1];
+    			}
+				
 				thatContext.oSavedSHData.SavedShareHolderCollection.push({
     	 			"ShareHolderName":oResponse.data.results[i].EntityFname,	    	 			
-    	 			"Nationalty" : oResponse.data.results[i].CurrNationalty,
+    	 			"Nationalty" : nationality,//oResponse.data.results[i].CurrNationalty,
     	 			"Percentage" : oResponse.data.results[i].Percentage,
     	 			"EntityNo" : oResponse.data.results[i].EntityNo});
 				
@@ -6333,19 +6867,19 @@ handleRegisterUserButtonPress : function() {
 		this.oPreviewESHCreateNSHTable = this.getView().byId("idPreviewESHCreateNSHTable");
 		this.oPreviewESHCreateNSHTable.unbindItems();
 
-		this.oPreviewESHCreateNSHTable.setModel(this.oSavedSHDataJSONData);
+		this.oPreviewESHCreateNSHTable.setModel(this.oSHJSONModel);
 		
 		this.oPreviewESHCreateNSHTable.bindItems("/SavedShareHolderCollection",new sap.m.ColumnListItem({
-	        cells : [ new sap.ui.commons.TextView({
-	          text : "{Bpno}", enabled : false
-	        }),new sap.ui.commons.TextView({
-	          text : "{Bpname}", enabled : false
-	        }),  new sap.ui.commons.TextView({
-	          text : "{Percentage}", enabled : false
-	        })]
+			cells : [ new sap.ui.commons.TextView({
+		          text : "{ShareHolderName}", enabled : false
+		        }),new sap.ui.commons.TextView({
+		          text : "{Percentage}", enabled : false
+		        }),  new sap.ui.commons.TextView({
+		          text : "{Nationalty}", enabled : false
+		        })]
 	      }));
 		
-		this.oPreviewNSHCreateNSHTable = this.getView().byId("idPreviewNSHCreateNSHTable");
+		/*this.oPreviewNSHCreateNSHTable = this.getView().byId("idPreviewNSHCreateNSHTable");
 		this.oPreviewNSHCreateNSHTable.unbindItems();		
 		this.oPreviewNSHCreateNSHTable.setModel(that.oNSHCreateNewDataJSONData);							         		
 		this.oPreviewNSHCreateNSHTable.bindItems("/NSHCollection", new sap.m.ColumnListItem({
@@ -6358,7 +6892,7 @@ handleRegisterUserButtonPress : function() {
 		        }),  new sap.ui.commons.TextView({
 		          text : "{Percentage}", enabled : false
 		        })]
-		      }));
+		      }));*/
 
 
 	},
@@ -6415,8 +6949,14 @@ handleRegisterUserButtonPress : function() {
 			
 			this.oTermsandCondtionsDate = this.getView().byId("idTNCDate");
 			this.oTermsandCondtionsDate.setValue(today);
+			
+			this.oTermsandCondtionsName = this.getView().byId("idTCNameInputText");
+			this.oTermsandCondtionsRole = this.getView().byId("idTCRoleComboBox");
+
 		}
 		
+		this.oTermsandCondtionsName.setValue(this.oBICIFirstNameInputText.getValue()+" "+this.oBICILastNameInputText.getValue());
+		this.oTermsandCondtionsRole.setSelectedKey(this.oBICIRoleInputText.getSelectedKey());
 		
 	},
 	handleSubmitInfoButtonMainClick : function(){
