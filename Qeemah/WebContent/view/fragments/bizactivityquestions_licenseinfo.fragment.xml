@@ -188,6 +188,15 @@
 
 			<sap.ui.commons.layout:MatrixLayout
 				layoutFixed="true" columns="2" widths="30%,50%">
+				<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+				<sap.ui.commons.layout:MatrixLayoutCell colSpan="2">
+				<sap.ui.commons:TextView text="{i18n>IndustrialProducts}"
+								design="H1"></sap.ui.commons:TextView>
+				<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
+				</sap.ui.commons.layout:MatrixLayoutCell>				
+				</sap.ui.commons.layout:cells>				
+				</sap.ui.commons.layout:MatrixLayoutRow>
 
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:cells>
@@ -203,8 +212,28 @@
 								<sap.ui.core:ListItem key="{Pcode}" text="{Item}"
 									id="idLILIIndustrialProductComboBoxitem" />
 							</ComboBox>
+							
 						</sap.ui.commons.layout:MatrixLayoutCell>
 					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+				<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+				<!-- <HBox id="idOtherProductsTextViewHBox" visible="false" alignItems="End"> -->
+				<sap.ui.commons:TextView text="{i18n>ProductType}" id="idLILIOtherProductTypeTextView" visible="false"></sap.ui.commons:TextView>
+				<sap.ui.commons:TextView text="*" class="textcolorred" id="idLILIOtherProductTypeTextViewMand" visible="false"></sap.ui.commons:TextView>
+							
+				<!-- </HBox> -->
+				
+				</sap.ui.commons.layout:MatrixLayoutCell>
+				
+				<sap.ui.commons.layout:MatrixLayoutCell>
+				<!-- <VBox id="idOtherProductsVBox" visible="false"> -->
+				<TextArea width="50%" id="idLILIOtherProductTypeTextArea" visible="false"/>
+				<!-- </VBox> -->
+				</sap.ui.commons.layout:MatrixLayoutCell>
+				
+				</sap.ui.commons.layout:cells>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:cells>
@@ -219,6 +248,18 @@
 						</sap.ui.commons.layout:MatrixLayoutCell>
 					</sap.ui.commons.layout:cells>
 				</sap.ui.commons.layout:MatrixLayoutRow>
+				
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell>
+					
+						</sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:MatrixLayoutCell>
+					
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:cells>
 						<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
@@ -236,6 +277,8 @@
 						</sap.ui.commons.layout:MatrixLayoutCell>
 					</sap.ui.commons.layout:cells>
 				</sap.ui.commons.layout:MatrixLayoutRow>
+				
+				
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						colSpan="2" hAlign="Center">
@@ -261,7 +304,7 @@
 						<sap.ui.commons:TextView text="{i18n>ProductCode}"
 							class="textcolorwhite"></sap.ui.commons:TextView>
 					</Column>
-					<Column width="5%">
+					<Column width="10%">
 
 						<sap.ui.commons:TextView text="{i18n>ProductName}"
 							class="textcolorwhite"></sap.ui.commons:TextView>
@@ -270,7 +313,7 @@
 						<sap.ui.commons:TextView text="{i18n>Quantity}"
 							class="textcolorwhite"></sap.ui.commons:TextView>
 					</Column>
-					<Column width="10%">
+					<Column width="5%">
 						<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}"
 							class="textcolorwhite"></sap.ui.commons:TextView>
 					</Column>

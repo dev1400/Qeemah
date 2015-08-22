@@ -1,12 +1,38 @@
 jQuery.sap.declare("com.sagia.common.js.validate");
 
 com.sagia.common.js.validate = {
+		checkIfAllBAQAreAnswered : function(thisContext){
+			var oBAQValidationStatus = false;
+			for(var i=0; i < thisContext.oTotalBAQQuestions; i++){
+				
+				 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+i);
+				 
+				 oBAQAnswer.setValueState("None");
+				 oBAQAnswer.setShowValueStateMessage(false);
+				 
+				 if(oBAQAnswer.getSelectedKey() === ""){
+					 oBAQAnswer.setValueState("Error");
+					 oBAQAnswer.setShowValueStateMessage(false);
+					 
+					 oBAQValidationStatus = false;
+					 return;
+				 }else{
+					 oBAQValidationStatus = true;
+				 }
+				 
+			}
+			return oBAQValidationStatus;
+		},
 		signInWorker : function(thisContext, oResponse){
 			
 			//this.handleSaveLinkPress(this.oLanguageSelect.getSelectedKey());
 			//this.getBAQ();	
 			try{
 				//thisContext.openBusyDialog();
+				$(window).bind('beforeunload', function(e) {	        
+			        return thisContext.oModelHelper.getText("ConfirmBrowserClose");
+			      });
+				
 				sap.m.MessageToast.show(thisContext.oModelHelper
 						.getText("SignInSuccessful"));
 				
@@ -43,9 +69,7 @@ com.sagia.common.js.validate = {
 				var oBICICountryKeyFilter = new sap.ui.model.Filter("Land1", sap.ui.model.FilterOperator.NE, "");
 				thisContext._oBICICountryCombobox.getBinding("items").filter([oBICICountryFilter,oBICICountryKeyFilter]);
 				
-				var oLILIIndustrialProductComboBoxDescFilter = new sap.ui.model.Filter("Desc", sap.ui.model.FilterOperator.NE, "");
-				var oLILIIndustrialProductComboBoxPcodeFilter = new sap.ui.model.Filter("Pcode", sap.ui.model.FilterOperator.NE, "");
-				thisContext.oLILIIndustrialProductComboBox.getBinding("items").filter([oLILIIndustrialProductComboBoxDescFilter,oLILIIndustrialProductComboBoxPcodeFilter]);
+				
 				
 				
 				
@@ -93,11 +117,23 @@ com.sagia.common.js.validate = {
 				thisContext.oPreviewBICIPOAAttachmentName = thisContext.getView().byId("idPreviewBICIPOAAttachmentName");
 				thisContext.oPreviewBICIPASSAttachmentName = thisContext.getView().byId("idPreviewBICIPASSAttachmentName");
 				
+				//thisContext.oOtherProductsVBox = thisContext.getView().byId("idOtherProductsVBox");
+				//thisContext.oOtherProductsTextViewHBox = thisContext.getView().byId("idOtherProductsTextViewHBox");
+				
+				
+				
+				
+
+				
 				
 				
 				
 				thisContext.oSaveImage = thisContext.getView().byId("idSaveImage");
 				thisContext.oSaveLink = thisContext.getView().byId("idSaveLink");
+				
+				thisContext.oOriginalBIOICapitalInputTextValue = thisContext.oBIOICapitalInputText.getValue();
+				thisContext.oOriginalBIOILaborSizeInputTextValue = thisContext.oBIOILaborSizeInputText.getValue();
+
 				
 				thisContext.oBIOIOrganizationName.setValue(oResponse.Company);
 				
@@ -135,7 +171,17 @@ com.sagia.common.js.validate = {
 						thisContext.oBIOIFaxInputText.setValue(Number(oResponse.data.Fax).toString());
 						thisContext.oBIOITelephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Tele);
 						thisContext.oBIOIFaxCountryCodeInputText.setValue(oResponse.data.Ccode_Fax);
-						thisContext.oBIOIMobilephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Mobile);					
+						thisContext.oBIOIMobilephoneCountryCodeInputText.setValue(oResponse.data.Ccode_Mobile);
+						
+						if(thisContext.oBIOILaborSizeInputText.getValue() === "0"){
+							thisContext.oBIOILaborSizeInputText.setValue("")
+						}
+						if(thisContext.oBIOICapitalInputText.getValue() === "0"){
+							thisContext.oBIOICapitalInputText.setValue("")
+						}
+						if(thisContext.oBIOIFaxInputText.getValue() === "0"){
+							thisContext.oBIOIFaxInputText.setValue("")
+						}
 						
 						thisContext._oidRegionComboBox.fireSelectionChange();
 						thisContext.oBIOICapitalInputText.fireChange();
@@ -174,6 +220,10 @@ com.sagia.common.js.validate = {
 						
 						
 						thisContext.oContactInfoRecordExists = true;
+						
+						if(thisContext.oBICIFaxInputText.getValue() === "0"){
+							thisContext.oBICIFaxInputText.setValue("")
+						}
 						
 						//thisContext.closeBusyDialog();
 						}
@@ -253,125 +303,127 @@ com.sagia.common.js.validate = {
 						}
 				}, this));
 				*/
-		        thisContext.oBIOIOrganizationName.attachChange(function(){
+		        thisContext.oBIOIOrganizationName.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBIOIOrganizationName.setValueState("None");
 				});
-		        thisContext._oidRegionComboBox.attachChange(function(){
+		        thisContext._oidRegionComboBox.attachBrowserEvent("mouseover", function() {
 		        	thisContext._oidRegionComboBox.setValueState("None");
 				});
-				thisContext._oBICityComboBox.attachChange(function(){
+				thisContext._oBICityComboBox.attachBrowserEvent("mouseover", function() {
 		        	thisContext._oBICityComboBox.setValueState("None");
 				});
-				thisContext._oBIILegalStatusCombobox.attachChange(function(){
+				thisContext._oBIILegalStatusCombobox.attachBrowserEvent("mouseover", function() {
 		        	thisContext._oBIILegalStatusCombobox.setValueState("None");
 				});
-				thisContext.oBIOIMultiNationalCompanyCombobox.attachChange(function(){
+				thisContext.oBIOIMultiNationalCompanyCombobox.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBIOIMultiNationalCompanyCombobox.setValueState("None");
 				});
-				
-				thisContext.oBIOIEmailInputText.attachChange(function(){
-		        	thisContext.oBIOIEmailInputText.setValueState("None");
+				thisContext.oBIOIEmailInputText.attachBrowserEvent("mouseover", function() {
+					thisContext.oBIOIEmailInputText.setValueState("None");								
 				});
-				thisContext.oBIOILaborSizeInputText.attachChange(function(){
+				/*thisContext.oBIOIEmailInputText.attachChange(function(){
+		        	thisContext.oBIOIEmailInputText.setValueState("None");
+				});*/
+				thisContext.oBIOILaborSizeInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBIOILaborSizeInputText.setValueState("None");
 				});
-				thisContext.oBIOICapitalInputText.attachChange(function(){
+				thisContext.oBIOICapitalInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBIOICapitalInputText.setValueState("None");
 				});
-				thisContext.oBIOITelephoneInputText.attachChange(function(){
+				thisContext.oBIOITelephoneInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBIOITelephoneInputText.setValueState("None");
 				});
-				thisContext.oBIOIFaxInputText.attachChange(function(){
+				thisContext.oBIOIFaxInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBIOIFaxInputText.setValueState("None");
 				});
-				thisContext.oBIOIMobilephoneInputText.attachChange(function(){
+				thisContext.oBIOIMobilephoneInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBIOIMobilephoneInputText.setValueState("None");
 				});
-				thisContext.oBIOIWebSiteInputText.attachChange(function(){
+				thisContext.oBIOIWebSiteInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBIOIWebSiteInputText.setValueState("None");
 				});
-				thisContext.oBIOIEmailInputText.attachChange(function(){
+				thisContext.oBIOIEmailInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBIOIEmailInputText.setValueState("None");
 				});
-				thisContext.oBIOICommMethodComboBox.attachChange(function(){
+				thisContext.oBIOICommMethodComboBox.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBIOICommMethodComboBox.setValueState("None");
 				});
-				thisContext.oBICIRoleInputText.attachChange(function(){
+				thisContext.oBICIRoleInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICIRoleInputText.setValueState("None");
 				});
-				thisContext._oBICICountryCombobox.attachChange(function(){
+				thisContext._oBICICountryCombobox.attachBrowserEvent("mouseover", function() {
 		        	thisContext._oBICICountryCombobox.setValueState("None");
 				});
-				thisContext.oBICIGenderComboBox.attachChange(function(){
+				thisContext.oBICIGenderComboBox.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICIGenderComboBox.setValueState("None");
 				});
-				thisContext._oBICINationalityCombobox.attachChange(function(){
+				thisContext._oBICINationalityCombobox.attachBrowserEvent("mouseover", function() {
 		        	thisContext._oBICINationalityCombobox.setValueState("None");
 				});
-				thisContext.oBICIEmailInputText.attachChange(function(){
+				thisContext.oBICIEmailInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICIEmailInputText.setValueState("None");
 				});
-				thisContext.oBICITelephoneCountryCodeInputText.attachChange(function(){
+				thisContext.oBICITelephoneCountryCodeInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICITelephoneCountryCodeInputText.setValueState("None");
 				});
-				thisContext.oBICITelephoneInputText.attachChange(function(){
+				thisContext.oBICITelephoneInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICITelephoneInputText.setValueState("None");
 				});
-				thisContext.oBICIFaxCountryCodeInputText.attachChange(function(){
+				thisContext.oBICIFaxCountryCodeInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICIFaxCountryCodeInputText.setValueState("None");
 				});
-				thisContext.oBICIFaxInputText.attachChange(function(){
+				thisContext.oBICIFaxInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICIFaxInputText.setValueState("None");
 				});
-				thisContext.oBICIMobileCountryCodeInputText.attachChange(function(){
+				thisContext.oBICIMobileCountryCodeInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICIMobileCountryCodeInputText.setValueState("None");
 				});
-				thisContext.oBICIMobilePhoneInputText.attachChange(function(){
+				thisContext.oBICIMobilePhoneInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICIMobilePhoneInputText.setValueState("None");
 				});
-				thisContext.oBICICityInputText.attachChange(function(){
+				thisContext.oBICICityInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICICityInputText.setValueState("None");
 				});
-				thisContext.oBICIFirstNameInputText.attachChange(function(){
+				thisContext.oBICIFirstNameInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICIFirstNameInputText.setValueState("None");
 				});
-				thisContext.oBICILastNameInputText.attachChange(function(){
+				thisContext.oBICILastNameInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICILastNameInputText.setValueState("None");
 				});
-				thisContext.oBICIPOBoxInputText.attachChange(function(){
+				thisContext.oBICIPOBoxInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICIPOBoxInputText.setValueState("None");
 				});
-				thisContext.oBICIPostalCodeInputText.attachChange(function(){
+				thisContext.oBICIPostalCodeInputText.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICIPostalCodeInputText.setValueState("None");
 				});
-				thisContext.oBICIStreet.attachChange(function(){
+				thisContext.oBICIStreet.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICIStreet.setValueState("None");
 				});
-				thisContext.oLILIBusinessTypeComboBox.attachChange(function(){
+				thisContext.oLILIBusinessTypeComboBox.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oLILIBusinessTypeComboBox.setValueState("None");
 				});
-				thisContext.getView().byId("idBICIPowerofAttorneyFileUploader").attachChange(function(){
+				thisContext.getView().byId("idBICIPowerofAttorneyFileUploader").attachBrowserEvent("mouseover", function() {
 		        	thisContext.getView().byId("idBICIPowerofAttorneyFileUploader").setValueState("None");
 				});
-				thisContext.getView().byId("idBICIPassportCopyFileUploader").attachChange(function(){
+				thisContext.getView().byId("idBICIPassportCopyFileUploader").attachBrowserEvent("mouseover", function() {
 		        	thisContext.getView().byId("idBICIPassportCopyFileUploader").setValueState("None");
 				});
-				thisContext.oLILISectionComboBox.attachChange(function(){
+				thisContext.oLILISectionComboBox.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oLILISectionComboBox.setValueState("None");
 				});
-				thisContext.oLILIDivisionComboBox.attachChange(function(){
+				thisContext.oLILIDivisionComboBox.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oLILIDivisionComboBox.setValueState("None");
 				});
-				thisContext.oLILIGroupComboBox.attachChange(function(){
+				thisContext.oLILIGroupComboBox.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oLILIGroupComboBox.setValueState("None");
 				});
-				thisContext.oLILIClassMultiComboBox.attachChange(function(){
+				thisContext.oLILIClassMultiComboBox.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oLILIClassMultiComboBox.setValueState("None");
 				});
-				thisContext.oLILILicenseActivityMultiComboBox.attachChange(function(){
+				thisContext.oLILILicenseActivityMultiComboBox.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oLILILicenseActivityMultiComboBox.setValueState("None");
 				});
-				thisContext.oBICICommMethodComboBox.attachChange(function(){
+				thisContext.oBICICommMethodComboBox.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICICommMethodComboBox.setValueState("None");
 				});
 				/*thisContext..attachChange(function(){
@@ -381,6 +433,19 @@ com.sagia.common.js.validate = {
 		        	thisContext..setValueState("None");
 				});*/
 				//thisContext.closeBusyDialog();
+				
+				
+				
+				
+				/*thisContext.oTermsAndConditionsCheckBox.attachChange(function(){
+		        	thisContext.oTermsAndConditionsCheckBox.setValueState("None");
+				});*/
+				
+				
+				
+				
+				
+				
 			}catch(err){
 				//thisContext.closeBusyDialog();
 			}
@@ -390,11 +455,96 @@ com.sagia.common.js.validate = {
 			
 			
 		},
+		addNSHAttachChangeEvent : function(thisContext){
+			thisContext.oShareHolderTypeComboBox.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oShareHolderTypeComboBox.setValueState("None");
+			});
+			thisContext.oNSHFirstNameInputText.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHFirstNameInputText.setValueState("None");
+			});
+			thisContext.oNSHLastNameInputText.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHLastNameInputText.setValueState("None");
+			});
+			thisContext.oNSHCountryComboBox.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHCountryComboBox.setValueState("None");
+			});
+			thisContext.oNSHGenderComboBox.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHGenderComboBox.setValueState("None");
+			});
+			thisContext.oNSHMaritalStatusComboBox.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHMaritalStatusComboBox.setValueState("None");
+			});
+			thisContext.oNSHAcademicTitleComboBox.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHAcademicTitleComboBox.setValueState("None");
+			});
+			thisContext.oNSHCityNameInputText.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHCityNameInputText.setValueState("None");
+			});
+			thisContext.oNSHNationalityComboBox.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHNationalityComboBox.setValueState("None");
+			});
+			thisContext.oNSHPreviousNationalityInputText.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHPreviousNationalityInputText.setValueState("None");
+			});
+			thisContext.oNSHWebsiteInputText.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHWebsiteInputText.setValueState("None");
+			});
+			thisContext.oNSHTelephoneInputText.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHTelephoneInputText.setValueState("None");
+			});
+			thisContext.oNSHMobilePhoneInputText.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHMobilePhoneInputText.setValueState("None");
+			});
+			thisContext.oNSHFaxInputText.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHFaxInputText.setValueState("None");
+			});
+			thisContext.oNSHEmailInputText.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHEmailInputText.setValueState("None");
+			});
+			thisContext.oNSHDOBDate.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHDOBDate.setValueState("None");
+			});
+			thisContext.oNSHPercentageInputText.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHPercentageInputText.setValueState("None");
+			});
+			thisContext.oNSHPOBoxInputText.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHPOBoxInputText.setValueState("None");
+			});
+			thisContext.oNSHPostalCodeInputText.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHPostalCodeInputText.setValueState("None");
+			});
+			thisContext.oNSHStreetInputText.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHStreetInputText.setValueState("None");
+			});
+			thisContext.oNSHEmailInputText.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHEmailInputText.setValueState("None");
+			});
+			thisContext.NSHPassPortCopy.attachBrowserEvent("mouseover", function() {
+	        	thisContext.NSHPassPortCopy.setValueState("None");
+			});
+			thisContext.NSHOtherAttachment.attachBrowserEvent("mouseover", function() {
+	        	thisContext.NSHOtherAttachment.setValueState("None");
+			});
+			thisContext.NSHCommercialRegAttachment.attachBrowserEvent("mouseover", function() {
+	        	thisContext.NSHCommercialRegAttachment.setValueState("None");
+			});
+			thisContext.NSHBankStatementAttachment.attachBrowserEvent("mouseover", function() {
+	        	thisContext.NSHBankStatementAttachment.setValueState("None");
+			});
+			thisContext.NSHBalanceSheetAttachment.attachBrowserEvent("mouseover", function() {
+	        	thisContext.NSHBalanceSheetAttachment.setValueState("None");
+			});
+		},
 		validateNewShareHolder : function(thisContext){
 			thisContext.oNewShareHolderValidation = true;
 			
+			
+			
 			if(thisContext.oShareHolderTypeComboBox.getSelectedKey() === ""){
 				thisContext.oNewShareHolderValidation = false;
+				thisContext.oShareHolderTypeComboBox.setValueState("Error");
+				thisContext.oShareHolderTypeComboBox.setShowValueStateMessage(false);
+				 
 				 if(!thisContext.oShowAlertDialog.isOpen())
 				 {
 					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHShareHolderType"));
@@ -402,6 +552,9 @@ com.sagia.common.js.validate = {
 				 }
 		   	 }else if(!(/^[a-zA-Z ]*$/.test( thisContext.oNSHFirstNameInputText.getValue() ))){
 				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.oNSHFirstNameInputText.setValueState("Error");
+				thisContext.oNSHFirstNameInputText.setShowValueStateMessage(false);				
 
 				 if(!thisContext.oShowAlertDialog.isOpen())
 				 {
@@ -410,6 +563,10 @@ com.sagia.common.js.validate = {
 				 }
 		   	 }else if(thisContext.oNSHFirstNameInputText.getValue() === ""){
 					thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHFirstNameInputText.setValueState("Error");
+					thisContext.oNSHFirstNameInputText.setShowValueStateMessage(false);	
+					
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHFirstNameRequired"));
@@ -417,6 +574,10 @@ com.sagia.common.js.validate = {
 	  			 }			 							  				
   	   	     }else if(thisContext.oNSHFirstNameInputText.getValue().length > 80){
 					thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHFirstNameInputText.setValueState("Error");
+					thisContext.oNSHFirstNameInputText.setShowValueStateMessage(false);	
+					
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
 		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHFirstNameLength"));
@@ -424,6 +585,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(thisContext.oNSHLastNameInputText.getValue().length > 80){
 					thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHLastNameInputText.setValueState("Error");
+					thisContext.oNSHLastNameInputText.setShowValueStateMessage(false);	
+					
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
 		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHLastNameLength"));
@@ -431,6 +596,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(thisContext.oNSHLastNameInputText.getValue() === ""){
  				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.oNSHLastNameInputText.setValueState("Error");
+				thisContext.oNSHLastNameInputText.setShowValueStateMessage(false);	
+				
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
@@ -439,6 +608,10 @@ com.sagia.common.js.validate = {
 	  			 }			 							  				
   	   	     }else if(!(/^[a-zA-Z ]*$/.test( thisContext.oNSHLastNameInputText.getValue() ))){
  				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.oNSHLastNameInputText.setValueState("Error");
+				thisContext.oNSHLastNameInputText.setShowValueStateMessage(false);	
+				
 
 				 if(!thisContext.oShowAlertDialog.isOpen())
 				 {
@@ -447,6 +620,10 @@ com.sagia.common.js.validate = {
 				 }
 		   	 }else if(thisContext.oNSHCountryComboBox.getSelectedKey() === ""){
 					thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHCountryComboBox.setValueState("Error");
+					thisContext.oNSHCountryComboBox.setShowValueStateMessage(false);	
+					
 					 if(!thisContext.oShowAlertDialog.isOpen())
 					 {
 						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHShareHolderCountryRequired"));
@@ -454,6 +631,10 @@ com.sagia.common.js.validate = {
 					 }
 			 }else if(thisContext.oNSHGenderComboBox.getSelectedKey() === ""){
 					thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHGenderComboBox.setValueState("Error");
+					thisContext.oNSHGenderComboBox.setShowValueStateMessage(false);	
+					
 					 if(!thisContext.oShowAlertDialog.isOpen())
 					 {
 						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHShareHolderGenderRequired"));
@@ -461,6 +642,10 @@ com.sagia.common.js.validate = {
 					 }
 			 }else if(thisContext.oNSHMaritalStatusComboBox.getSelectedKey() === ""){
 					thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHMaritalStatusComboBox.setValueState("Error");
+					thisContext.oNSHMaritalStatusComboBox.setShowValueStateMessage(false);	
+					
 					 if(!thisContext.oShowAlertDialog.isOpen())
 					 {
 						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHShareHolderMaritalStatusRequired"));
@@ -468,6 +653,10 @@ com.sagia.common.js.validate = {
 					 }
 			 }else if(thisContext.oNSHAcademicTitleComboBox.getSelectedKey() === ""){
 					thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHAcademicTitleComboBox.setValueState("Error");
+					thisContext.oNSHAcademicTitleComboBox.setShowValueStateMessage(false);	
+					
 					 if(!thisContext.oShowAlertDialog.isOpen())
 					 {
 						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHShareHolderAcademicTitleRequired"));
@@ -475,6 +664,10 @@ com.sagia.common.js.validate = {
 					 }
 			 }else if(thisContext.oNSHCityNameInputText.getValue() === ""){
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHCityNameInputText.setValueState("Error");
+					thisContext.oNSHCityNameInputText.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -491,6 +684,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }*/else if(thisContext.oNSHNationalityComboBox.getValue() === ""){
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHNationalityComboBox.setValueState("Error");
+					thisContext.oNSHNationalityComboBox.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -499,6 +696,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(thisContext.oNSHPreviousNationalityInputText.getValue() === ""){
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHPreviousNationalityInputText.setValueState("Error");
+					thisContext.oNSHPreviousNationalityInputText.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -507,6 +708,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(thisContext.oNSHCityNameInputText.getValue().length > 40){
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHCityNameInputText.setValueState("Error");
+					thisContext.oNSHCityNameInputText.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -515,6 +720,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(!(/^[a-zA-Z ]*$/.test( thisContext.oNSHCityNameInputText.getValue() ))){
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHCityNameInputText.setValueState("Error");
+					thisContext.oNSHCityNameInputText.setShowValueStateMessage(false);	
+					
 
 					 if(!thisContext.oShowAlertDialog.isOpen())
 					 {
@@ -524,6 +733,10 @@ com.sagia.common.js.validate = {
 			 }else if(!(/^(http:\/\/www\.|https:\/\/www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test( "http://"+thisContext.oNSHWebsiteInputText.getValue() )) ){
 				 //|http:\/\/|https:\/\/
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHWebsiteInputText.setValueState("Error");
+					thisContext.oNSHWebsiteInputText.setShowValueStateMessage(false);	
+					
 
 					 if(!thisContext.oShowAlertDialog.isOpen())
 					 {
@@ -532,6 +745,10 @@ com.sagia.common.js.validate = {
 					 }
 			 }else if(thisContext.oNSHTelephoneInputText.getValue() === ""){	
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHTelephoneInputText.setValueState("Error");
+					thisContext.oNSHTelephoneInputText.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -540,6 +757,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(thisContext.oNSHTelephoneInputText.getValue().length > 30){	
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHTelephoneInputText.setValueState("Error");
+					thisContext.oNSHTelephoneInputText.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -548,6 +769,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(!(/^\d*$/.test( thisContext.oNSHTelephoneInputText.getValue()))){	
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHTelephoneInputText.setValueState("Error");
+					thisContext.oNSHTelephoneInputText.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -556,6 +781,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(thisContext.oNSHMobilePhoneInputText.getValue() === ""){	
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHMobilePhoneInputText.setValueState("Error");
+					thisContext.oNSHMobilePhoneInputText.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -564,6 +793,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(thisContext.oNSHMobilePhoneInputText.getValue().length > 30){	
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHMobilePhoneInputText.setValueState("Error");
+					thisContext.oNSHMobilePhoneInputText.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -572,6 +805,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(!(/^\d*$/.test( thisContext.oNSHMobilePhoneInputText.getValue()))){	
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHMobilePhoneInputText.setValueState("Error");
+					thisContext.oNSHMobilePhoneInputText.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -580,6 +817,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(thisContext.oNSHFaxInputText.getValue().length > 20){	
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHFaxInputText.setValueState("Error");
+					thisContext.oNSHFaxInputText.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -588,6 +829,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(thisContext.oNSHFaxInputText.getValue() === ""){	
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHFaxInputText.setValueState("Error");
+					thisContext.oNSHFaxInputText.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -596,6 +841,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(!(/^\d*$/.test( thisContext.oNSHFaxInputText.getValue()))){	
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHFaxInputText.setValueState("Error");
+					thisContext.oNSHFaxInputText.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -604,6 +853,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(!(/^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/.test( thisContext.oNSHEmailInputText.getValue() ))){
 			  	   	thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHEmailInputText.setValueState("Error");
+					thisContext.oNSHEmailInputText.setShowValueStateMessage(false);	
+					
 			
 					 if(!thisContext.oShowAlertDialog.isOpen())
 					 {
@@ -613,6 +866,10 @@ com.sagia.common.js.validate = {
 	  	   		 
 	  	   	 }else if(thisContext.oNSHDOBDate.getDateValue() === null){	
  				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.oNSHDOBDate.setValueState("Error");
+				thisContext.oNSHDOBDate.setShowValueStateMessage(false);	
+				
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
@@ -621,6 +878,10 @@ com.sagia.common.js.validate = {
 	  			 }			 							  				
   	   	     }else if(!(/^\d*$/.test( thisContext.oNSHPercentageInputText.getValue()))){	
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHPercentageInputText.setValueState("Error");
+					thisContext.oNSHPercentageInputText.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -629,6 +890,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(thisContext.oNSHPercentageInputText.getValue() === "" || thisContext.oNSHPercentageInputText.getValue() < 1 || thisContext.oNSHPercentageInputText.getValue() > 100){
  				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.oNSHPercentageInputText.setValueState("Error");
+				thisContext.oNSHPercentageInputText.setShowValueStateMessage(false);	
+				
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
@@ -637,6 +902,10 @@ com.sagia.common.js.validate = {
 	  			 }			 							  				
   	   	     }else if(thisContext.oNSHPOBoxInputText.getValue().length > 10){	
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHPOBoxInputText.setValueState("Error");
+					thisContext.oNSHPOBoxInputText.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -645,6 +914,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(thisContext.oNSHPostalCodeInputText.getValue().length > 10){	
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHPostalCodeInputText.setValueState("Error");
+					thisContext.oNSHPostalCodeInputText.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -653,6 +926,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(thisContext.oNSHStreetInputText.getValue().length > 60){	
 	 				thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHStreetInputText.setValueState("Error");
+					thisContext.oNSHStreetInputText.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -661,6 +938,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 	  	   	 }else if(thisContext.oNSHEmailInputText.getValue().length > 20){	
 				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.oNSHEmailInputText.setValueState("Error");
+				thisContext.oNSHEmailInputText.setShowValueStateMessage(false);	
+				
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
@@ -669,6 +950,10 @@ com.sagia.common.js.validate = {
 	  			 }			 							  				
  	   	    }else if(thisContext.oNSHEmailInputText.getValue() === ""){	
 				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.oNSHEmailInputText.setValueState("Error");
+				thisContext.oNSHEmailInputText.setShowValueStateMessage(false);	
+				
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
@@ -677,6 +962,10 @@ com.sagia.common.js.validate = {
 	  			 }			 							  				
 	   	    }else if(thisContext.oNSHWebsiteInputText.getValue().length > 255){	
 			thisContext.oNewShareHolderValidation = false;
+			
+			thisContext.oNSHWebsiteInputText.setValueState("Error");
+			thisContext.oNSHWebsiteInputText.setShowValueStateMessage(false);	
+			
 
   			 if(!thisContext.oShowAlertDialog.isOpen())
   			 {
@@ -685,6 +974,10 @@ com.sagia.common.js.validate = {
   			 }			 							  				
 	   	    }else if(thisContext.oNSHPercentageInputText.getValue().length > 3){	
 				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.oNSHPercentageInputText.setValueState("Error");
+				thisContext.oNSHPercentageInputText.setShowValueStateMessage(false);	
+				
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
@@ -693,6 +986,10 @@ com.sagia.common.js.validate = {
 	  			 }			 							  				
 		   	 }else if(thisContext.NSHPassPortCopy.getValue().length > 90){	
 					thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.NSHPassPortCopy.setValueState("Error");
+					//thisContext.NSHPassPortCopy.setShowValueStateMessage(false);	
+					
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
@@ -701,6 +998,10 @@ com.sagia.common.js.validate = {
 		  			 }			 							  				
 			 }else if(thisContext.NSHOtherAttachment.getValue().length > 90){	
 				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.NSHOtherAttachment.setValueState("Error");
+				//thisContext.NSHOtherAttachment.setShowValueStateMessage(false);	
+				
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
@@ -709,6 +1010,10 @@ com.sagia.common.js.validate = {
 	  			 }			 							  				
 		    }else if(thisContext.NSHCommercialRegAttachment.getValue().length > 90){	
 				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.NSHCommercialRegAttachment.setValueState("Error");
+				//thisContext.NSHCommercialRegAttachment.setShowValueStateMessage(false);	
+				
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
@@ -717,6 +1022,10 @@ com.sagia.common.js.validate = {
 	  			 }			 							  				
 		    }else if(thisContext.NSHBankStatementAttachment.getValue().length > 90){	
 				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.NSHBankStatementAttachment.setValueState("Error");
+				//thisContext.NSHBankStatementAttachment.setShowValueStateMessage(false);	
+				
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
@@ -725,6 +1034,10 @@ com.sagia.common.js.validate = {
 	  			 }			 							  				
 		    }else if(thisContext.NSHBalanceSheetAttachment.getValue().length > 90){	
 				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.NSHBalanceSheetAttachment.setValueState("Error");
+				//thisContext.NSHBalanceSheetAttachment.setShowValueStateMessage(false);	
+				
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
@@ -734,6 +1047,10 @@ com.sagia.common.js.validate = {
 		    }
 		    else if(thisContext.NSHPassPortCopy.getValue() === ""){	
 				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.NSHPassPortCopy.setValueState("Error");
+				//thisContext.NSHPassPortCopy.setShowValueStateMessage(false);	
+				
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
@@ -742,6 +1059,10 @@ com.sagia.common.js.validate = {
 	  			 }			 							  				
 		    }else if(thisContext.NSHCommercialRegAttachment.getValue() === ""){	
 				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.NSHCommercialRegAttachment.setValueState("Error");
+				//thisContext.NSHCommercialRegAttachment.setShowValueStateMessage(false);	
+				
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
@@ -750,6 +1071,10 @@ com.sagia.common.js.validate = {
 	  			 }			 							  				
 		    }else if(thisContext.NSHBankStatementAttachment.getValue() === ""){	
 				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.NSHBankStatementAttachment.setValueState("Error");
+				//thisContext.NSHBankStatementAttachment.setShowValueStateMessage(false);	
+				
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
@@ -758,13 +1083,17 @@ com.sagia.common.js.validate = {
 	  			 }			 							  				
 		    }else if(thisContext.NSHBalanceSheetAttachment.getValue() === ""){	
 				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.NSHBalanceSheetAttachment.setValueState("Error");
+				//thisContext.NSHBalanceSheetAttachment.setShowValueStateMessage(false);	
+				
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHBLSCopyRequired"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
-		    }else if(thisContext.NSHOtherAttachment.getValue() === ""){	
+		    }/*else if(thisContext.NSHOtherAttachment.getValue() === ""){	
 				thisContext.oNewShareHolderValidation = false;
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
@@ -772,7 +1101,7 @@ com.sagia.common.js.validate = {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHOTRCopyRequired"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
-		    }
+		    }*/
 		
 			return thisContext.oNewShareHolderValidation;
 			

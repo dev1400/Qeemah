@@ -278,7 +278,7 @@
 
 
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>PassportCopyIDCopy}"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>

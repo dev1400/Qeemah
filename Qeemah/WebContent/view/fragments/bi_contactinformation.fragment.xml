@@ -126,7 +126,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<ComboBox width="100%" items="{/DetailsCollection}" id="idCICountryComboBox">
+							<ComboBox width="100%" items="{/DetailsCollection}" id="idCICountryComboBox" selectionChange="handleCountrySelectionComboBox">
 								<sap.ui.core:ListItem key="{Land1}" text="{Landx50}" />
 							</ComboBox>
 						</sap.ui.commons.layout:content>
@@ -163,7 +163,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Begin">
 							<Input type="Text" width="20%"
-								id="idBICITelephoneCountryCodeInputText" />
+								id="idBICITelephoneCountryCodeInputText" enabled="false"/>
 							<Input type="Text" width="80%" id="idBICITelephoneInputText" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
@@ -196,7 +196,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Begin">
-							<Input type="Text" width="20%" id="idBICIMobileCountryCodeInputText" />
+							<Input type="Text" width="20%" id="idBICIMobileCountryCodeInputText" enabled="false"/>
 							<Input type="Text" width="80%" id="idBICIMobilePhoneInputText" />
 
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -239,7 +239,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Begin">
-							<Input type="Text" width="20%" id="idBICIFaxCountryCodeInputText" />
+							<Input type="Text" width="20%" id="idBICIFaxCountryCodeInputText" enabled="false"/>
 							<Input type="Text" width="80%" id="idBICIFaxInputText" />
 
 					</sap.ui.commons.layout:MatrixLayoutCell>

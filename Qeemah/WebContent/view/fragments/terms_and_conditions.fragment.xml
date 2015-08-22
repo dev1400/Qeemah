@@ -30,7 +30,7 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
-													<Input id="idTCNameInputText" type="Text" width="50%" />
+													<Input id="idTCNameInputText" type="Text" width="50%" enabled="false" />
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 										</sap.ui.commons.layout:cells>
@@ -46,7 +46,7 @@
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											<sap.ui.commons.layout:MatrixLayoutCell>
 												<sap.ui.commons.layout:content>
-													<ComboBox id="idTCRoleComboBox" width="50%">
+													<ComboBox id="idTCRoleComboBox" width="50%" enabled="false">
 															<sap.ui.core:ListItem key="1" text="{i18n>Agent}" />
 															<sap.ui.core:ListItem key="2" text="{i18n>Employee}" />
 															<sap.ui.core:ListItem key="3" text="{i18n>Investor}" />

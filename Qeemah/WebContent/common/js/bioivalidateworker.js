@@ -3,8 +3,19 @@ jQuery.sap.declare("com.sagia.common.js.bioivalidateworker");
 com.sagia.common.js.bioivalidateworker = {
 		
 	validateDataBIOI : function(othis){
+		
+		
+		othis.oValidationLILIStatus = true;
+		
+		othis.oOriginalBIOILaborSizeInputTextValue = othis.oBIOILaborSizeInputText.getValue();
+		othis.oOriginalBIOILaborSizeInputTextValue = othis.oOriginalBIOILaborSizeInputTextValue.match(/\d/g);
+		othis.oOriginalBIOILaborSizeInputTextValue = othis.oOriginalBIOILaborSizeInputTextValue.join("");
+		
 		if(!(/^[0-9.,]+$/.test( othis.oBIOILaborSizeInputText.getValue() ))){			
 			 othis.oValidationLILIStatus = false;
+			 
+			 othis.oBIOILaborSizeInputText.setValueState("Error");
+			 othis.oBIOILaborSizeInputText.setShowValueStateMessage(false);
 
 	  		 if(!othis.oShowAlertDialog.isOpen())
 			 {
@@ -12,10 +23,27 @@ com.sagia.common.js.bioivalidateworker = {
 				othis.oShowAlertDialog.open();
 			 }
 				
+	  	 } else if(othis.oBIOILaborSizeInputText.getValue() === ""){			
+	  		othis.oValidationLILIStatus = false;
+	  		othis.handleBasicInfoButtonClick();
+	  		othis.oBasicInfoTab.setSelectedIndex(0);
+			 
+	  		othis.oBIOILaborSizeInputText.setValueState("Error");
+	  		othis.oBIOILaborSizeInputText.setShowValueStateMessage(false);
+
+	  		 if(!othis.oShowAlertDialog.isOpen())
+			 {
+	  			othis.oAlertTextView.setText(this.oModelHelper.getText("LaborSize"));
+				othis.oShowAlertDialog.open();
+			 }
+				
 	  	 }
 
 		else if(!(/^[0-9.,]+$/.test( othis.oBIOICapitalInputText.getValue() ))){			
 			 othis.oValidationLILIStatus = false;
+			 
+			 othis.oBIOICapitalInputText.setValueState("Error");
+			 othis.oBIOICapitalInputText.setShowValueStateMessage(false);
 
 	  		 if(!othis.oShowAlertDialog.isOpen())
 			 {
@@ -28,6 +56,9 @@ com.sagia.common.js.bioivalidateworker = {
 
 		else if(!(/^\d*$/.test( othis.oBIOITelephoneInputText.getValue() ))){	
 			 othis.oValidationLILIStatus = false;
+			 
+			 othis.oBIOITelephoneInputText.setValueState("Error");
+			 othis.oBIOITelephoneInputText.setShowValueStateMessage(false);
 
 			 if(!othis.oShowAlertDialog.isOpen())
 			 {
@@ -40,6 +71,9 @@ com.sagia.common.js.bioivalidateworker = {
 
 		else if(!(/^\d*$/.test( othis.oBIOIFaxInputText.getValue() ))){	
 			 othis.oValidationLILIStatus = false;
+			 
+			 othis.oBIOIFaxInputText.setValueState("Error");
+			 othis.oBIOIFaxInputText.setShowValueStateMessage(false);
 
 			 if(!othis.oShowAlertDialog.isOpen())
 			 {
@@ -52,6 +86,9 @@ com.sagia.common.js.bioivalidateworker = {
 
 		else if(!(/^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/.test( othis.oBIOIEmailInputText.getValue() ))){
 			othis.oValidationLILIStatus = false;
+			
+			othis.oBIOIEmailInputText.setValueState("Error");
+			othis.oBIOIEmailInputText.setShowValueStateMessage(false);
 
 			if(!othis.oShowAlertDialog.isOpen())
 			{
@@ -63,6 +100,9 @@ com.sagia.common.js.bioivalidateworker = {
 
 		else if(!(/^(http:\/\/www\.|https:\/\/www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test( "http://"+othis.oBIOIWebSiteInputText.getValue() ))){
 			 othis.oValidationLILIStatus = false;
+			 
+			 othis.oBIOIWebSiteInputText.setValueState("Error");
+			 othis.oBIOIWebSiteInputText.setShowValueStateMessage(false);
 
 			if(!othis.oShowAlertDialog.isOpen())
 			{
@@ -70,22 +110,11 @@ com.sagia.common.js.bioivalidateworker = {
 			othis.oShowAlertDialog.open();
 			
 			}
-		 }
-		return othis.oValidationLILIStatus;
-	},
-	validatePresenceBIOI : function(othis){
-		
-		if(othis.oBIOIOrganizationName.getValue() === ""){			
+		 }else if(othis.oBIOIOrganizationName.getValue().length > 100){			
 			 othis.oValidationLILIStatus = false;
-	 
-			if(!othis.oShowAlertDialog.isOpen())
-			 {
-				othis.oAlertTextView.setText(othis.oModelHelper.getText("BIONameRequired"));
-				othis.oShowAlertDialog.open();
-			 }
-				
-	  	 }else if(othis.oBIOIOrganizationName.getValue().length > 100){			
-			 othis.oValidationLILIStatus = false;
+			 
+			 othis.oBIOIOrganizationName.setValueState("Error");
+			 othis.oBIOIOrganizationName.setShowValueStateMessage(false);
 			 
 				if(!othis.oShowAlertDialog.isOpen())
 				 {
@@ -93,8 +122,129 @@ com.sagia.common.js.bioivalidateworker = {
 					othis.oShowAlertDialog.open();
 				 }
 					
-		  }else if(othis._oidRegionComboBox.getSelectedKey() === ""){			
+		  }else if(othis.oOriginalBIOILaborSizeInputTextValue.length > 10){
+		  		othis.oValidationLILIStatus = false;
+		  		
+		  		 othis.oBIOILaborSizeInputText.setValueState("Error");
+				 othis.oBIOILaborSizeInputText.setShowValueStateMessage(false);
+
+		 		 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOILaborSize"));
+					othis.oShowAlertDialog.open();
+				 }
+		  	 }else if(othis.oOriginalBIOICapitalInputTextValue.length > 25){
+		  		othis.oValidationLILIStatus = false;
+		  		
+		  		 othis.oBIOICapitalInputText.setValueState("Error");
+				 othis.oBIOICapitalInputText.setShowValueStateMessage(false);
+
+		 		 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOICapitalLength"));
+					othis.oShowAlertDialog.open();
+				 }
+		  	 }else if(!(othis.oBIOITelephoneInputText.getValue().length <= 30 && othis.oBIOITelephoneInputText.getValue().length >= 5)){			
+				 othis.oValidationLILIStatus = false;
+				 
+				 othis.oBIOITelephoneInputText.setValueState("Error");
+				 othis.oBIOITelephoneInputText.setShowValueStateMessage(false);
+
+
+		  		 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOITelephoneNoLength"));
+					othis.oShowAlertDialog.open();
+				 }
+					
+		  	 }else if(!(othis.oBIOIFaxInputText.getValue().length <= 20 && othis.oBIOIFaxInputText.getValue().length >= 5)){			
+				 othis.oValidationLILIStatus = false;
+				 
+				 othis.oBIOIFaxInputText.setValueState("Error");
+				 othis.oBIOIFaxInputText.setShowValueStateMessage(false);
+
+		  		 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIFaxNoLength"));
+					othis.oShowAlertDialog.open();
+				 }
+					
+		  	 }else if(!(othis.oBIOIMobilephoneInputText.getValue().length <= 30 && othis.oBIOIMobilephoneInputText.getValue().length >= 5)){
+				 othis.oValidationLILIStatus = false;
+				 
+				 othis.oBIOIMobilephoneInputText.setValueState("Error");
+				 othis.oBIOIMobilephoneInputText.setShowValueStateMessage(false);
+
+				 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIMobileNoLength"));
+					othis.oShowAlertDialog.open();
+				 }
+					
+		  	 }else if(!(/^\d*$/.test( othis.oBIOIMobilephoneInputText.getValue() ))){
+				 othis.oValidationLILIStatus = false;
+				 
+				 othis.oBIOIMobilephoneInputText.setValueState("Error");
+				 othis.oBIOIMobilephoneInputText.setShowValueStateMessage(false);
+
+				 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIMobileNoNumeric"));
+					othis.oShowAlertDialog.open();
+				 }
+					
+		  	 }else if(othis.oBIOIWebSiteInputText.getValue().length > 60){	
+				 othis.oValidationLILIStatus = false;
+				 
+				 othis.oBIOIWebSiteInputText.setValueState("Error");
+				 othis.oBIOIWebSiteInputText.setShowValueStateMessage(false);
+
+
+				 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIWebsiteLength"));
+					othis.oShowAlertDialog.open();
+				 }
+					
+		  	 }else if(othis.oBIOIEmailInputText.getValue().length > 241){
+				othis.oValidationLILIStatus = false;
+				
+				othis.oBIOIEmailInputText.setValueState("Error");
+				othis.oBIOIEmailInputText.setShowValueStateMessage(false);
+
+				if(!othis.oShowAlertDialog.isOpen())
+				{
+				othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIEmailLength"));
+				othis.oShowAlertDialog.open();
+				
+				}
+			}
+		return othis.oValidationLILIStatus;
+	},
+	validatePresenceBIOI : function(othis){
+		
+		othis.oOriginalBIOILaborSizeInputTextValue = othis.oBIOILaborSizeInputText.getValue();
+		othis.oOriginalBIOILaborSizeInputTextValue = othis.oOriginalBIOILaborSizeInputTextValue.match(/\d/g);
+		othis.oOriginalBIOILaborSizeInputTextValue = othis.oOriginalBIOILaborSizeInputTextValue.join("");
+		othis.oValidationLILIStatus = true;
+		
+		if(othis.oBIOIOrganizationName.getValue() === ""){			
 			 othis.oValidationLILIStatus = false;
+			 
+			 othis.oBIOIOrganizationName.setValueState("Error");
+			 othis.oBIOIOrganizationName.setShowValueStateMessage(false);
+	 
+			if(!othis.oShowAlertDialog.isOpen())
+			 {
+				othis.oAlertTextView.setText(othis.oModelHelper.getText("BIONameRequired"));
+				othis.oShowAlertDialog.open();
+			 }
+				
+	  	 }else if(othis._oidRegionComboBox.getSelectedKey() === ""){			
+			 othis.oValidationLILIStatus = false;
+			 
+			 othis._oidRegionComboBox.setValueState("Error");
+			 othis._oidRegionComboBox.setShowValueStateMessage(false);
 			 
 				if(!othis.oShowAlertDialog.isOpen())
 				 {
@@ -105,6 +255,9 @@ com.sagia.common.js.bioivalidateworker = {
 		  }else if(othis._oBICityComboBox.getSelectedKey() === ""){			
 				 othis.oValidationLILIStatus = false;
 				 
+				 othis._oBICityComboBox.setValueState("Error");
+				 othis._oBICityComboBox.setShowValueStateMessage(false);
+				 
 					if(!othis.oShowAlertDialog.isOpen())
 					 {
 						othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOICityMandatory"));
@@ -113,6 +266,9 @@ com.sagia.common.js.bioivalidateworker = {
 						
 		  }else if(othis._oBIILegalStatusCombobox.getSelectedKey() === ""){			
 				 othis.oValidationLILIStatus = false;
+				 
+				 othis._oBIILegalStatusCombobox.setValueState("Error");
+				 othis._oBIILegalStatusCombobox.setShowValueStateMessage(false);
 				 
 					if(!othis.oShowAlertDialog.isOpen())
 					 {
@@ -123,6 +279,9 @@ com.sagia.common.js.bioivalidateworker = {
 		  }else if(othis.oBIOIMultiNationalCompanyCombobox.getSelectedKey() === ""){			
 				 othis.oValidationLILIStatus = false;
 				 
+				 othis.oBIOIMultiNationalCompanyCombobox.setValueState("Error");
+				 othis.oBIOIMultiNationalCompanyCombobox.setShowValueStateMessage(false);
+				 
 					if(!othis.oShowAlertDialog.isOpen())
 					 {
 						othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIMNC"));
@@ -131,6 +290,9 @@ com.sagia.common.js.bioivalidateworker = {
 						
 		  }else if(othis.oBIOIEmailInputText.getValue() === ""){			
 			 othis.oValidationLILIStatus = false;
+			 
+			 othis.oBIOIEmailInputText.setValueState("Error");
+			 othis.oBIOIEmailInputText.setShowValueStateMessage(false);
 
 	  		 if(!othis.oShowAlertDialog.isOpen())
 			 {
@@ -138,26 +300,13 @@ com.sagia.common.js.bioivalidateworker = {
 				othis.oShowAlertDialog.open();
 			 }
 				
-	  	 }else if(othis.oOriginalBIOILaborSizeInputTextValue > 10){
-	  		othis.oValidationLILIStatus = false;
-
-	 		 if(!othis.oShowAlertDialog.isOpen())
-			 {
-				othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOILaborSize"));
-				othis.oShowAlertDialog.open();
-			 }
-	  	 }else if(othis.oOriginalBIOICapitalInputTextValue > 25){
-	  		othis.oValidationLILIStatus = false;
-
-	 		 if(!othis.oShowAlertDialog.isOpen())
-			 {
-				othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOICapitalLength"));
-				othis.oShowAlertDialog.open();
-			 }
 	  	 }
 	  	 else if(othis.oBIOICapitalInputText.getValue() === ""){			
 	  	 
 			 othis.oValidationLILIStatus = false;
+			 
+			 othis.oBIOICapitalInputText.setValueState("Error");
+			 othis.oBIOICapitalInputText.setShowValueStateMessage(false);
 
 	  		 if(!othis.oShowAlertDialog.isOpen())
 			 {
@@ -193,19 +342,13 @@ com.sagia.common.js.bioivalidateworker = {
 			 * othis.oShowAlertDialog.open(); } }
 			 */else if(othis.oBIOITelephoneInputText.getValue() === ""){		
 			 othis.oValidationLILIStatus = false;
+			 
+			 othis.oBIOITelephoneInputText.setValueState("Error");
+			 othis.oBIOITelephoneInputText.setShowValueStateMessage(false);
 
 			 if(!othis.oShowAlertDialog.isOpen())
 			 {
 				othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOITelephoneNoRequired"));
-				othis.oShowAlertDialog.open();
-			 }
-				
-	  	 }else if(!(othis.oBIOITelephoneInputText.getValue().length <= 30 && othis.oBIOITelephoneInputText.getValue().length >= 5)){			
-			 othis.oValidationLILIStatus = false;
-
-	  		 if(!othis.oShowAlertDialog.isOpen())
-			 {
-				othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOITelephoneNoLength"));
 				othis.oShowAlertDialog.open();
 			 }
 				
@@ -237,19 +380,13 @@ com.sagia.common.js.bioivalidateworker = {
 			 * othis.oShowAlertDialog.open(); } }
 			 */else if(othis.oBIOIFaxInputText.getValue() === ""){	
 			 othis.oValidationLILIStatus = false;
+			 
+			 othis.oBIOIFaxInputText.setValueState("Error");
+			 othis.oBIOIFaxInputText.setShowValueStateMessage(false);
 
 			 if(!othis.oShowAlertDialog.isOpen())
 			 {
 				othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIFaxNoRequired"));
-				othis.oShowAlertDialog.open();
-			 }
-				
-	  	 }else if(!(othis.oBIOIFaxInputText.getValue().length <= 20 && othis.oBIOIFaxInputText.getValue().length >= 5)){			
-			 othis.oValidationLILIStatus = false;
-
-	  		 if(!othis.oShowAlertDialog.isOpen())
-			 {
-				othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIFaxNoLength"));
 				othis.oShowAlertDialog.open();
 			 }
 				
@@ -281,6 +418,9 @@ com.sagia.common.js.bioivalidateworker = {
 			 * othis.oShowAlertDialog.open(); } }
 			 */else if(othis.oBIOIMobilephoneInputText.getValue() === ""){	
 			 othis.oValidationLILIStatus = false;
+			 
+			 othis.oBIOIMobilephoneInputText.setValueState("Error");
+			 othis.oBIOIMobilephoneInputText.setShowValueStateMessage(false);
 
 			 if(!othis.oShowAlertDialog.isOpen())
 			 {
@@ -288,26 +428,11 @@ com.sagia.common.js.bioivalidateworker = {
 				othis.oShowAlertDialog.open();
 			 }
 				
-	  	 }else if(!(othis.oBIOIMobilephoneInputText.getValue().length <= 30 && othis.oBIOIMobilephoneInputText.getValue().length >= 5)){
-			 othis.oValidationLILIStatus = false;
-
-			 if(!othis.oShowAlertDialog.isOpen())
-			 {
-				othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIMobileNoLength"));
-				othis.oShowAlertDialog.open();
-			 }
-				
-	  	 }else if(!(/^\d*$/.test( othis.oBIOIMobilephoneInputText.getValue() ))){
-			 othis.oValidationLILIStatus = false;
-
-			 if(!othis.oShowAlertDialog.isOpen())
-			 {
-				othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIMobileNoNumeric"));
-				othis.oShowAlertDialog.open();
-			 }
-				
 	  	 }else if(othis.oBIOIWebSiteInputText.getValue() === ""){	
 			 othis.oValidationLILIStatus = false;
+			 
+			 othis.oBIOIWebSiteInputText.setValueState("Error");
+			 othis.oBIOIWebSiteInputText.setShowValueStateMessage(false);
 
 			 if(!othis.oShowAlertDialog.isOpen())
 			 {
@@ -315,29 +440,14 @@ com.sagia.common.js.bioivalidateworker = {
 				othis.oShowAlertDialog.open();
 			 }
 				
-	  	 }else if(othis.oBIOIWebSiteInputText.getValue().length > 60){	
-			 othis.oValidationLILIStatus = false;
-
-			 if(!othis.oShowAlertDialog.isOpen())
-			 {
-				othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIWebsiteLength"));
-				othis.oShowAlertDialog.open();
-			 }
-				
-	  	 }else if(othis.oBIOIEmailInputText.getValue().length > 241){
-			othis.oValidationLILIStatus = false;
-
-			if(!othis.oShowAlertDialog.isOpen())
-			{
-			othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIEmailLength"));
-			othis.oShowAlertDialog.open();
-			
-			}
-		}/*
+	  	 }/*
 			 * else{ othis.doThis(); othis.oValidationLILIStatus = true; }
 			 */
 		 else if(othis.oBIOICommMethodComboBox.getSelectedKey() === ""){			
 			 othis.oValidationLILIStatus = false;
+			 
+			 othis.oBIOICommMethodComboBox.setValueState("Error");
+			 othis.oBIOICommMethodComboBox.setShowValueStateMessage(false);
 
 			 if(!othis.oShowAlertDialog.isOpen())
 			 {
@@ -345,21 +455,135 @@ com.sagia.common.js.bioivalidateworker = {
 				othis.oShowAlertDialog.open();
 			 }
 				
-		 }
+		 }else if(othis.oBIOIOrganizationName.getValue().length > 100){			
+			 othis.oValidationLILIStatus = false;
+			 
+			 othis.oBIOIOrganizationName.setValueState("Error");
+			 othis.oBIOIOrganizationName.setShowValueStateMessage(false);
+			 
+				if(!othis.oShowAlertDialog.isOpen())
+				 {
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIOrganizationNameLength"));
+					othis.oShowAlertDialog.open();
+				 }
+					
+		  }else if(othis.oOriginalBIOILaborSizeInputTextValue.length > 10){
+		  		othis.oValidationLILIStatus = false;
+		  		
+		  		 othis.oBIOILaborSizeInputText.setValueState("Error");
+				 othis.oBIOILaborSizeInputText.setShowValueStateMessage(false);
+
+		 		 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOILaborSize"));
+					othis.oShowAlertDialog.open();
+				 }
+		  	 }else if(othis.oOriginalBIOICapitalInputTextValue.length > 25){
+		  		othis.oValidationLILIStatus = false;
+		  		
+		  		 othis.oBIOICapitalInputText.setValueState("Error");
+				 othis.oBIOICapitalInputText.setShowValueStateMessage(false);
+
+		 		 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOICapitalLength"));
+					othis.oShowAlertDialog.open();
+				 }
+		  	 }else if(!(othis.oBIOITelephoneInputText.getValue().length <= 30 && othis.oBIOITelephoneInputText.getValue().length >= 5)){			
+				 othis.oValidationLILIStatus = false;
+				 
+				 othis.oBIOITelephoneInputText.setValueState("Error");
+				 othis.oBIOITelephoneInputText.setShowValueStateMessage(false);
+
+
+		  		 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOITelephoneNoLength"));
+					othis.oShowAlertDialog.open();
+				 }
+					
+		  	 }else if(!(othis.oBIOIFaxInputText.getValue().length <= 20 && othis.oBIOIFaxInputText.getValue().length >= 5)){			
+				 othis.oValidationLILIStatus = false;
+				 
+				 othis.oBIOIFaxInputText.setValueState("Error");
+				 othis.oBIOIFaxInputText.setShowValueStateMessage(false);
+
+		  		 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIFaxNoLength"));
+					othis.oShowAlertDialog.open();
+				 }
+					
+		  	 }else if(!(othis.oBIOIMobilephoneInputText.getValue().length <= 30 && othis.oBIOIMobilephoneInputText.getValue().length >= 5)){
+				 othis.oValidationLILIStatus = false;
+				 
+				 othis.oBIOIMobilephoneInputText.setValueState("Error");
+				 othis.oBIOIMobilephoneInputText.setShowValueStateMessage(false);
+
+				 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIMobileNoLength"));
+					othis.oShowAlertDialog.open();
+				 }
+					
+		  	 }
+		  	else if(othis.oBIOIWebSiteInputText.getValue().length > 60){	
+				 othis.oValidationLILIStatus = false;
+				 
+				 othis.oBIOIWebSiteInputText.setValueState("Error");
+				 othis.oBIOIWebSiteInputText.setShowValueStateMessage(false);
+
+
+				 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIWebsiteLength"));
+					othis.oShowAlertDialog.open();
+				 }
+					
+		  	 }else if(othis.oBIOIEmailInputText.getValue().length > 241){
+				othis.oValidationLILIStatus = false;
+				
+				othis.oBIOIEmailInputText.setValueState("Error");
+				othis.oBIOIEmailInputText.setShowValueStateMessage(false);
+
+				if(!othis.oShowAlertDialog.isOpen())
+				{
+				othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIEmailLength"));
+				othis.oShowAlertDialog.open();
+				
+				}
+		  	 }
 		return othis.oValidationLILIStatus;
 
 	},
-	saveData : function(othis){		
+	saveData : function(othis, oOpenBusyDialog){		
 		
-		othis.openBusyDialog();
+		if(oOpenBusyDialog){
+			othis.openBusyDialog();
+		}
 		
-		othis.oBIOICapitalInputTextValue = othis.oBIOICapitalInputText.getValue();
-		othis.oBIOICapitalInputTextValue = othis.oBIOICapitalInputTextValue.match(/\d/g);
-		othis.oBIOICapitalInputTextValue = othis.oBIOICapitalInputTextValue.join("");
 		
-		othis.oBIOILaborSizeInputTextValue = othis.oBIOILaborSizeInputText.getValue();
-		othis.oBIOILaborSizeInputTextValue = othis.oBIOILaborSizeInputTextValue.match(/\d/g);
-		othis.oBIOILaborSizeInputTextValue = othis.oBIOILaborSizeInputTextValue.join("");
+		if(!othis.oBIOICapitalInputText.getValue()){
+			othis.oBIOICapitalInputText.setValue("");
+		}
+		if(!othis.oBIOILaborSizeInputText.getValue()){
+			othis.oBIOILaborSizeInputText.setValue("");
+		}
+		
+		if(othis.oBIOICapitalInputText.getValue() !== "NaN" && othis.oBIOICapitalInputText.getValue() !== ""){
+			othis.oBIOICapitalInputTextValue = othis.oBIOICapitalInputText.getValue();
+			othis.oBIOICapitalInputTextValue = othis.oBIOICapitalInputTextValue.match(/\d/g);
+			othis.oBIOICapitalInputTextValue = othis.oBIOICapitalInputTextValue.join("");
+		}
+		
+		if(othis.oBIOILaborSizeInputText.getValue() !== "NaN" && othis.oBIOILaborSizeInputText.getValue() !== ""){
+			othis.oBIOILaborSizeInputTextValue = othis.oBIOILaborSizeInputText.getValue();
+			othis.oBIOILaborSizeInputTextValue = othis.oBIOILaborSizeInputTextValue.match(/\d/g);
+			othis.oBIOILaborSizeInputTextValue = othis.oBIOILaborSizeInputTextValue.join("");
+		}
+		
+		
+		
 		
 		var that = othis;
 	       
@@ -374,7 +598,7 @@ com.sagia.common.js.bioivalidateworker = {
 					othis.oBIOIMultiNationalCompanyCombobox.getSelectedKey(),
 					othis.oBIOIEmailInputText.getValue(),
 					othis.oBIOILaborSizeInputTextValue,
-					othis.oBIOICommMethodComboBox.getSelectedItem().getKey(),
+					othis.oBIOICommMethodComboBox.getSelectedKey(),
 					othis.oBIOICapitalInputTextValue,					
 					othis.oBIOITelephoneCountryCodeInputText.getValue(),
 					othis.oBIOITelephoneInputText.getValue(),
@@ -388,12 +612,17 @@ com.sagia.common.js.bioivalidateworker = {
 					othis.oBIOIMobilephoneCountryCodeInputText.getValue());
 
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function() {				
-				//this.basicInfoFileAttachmentOperations(this.oBIOIOrganizationName.getValue());				
-				othis.closeBusyDialog();
+				//this.basicInfoFileAttachmentOperations(this.oBIOIOrganizationName.getValue());
+				if(oOpenBusyDialog){
+					othis.closeBusyDialog();
+				}
+				
 			}, othis));	
 			}
 			catch(err){
-				othis.closeBusyDialog();
+				if(oOpenBusyDialog){
+					othis.closeBusyDialog();
+				}
 				console.log(err);
 			}
 			
@@ -423,14 +652,21 @@ com.sagia.common.js.bioivalidateworker = {
             jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
             	othis.oRecordExists = true;            	
 				//this.basicInfoFileAttachmentOperations(this.oBIOIOrganizationName.getValue());
-            	othis.closeBusyDialog();
+            	if(oOpenBusyDialog){
+					othis.closeBusyDialog();
+				}
 			}, othis));	
 			}
 			catch(err){
-				othis.closeBusyDialog();
+				if(oOpenBusyDialog){
+					othis.closeBusyDialog();
+				}
 				console.log(err);
 			}
 			
 		}
+		
+		sap.m.MessageToast.show(othis.oModelHelper.getText("BasicInfoSaved"));
+		
 	},	
 };

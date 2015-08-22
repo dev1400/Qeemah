@@ -31,7 +31,7 @@
 		<!-- Child license activity Q start -->
 
 		<sap.ui.commons.layout:MatrixLayout
-			layoutFixed="true" width="100%" id="idPreviewLicenseInfoMAtrixLayout">
+			layoutFixed="true" widths="35%,50%" id="idPreviewLicenseInfoMAtrixLayout">
 
 
 
@@ -76,7 +76,7 @@
 						<sap.ui.commons:TextView text="{i18n>ProductCode}"
 							class="textcolorwhite"></sap.ui.commons:TextView>
 					</Column>
-					<Column width="5%">
+					<Column width="10%">
 
 						<sap.ui.commons:TextView text="{i18n>ProductName}"
 							class="textcolorwhite"></sap.ui.commons:TextView>
@@ -85,7 +85,7 @@
 						<sap.ui.commons:TextView text="{i18n>Quantity}"
 							class="textcolorwhite"></sap.ui.commons:TextView>
 					</Column>
-					<Column width="10%">
+					<Column width="5%">
 						<sap.ui.commons:TextView text="{i18n>UnitOfMeasurement}"
 							class="textcolorwhite"></sap.ui.commons:TextView>
 					</Column>

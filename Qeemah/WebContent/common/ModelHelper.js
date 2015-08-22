@@ -1868,7 +1868,7 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
 		
      	this.oODataModel.setUseBatch(false);
-		this.oODataModel.read("Prod?Investorid='"+oRefID+"'", {
+		this.oODataModel.read("Product?Investorid='"+oRefID+"'", {
 			success : function(oData, response) {
 				that.closeBusyDialog();
 
@@ -1920,13 +1920,14 @@ com.sagia.common.ModelHelper = {
 	 * Save Industrial Products
 	 * @author Abdul Waheed
 	 */
-	saveIndustrialProducts : function(oRefID, oPrdCode, oDescr , oQty , oUom, oUomTxt) {
+	saveIndustrialProducts : function(oSno, oRefID, oPrdCode, oDescr , oQty , oUom, oUomTxt) {
 		
 		this.openBusyDialog();
 
 		var that = this;
 		var oEntry = {};
 		
+		oEntry.SNo = oSno;
 		oEntry.Investorid=oRefID;
 		oEntry.PrdCode=oPrdCode;
 		oEntry.Descr=oDescr;
@@ -1939,7 +1940,7 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
         this.oODataModel.setUseBatch(false);
        
-		this.oODataModel.create("ProdPsSet", oEntry , {
+		this.oODataModel.create("ProductSet", oEntry , {
 		
 			success : function(oData) {
 				that.closeBusyDialog();
@@ -1961,7 +1962,7 @@ com.sagia.common.ModelHelper = {
 	 * Delete Industrial Products
 	 * @author Abdul Waheed
 	 */
-	deleteIndustrialProducts : function(oRefID, oPrdCode) {	
+	deleteIndustrialProducts : function(oSno, oRefID, oPrdCode) {	
 			
 		this.openBusyDialog();
 
@@ -1970,7 +1971,7 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
         this.oODataModel.setUseBatch(false);
 
-		this.oODataModel.remove("ProdPsSet(Investorid='"+oRefID+"',PrdCode='"+oPrdCode+"')", {
+		this.oODataModel.remove("ProdDelSet(SNo='"+oSno+"',Investorid='"+oRefID+"',PrdCode='"+oPrdCode+"')", {
 			success : function(oData, response) {
 				that.closeBusyDialog();
 
