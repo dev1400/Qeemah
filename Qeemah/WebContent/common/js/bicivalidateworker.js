@@ -780,7 +780,7 @@ com.sagia.common.js.bicivalidateworker = {
 			jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function() {    	
                 
 				if(oOpenBusyDialog){
-					othis.closeBusyDialog();
+					othis.closeBusyDialog();//
 				}
             	
 				
