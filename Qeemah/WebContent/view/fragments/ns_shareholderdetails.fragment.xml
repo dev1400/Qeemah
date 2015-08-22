@@ -313,7 +313,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 							
-							<ComboBox width="100%" items="{/DetailsCollection}" id="idNSHNationalityComboBox">
+							<ComboBox width="100%" items="{/DetailsCollection}" id="idNSHNationalityComboBox" selectionChange="showKey">
 								<sap.ui.core:ListItem key="{Land1}" text="{Natio50}"/>
 						    </ComboBox>
 						</sap.ui.commons.layout:content>

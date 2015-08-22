@@ -7,9 +7,25 @@ com.sagia.common.js.bioivalidateworker = {
 		
 		othis.oValidationLILIStatus = true;
 		
-		othis.oOriginalBIOILaborSizeInputTextValue = othis.oBIOILaborSizeInputText.getValue();
-		othis.oOriginalBIOILaborSizeInputTextValue = othis.oOriginalBIOILaborSizeInputTextValue.match(/\d/g);
-		othis.oOriginalBIOILaborSizeInputTextValue = othis.oOriginalBIOILaborSizeInputTextValue.join("");
+		if(!othis.oBIOICapitalInputText.getValue()){
+			othis.oBIOICapitalInputText.setValue("");
+		}
+		if(!othis.oBIOILaborSizeInputText.getValue()){
+			othis.oBIOILaborSizeInputText.setValue("");
+		}
+		
+		if(othis.oBIOICapitalInputText.getValue() !== "NaN" && othis.oBIOICapitalInputText.getValue() !== ""){
+			othis.oOriginalBIOICapitalInputTextValue = othis.oBIOICapitalInputText.getValue();
+			othis.oOriginalBIOICapitalInputTextValue = othis.oOriginalBIOICapitalInputTextValue.match(/\d/g);
+			othis.oOriginalBIOICapitalInputTextValue = othis.oOriginalBIOICapitalInputTextValue.join("");
+		}
+		
+		if(othis.oBIOILaborSizeInputText.getValue() !== "NaN" && othis.oBIOILaborSizeInputText.getValue() !== ""){
+			othis.oOriginalBIOILaborSizeInputTextValue = othis.oBIOILaborSizeInputText.getValue();
+			othis.oOriginalBIOILaborSizeInputTextValue = othis.oOriginalBIOILaborSizeInputTextValue.match(/\d/g);
+			othis.oOriginalBIOILaborSizeInputTextValue = othis.oOriginalBIOILaborSizeInputTextValue.join("");
+		}
+		
 		
 		if(!(/^[0-9.,]+$/.test( othis.oBIOILaborSizeInputText.getValue() ))){			
 			 othis.oValidationLILIStatus = false;
@@ -223,9 +239,28 @@ com.sagia.common.js.bioivalidateworker = {
 	},
 	validatePresenceBIOI : function(othis){
 		
-		othis.oOriginalBIOILaborSizeInputTextValue = othis.oBIOILaborSizeInputText.getValue();
-		othis.oOriginalBIOILaborSizeInputTextValue = othis.oOriginalBIOILaborSizeInputTextValue.match(/\d/g);
-		othis.oOriginalBIOILaborSizeInputTextValue = othis.oOriginalBIOILaborSizeInputTextValue.join("");
+		if(!othis.oBIOICapitalInputText.getValue()){
+			othis.oBIOICapitalInputText.setValue("");
+		}
+		if(!othis.oBIOILaborSizeInputText.getValue()){
+			othis.oBIOILaborSizeInputText.setValue("");
+		}
+		
+		if(othis.oBIOICapitalInputText.getValue() !== "NaN" && othis.oBIOICapitalInputText.getValue() !== ""){
+			othis.oOriginalBIOICapitalInputTextValue = othis.oBIOICapitalInputText.getValue();
+			othis.oOriginalBIOICapitalInputTextValue = othis.oOriginalBIOICapitalInputTextValue.match(/\d/g);
+			othis.oOriginalBIOICapitalInputTextValue = othis.oOriginalBIOICapitalInputTextValue.join("");
+		}
+		
+		if(othis.oBIOILaborSizeInputText.getValue() !== "NaN" && othis.oBIOILaborSizeInputText.getValue() !== ""){
+			othis.oOriginalBIOILaborSizeInputTextValue = othis.oBIOILaborSizeInputText.getValue();
+			othis.oOriginalBIOILaborSizeInputTextValue = othis.oOriginalBIOILaborSizeInputTextValue.match(/\d/g);
+			othis.oOriginalBIOILaborSizeInputTextValue = othis.oOriginalBIOILaborSizeInputTextValue.join("");
+		}
+		
+		
+		
+		
 		othis.oValidationLILIStatus = true;
 		
 		if(othis.oBIOIOrganizationName.getValue() === ""){			

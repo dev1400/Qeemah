@@ -67,6 +67,10 @@ com.sagia.common.js.baqvalidateworker = {
 							othis.oBAQError = false;
 							
 						}, othis));
+					 }else{
+						 if(oOpenBusyDialog){
+								othis.closeBusyDialog();
+							}
 					 }			
 					
 					}catch(err){
@@ -126,7 +130,11 @@ com.sagia.common.js.baqvalidateworker = {
 					}
 					
 				}, othis));
-			}
+			}else{
+				 if(oOpenBusyDialog){
+						othis.closeBusyDialog();
+					}
+			 }
 			
 			}catch(err){
 				

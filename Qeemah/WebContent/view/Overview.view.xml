@@ -31,10 +31,10 @@
 
 			<html:div align="left">
 			    <html:span>&#160;</html:span>
-				<Select id="idLanguageSelect" change="handleLanguageSelectionChange">
+				<ComboBox id="idLanguageSelect" selectionChange="handleLanguageSelectionChange" width="8%">
 					<sap.ui.core:ListItem key="EN" text="{i18n>English}" />
 					<sap.ui.core:ListItem key="AR" text="{i18n>Arabic}" />
-				</Select>
+				</ComboBox>
 			</html:div>
 
 			<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
