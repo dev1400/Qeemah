@@ -20,6 +20,9 @@
 	top: 14em !important; 
 	left: 36em !important; #00A19C #E0E0E0
 } */
+.paddingRight{
+	padding-right: 10% !important;
+}
 .sapMIBar-CTX .sapMBtnContent {
     line-height: 2rem;
 }

@@ -31,7 +31,7 @@
 		<!-- Child license activity Q start -->
 
 		<sap.ui.commons.layout:MatrixLayout
-			layoutFixed="true" widths="35%,50%" id="idPreviewLicenseInfoMAtrixLayout">
+			layoutFixed="true" columns="2" widths="35%,50%" id="idPreviewLicenseInfoMAtrixLayout">
 
 
 
@@ -39,25 +39,50 @@
 				<sap.ui.commons.layout:MatrixLayoutCell
 					hAlign="End">
 
-					<sap.ui.commons:TextView text="{i18n>BusinessType}"></sap.ui.commons:TextView>
+					<sap.ui.commons:TextView text="{i18n>BusinessType}" class="paddingRight"></sap.ui.commons:TextView>
+				
 
 				</sap.ui.commons.layout:MatrixLayoutCell>
+				<!-- <sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutCell> -->
+				
 				<sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons:TextView id="idPLILIBusinessType"
-						enabled="false"></sap.ui.commons:TextView>
+						></sap.ui.commons:TextView>
 
 				</sap.ui.commons.layout:MatrixLayoutCell>
 			</sap.ui.commons.layout:MatrixLayoutRow>
+			
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutCell>
+				<!-- <sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutCell> -->
+				<sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutCell>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 
-					<sap.ui.commons:TextView text="{i18n>LicenseType}"></sap.ui.commons:TextView>
+					<sap.ui.commons:TextView text="{i18n>LicenseType}" class="paddingRight"></sap.ui.commons:TextView>
 
 				</sap.ui.commons.layout:MatrixLayoutCell>
+				<!-- <sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutCell> -->
 				<sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons:TextView id="idPLILILicenseTypeTextView"
-						enabled="false"></sap.ui.commons:TextView>
+						></sap.ui.commons:TextView>
 
+				</sap.ui.commons.layout:MatrixLayoutCell>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutCell>
+				<!-- <sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutCell> -->
+				<sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 			</sap.ui.commons.layout:MatrixLayoutRow>
 		</sap.ui.commons.layout:MatrixLayout>

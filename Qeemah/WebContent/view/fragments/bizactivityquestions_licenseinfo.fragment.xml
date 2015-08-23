@@ -38,7 +38,7 @@
 		
 				</sap.ui.commons.layout:MatrixLayoutCell>
 				<sap.ui.commons.layout:MatrixLayoutCell>
-					<Input type="Text" width="50%" id="idLicenseTypeInputText" enabled="false"></Input>
+					<Input type="Text" width="50%" id="idLicenseTypeInputText" enabled="false" liveChange="handleLicenseTypeChange"></Input>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 			</sap.ui.commons.layout:MatrixLayoutRow>
 		</sap.ui.commons.layout:MatrixLayout>
@@ -209,9 +209,9 @@
 						<sap.ui.commons.layout:MatrixLayoutCell>
 							<ComboBox width="50%" items="{/IndustrialProductsCollection}"
 								id="idLILIIndustrialProductComboBox" selectionChange="handleLILIIndustrialProductsComboBoxSelectionChange">
-								<sap.ui.core:ListItem key="{Pcode}" text="{Item}"
+								<sap.ui.core:ListItem key="{Desc}" text="{Item}"
 									id="idLILIIndustrialProductComboBoxitem" />
-							</ComboBox>
+							</ComboBox><!-- Pcode -->
 							
 						</sap.ui.commons.layout:MatrixLayoutCell>
 					</sap.ui.commons.layout:cells>
