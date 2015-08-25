@@ -104,7 +104,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons:TextView id="idGroupMultiSelectionTextView"
-							enabled="false" width="18em"></sap.ui.commons:TextView>
+							enabled="false" width="53%"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 
@@ -133,7 +133,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons:TextView id="idClassMultiSelectionTextView"
-							width="18em" enabled="false"></sap.ui.commons:TextView>
+							width="53%" enabled="false"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 
@@ -161,7 +161,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons:TextView id="idLAMultiSelectionTextView"
-							enabled="false" width="18em"></sap.ui.commons:TextView>
+							enabled="false" width="53%"></sap.ui.commons:TextView>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				

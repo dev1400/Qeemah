@@ -28,13 +28,16 @@
 									delete="handleSHTableDeleteButtonPress">
 									<columns>								
 										<Column width="5em">
-											<Text text="{i18n>ShareHolderName}" />
+											<sap.ui.commons:TextView text="{i18n>ShareHolderName}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
 										</Column>
 										<Column width="5em">
-											<Text text="{i18n>Percentage}" />
+											<sap.ui.commons:TextView text="{i18n>Percentage}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
 										</Column>
 										<Column width="5em">
-											<Text text="{i18n>Nationality}" />
+											<sap.ui.commons:TextView text="{i18n>Nationality}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
 										</Column>
 									</columns>									
 								</Table>

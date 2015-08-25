@@ -33,17 +33,20 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 
 						<Table id="idPreviewESHCreateNSHTable" width="100%">
-							<columns>
-								<Column width="5em">
-									<Text text="{i18n>ShareHolderName}" />
-								</Column>
-								<Column width="5em">
-									<Text text="{i18n>Percentage}" />
-								</Column>
-								<Column width="5em">
-									<Text text="{i18n>Nationality}" />
-								</Column>
-							</columns>
+							<columns>								
+										<Column width="5em">
+											<sap.ui.commons:TextView text="{i18n>ShareHolderName}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
+										</Column>
+										<Column width="5em">
+											<sap.ui.commons:TextView text="{i18n>Percentage}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
+										</Column>
+										<Column width="5em">
+											<sap.ui.commons:TextView text="{i18n>Nationality}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
+										</Column>
+									</columns>				
 						</Table>
 
 					</sap.ui.commons.layout:MatrixLayoutCell>

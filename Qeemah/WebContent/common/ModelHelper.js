@@ -115,6 +115,32 @@ com.sagia.common.ModelHelper = {
 		
 		return this.oShareHolderODataModel;
 	},
+	/**Read industry sector
+	 * @author mabdulwaheed
+	 */
+	readIndustrySector : function(oLanguage){
+		
+		var that = this;
+		var oRequestFinishedDeferred = jQuery.Deferred();
+        this.oShareHolderODataModel.setUseBatch(false);
+
+		this.oShareHolderODataModel.read("Industry?lang='"+oLanguage+"'", {
+			success : function(oData, response) {
+				
+				that.oIndustrySectarCollectionModel = new sap.ui.model.json.JSONModel();
+				that.oIndustrySectarCollectionModel.setData({IndustrySectarCollection:oData.results});
+				oRequestFinishedDeferred.resolve(that.oIndustrySectarCollectionModel);
+				
+				//oRequestFinishedDeferred.resolve(response);
+			},
+			error : function(oResponse) {
+				
+				oRequestFinishedDeferred.resolve();
+				
+			}, async : true});
+
+		return oRequestFinishedDeferred;
+	},
 	/**
 	 * Create Financial Answers
 	 * @Author Abdul Waheed 
@@ -2208,14 +2234,15 @@ com.sagia.common.ModelHelper = {
 		var oRequestFinishedDeferred = jQuery.Deferred();
 
 		 var aBatchOperations = [];
-         for ( var i = 0; i < IsicSelectedClasses.length; i++) {
-        	 for(var j=0; j< IsicSelectedGroups.length; j++){
+         
+    	 for(var j=0; j< IsicSelectedGroups.length; j++){
+    		 for(var i = 0; i < IsicSelectedClasses.length; i++) {
         		 aBatchOperations.push(this.oODataModel.createBatchOperation(
         		 //"IsicDet?Flag='K'&Lang='E'IsicSection='"+IsicSection+"'&IsicDivision='"+IsicDivision+"'&IsicGroup='011'&IsicClass='0111' ", 'GET' ));
         		 "IsicDet?Flag='K'&Lang='E'&IsicSection='"+IsicSection+"'&IsicDivision='"+IsicDivision+"'&IsicGroup='"+IsicSelectedGroups[j]+"'&IsicClass='"+IsicSelectedClasses[i]+"' "   , 'GET' ));
         		          
         	 }
-             }
+          }
          this.oODataModel.addBatchReadOperations( aBatchOperations);
          this.oODataModel.setUseBatch(true);
 

@@ -140,7 +140,6 @@ com.sagia.common.js.validate = {
 				var oRequestFinishedDeferredISICRecord = thisContext.oModelHelper.checkISICAvailability(thisContext.oRef_id);
 
 				jQuery.when(oRequestFinishedDeferredISICRecord).then(jQuery.proxy(function(oResponse) {
-					//thisContext.closeBusyDialog();
 					
 					thisContext.handleLicenseInfoTabStripSelect();
 										
@@ -235,6 +234,8 @@ com.sagia.common.js.validate = {
 				jQuery.when(oRequestFinishedDeferredBAQAnswersReadChild).then(jQuery.proxy(function(oResponse) {
 					//thisContext.closeBusyDialog();
 					
+					//console.log
+					
 					if(oResponse.data.results[0].Return !== "No Records"){						
 						
 						for(var i=0; i < thisContext.oTotalBAQQuestions; i++){
@@ -275,6 +276,11 @@ com.sagia.common.js.validate = {
 		        	thisContext.readBICIPOAFileAttachemnts();
 		        	thisContext.readBAQFileAttachments();	
 		        	thisContext.closeBusyDialog();
+		        	
+		        	/*thisContext.openBusyDialog();
+		        	setTimeout(function(){ 	
+						thisContext.closeBusyDialog();
+					}, 6000);*/
 					
 					
 		        });				
@@ -456,6 +462,7 @@ com.sagia.common.js.validate = {
 			
 		},
 		addNSHAttachChangeEvent : function(thisContext){
+			
 			thisContext.oShareHolderTypeComboBox.attachBrowserEvent("mouseover", function() {
 	        	thisContext.oShareHolderTypeComboBox.setValueState("None");
 			});
@@ -540,17 +547,7 @@ com.sagia.common.js.validate = {
 			
 			
 			
-			if(thisContext.oShareHolderTypeComboBox.getSelectedKey() === ""){
-				thisContext.oNewShareHolderValidation = false;
-				thisContext.oShareHolderTypeComboBox.setValueState("Error");
-				thisContext.oShareHolderTypeComboBox.setShowValueStateMessage(false);
-				 
-				 if(!thisContext.oShowAlertDialog.isOpen())
-				 {
-					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHShareHolderType"));
-					 thisContext.oShowAlertDialog.open();
-				 }
-		   	 }else if(!(/^[a-zA-Z ]*$/.test( thisContext.oNSHFirstNameInputText.getValue() ))){
+			 if(!(/^[a-zA-Z ]*$/.test( thisContext.oNSHFirstNameInputText.getValue() ))){
 				thisContext.oNewShareHolderValidation = false;
 				
 				thisContext.oNSHFirstNameInputText.setValueState("Error");
