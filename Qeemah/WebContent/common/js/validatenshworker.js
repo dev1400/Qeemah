@@ -95,6 +95,26 @@ com.sagia.common.js.validatenshworker = {
 	validateNSHOrgData : function(thisContext){
 		thisContext.oNewShareHolderValidation = true;
 		
+		if(!thisContext.oNSHOrgCapitalInputText.getValue()){
+			thisContext.oNSHOrgCapitalInputText.setValue("");
+		}
+		if(!thisContext.oNSHOrgLaborSizeInputText.getValue()){
+			thisContext.oNSHOrgLaborSizeInputText.setValue("");
+		}
+		
+		if(thisContext.oNSHOrgCapitalInputText.getValue() !== "NaN" && thisContext.oNSHOrgCapitalInputText.getValue() !== ""){
+			thisContext.oOriginalNSHOrgCapitalInputTextValue = thisContext.oNSHOrgCapitalInputText.getValue();
+			thisContext.oOriginalNSHOrgCapitalInputTextValue = thisContext.oOriginalNSHOrgCapitalInputTextValue.match(/\d/g);
+			thisContext.oOriginalNSHOrgCapitalInputTextValue = thisContext.oOriginalNSHOrgCapitalInputTextValue.join("");
+		}
+		
+		if(thisContext.oNSHOrgLaborSizeInputText.getValue() !== "NaN" && thisContext.oNSHOrgLaborSizeInputText.getValue() !== ""){
+			thisContext.oOriginalNSHPersonLaborSizeInputTextValue = thisContext.oNSHOrgLaborSizeInputText.getValue();
+			thisContext.oOriginalNSHPersonLaborSizeInputTextValue = thisContext.oOriginalNSHPersonLaborSizeInputTextValue.match(/\d/g);
+			thisContext.oOriginalNSHPersonLaborSizeInputTextValue = thisContext.oOriginalNSHPersonLaborSizeInputTextValue.join("");
+		}
+		
+		
 		 if(!(/^[a-zA-Z ]*$/.test( thisContext.oNSHOrganizationName.getValue() ))){
 				thisContext.oNewShareHolderValidation = false;
 				
@@ -335,35 +355,35 @@ com.sagia.common.js.validatenshworker = {
 					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("LegalStatusReq"));
 					 thisContext.oShowAlertDialog.open();
 				 }
-		 }else if(!(/^[0-9.,]+$/.test( thisContext.oNSHOrgLaborSizeInputText.getValue() ))){	
+		 }/*else if(!(/^[0-9.,]+$/.test( thisContext.oOriginalNSHPersonLaborSizeInputTextValue ))){	
 			 thisContext.oNewShareHolderValidation = false;
 
-			 thisContext.oLILIProductQuantityInputText.setValueState("Error");
-			 thisContext.oLILIProductQuantityInputText.setShowValueStateMessage(false);
+			 thisContext.oNSHOrgLaborSizeInputText.setValueState("Error");
+			 thisContext.oNSHOrgLaborSizeInputText.setShowValueStateMessage(false);
 				 
 
 				 if(!thisContext.oShowAlertDialog.isOpen())
 				 {
-					 thisContext.oAlertTextView.setText(this.oModelHelper.getText("NSHLaborSize"));
+					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHLaborSize"));
 					 thisContext.oShowAlertDialog.open();
 				 }
 					
-		  	 }
-		 else if(thisContext.oNSHOrgLaborSizeInputText.getValue().length > 20){	
+		  	 }*/
+		 else if(thisContext.oOriginalNSHPersonLaborSizeInputTextValue.length > 20){	
 			 thisContext.oNewShareHolderValidation = false;
 
-			 thisContext.oLILIProductQuantityInputText.setValueState("Error");
-			 thisContext.oLILIProductQuantityInputText.setShowValueStateMessage(false);
+			 thisContext.oNSHOrgLaborSizeInputText.setValueState("Error");
+			 thisContext.oNSHOrgLaborSizeInputText.setShowValueStateMessage(false);
 				 
 
 				 if(!thisContext.oShowAlertDialog.isOpen())
 				 {
-					 thisContext.oAlertTextView.setText(this.oModelHelper.getText("NSHLaborSizeLength"));
+					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHLaborSizeLength"));
 					 thisContext.oShowAlertDialog.open();
 				 }
 					
 		  	 }
-		 else if(!(/^[0-9.,]+$/.test( thisContext.oNSHOrgCapitalInputText.getValue() ))){	
+		 /*else if(!(/^[0-9.,]+$/.test( thisContext.oOriginalNSHOrgCapitalInputTextValue ))){	
 			 thisContext.oNewShareHolderValidation = false;
 
 			 thisContext.oNSHOrgCapitalInputText.setValueState("Error");
@@ -372,12 +392,12 @@ com.sagia.common.js.validatenshworker = {
 
 				 if(!thisContext.oShowAlertDialog.isOpen())
 				 {
-					 thisContext.oAlertTextView.setText(this.oModelHelper.getText("NSHCapitalSize"));
+					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHCapitalSize"));
 					 thisContext.oShowAlertDialog.open();
 				 }
 					
-		  	 }
-		 else if(thisContext.oNSHOrgCapitalInputText.getValue().length > 20){	
+		  	 }*/
+		 else if(thisContext.oOriginalNSHOrgCapitalInputTextValue.length > 20){	
 			 thisContext.oNewShareHolderValidation = false;
 
 			 thisContext.oNSHOrgCapitalInputText.setValueState("Error");
@@ -386,7 +406,7 @@ com.sagia.common.js.validatenshworker = {
 
 				 if(!thisContext.oShowAlertDialog.isOpen())
 				 {
-					 thisContext.oAlertTextView.setText(this.oModelHelper.getText("NSHCapitalSizeLength"));
+					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHCapitalSizeLength"));
 					 thisContext.oShowAlertDialog.open();
 				 }
 					
@@ -400,7 +420,7 @@ com.sagia.common.js.validatenshworker = {
 
 				 if(!thisContext.oShowAlertDialog.isOpen())
 				 {
-					 thisContext.oAlertTextView.setText(this.oModelHelper.getText("NSHInvalidBNo"));
+					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHInvalidBNo"));
 					 thisContext.oShowAlertDialog.open();
 				 }
 					
@@ -415,7 +435,7 @@ com.sagia.common.js.validatenshworker = {
 
 				 if(!thisContext.oShowAlertDialog.isOpen())
 				 {
-					 thisContext.oAlertTextView.setText(this.oModelHelper.getText(""));
+					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText(""));
 					 thisContext.oShowAlertDialog.open();
 				 }
 					
@@ -429,7 +449,7 @@ com.sagia.common.js.validatenshworker = {
 
 			 if(!thisContext.oShowAlertDialog.isOpen())
 			 {
-				 thisContext.oAlertTextView.setText(this.oModelHelper.getText("NSHInvalidBNo"));
+				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHInvalidBNo"));
 				 thisContext.oShowAlertDialog.open();
 			 }
 				
@@ -443,7 +463,7 @@ com.sagia.common.js.validatenshworker = {
 
 			 if(!thisContext.oShowAlertDialog.isOpen())
 			 {
-				 thisContext.oAlertTextView.setText(this.oModelHelper.getText("NSHOTelephoneLength"));
+				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHOTelephoneLength"));
 				 thisContext.oShowAlertDialog.open();
 			 }
 				
@@ -457,7 +477,7 @@ com.sagia.common.js.validatenshworker = {
 
 			 if(!thisContext.oShowAlertDialog.isOpen())
 			 {
-				 thisContext.oAlertTextView.setText(this.oModelHelper.getText("NSHInvalidFaxNo"));
+				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHInvalidFaxNo"));
 				 thisContext.oShowAlertDialog.open();
 			 }
 				
@@ -471,7 +491,7 @@ com.sagia.common.js.validatenshworker = {
 
 			 if(!thisContext.oShowAlertDialog.isOpen())
 			 {
-				 thisContext.oAlertTextView.setText(this.oModelHelper.getText("NSHOFaxLength"));
+				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHOFaxLength"));
 				 thisContext.oShowAlertDialog.open();
 			 }
 				
@@ -485,7 +505,7 @@ com.sagia.common.js.validatenshworker = {
 
 			 if(!thisContext.oShowAlertDialog.isOpen())
 			 {
-				 thisContext.oAlertTextView.setText(this.oModelHelper.getText("NSHInvalidFaxNo"));
+				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHInvalidFaxNo"));
 				 thisContext.oShowAlertDialog.open();
 			 }
 				
@@ -499,7 +519,7 @@ com.sagia.common.js.validatenshworker = {
 
 			 if(!thisContext.oShowAlertDialog.isOpen())
 			 {
-				 thisContext.oAlertTextView.setText(this.oModelHelper.getText("NSHOMobileLength"));
+				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHOMobileLength"));
 				 thisContext.oShowAlertDialog.open();
 			 }
 				
@@ -513,7 +533,7 @@ com.sagia.common.js.validatenshworker = {
 
 			 if(!thisContext.oShowAlertDialog.isOpen())
 			 {
-				 thisContext.oAlertTextView.setText(this.oModelHelper.getText("NSHInvalidPercentage"));
+				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHInvalidPercentage"));
 				 thisContext.oShowAlertDialog.open();
 			 }
 				
@@ -527,7 +547,7 @@ com.sagia.common.js.validatenshworker = {
 
 			 if(!thisContext.oShowAlertDialog.isOpen())
 			 {
-				 thisContext.oAlertTextView.setText(this.oModelHelper.getText("NSHOrgPercentage"));
+				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHOrgPercentage"));
 				 thisContext.oShowAlertDialog.open();
 			 }
 				
@@ -541,7 +561,7 @@ com.sagia.common.js.validatenshworker = {
 
 			 if(!thisContext.oShowAlertDialog.isOpen())
 			 {
-				 thisContext.oAlertTextView.setText(this.oModelHelper.getText("NSHOrgPercentage"));
+				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHOrgPercentage"));
 				 thisContext.oShowAlertDialog.open();
 			 }
 				
@@ -570,7 +590,7 @@ com.sagia.common.js.validatenshworker = {
 
 			 if(!thisContext.oShowAlertDialog.isOpen())
 			 {
-				 thisContext.oAlertTextView.setText(this.oModelHelper.getText("NSHInvalidWebsite"));
+				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHInvalidWebsite"));
 				 thisContext.oShowAlertDialog.open();
 			 }
 				
@@ -598,7 +618,7 @@ com.sagia.common.js.validatenshworker = {
 
 			 if(!thisContext.oShowAlertDialog.isOpen())
 			 {
-				 thisContext.oAlertTextView.setText(this.oModelHelper.getText("NSHInvalidEmail"));
+				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHInvalidEmail"));
 				 thisContext.oShowAlertDialog.open();
 			 }
 				

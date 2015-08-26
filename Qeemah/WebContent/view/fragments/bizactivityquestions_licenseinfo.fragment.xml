@@ -89,7 +89,7 @@
 
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<MultiComboBox change="handleLILIGropuMultiComboBoxChange"
+						<MultiComboBox 
 							selectionChange="handleLILIGropuMultiSelectionComboBoxChange" id="idLILIGroupComboBox"
 							selectionFinish="handleSelectionFinish" items="{/LILIGroupCollection}"
 							width="50%">
@@ -118,7 +118,7 @@
 
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<MultiComboBox change="handleLILIClassMultiComboBoxChange"
+						<MultiComboBox 
 							selectionChange="handleLILIClassMultiSelectionComboBoxChange" id="idLILIClassMultiComboBox"
 							selectionFinish="handleSelectionFinish" items="{/LILIClassCollection}"
 							width="50%">
@@ -148,7 +148,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<MultiComboBox
 							selectionChange="handleLILILicenseActivityMultiSelectionComboBoxChange"
-							id="idLILILicenseActivityMultiComboBox" selectionFinish="handleSelectionFinish"
+							id="idLILILicenseActivityMultiComboBox" 
 							items="{/LILILicenseActivityCollection}" width="50%">
 							<sap.ui.core:ListItem key="{Act}"
 								text="{IsicDescription}" id="idLILILicenseActivityMultiComboBoxListitem" /> <!-- key="{IsicClass}" -->
