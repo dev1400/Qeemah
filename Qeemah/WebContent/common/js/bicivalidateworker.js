@@ -20,7 +20,22 @@ com.sagia.common.js.bicivalidateworker = {
 			othis.oShowAlertDialog.open();
 			
 			}
-		}else if(!(/^\d*$/.test( othis.oBICITelephoneCountryCodeInputText.getValue() ))){	
+		}else if(othis._oBICICountryCombobox.getSelectedKey() === ""){			
+			 othis.oValidationLILIStatus = false;
+			 
+			 
+			 
+			 
+			 othis._oBICICountryCombobox.setValueState("Error");
+			 othis._oBICICountryCombobox.setShowValueStateMessage(false);
+
+			 if(!othis.oShowAlertDialog.isOpen())
+			 {
+				othis.oAlertTextView.setText(othis.oModelHelper.getText("BICICountry"));
+				othis.oShowAlertDialog.open();
+			 }
+				
+		 }else if(!(/^\d*$/.test( othis.oBICITelephoneCountryCodeInputText.getValue() ))){	
 			 othis.oValidationLILIStatus = false;
 			 
 			 

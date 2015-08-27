@@ -4765,7 +4765,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		//console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
 		
-		var oRequestFinishedDeferred = this.oModelHelper.readCountryCode(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
+		var oRequestFinishedDeferred = this.oModelHelper.readCountryCode(this._oBICICountryCombobox.getSelectedKey());
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 			this.getView().setModel(oResponse,"CCModel");
@@ -4776,7 +4776,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}, this));	
 	},
 	handleNSHOCountryChange : function(oControlEvent){
-		var oRequestFinishedDeferred = this.oModelHelper.readCountryCode(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
+		var oRequestFinishedDeferred = this.oModelHelper.readCountryCode(this.oNSHOrgCountryComboBox.getSelectedKey());
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 		
@@ -6103,6 +6103,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oLogoutAlertDialog.close();
 			this.openBusyDialog();
 			//this.handleSaveLinkPressSave();
+			this.oEverythingIsOk = true;
 			
 			
 			if(!(/^[0-9.,]+$/.test( this.oBIOILaborSizeInputText.getValue() ))){
@@ -6115,6 +6116,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this.oAlertTextView.setText(this.oModelHelper.getText("BIOILaborSizeDigitOnly"));
 					this.oShowAlertDialog.open();
 				 }
+		  		this.oEverythingIsOk = false;
+		  		this.closeBusyDialog();
+		  		 return;
 					
 		  	 }else if(!(/^[0-9.,]+$/.test( this.oBIOICapitalInputText.getValue() ))){			
 								 
@@ -6126,10 +6130,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 					this.oAlertTextView.setText(this.oModelHelper.getText("BIOICapitalDigitOnly"));
 					this.oShowAlertDialog.open();
 				 }
+		  		this.oEverythingIsOk = false;
+		  		this.closeBusyDialog();
+		  		return;
 					
 		  	 }else{
 		  		if(this.oBIOIvalidateworker.validateDataBIOI(this)){
 					this.oBIOIvalidateworker.saveData(this, false);
+				}else{
+					this.oEverythingIsOk = false;
+					this.closeBusyDialog();
+					return;
 				}
 				
 		  	 }
@@ -6138,17 +6149,27 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 			if(this.oBICIvalidateworker.validateDataBICI(this)){
 				this.oBICIvalidateworker.saveData(this, false);
+			}else{
+				this.oEverythingIsOk = false;
+				this.closeBusyDialog();
+				return;
 			}
 			this.oBAQvalidateworker.saveData(this, false);
 			if(this.oISICvalidateworker.validateISICPresence(this)){
 				this.oISICvalidateworker.saveData(this, false);
+			}else{
+				this.oEverythingIsOk = false;
+				this.closeBusyDialog();
+				return;
 			}
 			
 			
 			sap.m.MessageToast.show(this.oModelHelper.getText("ValidatingDataBeforeSaving"));
 			var that = this;
 			setTimeout(function(){ 	
-				location.reload(true);
+				if(that.oEverythingIsOk){
+					location.reload(true);
+				}				
 				that.closeBusyDialog();
 			}, 15000);
 			

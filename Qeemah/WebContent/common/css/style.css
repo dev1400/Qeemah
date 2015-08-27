@@ -168,10 +168,10 @@
   width: 7rem !important; 
  }
  .sapMComboBoxBaseArrow {
-  line-height: 2rem;
+  /* line-height: 2rem; */
 }
 .sapMInputBaseInner {
-  height: 2rem;
+  /* height: 2rem; */
   /* background-color: #E3E2E2; */
 }
 .sapMSFF {
@@ -187,7 +187,7 @@
 	color:red !important;
 }
 .sapMComboBoxBaseArrow { 
-  height: 1.8rem;
+  /* height: 1.8rem; */
 }
 
 .sapMBtnContent {
@@ -331,7 +331,7 @@
   height: 2rem !important;
 }
 .sapMMultiComboBox>.sapMMultiComboBoxBorder {  
-  height: 2rem;
+  /* height: 2rem; */
 }
 .sapMSlt {
   height: 2rem;
