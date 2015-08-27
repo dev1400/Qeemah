@@ -617,7 +617,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 	  		 if(!this.oShowAlertDialog.isOpen())
 			 {
-				this.oAlertTextView.setText(othis.oModelHelper.getText("BIOILaborSizeDigitOnly"));
+				this.oAlertTextView.setText(this.oModelHelper.getText("BIOILaborSizeDigitOnly"));
 				this.oShowAlertDialog.open();
 			 }
 				
@@ -2554,7 +2554,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 			  		 if(!this.oShowAlertDialog.isOpen())
 					 {
-						this.oAlertTextView.setText(othis.oModelHelper.getText("BIOILaborSizeDigitOnly"));
+						this.oAlertTextView.setText(this.oModelHelper.getText("BIOILaborSizeDigitOnly"));
 						this.oShowAlertDialog.open();
 					 }
 						
@@ -6112,7 +6112,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		  		 if(!this.oShowAlertDialog.isOpen())
 				 {
-					this.oAlertTextView.setText(othis.oModelHelper.getText("BIOILaborSizeDigitOnly"));
+					this.oAlertTextView.setText(this.oModelHelper.getText("BIOILaborSizeDigitOnly"));
 					this.oShowAlertDialog.open();
 				 }
 					
