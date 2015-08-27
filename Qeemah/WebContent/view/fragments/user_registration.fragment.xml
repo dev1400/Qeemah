@@ -162,6 +162,14 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						colSpan="2" vAlign="Middle" hAlign="Center">
+						<sap.ui.commons:TextView visible="false"
+							id="idUserIDErrorMsg" class="textcolorred"></sap.ui.commons:TextView>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				
 				
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
@@ -214,7 +222,7 @@
 				width="100%">
 
 				<sap.ui.commons.layout:MatrixLayout
-					layoutFixed="false" columns="2">
+					layoutFixed="false" columns="2" id="idSignInMatrixLayout">
 					<sap.ui.commons.layout:MatrixLayoutRow>
 
 						<sap.ui.commons.layout:MatrixLayoutCell>
@@ -247,7 +255,7 @@
 
 
 				<sap.ui.commons.layout:MatrixLayout
-					layoutFixed="false" columns="2">
+					layoutFixed="false" columns="2" id="idSignInButtonsMatrixLayout">
 
 					<sap.ui.commons.layout:MatrixLayoutRow>
 						<sap.ui.commons.layout:MatrixLayoutCell
@@ -265,7 +273,7 @@
 				<html:br/>
 				
 				<sap.ui.commons.layout:MatrixLayout
-				layoutFixed="false" columns="2">
+				layoutFixed="false" columns="2" id="idSFPLinksMatrixLayout">
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<Link text="{i18n>ForgotPassword}" press="handleForgotPwdLinkPress" class="textcolorwhite"/>

@@ -123,6 +123,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oPasswordInputText = this.getView().byId("idInputPassword");
 		this._oPasswordErrorMsg = this.getView().byId("idRegPasswordErrorMsg");
 		
+		this.oUserIDErrorMsg = this.getView().byId("idUserIDErrorMsg");
+		
+		
+		
 		this._oRePasswordInputText = this.getView().byId("idInputRePassword");
 		this._oRePasswordErrorMsg = this.getView().byId("idRegRePasswordErrorMsg");
 		
@@ -204,6 +208,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oResetCurrentPasswordInput = this.getView().byId("idResetCurrentPasswordInput");
 		this.oResetNewPasswordInput = this.getView().byId("idResetNewPasswordInput");
 		this.oConfirmNewPasswordInput = this.getView().byId("idConfirmNewPasswordInput");
+		
+		this.oSignInMatrixLayout = this.getView().byId("idSignInMatrixLayout");
+		this.oSignInButtonsMatrixLayout = this.getView().byId("idSignInButtonsMatrixLayout");
+		this.oForgotResetPasswordLinksMatrixLayout = this.getView().byId("idSFPLinksMatrixLayout");
 		
 		
 		this.oISICLoaded = false;
@@ -401,7 +409,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	handleBIOICapitalInputTextChange : function(oEvent) {
 		
-		if(/^[0-9.,]+$/.test( this.oBIOILaborSizeInputText.getValue() )){
+		if(/^[0-9.,]+$/.test( this.oBIOICapitalInputText.getValue() )){
 			this.oOriginalBIOICapitalInputTextValue = this.oBIOICapitalInputText.getValue();
 			this.oOriginalBIOICapitalInputTextValue = this.oOriginalBIOICapitalInputTextValue.match(/\d/g);
 			this.oOriginalBIOICapitalInputTextValue = this.oOriginalBIOICapitalInputTextValue.join("");
@@ -465,24 +473,31 @@ sap.ui.controller("com.sagia.view.Overview", {
 			this.oShowAlertDialog.open();
 			
 			}			
-		}else if(this.oResetCurrentPasswordInput.getValue().length > 255){
+		}else if(this.oResetCurrentPasswordInput.getValue().length > 10){
 			if(!this.oShowAlertDialog.isOpen())
 			{
 			this.oAlertTextView.setText(this.oModelHelper.getText("ResetCurrPwdLength"));
 			this.oShowAlertDialog.open();
 			
 			}			
-		}else if(this.oResetNewPasswordInput.getValue().length > 255){
+		}else if(this.oResetNewPasswordInput.getValue().length > 10){
 			if(!this.oShowAlertDialog.isOpen())
 			{
 			this.oAlertTextView.setText(this.oModelHelper.getText("NewPwdLength"));
 			this.oShowAlertDialog.open();
 			
 			}			
-		}else if(this.oConfirmNewPasswordInput.getValue().length > 255){
+		}else if(this.oConfirmNewPasswordInput.getValue().length > 10){
 			if(!this.oShowAlertDialog.isOpen())
 			{
 			this.oAlertTextView.setText(this.oModelHelper.getText("ConfirmedCurrPwdLength"));
+			this.oShowAlertDialog.open();
+			
+			}			
+		}else if(this.oResetNewPasswordInput.getValue() !== this.oConfirmNewPasswordInput.getValue()){
+			if(!this.oShowAlertDialog.isOpen())
+			{
+			this.oAlertTextView.setText(this.oModelHelper.getText("NandCDeoesnotMAtch"));
 			this.oShowAlertDialog.open();
 			
 			}			
@@ -555,17 +570,44 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleResetPwdLinkPress : function(){
 		this.oResetPasswordMatrixLayout.setVisible(true);
 		this.oForgotPasswordMatrixLayout.setVisible(false);
+		
+		this.oSignInMatrixLayout.setVisible(false);
+		this.oSignInButtonsMatrixLayout.setVisible(false);
+		this.oForgotResetPasswordLinksMatrixLayout.setVisible(false);
 
 	},
 	handleResetPasswordCancelButtonPress : function(){
 		this.oResetPasswordMatrixLayout.setVisible(false);
+		
+		this.oSignInMatrixLayout.setVisible(true);
+		this.oSignInButtonsMatrixLayout.setVisible(true);
+		this.oForgotResetPasswordLinksMatrixLayout.setVisible(true);
+		
+		this.getView().byId("idSignInUsernameInput").setValue("");
+		this.getView().byId("idSignInPasswordInput").setValue("");
+		
+		this.oResetNewPasswordInput.setValue("");
 	},	
 	handleForgotPwdLinkPress : function(){
 		this.oForgotPasswordMatrixLayout.setVisible(true);
 		this.oResetPasswordMatrixLayout.setVisible(false);
+		
+		this.oSignInMatrixLayout.setVisible(false);
+		this.oSignInButtonsMatrixLayout.setVisible(false);
+		this.oForgotResetPasswordLinksMatrixLayout.setVisible(false);
+		
+		
 	},
 	handleForgotPasswordCancelButtonPress : function(){
 		this.oForgotPasswordMatrixLayout.setVisible(false);
+		
+		this.oSignInMatrixLayout.setVisible(true);
+		this.oSignInButtonsMatrixLayout.setVisible(true);
+		this.oForgotResetPasswordLinksMatrixLayout.setVisible(true);
+		
+		this.getView().byId("idSignInUsernameInput").setValue("");
+		this.getView().byId("idSignInPasswordInput").setValue("");
+		this.oForgotPasswordInput.setValue("");
 	},
 	handleBIOINextButtonPress : function(){
 		if(!(/^[0-9.,]+$/.test( this.oBIOILaborSizeInputText.getValue() ))){
@@ -6209,17 +6251,33 @@ sap.ui.controller("com.sagia.view.Overview", {
 		//var password = this._oPasswordInputText.getValue();
 		return this.handlePasswordEntryValidation(this.oPassword.getValue());		
 	},
+	
 	handlePasswordEntryValidation : function(password){
 		if(password.length>10){
 			this._oPasswordErrorMsg.setText(this.oModelHelper.getText("PasswordMoreThan10Chars"));
 			this._oPasswordErrorMsg.setVisible(true);
 			return false;
-		}else if(password.length === 10){
+		}/*else if(password.length === 10){
 			this._oPasswordErrorMsg.setText(this.oModelHelper.getText("PasswordMoreThan0Chars"));
 			this._oPasswordErrorMsg.setVisible(true);
 			return false;
-		}else{
+		}*/else{
 			this._oPasswordErrorMsg.setVisible(false);
+			return true;
+		}
+	},
+	handleUserIDEntryLiveChange : function(){
+		
+		return this.handleUserIDEntryValidation(this.oUserID.getValue());		
+	},
+	
+	handleUserIDEntryValidation : function(userID){
+		if(userID.length>10){
+			this.oUserIDErrorMsg.setText(this.oModelHelper.getText("UserIDLength"));
+			this.oUserIDErrorMsg.setVisible(true);
+			return false;
+		}else{
+			this.oUserIDErrorMsg.setVisible(false);
 			return true;
 		}
 	},
@@ -6951,7 +7009,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 				this.oShowAlertDialog.open();
 				
 				}
-			}else if(password.length > 255){
+			}else if(!(/^[a-zA-Z0-9]*$/.test(userID))){
+				if(!this.oShowAlertDialog.isOpen())
+				{
+				this.oAlertTextView.setText(this.oModelHelper.getText("UserIDInvalid"));
+				this.oShowAlertDialog.open();
+				
+				}
+			}else if(password.length > 10){
 				if(!this.oShowAlertDialog.isOpen())
 				{
 				this.oAlertTextView.setText(this.oModelHelper.getText("PasswordLength"));
@@ -7052,7 +7117,8 @@ handleRegisterUserButtonPress : function() {
 		   this.handleContactNameEntryLiveChange() &&
 		   this.handleContactNumberEntryLiveChange() &&
 		   this.handleEmailEntryLiveChange() && 
-		   this.handlePasswordEntryLiveChange()){
+		   this.handlePasswordEntryLiveChange() &&
+		   this.handleUserIDEntryLiveChange()){
 		var oUserID, oPassword, oInputEmail, oContactNumber, oContactPersonName, oCompany;
 		
 		oUserID = this.oUserID.getValue();
@@ -7079,21 +7145,21 @@ handleRegisterUserButtonPress : function() {
 				this.oShowAlertDialog.open();
 				
 				}
-			}else if(oPassword.length > 255){
+			}else if(oPassword.length > 10){
 				if(!this.oShowAlertDialog.isOpen())
 				{
 				this.oAlertTextView.setText(this.oModelHelper.getText("PasswordLength"));
 				this.oShowAlertDialog.open();
 				
 				}
-			}else if(oCompany.length > 255){
+			}else if(oCompany.length > 40){
 				if(!this.oShowAlertDialog.isOpen())
 				{
 				this.oAlertTextView.setText(this.oModelHelper.getText("CompanyLength"));
 				this.oShowAlertDialog.open();
 				
 				}
-			}else if(oContactPersonName.length > 255){
+			}else if(oContactPersonName.length > 40){
 				if(!this.oShowAlertDialog.isOpen())
 				{
 				this.oAlertTextView.setText(this.oModelHelper.getText("ContPersonNameLength"));
@@ -7165,6 +7231,8 @@ handleRegisterUserButtonPress : function() {
 
 	},
 	handleCancelButtonPress : function(oEvent) {
+		this.getView().byId("idSignInUsernameInput").setValue("");
+		this.getView().byId("idSignInPasswordInput").setValue("");
 	},
 
 	/**
