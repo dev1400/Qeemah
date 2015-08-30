@@ -37,11 +37,13 @@
 				</ComboBox>
 			</html:div>
 
-			<VBox justifyContent="Center" alignItems="Center" class="MainVBoxBGIMG">
+			<VBox  alignItems="Center" class="MainVBoxBGIMG">
+				<!-- <html:br justifyContent="Center"/>
 				<html:br />
-				<!-- <html:br /> -->
-				<html:br />
-				<sap.ui.commons.layout:MatrixLayout layoutFixed="true">
+				<html:br /> -->
+				
+						
+				<sap.ui.commons.layout:MatrixLayout layoutFixed="true" class="MainVBoxMLBGIMGMarginTop">
 					<sap.ui.commons.layout:MatrixLayoutRow>
 						<sap.ui.commons.layout:MatrixLayoutCell>
 							<sap.ui.core:Fragment

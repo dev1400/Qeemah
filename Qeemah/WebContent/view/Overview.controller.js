@@ -7091,9 +7091,7 @@ userSignIn : function(userID, password){
 						try{
 							
 							this.openBusyDialog();
-							this._oidMainPageContent.setVisible(false);
-							this._oTopHeaderVBox.setVisible(true);
-							this._oidLicenseButtonsHBox.setVisible(true);
+							
 							
 
 							

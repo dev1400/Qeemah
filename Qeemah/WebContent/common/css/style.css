@@ -32,6 +32,9 @@
 .SaveIconStyling{
 	padding-top: .5rem;
 }
+.MainVBoxMLBGIMGMarginTop {
+	margin-top: 14% !important;
+}
 .MainVBoxBGIMG {
 	background-image: url("mime/bg_blue.png") !important;
 	background-repeat: no-repeat;

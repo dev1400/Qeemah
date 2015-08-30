@@ -32,7 +32,9 @@ com.sagia.common.js.validate = {
 				$(window).bind('beforeunload', function(e) {	        
 			        return thisContext.oModelHelper.getText("ConfirmBrowserClose");
 			      });
-				
+				thisContext._oidMainPageContent.setVisible(false);
+				thisContext._oTopHeaderVBox.setVisible(true);
+				thisContext._oidLicenseButtonsHBox.setVisible(true);
 				sap.m.MessageToast.show(thisContext.oModelHelper
 						.getText("SignInSuccessful"));
 				
