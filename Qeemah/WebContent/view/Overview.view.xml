@@ -196,17 +196,17 @@
 
 		<VBox id="idLicenseButtonsHBox" visible="false" width="100%">
 
-			<HBox>
+			<!-- <HBox> -->
 
 				<sap.ui.commons.layout:MatrixLayout
-					layoutFixed="true" columns="2" widths="15%,60%">
+					layoutFixed="true" columns="2" widths="10%,60%">
 					<sap.ui.commons.layout:rows>
 						<sap.ui.commons.layout:MatrixLayoutRow>
 							<sap.ui.commons.layout:cells>
 								<sap.ui.commons.layout:MatrixLayoutCell
 									hAlign="Center" vAlign="Top">
-									<VBox class="BasicInfoButtonBGVBOX">
-										<VBox class="BasicInfoButtonBG" justifyContent="Center">
+									<!-- <VBox class="BasicInfoButtonBGVBOX"> -->
+										<VBox class="BasicInfoButtonBG" ><!-- justifyContent="Center"  -->
 											<Image src="common/mime/basicinfo_hover.png" id="idBasicInfoButton"
 												press="handleBasicInfoButtonClick"  />
 											<Image src="common/mime/license.png" id="idLicenseInfoButton"
@@ -222,22 +222,22 @@
 										</VBox>
 
 
-									</VBox>
+									<!-- </VBox> -->
 								</sap.ui.commons.layout:MatrixLayoutCell>
 								<sap.ui.commons.layout:MatrixLayoutCell
 									hAlign="Begin" vAlign="Top">
 
-									<VBox id="idBasicInfoContent" justifyContent="Center"
-										alignItems="Center">
-										<VBox class="HeadingBGVBOX">
+									<VBox id="idBasicInfoContent" ><!-- justifyContent="Center"
+										alignItems="Center" -->
+										<!-- <VBox class="HeadingBGVBOX"> -->
 
-											<HBox id="idBasicInfoBoxContent" justifyContent="Center"
+											<!-- <HBox id="idBasicInfoBoxContent" justifyContent="Center"
 												width="100%">
-
+ -->
 
 
 												<sap.ui.commons:TabStrip class="IconTabBarStyling"
-													id="idBasicInfoTab" select="handleBasicInfoTabsSelection">
+													id="idBasicInfoTab" select="handleBasicInfoTabsSelection" width="99%">
 													<sap.ui.commons:tabs>
 														<sap.ui.commons:Tab text="{i18n>Organization}">
 															<sap.ui.commons:content>
@@ -256,17 +256,17 @@
 														</sap.ui.commons:Tab>
 													</sap.ui.commons:tabs>
 												</sap.ui.commons:TabStrip>
-											</HBox>
+											<!-- </HBox> -->
 										</VBox>
 
-									</VBox>
+									<!-- </VBox> -->
 									<VBox id="idLicenseInfoContent" visible="false">
 
 
-										<VBox id="idLicenseInfoParentVBox" class="HeadingBGVBOX">
-											<HBox justifyContent="Center">
+										<VBox id="idLicenseInfoParentVBox" ><!-- class="HeadingBGVBOX" -->
+											<!-- <HBox justifyContent="Center"> -->
 												<sap.ui.commons:TabStrip class="IconTabBarStyling"
-													id="idLicenseInfoTab" select=""><!-- handleLicenseInfoTabStripSelect -->
+													id="idLicenseInfoTab" select="" width="99%"><!-- handleLicenseInfoTabStripSelect -->
 													<sap.ui.commons:tabs>
 														<sap.ui.commons:Tab text="{i18n>BusinessActivityQuestions}">
 															<sap.ui.commons:content>
@@ -284,7 +284,7 @@
 														</sap.ui.commons:Tab>
 													</sap.ui.commons:tabs>
 												</sap.ui.commons:TabStrip>
-											</HBox>
+											<!-- </HBox> -->
 										</VBox>
 									</VBox>
 									<VBox id="idShareHoldersInfoContent" visible="false">
@@ -308,7 +308,7 @@
 						</sap.ui.commons.layout:MatrixLayoutRow>
 					</sap.ui.commons.layout:rows>
 				</sap.ui.commons.layout:MatrixLayout>
-			</HBox>
+			<!-- </HBox> -->
 
 		</VBox>
 

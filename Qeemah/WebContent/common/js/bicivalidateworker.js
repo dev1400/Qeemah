@@ -340,19 +340,36 @@ com.sagia.common.js.bicivalidateworker = {
 	validatePresenceBICI : function(othis){
 		othis.oValidationLILIStatus = true;
 		
-		if(othis.oBICIFirstNameInputText.getValue() === "" || othis.oBICILastNameInputText.getValue() === ""){		
+		if(othis.oBICIFirstNameInputText.getValue() === ""){		
 			 othis.oValidationLILIStatus = false;
 			 
 			 
 			 
 			 othis.oBICIFirstNameInputText.setValueState("Error");
 			 othis.oBICIFirstNameInputText.setShowValueStateMessage(false);
+			/* othis.oBICILastNameInputText.setValueState("Error");
+			 othis.oBICILastNameInputText.setShowValueStateMessage(false);*/
+
+			 if(!othis.oShowAlertDialog.isOpen())
+			 {
+				othis.oAlertTextView.setText(othis.oModelHelper.getText("CIFNameMand"));
+				othis.oShowAlertDialog.open();
+			 }
+				
+	   	 }if(othis.oBICILastNameInputText.getValue() === ""){		
+			 othis.oValidationLILIStatus = false;
+			 
+			 
+			 
+			/* othis.oBICIFirstNameInputText.setValueState("Error");
+			 othis.oBICIFirstNameInputText.setShowValueStateMessage(false);*/
+			 
 			 othis.oBICILastNameInputText.setValueState("Error");
 			 othis.oBICILastNameInputText.setShowValueStateMessage(false);
 
 			 if(!othis.oShowAlertDialog.isOpen())
 			 {
-				othis.oAlertTextView.setText(othis.oModelHelper.getText("CIFNameAndLName"));
+				othis.oAlertTextView.setText(othis.oModelHelper.getText("CILNameMand"));
 				othis.oShowAlertDialog.open();
 			 }
 				

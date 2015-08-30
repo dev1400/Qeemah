@@ -6,9 +6,9 @@
 	xmlns:sap.ui.layout="sap.ui.layout" xmlns:sap.ui.core.mvc="sap.ui.core.mvc"
 	xmlns:sap.ui.unified="sap.ui.unified" xmlns:html="http://www.w3.org/1999/xhtml">
 
-	<VBox id="idShareHoldersContentVBox" class="HeadingBGVBOX">
+	<VBox id="idShareHoldersContentVBox" > <!-- class="HeadingBGVBOX" -->
 		<HBox justifyContent="Center">
-			<sap.ui.commons:TabStrip class="IconTabBarStyling">
+			<sap.ui.commons:TabStrip class="IconTabBarStyling" width="99%">
 				<sap.ui.commons:tabs>
 					<sap.ui.commons:Tab text="{i18n>Shareholder}">
 						<sap.ui.commons:content>
@@ -109,7 +109,7 @@
 		alignItems="Center" visible="false">
 
 		<sap.ui.commons.layout:MatrixLayout
-			layoutFixed="true" columns="3" widths="40%,20%,50%"><!-- > -->
+			layoutFixed="true" columns="2" widths="50%,50%"><!-- > -->
 			<sap.ui.commons.layout:rows>
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:cells>
@@ -122,15 +122,10 @@
 						</sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:MatrixLayoutCell>
 							<sap.ui.commons.layout:content>
-								<Input type="Text" id="idESHEntityNoInputText"></Input>
+								<Input width="28%" type="Text" id="idESHEntityNoInputText"></Input>
 							</sap.ui.commons.layout:content>
 						</sap.ui.commons.layout:MatrixLayoutCell>
-						<sap.ui.commons.layout:MatrixLayoutCell
-							vAlign="Top">
-							<sap.ui.commons.layout:content>
-								<Button text="{i18n>Validate}" press="handleValidateESHButtonPress"></Button>
-							</sap.ui.commons.layout:content>
-						</sap.ui.commons.layout:MatrixLayoutCell>
+						
 					</sap.ui.commons.layout:cells>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 
@@ -168,6 +163,14 @@
 
 					</sap.ui.commons.layout:cells>
 				</sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutRow><sap.ui.commons.layout:cells>
+				<sap.ui.commons.layout:MatrixLayoutCell
+							vAlign="Top" colSpan="2" hAlign="Center">
+							<sap.ui.commons.layout:content>
+								<Button text="{i18n>Validate}" press="handleValidateESHButtonPress"></Button>
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells></sap.ui.commons.layout:MatrixLayoutRow>
 
 
 

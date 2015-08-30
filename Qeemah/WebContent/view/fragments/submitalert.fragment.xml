@@ -14,7 +14,7 @@
 	  </VBox>	 
     </content>
     <beginButton>
-    <Button text="{i18n>Yes}" app:dialogType="Std" press="handleSubmitAlertYesDialogButtonPress" />
+    <Button text="{i18n>Yes}" app:dialogType="Std" press="handleSubmitAlertYesConfirmedDialogButtonPress" />
     </beginButton>
     <endButton>      
       <Button text="{i18n>No}" app:dialogType="Std" press="handleSubmitSlertNoDialogButtonPress" />

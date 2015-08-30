@@ -30,7 +30,7 @@
 	<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin" colSpan="1">
+						hAlign="End" colSpan="1">
 						<sap.ui.commons.layout:content>
 							<!-- <HBox alignItems="Center"> -->
 			<sap.ui.commons:TextView text="{i18n>SelectShareHolderType}"></sap.ui.commons:TextView>
@@ -94,7 +94,7 @@
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>FirstName}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
@@ -133,7 +133,7 @@
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>LastName}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
@@ -165,7 +165,7 @@
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						vAlign="Middle" hAlign="Begin">
+						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>Gender}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
@@ -198,7 +198,7 @@
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						vAlign="Middle" hAlign="Begin">
+						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>MaritalStatus}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
@@ -233,7 +233,7 @@
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						vAlign="Middle" hAlign="Begin">
+						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>AcademicTitle}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
@@ -270,7 +270,7 @@
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						vAlign="Middle" hAlign="Begin">
+						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>DOB}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
@@ -304,7 +304,7 @@
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>Telephone}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
@@ -312,7 +312,10 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-								<Input id="idNSHTelephoneInputText" type="Text" width="100%" />
+						<Input type="Text" value="" enabled="false" width="20%"
+							id="idNSHPersonTelephoneCountryCodeInputText" />
+							
+								<Input id="idNSHTelephoneInputText" type="Text" width="80%" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
@@ -339,7 +342,7 @@
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>MobilePhone}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
@@ -347,7 +350,9 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-								<Input id="idNSHMobilePhoneInputText" type="Text" width="100%" />
+						<Input type="Text" value="" enabled="false" width="20%"
+							id="idNSHPersonMobilephoneCountryCodeInputText" />
+								<Input id="idNSHMobilePhoneInputText" type="Text" width="80%" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
@@ -378,14 +383,16 @@
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>Fax}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
-								<Input id="idNSHFaxInputText" type="Text" width="100%" />
+					<Input type="Text" value="" enabled="false" width="20%"
+							id="idNSHPersonFaxCountryCodeInputText" />
+								<Input id="idNSHFaxInputText" type="Text" width="80%" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
@@ -418,7 +425,7 @@
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>Email}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
@@ -473,7 +480,7 @@
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>OrganizationName}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*"
@@ -515,7 +522,7 @@
 
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							
 						</sap.ui.commons.layout:content>
@@ -547,7 +554,7 @@
 		<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>IndustrySector}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
@@ -586,7 +593,7 @@
 		<sap.ui.commons.layout:rows>
 		<sap.ui.commons.layout:MatrixLayoutRow>
 		<sap.ui.commons.layout:cells>
-		<sap.ui.commons.layout:MatrixLayoutCell>
+		<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 		<sap.ui.commons:TextView text="{i18n>SubSector}"></sap.ui.commons:TextView>
                             <sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 		</sap.ui.commons.layout:MatrixLayoutCell>
@@ -620,7 +627,7 @@
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>MultinationalCompanyforGCC}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*"
@@ -657,7 +664,7 @@
 		<sap.ui.commons.layout:MatrixLayoutRow>
 		<sap.ui.commons.layout:cells>
 		<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView id="idNSHOrglegalstatus"
 								text="{i18n>LegalStatus}"></sap.ui.commons:TextView>
@@ -693,7 +700,7 @@
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>LaborSize}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*"
@@ -735,7 +742,7 @@
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 				<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>Telephone}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*"
@@ -775,7 +782,7 @@
 				<sap.ui.commons.layout:cells>
 					
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>Fax}"></sap.ui.commons:TextView>
 							
@@ -811,7 +818,7 @@
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>MobilePhone}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*"
@@ -844,7 +851,7 @@
 				<sap.ui.commons.layout:cells>
 					
 					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
+						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>Email}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>

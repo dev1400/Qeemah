@@ -5,9 +5,9 @@
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 
 	
-		<VBox class="HeadingBGVBOX">
+		<VBox ><!-- class="HeadingBGVBOX" -->
 		
-		<sap.ui.commons:TabStrip class="IconTabBarStyling"
+		<sap.ui.commons:TabStrip class="IconTabBarStyling" width="99%"
 				>
 				<sap.ui.commons:tabs>
 					<sap.ui.commons:Tab  text="{i18n>TermsnCond}">
