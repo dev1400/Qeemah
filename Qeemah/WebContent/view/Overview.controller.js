@@ -74,7 +74,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this._oidLicenseButtonsHBox = this.getView().byId("idLicenseButtonsHBox");
 		
 		this._oTopHeaderVBox = this.getView().byId("idTopHeaderVBox");
-		
+		this.oVBoxSubmittedApplicationStatus = this.getView().byId("idVBoxSubmittedApplicationStatus");
 		
 		this._oBasicInfoButton = this.getView().byId("idBasicInfoButton");
 		this._oLicenseInfoButton = this.getView().byId("idLicenseInfoButton");
@@ -225,6 +225,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this.oOneTime = true;
 		
+		this.ApplicationAlreadySubmitted = false;
 		
 		
 		/*this.oLILIIndustrialProductComboBox.onAfterRendering = function() {
@@ -6088,12 +6089,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		
 	},
-	handleLogoutLinkPress : function(){
-		if(!this.oLogoutAlertDialog.isOpen())
-		{
-		this.oLogoutAlertDialog.open();		
+	handleLogoutLinkPress : function(){		
+		if(!this.ApplicationAlreadySubmitted){
+			if(!this.oLogoutAlertDialog.isOpen())
+			{
+			this.oLogoutAlertDialog.open();		
+			}		
+		}else{
+			location.reload(true);	
 		}		
-		
 	},
 	handleLogoutAlertYesDialogButtonPress : function(){
 		try{
@@ -7079,12 +7083,31 @@ userSignIn : function(userID, password){
 					
 					if(oResponseStatusCheck.results.length === 1){
 						
-						if(!this.oShowAlertDialog.isOpen())
+						this._oStagesHeading.setContent("");
+						
+						
+						
+						this._oidMainPageContent.setVisible(false);
+						this._oTopHeaderVBox.setVisible(true);
+						this.oVBoxSubmittedApplicationStatus.setVisible(true);
+						
+						this.oSubmittedApplicationTextView = this.getView().byId("idSubmittedApplicationTextView");
+						this.oSubmittedApplicationTextView.setText(this.oModelHelper.getText("ApplicationID")+" "+oResponseStatusCheck.results[0].LeadId+" "+this.oModelHelper.getText("ApplicationStatus")+" "+oResponseStatusCheck.results[0].StatusDesc);
+						
+						this.oSaveImage = this.getView().byId("idSaveImage");
+						this.oSaveLink = this.getView().byId("idSaveLink");
+						
+						this.oSaveImage.setVisible(false);
+						this.oSaveLink.setVisible(false);
+						
+						this.ApplicationAlreadySubmitted = true;
+						
+						/*if(!this.oShowAlertDialog.isOpen())
 						{
 						this.oAlertTextView.setText(this.oModelHelper.getText("ApplicationID")+" "+oResponseStatusCheck.results[0].LeadId+" "+this.oModelHelper.getText("ApplicationStatus")+" "+oResponseStatusCheck.results[0].StatusDesc);
 						this.oShowAlertDialog.open();
 						
-						}
+						}*/
 						
 					}else{
 						

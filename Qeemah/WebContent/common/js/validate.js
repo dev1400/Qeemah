@@ -35,6 +35,8 @@ com.sagia.common.js.validate = {
 				thisContext._oidMainPageContent.setVisible(false);
 				thisContext._oTopHeaderVBox.setVisible(true);
 				thisContext._oidLicenseButtonsHBox.setVisible(true);
+				thisContext.oVBoxSubmittedApplicationStatus.setVisible(false);
+				
 				sap.m.MessageToast.show(thisContext.oModelHelper
 						.getText("SignInSuccessful"));
 				

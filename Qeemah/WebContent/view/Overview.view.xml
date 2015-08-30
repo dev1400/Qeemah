@@ -187,6 +187,12 @@
 
 		</VBox>
 		<!-- Left hand buttons start -->
+		
+		<VBox id="idVBoxSubmittedApplicationStatus" justifyContent="Center" alignItems="Center">
+	
+	 		<sap.ui.commons:TextView id="idSubmittedApplicationTextView" class="textcolorwhite" design="H2"></sap.ui.commons:TextView>
+		
+		</VBox>
 
 		<VBox id="idLicenseButtonsHBox" visible="false" width="100%">
 
