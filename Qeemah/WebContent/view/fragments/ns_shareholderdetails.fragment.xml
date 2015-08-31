@@ -107,7 +107,23 @@
 
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
+					
 					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>Email}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						vAlign="Middle" hAlign="End">
+						<sap.ui.commons.layout:content>
+								<Input id="idNSHEmailInputText" type="Text" width="100%" />
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+					<!-- <sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>Country}"></sap.ui.commons:TextView>
@@ -117,14 +133,14 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-							<!-- <Select id="idNSHCountryComboBox" width="25em">
+							<Select id="idNSHCountryComboBox" width="25em">
 								<sap.ui.core:Item />
-							</Select> -->
+							</Select>
 							<ComboBox width="100%" items="{/DetailsCollection}" id="idNSHCountryComboBox"  selectionChange="handleNSHPCountryChange">
 								<sap.ui.core:ListItem key="{Land1}" text="{Landx50}"/>
 						    </ComboBox>
 						</sap.ui.commons.layout:content>
-					</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:MatrixLayoutCell> -->
 					
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow>
@@ -303,21 +319,25 @@
 		<sap.ui.commons.layout:rows>
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="End">
+				<sap.ui.commons.layout:MatrixLayoutCell
+						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
-							<sap.ui.commons:TextView text="{i18n>Telephone}"></sap.ui.commons:TextView>
-							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="{i18n>Country}"></sap.ui.commons:TextView>
+									    <sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+							
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
-						<Input type="Text" value="" enabled="false" width="20%"
-							id="idNSHPersonTelephoneCountryCodeInputText" />
-							
-								<Input id="idNSHTelephoneInputText" type="Text" width="80%" />
+							<!-- <Select id="idNSHCountryComboBox" width="25em">
+								<sap.ui.core:Item />
+							</Select> -->
+							<ComboBox width="100%" items="{/DetailsCollection}" id="idNSHCountryComboBox"  selectionChange="handleNSHPCountryChange">
+								<sap.ui.core:ListItem key="{Land1}" text="{Landx50}"/>
+						    </ComboBox>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
+					<!-- -->
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
@@ -341,20 +361,24 @@
 		<sap.ui.commons.layout:rows>
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
-					<sap.ui.commons.layout:MatrixLayoutCell
+				
+				<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
-							<sap.ui.commons:TextView text="{i18n>MobilePhone}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="{i18n>Telephone}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 						<Input type="Text" value="" enabled="false" width="20%"
-							id="idNSHPersonMobilephoneCountryCodeInputText" />
-								<Input id="idNSHMobilePhoneInputText" type="Text" width="80%" />
+							id="idNSHPersonTelephoneCountryCodeInputText" />
+							
+								<Input id="idNSHTelephoneInputText" type="Text" width="80%" />
 						</sap.ui.commons.layout:content>
-					</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:MatrixLayoutCell> 
+					
+					
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
@@ -382,18 +406,23 @@
 		<sap.ui.commons.layout:rows>
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
-					<sap.ui.commons.layout:MatrixLayoutCell
+				<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
-							<sap.ui.commons:TextView text="{i18n>Fax}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="{i18n>MobilePhone}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
-					<Input type="Text" value="" enabled="false" width="20%"
-							id="idNSHPersonFaxCountryCodeInputText" />
-								<Input id="idNSHFaxInputText" type="Text" width="80%" />
+						<sap.ui.commons.layout:content>
+						<Input type="Text" value="" enabled="false" width="20%"
+							id="idNSHPersonMobilephoneCountryCodeInputText" />
+								<Input id="idNSHMobilePhoneInputText" type="Text" width="80%" />
+						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+					
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
@@ -424,19 +453,22 @@
 		<sap.ui.commons.layout:rows>
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
-					<sap.ui.commons.layout:MatrixLayoutCell
+				
+				
+				<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
-							<sap.ui.commons:TextView text="{i18n>Email}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="{i18n>Fax}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						vAlign="Middle" hAlign="End">
-						<sap.ui.commons.layout:content>
-								<Input id="idNSHEmailInputText" type="Text" width="100%" />
-						</sap.ui.commons.layout:content>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+					<Input type="Text" value="" enabled="false" width="20%"
+							id="idNSHPersonFaxCountryCodeInputText" />
+								<Input id="idNSHFaxInputText" type="Text" width="80%" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
@@ -457,6 +489,119 @@
 		</sap.ui.commons.layout:rows>		
 
 	</sap.ui.commons.layout:MatrixLayout>
+	
+	<sap.ui.commons.layout:MatrixLayout
+		layoutFixed="true" columns="3" widths="50%,50%,3%">
+		<sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:cells>
+				<sap.ui.commons.layout:MatrixLayoutCell
+					hAlign="Begin" colSpan="3">
+					<sap.ui.commons.layout:content>
+						<sap.ui.commons:TextView text="{i18n>Attachments}"
+							design="H1"></sap.ui.commons:TextView>
+						<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
+					</sap.ui.commons.layout:content>
+				</sap.ui.commons.layout:MatrixLayoutCell>
+
+
+			</sap.ui.commons.layout:cells>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+
+
+		<sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>PassportCopyIDCopy}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView>
+
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<sap.ui.commons.layout:content>
+							<sap.ui.unified:FileUploader width="50%"
+								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
+								id="idNSHPPassportCopyFileUploader" mimeType="application/pdf" />
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView id="idNSHPPassPortAttachmentName"
+								visible="false"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:rows>
+
+		
+
+		<sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>BankStatement}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView>
+
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<sap.ui.commons.layout:content>
+							<sap.ui.unified:FileUploader width="50%"
+								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
+								id="idNSHPBankStatementFileUploader" mimeType="application/pdf" />
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView id="idNSHPBankStatementAttachmentName"
+								visible="false"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:rows>
+
+		
+
+		<sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>Other}"></sap.ui.commons:TextView>
+							<!-- <sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView> -->
+
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<sap.ui.commons.layout:content>
+							<sap.ui.unified:FileUploader width="50%"
+								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
+								id="idNSHPOtherFileUploader" mimeType="application/pdf" />
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView id="idNSHPOtherAttachmentName"
+								visible="false"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:rows>
+
+
+	</sap.ui.commons.layout:MatrixLayout>
+	
 	</VBox>
 	<VBox id="idOrganizationVBox" visible="false">
 	<sap.ui.commons.layout:MatrixLayout
@@ -494,24 +639,20 @@
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					
-						<sap.ui.commons.layout:MatrixLayoutCell
+						
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>Email}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
-							<sap.ui.commons:TextView text="{i18n>Country}"></sap.ui.commons:TextView>
-									    <sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
-							
+								<Input id="idNSHOrgEmailInputText" type="Text" width="100%" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell>
-						<sap.ui.commons.layout:content>
-							
-							<ComboBox width="100%" items="{/DetailsCollection}" id="idNSHOrgCountryComboBox" selectionChange="handleNSHOCountryChange">
-								<sap.ui.core:ListItem key="{Land1}" text="{Landx50}"/>
-						    </ComboBox>
-						    
-						</sap.ui.commons.layout:content>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					
 					
 					
 				</sap.ui.commons.layout:cells>
@@ -741,21 +882,27 @@
 		<sap.ui.commons.layout:rows>
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
+				
 				<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="End">
+						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
-							<sap.ui.commons:TextView text="{i18n>Telephone}"></sap.ui.commons:TextView>
-							<sap.ui.commons:TextView text="*"
-								class="textcolorred"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="{i18n>Country}"></sap.ui.commons:TextView>
+									    <sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+							
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell
-						hAlign="Begin">
-						<Input type="Text" value="" enabled="false" width="20%"
-							id="idNSHOrgTelephoneCountryCodeInputText" />
-
-						<Input type="Text" width="80%" id="idNSHOrgTelephoneInputText" />
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							
+							<ComboBox width="100%" items="{/DetailsCollection}" id="idNSHOrgCountryComboBox" selectionChange="handleNSHOCountryChange">
+								<sap.ui.core:ListItem key="{Land1}" text="{Landx50}"/>
+						    </ComboBox>
+						    
+						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+					
 					
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
@@ -780,21 +927,25 @@
 		<sap.ui.commons.layout:rows>
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
-					
-					<sap.ui.commons.layout:MatrixLayoutCell
+				
+				
+				<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
-							<sap.ui.commons:TextView text="{i18n>Fax}"></sap.ui.commons:TextView>
-							
+							<sap.ui.commons:TextView text="{i18n>Telephone}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Begin">
 						<Input type="Text" value="" enabled="false" width="20%"
-							id="idNSHOrgFaxCountryCodeInputText" />
+							id="idNSHOrgTelephoneCountryCodeInputText" />
 
-						<Input type="Text" width="80%" id="idNSHOrgFaxInputText" />
+						<Input type="Text" width="80%" id="idNSHOrgTelephoneInputText" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
@@ -817,21 +968,25 @@
 		<sap.ui.commons.layout:rows>
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
+				
+					
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
-							<sap.ui.commons:TextView text="{i18n>MobilePhone}"></sap.ui.commons:TextView>
-							<sap.ui.commons:TextView text="*"
-								class="textcolorred"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="{i18n>Fax}"></sap.ui.commons:TextView>
+							
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Begin">
 						<Input type="Text" value="" enabled="false" width="20%"
-							id="idNSHOrgMobilephoneCountryCodeInputText" />
+							id="idNSHOrgFaxCountryCodeInputText" />
 
-						<Input type="Text" width="80%" id="idNSHOrgMobilephoneInputText" />
+						<Input type="Text" width="80%" id="idNSHOrgFaxInputText" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+					
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 
@@ -849,20 +1004,25 @@
 		<sap.ui.commons.layout:rows>
 			<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
-					
+				
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
-							<sap.ui.commons:TextView text="{i18n>Email}"></sap.ui.commons:TextView>
-							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="{i18n>MobilePhone}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
-						vAlign="Middle" hAlign="End">
-						<sap.ui.commons.layout:content>
-								<Input id="idNSHOrgEmailInputText" type="Text" width="100%" />
-						</sap.ui.commons.layout:content>
+						hAlign="Begin">
+						<Input type="Text" value="" enabled="false" width="20%"
+							id="idNSHOrgMobilephoneCountryCodeInputText" />
+
+						<Input type="Text" width="80%" id="idNSHOrgMobilephoneInputText" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+					
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 
@@ -879,6 +1039,177 @@
 		
 		
 	</sap.ui.commons.layout:MatrixLayout>
+	
+	
+	
+	
+	
+	<sap.ui.commons.layout:MatrixLayout
+		layoutFixed="true" columns="3" widths="50%,50%,3%">
+		<sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:cells>
+				<sap.ui.commons.layout:MatrixLayoutCell
+					hAlign="Begin" colSpan="3">
+					<sap.ui.commons.layout:content>
+						<sap.ui.commons:TextView text="{i18n>Attachments}"
+							design="H1"></sap.ui.commons:TextView>
+						<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
+					</sap.ui.commons.layout:content>
+				</sap.ui.commons.layout:MatrixLayoutCell>
+
+
+			</sap.ui.commons.layout:cells>
+		</sap.ui.commons.layout:MatrixLayoutRow>
+
+
+		<sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>PPCorIDOfCEOGM}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView>
+
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<sap.ui.commons.layout:content>
+							<sap.ui.unified:FileUploader width="50%"
+								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
+								id="idNSHPassportCopyFileUploader" mimeType="application/pdf" />
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView id="idNSHPassPortAttachmentName"
+								visible="false"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:rows>
+
+		<sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>CommercialRegistration}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView>
+
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<sap.ui.commons.layout:content>
+							<sap.ui.unified:FileUploader width="50%"
+								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
+								id="idNSHCommercialRegistFileUploader" mimeType="application/pdf" />
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView id="idNSHCommercialAttachmentName"
+								visible="false"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:rows>
+
+		<sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>BankStatement}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView>
+
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<sap.ui.commons.layout:content>
+							<sap.ui.unified:FileUploader width="50%"
+								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
+								id="idNSHBankStatementFileUploader" mimeType="application/pdf" />
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView id="idNSHBankStatementAttachmentName"
+								visible="false"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:rows>
+
+		<sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>ThreeYearsBalanceSheet}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView>
+
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<sap.ui.commons.layout:content>
+							<sap.ui.unified:FileUploader width="50%"
+								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
+								id="idNSHBalanceSheetFileUploader" mimeType="application/pdf" />
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView id="idNSHBalanceSheetAttachmentName"
+								visible="false"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:rows>
+
+		<sap.ui.commons.layout:rows>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>Other}"></sap.ui.commons:TextView>
+							<!-- <sap.ui.commons:TextView text="*"
+								class="textcolorred"></sap.ui.commons:TextView> -->
+
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<sap.ui.commons.layout:content>
+							<sap.ui.unified:FileUploader width="50%"
+								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
+								id="idNSHOtherFileUploader" mimeType="application/pdf" />
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView id="idNSHOtherAttachmentName"
+								visible="false"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		</sap.ui.commons.layout:rows>
+
+
+	</sap.ui.commons.layout:MatrixLayout>
+	
 	
 	
 	</VBox>

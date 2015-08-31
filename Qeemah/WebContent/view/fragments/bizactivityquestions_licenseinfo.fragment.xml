@@ -201,17 +201,24 @@
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:cells>
 						<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
-							<sap.ui.commons:TextView text="{i18n>Product}"></sap.ui.commons:TextView>
+						
+						<sap.ui.commons:TextView text="{i18n>Product}"></sap.ui.commons:TextView>
+						
+						
+							<!-- <sap.ui.commons:TextView text="{i18n>Product}"></sap.ui.commons:TextView> -->
 							<sap.ui.commons:TextView text="*"
 								class="textcolorred"></sap.ui.commons:TextView>
 
 						</sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:MatrixLayoutCell>
+						    <VBox>
 							<ComboBox width="50%" items="{/IndustrialProductsCollection}"
 								id="idLILIIndustrialProductComboBox" selectionChange="handleLILIIndustrialProductsComboBoxSelectionChange">
 								<sap.ui.core:ListItem key="{Desc}" text="{Item}"
 									id="idLILIIndustrialProductComboBoxitem" />
 							</ComboBox><!-- Pcode -->
+							<sap.ui.commons:TextView text="{i18n>SelectAProduct}" enabled="false" design="Italic"></sap.ui.commons:TextView>
+							</VBox>
 							
 						</sap.ui.commons.layout:MatrixLayoutCell>
 					</sap.ui.commons.layout:cells>

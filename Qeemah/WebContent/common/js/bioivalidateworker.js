@@ -26,8 +26,20 @@ com.sagia.common.js.bioivalidateworker = {
 			othis.oOriginalBIOILaborSizeInputTextValue = othis.oOriginalBIOILaborSizeInputTextValue.join("");
 		}
 		
-		
-		if(!(/^[0-9.,]+$/.test( othis.oBIOILaborSizeInputText.getValue() ))){			
+		if(!(/^[a-zA-Z0-9 ]*$/.test( othis.oBIOIOrganizationName.getValue() ))){
+	   		othis.oValidationLILIStatus = false;
+	   		
+			 
+			 
+			 othis.oBIOIOrganizationName.setValueState("Error");
+			 othis.oBIOIOrganizationName.setShowValueStateMessage(false);
+
+			 if(!othis.oShowAlertDialog.isOpen())
+			 {
+				othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIOrgNameInvalid"));
+				othis.oShowAlertDialog.open();
+			 }
+	   	 }else if(!(/^[0-9.,]+$/.test( othis.oBIOILaborSizeInputText.getValue() ))){			
 			 othis.oValidationLILIStatus = false;
 			 
 			 othis.oBIOILaborSizeInputText.setValueState("Error");
@@ -263,7 +275,21 @@ com.sagia.common.js.bioivalidateworker = {
 		
 		othis.oValidationLILIStatus = true;
 		
-		if(othis.oBIOIOrganizationName.getValue() === ""){			
+		if(!(/^[a-zA-Z0-9 ]*$/.test( othis.oBIOIOrganizationName.getValue() ))){
+	   		othis.oValidationLILIStatus = false;
+	   		
+			 
+			 
+			 othis.oBIOIOrganizationName.setValueState("Error");
+			 othis.oBIOIOrganizationName.setShowValueStateMessage(false);
+
+			 if(!othis.oShowAlertDialog.isOpen())
+			 {
+				othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIOrgNameInvalid"));
+				othis.oShowAlertDialog.open();
+			 }
+	   	 }
+		else if(othis.oBIOIOrganizationName.getValue() === ""){			
 			 othis.oValidationLILIStatus = false;
 			 
 			 othis.oBIOIOrganizationName.setValueState("Error");
@@ -701,7 +727,7 @@ com.sagia.common.js.bioivalidateworker = {
 			
 		}
 		
-		sap.m.MessageToast.show(othis.oModelHelper.getText("BasicInfoSaved"));
+		sap.m.MessageToast.show(othis.oModelHelper.getText("BasicInfoSaved"), {duration : 1000});
 		
 	},	
 };

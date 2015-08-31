@@ -154,6 +154,6 @@ com.sagia.common.js.isicvalidateworker = {
 			}
 		}
 		
-		sap.m.MessageToast.show(othis.oModelHelper.getText("LicenseInfoSaved"));
+		sap.m.MessageToast.show(othis.oModelHelper.getText("LicenseInfoSaved"), {duration : 1000});
 	},	
 };

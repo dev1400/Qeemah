@@ -78,7 +78,11 @@
 											<sap.ui.commons.layout:MatrixLayoutCell colSpan="2" hAlign="Center">
 												<sap.ui.commons.layout:content>
 													<!-- <Button text="{i18n>ReadTermsAndConditions}" press="handleReadTermsandConditionsPress" /> -->
-													<Link text="{i18n>ReadTermsAndConditions}" press="handleReadTermsandConditionsPress"/>
+													<!-- <Link text="{i18n>ReadTermsAndConditions}" press="handleReadTermsandConditionsPress"/> -->
+													<html:a href="./view/docs/TermsConditions.pdf" download="termsandconditions.pdf">
+													
+													<sap.ui.commons:TextView text="{i18n>ReadTermsAndConditions}" class="textcolorblue"></sap.ui.commons:TextView>
+													</html:a>
 												</sap.ui.commons.layout:content>
 											</sap.ui.commons.layout:MatrixLayoutCell>
 											

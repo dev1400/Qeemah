@@ -53,6 +53,9 @@
 .textcolorred {
 	color: red !important;
 }
+.textcolorblue {
+	color: #004080!important;
+}
 /*Segmented Button BG Colour Start*/
 .sapMSegBBtn.sapMSegBBtnSel {
 	/*  background: #00A19C; */

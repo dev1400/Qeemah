@@ -282,12 +282,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 			sap.m.MessageToast.show(that.oLILIIndustrialProductComboBox.getValue());		
 		}*/
 		//console.log(this.oLILIIndustrialProductComboBox.getValue());
-		if(!this.oShowAlertDialog.isOpen())
+		/*if(!this.oShowAlertDialog.isOpen())
 		{
 			this.oAlertTextView.setText(this.oModelHelper.getText(this.oLILIIndustrialProductComboBox.getValue()));
 			this.oShowAlertDialog.open();
 			
-		}
+		}*/
+		sap.m.MessageToast.show(this.oLILIIndustrialProductComboBox.getValue(), {duration : 8000});
+		
 		if(this.oLILIIndustrialProductComboBox.getSelectedKey() === " OTHER"){
 			
 			
@@ -510,7 +512,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}else{
 				oLanguage="A";
 			}			
-			
+			this.openBusyDialog();
 			 var oRequestFinishedDeferredResetPassword = this.oModelHelper.resetPassword(
 					 this.oResetRefIdInput.getValue(),
 					 this.oResetCurrentPasswordInput.getValue(), 
@@ -518,6 +520,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					// this.oConfirmNewPasswordInput.getValue(), 
 					 oLanguage);
 			 jQuery.when(oRequestFinishedDeferredResetPassword).then(jQuery.proxy(function(oResponse) {	
+				 this.closeBusyDialog();
 				 
 				 this.oResetRefIdInput.setValue("");
 				 this.oResetCurrentPasswordInput.setValue("");
@@ -553,9 +556,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}else{
 				oLanguage="A";
 			}
+			this.openBusyDialog();
 			var oRequestFinishedDeferredForgotPassword = this.oModelHelper.forgotPassword(this.oForgotPasswordInput.getValue(), oLanguage);
 			 jQuery.when(oRequestFinishedDeferredForgotPassword).then(jQuery.proxy(function(oResponse) {
-				 
+				 this.closeBusyDialog();
 				 this.oForgotPasswordInput.setValue("");
 				 
 				 if(oResponse.Return === "User ID does not exist"){
@@ -765,10 +769,13 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}else{
 				oLanguage="A";
 			}
+			this.openBusyDialog();
 
 			var oRequestFinishedDeferredVESH = this.oModelHelper.readExistingSH(this.oExistingShareHolderEntityNo.getValue());
 
 			jQuery.when(oRequestFinishedDeferredVESH).then(jQuery.proxy(function(oResponse) {
+				
+				this.closeBusyDialog();
 				
 				if(oResponse.data.Return === "E"){
 					that.closeBusyDialog();
@@ -798,7 +805,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		    			}else{
 		    				nationality = nationality[1];
 		    			}*/
-						
+		    			that.openBusyDialog();
 			            var oRequestFinishedDeferredVESHNSH = that.oModelHelper.createNewShareHolder(that.oRef_id,
 			                    "Existing", oResponse.data.Bpname,
 			                    "","","","","","","","","","","","",thatoResponse.data.Return,"","","","","",percentage, "","","",
@@ -806,6 +813,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			    				"", "", "", "", "", "", "", "", "", "", "", "", "", "", thatoResponse.data.Bpno);
 		
 			    		jQuery.when(oRequestFinishedDeferredVESHNSH).then(jQuery.proxy(function(oResponse) {
+			    			that.closeBusyDialog();
 			    			
 			    			if(oResponse.Return === "D"){
 								that.closeBusyDialog();
@@ -937,6 +945,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 		var that = this;
 		
 		this.openBusyDialog();
+		
+		//this.oBusyDialogUI.setText("10%");
 		try{
 			 
 			this.oTotalLocalNSHNewShareHolderPercentage = 0;
@@ -1188,7 +1198,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 				}
 				oDOBSplittedString = oDOBSplitted[2]+""+oDOBSplitted[0]+""+oDOBSplitted[1];
 				
-				sap.m.MessageToast.show(this.oModelHelper.getText("CreatingNewSH"), {duration : 3000});
+				sap.m.MessageToast.show(this.oModelHelper.getText("CreatingNewSH"), {duration : 10000});
 				
 					 var oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(
 							that.oRef_id,
@@ -1222,46 +1232,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		     		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {
 		     			
+		     		
+		     			
 	     			 try{
-	     				/* that.oNSHCreateNSHTable.unbindItems();							     			
-			             that.oNSHCreateNewData.NSHCollection.push({
-		         			"EntityFname":oResponse.EntityFname, 
-		         			"EntityLname": oResponse.EntityLname, 
-		         			"ShldrType":oResponse.ShldrType,
-		         			"Percentage":oResponse.Percentage,
-		         			"EntityNo": oResponse.EntityNo});
-			             
-			             that.oNSHTotalShareHolderPercentage += oResponse.Percentage;							         		
-			             that.oNSHCreateNewDataJSONData.setData(that.oNSHCreateNewData);							                 
-			             that.oNSHCreateNSHTable.setModel(that.oNSHCreateNewDataJSONData);							         		
-			             that.oNSHCreateNSHTable.bindItems("/NSHCollection", new sap.m.ColumnListItem({
-			            	vAlign : "Top",
-		     		        cells : [ new sap.ui.commons.TextView({
-		     			          text : "{EntityFname}"
-		     			        }),new sap.ui.commons.TextView({
-		     			          text : "{EntityLname}"
-		     			        }),  new sap.ui.commons.TextView({
-		     			          text : "{ShldrType}"
-		     			        }),  new sap.ui.commons.TextView({
-		     			          text : "{Percentage}"
-		     			        }),  new sap.m.Link({
-		     			          text : that.oModelHelper.getText("Edit"),
-		     			          visible : false,
-		     			          press : [oResponse.EntityNo, this.handleNSHEditButtonPress, this]
-		     			        })]
-		     			      }));*/
+	     				
 	     				that.oSHTable.unbindItems();
 
-			            that.oSavedSHData.SavedShareHolderCollection.push({
-			    				/*"Bpno":oResponse.EntityFname,
-			    	 			"Bpname":oResponse.ShldrType,
-			    	 			"EntityNo" : oResponse.EntityNo,
-			    	 			"Percentage" : oResponse.Percentage*/
+			            that.oSavedSHData.SavedShareHolderCollection.push({			    	
 			            	"ShareHolderName":oResponse.EntityFname,
 							"Nationalty" : oResponse.CurrNationalty,			    	 			
 		    	 			"Percentage" : oResponse.Percentage,
-		    	 			"EntityNo" : oResponse.EntityNo
-			            	
+		    	 			"EntityNo" : oResponse.EntityNo	            	
 			            });
 			             
 			            that.oSHJSONModel.setData(that.oSavedSHData, true);
@@ -1312,21 +1293,26 @@ sap.ui.controller("com.sagia.view.Overview", {
 							}else{
 								oLanguage="A";
 							}
+						sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHEQA"), {duration : 10000});
 				        var oRequestFinishedDeferredExperienceQ = that.oModelHelper.createShareHolderExperienceAnswers
 				        (that.oRef_id, experienceQuestions, experienceAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(), this.oBusinessTypeSurveyID, oLanguage);
 						jQuery.when(oRequestFinishedDeferredExperienceQ).then(jQuery.proxy(function(oResponse) {
 						    try{
+						    	sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHPPCopy"), {duration : 10000});
 							var oRequestFinishedDeferredUploadNSHPassPortCopy = that.oModelHelper.uploadNSHPassPortCopy(that.NSHFullName+"_PassPort_",that.oRef_id, that.NSHEntityNo, that.NSHPassPortCopy);
 							jQuery.when(oRequestFinishedDeferredUploadNSHPassPortCopy).then(jQuery.proxy(function(oResponse) {
 								try{
+									/*sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHCRCopy"), {duration : 10000});
 								var oRequestFinishedDeferredUploadNSHPCommercialReg = that.oModelHelper.uploadCommercialRegAttachment(that.NSHFullName+"_CommReg_",that.oRef_id, that.NSHEntityNo, that.NSHCommercialRegAttachment);
 						     	jQuery.when(oRequestFinishedDeferredUploadNSHPCommercialReg).then(jQuery.proxy(function(oResponse) {
-						     		try{
+						     		*/try{
+						     			sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHBSCopy"), {duration : 10000});
 						     		var oRequestFinishedDeferredUploadNSHBankStatement = that.oModelHelper.uploadBankStatementAttachment(that.NSHFullName+"_BankStmt_", that.oRef_id, that.NSHEntityNo, that.NSHBankStatementAttachment);
 							     	jQuery.when(oRequestFinishedDeferredUploadNSHBankStatement).then(jQuery.proxy(function(oResponse) {
 							     		try{
+							     			/*sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHBALSCopy"), {duration : 10000});
 							     		var oRequestFinishedDeferredUploadNSHBalanceSheet = that.oModelHelper.uploadNSHBalanceSheetAttachment(that.NSHFullName+"_BalSheet_", that.oRef_id, that.NSHEntityNo, that.NSHBalanceSheetAttachment);
-								     	jQuery.when(oRequestFinishedDeferredUploadNSHBalanceSheet).then(jQuery.proxy(function(oResponse) {
+								     	jQuery.when(oRequestFinishedDeferredUploadNSHBalanceSheet).then(jQuery.proxy(function(oResponse) {*/
 								     		try{
 								     		var oRequestFinishedDeferredUploadNSHOtherAttachments = that.oModelHelper.uploadOtherAttachment(that.NSHFullName+"_Othr_", that.oRef_id, that.NSHEntityNo, that.NSHOtherAttachment);
 									     	jQuery.when(oRequestFinishedDeferredUploadNSHOtherAttachments).then(jQuery.proxy(function(oResponse) {
@@ -1338,12 +1324,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 													}else{
 														oLanguage="A";
 													}
+													sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHAQA"), {duration : 10000});
 									             var oRequestFinishedDeferredcreateSHActivityAnswers = that.oModelHelper.createShareHolderActivityAnswers
 									 			(that.oRef_id, actvityQuestions, activityAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(),oLanguage);
 									  
 									     			jQuery.when(oRequestFinishedDeferredcreateSHActivityAnswers).then(jQuery.proxy(function(oResponse) {
 									     				
 									 	                try{
+									 	                	sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHFQA"), {duration : 15000});
 									 					var oRequestFinishedDeferredcreateFinancialAnswers1 = that.oModelHelper.createFinancialAnswers
 									 					(that.oRef_id, questions, answers1, "Year 1", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
 					
@@ -1361,73 +1349,17 @@ sap.ui.controller("com.sagia.view.Overview", {
 										 							jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers3).then(jQuery.proxy(function(oResponse) {
 										 							    try{
 										 							    	
-										 							    	that.closeBusyDialog();
-									 							        	
-									 							        	that.oSavedSHData.SavedShareHolderCollection.length = 0;
-									 							        	that.loadSavedShareHolderDetails();
-									 							        	
-									 							        	that.oShareHolderTypeComboBox.setSelectedKey("");
-									 							        	that.oNSHFirstNameInputText.setValue("");
-									 										that.oNSHCountryComboBox.setSelectedKey("");
-									 										that.oNSHLastNameInputText.setValue("");
-									 										that.oNSHCityNameInputText.setValue("");
-									 										that.oNSHGenderComboBox.setSelectedKey("");
-									 										that.oNSHPOBoxInputText.setValue("");
-									 										that.oNSHMaritalStatusComboBox.setSelectedKey("");
-									 										that.oNSHPostalCodeInputText.setValue("");
-									 										that.oNSHAcademicTitleComboBox.setSelectedKey("");
-									 										that.oNSHStreetInputText.setValue("");
-									 										that.oNSHWebsiteInputText.setValue("");
-									 										that.oNSHTelephoneInputText.setValue("");
-									 										that.oNSHNationalityComboBox.setSelectedKey("");
-									 										that.oNSHMobilePhoneInputText.setValue("");
-									 										that.oNSHPreviousNationalityInputText.setSelectedKey("");
-									 										that.oNSHFaxInputText.setValue("");
-									 										that.oNSHCommMethodInputText.setSelectedKey("");
-									 										that.oNSHEmailInputText.setValue("");
-									 										that.oNSHPercentageInputText.setValue("");
-									 										that.oNSHDOBDate.setValue("");
-									 					     				
-									 					     				for(var i=0; i < that.oTotalFinancialQuestions; i++){
-									 										
-									 					     					 var oFinancialAnswer1 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+1);
-									 											 var oFinancialAnswer2 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+2);
-									 											 var oFinancialAnswer3 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+3);
-									 											 
-									 											 oFinancialAnswer1.setValue("");
-									 											 oFinancialAnswer2.setValue("");
-									 											 oFinancialAnswer3.setValue("");
-
-
-									 					     				}
-									 					     				
-									 					     				for(var j=0; j < that.oTotalActivityQuestions; j++){
-									 											 var oAQAnswer = sap.ui.getCore().byId("idAQAnswer"+j);
-									 											 oAQAnswer.setSelectedKey("");
-									 										}
-									 										
-									 									
-									 										for(var j=0; j < that.oTotalExperienceQuestions; j++){
-									 											 var oEQAnswer = sap.ui.getCore().byId("idEQAnswer"+j);
-									 											 oEQAnswer.setSelectedKey("");
-									 										}
-									 							        	
-									 							        	 if(!that.oShowAlertDialog.isOpen())
-									 										 {
-									 							        		that.oAlertTextView.setText(that.oModelHelper.getText("NewShareHolderCreated"));
-									 							        		that.oShowAlertDialog.open();
-									 										 }	
 										 							    	
-										 							    	 /*var getarray = [];
+										 							    	 var getarray = [];
 											 							        getarray.push(oRequestFinishedDeferredExperienceQ);
 											 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers1);
 											 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers2);
 											 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers3);
 											 							        getarray.push(oRequestFinishedDeferredcreateSHActivityAnswers);
 											 							        getarray.push(oRequestFinishedDeferredUploadNSHPassPortCopy);
-											 							        getarray.push(oRequestFinishedDeferredUploadNSHPCommercialReg);
+											 							        //getarray.push(oRequestFinishedDeferredUploadNSHPCommercialReg);
 											 							        getarray.push(oRequestFinishedDeferredUploadNSHBankStatement);
-											 							        getarray.push(oRequestFinishedDeferredUploadNSHBalanceSheet);
+											 							        //getarray.push(oRequestFinishedDeferredUploadNSHBalanceSheet);
 											 							        getarray.push(oRequestFinishedDeferredUploadNSHOtherAttachments);
 													 							        
 												 							        jQuery.when.apply($, getarray).done(function () {
@@ -1488,7 +1420,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 												 							        		that.oShowAlertDialog.open();
 												 										 }		 							        						        	
 												 							     		
-												 							        });		*/				
+												 							        });						
 										 							    	
 										 							    }catch(error){
 										 							    	console.log(error);
@@ -1520,7 +1452,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					     			console.log(error);
 						 			 that.closeBusyDialog();
 								 }
-					     	}, this));// end of Balance Sheet upload
+					     	//}, this));// end of Balance Sheet upload
 				     		 }catch(error){
 				     			console.log(error);
 					 			 that.closeBusyDialog();
@@ -1530,7 +1462,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			     			console.log(error);
 				 			 that.closeBusyDialog();
 						 }
-			     	}, this));// end of Commercial upload
+			     	//}, this));// end of Commercial upload
 					 }catch(error){
 						 console.log(error);
 			 			 that.closeBusyDialog();		
@@ -1905,13 +1837,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 			var oSno = '';
 			var oDescription;
 			
+			var oRequestFinishedDeferredAddIndustrialProductDiffer;
+			
 			if(this.oLILIOtherProductTypeTextArea.getVisible()){
 			
 				oDescription = this.oLILIOtherProductTypeTextArea.getValue();
 				var message = [];
 				message = this.oLILIIndustrialProductComboBox.getSelectedItem().getText().split("-");
-				
-				var oRequestFinishedDeferredAddIndustrialProductDiffer = this.oModelHelper.saveIndustrialProducts(
+				this.openBusyDialog();
+				oRequestFinishedDeferredAddIndustrialProductDiffer = this.oModelHelper.saveIndustrialProducts(
 						oSno,//Number(oSno).toString(), 
 						this.oRef_id, 
 						//this.oLILIIndustrialProductComboBox.getSelectedKey(),
@@ -1926,7 +1860,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 				oDescription = this.oLILIIndustrialProductComboBox.getSelectedItem().getText();
 				var message = [];
 				message = oDescription.split("-");
-				var oRequestFinishedDeferredAddIndustrialProductDiffer = this.oModelHelper.saveIndustrialProducts(
+				this.openBusyDialog();
+				oRequestFinishedDeferredAddIndustrialProductDiffer = this.oModelHelper.saveIndustrialProducts(
 						oSno,//Number(oSno).toString(), 
 						this.oRef_id, 
 						//this.oLILIIndustrialProductComboBox.getSelectedKey(),
@@ -1941,6 +1876,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 			jQuery.when(oRequestFinishedDeferredAddIndustrialProductDiffer).then(jQuery.proxy(function(oResponse) {
 				try{
+					this.closeBusyDialog();
 			    if(oResponse.Return !== "Product already exists"){
 			    	try{	
 			    		
@@ -2274,7 +2210,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		var oTempGroupTextViewText = "";
 	    for(var i = 0 ; i < this.oLILIGroupComboBox.getSelectedKeys().length; i++){
+	    	if(i < 3){
 	    	oTempGroupTextViewText += (i+1)+". "+this.oLILIGroupComboBox.getSelectedItems()[i].getText()+"\n";
+	    	}
 	    }
 	    this.oGroupMultiSelectionTextView.setText(oTempGroupTextViewText);
 	    
@@ -2355,7 +2293,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		var oTempClassTextViewText = "";
 	    for(var i = 0 ; i < this.oLILIClassMultiComboBox.getSelectedKeys().length; i++){
+	    	if(i < 3){
 	    	oTempClassTextViewText += (i+1)+". "+this.oLILIClassMultiComboBox.getSelectedItems()[i].getText()+"\n";
+	    	}
 	    }
 	    this.oClassMultiSelectionTextView.setText(oTempClassTextViewText);
 	    
@@ -2407,9 +2347,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 							this.oLILIOtherProductTypeTextViewMand = this.getView().byId("idLILIOtherProductTypeTextViewMand");
 						
 							
-							this.oLILIIndustrialProductComboBox.attachBrowserEvent("mouseover", function() {
+							/*this.oLILIIndustrialProductComboBox.attachBrowserEvent("mouseover", function() {
 								sap.m.MessageToast.show(that.oModelHelper.getText("SelectAProduct"), {duration : 1000});								
-							});
+							});*/
 							
 							var oLanguage;
 							if(this.oLanguageSelect.getSelectedKey() === "EN")
@@ -2537,9 +2477,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 	},
 	setProductsTableData : function(){
 		try{
+			this.openBusyDialog();
 			var oRequestFinishedDeferredReadSavedIndustrialProducts = that.oModelHelper.readSavedIndustrialProducts(that.oRef_id);
 			jQuery.when(oRequestFinishedDeferredReadSavedIndustrialProducts).then(jQuery.proxy(function(oResponse) {
-				
+				this.closeBusyDialog();
 				try{
 					this.oProductsTableVBox.setVisible(true);	
 				
@@ -2592,7 +2533,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		var oTempLATextViewText = "";
 	    for(var i = 0 ; i < this.oLILILicenseActivityMultiComboBox.getSelectedKeys().length; i++){
+	    	if(i < 3){
 	    	oTempLATextViewText += (i+1)+". "+this.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText()+"\n";
+	    	}
 	    }
 	    this.oLAMultiSelectionTextView.setText(oTempLATextViewText);
 	    
@@ -3878,7 +3821,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 				 }
 		   }else{
 				 this.doThis();
-			     this.oValidationLILIStatus = true;		  
+			     this.oValidationLILIStatus = true;	
+			     sap.m.MessageToast.show(that.oModelHelper.getText("SavingAll"), {duration : 18000});
 			 }
 	   }
 	
@@ -4241,40 +4185,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	
 				jQuery.when(oRequestFinishedDeferredcreateISIC).then(jQuery.proxy(function(oResponse) {
 					this.closeBusyDialog();
-/*					this.openBusyDialog();
 
-					var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
-	
-					jQuery.when(oRequestFinishedDeferredReadPASSBICI).then(jQuery.proxy(function(oResponse) {
-						this.closeBusyDialog();
-
-						if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
-							this.oBICIPASSAttachmentName.setVisible(true);
-							this.oBICIPASSAttachmentNameTextView.setVisible(true);
-							this.oBICIPASSAttachmentName.setText(oResponse.data.FileName);
-							}else{
-								this.oBICIPASSAttachmentName.setVisible(false);
-								this.oBICIPASSAttachmentNameTextView.setVisible(false);
-							}
-						this.openBusyDialog();
-
-						var oRequestFinishedDeferredReadPOABICI = this.oModelHelper.readBICIPPOAAttachment(this.oRef_id);
-	
-						jQuery.when(oRequestFinishedDeferredReadPOABICI).then(jQuery.proxy(function(oResponse) {
-							this.closeBusyDialog();
-
-							if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
-								this.oBICIPOAAttachmentName.setVisible(true);
-								this.oBICIPOAAttachmentNameTextView.setVisible(true);
-								this.oBICIPOAAttachmentName.setText(oResponse.data.FileName);
-								}else{
-									this.oBICIPOAAttachmentName.setVisible(false);
-									this.oBICIPOAAttachmentNameTextView.setVisible(false);
-								}
-						}, this));	
-						
-						that.readBAQFileAttachments();
-					}, this));	*/
 					
 						
 					
@@ -4329,44 +4240,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					jQuery.when(oRequestFinishedDeferredcreateISIC).then(jQuery.proxy(function(oResponse) {
 						this.closeBusyDialog();
 						
-						/*this.openBusyDialog();
-
-
-						var oRequestFinishedDeferredReadPASSBICI = this.oModelHelper.readBICIPassPortAttachment(this.oRef_id);
-	
-						jQuery.when(oRequestFinishedDeferredReadPASSBICI).then(jQuery.proxy(function(oResponse) {
-							this.closeBusyDialog();
-
-							if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
-								this.oBICIPASSAttachmentName.setVisible(true);
-								this.oBICIPASSAttachmentNameTextView.setVisible(true);
-								this.oBICIPASSAttachmentName.setText(oResponse.data.FileName);
-								}else{
-									this.oBICIPASSAttachmentName.setVisible(false);
-									this.oBICIPASSAttachmentNameTextView.setVisible(false);
-								}
-							
-							this.openBusyDialog();
-
-							
-							var oRequestFinishedDeferredReadPOABICI = this.oModelHelper.readBICIPPOAAttachment(this.oRef_id);
-	
-							jQuery.when(oRequestFinishedDeferredReadPOABICI).then(jQuery.proxy(function(oResponse) {
-								this.closeBusyDialog();
-
-								if(oResponse.data.Return !== "No record Exists" && oResponse.data.FileName !== ""){	
-									this.oBICIPOAAttachmentName.setVisible(true);
-									this.oBICIPOAAttachmentNameTextView.setVisible(true);
-									this.oBICIPOAAttachmentName.setText(oResponse.data.FileName);
-									}else{
-										this.oBICIPOAAttachmentName.setVisible(false);
-										this.oBICIPOAAttachmentNameTextView.setVisible(false);
-									}
-							}, this));	
-							
-							that.readBAQFileAttachments();
-	
-						}, this));	*/
+						
 						
 						
 						if(this.oSaveClicked){
@@ -4426,16 +4300,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		this.oShowSubmitAlertDialog.close();
 
-		sap.m.MessageToast.show(that.oModelHelper.getText("SubmitApplicationMsg"), {duration : 8000});
+		sap.m.MessageToast.show(that.oModelHelper.getText("SubmitApplicationMsg"), {duration : 30000});
 		
 		$(window).unbind('beforeunload');
 				
 		
-		
+		this.openBusyDialog();
 		var oRequestSubmitFinishedDeferred = that.oModelHelper.Submit(that.oRef_id);
 		
 		jQuery.when(oRequestSubmitFinishedDeferred).then(jQuery.proxy(function(oResponse) {
-			//that.closeBusyDialog();			
+			that.closeBusyDialog();			
 			
 			if(oResponse.LeadID !== ""){
 			
@@ -4571,7 +4445,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 										this.oShowAlertDialog.open();
 										
 										}
-							      		sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});
+							      		/*sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});*/
 							      }
 
 							
@@ -4600,7 +4474,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 						
 						}
 			      		
-			      		sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});
+			      		/*sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});*/
 			      	 }
 	
 					
@@ -4685,7 +4559,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 						this.oShowAlertDialog.open();
 						
 						}
-			      		sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});
+			      		/*sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});*/
 			      	 }
 
 					
@@ -4708,7 +4582,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 	   	     	  this.oValidationLILIStatus = true;
 	      	 }else{
 
-	      		sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});
+	      		/*sap.m.MessageToast.show(that.oModelHelper.getText("Saved"), {duration : 1000});*/
 	      	 }
 			
 			
@@ -4905,10 +4779,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleRegionSelectionComboBox : function(oControlEvent){
 		
 		if(this._oidRegionComboBox.getSelectedItem()){
-			
+			this.openBusyDialog();
 			var oRequestFinishedDeferredReadCity = this.oModelHelper.readRegion(this._oidRegionComboBox.getSelectedItem().getKey());
 
-			jQuery.when(oRequestFinishedDeferredReadCity).then(jQuery.proxy(function(oResponse) {			
+			jQuery.when(oRequestFinishedDeferredReadCity).then(jQuery.proxy(function(oResponse) {
+				this.closeBusyDialog();
 				this._oBICityComboBox.setModel(oResponse);
 			}, this));	
 			
@@ -4921,10 +4796,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		
 		//console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
-		
+		this.openBusyDialog();
 		var oRequestFinishedDeferred = this.oModelHelper.readCountryCode(this._oBICICountryCombobox.getSelectedKey());
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+			this.closeBusyDialog();
+			
 			this.getView().setModel(oResponse,"CCModel");
 			this.oBICITelephoneCountryCodeInputText.setValue(oResponse.oData.CountryCodeCollection.TelNo);
 			this.oBICIMobileCountryCodeInputText.setValue(oResponse.oData.CountryCodeCollection.TelNo);
@@ -4933,9 +4810,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}, this));	
 	},
 	handleNSHOCountryChange : function(oControlEvent){
+		this.openBusyDialog();
 		var oRequestFinishedDeferred = this.oModelHelper.readCountryCode(this.oNSHOrgCountryComboBox.getSelectedKey());
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+			this.closeBusyDialog();
 		
 			this.oNSHOrgTelephoneCountryCodeInputText.setValue(oResponse.oData.CountryCodeCollection.TelNo);
 			this.oNSHOrgFaxCountryCodeInputText.setValue(oResponse.oData.CountryCodeCollection.TelNo);
@@ -4944,9 +4823,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}, this));	
 	},
 	handleNSHPCountryChange : function(oControlEvent){
+		this.openBusyDialog();
 		var oRequestFinishedDeferred = this.oModelHelper.readCountryCode(this.oNSHCountryComboBox.getSelectedKey());
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+			this.closeBusyDialog();
 		
 			
 			this.oNSHPersonTelephoneCountryCodeInputText.setValue(oResponse.oData.CountryCodeCollection.TelNo);
@@ -5120,10 +5001,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 			}
 			
 			//start of reading financial Q
-			
+			this.openBusyDialog();
 			var oRequestFinishedFinancialQuestionsDeferred = this.oModelHelper.readFinancialQuestions(oLanguage);
 			
 			jQuery.when(oRequestFinishedFinancialQuestionsDeferred).then(jQuery.proxy(function(oResponse) {
+				this.closeBusyDialog();
 				
 				var questions = [];
 				var nodeID = [];
@@ -5401,7 +5283,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 											
 											var oTempGroupTextViewText = "";
 										    for(var i = 0 ; i < this.oLILIGroupComboBox.getSelectedKeys().length; i++){
+										    	if(i < 3){
 										    	oTempGroupTextViewText += (i+1)+". "+this.oLILIGroupComboBox.getSelectedItems()[i].getText()+"\n";
+										    	}
 										    }
 										    this.oGroupMultiSelectionTextView.setText(oTempGroupTextViewText);
 											
@@ -5431,7 +5315,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 												
 												var oTempClassTextViewText = "";
 											    for(var i = 0 ; i < this.oLILIClassMultiComboBox.getSelectedKeys().length; i++){
+											    	if(i < 3){
 											    	oTempClassTextViewText += (i+1)+". "+this.oLILIClassMultiComboBox.getSelectedItems()[i].getText()+"\n";
+											    	}
 											    }
 											    this.oClassMultiSelectionTextView.setText(oTempClassTextViewText);
 											    
@@ -5463,7 +5349,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 													 
 													    var oTempLATextViewText = "";
 													    for(var i = 0 ; i < that.oLILILicenseActivityMultiComboBox.getSelectedKeys().length; i++){
+													    	if(i < 3){
 													    	oTempLATextViewText += (i+1)+". "+that.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText()+"\n";
+													    	}
 													    }
 													    that.oLAMultiSelectionTextView.setText(oTempLATextViewText);
 													    
@@ -5727,7 +5615,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 						    
 						    var oTempPreviewGroupTextView = "";
 						    for(var i = 0 ; i < this.oClonedLILIGroupComboBox.getSelectedKeys().length; i++){
+						    	if(i < 3){
 						    	oTempPreviewGroupTextView += (i+1)+". "+this.oLILIGroupComboBox.getSelectedItems()[i].getText()+"\n";
+						    	}
 						    }
 						    this.oLILIPreviewGroupTextView = new sap.ui.commons.TextView({/*enabled : false*/});
 						    this.oLILIPreviewGroupTextView.setWidth("100%");
@@ -5738,7 +5628,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 						    this.oClonedLILIClassMultiComboBox.setEnabled(false);*/
 						    var oTempPreviewClassTextViewText = "";
 						    for(var i = 0 ; i < this.oClonedLILIClassMultiComboBox.getSelectedKeys().length; i++){
+						    	if(i < 3){
 						    	oTempPreviewClassTextViewText += (i+1)+". "+this.oLILIClassMultiComboBox.getSelectedItems()[i].getText()+"\n";
+						    	}
 						    }
 						    this.oLILIPreviewClassTextView = new sap.ui.commons.TextView({/*enabled : false*/});
 						    this.oLILIPreviewClassTextView.setWidth("100%");
@@ -5752,7 +5644,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 						    this.oClonedLILIClassMultiComboBox.setEnabled(false);*/
 						    var oTempPreviewLATextViewText = "";
 						    for(var i = 0 ; i < this.oClonedLILILicenseActivityMultiComboBox.getSelectedKeys().length; i++){
+						    	if(i < 3){
 						    	oTempPreviewLATextViewText += (i+1)+". "+this.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText()+"\n";
+						    	}
 						    }
 						    this.oLILIPreviewLATextView = new sap.ui.commons.TextView({/*enabled : false*/});
 						    this.oLILIPreviewLATextView.setWidth("100%");
@@ -5948,21 +5842,27 @@ sap.ui.controller("com.sagia.view.Overview", {
 							    
 						    var oTempPreviewGroupTextView = "";
 						    for(var i = 0 ; i < this.oLILIGroupComboBox.getSelectedKeys().length; i++){
+						    	if(i < 3){
 						    	oTempPreviewGroupTextView += (i+1)+". "+this.oLILIGroupComboBox.getSelectedItems()[i].getText()+"\n";
+						    	}
 						    }
 						    this.oLILIPreviewGroupTextView.setText(oTempPreviewGroupTextView);
 						    
 						    //this.oClonedLILIClassMultiComboBox.setSelectedKeys( this.oLILIClassMultiComboBox.getSelectedKeys());
 						    var oTempPreviewClassTextViewText = "";
 						    for(var i = 0 ; i < this.oLILIClassMultiComboBox.getSelectedKeys().length; i++){
+						    	if(i < 3){
 						    	oTempPreviewClassTextViewText += (i+1)+". "+this.oLILIClassMultiComboBox.getSelectedItems()[i].getText()+"\n";
+						    	}
 						    }
 						    this.oLILIPreviewClassTextView.setText(oTempPreviewClassTextViewText);
 						    
 						    //this.oClonedLILILicenseActivityMultiComboBox.setSelectedKeys( this.oLILILicenseActivityMultiComboBox.getSelectedKeys());
 						    var oTempPreviewLATextViewText = "";
 						    for(var i = 0 ; i < this.oLILILicenseActivityMultiComboBox.getSelectedKeys().length; i++){
+						    	if(i < 3){
 						    	oTempPreviewLATextViewText += (i+1)+". "+this.oLILILicenseActivityMultiComboBox.getSelectedItems()[i].getText()+"\n";
+						    	}
 						    }
 						    this.oLILIPreviewLATextView.setText(oTempPreviewLATextViewText);
 						    
@@ -6012,9 +5912,11 @@ sap.ui.controller("com.sagia.view.Overview", {
 		if(!this.oBAQPreviewMatrixLayout){
 		this.openBusyDialog();
 		that = this;
+		//console.log("1");
 		var oRequestFinishedDeferred = this.oModelHelper.readBAQ(oLanguage);
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+			//console.log("2");
 			var questions = [];
 			var nodeID = [];
 			var surveyID = [];
@@ -6023,6 +5925,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 			var attachmentFlag = [];
 
 			this.oBAQPreviewMatrixLayout = this.getView().byId("idPreview_LI_BAQ_1_to_6MAtrixLayout");
+			this.oPreviewBAQbusyIndicator = this.getView().byId("idPreviewBAQbusyIndicator");
+			
 			
 			this.oTotalBAQQuestions = 0;
 			
@@ -6049,6 +5953,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 				var oRequestFinishedDeferred = this.oModelHelper.readBAQAnswer(oResponseFilter[i].NodeGuid, "QUEEMAH_BUS_PLAN", oLanguage);
 
 				jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+					//console.log(j);
+					//console.log(this.oTotalBAQQuestions);
+					if(j === (i-1)){
+						this.oPreviewBAQbusyIndicator.setVisible(false);
+					}
+					
 					if(oResponse.data.results === undefined){
 						oResponseAnswersFilter = oResponse.data.__batchResponses[0].data.results;
 					}else{
@@ -6118,7 +6028,7 @@ sap.ui.controller("com.sagia.view.Overview", {
                             var oRow0 = new sap.ui.commons.layout.MatrixLayoutRow();
 							
 							var oCell0 = new sap.ui.commons.layout.MatrixLayoutCell();
-							oCell0.setColSpan(2);
+							oCell0.setColSpan(4);
 							oCell0.addContent(oTextView);
 							oRow0.addCell(oCell0);							
 							this.oBAQPreviewMatrixLayout.addRow(oRow0);
@@ -6178,8 +6088,14 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 		if (!this._busyDialog) {
 			this._busyDialog = new sap.ui.xmlfragment("idBusydialogOverViewController",
-					"com.sagia.view.fragments.busydialog", this);
+					"com.sagia.view.fragments.busydialog",  this.getView()
+					.getController());
+			this.getView().addDependent(this._busyDialog);
+			
+			
 		}
+		//this.oBusyDialogUI = sap.ui.getCore().byId("idBusyDialogUI");
+		
 		this._busyDialog.open();
 	},
 
@@ -7059,6 +6975,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		
 		
+		//this.handleSaveLinkPress(this.oLanguageSelect.getSelectedKey());
+		//this.getBAQ(this.oLanguageSelect.getSelectedKey());
+		
+		
 		
 	},
 
@@ -7234,19 +7154,22 @@ userSignIn : function(userID, password){
 	
 	
 	//Remove later End
-	
+	    this.openBusyDialog();
 		var oRequestFinishedDeferred = this.oModelHelper.signInUser(userID,password);
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+			this.closeBusyDialog();
 			
 			
 			if(oResponse.Password !== password){
 				sap.m.MessageToast.show(this.oModelHelper.getText("AuthenticationFailedMessage"));
 			}else{
-				
+				this.openBusyDialog();
 				var oRequestFinishedDeferredStatusCheck = this.oModelHelper.checkUserStatus(oResponse.Ref_id);
 				
 				jQuery.when(oRequestFinishedDeferredStatusCheck).then(jQuery.proxy(function(oResponseStatusCheck) {
+					this.closeBusyDialog();
+					
 					//console.dir(oResponseStatusCheck);
 					
 					if(oResponseStatusCheck.results.length === 1){
@@ -7282,7 +7205,7 @@ userSignIn : function(userID, password){
 						try{
 							
 							this.openBusyDialog();
-							
+							//this.oBusyDialogUI.setText("10%");
 							
 
 							
@@ -7291,13 +7214,15 @@ userSignIn : function(userID, password){
 							
 							var that = this;
 							
+							//this.oSaveImage = thisContext.getView().byId("idSaveImage");
+							//this.oSaveLink = thisContext.getView().byId("idSaveLink");
 							
 							
 							
 							setTimeout(function(){ 
 								that.oValidationHelper.signInWorker(that, oResponse);
 								that.closeBusyDialog();
-							}, 20000);
+							}, 15000);
 							
 						}catch(err){
 							this.closeBusyDialog();
@@ -7391,9 +7316,12 @@ handleRegisterUserButtonPress : function() {
 				
 				}
 			}else{
+				this.openBusyDialog();
+				
 				var oRequestFinishedDeferred = this.oModelHelper.registerUser(oUserID, oPassword, oInputEmail, oContactNumber, oContactPersonName, oCompany);
 				
 				jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+					this.closeBusyDialog();
 					
 					this.oUserID.setValue("");
 					this.oPassword.setValue("");
@@ -7739,11 +7667,11 @@ handleRegisterUserButtonPress : function() {
 		this.NSHBalanceSheetAttachmentName = this.getView().byId("idNSHBalanceSheetAttachmentName");
 		this.NSHOtherAttachmentName = this.getView().byId("idNSHOtherAttachmentName");
 		
-		this.NSHPassPortCopy = this.getView().byId("idNSHPassportCopyFileUploader");
-		this.NSHCommercialRegAttachment = this.getView().byId("idNSHCommercialRegistFileUploader");
-		this.NSHBankStatementAttachment = this.getView().byId("idNSHBankStatementFileUploader");
-		this.NSHBalanceSheetAttachment = this.getView().byId("idNSHBalanceSheetFileUploader");
-		this.NSHOtherAttachment = this.getView().byId("idNSHOtherFileUploader");
+		this.NSHPassPortCopy = this.getView().byId("idNSHPPassportCopyFileUploader");
+		//this.NSHCommercialRegAttachment = this.getView().byId("idNSHCommercialRegistFileUploader");
+		this.NSHBankStatementAttachment = this.getView().byId("idNSHPBankStatementFileUploader");
+		//this.NSHBalanceSheetAttachment = this.getView().byId("idNSHBalanceSheetFileUploader");
+		this.NSHOtherAttachment = this.getView().byId("idNSHPOtherFileUploader");
 		
 		this.oNSHPersonVBox = this.getView().byId("idPersonVBox");
 		this.oNSHOrganizationVBox = this.getView().byId("idOrganizationVBox");
@@ -7923,10 +7851,11 @@ handleRegisterUserButtonPress : function() {
 		}*/
 		//*******Read Exisitng share holders
 	    var thatContext = this;
-	    
+	    this.openBusyDialog();
 		var oRequestFinishedDeferredSavedSH = this.oModelHelper.readSavedShareHolders(this.oRef_id);
 
 		jQuery.when(oRequestFinishedDeferredSavedSH).then(jQuery.proxy(function(oResponse) {
+			thatContext.closeBusyDialog();
 			
 			var oLanguage;
 			if(this.oLanguageSelect.getSelectedKey() === "EN")
@@ -8036,14 +7965,17 @@ handleRegisterUserButtonPress : function() {
 		var oRequestFinishedExperienceQuestionsDeferred;
 		
 		if(oLicenseType === "None of the above"){
+			this.openBusyDialog();
 			oRequestFinishedExperienceQuestionsDeferred = this.oModelHelper.readExperienceQuestions(encodeURIComponent(oResponseLicenseType.LILILicenseActivityType[0].SurveyID), oLanguage);
 		   //var oRequestFinishedExperienceQuestionsDeferred = this.oModelHelper.readExperienceQuestions(encodeURIComponent(this.oLicenseTypeInputText.getValue()));
 		}else{
+			this.openBusyDialog();
 			oRequestFinishedExperienceQuestionsDeferred = this.oModelHelper.readExperienceQuestions(encodeURIComponent(oResponseLicenseType), oLanguage);
 		}
 	
 			
 			jQuery.when(oRequestFinishedExperienceQuestionsDeferred).then(jQuery.proxy(function(oResponse) {
+				this.closeBusyDialog();
 				
 				var questions = [];
 				var nodeID = [];
@@ -8053,6 +7985,7 @@ handleRegisterUserButtonPress : function() {
 				var attachmentFlag = [];
 
 				this.oExperienceQuestionsMatrixLayout = this.getView().byId("idNewShareHolderExperienceQuestionsMLAyout");
+				this.oExperienceQuestionsMatrixLayout.destroyRows();
 				//this.oExperienceQuestionsMatrixLayout.removeAllRows();
 				//this.oExperienceQuestionsMatrixLayout = this.oExperienceQuestionsMatrixLayout.destroyRows();
 				
@@ -8095,9 +8028,12 @@ handleRegisterUserButtonPress : function() {
 				n = 0 ;
 				for(var i=0; i < questions.length; i++){
 					
+					this.openBusyDialog();
 					var oRequestFinishedDeferred = this.oModelHelper.readEQAnswers(oResponse.data.results[i].NodeGuid, encodeURIComponent(this.oBusinessTypeSurveyID),oLanguage);
 
 					jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+						this.closeBusyDialog();
+						
 						answers.push(oResponse.data.results);
 						
 						n++;
@@ -8237,11 +8173,11 @@ handleRegisterUserButtonPress : function() {
 		
 		this.oPreviewESHCreateNSHTable.bindItems("/SavedShareHolderCollection",new sap.m.ColumnListItem({
 			cells : [ new sap.ui.commons.TextView({
-		          text : "{ShareHolderName}", enabled : false
+		          text : "{ShareHolderName}"//, enabled : false
 		        }),new sap.ui.commons.TextView({
-		          text : "{Percentage}", enabled : false
+		          text : "{Percentage}"//, enabled : false
 		        }),  new sap.ui.commons.TextView({
-		          text : "{Nationalty}", enabled : false
+		          text : "{Nationalty}"//, enabled : false
 		        })]
 	      }));
 		

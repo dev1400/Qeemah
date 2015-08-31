@@ -183,6 +183,20 @@ com.sagia.common.js.bicivalidateworker = {
 				othis.oShowAlertDialog.open();
 			}
 		}
+		else if(!(/^[a-zA-Z ]*$/.test( othis.oBICICityInputText.getValue() ))){
+    		othis.oValidationLILIStatus = false;
+    		
+   		 
+   		 
+   		 othis.oBICICityInputText.setValueState("Error");
+   		 othis.oBICICityInputText.setShowValueStateMessage(false);
+
+   		 if(!othis.oShowAlertDialog.isOpen())
+   		 {
+   			othis.oAlertTextView.setText(othis.oModelHelper.getText("BICICityValidation"));
+   			othis.oShowAlertDialog.open();
+   		 }
+      }
 
 		else if (othis.oBICICityInputText.getValue().length > 40) {
 			othis.oValidationLILIStatus = false;
@@ -870,6 +884,6 @@ com.sagia.common.js.bicivalidateworker = {
 			}
 			
 		}
-		sap.m.MessageToast.show(othis.oModelHelper.getText("ContactInfoSaved"));
+		sap.m.MessageToast.show(othis.oModelHelper.getText("ContactInfoSaved"), {duration : 1000});
 	},	
 };

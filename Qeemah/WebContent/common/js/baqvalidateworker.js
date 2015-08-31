@@ -148,6 +148,6 @@ com.sagia.common.js.baqvalidateworker = {
 			
 		}
 		
-		sap.m.MessageToast.show(othis.oModelHelper.getText("BAQInfoSaved"));
+		sap.m.MessageToast.show(othis.oModelHelper.getText("BAQInfoSaved"), {duration : 1000});
 	},	
 };

@@ -278,7 +278,7 @@ com.sagia.common.js.validate = {
 		        jQuery.when.apply($, getarray).done(function () {				        	 							        						        	
 		        	thisContext.readBICIPASSFileAttachemnts();
 		        	thisContext.readBICIPOAFileAttachemnts();
-		        	thisContext.readBAQFileAttachments();	
+		        	//	
 		        	thisContext.closeBusyDialog();
 		        	
 		        	/*thisContext.openBusyDialog();
@@ -286,6 +286,9 @@ com.sagia.common.js.validate = {
 						thisContext.closeBusyDialog();
 					}, 6000);*/
 					
+		        	setTimeout(function(){ 	
+		        		thisContext.readBAQFileAttachments();
+					}, 10000);
 					
 		        });				
 				
@@ -536,15 +539,15 @@ com.sagia.common.js.validate = {
 			thisContext.NSHOtherAttachment.attachBrowserEvent("mouseover", function() {
 	        	thisContext.NSHOtherAttachment.setValueState("None");
 			});
-			thisContext.NSHCommercialRegAttachment.attachBrowserEvent("mouseover", function() {
+			/*thisContext.NSHCommercialRegAttachment.attachBrowserEvent("mouseover", function() {
 	        	thisContext.NSHCommercialRegAttachment.setValueState("None");
-			});
+			});*/
 			thisContext.NSHBankStatementAttachment.attachBrowserEvent("mouseover", function() {
 	        	thisContext.NSHBankStatementAttachment.setValueState("None");
 			});
-			thisContext.NSHBalanceSheetAttachment.attachBrowserEvent("mouseover", function() {
+			/*thisContext.NSHBalanceSheetAttachment.attachBrowserEvent("mouseover", function() {
 	        	thisContext.NSHBalanceSheetAttachment.setValueState("None");
-			});
+			});*/
 		},
 		validateNewShareHolder : function(thisContext){
 			thisContext.oNewShareHolderValidation = true;
@@ -1009,7 +1012,7 @@ com.sagia.common.js.validate = {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("OtherFileNameExceed"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
-		    }else if(thisContext.NSHCommercialRegAttachment.getValue().length > 90){	
+		    }/*else if(thisContext.NSHCommercialRegAttachment.getValue().length > 90){	
 				thisContext.oNewShareHolderValidation = false;
 				
 				thisContext.NSHCommercialRegAttachment.setValueState("Error");
@@ -1021,7 +1024,7 @@ com.sagia.common.js.validate = {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("CommercialRegFileNameExceed"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
-		    }else if(thisContext.NSHBankStatementAttachment.getValue().length > 90){	
+		    }*/else if(thisContext.NSHBankStatementAttachment.getValue().length > 90){	
 				thisContext.oNewShareHolderValidation = false;
 				
 				thisContext.NSHBankStatementAttachment.setValueState("Error");
@@ -1033,7 +1036,7 @@ com.sagia.common.js.validate = {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("BankStmtFileNameExceed"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
-		    }else if(thisContext.NSHBalanceSheetAttachment.getValue().length > 90){	
+		    }/*else if(thisContext.NSHBalanceSheetAttachment.getValue().length > 90){	
 				thisContext.oNewShareHolderValidation = false;
 				
 				thisContext.NSHBalanceSheetAttachment.setValueState("Error");
@@ -1045,7 +1048,7 @@ com.sagia.common.js.validate = {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("BalanceSheetFileNameExceed"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
-		    }
+		    }*/
 		    else if(thisContext.NSHPassPortCopy.getValue() === ""){	
 				thisContext.oNewShareHolderValidation = false;
 				
@@ -1058,7 +1061,7 @@ com.sagia.common.js.validate = {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHPPCopyRequired"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
-		    }else if(thisContext.NSHCommercialRegAttachment.getValue() === ""){	
+		    }/*else if(thisContext.NSHCommercialRegAttachment.getValue() === ""){	
 				thisContext.oNewShareHolderValidation = false;
 				
 				thisContext.NSHCommercialRegAttachment.setValueState("Error");
@@ -1070,7 +1073,7 @@ com.sagia.common.js.validate = {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHCRCopyRequired"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
-		    }else if(thisContext.NSHBankStatementAttachment.getValue() === ""){	
+		    }*/else if(thisContext.NSHBankStatementAttachment.getValue() === ""){	
 				thisContext.oNewShareHolderValidation = false;
 				
 				thisContext.NSHBankStatementAttachment.setValueState("Error");
@@ -1082,7 +1085,7 @@ com.sagia.common.js.validate = {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHBSCopyRequired"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
-		    }else if(thisContext.NSHBalanceSheetAttachment.getValue() === ""){	
+		    }/*else if(thisContext.NSHBalanceSheetAttachment.getValue() === ""){	
 				thisContext.oNewShareHolderValidation = false;
 				
 				thisContext.NSHBalanceSheetAttachment.setValueState("Error");
@@ -1094,7 +1097,7 @@ com.sagia.common.js.validate = {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHBLSCopyRequired"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
-		    }/*else if(thisContext.NSHOtherAttachment.getValue() === ""){	
+		    }*//*else if(thisContext.NSHOtherAttachment.getValue() === ""){	
 				thisContext.oNewShareHolderValidation = false;
 
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
