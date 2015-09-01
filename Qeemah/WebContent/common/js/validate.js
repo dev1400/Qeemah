@@ -32,13 +32,12 @@ com.sagia.common.js.validate = {
 				$(window).bind('beforeunload', function(e) {	        
 			        return thisContext.oModelHelper.getText("ConfirmBrowserClose");
 			      });
-				thisContext._oidMainPageContent.setVisible(false);
+				
+				/*thisContext._oidMainPageContent.setVisible(false);
 				thisContext._oTopHeaderVBox.setVisible(true);
 				thisContext._oidLicenseButtonsHBox.setVisible(true);
-				thisContext.oVBoxSubmittedApplicationStatus.setVisible(false);
+				thisContext.oVBoxSubmittedApplicationStatus.setVisible(false);*/
 				
-				sap.m.MessageToast.show(thisContext.oModelHelper
-						.getText("SignInSuccessful"));
 				
 				
 				thisContext.oRef_id = oResponse.Ref_id;
@@ -138,6 +137,16 @@ com.sagia.common.js.validate = {
 				thisContext.oOriginalBIOICapitalInputTextValue = thisContext.oBIOICapitalInputText.getValue();
 				thisContext.oOriginalBIOILaborSizeInputTextValue = thisContext.oBIOILaborSizeInputText.getValue();
 
+				
+				thisContext._oidMainPageContent.setVisible(false);
+				thisContext._oTopHeaderVBox.setVisible(true);
+				thisContext._oidLicenseButtonsHBox.setVisible(true);
+				thisContext.oVBoxSubmittedApplicationStatus.setVisible(false);
+				
+				sap.m.MessageToast.show(thisContext.oModelHelper
+						.getText("SignInSuccessful"));
+				thisContext.closeBusyDialog();
+				
 				
 				thisContext.oBIOIOrganizationName.setValue(oResponse.Company);
 				

@@ -939,7 +939,7 @@ sap.ui.controller("com.sagia.view.Overview", {
         }
 		
 	},
-	createPersonShareHolder : function(){
+	createShareHolder : function(){
 		
 
 		var that = this;
@@ -1189,46 +1189,109 @@ sap.ui.controller("com.sagia.view.Overview", {
 				}
 				
 				//console.log(that.oNSHDOBDate.getDateValue());
-				var oDOBSplitted =that.oNSHDOBDate.getDateValue().toLocaleDateString().split("/");
-				if(oDOBSplitted[1] < 10){
-					oDOBSplitted[1] = "0"+oDOBSplitted[1];
-				}
-				if(oDOBSplitted[0] < 10){
-					oDOBSplitted[0] = "0"+oDOBSplitted[0];
-				}
-				oDOBSplittedString = oDOBSplitted[2]+""+oDOBSplitted[0]+""+oDOBSplitted[1];
 				
 				sap.m.MessageToast.show(this.oModelHelper.getText("CreatingNewSH"), {duration : 10000});
+				var oRequestFinishedDeferredNSH;
+				if(this.oShareHolderTypeComboBox.getSelectedKey() === "1")
+					{
+					var oDOBSplitted =that.oNSHDOBDate.getDateValue().toLocaleDateString().split("/");
+					if(oDOBSplitted[1] < 10){
+						oDOBSplitted[1] = "0"+oDOBSplitted[1];
+					}
+					if(oDOBSplitted[0] < 10){
+						oDOBSplitted[0] = "0"+oDOBSplitted[0];
+					}
+					oDOBSplittedString = oDOBSplitted[2]+""+oDOBSplitted[0]+""+oDOBSplitted[1];
+					
+					  oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(
+								that.oRef_id,
+			            		that.oShareHolderTypeComboBox.getSelectedItem().getText(),
+			     				that.oNSHFirstNameInputText.getValue(),
+			     				that.oNSHCountryComboBox.getSelectedKey(),
+			     				that.oNSHLastNameInputText.getValue(),
+			     				that.oNSHCityNameInputText.getValue(),
+			     				that.oNSHGenderComboBox.getSelectedKey(),
+			     				that.oNSHPOBoxInputText.getValue(),
+			     				that.oNSHMaritalStatusComboBox.getSelectedKey(),
+			     				that.oNSHPostalCodeInputText.getValue(),
+			     				that.oNSHAcademicTitleComboBox.getSelectedKey(),
+			     				that.oNSHStreetInputText.getValue(),
+			     				oDOBSplittedString,
+			     				//that.oNSHDOBDate.getDateValue().toISOString().substring(0,10).replace(/-/g,""),
+			     				"http://"+that.oNSHWebsiteInputText.getValue(),
+			     				that.oNSHTelephoneInputText.getValue(),
+			     				that.oNSHNationalityComboBox.getSelectedKey(),
+			     				that.oNSHMobilePhoneInputText.getValue(),
+			     				that.oNSHPreviousNationalityInputText.getSelectedKey(),
+			     				that.oNSHFaxInputText.getValue(),
+			     				that.oNSHCommMethodInputText.getSelectedKey(),
+			     				that.oNSHEmailInputText.getValue(),
+			     				that.oNSHPercentageInputText.getValue(),
+			     				"", "", "", "", "", "", "",
+			     		        "", "", "", "", "", "", "",
+			     		        "", "", "", "", "", "", "",
+			     		        "", "", "", "", "", "", "",
+			     		        "", "", "", "", "", "", "", "", "", "",
+			     		       that.oNSHPersonTelephoneCountryCodeInputText.getValue(),
+			     		       that.oNSHPersonFaxCountryCodeInputText.getValue(),
+			     		       that.oNSHPersonMobilephoneCountryCodeInputText.getValue());
+					   
+					  
 				
-					 var oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(
-							that.oRef_id,
-		            		that.oShareHolderTypeComboBox.getSelectedItem().getText(),
-		     				that.oNSHFirstNameInputText.getValue(),
-		     				that.oNSHCountryComboBox.getSelectedKey(),
-		     				that.oNSHLastNameInputText.getValue(),
-		     				that.oNSHCityNameInputText.getValue(),
-		     				that.oNSHGenderComboBox.getSelectedKey(),
-		     				that.oNSHPOBoxInputText.getValue(),
-		     				that.oNSHMaritalStatusComboBox.getSelectedKey(),
-		     				that.oNSHPostalCodeInputText.getValue(),
-		     				that.oNSHAcademicTitleComboBox.getSelectedKey(),
-		     				that.oNSHStreetInputText.getValue(),
-		     				oDOBSplittedString,
-		     				//that.oNSHDOBDate.getDateValue().toISOString().substring(0,10).replace(/-/g,""),
-		     				"http://"+that.oNSHWebsiteInputText.getValue(),
-		     				that.oNSHTelephoneInputText.getValue(),
-		     				that.oNSHNationalityComboBox.getSelectedKey(),
-		     				that.oNSHMobilePhoneInputText.getValue(),
-		     				that.oNSHPreviousNationalityInputText.getSelectedKey(),
-		     				that.oNSHFaxInputText.getValue(),
-		     				that.oNSHCommMethodInputText.getSelectedKey(),
-		     				that.oNSHEmailInputText.getValue(),
-		     				that.oNSHPercentageInputText.getValue(),
-		     				"", "", "", "", "", "", "",
-		     		        "", "", "", "", "", "", "",
-		     		        "", "", "", "", "", "", "",
-		     		        "", "", "", "", "", "", "",
-		     		        "", "", "", "", "", "", "", "", "", "");
+					}else{
+						
+							  oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(
+										that.oRef_id,
+					            		that.oShareHolderTypeComboBox.getSelectedItem().getText(),
+					     				that.oNSHOrganizationName.getValue(),
+					     				that.oNSHOrgCountryComboBox.getSelectedKey(),
+					     				that.oNSHOrgName2tText.getValue(),
+					     				that.oNSHOrgCityNameInputText.getValue(),
+					     				that.oNSHOrgIndustrySectorComboBox.getSelectedKey(),
+					     				that.oNSHOrgPOBoxInputText.getValue(),
+					     				"",//that.oNSHMaritalStatusComboBox.getSelectedKey(),
+					     				that.oNSHOrgPostalCodeInputText.getValue(),
+					     				"",//that.oNSHAcademicTitleComboBox.getSelectedKey(),
+					     				that.oNSHOrgStreetInputText.getValue(),
+					     				"",//oDOBSplittedString,					     				
+					     				"http://"+that.oNSHOrgWebsiteInputText.getValue(),
+					     				that.oNSHOrgTelephoneInputText.getValue(),
+					     				"",//that.oNSHNationalityComboBox.getSelectedKey(),
+					     				that.oNSHOrgMobilephoneInputText.getValue(),
+					     				"",//that.oNSHPreviousNationalityInputText.getSelectedKey(),
+					     				that.oNSHOrgFaxInputText.getValue(),
+					     				"",//that.oNSHCommMethodInputText.getSelectedKey(),
+					     				that.oNSHOrgEmailInputText.getValue(),
+					     				that.oNSHOrgPercentageInputText.getValue(),
+					     				"", 
+					     				"", 
+					     				"", 
+					     				"",
+					     				"", 
+					     				"", 
+					     				"", 
+					     				this.oNSHOrgSubSctorInputText.getValue(), 
+					     				this.oNSHOrgMultiNationalCompanyCombobox.getSelectedKey(), 
+					     				this.oOriginalNSHPersonLaborSizeInputTextValue, //this.oNSHOrgLaborSizeInputText.getValue(),
+					     				this.oNSHOrgLegalStatusComboBox.getSelectedKey(), 
+					     				this.oNSHOrgBuildingNoInputText.getValue(), 
+					     				this.oOriginalNSHOrgCapitalInputTextValue,//this.oNSHOrgCapitalInputText.getValue(), 
+					     				
+					     				"",
+					     		        "", "", "", "", "", "", "",
+					     		        "", "", "", "", "", "", "",
+					     		        "", "", "", "", "", "", "", "", "", "",
+					     		       this.oNSHOrgTelephoneCountryCodeInputText.getValue(),
+					     		       this.oNSHOrgFaxCountryCodeInputText.getValue(),
+					     		       this.oNSHOrgMobilephoneCountryCodeInputText.getValue()
+					     		        );
+							  
+						
+							
+					}
+					
+				
+					
 
 		     		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {
 		     			
@@ -1256,227 +1319,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 		    			          text : "{Nationalty}"
 		    			        })]
 			    		      }));
+			    		
+		    		if(this.oShareHolderTypeComboBox.getSelectedKey() === "1"){
+			   	   		 this.createPersonShareHolderOperations(oResponse, actvityQuestions, activityAnswers, experienceQuestions, experienceAnswers, questions, answers1, answers2, answers3);
+			   		 }else{
+			   			 this.createOrganizationShareHolderOperations(oResponse, actvityQuestions, activityAnswers, experienceQuestions, experienceAnswers, questions, answers1, answers2, answers3);
+			   		 }
 			             
 
 				            
-				        that.NSHEntityNo = oResponse.EntityNo;
-				        that.NSHFullName = oResponse.EntityFname+"_"+oResponse.EntityLname;
-				        
-				        for(var j=0; j < this.oTotalActivityQuestions; j++){
-							 var oAQFileUploader = sap.ui.getCore().byId("idAQFileUploader"+j);
-							 var oAQuestion = sap.ui.getCore().byId("idAQuestion"+j);
-							 
-							 this.oModelHelper.uploadActivityQAttachment(this.oRef_id, 
-									 oAQuestion.data("idAQuestion"+j), 
-									 oAQFileUploader, 
-									 oResponse.EntityFname,
-									 oResponse.EntityLname);		 
-						
-						}
-				        
-				        for(var j=0; j < this.oTotalExperienceQuestions; j++){
-							 var oEQFileUploader = sap.ui.getCore().byId("idEQFileUploader"+j);
-							 var oEQuestion = sap.ui.getCore().byId("idEQuestion"+j);
-							 
-							 this.oModelHelper.uploadExperienceQAttachment(this.oRef_id, 
-									 oEQuestion.data("idEQuestion"+j), 
-									 oEQFileUploader, 
-									 oResponse.EntityFname,
-									 oResponse.EntityLname);		 
-						
-						}
-				        try{
-				        	var oLanguage;
-							if(this.oLanguageSelect.getSelectedKey() === "EN")
-							{
-								oLanguage="E";
-							}else{
-								oLanguage="A";
-							}
-						sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHEQA"), {duration : 10000});
-				        var oRequestFinishedDeferredExperienceQ = that.oModelHelper.createShareHolderExperienceAnswers
-				        (that.oRef_id, experienceQuestions, experienceAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(), this.oBusinessTypeSurveyID, oLanguage);
-						jQuery.when(oRequestFinishedDeferredExperienceQ).then(jQuery.proxy(function(oResponse) {
-						    try{
-						    	sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHPPCopy"), {duration : 10000});
-							var oRequestFinishedDeferredUploadNSHPassPortCopy = that.oModelHelper.uploadNSHPassPortCopy(that.NSHFullName+"_PassPort_",that.oRef_id, that.NSHEntityNo, that.NSHPassPortCopy);
-							jQuery.when(oRequestFinishedDeferredUploadNSHPassPortCopy).then(jQuery.proxy(function(oResponse) {
-								try{
-									/*sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHCRCopy"), {duration : 10000});
-								var oRequestFinishedDeferredUploadNSHPCommercialReg = that.oModelHelper.uploadCommercialRegAttachment(that.NSHFullName+"_CommReg_",that.oRef_id, that.NSHEntityNo, that.NSHCommercialRegAttachment);
-						     	jQuery.when(oRequestFinishedDeferredUploadNSHPCommercialReg).then(jQuery.proxy(function(oResponse) {
-						     		*/try{
-						     			sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHBSCopy"), {duration : 10000});
-						     		var oRequestFinishedDeferredUploadNSHBankStatement = that.oModelHelper.uploadBankStatementAttachment(that.NSHFullName+"_BankStmt_", that.oRef_id, that.NSHEntityNo, that.NSHBankStatementAttachment);
-							     	jQuery.when(oRequestFinishedDeferredUploadNSHBankStatement).then(jQuery.proxy(function(oResponse) {
-							     		try{
-							     			/*sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHBALSCopy"), {duration : 10000});
-							     		var oRequestFinishedDeferredUploadNSHBalanceSheet = that.oModelHelper.uploadNSHBalanceSheetAttachment(that.NSHFullName+"_BalSheet_", that.oRef_id, that.NSHEntityNo, that.NSHBalanceSheetAttachment);
-								     	jQuery.when(oRequestFinishedDeferredUploadNSHBalanceSheet).then(jQuery.proxy(function(oResponse) {*/
-								     		try{
-								     		var oRequestFinishedDeferredUploadNSHOtherAttachments = that.oModelHelper.uploadOtherAttachment(that.NSHFullName+"_Othr_", that.oRef_id, that.NSHEntityNo, that.NSHOtherAttachment);
-									     	jQuery.when(oRequestFinishedDeferredUploadNSHOtherAttachments).then(jQuery.proxy(function(oResponse) {
-									        	try{	
-									        		var oLanguage;
-													if(this.oLanguageSelect.getSelectedKey() === "EN")
-													{
-														oLanguage="E";
-													}else{
-														oLanguage="A";
-													}
-													sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHAQA"), {duration : 10000});
-									             var oRequestFinishedDeferredcreateSHActivityAnswers = that.oModelHelper.createShareHolderActivityAnswers
-									 			(that.oRef_id, actvityQuestions, activityAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(),oLanguage);
-									  
-									     			jQuery.when(oRequestFinishedDeferredcreateSHActivityAnswers).then(jQuery.proxy(function(oResponse) {
-									     				
-									 	                try{
-									 	                	sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHFQA"), {duration : 15000});
-									 					var oRequestFinishedDeferredcreateFinancialAnswers1 = that.oModelHelper.createFinancialAnswers
-									 					(that.oRef_id, questions, answers1, "Year 1", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
-					
-									 					jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers1).then(jQuery.proxy(function(oResponse) {
-									 						
-									 						try{
-									 						var oRequestFinishedDeferredcreateFinancialAnswers2 = that.oModelHelper.createFinancialAnswers
-									 						(that.oRef_id, questions, answers2, "Year 2", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
-					
-									 						jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers2).then(jQuery.proxy(function(oResponse) {
-									 							try{
-									 							var oRequestFinishedDeferredcreateFinancialAnswers3 = that.oModelHelper.createFinancialAnswers
-									 							(that.oRef_id, questions, answers3, "Year 3", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
-	
-										 							jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers3).then(jQuery.proxy(function(oResponse) {
-										 							    try{
-										 							    	
-										 							    	
-										 							    	 var getarray = [];
-											 							        getarray.push(oRequestFinishedDeferredExperienceQ);
-											 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers1);
-											 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers2);
-											 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers3);
-											 							        getarray.push(oRequestFinishedDeferredcreateSHActivityAnswers);
-											 							        getarray.push(oRequestFinishedDeferredUploadNSHPassPortCopy);
-											 							        //getarray.push(oRequestFinishedDeferredUploadNSHPCommercialReg);
-											 							        getarray.push(oRequestFinishedDeferredUploadNSHBankStatement);
-											 							        //getarray.push(oRequestFinishedDeferredUploadNSHBalanceSheet);
-											 							        getarray.push(oRequestFinishedDeferredUploadNSHOtherAttachments);
-													 							        
-												 							        jQuery.when.apply($, getarray).done(function () {
-												 							        	that.closeBusyDialog();
-												 							        	
-												 							        	that.oSavedSHData.SavedShareHolderCollection.length = 0;
-												 							        	that.loadSavedShareHolderDetails();
-												 							        	
-												 							        	that.oShareHolderTypeComboBox.setValue("");
-												 							        	that.oNSHFirstNameInputText.setValue("");
-												 										that.oNSHCountryComboBox.setSelectedKey("");
-												 										that.oNSHLastNameInputText.setValue("");
-												 										that.oNSHCityNameInputText.setValue("");
-												 										that.oNSHGenderComboBox.setSelectedKey("");
-												 										that.oNSHPOBoxInputText.setValue("");
-												 										that.oNSHMaritalStatusComboBox.setSelectedKey("");
-												 										that.oNSHPostalCodeInputText.setValue("");
-												 										that.oNSHAcademicTitleComboBox.setSelectedKey("");
-												 										that.oNSHStreetInputText.setValue("");
-												 										that.oNSHWebsiteInputText.setValue("");
-												 										that.oNSHTelephoneInputText.setValue("");
-												 										that.oNSHNationalityComboBox.setSelectedKey("");
-												 										that.oNSHMobilePhoneInputText.setValue("");
-												 										that.oNSHPreviousNationalityInputText.setSelectedKey("");
-												 										that.oNSHFaxInputText.setValue("");
-												 										that.oNSHCommMethodInputText.setSelectedKey("");
-												 										that.oNSHEmailInputText.setValue("");
-												 										that.oNSHPercentageInputText.setValue("");
-												 										that.oNSHDOBDate.setValue("");
-												 					     				
-												 					     				for(var i=0; i < that.oTotalFinancialQuestions; i++){
-												 										
-												 					     					 var oFinancialAnswer1 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+1);
-												 											 var oFinancialAnswer2 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+2);
-												 											 var oFinancialAnswer3 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+3);
-												 											 
-												 											 oFinancialAnswer1.setValue("");
-												 											 oFinancialAnswer2.setValue("");
-												 											 oFinancialAnswer3.setValue("");
-
-
-												 					     				}
-												 					     				
-												 					     				for(var j=0; j < that.oTotalActivityQuestions; j++){
-												 											 var oAQAnswer = sap.ui.getCore().byId("idAQAnswer"+j);
-												 											 oAQAnswer.setSelectedKey("");
-												 										}
-												 										
-												 									
-												 										for(var j=0; j < that.oTotalExperienceQuestions; j++){
-												 											 var oEQAnswer = sap.ui.getCore().byId("idEQAnswer"+j);
-												 											 oEQAnswer.setSelectedKey("");
-												 										}
-												 							        	
-												 							        	 if(!that.oShowAlertDialog.isOpen())
-												 										 {
-												 							        		that.oAlertTextView.setText(that.oModelHelper.getText("NewShareHolderCreated"));
-												 							        		that.oShowAlertDialog.open();
-												 										 }		 							        						        	
-												 							     		
-												 							        });						
-										 							    	
-										 							    }catch(error){
-										 							    	console.log(error);
-										 						 			 that.closeBusyDialog();
-										 								 }
-									 								   			 								
-					 							}, this));	
-					 							 }catch(error){
-					 								console.log(error);
-					 					 			 that.closeBusyDialog();
-					 							 }
-					 						}, this));
-					 						 }catch(error){
-					 							console.log(error);
-					 				 			 that.closeBusyDialog();
-					 						 }
-					 					}, this));
-						 	             }catch(error){
-						 	            	console.log(error);
-						 	 	 			 that.closeBusyDialog();	
-						 	 			 }
-					     			}, this));//end of AQ creation
-						        	 }catch(error){
-						        		 console.log(error);
-							 			 that.closeBusyDialog();
-									 }
-						     	}, this));// end of Other upload
-					     		 }catch(error){
-					     			console.log(error);
-						 			 that.closeBusyDialog();
-								 }
-					     	//}, this));// end of Balance Sheet upload
-				     		 }catch(error){
-				     			console.log(error);
-					 			 that.closeBusyDialog();
-							 }
-				     	}, this));// end of Bank Statement upload
-			     		 }catch(error){
-			     			console.log(error);
-				 			 that.closeBusyDialog();
-						 }
-			     	//}, this));// end of Commercial upload
-					 }catch(error){
-						 console.log(error);
-			 			 that.closeBusyDialog();		
-					 }
-			    }, this));// end of Passport upload	
-			    }catch(error){
-			    	console.log(error);
-		 			 that.closeBusyDialog();
-				 }
-	     }, this));// end of EQ creation			
-         }catch(error){
-        	 console.log(error);
- 			 that.closeBusyDialog();
-		 }
+				   
 		     				 
 		 }catch(error){
 			 console.log(error);
@@ -1493,6 +1345,451 @@ sap.ui.controller("com.sagia.view.Overview", {
 		}
 		
 	},
+  createPersonShareHolderOperations : function(oResponse, actvityQuestions, activityAnswers, experienceQuestions, experienceAnswers, questions, answers1, answers2, answers3){
+	     that.NSHEntityNo = oResponse.EntityNo;
+	        that.NSHFullName = oResponse.EntityFname+"_"+oResponse.EntityLname;
+	        
+	        for(var j=0; j < this.oTotalActivityQuestions; j++){
+				 var oAQFileUploader = sap.ui.getCore().byId("idAQFileUploader"+j);
+				 var oAQuestion = sap.ui.getCore().byId("idAQuestion"+j);
+				 
+				 this.oModelHelper.uploadActivityQAttachment(this.oRef_id, 
+						 oAQuestion.data("idAQuestion"+j), 
+						 oAQFileUploader, 
+						 oResponse.EntityFname,
+						 oResponse.EntityLname);		 
+			
+			}
+	        
+	        for(var j=0; j < this.oTotalExperienceQuestions; j++){
+				 var oEQFileUploader = sap.ui.getCore().byId("idEQFileUploader"+j);
+				 var oEQuestion = sap.ui.getCore().byId("idEQuestion"+j);
+				 
+				 this.oModelHelper.uploadExperienceQAttachment(this.oRef_id, 
+						 oEQuestion.data("idEQuestion"+j), 
+						 oEQFileUploader, 
+						 oResponse.EntityFname,
+						 oResponse.EntityLname);		 
+			
+			}
+	        try{
+	        	var oLanguage;
+				if(this.oLanguageSelect.getSelectedKey() === "EN")
+				{
+					oLanguage="E";
+				}else{
+					oLanguage="A";
+				}
+			sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHEQA"), {duration : 10000});
+	        var oRequestFinishedDeferredExperienceQ = that.oModelHelper.createShareHolderExperienceAnswers
+	        (that.oRef_id, experienceQuestions, experienceAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(), this.oBusinessTypeSurveyID, oLanguage);
+			jQuery.when(oRequestFinishedDeferredExperienceQ).then(jQuery.proxy(function(oResponse) {
+			    try{
+			    	//sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHPPCopy"), {duration : 10000});
+				var oRequestFinishedDeferredUploadNSHPassPortCopy = that.oModelHelper.uploadNSHPassPortCopy(that.NSHFullName+"_PassPort_",that.oRef_id, that.NSHEntityNo, that.NSHPassPortCopy);
+				jQuery.when(oRequestFinishedDeferredUploadNSHPassPortCopy).then(jQuery.proxy(function(oResponse) {
+					try{
+						/*sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHCRCopy"), {duration : 10000});
+					var oRequestFinishedDeferredUploadNSHPCommercialReg = that.oModelHelper.uploadCommercialRegAttachment(that.NSHFullName+"_CommReg_",that.oRef_id, that.NSHEntityNo, that.NSHCommercialRegAttachment);
+			     	jQuery.when(oRequestFinishedDeferredUploadNSHPCommercialReg).then(jQuery.proxy(function(oResponse) {
+			     		*/try{
+			     			//sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHBSCopy"), {duration : 10000});
+			     		var oRequestFinishedDeferredUploadNSHBankStatement = that.oModelHelper.uploadBankStatementAttachment(that.NSHFullName+"_BankStmt_", that.oRef_id, that.NSHEntityNo, that.NSHBankStatementAttachment);
+				     	jQuery.when(oRequestFinishedDeferredUploadNSHBankStatement).then(jQuery.proxy(function(oResponse) {
+				     		try{
+				     			/*sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHBALSCopy"), {duration : 10000});
+				     		var oRequestFinishedDeferredUploadNSHBalanceSheet = that.oModelHelper.uploadNSHBalanceSheetAttachment(that.NSHFullName+"_BalSheet_", that.oRef_id, that.NSHEntityNo, that.NSHBalanceSheetAttachment);
+					     	jQuery.when(oRequestFinishedDeferredUploadNSHBalanceSheet).then(jQuery.proxy(function(oResponse) {*/
+					     		try{
+					     		var oRequestFinishedDeferredUploadNSHOtherAttachments = that.oModelHelper.uploadOtherAttachment(that.NSHFullName+"_Othr_", that.oRef_id, that.NSHEntityNo, that.NSHOtherAttachment);
+						     	jQuery.when(oRequestFinishedDeferredUploadNSHOtherAttachments).then(jQuery.proxy(function(oResponse) {
+						        	try{	
+						        		var oLanguage;
+										if(this.oLanguageSelect.getSelectedKey() === "EN")
+										{
+											oLanguage="E";
+										}else{
+											oLanguage="A";
+										}
+										sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHAQA"), {duration : 10000});
+						             var oRequestFinishedDeferredcreateSHActivityAnswers = that.oModelHelper.createShareHolderActivityAnswers
+						 			(that.oRef_id, actvityQuestions, activityAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(),oLanguage);
+						  
+						     			jQuery.when(oRequestFinishedDeferredcreateSHActivityAnswers).then(jQuery.proxy(function(oResponse) {
+						     				
+						 	                try{
+						 	                	sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHFQA"), {duration : 15000});
+						 					var oRequestFinishedDeferredcreateFinancialAnswers1 = that.oModelHelper.createFinancialAnswers
+						 					(that.oRef_id, questions, answers1, "Year 1", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+		
+						 					jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers1).then(jQuery.proxy(function(oResponse) {
+						 						
+						 						try{
+						 						var oRequestFinishedDeferredcreateFinancialAnswers2 = that.oModelHelper.createFinancialAnswers
+						 						(that.oRef_id, questions, answers2, "Year 2", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+		
+						 						jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers2).then(jQuery.proxy(function(oResponse) {
+						 							try{
+						 							var oRequestFinishedDeferredcreateFinancialAnswers3 = that.oModelHelper.createFinancialAnswers
+						 							(that.oRef_id, questions, answers3, "Year 3", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+
+							 							jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers3).then(jQuery.proxy(function(oResponse) {
+							 							    try{
+							 							    	
+							 							    	
+							 							    	 var getarray = [];
+								 							        getarray.push(oRequestFinishedDeferredExperienceQ);
+								 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers1);
+								 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers2);
+								 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers3);
+								 							        getarray.push(oRequestFinishedDeferredcreateSHActivityAnswers);
+								 							        getarray.push(oRequestFinishedDeferredUploadNSHPassPortCopy);
+								 							        //getarray.push(oRequestFinishedDeferredUploadNSHPCommercialReg);
+								 							        getarray.push(oRequestFinishedDeferredUploadNSHBankStatement);
+								 							        //getarray.push(oRequestFinishedDeferredUploadNSHBalanceSheet);
+								 							        getarray.push(oRequestFinishedDeferredUploadNSHOtherAttachments);
+										 							        
+									 							        jQuery.when.apply($, getarray).done(function () {
+									 							        	that.closeBusyDialog();
+									 							        	
+									 							        	that.oSavedSHData.SavedShareHolderCollection.length = 0;
+									 							        	that.loadSavedShareHolderDetails();
+									 							        	
+									 							        	that.oShareHolderTypeComboBox.setValue("");
+									 							        	that.oNSHFirstNameInputText.setValue("");
+									 										that.oNSHCountryComboBox.setSelectedKey("");
+									 										that.oNSHLastNameInputText.setValue("");
+									 										that.oNSHCityNameInputText.setValue("");
+									 										that.oNSHGenderComboBox.setSelectedKey("");
+									 										that.oNSHPOBoxInputText.setValue("");
+									 										that.oNSHMaritalStatusComboBox.setSelectedKey("");
+									 										that.oNSHPostalCodeInputText.setValue("");
+									 										that.oNSHAcademicTitleComboBox.setSelectedKey("");
+									 										that.oNSHStreetInputText.setValue("");
+									 										that.oNSHWebsiteInputText.setValue("");
+									 										that.oNSHTelephoneInputText.setValue("");
+									 										that.oNSHNationalityComboBox.setSelectedKey("");
+									 										that.oNSHMobilePhoneInputText.setValue("");
+									 										that.oNSHPreviousNationalityInputText.setSelectedKey("");
+									 										that.oNSHFaxInputText.setValue("");
+									 										that.oNSHCommMethodInputText.setSelectedKey("");
+									 										that.oNSHEmailInputText.setValue("");
+									 										that.oNSHPercentageInputText.setValue("");
+									 										that.oNSHDOBDate.setValue("");
+									 					     				
+									 					     				for(var i=0; i < that.oTotalFinancialQuestions; i++){
+									 										
+									 					     					 var oFinancialAnswer1 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+1);
+									 											 var oFinancialAnswer2 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+2);
+									 											 var oFinancialAnswer3 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+3);
+									 											 
+									 											 oFinancialAnswer1.setValue("");
+									 											 oFinancialAnswer2.setValue("");
+									 											 oFinancialAnswer3.setValue("");
+
+
+									 					     				}
+									 					     				
+									 					     				for(var j=0; j < that.oTotalActivityQuestions; j++){
+									 											 var oAQAnswer = sap.ui.getCore().byId("idAQAnswer"+j);
+									 											 oAQAnswer.setSelectedKey("");
+									 										}
+									 										
+									 									
+									 										for(var j=0; j < that.oTotalExperienceQuestions; j++){
+									 											 var oEQAnswer = sap.ui.getCore().byId("idEQAnswer"+j);
+									 											 oEQAnswer.setSelectedKey("");
+									 										}
+									 							        	
+									 							        	 if(!that.oShowAlertDialog.isOpen())
+									 										 {
+									 							        		that.oAlertTextView.setText(that.oModelHelper.getText("NewShareHolderCreated"));
+									 							        		that.oShowAlertDialog.open();
+									 										 }		 							        						        	
+									 							     		
+									 							        });						
+							 							    	
+							 							    }catch(error){
+							 							    	console.log(error);
+							 						 			 that.closeBusyDialog();
+							 								 }
+						 								   			 								
+		 							}, this));	
+		 							 }catch(error){
+		 								console.log(error);
+		 					 			 that.closeBusyDialog();
+		 							 }
+		 						}, this));
+		 						 }catch(error){
+		 							console.log(error);
+		 				 			 that.closeBusyDialog();
+		 						 }
+		 					}, this));
+			 	             }catch(error){
+			 	            	console.log(error);
+			 	 	 			 that.closeBusyDialog();	
+			 	 			 }
+		     			}, this));//end of AQ creation
+			        	 }catch(error){
+			        		 console.log(error);
+				 			 that.closeBusyDialog();
+						 }
+			     	}, this));// end of Other upload
+		     		 }catch(error){
+		     			console.log(error);
+			 			 that.closeBusyDialog();
+					 }
+		     	//}, this));// end of Balance Sheet upload
+	     		 }catch(error){
+	     			console.log(error);
+		 			 that.closeBusyDialog();
+				 }
+	     	}, this));// end of Bank Statement upload
+  		 }catch(error){
+  			console.log(error);
+	 			 that.closeBusyDialog();
+			 }
+  	//}, this));// end of Commercial upload
+		 }catch(error){
+			 console.log(error);
+			 that.closeBusyDialog();		
+		 }
+ }, this));// end of Passport upload	
+ }catch(error){
+ 	console.log(error);
+		 that.closeBusyDialog();
+	 }
+}, this));// end of EQ creation			
+}catch(error){
+console.log(error);
+that.closeBusyDialog();
+}  
+  },
+  createOrganizationShareHolderOperations : function(oResponse, actvityQuestions, activityAnswers, experienceQuestions, experienceAnswers, questions, answers1, answers2, answers3){
+	     that.NSHEntityNo = oResponse.EntityNo;
+	        that.NSHFullName = oResponse.EntityFname+"_"+oResponse.EntityLname;
+	        
+	        for(var j=0; j < this.oTotalActivityQuestions; j++){
+				 var oAQFileUploader = sap.ui.getCore().byId("idAQFileUploader"+j);
+				 var oAQuestion = sap.ui.getCore().byId("idAQuestion"+j);
+				 
+				 this.oModelHelper.uploadActivityQAttachment(this.oRef_id, 
+						 oAQuestion.data("idAQuestion"+j), 
+						 oAQFileUploader, 
+						 oResponse.EntityFname,
+						 oResponse.EntityLname);		 
+			
+			}
+	        
+	        for(var j=0; j < this.oTotalExperienceQuestions; j++){
+				 var oEQFileUploader = sap.ui.getCore().byId("idEQFileUploader"+j);
+				 var oEQuestion = sap.ui.getCore().byId("idEQuestion"+j);
+				 
+				 this.oModelHelper.uploadExperienceQAttachment(this.oRef_id, 
+						 oEQuestion.data("idEQuestion"+j), 
+						 oEQFileUploader, 
+						 oResponse.EntityFname,
+						 oResponse.EntityLname);		 
+			
+			}
+	        try{
+	        	var oLanguage;
+				if(this.oLanguageSelect.getSelectedKey() === "EN")
+				{
+					oLanguage="E";
+				}else{
+					oLanguage="A";
+				}
+			
+			sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHEQA"), {duration : 10000});
+	        var oRequestFinishedDeferredExperienceQ = that.oModelHelper.createShareHolderExperienceAnswers
+	        (that.oRef_id, experienceQuestions, experienceAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(), this.oBusinessTypeSurveyID, oLanguage);
+			jQuery.when(oRequestFinishedDeferredExperienceQ).then(jQuery.proxy(function(oResponse) {
+			    try{
+			    	//sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHPPCopy"), {duration : 10000});
+				var oRequestFinishedDeferredUploadNSHPassPortCopy = that.oModelHelper.uploadNSHPassPortCopy(that.NSHFullName+"_PassPort_",that.oRef_id, that.NSHEntityNo, that.NSHOrgPassPortCopy);
+				jQuery.when(oRequestFinishedDeferredUploadNSHPassPortCopy).then(jQuery.proxy(function(oResponse) {
+					try{
+						//sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHCRCopy"), {duration : 10000});
+					var oRequestFinishedDeferredUploadNSHPCommercialReg = that.oModelHelper.uploadCommercialRegAttachment(that.NSHFullName+"_CommReg_",that.oRef_id, that.NSHEntityNo, that.NSHOrgCommercialRegAttachment);
+			     	jQuery.when(oRequestFinishedDeferredUploadNSHPCommercialReg).then(jQuery.proxy(function(oResponse) {
+			     		try{
+			     			//sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHBSCopy"), {duration : 10000});
+			     		var oRequestFinishedDeferredUploadNSHBankStatement = that.oModelHelper.uploadBankStatementAttachment(that.NSHFullName+"_BankStmt_", that.oRef_id, that.NSHEntityNo, that.NSHOrgBankStatementAttachment);
+				     	jQuery.when(oRequestFinishedDeferredUploadNSHBankStatement).then(jQuery.proxy(function(oResponse) {
+				     		try{
+				     			//sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHBALSCopy"), {duration : 10000});
+				     		var oRequestFinishedDeferredUploadNSHBalanceSheet = that.oModelHelper.uploadNSHBalanceSheetAttachment(that.NSHFullName+"_BalSheet_", that.oRef_id, that.NSHEntityNo, that.NSHOrgBalanceSheetAttachment);
+					     	jQuery.when(oRequestFinishedDeferredUploadNSHBalanceSheet).then(jQuery.proxy(function(oResponse) {
+					     		try{
+					     		var oRequestFinishedDeferredUploadNSHOtherAttachments = that.oModelHelper.uploadOtherAttachment(that.NSHFullName+"_Othr_", that.oRef_id, that.NSHEntityNo, that.NSHOrgOtherAttachment);
+						     	jQuery.when(oRequestFinishedDeferredUploadNSHOtherAttachments).then(jQuery.proxy(function(oResponse) {
+						        	try{	
+						        		var oLanguage;
+										if(this.oLanguageSelect.getSelectedKey() === "EN")
+										{
+											oLanguage="E";
+										}else{
+											oLanguage="A";
+										}
+										sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHAQA"), {duration : 10000});
+						             var oRequestFinishedDeferredcreateSHActivityAnswers = that.oModelHelper.createShareHolderActivityAnswers
+						 			(that.oRef_id, actvityQuestions, activityAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(),oLanguage);
+						  
+						     			jQuery.when(oRequestFinishedDeferredcreateSHActivityAnswers).then(jQuery.proxy(function(oResponse) {
+						     				
+						 	                try{
+						 	                	sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHFQA"), {duration : 25000});
+						 					var oRequestFinishedDeferredcreateFinancialAnswers1 = that.oModelHelper.createFinancialAnswers
+						 					(that.oRef_id, questions, answers1, "Year 1", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+		
+						 					jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers1).then(jQuery.proxy(function(oResponse) {
+						 						
+						 						try{
+						 						var oRequestFinishedDeferredcreateFinancialAnswers2 = that.oModelHelper.createFinancialAnswers
+						 						(that.oRef_id, questions, answers2, "Year 2", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+		
+						 						jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers2).then(jQuery.proxy(function(oResponse) {
+						 							try{
+						 							var oRequestFinishedDeferredcreateFinancialAnswers3 = that.oModelHelper.createFinancialAnswers
+						 							(that.oRef_id, questions, answers3, "Year 3", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+
+							 							jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers3).then(jQuery.proxy(function(oResponse) {
+							 							    try{
+							 							    	
+							 							    	
+							 							    	 var getarray = [];
+								 							        getarray.push(oRequestFinishedDeferredExperienceQ);
+								 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers1);
+								 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers2);
+								 							        getarray.push(oRequestFinishedDeferredcreateFinancialAnswers3);
+								 							        getarray.push(oRequestFinishedDeferredcreateSHActivityAnswers);
+								 							        getarray.push(oRequestFinishedDeferredUploadNSHPassPortCopy);
+								 							        getarray.push(oRequestFinishedDeferredUploadNSHPCommercialReg);
+								 							        getarray.push(oRequestFinishedDeferredUploadNSHBankStatement);
+								 							        getarray.push(oRequestFinishedDeferredUploadNSHBalanceSheet);
+								 							        getarray.push(oRequestFinishedDeferredUploadNSHOtherAttachments);
+										 							        
+									 							        jQuery.when.apply($, getarray).done(function () {
+									 							        	that.closeBusyDialog();
+									 							        	
+									 							        	that.oSavedSHData.SavedShareHolderCollection.length = 0;
+									 							        	that.loadSavedShareHolderDetails();
+									 							        	
+									 							        	that.oNSHOrganizationName.setValue("");
+									 							        	that.oNSHOrgCountryComboBox.setSelectedKey("");
+									 							        	that.oNSHOrgName2tText.setValue("");
+									 							        	that.oNSHOrgCityNameInputText.setValue("");
+									 							        	that.oNSHOrgIndustrySectorComboBox.setSelectedKey("");
+									 							        	that.oNSHOrgPostalCodeInputText.setValue("");
+									 							        	that.oNSHOrgSubSctorInputText.setValue("");
+									 							        	that.oNSHOrgPOBoxInputText.setValue("");
+									 							        	that.oNSHOrgMultiNationalCompanyCombobox.setSelectedKey("");
+									 							        	that.oNSHOrgStreetInputText.setValue("");
+									 							        	that.oNSHOrgLegalStatusComboBox.setSelectedKey("");
+									 							        	that.oNSHOrgBuildingNoInputText.setValue("");
+									 							        	that.oNSHOrgLaborSizeInputText.setValue("");
+									 							        	that.oNSHOrgCapitalInputText.setValue("");
+									 							        	that.oNSHOrgTelephoneInputText.setValue("");
+									 							        	that.oNSHOrgPercentageInputText.setValue("");
+									 										that.oNSHOrgFaxInputText.setValue("");
+									 										that.oNSHOrgWebsiteInputText.setValue("");
+									 										that.oNSHOrgMobilephoneInputText.setValue("");
+									 										that.oNSHOrgEmailInputText.setValue("");			
+									 										that.oNSHOrgTelephoneCountryCodeInputText.setValue("");
+									 										that.oNSHOrgFaxCountryCodeInputText.setValue("");
+									 										that.oNSHOrgMobilephoneCountryCodeInputText.setValue("");
+									 										
+									 										that.oNSHOrgSubSctorInputText.setEnabled(false);
+									 					     				
+									 					     				for(var i=0; i < that.oTotalFinancialQuestions; i++){
+									 										
+									 					     					 var oFinancialAnswer1 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+1);
+									 											 var oFinancialAnswer2 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+2);
+									 											 var oFinancialAnswer3 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+3);
+									 											 
+									 											 oFinancialAnswer1.setValue("");
+									 											 oFinancialAnswer2.setValue("");
+									 											 oFinancialAnswer3.setValue("");
+
+
+									 					     				}
+									 					     				
+									 					     				for(var j=0; j < that.oTotalActivityQuestions; j++){
+									 											 var oAQAnswer = sap.ui.getCore().byId("idAQAnswer"+j);
+									 											 oAQAnswer.setSelectedKey("");
+									 										}
+									 										
+									 									
+									 										for(var j=0; j < that.oTotalExperienceQuestions; j++){
+									 											 var oEQAnswer = sap.ui.getCore().byId("idEQAnswer"+j);
+									 											 oEQAnswer.setSelectedKey("");
+									 										}
+									 							        	
+									 							        	 if(!that.oShowAlertDialog.isOpen())
+									 										 {
+									 							        		that.oAlertTextView.setText(that.oModelHelper.getText("NewShareHolderCreated"));
+									 							        		that.oShowAlertDialog.open();
+									 										 }		 							        						        	
+									 							     		
+									 							        });						
+							 							    	
+							 							    }catch(error){
+							 							    	console.log(error);
+							 						 			 that.closeBusyDialog();
+							 								 }
+						 								   			 								
+		 							}, this));	
+		 							 }catch(error){
+		 								console.log(error);
+		 					 			 that.closeBusyDialog();
+		 							 }
+		 						}, this));
+		 						 }catch(error){
+		 							console.log(error);
+		 				 			 that.closeBusyDialog();
+		 						 }
+		 					}, this));
+			 	             }catch(error){
+			 	            	console.log(error);
+			 	 	 			 that.closeBusyDialog();	
+			 	 			 }
+		     			}, this));//end of AQ creation
+			        	 }catch(error){
+			        		 console.log(error);
+				 			 that.closeBusyDialog();
+						 }
+			     	}, this));// end of Other upload
+		     		 }catch(error){
+		     			console.log(error);
+			 			 that.closeBusyDialog();
+					 }
+		     	}, this));// end of Balance Sheet upload
+	     		 }catch(error){
+	     			console.log(error);
+		 			 that.closeBusyDialog();
+				 }
+	     	}, this));// end of Bank Statement upload
+		 }catch(error){
+			console.log(error);
+	 			 that.closeBusyDialog();
+			 }
+	}, this));// end of Commercial upload
+		 }catch(error){
+			 console.log(error);
+			 that.closeBusyDialog();		
+		 }
+}, this));// end of Passport upload	
+}catch(error){
+	console.log(error);
+		 that.closeBusyDialog();
+	 }
+}, this));// end of EQ creation			
+}catch(error){
+console.log(error);
+that.closeBusyDialog();
+}  
+},
   handleNSHOrgLaborSizeInputTextChange : function(oEvent){
 		
 		if(/^[0-9.,]+$/.test( this.oNSHOrgLaborSizeInputText.getValue() )){
@@ -1562,7 +1859,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			 }
 	   	 }else if(this.oShareHolderTypeComboBox.getSelectedKey() === "1"){
 	   		 if(this.oValidationHelper.validateNewShareHolder(this)){
-	   			 this.createPersonShareHolder();
+	   			 this.createShareHolder();
 	   		 }	   		 
 		 }else if(this.oShareHolderTypeComboBox.getSelectedKey() === "2"){
 			 
@@ -1591,7 +1888,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 						 }
 							
 			  }else if(this.oNSHValidateworker.validateNSHOrgData(this)){
-   				 
+				  this.createShareHolder();
    			 }
    		 }
    		 
@@ -7182,8 +7479,14 @@ userSignIn : function(userID, password){
 						this._oTopHeaderVBox.setVisible(true);
 						this.oVBoxSubmittedApplicationStatus.setVisible(true);
 						
-						this.oSubmittedApplicationTextView = this.getView().byId("idSubmittedApplicationTextView");
+						/*this.oSubmittedApplicationTextView = this.getView().byId("idSubmittedApplicationTextView");
 						this.oSubmittedApplicationTextView.setText(this.oModelHelper.getText("ApplicationID")+" "+oResponseStatusCheck.results[0].LeadId+" "+this.oModelHelper.getText("ApplicationStatus")+" "+oResponseStatusCheck.results[0].StatusDesc);
+						*/
+						this.oAppNumberTextView = this.getView().byId("idAppNumberTextView");
+						this.oAppNumberTextView.setText(oResponseStatusCheck.results[0].LeadId);
+						
+						this.oAppStatus = this.getView().byId("idAppStatus");
+						this.oAppStatus.setText(oResponseStatusCheck.results[0].StatusDesc);
 						
 						this.oSaveImage = this.getView().byId("idSaveImage");
 						this.oSaveLink = this.getView().byId("idSaveLink");
@@ -7221,7 +7524,7 @@ userSignIn : function(userID, password){
 							
 							setTimeout(function(){ 
 								that.oValidationHelper.signInWorker(that, oResponse);
-								that.closeBusyDialog();
+								//that.closeBusyDialog();
 							}, 15000);
 							
 						}catch(err){
@@ -7672,6 +7975,13 @@ handleRegisterUserButtonPress : function() {
 		this.NSHBankStatementAttachment = this.getView().byId("idNSHPBankStatementFileUploader");
 		//this.NSHBalanceSheetAttachment = this.getView().byId("idNSHBalanceSheetFileUploader");
 		this.NSHOtherAttachment = this.getView().byId("idNSHPOtherFileUploader");
+		
+		
+		this.NSHOrgPassPortCopy = this.getView().byId("idNSHOrgPassportCopyFileUploader");
+		this.NSHOrgCommercialRegAttachment = this.getView().byId("idNSHOrgCommercialRegistFileUploader");
+		this.NSHOrgBankStatementAttachment = this.getView().byId("idNSHOrgBankStatementFileUploader");
+		this.NSHOrgBalanceSheetAttachment = this.getView().byId("idNSHOrgBalanceSheetFileUploader");
+		this.NSHOrgOtherAttachment = this.getView().byId("idNSHOrgOtherFileUploader");
 		
 		this.oNSHPersonVBox = this.getView().byId("idPersonVBox");
 		this.oNSHOrganizationVBox = this.getView().byId("idOrganizationVBox");

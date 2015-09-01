@@ -32,6 +32,26 @@ com.sagia.common.js.validatenshworker = {
 		othis.oNSHOrganizationName.attachBrowserEvent("click", function() {
 			othis.oNSHOrganizationName.setValueState("None");
 		});
+		
+		
+		
+		othis.NSHOrgPassPortCopy.attachBrowserEvent("mouseover", function() {
+			othis.NSHOrgPassPortCopy.setValueState("None");
+		});
+		othis.NSHOrgCommercialRegAttachment.attachBrowserEvent("mouseover", function() {
+			othis.NSHOrgCommercialRegAttachment.setValueState("None");
+		});
+		othis.NSHOrgBankStatementAttachment.attachBrowserEvent("mouseover", function() {
+			othis.NSHOrgBankStatementAttachment.setValueState("None");
+		});
+		othis.NSHOrgBalanceSheetAttachment.attachBrowserEvent("mouseover", function() {
+			othis.NSHOrgBalanceSheetAttachment.setValueState("None");
+		});
+		othis.NSHOrgOtherAttachment.attachBrowserEvent("mouseover", function() {
+			othis.NSHOrgOtherAttachment.setValueState("None");
+		});
+		
+		
 		othis.oNSHOrgCountryComboBox.attachBrowserEvent("mouseover", function() {
 			othis.oNSHOrgCountryComboBox.setValueState("None");
 		});
@@ -230,44 +250,6 @@ com.sagia.common.js.validatenshworker = {
 		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHORgCityNameReq"));
 		  				thisContext.oShowAlertDialog.open();
 		  			 }			 							  				
-	  	   	 }else if(thisContext.oNSHOrgIndustrySectorComboBox.getSelectedKey() === "9" ){
-	  	   		 
-	  	   	 if( thisContext.oNSHOrgSubSctorInputText.getValue() === ""){
-					thisContext.oNewShareHolderValidation = false;
-					
-					thisContext.oNSHOrgSubSctorInputText.setValueState("Error");
-					thisContext.oNSHOrgSubSctorInputText.setShowValueStateMessage(false);	
-					
-					 if(!thisContext.oShowAlertDialog.isOpen())
-					 {
-						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("SubSectorReq"));
-						 thisContext.oShowAlertDialog.open();
-					 }
-			 }else if(thisContext.oNSHOrgSubSctorInputText.getValue().length > 40){
-					thisContext.oNewShareHolderValidation = false;
-					
-					thisContext.oNSHOrgSubSctorInputText.setValueState("Error");
-					thisContext.oNSHOrgSubSctorInputText.setShowValueStateMessage(false);	
-					
-					 if(!thisContext.oShowAlertDialog.isOpen())
-					 {
-						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("SubSectorLength"));
-						 thisContext.oShowAlertDialog.open();
-					 }
-			 }else if(!(/^[a-zA-Z ]*$/.test( thisContext.oNSHOrgSubSctorInputText.getValue() ))){
-	 				thisContext.oNewShareHolderValidation = false;
-					
-					thisContext.oNSHOrgSubSctorInputText.setValueState("Error");
-					thisContext.oNSHOrgSubSctorInputText.setShowValueStateMessage(false);	
-					
-
-					 if(!thisContext.oShowAlertDialog.isOpen())
-					 {
-						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("SubSectorInvalid"));
-						 thisContext.oShowAlertDialog.open();
-					 }
-			 }
-	  	   	 
 	  	   	 }
 	  	   	 else if(thisContext.oNSHOrgPostalCodeInputText.getValue() === ""){
 	 				thisContext.oNewShareHolderValidation = false;
@@ -278,7 +260,7 @@ com.sagia.common.js.validatenshworker = {
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
-		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText(""));
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHOPostalCodeReq"));
 		  				thisContext.oShowAlertDialog.open();
 		  			 }			 							  				
 	  	   	 }else if(thisContext.oNSHOrgPostalCodeInputText.getValue().length > 10){
@@ -290,7 +272,7 @@ com.sagia.common.js.validatenshworker = {
 
 		  			 if(!thisContext.oShowAlertDialog.isOpen())
 		  			 {
-		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText(""));
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHOPostalCodeExceed"));
 		  				thisContext.oShowAlertDialog.open();
 		  			 }			 							  				
 	  	   	 }else if(thisContext.oNSHOrgPOBoxInputText.getValue() === "" 
@@ -369,7 +351,7 @@ com.sagia.common.js.validatenshworker = {
 				 }
 					
 		  	 }*/
-		 else if(thisContext.oOriginalNSHPersonLaborSizeInputTextValue.length > 20){	
+		 else if(thisContext.oOriginalNSHPersonLaborSizeInputTextValue.length > 10){	
 			 thisContext.oNewShareHolderValidation = false;
 
 			 thisContext.oNSHOrgLaborSizeInputText.setValueState("Error");
@@ -397,7 +379,7 @@ com.sagia.common.js.validatenshworker = {
 				 }
 					
 		  	 }*/
-		 else if(thisContext.oOriginalNSHOrgCapitalInputTextValue.length > 20){	
+		 else if(thisContext.oOriginalNSHOrgCapitalInputTextValue.length > 10){	
 			 thisContext.oNewShareHolderValidation = false;
 
 			 thisContext.oNSHOrgCapitalInputText.setValueState("Error");
@@ -411,7 +393,7 @@ com.sagia.common.js.validatenshworker = {
 				 }
 					
 		  	 }
-	  	 else if(!(/^[0-9]+$/.test( thisContext.oNSHOrgBuildingNoInputText.getValue() ))){	
+	  	 /*else if(!(/^\s*[0-9]+\s*$/.test( thisContext.oNSHOrgBuildingNoInputText.getValue() ))){	
 			 thisContext.oNewShareHolderValidation = false;
 
 			 thisContext.oNSHOrgBuildingNoInputText.setValueState("Error");
@@ -424,9 +406,9 @@ com.sagia.common.js.validatenshworker = {
 					 thisContext.oShowAlertDialog.open();
 				 }
 					
-		  	 }
+		  	 }*/
 		 
-	  	 else if(thisContext.oNSHOrgBuildingNoInputText.getValue().length > 20){	
+	  	 else if(thisContext.oNSHOrgBuildingNoInputText.getValue().length > 10){	
 			 thisContext.oNewShareHolderValidation = false;
 
 			 thisContext.oNSHOrgBuildingNoInputText.setValueState("Error");
@@ -435,7 +417,7 @@ com.sagia.common.js.validatenshworker = {
 
 				 if(!thisContext.oShowAlertDialog.isOpen())
 				 {
-					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText(""));
+					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHOBldgNoExceed"));
 					 thisContext.oShowAlertDialog.open();
 				 }
 					
@@ -449,12 +431,12 @@ com.sagia.common.js.validatenshworker = {
 
 			 if(!thisContext.oShowAlertDialog.isOpen())
 			 {
-				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHInvalidBNo"));
+				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHInvalidTelNo"));
 				 thisContext.oShowAlertDialog.open();
 			 }
 				
 	  	 }
-  	else if(thisContext.oNSHOrgTelephoneInputText.getValue().length > 30){	
+  	else if(thisContext.oNSHOrgTelephoneInputText.getValue().length > 20){	
 		 thisContext.oNewShareHolderValidation = false;
 
 		 thisContext.oNSHOrgTelephoneInputText.setValueState("Error");
@@ -482,7 +464,7 @@ com.sagia.common.js.validatenshworker = {
 			 }
 				
 	  	 }
-  	else if(thisContext.oNSHOrgFaxInputText.getValue().length > 30){	
+  	else if(thisContext.oNSHOrgFaxInputText.getValue().length > 20){	
 		 thisContext.oNewShareHolderValidation = false;
 
 		 thisContext.oNSHOrgFaxInputText.setValueState("Error");
@@ -510,7 +492,7 @@ com.sagia.common.js.validatenshworker = {
 			 }
 				
 	  	 }
- 	else if(thisContext.oNSHOrgFaxInputText.getValue().length > 30){	
+ 	else if(thisContext.oNSHOrgMobilephoneInputText.getValue().length > 20){	
 		 thisContext.oNewShareHolderValidation = false;
 
 		 thisContext.oNSHOrgFaxInputText.setValueState("Error");
@@ -581,7 +563,7 @@ com.sagia.common.js.validatenshworker = {
 				 thisContext.oShowAlertDialog.open();
 			 }
 	 }
- 	else if(thisContext.oNSHOrgWebsiteInputText.getValue().length > 2048){	
+ 	else if(thisContext.oNSHOrgWebsiteInputText.getValue().length > 255){	
 		 thisContext.oNewShareHolderValidation = false;
 
 		 thisContext.oNSHOrgWebsiteInputText.setValueState("Error");
@@ -590,7 +572,7 @@ com.sagia.common.js.validatenshworker = {
 
 			 if(!thisContext.oShowAlertDialog.isOpen())
 			 {
-				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHInvalidWebsite"));
+				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHOrgInvalidWebsiteLength"));
 				 thisContext.oShowAlertDialog.open();
 			 }
 				
@@ -609,7 +591,7 @@ com.sagia.common.js.validatenshworker = {
 		 }	
  		 
  	 }
- 	else if(thisContext.oNSHOrgEmailInputText.getValue().length > 241){	
+ 	else if(thisContext.oNSHOrgEmailInputText.getValue().length > 20){	
 		 thisContext.oNewShareHolderValidation = false;
 
 		 thisContext.oNSHOrgWebsiteInputText.setValueState("Error");
@@ -618,11 +600,180 @@ com.sagia.common.js.validatenshworker = {
 
 			 if(!thisContext.oShowAlertDialog.isOpen())
 			 {
-				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHInvalidEmail"));
+				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHOrgInvalidEmail"));
 				 thisContext.oShowAlertDialog.open();
 			 }
 				
-	  	 }	 
+	  	 }
+		 
+else if(thisContext.NSHOrgPassPortCopy.getValue().length > 90){	
+    	thisContext.oNewShareHolderValidation = false;		
+		thisContext.NSHOrgPassPortCopy.setValueState("Error");
+		//thisContext.NSHPassPortCopy.setShowValueStateMessage(false);	
+		
+			 if(!thisContext.oShowAlertDialog.isOpen())
+			 {
+				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("PassportFileNameExceed"));
+				thisContext.oShowAlertDialog.open();
+			 }			 							  				
+ }
+else if(thisContext.NSHOrgPassPortCopy.getValue() === ""){	
+	thisContext.oNewShareHolderValidation = false;
+	
+	thisContext.NSHOrgPassPortCopy.setValueState("Error");
+	//thisContext.NSHPassPortCopy.setShowValueStateMessage(false);	
+
+		 if(!thisContext.oShowAlertDialog.isOpen())
+		 {
+			thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHPPCopyRequired"));
+			thisContext.oShowAlertDialog.open();
+		 }			 							  				
+}	 
+
+else if(thisContext.NSHOrgCommercialRegAttachment.getValue().length > 90){	
+	thisContext.oNewShareHolderValidation = false;		
+	thisContext.NSHOrgCommercialRegAttachment.setValueState("Error");
+	//thisContext.NSHPassPortCopy.setShowValueStateMessage(false);	
+	
+		 if(!thisContext.oShowAlertDialog.isOpen())
+		 {
+			thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("CommercialRegFileNameExceed"));
+			thisContext.oShowAlertDialog.open();
+		 }			 							  				
+}
+else if(thisContext.NSHOrgCommercialRegAttachment.getValue() === ""){	
+thisContext.oNewShareHolderValidation = false;
+
+thisContext.NSHOrgCommercialRegAttachment.setValueState("Error");
+//thisContext.NSHPassPortCopy.setShowValueStateMessage(false);	
+
+	 if(!thisContext.oShowAlertDialog.isOpen())
+	 {
+		thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHCRCopyRequired"));
+		thisContext.oShowAlertDialog.open();
+	 }			 							  				
+}	 
+		 
+else if(thisContext.NSHOrgBankStatementAttachment.getValue().length > 90){	
+	thisContext.oNewShareHolderValidation = false;		
+	thisContext.NSHOrgBankStatementAttachment.setValueState("Error");
+	//thisContext.NSHPassPortCopy.setShowValueStateMessage(false);	
+	
+		 if(!thisContext.oShowAlertDialog.isOpen())
+		 {
+			thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("BankStmtFileNameExceed"));
+			thisContext.oShowAlertDialog.open();
+		 }			 							  				
+}
+else if(thisContext.NSHOrgBankStatementAttachment.getValue() === ""){	
+thisContext.oNewShareHolderValidation = false;
+
+thisContext.NSHOrgBankStatementAttachment.setValueState("Error");
+//thisContext.NSHPassPortCopy.setShowValueStateMessage(false);	
+
+	 if(!thisContext.oShowAlertDialog.isOpen())
+	 {
+		thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHBSCopyRequired"));
+		thisContext.oShowAlertDialog.open();
+	 }			 							  				
+}	 
+		 
+else if(thisContext.NSHOrgBalanceSheetAttachment.getValue().length > 90){	
+	thisContext.oNewShareHolderValidation = false;		
+	thisContext.NSHOrgBalanceSheetAttachment.setValueState("Error");
+	//thisContext.NSHPassPortCopy.setShowValueStateMessage(false);	
+	
+		 if(!thisContext.oShowAlertDialog.isOpen())
+		 {
+			thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("BalanceSheetFileNameExceed"));
+			thisContext.oShowAlertDialog.open();
+		 }			 							  				
+}
+else if(thisContext.NSHOrgBalanceSheetAttachment.getValue() === ""){	
+thisContext.oNewShareHolderValidation = false;
+
+thisContext.NSHOrgBalanceSheetAttachment.setValueState("Error");
+//thisContext.NSHPassPortCopy.setShowValueStateMessage(false);	
+
+	 if(!thisContext.oShowAlertDialog.isOpen())
+	 {
+		thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHBLSCopyRequired"));
+		thisContext.oShowAlertDialog.open();
+	 }			 							  				
+}	 
+		 
+else if(thisContext.NSHOrgOtherAttachment.getValue().length > 90){	
+	thisContext.oNewShareHolderValidation = false;		
+	thisContext.NSHOrgOtherAttachment.setValueState("Error");
+	//thisContext.NSHPassPortCopy.setShowValueStateMessage(false);	
+	
+		 if(!thisContext.oShowAlertDialog.isOpen())
+		 {
+			thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("OtherFileNameExceed"));
+			thisContext.oShowAlertDialog.open();
+		 }			 							  				
+}
+/*else if(thisContext.NSHOrgOtherAttachment.getValue() === ""){	
+thisContext.oNewShareHolderValidation = false;
+
+thisContext.NSHOrgOtherAttachment.setValueState("Error");
+//thisContext.NSHPassPortCopy.setShowValueStateMessage(false);	
+
+	 if(!thisContext.oShowAlertDialog.isOpen())
+	 {
+		thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHOTRCopyRequired"));
+		thisContext.oShowAlertDialog.open();
+	 }			 							  				
+}	*/ 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+ 	else if(thisContext.oNSHOrgIndustrySectorComboBox.getSelectedKey() === "9" ){
+	   		 
+ 	   	 if( thisContext.oNSHOrgSubSctorInputText.getValue() === ""){
+				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.oNSHOrgSubSctorInputText.setValueState("Error");
+				thisContext.oNSHOrgSubSctorInputText.setShowValueStateMessage(false);	
+				
+				 if(!thisContext.oShowAlertDialog.isOpen())
+				 {
+					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("SubSectorReq"));
+					 thisContext.oShowAlertDialog.open();
+				 }
+		 }else if(thisContext.oNSHOrgSubSctorInputText.getValue().length > 10){
+				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.oNSHOrgSubSctorInputText.setValueState("Error");
+				thisContext.oNSHOrgSubSctorInputText.setShowValueStateMessage(false);	
+				
+				 if(!thisContext.oShowAlertDialog.isOpen())
+				 {
+					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("SubSectorLength"));
+					 thisContext.oShowAlertDialog.open();
+				 }
+		 }else if(!(/^[a-zA-Z ]*$/.test( thisContext.oNSHOrgSubSctorInputText.getValue() ))){
+				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.oNSHOrgSubSctorInputText.setValueState("Error");
+				thisContext.oNSHOrgSubSctorInputText.setShowValueStateMessage(false);	
+				
+
+				 if(!thisContext.oShowAlertDialog.isOpen())
+				 {
+					 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("SubSectorInvalid"));
+					 thisContext.oShowAlertDialog.open();
+				 }
+		 }
+ 	   	 
+ 	   	 }
 		 
 		 return thisContext.oNewShareHolderValidation;
 	}

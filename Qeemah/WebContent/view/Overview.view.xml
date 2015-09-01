@@ -190,7 +190,21 @@
 		
 		<VBox id="idVBoxSubmittedApplicationStatus" justifyContent="Center" alignItems="Center">
 	
-	 		<sap.ui.commons:TextView id="idSubmittedApplicationTextView" class="textcolorwhite" design="H2"></sap.ui.commons:TextView>
+	 		<!-- <sap.ui.commons:TextView id="idSubmittedApplicationTextView" class="textcolorwhite" design="H2"></sap.ui.commons:TextView>
+	 		 -->
+	 		 <html:br/>
+<html:table border="1" cellpadding="5">
+	<html:tr>
+		<html:td><sap.ui.commons:TextView text="{i18n>ApplicationID}" class="textcolorwhite" design="H2"></sap.ui.commons:TextView></html:td>
+		<html:td><html:center><sap.ui.commons:TextView text="{i18n>Status}" class="textcolorwhite" design="H2"></sap.ui.commons:TextView></html:center></html:td>
+		
+	</html:tr>
+	<html:tr>
+		<html:td><html:center><sap.ui.commons:TextView id="idAppNumberTextView" class="textcolorwhite"></sap.ui.commons:TextView></html:center></html:td>
+		<html:td><sap.ui.commons:TextView id="idAppStatus" class="textcolorwhite" ></sap.ui.commons:TextView></html:td>
+		
+	</html:tr>
+</html:table>
 		
 		</VBox>
 

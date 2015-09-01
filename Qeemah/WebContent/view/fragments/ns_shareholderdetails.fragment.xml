@@ -1078,7 +1078,7 @@
 						<sap.ui.commons.layout:content>
 							<sap.ui.unified:FileUploader width="50%"
 								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
-								id="idNSHPassportCopyFileUploader" mimeType="application/pdf" />
+								id="idNSHOrgPassportCopyFileUploader" mimeType="application/pdf" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -1107,7 +1107,7 @@
 						<sap.ui.commons.layout:content>
 							<sap.ui.unified:FileUploader width="50%"
 								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
-								id="idNSHCommercialRegistFileUploader" mimeType="application/pdf" />
+								id="idNSHOrgCommercialRegistFileUploader" mimeType="application/pdf" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -1136,7 +1136,7 @@
 						<sap.ui.commons.layout:content>
 							<sap.ui.unified:FileUploader width="50%"
 								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
-								id="idNSHBankStatementFileUploader" mimeType="application/pdf" />
+								id="idNSHOrgBankStatementFileUploader" mimeType="application/pdf" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -1165,7 +1165,7 @@
 						<sap.ui.commons.layout:content>
 							<sap.ui.unified:FileUploader width="50%"
 								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
-								id="idNSHBalanceSheetFileUploader" mimeType="application/pdf" />
+								id="idNSHOrgBalanceSheetFileUploader" mimeType="application/pdf" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
@@ -1194,7 +1194,7 @@
 						<sap.ui.commons.layout:content>
 							<sap.ui.unified:FileUploader width="50%"
 								sendXHR="true" useMultipart="false" sameFilenameAllowed="true"
-								id="idNSHOtherFileUploader" mimeType="application/pdf" />
+								id="idNSHOrgOtherFileUploader" mimeType="application/pdf" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>

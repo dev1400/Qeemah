@@ -754,9 +754,10 @@ com.sagia.common.ModelHelper = {
 			oNSHInterests14InputText,
 			oNSHTotalAssetsInBalanceSheet12InputText,
 			oNSHTotalAssetsInBalanceSheet13InputText,		
-			oNSHTotalAssetsInBalanceSheet14InputText, oBpno
-			
-				
+			oNSHTotalAssetsInBalanceSheet14InputText, oBpno,
+			oCcodeTele,
+			oCcodeFax,
+			oCcodeMobile				
 	){
 		//this.openBusyDialog();
 
@@ -773,11 +774,11 @@ com.sagia.common.ModelHelper = {
 		oEntry.MaritalStatus = oNSHMaritalStatusComboBox;
 		oEntry.Academic = oNSHAcademicTitleInputText;
 		oEntry.Dob = oNSHDOBDate;
-		oEntry.CcodeTele = '0';
+		oEntry.CcodeTele = oCcodeTele;
 		oEntry.Telephone = oNSHTelephoneInputText;
-		oEntry.CcodeMobile = '0';
+		oEntry.CcodeMobile = oCcodeMobile;
 		oEntry.Mobile = oNSHMobilePhoneInputText;
-		oEntry.CcodeFax = '0';
+		oEntry.CcodeFax = oCcodeFax;
 		oEntry.Fax = oNSHFaxInputText;
 		oEntry.Country = oNSHCountryComboBox;
 		oEntry.City = oNSHCityNameInputText;
@@ -1204,6 +1205,7 @@ com.sagia.common.ModelHelper = {
  		var oUploadNSHPassPortCopyRequestFinishedDeferred = jQuery.Deferred();
  		
  		if(oNSHPassPortCopyFileUploader.getValue() !== ""){
+ 			sap.m.MessageToast.show(this.getText("UploadingNSHPPCopy"), {duration : 20000});
  			var csrf =  this.oShareHolderODataModel.getHeaders()['x-csrf-token'];
  		   oNSHPassPortCopyFileUploader.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
  				{name: "Content-Type", value: "application/atom+xml" }));
@@ -1238,6 +1240,7 @@ com.sagia.common.ModelHelper = {
  		var oUploadNSHCommercialRegAttachmentRequestFinishedDeferred = jQuery.Deferred();
  		
  		if(oNSHCommercialRegAttachment.getValue() !== ""){
+ 			sap.m.MessageToast.show(this.getText("UploadingNSHCRCopy"), {duration : 20000});
  			var csrf =  this.oShareHolderODataModel.getHeaders()['x-csrf-token'];
  			oNSHCommercialRegAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
  				{name: "Content-Type", value: "application/atom+xml" }));
@@ -1272,6 +1275,7 @@ com.sagia.common.ModelHelper = {
  		var oUploadNSHBankStatementAttachmentRequestFinishedDeferred = jQuery.Deferred();
  		
  		if(oNSHBankStatementAttachment.getValue() !== ""){
+ 			sap.m.MessageToast.show(this.getText("UploadingNSHBSCopy"), {duration : 20000});
  			var csrf =  this.oShareHolderODataModel.getHeaders()['x-csrf-token'];
  			oNSHBankStatementAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
  				{name: "Content-Type", value: "application/atom+xml" }));
@@ -1306,6 +1310,7 @@ com.sagia.common.ModelHelper = {
  		var oUploadNSHBalanceSheetAttachmentRequestFinishedDeferred = jQuery.Deferred();
  		
  		if(oNSHBalanceSheetAttachment.getValue() !== ""){
+ 			sap.m.MessageToast.show(this.getText("UploadingNSHBALSCopy"), {duration : 20000});
  			var csrf =  this.oShareHolderODataModel.getHeaders()['x-csrf-token'];
  			oNSHBalanceSheetAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
  				{name: "Content-Type", value: "application/atom+xml" }));
@@ -1340,6 +1345,7 @@ com.sagia.common.ModelHelper = {
  		var oUploadNSHOtherAttachmentRequestFinishedDeferred = jQuery.Deferred();
  		
  		if(oNSHOtherAttachment.getValue() !== ""){
+ 			sap.m.MessageToast.show(this.getText("UploadingNSHOTHRCopy"), {duration : 20000});
  			var csrf =  this.oShareHolderODataModel.getHeaders()['x-csrf-token'];
  			oNSHOtherAttachment.insertHeaderParameter(new sap.ui.unified.FileUploaderParameter(
  				{name: "Content-Type", value: "application/atom+xml" }));
