@@ -135,7 +135,7 @@
 						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>POBox}"></sap.ui.commons:TextView>
-							<!-- <sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView> -->
+							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
@@ -170,7 +170,7 @@
 						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>PostalCode}"></sap.ui.commons:TextView>
-							<!-- <sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView> -->
+							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
