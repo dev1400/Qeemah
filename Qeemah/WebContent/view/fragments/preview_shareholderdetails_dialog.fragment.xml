@@ -32,7 +32,7 @@
 				<sap.ui.commons.layout:cells>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 
-						<Table id="idPreviewESHCreateNSHTable" width="100%">
+						<Table id="idPreviewESHCreateNSHTable" width="100%" noDataText="{i18n>NoShareHolder}">
 							<columns>								
 										<Column width="5em">
 											<sap.ui.commons:TextView text="{i18n>ShareHolderName}"

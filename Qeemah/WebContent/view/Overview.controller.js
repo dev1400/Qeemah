@@ -241,7 +241,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 			sap.m.MessageToast.show(that.oModelHelper.getText("SelectAProduct"), {duration : 1000});
 			
 		});*/
+		this.oBAQbusyIndicator = this.getView().byId("idBAQbusyIndicator");
+		this.oLoadedSavedBAQ = true;
 		
+		this.allBAQLoaded = false;
 
 
 
@@ -5061,16 +5064,19 @@ that.closeBusyDialog();
 		        clearInterval(id);
 		    }
 		    var oBAQFileUploader = sap.ui.getCore().byId("idBAQFileUploader"+loop);
-		    var oTextViewAttachment = sap.ui.getCore().byId("idBAQAttachment"+oBAQFileUploader.data("idBAQFileUploader"+loop));
-		    var oPTextViewAttachment = sap.ui.getCore().byId("idPBAQAttachment"+oBAQFileUploader.data("idPBAQFileUploader"+loop));
+		    if(oBAQFileUploader){
+		    	var oTextViewAttachment = sap.ui.getCore().byId("idBAQAttachment"+oBAQFileUploader.data("idBAQFileUploader"+loop));
+			    var oPTextViewAttachment = sap.ui.getCore().byId("idPBAQAttachment"+oBAQFileUploader.data("idPBAQFileUploader"+loop));
 
-		    var oRequestFinishedDeferredBAQAnswersAttachmentNameDifferred= that.oModelHelper.readBAQSavedAttachments(that.oRef_id, oBAQFileUploader.data("idBAQFileUploader"+loop));
-			jQuery.when(oRequestFinishedDeferredBAQAnswersAttachmentNameDifferred).then(jQuery.proxy(function(oResponse) {
-				if(oTextViewAttachment){
-					oTextViewAttachment.setText(oResponse.data.FileName);
-					oPTextViewAttachment.setText(oResponse.data.FileName);
-				}
-			}, that));
+			    var oRequestFinishedDeferredBAQAnswersAttachmentNameDifferred= that.oModelHelper.readBAQSavedAttachments(that.oRef_id, oBAQFileUploader.data("idBAQFileUploader"+loop));
+				jQuery.when(oRequestFinishedDeferredBAQAnswersAttachmentNameDifferred).then(jQuery.proxy(function(oResponse) {
+					if(oTextViewAttachment){
+						oTextViewAttachment.setText(oResponse.data.FileName);
+						oPTextViewAttachment.setText(oResponse.data.FileName);
+					}
+				}, that));
+		    }
+		    
 		}, 1000);		
 	},
 	handleRegionSelectionComboBox : function(oControlEvent){
@@ -5140,7 +5146,7 @@ that.closeBusyDialog();
 		}else{
 			oLanguage="A";
 		}
-		//this.openBusyDialog();
+		this.openBusyDialog();
 		that = this;
 		var oRequestFinishedDeferred = this.oModelHelper.readBAQ(oLanguage);
 		
@@ -5172,7 +5178,49 @@ that.closeBusyDialog();
 
 				jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 					answers.push(oResponse.data.results);
-					
+					//console.log(j);
+					if(j === (i-1)){
+						
+						
+						var thisContext = this;
+						var oRequestFinishedDeferredBAQAnswersReadChild = thisContext.oModelHelper.readBAQSavedAnswers(thisContext.oRef_id);
+
+						jQuery.when(oRequestFinishedDeferredBAQAnswersReadChild).then(jQuery.proxy(function(oResponse) {
+							//thisContext.closeBusyDialog();
+							
+							//console.log
+							this.oBAQbusyIndicator.setVisible(false);
+							
+							if(oResponse.data.results[0].Return !== "No Records"){						
+								
+								for(var i=0; i < thisContext.oTotalBAQQuestions; i++){
+									 for (j=0; j < thisContext.oTotalBAQQuestions; j++){
+										 var oBAQAnswer = sap.ui.getCore().byId("idBAQAnswer"+j);
+										 var oBAQuestion = sap.ui.getCore().byId("idBAQuestion"+j);
+
+										 if(oResponse.data.results[i] !== undefined){
+											 if(oBAQuestion.data("idBAQuestion"+j) === oResponse.data.results[i].NodeGuid){
+												 
+												 oBAQAnswer.setSelectedItem(oBAQAnswer.getItemByKey(oResponse.data.results[i].Atxtlg));
+												 
+												 //console.log("i = "+i+"j = "+j+" oTotalBAQQuestions"+thisContext.oTotalBAQQuestions);
+											 }	
+										 }									 		 
+										 
+									 }
+									 if(i === (thisContext.oTotalBAQQuestions-1)){
+										 this.allBAQLoaded = true;
+										 that.closeBusyDialog();
+									 }
+								}
+								thisContext.oBAQExists = true;						
+								}else{
+									this.allBAQLoaded = true;
+									that.closeBusyDialog();
+									thisContext.oBAQExists = false;	
+								}
+						}, thisContext));
+					}
 					j++;
 	                
 					if(j === questions.length){
@@ -5835,7 +5883,9 @@ that.closeBusyDialog();
 		
 	},
 	someWork : function(){
-
+		try{
+			
+		
 		//console.log(oControlEvent.getParameters().index);
 		that = this;
 		//if(!this.PreviewBeenFired)
@@ -5875,6 +5925,10 @@ that.closeBusyDialog();
 				
 				if(this.oLILIBusinessTypeComboBox.getSelectedKey() !== "N" && this.oLicenseTypeInputText.getValue() !== ""){
 		     		this.oLicenceInfoPreviewContentVBox.setVisible(false);
+		     		if(this.oPreviewLicenseInfoMAtrixLayout){
+		     			this.oPreviewLicenseInfoMAtrixLayout.setVisible(false);		     			
+		     		}
+		     		
 				}else{
 					
 					if(!this.previewLILIViewsCreated)
@@ -6186,18 +6240,22 @@ that.closeBusyDialog();
 				this.oPreviewLILIPreviewProductsTable.setModel(this.oLILIProductsTableJSONData);							         		
 				this.oPreviewLILIPreviewProductsTable.bindItems("/ProductsCollection", new sap.m.ColumnListItem({
 					cells : [ new sap.ui.commons.TextView({
-		    	          text : "{productcode}", enabled : false
+		    	          text : "{productcode}"//, enabled : false
 		    	        }),new sap.ui.commons.TextView({
-		    	          text : "{product}", enabled : false
+		    	          text : "{product}"//, enabled : false
 		    	        }),  new sap.ui.commons.TextView({
-		    	          text : "{quantity}", enabled : false
+		    	          text : "{quantity}"//, enabled : false
 		    	        }),  new sap.ui.commons.TextView({
-		    	          text : "{uom}", enabled : false
+		    	          text : "{uom}"//, enabled : false
 		    	        })]
 		    	      }));									
 			}else{
 				this.oPreviewLILIPreviewProductsTable.unbindItems();
 			}
+		}catch(error){
+			this.closeBusyDialog();
+		}
+
 	},
 	getPreviewBAQ : function(oLanguage){
 		if(this.oLanguageSelect.getSelectedKey() === "EN")
@@ -7275,7 +7333,7 @@ that.closeBusyDialog();
 		//this.handleSaveLinkPress(this.oLanguageSelect.getSelectedKey());
 		//this.getBAQ(this.oLanguageSelect.getSelectedKey());
 		
-		
+		this.handleSaveLinkPress(this.oLanguageSelect.getSelectedKey());
 		
 	},
 
@@ -7512,8 +7570,8 @@ userSignIn : function(userID, password){
 							
 
 							
-							this.handleSaveLinkPress(this.oLanguageSelect.getSelectedKey());
-							this.getBAQ(this.oLanguageSelect.getSelectedKey());
+							//this.handleSaveLinkPress(this.oLanguageSelect.getSelectedKey());
+							//this.getBAQ(this.oLanguageSelect.getSelectedKey());
 							
 							var that = this;
 							
@@ -7525,7 +7583,7 @@ userSignIn : function(userID, password){
 							setTimeout(function(){ 
 								that.oValidationHelper.signInWorker(that, oResponse);
 								//that.closeBusyDialog();
-							}, 15000);
+							}, 3000);
 							
 						}catch(err){
 							this.closeBusyDialog();
@@ -7782,6 +7840,12 @@ handleRegisterUserButtonPress : function() {
 			this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
 		}
 		
+		
+		
+		if(this.oLoadedSavedBAQ){
+			this.oLoadedSavedBAQ = false;
+			this.getBAQ(this.oLanguageSelect.getSelectedKey());
+		}
 		
 	
 	},
@@ -8060,6 +8124,8 @@ handleRegisterUserButtonPress : function() {
 			
 			}
 			
+			
+			this.handleLicenseButtonClick();
 			this.oLicenseInfoTab.setSelectedIndex(1);			
 			this._oLicenseInfoContent.setVisible(true);
 			this._oBasicInfoContent.setVisible(false);
@@ -8095,7 +8161,7 @@ handleRegisterUserButtonPress : function() {
 			this.oShowAlertDialog.open();
 			
 			}
-			
+			this.handleLicenseButtonClick();
 			this.oLicenseInfoTab.setSelectedIndex(1);			
 			this._oLicenseInfoContent.setVisible(true);
 			this._oBasicInfoContent.setVisible(false);
@@ -8437,59 +8503,64 @@ handleRegisterUserButtonPress : function() {
 	},
 	handlePreviewInfoButtonClick : function(){
 		
-		
-		
-		this.oSaveImage.setVisible(false);
-		this.oSaveLink.setVisible(false);
-		
-		this.getPreviewBAQ(this.oLanguageSelect.getSelectedKey());
-		
-		this._oPreviewInfoContent.setVisible(true);
-		this._oShareHoldersInfoContent.setVisible(false);
-		this._oLicenseInfoContent.setVisible(false);
-		this._oBasicInfoContent.setVisible(false);
-		this._oTermsAndConditionsInfoContent.setVisible(false);
-		this._oStagesHeading.setContent(this.oModelHelper
-				.getText("PreviewInformationHTML"));
-		
-		
-		
-		if(sap.ui.getCore().getConfiguration().getRTL()){			
-			this._oPreviewInfoButton.setSrc("common/mime/preview_hover_ar.png");
-			this._oLicenseInfoButton.setSrc("common/mime/license_ar.png");
-			this._oShareholderInfoButton.setSrc("common/mime/shareholder_ar.png");
-			this._oTermsInfoButton.setSrc("common/mime/terms_ar.png");
-			this._oSubmitInfoButton.setSrc("common/mime/submit_ar.png");
-			this._oBasicInfoButton.setSrc("common/mime/basicinfo_ar.png");
+		if(this.allBAQLoaded){
+			this.oSaveImage.setVisible(false);
+			this.oSaveLink.setVisible(false);
+			
+			this.getPreviewBAQ(this.oLanguageSelect.getSelectedKey());
+			
+			this._oPreviewInfoContent.setVisible(true);
+			this._oShareHoldersInfoContent.setVisible(false);
+			this._oLicenseInfoContent.setVisible(false);
+			this._oBasicInfoContent.setVisible(false);
+			this._oTermsAndConditionsInfoContent.setVisible(false);
+			this._oStagesHeading.setContent(this.oModelHelper
+					.getText("PreviewInformationHTML"));
+			
+			
+			
+			if(sap.ui.getCore().getConfiguration().getRTL()){			
+				this._oPreviewInfoButton.setSrc("common/mime/preview_hover_ar.png");
+				this._oLicenseInfoButton.setSrc("common/mime/license_ar.png");
+				this._oShareholderInfoButton.setSrc("common/mime/shareholder_ar.png");
+				this._oTermsInfoButton.setSrc("common/mime/terms_ar.png");
+				this._oSubmitInfoButton.setSrc("common/mime/submit_ar.png");
+				this._oBasicInfoButton.setSrc("common/mime/basicinfo_ar.png");
+			}else{
+				this._oPreviewInfoButton.setSrc("common/mime/preview_hover.png");
+				this._oLicenseInfoButton.setSrc("common/mime/license.png");
+				this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
+				this._oTermsInfoButton.setSrc("common/mime/terms.png");
+				this._oSubmitInfoButton.setSrc("common/mime/submit.png");
+				this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+			}
+			
+			
+			this.oValidationHelper.validateBasicInfo(this);
+			this.handlePreviewLicenseInfoTabStripSelect();
+			
+			
+			
+			this.oPreviewESHCreateNSHTable = this.getView().byId("idPreviewESHCreateNSHTable");
+			this.oPreviewESHCreateNSHTable.unbindItems();
+
+			this.oPreviewESHCreateNSHTable.setModel(this.oSHJSONModel);
+			
+			this.oPreviewESHCreateNSHTable.bindItems("/SavedShareHolderCollection",new sap.m.ColumnListItem({
+				cells : [ new sap.ui.commons.TextView({
+			          text : "{ShareHolderName}"//, enabled : false
+			        }),new sap.ui.commons.TextView({
+			          text : "{Percentage}"//, enabled : false
+			        }),  new sap.ui.commons.TextView({
+			          text : "{Nationalty}"//, enabled : false
+			        })]
+		      }));
 		}else{
-			this._oPreviewInfoButton.setSrc("common/mime/preview_hover.png");
-			this._oLicenseInfoButton.setSrc("common/mime/license.png");
-			this._oShareholderInfoButton.setSrc("common/mime/shareholder.png");
-			this._oTermsInfoButton.setSrc("common/mime/terms.png");
-			this._oSubmitInfoButton.setSrc("common/mime/submit.png");
-			this._oBasicInfoButton.setSrc("common/mime/basicinfo.png");
+			sap.m.MessageToast.show(that.oModelHelper.getText("LoadingPBAQ"), {duration : 5000});
+			this.handleLicenseButtonClick();
 		}
 		
 		
-		this.oValidationHelper.validateBasicInfo(this);
-		this.handlePreviewLicenseInfoTabStripSelect();
-		
-		
-		
-		this.oPreviewESHCreateNSHTable = this.getView().byId("idPreviewESHCreateNSHTable");
-		this.oPreviewESHCreateNSHTable.unbindItems();
-
-		this.oPreviewESHCreateNSHTable.setModel(this.oSHJSONModel);
-		
-		this.oPreviewESHCreateNSHTable.bindItems("/SavedShareHolderCollection",new sap.m.ColumnListItem({
-			cells : [ new sap.ui.commons.TextView({
-		          text : "{ShareHolderName}"//, enabled : false
-		        }),new sap.ui.commons.TextView({
-		          text : "{Percentage}"//, enabled : false
-		        }),  new sap.ui.commons.TextView({
-		          text : "{Nationalty}"//, enabled : false
-		        })]
-	      }));
 		
 		/*this.oPreviewNSHCreateNSHTable = this.getView().byId("idPreviewNSHCreateNSHTable");
 		this.oPreviewNSHCreateNSHTable.unbindItems();		
@@ -8697,6 +8768,10 @@ handleRegisterUserButtonPress : function() {
 	},
 	handleSubmitAlertYesConfirmedDialogButtonPress : function(){
 		this.oShowSubmitAlertDialog.close();
+		
+		if(!this.oProductsTableVBox.getVisible()){
+			this.oModelHelper.deleteSavedIndustrialProducts(this.oRef_id);
+		}
 		
 		this.oSubmitClicked = true;
 		this.handleSaveLinkPressSave();

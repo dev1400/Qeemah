@@ -188,7 +188,7 @@
 		</VBox>
 		<!-- Left hand buttons start -->
 		
-		<VBox id="idVBoxSubmittedApplicationStatus" justifyContent="Center" alignItems="Center">
+		<VBox id="idVBoxSubmittedApplicationStatus" justifyContent="Center" alignItems="Center" visible="false">
 	
 	 		<!-- <sap.ui.commons:TextView id="idSubmittedApplicationTextView" class="textcolorwhite" design="H2"></sap.ui.commons:TextView>
 	 		 -->

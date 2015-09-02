@@ -38,7 +38,17 @@ com.sagia.common.js.validate = {
 				thisContext._oidLicenseButtonsHBox.setVisible(true);
 				thisContext.oVBoxSubmittedApplicationStatus.setVisible(false);*/
 				
+				thisContext._oidMainPageContent.setVisible(false);
+				thisContext._oTopHeaderVBox.setVisible(true);
+				thisContext._oidLicenseButtonsHBox.setVisible(true);
+				thisContext.oVBoxSubmittedApplicationStatus.setVisible(false);
 				
+				sap.m.MessageToast.show(thisContext.oModelHelper
+						.getText("SignInSuccessful"), {duration : 1000});
+				thisContext.closeBusyDialog();
+				
+				
+				//thisContext.getBAQ(thisContext.oLanguageSelect.getSelectedKey());
 				
 				thisContext.oRef_id = oResponse.Ref_id;
 
@@ -138,15 +148,6 @@ com.sagia.common.js.validate = {
 				thisContext.oOriginalBIOILaborSizeInputTextValue = thisContext.oBIOILaborSizeInputText.getValue();
 
 				
-				thisContext._oidMainPageContent.setVisible(false);
-				thisContext._oTopHeaderVBox.setVisible(true);
-				thisContext._oidLicenseButtonsHBox.setVisible(true);
-				thisContext.oVBoxSubmittedApplicationStatus.setVisible(false);
-				
-				sap.m.MessageToast.show(thisContext.oModelHelper
-						.getText("SignInSuccessful"));
-				thisContext.closeBusyDialog();
-				
 				
 				thisContext.oBIOIOrganizationName.setValue(oResponse.Company);
 				
@@ -242,7 +243,7 @@ com.sagia.common.js.validate = {
 				}, thisContext));	
 				
 				//thisContext.openBusyDialog();
-				var oRequestFinishedDeferredBAQAnswersReadChild = thisContext.oModelHelper.readBAQSavedAnswers(thisContext.oRef_id);
+				/*var oRequestFinishedDeferredBAQAnswersReadChild = thisContext.oModelHelper.readBAQSavedAnswers(thisContext.oRef_id);
 
 				jQuery.when(oRequestFinishedDeferredBAQAnswersReadChild).then(jQuery.proxy(function(oResponse) {
 					//thisContext.closeBusyDialog();
@@ -269,7 +270,7 @@ com.sagia.common.js.validate = {
 						}else{
 							thisContext.oBAQExists = false;	
 						}
-				}, thisContext));
+				}, thisContext));*/
 				
 				thisContext.oGroupMultiSelectionTextView = thisContext.getView().byId("idGroupMultiSelectionTextView");
 				thisContext.oClassMultiSelectionTextView = thisContext.getView().byId("idClassMultiSelectionTextView");
@@ -281,7 +282,7 @@ com.sagia.common.js.validate = {
 				var getarray = [];
 		        getarray.push(oRequestFinishedDeferredBIOIChild);
 		        getarray.push(oRequestFinishedDeferredBICIChild);
-		        getarray.push(oRequestFinishedDeferredBAQAnswersReadChild);
+		        //getarray.push(oRequestFinishedDeferredBAQAnswersReadChild);
 		        getarray.push(oRequestFinishedDeferredISICRecord);				        
 					        
 		        jQuery.when.apply($, getarray).done(function () {				        	 							        						        	

@@ -31,7 +31,7 @@
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="Begin" colSpan="4">
 						<sap.ui.commons.layout:content>
-							<BusyIndicator size="1.8em" id="idPreviewBAQbusyIndicator" text="{i18n>LoadingPW}"/>
+							<BusyIndicator size="1.8em" id="idPreviewBAQbusyIndicator" text="{i18n>Loading}"/>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					

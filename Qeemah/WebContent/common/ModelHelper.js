@@ -1914,6 +1914,29 @@ com.sagia.common.ModelHelper = {
 		return oRequestFinishedDeferred;
 	},
 	/**
+	 * delete Saved Industrial Products
+	 */
+	deleteSavedIndustrialProducts : function(oRefID) {
+		
+		
+		var that = this;
+		var oRequestFinishedDeferred = jQuery.Deferred();
+		
+     	this.oODataModel.setUseBatch(false);
+     	this.oODataModel.remove("ProdPsSet(Investorid='"+oRefID+"')", {
+			success : function(oData, response) {
+			
+
+				oRequestFinishedDeferred.resolve(response);
+			},
+			error : function(oResponse) {
+				
+				oRequestFinishedDeferred.resolve();
+			}, async : true});
+
+		return oRequestFinishedDeferred;
+	},
+	/**
 	 * Read Industrial Products UOM
 	 */
 	readIndustrialProductsUOM : function(oLanguage) {
