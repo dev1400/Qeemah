@@ -3410,6 +3410,29 @@ that.closeBusyDialog();
 		 }
 			
 	 }
+	 else if (this.oBICIPOBoxInputText.getValue() === "") {
+			this.oValidationLILIStatus = false;
+
+			this.oBICIPOBoxInputText.setValueState("Error");
+			this.oBICIPOBoxInputText.setShowValueStateMessage(false);
+
+			if (!this.oShowAlertDialog.isOpen()) {
+				this.oAlertTextView.setText(this.oModelHelper
+						.getText("BICIPOBoxReq"));
+				this.oShowAlertDialog.open();
+			}
+	} else if (this.oBICIPostalCodeInputText.getValue() === "") {
+			this.oValidationLILIStatus = false;
+
+			this.oBICIPostalCodeInputText.setValueState("Error");
+			this.oBICIPostalCodeInputText.setShowValueStateMessage(false);
+
+			if (!this.oShowAlertDialog.isOpen()) {
+				this.oAlertTextView.setText(this.oModelHelper
+						.getText("BICIPostalCodeReq"));
+				this.oShowAlertDialog.open();
+			}
+		}
 	else if(this.oBICIRoleInputText.getSelectedKey() === ""){		
 		this.oShowSubmitAlertDialog.close();
 		 this.oValidationLILIStatus = false;

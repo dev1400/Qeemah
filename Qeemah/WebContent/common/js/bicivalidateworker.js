@@ -370,7 +370,7 @@ com.sagia.common.js.bicivalidateworker = {
 				othis.oShowAlertDialog.open();
 			 }
 				
-	   	 }if(othis.oBICILastNameInputText.getValue() === ""){		
+	   	 }else if(othis.oBICILastNameInputText.getValue() === ""){		
 			 othis.oValidationLILIStatus = false;
 			 
 			 
@@ -586,7 +586,29 @@ com.sagia.common.js.bicivalidateworker = {
 					othis.oAlertTextView.setText(othis.oModelHelper.getText("BICIPostalCode"));
 					othis.oShowAlertDialog.open();
 				 }
-			   }else if(othis.oBICIStreet.getValue().length > 60){
+			   }else if (othis.oBICIPOBoxInputText.getValue() === "") {
+					othis.oValidationLILIStatus = false;
+
+					othis.oBICIPOBoxInputText.setValueState("Error");
+					othis.oBICIPOBoxInputText.setShowValueStateMessage(false);
+
+					if (!othis.oShowAlertDialog.isOpen()) {
+						othis.oAlertTextView.setText(othis.oModelHelper
+								.getText("BICIPOBoxReq"));
+						othis.oShowAlertDialog.open();
+					}
+				} else if (othis.oBICIPostalCodeInputText.getValue() === "") {
+					othis.oValidationLILIStatus = false;
+
+					othis.oBICIPostalCodeInputText.setValueState("Error");
+					othis.oBICIPostalCodeInputText.setShowValueStateMessage(false);
+
+					if (!othis.oShowAlertDialog.isOpen()) {
+						othis.oAlertTextView.setText(othis.oModelHelper
+								.getText("BICIPostalCodeReq"));
+						othis.oShowAlertDialog.open();
+					}
+				}else if(othis.oBICIStreet.getValue().length > 60){
 			  		othis.oValidationLILIStatus = false;
 			  		
 					 
