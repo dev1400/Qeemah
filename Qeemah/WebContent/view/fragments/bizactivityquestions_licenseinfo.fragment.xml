@@ -187,7 +187,7 @@
 		<VBox id="idProductsTableVBox" visible="false" alignItems="Center">
 
 			<sap.ui.commons.layout:MatrixLayout
-				layoutFixed="true" columns="2" widths="30%,50%">
+				layoutFixed="true" columns="2" widths="50%,50%">
 				<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
 				<sap.ui.commons.layout:MatrixLayoutCell colSpan="2">
@@ -251,7 +251,7 @@
 
 						</sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:MatrixLayoutCell>
-							<Input width="50%" type="Text" id="idLILIProductQuantityInputText"></Input>
+							<Input width="25%" type="Text" id="idLILIProductQuantityInputText"></Input>
 						</sap.ui.commons.layout:MatrixLayoutCell>
 					</sap.ui.commons.layout:cells>
 				</sap.ui.commons.layout:MatrixLayoutRow>
@@ -276,7 +276,7 @@
 
 						</sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:MatrixLayoutCell>
-							<ComboBox width="50%" items="{/IndustrialProductsCollectionUOM}"
+							<ComboBox width="25%" items="{/IndustrialProductsCollectionUOM}"
 								id="idLILIIndustrialProductUOMComboBox" selectionChange="handleLILIIndustrialProductsUOMComboBoxSelectionChange">
 								<sap.ui.core:ListItem key="{Msehi}" text="{Msehl}"
 									id="idLILIIndustrialProductUOMComboBoxitem" />

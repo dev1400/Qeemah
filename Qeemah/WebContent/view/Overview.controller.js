@@ -335,6 +335,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 	handleLILINextButtonPress : function(){
 		if(this.oISICvalidateworker.validateISICPresence(this)){
 			this.handleShareholderInfoButtonClick();
+			if(!this.oProductsTableVBox.getVisible()){
+				this.oModelHelper.deleteSavedIndustrialProducts(this.oRef_id);
+			}
 			this.oISICvalidateworker.saveData(this, true);
 		}
 		
@@ -571,6 +574,12 @@ sap.ui.controller("com.sagia.view.Overview", {
 					 sap.m.MessageToast.show(this.oModelHelper.getText("UserIDdoesnotexist"));
 				 }else{
 					 sap.m.MessageToast.show(this.oModelHelper.getText("PasswordSentToEmail"));
+					 this.oForgotPasswordMatrixLayout.setVisible(false);
+					 
+					 this.oSignInMatrixLayout.setVisible(true);
+					 this.oSignInButtonsMatrixLayout.setVisible(true);
+					 this.oForgotResetPasswordLinksMatrixLayout.setVisible(true);
+					 
 				 }
 				 
 			 }, this));	
@@ -1505,6 +1514,8 @@ sap.ui.controller("com.sagia.view.Overview", {
 									 											 var oEQAnswer = sap.ui.getCore().byId("idEQAnswer"+j);
 									 											 oEQAnswer.setSelectedKey("");
 									 										}
+									 										
+									 										that._oCREATE_NewShareHolderVBox.setVisible(false);
 									 							        	
 									 							        	 if(!that.oShowAlertDialog.isOpen())
 									 										 {
@@ -1608,7 +1619,7 @@ that.closeBusyDialog();
 			
 			sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHEQA"), {duration : 10000});
 	        var oRequestFinishedDeferredExperienceQ = that.oModelHelper.createShareHolderExperienceAnswers
-	        (that.oRef_id, experienceQuestions, experienceAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(), this.oBusinessTypeSurveyID, oLanguage);
+	        (that.oRef_id, experienceQuestions, experienceAnswers, that.oNSHOrganizationName.getValue(),that.oNSHOrgName2tText.getValue(), this.oBusinessTypeSurveyID, oLanguage);
 			jQuery.when(oRequestFinishedDeferredExperienceQ).then(jQuery.proxy(function(oResponse) {
 			    try{
 			    	//sap.m.MessageToast.show(this.oModelHelper.getText("UploadingNSHPPCopy"), {duration : 10000});
@@ -1639,25 +1650,25 @@ that.closeBusyDialog();
 										}
 										sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHAQA"), {duration : 10000});
 						             var oRequestFinishedDeferredcreateSHActivityAnswers = that.oModelHelper.createShareHolderActivityAnswers
-						 			(that.oRef_id, actvityQuestions, activityAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(),oLanguage);
+						 			(that.oRef_id, actvityQuestions, activityAnswers, that.oNSHOrganizationName.getValue(),that.oNSHOrgName2tText.getValue(),oLanguage);
 						  
 						     			jQuery.when(oRequestFinishedDeferredcreateSHActivityAnswers).then(jQuery.proxy(function(oResponse) {
 						     				
 						 	                try{
 						 	                	sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHFQA"), {duration : 25000});
 						 					var oRequestFinishedDeferredcreateFinancialAnswers1 = that.oModelHelper.createFinancialAnswers
-						 					(that.oRef_id, questions, answers1, "Year 1", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+						 					(that.oRef_id, questions, answers1, "Year 1", that.oNSHOrganizationName.getValue(),that.oNSHOrgName2tText.getValue());
 		
 						 					jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers1).then(jQuery.proxy(function(oResponse) {
 						 						
 						 						try{
 						 						var oRequestFinishedDeferredcreateFinancialAnswers2 = that.oModelHelper.createFinancialAnswers
-						 						(that.oRef_id, questions, answers2, "Year 2", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+						 						(that.oRef_id, questions, answers2, "Year 2", that.oNSHOrganizationName.getValue(),that.oNSHOrgName2tText.getValue());
 		
 						 						jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers2).then(jQuery.proxy(function(oResponse) {
 						 							try{
 						 							var oRequestFinishedDeferredcreateFinancialAnswers3 = that.oModelHelper.createFinancialAnswers
-						 							(that.oRef_id, questions, answers3, "Year 3", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
+						 							(that.oRef_id, questions, answers3, "Year 3", that.oNSHOrganizationName.getValue(),that.oNSHOrgName2tText.getValue());
 
 							 							jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers3).then(jQuery.proxy(function(oResponse) {
 							 							    try{
@@ -1730,6 +1741,8 @@ that.closeBusyDialog();
 									 											 var oEQAnswer = sap.ui.getCore().byId("idEQAnswer"+j);
 									 											 oEQAnswer.setSelectedKey("");
 									 										}
+									 										
+									 										that._oCREATE_NewShareHolderVBox.setVisible(false);
 									 							        	
 									 							        	 if(!that.oShowAlertDialog.isOpen())
 									 										 {
@@ -2894,6 +2907,11 @@ that.closeBusyDialog();
 			}
 			if(this.oLicenseInfoTab.getSelectedIndex() === 1){
 				if(this.oISICvalidateworker.validateISICPresence(this)){
+					
+					if(!this.oProductsTableVBox.getVisible()){
+						this.oModelHelper.deleteSavedIndustrialProducts(this.oRef_id);
+					}
+					
 				this.oISICvalidateworker.saveData(this, true);
 				}
 			}
@@ -5490,7 +5508,9 @@ that.closeBusyDialog();
 
 				jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 					answers.push(oResponse.data.results);
-					
+					if(n === (i-1)){
+						this.getFinancialQ();
+					}
 					n++;
 	                
 					if(n === questions.length){
@@ -6641,6 +6661,9 @@ that.closeBusyDialog();
 			}
 			this.oBAQvalidateworker.saveData(this, false);
 			if(this.oISICvalidateworker.validateISICPresence(this)){
+				if(!this.oProductsTableVBox.getVisible()){
+					this.oModelHelper.deleteSavedIndustrialProducts(this.oRef_id);
+				}
 				this.oISICvalidateworker.saveData(this, false);
 			}else{
 				this.oEverythingIsOk = false;
@@ -7248,6 +7271,12 @@ that.closeBusyDialog();
 		this._oADD_ExistingShareHolderVBox.setVisible(false);
 		this._oCREATE_NewShareHolderVBox.setVisible(true);
 		
+		if(!this.oFin_AQ_Loaded){
+			this.oFin_AQ_Loaded = true;
+			
+			//this.getFinancialQ();
+			this.getActivityQ();
+		}
 		
 	},
 	handleAddExistingShareHolderCancelButtonPress: function(){
@@ -7966,12 +7995,7 @@ handleRegisterUserButtonPress : function() {
 		}
 	},
 	handleShareholderInfoButtonClick : function(){
-		if(!this.oFin_AQ_Loaded){
-			this.oFin_AQ_Loaded = true;
-			
-			this.getFinancialQ();
-			this.getActivityQ();
-		}
+		
 		
 		//this.handleLILIClassMultiSelectionComboBoxChange();
 		//this.handleLicenseInfoTabStripSelect();

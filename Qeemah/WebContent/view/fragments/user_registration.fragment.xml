@@ -296,7 +296,7 @@
 				layoutFixed="true" columns="2" widths="48%" visible="false" id="idForgotPasswordMatrixLayout">
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
-						<sap.ui.commons:TextView text="{i18n>EnterRegEmailAddress}"
+						<sap.ui.commons:TextView text="{i18n>EnterRegUIDorEmail}"
 								class="textcolorwhite"></sap.ui.commons:TextView>
 					<sap.ui.commons:TextView text="*"
 							class="redcolortext"></sap.ui.commons:TextView>
