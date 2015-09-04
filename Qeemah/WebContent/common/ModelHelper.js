@@ -66,8 +66,11 @@ com.sagia.common.ModelHelper = {
 					"Authorization" : "Basic bmt1bWFyOnNhcDEyMw=="
 
 				}, true, true);
-		//this.oODataModel.refreshSecurityToken();		
-		
+		//this.oODataModel.refreshSecurityToken();
+		var that = this;
+		setInterval(function() {
+			that.oODataModel.refreshSecurityToken(function(){},function(){}, true);
+		}, 60 * 1000);
 		return this.oODataModel;
 	},
 	/**
@@ -95,6 +98,10 @@ com.sagia.common.ModelHelper = {
 					"Authorization" : "Basic bmt1bWFyOnNhcDEyMw=="
 
 				}, true, true);
+		var that = this;
+		setInterval(function() {
+			that.oBAQODataModel.refreshSecurityToken(function(){},function(){}, true);
+		}, 60 * 1000);
 		
 		return this.oBAQODataModel;
 	},
@@ -112,7 +119,10 @@ com.sagia.common.ModelHelper = {
 					"Authorization" : "Basic bmt1bWFyOnNhcDEyMw=="
 
 				}, true, true);
-		
+		var that = this;
+		setInterval(function() {
+			that.oShareHolderODataModel.refreshSecurityToken(function(){},function(){}, true);
+		}, 60 * 1000);
 		return this.oShareHolderODataModel;
 	},
 	/**Read industry sector

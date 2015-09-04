@@ -4071,7 +4071,22 @@ that.closeBusyDialog();
 				this.oAlertTextView.setText(this.oModelHelper.getText("LILIBizTypeRequired"));
 				this.oShowAlertDialog.open();
 			 }
-	   }else if(!this.oValidationHelper.checkIfAllBAQAreAnswered(this)){
+	   }else if(this.oLicenseTypeInputText.getValue() === ""){
+		   this.oShowSubmitAlertDialog.close();
+   		this.oValidationLILIStatus = false;
+   		
+   		this.handleLicenseButtonClick();
+		this.oLicenseInfoTab.setSelectedIndex(1);
+ 		 
+		//othis.oLicenseTypeInputText.setValueState("Error");
+		//othis.oLicenseTypeInputText.setShowValueStateMessage(false);
+  		
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			 this.oAlertTextView.setText(this.oModelHelper.getText("LicenseTypeIsMand"));
+			 this.oShowAlertDialog.open();
+		 }
+   }else if(!this.oValidationHelper.checkIfAllBAQAreAnswered(this)){
 		   this.oShowSubmitAlertDialog.close();
 		   this.handleLicenseButtonClick();
 			this.oLicenseInfoTab.setSelectedIndex(0);

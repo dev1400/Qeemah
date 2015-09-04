@@ -5,7 +5,18 @@ com.sagia.common.js.isicvalidateworker = {
     validateISICPresence : function(othis){
     	othis.oValidationLILIStatus = true;
     	
-    	if(othis.oLILIBusinessTypeComboBox.getSelectedKey() === ""){
+    	if(othis.oLicenseTypeInputText.getValue() === ""){
+    		othis.oValidationLILIStatus = false;
+	  		 
+    		//othis.oLicenseTypeInputText.setValueState("Error");
+    		//othis.oLicenseTypeInputText.setShowValueStateMessage(false);
+	  		
+			 if(!othis.oShowAlertDialog.isOpen())
+			 {
+				 othis.oAlertTextView.setText(othis.oModelHelper.getText("LicenseTypeIsMand"));
+				 othis.oShowAlertDialog.open();
+			 }
+	   }else if(othis.oLILIBusinessTypeComboBox.getSelectedKey() === ""){
     		othis.oValidationLILIStatus = false;
 	  		 
     		othis.oLILIBusinessTypeComboBox.setValueState("Error");
