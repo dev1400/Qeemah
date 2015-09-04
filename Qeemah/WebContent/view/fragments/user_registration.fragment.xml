@@ -49,7 +49,7 @@
 
 
 			<sap.ui.commons.layout:MatrixLayout
-				layoutFixed="true" columns="2" widths="48%" id="idRegistrationMatrixLayout"
+				layoutFixed="true" columns="2" widths="50%,50%" id="idRegistrationMatrixLayout"
 				visible="false">
 
 
@@ -114,7 +114,8 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-						<Input  width="30%" type="Text" id="idContactNumberInputText" /><!--liveChange="handleContactNumberEntryLiveChange"  -->
+					    <Input  width="8%" type="Text" value="966" enabled="false"/>
+						<Input  width="22%" type="Text" id="idContactNumberInputText" /><!--liveChange="handleContactNumberEntryLiveChange"  -->
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				
@@ -228,7 +229,7 @@
 				width="100%">
 
 				<sap.ui.commons.layout:MatrixLayout
-					layoutFixed="true" widths="48%" columns="2" id="idSignInMatrixLayout">
+					layoutFixed="true" widths="50%,50%" columns="2" id="idSignInMatrixLayout">
 					<sap.ui.commons.layout:MatrixLayoutRow>
 
 						<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">

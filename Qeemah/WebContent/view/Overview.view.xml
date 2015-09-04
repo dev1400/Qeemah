@@ -7,7 +7,7 @@
 
 
 		<VBox id="idMainPageContent">
-			<html:Marquee onmouseover="this.stop();" onmouseout="this.start();">
+			<!-- <html:Marquee onmouseover="this.stop();" onmouseout="this.start();">
 				<sap.ui.commons:TextView text="{i18n>BrowserMessage}"
 					class="textcolorwhite"></sap.ui.commons:TextView>
 				<html:a
@@ -25,9 +25,9 @@
 					<sap.ui.commons:TextView text="{i18n>DownloadFF}"
 						class="textcolorwhite"></sap.ui.commons:TextView>
 				</html:a>
-				<!-- <Link text="{i18n>DownloadIE}" href="https://www.microsoft.com/en-in/download/internet-explorer.aspx" 
-					target="_blank"></Link> -->
-			</html:Marquee>
+				<Link text="{i18n>DownloadIE}" href="https://www.microsoft.com/en-in/download/internet-explorer.aspx" 
+					target="_blank"></Link>
+			</html:Marquee> -->
 
 			<html:div align="left">
 			    <html:span>&#160;</html:span>
@@ -55,24 +55,23 @@
 							<sap.ui.commons.layout:MatrixLayout layoutFixed="true">
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell
-										hAlign="End" vAlign="Bottom">
-										<HBox justifyContent="End" alignItems="Center">
-											<Image src="common/mime/dot.png"></Image>
+										hAlign="End" >
+											<Image src="common/mime/dot.png" class="homePageRadioButtonsImage"></Image>
+											<html:span>&#160;</html:span>
 											<Link text="{i18n>ServiceGuide}"
 												href="https://www.sagia.gov.sa/en/Investor-tools/Licenses-Investors-Guide-/"
 												class="linkColor" target="_blank" />
-										</HBox>
-
+										
 
 									</sap.ui.commons.layout:MatrixLayoutCell>
 									<sap.ui.commons.layout:MatrixLayoutCell
-										hAlign="Begin" vAlign="Bottom">
-										<HBox justifyContent="Start" alignItems="Center">
-											<Image src="common/mime/dot.png"></Image>
+										hAlign="Begin">
+											<Image src="common/mime/dot.png" class="homePageRadioButtonsImage"></Image>
+											<html:span>&#160;</html:span>
 											<Link text="{i18n>DownloadForms}"
 												href="https://www.sagia.gov.sa/en/Investor-tools/E--Servoce-/Renew-Investment-license/Download-Forms-renew/"
 												class="linkColor" target="_blank" />
-										</HBox>
+										
 									</sap.ui.commons.layout:MatrixLayoutCell>
 
 
@@ -81,7 +80,67 @@
 							</sap.ui.commons.layout:MatrixLayout>
 						</sap.ui.commons.layout:MatrixLayoutCell>
 					</sap.ui.commons.layout:MatrixLayoutRow>
+					
 				</sap.ui.commons.layout:MatrixLayout>
+				<sap.ui.commons.layout:MatrixLayout layoutFixed="true" columns="2" widths="40%">
+				<sap.ui.commons.layout:MatrixLayoutRow>
+				    
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center" colSpan="2">
+					<sap.ui.commons:TextView text="*"
+							class="redcolortext"></sap.ui.commons:TextView>
+					<sap.ui.commons:TextView text="{i18n>BrowserMessage}"
+					class="textcolorwhite"></sap.ui.commons:TextView>
+					
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutRow>
+					
+					<sap.ui.commons.layout:MatrixLayoutCell></sap.ui.commons.layout:MatrixLayoutCell>
+					
+					<sap.ui.commons.layout:MatrixLayoutCell>
+					<Image src="common/mime/dot.png" class="homePageRadioButtonsImage"></Image>
+					<html:span>&#160;</html:span>
+					<Link text="{i18n>DownloadIE}"
+												href="https://www.microsoft.com/en-in/download/internet-explorer.aspx"
+												class="linkColor" target="_blank" />
+										
+					
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:MatrixLayoutRow>
+					
+					
+					
+					<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell></sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+					
+					<Image src="common/mime/dot.png" class="homePageRadioButtonsImage"></Image>
+					
+				<html:span>&#160;</html:span>
+				<Link text="{i18n>DownloadChrome}"
+												href="http://www.google.com/chrome/"
+												class="linkColor" target="_blank" />
+					
+				
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:MatrixLayoutRow>
+					
+					
+					
+					<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell></sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+					
+					<Image src="common/mime/dot.png" class="homePageRadioButtonsImage"></Image>
+					<html:span>&#160;</html:span>
+				<Link text="{i18n>DownloadFF}"
+												href="https://www.mozilla.org/en-US/firefox/new/"
+												class="linkColor" target="_blank" />
+					
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:MatrixLayoutRow>
+				</sap.ui.commons.layout:MatrixLayout>
+			
 
 
 
@@ -188,20 +247,24 @@
 		</VBox>
 		<!-- Left hand buttons start -->
 		
-		<VBox id="idVBoxSubmittedApplicationStatus" justifyContent="Center" alignItems="Center" visible="false">
+		<VBox id="idVBoxSubmittedApplicationStatus" width="100%" height="100%" justifyContent="Center" alignItems="Center" visible="false">
 	
 	 		<!-- <sap.ui.commons:TextView id="idSubmittedApplicationTextView" class="textcolorwhite" design="H2"></sap.ui.commons:TextView>
 	 		 -->
 	 		 <html:br/>
-<html:table border="1" cellpadding="5">
+	 		 <html:br/><html:br/>
+	 		 <html:br/><html:br/>
+	 		 <!-- <html:br/><html:br/>
+	 		 <html:br/><html:br/> -->
+<html:table border="1" cellpadding="20">
 	<html:tr>
-		<html:td><sap.ui.commons:TextView text="{i18n>ApplicationID}" class="textcolorwhite" design="H2"></sap.ui.commons:TextView></html:td>
-		<html:td><html:center><sap.ui.commons:TextView text="{i18n>Status}" class="textcolorwhite" design="H2"></sap.ui.commons:TextView></html:center></html:td>
+		<html:td><sap.ui.commons:TextView text="{i18n>ApplicationID}" class="textcolorwhite statusTextViewSizeHeading" ></sap.ui.commons:TextView></html:td>
+		<html:td><html:center><sap.ui.commons:TextView text="{i18n>Status}" class="textcolorwhite statusTextViewSizeHeading" ></sap.ui.commons:TextView></html:center></html:td>
 		
 	</html:tr>
 	<html:tr>
-		<html:td><html:center><sap.ui.commons:TextView id="idAppNumberTextView" class="textcolorwhite"></sap.ui.commons:TextView></html:center></html:td>
-		<html:td><sap.ui.commons:TextView id="idAppStatus" class="textcolorwhite" ></sap.ui.commons:TextView></html:td>
+		<html:td><html:center><sap.ui.commons:TextView id="idAppNumberTextView" class="textcolorwhite statusTextViewSize"></sap.ui.commons:TextView></html:center></html:td>
+		<html:td><sap.ui.commons:TextView id="idAppStatus" class="textcolorwhite statusTextViewSize" ></sap.ui.commons:TextView></html:td>
 		
 	</html:tr>
 </html:table>
