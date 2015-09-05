@@ -68,8 +68,18 @@ com.sagia.common.ModelHelper = {
 				}, true, true);
 		//this.oODataModel.refreshSecurityToken();
 		var that = this;
+		
+		that.Counter = 1;
+		
 		setInterval(function() {
 			that.oODataModel.refreshSecurityToken(function(){},function(){}, true);
+			
+			console.log(that.Counter);
+			that.Counter++;
+			if(that.Counter === 15){				
+				$(window).unbind('beforeunload');	
+				location.reload(true);
+			}
 		}, 60 * 1000);
 		return this.oODataModel;
 	},
