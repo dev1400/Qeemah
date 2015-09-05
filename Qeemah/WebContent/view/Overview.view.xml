@@ -52,96 +52,12 @@
 					</sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutRow>
 						<sap.ui.commons.layout:MatrixLayoutCell>
-							<sap.ui.commons.layout:MatrixLayout layoutFixed="true">
-								<sap.ui.commons.layout:MatrixLayoutRow>
-									<sap.ui.commons.layout:MatrixLayoutCell
-										hAlign="End" >
-											<Image src="common/mime/dot.png" class="homePageRadioButtonsImage"></Image>
-											<html:span>&#160;</html:span>
-											<Link text="{i18n>ServiceGuide}"
-												href="https://www.sagia.gov.sa/en/Investor-tools/Licenses-Investors-Guide-/"
-												class="linkColor" target="_blank" />
-										
-
-									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell
-										hAlign="Begin">
-											<Image src="common/mime/dot.png" class="homePageRadioButtonsImage"></Image>
-											<html:span>&#160;</html:span>
-											<Link text="{i18n>DownloadForms}"
-												href="https://www.sagia.gov.sa/en/Investor-tools/E--Servoce-/Renew-Investment-license/Download-Forms-renew/"
-												class="linkColor" target="_blank" />
-										
-									</sap.ui.commons.layout:MatrixLayoutCell>
-
-
-								</sap.ui.commons.layout:MatrixLayoutRow>
-
-							</sap.ui.commons.layout:MatrixLayout>
+							
 						</sap.ui.commons.layout:MatrixLayoutCell>
 					</sap.ui.commons.layout:MatrixLayoutRow>
 					
 				</sap.ui.commons.layout:MatrixLayout>
-				<sap.ui.commons.layout:MatrixLayout layoutFixed="true" columns="2" widths="40%">
-				<sap.ui.commons.layout:MatrixLayoutRow>
-				    
-					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center" colSpan="2">
-					<sap.ui.commons:TextView text="*"
-							class="redcolortext"></sap.ui.commons:TextView>
-					<sap.ui.commons:TextView text="{i18n>BrowserMessage}"
-					class="textcolorwhite"></sap.ui.commons:TextView>
-					
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					</sap.ui.commons.layout:MatrixLayoutRow>
-					<sap.ui.commons.layout:MatrixLayoutRow>
-					
-					<sap.ui.commons.layout:MatrixLayoutCell></sap.ui.commons.layout:MatrixLayoutCell>
-					
-					<sap.ui.commons.layout:MatrixLayoutCell>
-					<Image src="common/mime/dot.png" class="homePageRadioButtonsImage"></Image>
-					<html:span>&#160;</html:span>
-					<Link text="{i18n>DownloadIE}"
-												href="https://www.microsoft.com/en-in/download/internet-explorer.aspx"
-												class="linkColor" target="_blank" />
-										
-					
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					</sap.ui.commons.layout:MatrixLayoutRow>
-					
-					
-					
-					<sap.ui.commons.layout:MatrixLayoutRow>
-					<sap.ui.commons.layout:MatrixLayoutCell></sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell>
-					
-					<Image src="common/mime/dot.png" class="homePageRadioButtonsImage"></Image>
-					
-				<html:span>&#160;</html:span>
-				<Link text="{i18n>DownloadChrome}"
-												href="http://www.google.com/chrome/"
-												class="linkColor" target="_blank" />
-					
 				
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					</sap.ui.commons.layout:MatrixLayoutRow>
-					
-					
-					
-					<sap.ui.commons.layout:MatrixLayoutRow>
-					<sap.ui.commons.layout:MatrixLayoutCell></sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell>
-					
-					<Image src="common/mime/dot.png" class="homePageRadioButtonsImage"></Image>
-					<html:span>&#160;</html:span>
-				<Link text="{i18n>DownloadFF}"
-												href="https://www.mozilla.org/en-US/firefox/new/"
-												class="linkColor" target="_blank" />
-					
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					</sap.ui.commons.layout:MatrixLayoutRow>
-				</sap.ui.commons.layout:MatrixLayout>
-			
-
 
 
 			</VBox>
