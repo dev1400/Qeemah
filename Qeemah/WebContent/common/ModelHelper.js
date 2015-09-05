@@ -74,7 +74,7 @@ com.sagia.common.ModelHelper = {
 		setInterval(function() {
 			that.oODataModel.refreshSecurityToken(function(){},function(){}, true);
 			
-			console.log(that.Counter);
+			//console.log(that.Counter);
 			that.Counter++;
 			if(that.Counter === 15){				
 				$(window).unbind('beforeunload');	
