@@ -542,10 +542,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 	},
 	handleSubmitPasswordForgotButtonPress : function(){
-		if(this.oForgotPasswordInput.getValue().length > 10){
+		if(this.oForgotPasswordInput.getValue().length > 241){
 			if(!this.oShowAlertDialog.isOpen())
 			{
-			this.oAlertTextView.setText(this.oModelHelper.getText("UserIDLength"));
+			this.oAlertTextView.setText(this.oModelHelper.getText("ForgotPasswordEmailIDLength"));
 			this.oShowAlertDialog.open();
 			
 			}			
@@ -571,7 +571,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 				 this.oForgotPasswordInput.setValue("");
 				 
 				 if(oResponse.Return === "User ID does not exist"){
-					 sap.m.MessageToast.show(this.oModelHelper.getText("UserIDdoesnotexist"));
+					 sap.m.MessageToast.show(this.oModelHelper.getText("EmailIDdoesnotexist"));
 				 }else{
 					 sap.m.MessageToast.show(this.oModelHelper.getText("PasswordSentToEmail"));
 					 this.oForgotPasswordMatrixLayout.setVisible(false);
