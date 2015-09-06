@@ -75,11 +75,11 @@ com.sagia.common.ModelHelper = {
 			that.oODataModel.refreshSecurityToken(function(){},function(){}, true);
 			
 			//console.log(that.Counter);
-			that.Counter++;
+			/*that.Counter++;
 			if(that.Counter === 15){				
 				$(window).unbind('beforeunload');	
 				location.reload(true);
-			}
+			}*/
 		}, 60 * 1000);
 		return this.oODataModel;
 	},

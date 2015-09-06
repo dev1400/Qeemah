@@ -465,6 +465,22 @@ com.sagia.common.js.validate = {
 				});*/
 				
 				
+				setTimeout(function(){ 	
+					sap.m.MessageToast.show(thisContext.oModelHelper
+							.getText("SessionTimeOut10"), {duration : 3000});					
+				}, 1800000);
+				
+				setTimeout(function(){ 	
+					sap.m.MessageToast.show(thisContext.oModelHelper
+							.getText("SessionTimeOut5"), {duration : 3000});					
+				}, 2100000);
+				
+				setTimeout(function(){ 	
+					sap.m.MessageToast.show(thisContext.oModelHelper
+							.getText("SessionTimeOut"), {duration : 3000});
+					$(window).unbind('beforeunload');	
+					location.reload(true);
+				}, 2400000);	
 				
 				
 				
