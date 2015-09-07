@@ -85,9 +85,13 @@
 .linkColorWhite {
 	color: White !important;
 }
+
 .sapMLnk {
     font-size: 1rem !important;
     font-family: SEGOEUI-Normal !important;
+}
+.BrowserMessagelinkSize {
+	font-size: 0.9rem !important;
 }
 .BasicInfoButtonBGVBOX {
   padding-left: 1.7em;
@@ -315,6 +319,9 @@
 .sapUiTv {
   font-family: SEGOEUI-Normal !important;
   font-size: 1rem !important;
+}
+.browserMessageTextViewSize {  
+  font-size: 0.9rem !important;
 }
 /* .BottomVBoxForNEXtPrevious{
 	height: 3.8rem !important;

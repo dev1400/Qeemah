@@ -333,7 +333,7 @@
 					<sap.ui.commons:TextView text="*"
 							class="redcolortext"></sap.ui.commons:TextView>
 					<sap.ui.commons:TextView text="{i18n>BrowserMessage}"
-					class="textcolorwhite"></sap.ui.commons:TextView>
+					class="textcolorwhite browserMessageTextViewSize"></sap.ui.commons:TextView>
 					
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					</sap.ui.commons.layout:MatrixLayoutRow>
@@ -346,7 +346,7 @@
 					<html:span>&#160;</html:span>
 					<Link text="{i18n>DownloadIE}"
 												href="https://www.microsoft.com/en-in/download/internet-explorer.aspx"
-												class="linkColor" target="_blank" />
+												class="linkColor BrowserMessagelinkSize" target="_blank" />
 										
 					
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -363,7 +363,7 @@
 				<html:span>&#160;</html:span>
 				<Link text="{i18n>DownloadChrome}"
 												href="http://www.google.com/chrome/"
-												class="linkColor" target="_blank" />
+												class="linkColor BrowserMessagelinkSize" target="_blank" />
 					
 				
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -379,7 +379,7 @@
 					<html:span>&#160;</html:span>
 				<Link text="{i18n>DownloadFF}"
 												href="https://www.mozilla.org/en-US/firefox/new/"
-												class="linkColor" target="_blank" />
+												class="linkColor BrowserMessagelinkSize" target="_blank" />
 					
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					</sap.ui.commons.layout:MatrixLayoutRow>

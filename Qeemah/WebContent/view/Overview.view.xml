@@ -165,10 +165,11 @@
 		
 		<VBox id="idVBoxSubmittedApplicationStatus" width="100%" height="100%" justifyContent="Center" alignItems="Center" visible="false">
 	
-	 		<!-- <sap.ui.commons:TextView id="idSubmittedApplicationTextView" class="textcolorwhite" design="H2"></sap.ui.commons:TextView>
-	 		 -->
+	 		
+	 		
 	 		 <html:br/>
 	 		 <html:br/><html:br/>
+	 		 <sap.ui.commons:TextView id="idSubmittedApplicationTextView" class="textcolorwhite" text="{i18n>YourAppStatusIs}" design="H2"></sap.ui.commons:TextView>
 	 		 <html:br/><html:br/>
 	 		 <!-- <html:br/><html:br/>
 	 		 <html:br/><html:br/> -->
