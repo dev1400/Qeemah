@@ -755,6 +755,16 @@ sap.ui.controller("com.sagia.view.Overview", {
 				this.oAlertTextView.setText(this.oModelHelper.getText("ESHEntityNoRequired"));
 				this.oShowAlertDialog.open();
 			 }
+		}else if(this.oExistingShareHolderEntityNo.getValue().length >  10){
+	   		 
+	   		 this.oExistingShareHolderEntityNo.setValueState("Error");
+			 this.oExistingShareHolderEntityNo.setShowValueStateMessage(false);
+			
+			if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("ESHEntityNoLength"));
+				this.oShowAlertDialog.open();
+			 }
 		}else if((Number(this.oESHPercentageInputText.getValue()) + this.oGlobalLocalESHTotalShareHolderPercentage) > 100){
 	   	//}else if(this.oGlobalLocalESHTotalShareHolderPercentage > 100){
 			
@@ -2945,7 +2955,7 @@ that.closeBusyDialog();
 			this.oShowAlertDialog.open();
 		 }
 			
-  	 }else if(this.oBIOIOrganizationName.getValue().length > 100){		
+  	 }else if(this.oBIOIOrganizationName.getValue().length > 40){		
   		this.oShowSubmitAlertDialog.close();
 		 this.oValidationLILIStatus = false;
 		 this.handleBasicInfoButtonClick();
@@ -3065,7 +3075,7 @@ that.closeBusyDialog();
 			this.oShowAlertDialog.open();
 		 }
 			
-  	 }else if(this.oOriginalBIOILaborSizeInputTextValue.length > 10){
+  	 }else if(this.oOriginalBIOILaborSizeInputTextValue.length > 20){
   		this.oShowSubmitAlertDialog.close();
   		this.oValidationLILIStatus = false;
   		this.handleBasicInfoButtonClick();
@@ -3079,7 +3089,7 @@ that.closeBusyDialog();
 			this.oAlertTextView.setText(this.oModelHelper.getText("BIOILaborSize"));
 			this.oShowAlertDialog.open();
 		 }
-  	 }else if(this.oOriginalBIOICapitalInputTextValue.length > 25){
+  	 }else if(this.oOriginalBIOICapitalInputTextValue.length > 20){
   		this.oShowSubmitAlertDialog.close();
   		this.oValidationLILIStatus = false;
   		this.handleBasicInfoButtonClick();
@@ -3164,7 +3174,7 @@ that.closeBusyDialog();
 			this.oShowAlertDialog.open();
 		 }
 			
-  	 }else if(!(this.oBIOITelephoneInputText.getValue().length <= 30 && this.oBIOITelephoneInputText.getValue().length >= 5)){			
+  	 }else if(!(this.oBIOITelephoneInputText.getValue().length <= 40 && this.oBIOITelephoneInputText.getValue().length >= 5)){			
   		this.oShowSubmitAlertDialog.close();
   		 this.oValidationLILIStatus = false;
 		 this.handleBasicInfoButtonClick();
@@ -3175,7 +3185,7 @@ that.closeBusyDialog();
 
   		 if(!this.oShowAlertDialog.isOpen())
 		 {
-			this.oAlertTextView.setText(this.oModelHelper.getText("BIOITelephoneNoLength"));
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOITelephoneNoLengthMsg"));
 			this.oShowAlertDialog.open();
 		 }
 			
@@ -3233,7 +3243,7 @@ that.closeBusyDialog();
 			this.oShowAlertDialog.open();
 		 }
 			
-  	 }else if(!(this.oBIOIFaxInputText.getValue().length <= 20 && this.oBIOIFaxInputText.getValue().length >= 5)){			
+  	 }else if(!(this.oBIOIFaxInputText.getValue().length <= 40 && this.oBIOIFaxInputText.getValue().length >= 5)){			
   		this.oShowSubmitAlertDialog.close();
   		 this.oValidationLILIStatus = false;
 		 this.handleBasicInfoButtonClick();
@@ -3244,7 +3254,7 @@ that.closeBusyDialog();
 
   		 if(!this.oShowAlertDialog.isOpen())
 		 {
-			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIFaxNoLength"));
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIFaxNoLengthMsg"));
 			this.oShowAlertDialog.open();
 		 }
 			
@@ -3302,7 +3312,7 @@ that.closeBusyDialog();
 			this.oShowAlertDialog.open();
 		 }
 			
-  	 }else if(!(this.oBIOIMobilephoneInputText.getValue().length <= 30 && this.oBIOIMobilephoneInputText.getValue().length >= 5)){
+  	 }else if(!(this.oBIOIMobilephoneInputText.getValue().length <= 40 && this.oBIOIMobilephoneInputText.getValue().length >= 5)){
   		this.oShowSubmitAlertDialog.close();
   		 this.oValidationLILIStatus = false;
 		 this.handleBasicInfoButtonClick();
@@ -3313,7 +3323,7 @@ that.closeBusyDialog();
 
 		 if(!this.oShowAlertDialog.isOpen())
 		 {
-			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIMobileNoLength"));
+			this.oAlertTextView.setText(this.oModelHelper.getText("BIOIMobileNoLengthMsg"));
 			this.oShowAlertDialog.open();
 		 }
 			
@@ -3347,7 +3357,7 @@ that.closeBusyDialog();
 			this.oShowAlertDialog.open();
 		 }
 			
-  	 }else if(this.oBIOIWebSiteInputText.getValue().length > 60){	
+  	 }else if(this.oBIOIWebSiteInputText.getValue().length > 132){	
   		this.oShowSubmitAlertDialog.close();
 		 this.oValidationLILIStatus = false;
 		 this.handleBasicInfoButtonClick();

@@ -351,7 +351,7 @@ com.sagia.common.js.validatenshworker = {
 				 }
 					
 		  	 }*/
-		 else if(thisContext.oOriginalNSHPersonLaborSizeInputTextValue.length > 10){	
+		 else if(thisContext.oOriginalNSHPersonLaborSizeInputTextValue.length > 20){	
 			 thisContext.oNewShareHolderValidation = false;
 
 			 thisContext.oNSHOrgLaborSizeInputText.setValueState("Error");
@@ -379,7 +379,7 @@ com.sagia.common.js.validatenshworker = {
 				 }
 					
 		  	 }*/
-		 else if(thisContext.oOriginalNSHOrgCapitalInputTextValue.length > 10){	
+		 else if(thisContext.oOriginalNSHOrgCapitalInputTextValue.length > 20){	
 			 thisContext.oNewShareHolderValidation = false;
 
 			 thisContext.oNSHOrgCapitalInputText.setValueState("Error");
@@ -436,7 +436,7 @@ com.sagia.common.js.validatenshworker = {
 			 }
 				
 	  	 }
-  	else if(thisContext.oNSHOrgTelephoneInputText.getValue().length > 20){	
+  	else if(thisContext.oNSHOrgTelephoneInputText.getValue().length > 30){	
 		 thisContext.oNewShareHolderValidation = false;
 
 		 thisContext.oNSHOrgTelephoneInputText.setValueState("Error");
@@ -464,7 +464,7 @@ com.sagia.common.js.validatenshworker = {
 			 }
 				
 	  	 }
-  	else if(thisContext.oNSHOrgFaxInputText.getValue().length > 20){	
+  	else if(thisContext.oNSHOrgFaxInputText.getValue().length > 30){	
 		 thisContext.oNewShareHolderValidation = false;
 
 		 thisContext.oNSHOrgFaxInputText.setValueState("Error");
@@ -487,16 +487,16 @@ com.sagia.common.js.validatenshworker = {
 
 			 if(!thisContext.oShowAlertDialog.isOpen())
 			 {
-				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHInvalidFaxNo"));
+				 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHInvalidMobNo"));
 				 thisContext.oShowAlertDialog.open();
 			 }
 				
 	  	 }
- 	else if(thisContext.oNSHOrgMobilephoneInputText.getValue().length > 20){	
+ 	else if(thisContext.oNSHOrgMobilephoneInputText.getValue().length > 30){	
 		 thisContext.oNewShareHolderValidation = false;
 
-		 thisContext.oNSHOrgFaxInputText.setValueState("Error");
-		 thisContext.oNSHOrgFaxInputText.setShowValueStateMessage(false);
+		 thisContext.oNSHOrgMobilephoneInputText.setValueState("Error");
+		 thisContext.oNSHOrgMobilephoneInputText.setShowValueStateMessage(false);
 			 
 
 			 if(!thisContext.oShowAlertDialog.isOpen())
@@ -563,7 +563,7 @@ com.sagia.common.js.validatenshworker = {
 				 thisContext.oShowAlertDialog.open();
 			 }
 	 }
- 	else if(thisContext.oNSHOrgWebsiteInputText.getValue().length > 255){	
+ 	else if(thisContext.oNSHOrgWebsiteInputText.getValue().length > 132){	
 		 thisContext.oNewShareHolderValidation = false;
 
 		 thisContext.oNSHOrgWebsiteInputText.setValueState("Error");
@@ -591,7 +591,7 @@ com.sagia.common.js.validatenshworker = {
 		 }	
  		 
  	 }
- 	else if(thisContext.oNSHOrgEmailInputText.getValue().length > 20){	
+ 	else if(thisContext.oNSHOrgEmailInputText.getValue().length > 241){	
 		 thisContext.oNewShareHolderValidation = false;
 
 		 thisContext.oNSHOrgWebsiteInputText.setValueState("Error");

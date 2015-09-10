@@ -602,7 +602,7 @@ com.sagia.common.js.validate = {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHFirstNameRequired"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
-  	   	     }else if(thisContext.oNSHFirstNameInputText.getValue().length > 80){
+  	   	     }else if(thisContext.oNSHFirstNameInputText.getValue().length > 40){
 					thisContext.oNewShareHolderValidation = false;
 					
 					thisContext.oNSHFirstNameInputText.setValueState("Error");
@@ -613,7 +613,7 @@ com.sagia.common.js.validate = {
 		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHFirstNameLength"));
 		  				thisContext.oShowAlertDialog.open();
 		  			 }			 							  				
-	  	   	 }else if(thisContext.oNSHLastNameInputText.getValue().length > 80){
+	  	   	 }else if(thisContext.oNSHLastNameInputText.getValue().length > 40){
 					thisContext.oNewShareHolderValidation = false;
 					
 					thisContext.oNSHLastNameInputText.setValueState("Error");
@@ -845,7 +845,7 @@ com.sagia.common.js.validate = {
 		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHMobilephoneNoValidation"));
 		  				thisContext.oShowAlertDialog.open();
 		  			 }			 							  				
-	  	   	 }else if(thisContext.oNSHFaxInputText.getValue().length > 20){	
+	  	   	 }else if(thisContext.oNSHFaxInputText.getValue().length > 30){	
 	 				thisContext.oNewShareHolderValidation = false;
 					
 					thisContext.oNSHFaxInputText.setValueState("Error");
@@ -966,7 +966,7 @@ com.sagia.common.js.validate = {
 		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHStreetLength"));
 		  				thisContext.oShowAlertDialog.open();
 		  			 }			 							  				
-	  	   	 }else if(thisContext.oNSHEmailInputText.getValue().length > 20){	
+	  	   	 }else if(thisContext.oNSHEmailInputText.getValue().length > 241){	
 				thisContext.oNewShareHolderValidation = false;
 				
 				thisContext.oNSHEmailInputText.setValueState("Error");
@@ -990,7 +990,7 @@ com.sagia.common.js.validate = {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHEmailLength"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
-	   	    }else if(thisContext.oNSHWebsiteInputText.getValue().length > 255){	
+	   	    }else if(thisContext.oNSHWebsiteInputText.getValue().length > 132){	
 			thisContext.oNewShareHolderValidation = false;
 			
 			thisContext.oNSHWebsiteInputText.setValueState("Error");

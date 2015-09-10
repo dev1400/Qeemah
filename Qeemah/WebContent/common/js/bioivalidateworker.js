@@ -138,7 +138,7 @@ com.sagia.common.js.bioivalidateworker = {
 			othis.oShowAlertDialog.open();
 			
 			}
-		 }else if(othis.oBIOIOrganizationName.getValue().length > 100){			
+		 }else if(othis.oBIOIOrganizationName.getValue().length > 40){			
 			 othis.oValidationLILIStatus = false;
 			 
 			 othis.oBIOIOrganizationName.setValueState("Error");
@@ -150,7 +150,7 @@ com.sagia.common.js.bioivalidateworker = {
 					othis.oShowAlertDialog.open();
 				 }
 					
-		  }else if(othis.oOriginalBIOILaborSizeInputTextValue.length > 10){
+		  }else if(othis.oOriginalBIOILaborSizeInputTextValue.length > 20){
 		  		othis.oValidationLILIStatus = false;
 		  		
 		  		 othis.oBIOILaborSizeInputText.setValueState("Error");
@@ -161,7 +161,7 @@ com.sagia.common.js.bioivalidateworker = {
 					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOILaborSize"));
 					othis.oShowAlertDialog.open();
 				 }
-		  	 }else if(othis.oOriginalBIOICapitalInputTextValue.length > 25){
+		  	 }else if(othis.oOriginalBIOICapitalInputTextValue.length > 20){
 		  		othis.oValidationLILIStatus = false;
 		  		
 		  		 othis.oBIOICapitalInputText.setValueState("Error");
@@ -172,7 +172,7 @@ com.sagia.common.js.bioivalidateworker = {
 					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOICapitalLength"));
 					othis.oShowAlertDialog.open();
 				 }
-		  	 }else if(!(othis.oBIOITelephoneInputText.getValue().length <= 30 && othis.oBIOITelephoneInputText.getValue().length >= 5)){			
+		  	 }else if(!(othis.oBIOITelephoneInputText.getValue().length <= 40 && othis.oBIOITelephoneInputText.getValue().length >= 5)){			
 				 othis.oValidationLILIStatus = false;
 				 
 				 othis.oBIOITelephoneInputText.setValueState("Error");
@@ -181,11 +181,11 @@ com.sagia.common.js.bioivalidateworker = {
 
 		  		 if(!othis.oShowAlertDialog.isOpen())
 				 {
-					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOITelephoneNoLength"));
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOITelephoneNoLengthMsg"));
 					othis.oShowAlertDialog.open();
 				 }
 					
-		  	 }else if(!(othis.oBIOIFaxInputText.getValue().length <= 20 && othis.oBIOIFaxInputText.getValue().length >= 5)){			
+		  	 }else if(!(othis.oBIOIFaxInputText.getValue().length <= 40 && othis.oBIOIFaxInputText.getValue().length >= 5)){			
 				 othis.oValidationLILIStatus = false;
 				 
 				 othis.oBIOIFaxInputText.setValueState("Error");
@@ -193,11 +193,11 @@ com.sagia.common.js.bioivalidateworker = {
 
 		  		 if(!othis.oShowAlertDialog.isOpen())
 				 {
-					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIFaxNoLength"));
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIFaxNoLengthMsg"));
 					othis.oShowAlertDialog.open();
 				 }
 					
-		  	 }else if(!(othis.oBIOIMobilephoneInputText.getValue().length <= 30 && othis.oBIOIMobilephoneInputText.getValue().length >= 5)){
+		  	 }else if(!(othis.oBIOIMobilephoneInputText.getValue().length <= 40 && othis.oBIOIMobilephoneInputText.getValue().length >= 5)){
 				 othis.oValidationLILIStatus = false;
 				 
 				 othis.oBIOIMobilephoneInputText.setValueState("Error");
@@ -205,7 +205,7 @@ com.sagia.common.js.bioivalidateworker = {
 
 				 if(!othis.oShowAlertDialog.isOpen())
 				 {
-					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIMobileNoLength"));
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIMobileNoLengthMsg"));
 					othis.oShowAlertDialog.open();
 				 }
 					
@@ -221,7 +221,7 @@ com.sagia.common.js.bioivalidateworker = {
 					othis.oShowAlertDialog.open();
 				 }
 					
-		  	 }else if(othis.oBIOIWebSiteInputText.getValue().length > 60){	
+		  	 }else if(othis.oBIOIWebSiteInputText.getValue().length > 132){	
 				 othis.oValidationLILIStatus = false;
 				 
 				 othis.oBIOIWebSiteInputText.setValueState("Error");
@@ -516,7 +516,7 @@ com.sagia.common.js.bioivalidateworker = {
 				othis.oShowAlertDialog.open();
 			 }
 				
-		 }else if(othis.oBIOIOrganizationName.getValue().length > 100){			
+		 }else if(othis.oBIOIOrganizationName.getValue().length > 40){			
 			 othis.oValidationLILIStatus = false;
 			 
 			 othis.oBIOIOrganizationName.setValueState("Error");
@@ -539,7 +539,7 @@ com.sagia.common.js.bioivalidateworker = {
 					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOILaborSize"));
 					othis.oShowAlertDialog.open();
 				 }
-		  	 }else if(othis.oOriginalBIOICapitalInputTextValue.length > 25){
+		  	 }else if(othis.oOriginalBIOICapitalInputTextValue.length > 20){
 		  		othis.oValidationLILIStatus = false;
 		  		
 		  		 othis.oBIOICapitalInputText.setValueState("Error");
@@ -563,7 +563,7 @@ com.sagia.common.js.bioivalidateworker = {
 					othis.oShowAlertDialog.open();
 				 }
 					
-		  	 }else if(!(othis.oBIOIFaxInputText.getValue().length <= 20 && othis.oBIOIFaxInputText.getValue().length >= 5)){			
+		  	 }else if(!(othis.oBIOIFaxInputText.getValue().length <= 40 && othis.oBIOIFaxInputText.getValue().length >= 5)){			
 				 othis.oValidationLILIStatus = false;
 				 
 				 othis.oBIOIFaxInputText.setValueState("Error");
@@ -571,11 +571,11 @@ com.sagia.common.js.bioivalidateworker = {
 
 		  		 if(!othis.oShowAlertDialog.isOpen())
 				 {
-					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIFaxNoLength"));
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIFaxNoLengthMsg"));
 					othis.oShowAlertDialog.open();
 				 }
 					
-		  	 }else if(!(othis.oBIOIMobilephoneInputText.getValue().length <= 30 && othis.oBIOIMobilephoneInputText.getValue().length >= 5)){
+		  	 }else if(!(othis.oBIOIMobilephoneInputText.getValue().length <= 40 && othis.oBIOIMobilephoneInputText.getValue().length >= 5)){
 				 othis.oValidationLILIStatus = false;
 				 
 				 othis.oBIOIMobilephoneInputText.setValueState("Error");
@@ -583,12 +583,12 @@ com.sagia.common.js.bioivalidateworker = {
 
 				 if(!othis.oShowAlertDialog.isOpen())
 				 {
-					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIMobileNoLength"));
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("BIOIMobileNoLengthMsg"));
 					othis.oShowAlertDialog.open();
 				 }
 					
 		  	 }
-		  	else if(othis.oBIOIWebSiteInputText.getValue().length > 60){	
+		  	else if(othis.oBIOIWebSiteInputText.getValue().length > 132){	
 				 othis.oValidationLILIStatus = false;
 				 
 				 othis.oBIOIWebSiteInputText.setValueState("Error");
