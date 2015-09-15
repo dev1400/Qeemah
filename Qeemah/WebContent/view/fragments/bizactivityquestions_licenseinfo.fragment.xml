@@ -215,7 +215,7 @@
 							<ComboBox width="50%" items="{/IndustrialProductsCollection}"
 								id="idLILIIndustrialProductComboBox" selectionChange="handleLILIIndustrialProductsComboBoxSelectionChange">
 								<sap.ui.core:ListItem key="{Desc}" text="{Item}"
-									id="idLILIIndustrialProductComboBoxitem" />
+									id="idLILIIndustrialProductComboBoxitem" tooltip="{Item}"/>
 							</ComboBox><!-- Pcode -->
 							<sap.ui.commons:TextView text="{i18n>SelectAProduct}" enabled="false" design="Italic"></sap.ui.commons:TextView>
 							</VBox>
