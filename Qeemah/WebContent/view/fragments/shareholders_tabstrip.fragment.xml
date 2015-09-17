@@ -39,6 +39,10 @@
 											<sap.ui.commons:TextView text="{i18n>Nationality}"
 							class="textcolorwhite"></sap.ui.commons:TextView>
 										</Column>
+										<!-- <Column width="5em">
+											<sap.ui.commons:TextView text="{i18n>Edit}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
+										</Column> -->
 									</columns>									
 								</Table>
 							</sap.ui.commons.layout:content>

@@ -161,6 +161,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 		this.oLILISectionComboBox = this.getView().byId("idLILISectionComboBox");
 		this.oLILIBusinessTypeComboBox = this.getView().byId("idLILIBusinessTypeComboBox");
 		this.oLILILicenceInfoContentVBox = this.getView().byId("LicenceInfoContentVBox");
+		this.oTemporaryBusinessTypeVBox = this.getView().byId("idTemporaryBusinessTypeVBox");
 		this.oLicenseTypeInputText = this.getView().byId("idLicenseTypeInputText");
 		this.oLILIDivisionComboBox = this.getView().byId("idLILIDivisionComboBox");
 		this.oLILIGroupComboBox = this.getView().byId("idLILIGroupComboBox");
@@ -179,6 +180,10 @@ sap.ui.controller("com.sagia.view.Overview", {
 		
 		this.oSHJSONModel = new sap.ui.model.json.JSONModel();
 		this.oSHTable = this.getView().byId("idSHTable"); 
+		
+		this.oTempLicenseType = this.getView().byId("idTemporaryLicenseTypeInputText");
+		this.oTempBusinessType = this.getView().byId("idTemporaryBizTypeComboBox");
+		this.oTempActivityDescription = this.getView().byId("idTemporaryBizActivityDescriptionTextArea");
 
 		
 		this.oSavedSHData = {SavedShareHolderCollection: []};
@@ -278,7 +283,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 			message = message[1];
 		}
 		
-		this.oLicenseTypeInputText.setValue(message);
+		this.oLicenseTypeInputText.setValue(oResponse.LILILicenseActivityType[0].Activity);
 	},
 	
 	handleLILIIndustrialProductsComboBoxSelectionChange : function(){
@@ -2334,56 +2339,122 @@ that.closeBusyDialog();
 
 	},
 	handleLILIBusinessTypeComboBoxSelectionChange : function(){
-		var that = this;
-		/*if(this.oExperienceQuestionsMatrixLayout){
-			this.oExperienceQuestionsMatrixLayout.removeAllRows();
-		}*/
-		if(this.oLILISectionComboBox){
-			this.oLILISectionComboBox.setSelectedKey("");
-		}
-		if(this.oLILIDivisionComboBox){
-			this.oLILIDivisionComboBox.setSelectedKey("");
-			this.oLILIDivisionComboBox.setModel(null);
-		}
-		if(this.oLILIGroupComboBox){
-			this.oLILIGroupComboBox.setSelectedKeys([]);
-			this.oLILIGroupComboBox.setModel(null);
-		}
-		if(this.oLILIClassMultiComboBox){
-			this.oLILIClassMultiComboBox.setSelectedKeys([]);
-			this.oLILIClassMultiComboBox.setModel(null);
-		}		
-		if(this.oLILILicenseActivityMultiComboBox){
-			this.oLILILicenseActivityMultiComboBox.setSelectedKeys([]);
-			this.oLILILicenseActivityMultiComboBox.setModel(null);
-		}
-		if(this.oLILIActivityDescriptionTextArea){
-			this.oLILIActivityDescriptionTextArea.setValue("");
-		}
+	/*	
+		this.oTempLicenseType = this.getView().byId("idTemporaryLicenseTypeInputText");
+		this.oTempBusinessType = this.getView().byId("idTemporaryBizTypeComboBox");
+		this.oTempActivityDescription = this.getView().byId("idTemporaryBizActivityDescriptionTextArea");
+*/
 		
-		if(this.oProductsTableVBox){
-			this.oProductsTableVBox.setVisible(false);
-		}
-		
-		if(this.oLILIProductsTable.getVisible()){
-			this.oLILIProductsTable.unbindItems();
-			this.oLILIProductsTable.setVisible(false);
-			this.oProductsTableVBox.setVisible(false);	
+		if(this.oLILIBusinessTypeComboBox.getSelectedKey() === "N"){
+			var that = this;
+			/*if(this.oExperienceQuestionsMatrixLayout){
+				this.oExperienceQuestionsMatrixLayout.removeAllRows();
+			}*/
+			if(this.oLILISectionComboBox){
+				this.oLILISectionComboBox.setSelectedKey("");
+			}
+			if(this.oLILIDivisionComboBox){
+				this.oLILIDivisionComboBox.setSelectedKey("");
+				this.oLILIDivisionComboBox.setModel(null);
+			}
+			if(this.oLILIGroupComboBox){
+				this.oLILIGroupComboBox.setSelectedKeys([]);
+				this.oLILIGroupComboBox.setModel(null);
+			}
+			if(this.oLILIClassMultiComboBox){
+				this.oLILIClassMultiComboBox.setSelectedKeys([]);
+				this.oLILIClassMultiComboBox.setModel(null);
+			}		
+			if(this.oLILILicenseActivityMultiComboBox){
+				this.oLILILicenseActivityMultiComboBox.setSelectedKeys([]);
+				this.oLILILicenseActivityMultiComboBox.setModel(null);
+			}
+			if(this.oLILIActivityDescriptionTextArea){
+				this.oLILIActivityDescriptionTextArea.setValue("");
+			}
+			
+			if(this.oProductsTableVBox){
+				this.oProductsTableVBox.setVisible(false);
+			}
+			
+			if(this.oLILIProductsTable.getVisible()){
+				this.oLILIProductsTable.unbindItems();
+				this.oLILIProductsTable.setVisible(false);
+				this.oProductsTableVBox.setVisible(false);	
 
+			}
+			
+			
+			if(this.oGroupMultiSelectionTextView){
+				this.oGroupMultiSelectionTextView.setText("");
+			}
+			if(this.oClassMultiSelectionTextView){
+				this.oClassMultiSelectionTextView.setText("");
+			}
+			if(this.oLAMultiSelectionTextView){
+				this.oLAMultiSelectionTextView.setText("");
+			}
+			
+			this.oLicenseTypeInputText.setValue("");
+		/*	var oRequestFinishedDeferredLILIBusinessType = this.oModelHelper.readLILIBusinessTypeIsicDescription(this.oLILIBusinessTypeComboBox.getSelectedKey());
+			jQuery.when(oRequestFinishedDeferredLILIBusinessType).then(jQuery.proxy(function(oResponse) {	
+				//console.dir(oResponse);
+				try{
+					if(oResponse.data.results.length > 0){
+						this.oBusinessTypeSurveyID = oResponse.data.results[0].SurveyID;
+					}
+					if(oResponse.data.results[0].IsicDescription !== "N"){
+						
+						var oLanguage;
+						if(this.oLanguageSelect.getSelectedKey() === "EN")
+						{
+							oLanguage="E";
+						}else{
+							oLanguage="A";
+						}
+						
+						var message = [];
+						messageString = oResponse.data.results[0].Activity.split(" ");
+						message.push(messageString.shift());    
+						message.push(messageString.join(' ')); 
+						
+						if(oLanguage === "E"){
+							message = message[0];
+						}else{
+							message = message[1];
+						}
+						
+						this.oLicenseTypeInputText.setValue(oResponse.data.results[0].Activity);
+						
+						
+						//this.oLicenseTypeInputText.setValue(oResponse.data.results[0].Activity);
+						//this.oLILILicenceInfoContentVBox.setVisible(false);
+						//this.oTemporaryBusinessTypeVBox.setVisible(true);
+					}else{
+						//this.oLicenseTypeInputText.setValue("");
+						//this.oLILILicenceInfoContentVBox.setVisible(true);
+						//this.oTemporaryBusinessTypeVBox.setVisible(false);
+					}
+				}catch(error){
+					that.closeBusyDialog();
+				}
+				
+				
+			}, this));	*/
+			
+			this.oLILILicenceInfoContentVBox.setVisible(true);
+			this.oTemporaryBusinessTypeVBox.setVisible(false);
+			
+			
+		}else if(this.oLILIBusinessTypeComboBox.getSelectedKey() === "T"){
+	
+			//this.oLicenseTypeInputText.setValue("");
+			this.oLILILicenceInfoContentVBox.setVisible(false);
+			this.oTemporaryBusinessTypeVBox.setVisible(true);
 		}
 		
 		
-		if(this.oGroupMultiSelectionTextView){
-			this.oGroupMultiSelectionTextView.setText("");
-		}
-		if(this.oClassMultiSelectionTextView){
-			this.oClassMultiSelectionTextView.setText("");
-		}
-		if(this.oLAMultiSelectionTextView){
-			this.oLAMultiSelectionTextView.setText("");
-		}
-		
-		var oRequestFinishedDeferredLILIBusinessType = this.oModelHelper.readLILIBusinessTypeIsicDescription(this.oLILIBusinessTypeComboBox.getSelectedKey());
+		/*var oRequestFinishedDeferredLILIBusinessType = this.oModelHelper.readLILIBusinessTypeIsicDescription(this.oLILIBusinessTypeComboBox.getSelectedKey());
 		jQuery.when(oRequestFinishedDeferredLILIBusinessType).then(jQuery.proxy(function(oResponse) {	
 			//console.dir(oResponse);
 			try{
@@ -2411,14 +2482,16 @@ that.closeBusyDialog();
 						message = message[1];
 					}
 					
-					this.oLicenseTypeInputText.setValue(message);
+					this.oLicenseTypeInputText.setValue(oResponse.data.results[0].Activity);
 					
 					
 					//this.oLicenseTypeInputText.setValue(oResponse.data.results[0].Activity);
 					this.oLILILicenceInfoContentVBox.setVisible(false);
+					this.oTemporaryBusinessTypeVBox.setVisible(true);
 				}else{
 					this.oLicenseTypeInputText.setValue("");
 					this.oLILILicenceInfoContentVBox.setVisible(true);
+					this.oTemporaryBusinessTypeVBox.setVisible(false);
 				}
 			}catch(error){
 				that.closeBusyDialog();
@@ -2426,7 +2499,7 @@ that.closeBusyDialog();
 			
 			
 		}, this));	
-		
+		*/
 		
 	},
 	handleLILIDivisionSelectionComboBox : function(){
@@ -2768,7 +2841,7 @@ that.closeBusyDialog();
 								message = message[1];
 							}
 							
-							that.oLicenseTypeInputText.setValue(message);
+							that.oLicenseTypeInputText.setValue(oResponse.LILILicenseActivityType[0].Activity);
 							//that.oLicenseTypeInputText.setValue(oResponse.LILILicenseActivityType[0].Activity);
 						}else if(oResponse.LILILicenseActivityType[0].Activity === "0")
 						{
@@ -4067,7 +4140,7 @@ that.closeBusyDialog();
 				this.oAlertTextView.setText(this.oModelHelper.getText("BasicInfoPassportFileNameExceed"));
 				this.oShowAlertDialog.open();
 			 }
-	   }else if(this.oLILIBusinessTypeComboBox.getSelectedKey() === ""){
+	   }else  if(this.oLILIBusinessTypeComboBox.getSelectedKey() === ""){
 		   this.oShowSubmitAlertDialog.close();
 	  		this.oValidationLILIStatus = false;
 	  		this.handleLicenseButtonClick();
@@ -4081,22 +4154,7 @@ that.closeBusyDialog();
 				this.oAlertTextView.setText(this.oModelHelper.getText("LILIBizTypeRequired"));
 				this.oShowAlertDialog.open();
 			 }
-	   }else if(this.oLicenseTypeInputText.getValue() === ""){
-		   this.oShowSubmitAlertDialog.close();
-   		this.oValidationLILIStatus = false;
-   		
-   		this.handleLicenseButtonClick();
-		this.oLicenseInfoTab.setSelectedIndex(1);
- 		 
-		//othis.oLicenseTypeInputText.setValueState("Error");
-		//othis.oLicenseTypeInputText.setShowValueStateMessage(false);
-  		
-		 if(!this.oShowAlertDialog.isOpen())
-		 {
-			 this.oAlertTextView.setText(this.oModelHelper.getText("LicenseTypeIsMand"));
-			 this.oShowAlertDialog.open();
-		 }
-   }else if(!this.oValidationHelper.checkIfAllBAQAreAnswered(this)){
+	   }else if(!this.oValidationHelper.checkIfAllBAQAreAnswered(this)){
 		   this.oShowSubmitAlertDialog.close();
 		   this.handleLicenseButtonClick();
 			this.oLicenseInfoTab.setSelectedIndex(0);
@@ -4118,7 +4176,22 @@ that.closeBusyDialog();
 	   }else if(this.oLILIBusinessTypeComboBox.getSelectedKey() === "N"){
 		   this.oShowSubmitAlertDialog.close();
 			
-		   if(this.oLILISectionComboBox.getSelectedKey() === ""){
+	   if(this.oLicenseTypeInputText.getValue() === ""){
+		   this.oShowSubmitAlertDialog.close();
+   		this.oValidationLILIStatus = false;
+   		
+   		this.handleLicenseButtonClick();
+		this.oLicenseInfoTab.setSelectedIndex(1);
+ 		 
+		//othis.oLicenseTypeInputText.setValueState("Error");
+		//othis.oLicenseTypeInputText.setShowValueStateMessage(false);
+  		
+		 if(!this.oShowAlertDialog.isOpen())
+		 {
+			 this.oAlertTextView.setText(this.oModelHelper.getText("LicenseTypeIsMand"));
+			 this.oShowAlertDialog.open();
+		 }
+	   }if(this.oLILISectionComboBox.getSelectedKey() === ""){
 			     this.oValidationLILIStatus = false;
 			     this.handleLicenseButtonClick();
 					this.oLicenseInfoTab.setSelectedIndex(1);
@@ -4188,6 +4261,70 @@ that.closeBusyDialog();
 					this.oShowAlertDialog.open();
 				 }
 		   }else{
+				 this.doThis();
+			     this.oValidationLILIStatus = true;	
+			     sap.m.MessageToast.show(that.oModelHelper.getText("SavingAll"), {duration : 18000});
+			 }
+	   }else if(this.oLILIBusinessTypeComboBox.getSelectedKey() === "T"){
+		   /*if(this.oTempLicenseType.getValue() === ""){
+			   this.oValidationLILIStatus = false;
+			    	 
+			   this.oTempLicenseType.setValueState("Error");
+			   this.oTempLicenseType.setShowValueStateMessage(false);
+				
+				 if(!this.oShowAlertDialog.isOpen())
+				 {
+					 this.oAlertTextView.setText(this.oModelHelper.getText("TempLicenseTypeMand"));
+					 this.oShowAlertDialog.open();
+				 }
+		   }else*/ if(this.oTempBusinessType.getSelectedKey() === ""){
+			   this.oValidationLILIStatus = false;
+			    	 
+			   this.oTempBusinessType.setValueState("Error");
+			   this.oTempBusinessType.setShowValueStateMessage(false);
+				
+				 if(!this.oShowAlertDialog.isOpen())
+				 {
+					 this.oAlertTextView.setText(this.oModelHelper.getText("TempBizTypepeMand"));
+					 this.oShowAlertDialog.open();
+				 }
+		   }else if(this.oTempActivityDescription.getValue() === ""){
+			   this.oValidationLILIStatus = false;
+			    	 
+			   this.oTempActivityDescription.setValueState("Error");
+			   this.oTempActivityDescription.setShowValueStateMessage(false);
+				
+				 if(!this.oShowAlertDialog.isOpen())
+				 {
+					 this.oAlertTextView.setText(this.oModelHelper.getText("TempActivityDesceMand"));
+					 this.oShowAlertDialog.open();
+				 }
+		   }else if(!(/^[a-zA-Z0-9 ]*$/.test( this.oTempActivityDescription.getValue() ))){
+		   		this.oValidationLILIStatus = false;
+		   		
+				 
+				 
+				 this.oTempActivityDescription.setValueState("Error");
+				 this.oTempActivityDescription.setShowValueStateMessage(false);
+
+				 if(!this.oShowAlertDialog.isOpen())
+				 {
+					this.oAlertTextView.setText(this.oModelHelper.getText("TempActivtyDescInvalidData"));
+					this.oShowAlertDialog.open();
+				 }
+		   	 }else if(this.oTempActivityDescription.getValue().length > 300 === ""){
+			   		this.oValidationLILIStatus = false;
+			   		
+					 
+					 this.oTempActivityDescription.setValueState("Error");
+					 this.oTempActivityDescription.setShowValueStateMessage(false);
+
+					 if(!this.oShowAlertDialog.isOpen())
+					 {
+						this.oAlertTextView.setText(this.oModelHelper.getText("TempActivtyDescExceed"));
+						this.oShowAlertDialog.open();
+					 }
+			   }else{
 				 this.doThis();
 			     this.oValidationLILIStatus = true;	
 			     sap.m.MessageToast.show(that.oModelHelper.getText("SavingAll"), {duration : 18000});
@@ -5812,7 +5949,7 @@ that.closeBusyDialog();
 																message = message[1];
 															}
 															
-															this.oLicenseTypeInputText.setValue(message);
+															this.oLicenseTypeInputText.setValue(oResponse.data.results[0].Activity);
 															
 															//this.oLicenseTypeInputText.setValue(oResponse.data.results[0].Activity);	
 															

@@ -23,15 +23,29 @@
 
 				</sap.ui.commons.layout:MatrixLayoutCell>
 				<sap.ui.commons.layout:MatrixLayoutCell>
-					<ComboBox width="50%" items="{/LILIBusinessTypeCollection}"
+					<!-- <ComboBox width="50%" items="{/LILIBusinessTypeCollection}"
 						id="idLILIBusinessTypeComboBox" selectionChange="handleLILIBusinessTypeComboBoxSelectionChange">
 						<sap.ui.core:ListItem key="{Flag}" text="{IsicDescription}"
 							id="idLILIBusinessTypeComboBoxitem" />
+					</ComboBox> -->
+					<ComboBox width="50%" selectedKey="N"
+						id="idLILIBusinessTypeComboBox" selectionChange="handleLILIBusinessTypeComboBoxSelectionChange">
+						<sap.ui.core:ListItem key="N" text="{i18n>Permanent}"/>
+						<sap.ui.core:ListItem key="T" text="{i18n>Temperoary}"/>
 					</ComboBox>
 
 				</sap.ui.commons.layout:MatrixLayoutCell>
 			</sap.ui.commons.layout:MatrixLayoutRow>
-			<sap.ui.commons.layout:MatrixLayoutRow>
+			
+		</sap.ui.commons.layout:MatrixLayout>
+
+		<VBox id="LicenceInfoContentVBox" visible="false" alignItems="Center">
+
+			<sap.ui.commons.layout:MatrixLayout
+				layoutFixed="true" columns="2" widths="30%,50%">
+				
+				
+				<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 
 					<sap.ui.commons:TextView text="{i18n>LicenseType}"></sap.ui.commons:TextView>
@@ -41,12 +55,9 @@
 					<Input type="Text" width="50%" id="idLicenseTypeInputText" enabled="false" liveChange="handleLicenseTypeChange"></Input>
 				</sap.ui.commons.layout:MatrixLayoutCell>
 			</sap.ui.commons.layout:MatrixLayoutRow>
-		</sap.ui.commons.layout:MatrixLayout>
-
-		<VBox id="LicenceInfoContentVBox" visible="false" alignItems="Center">
-
-			<sap.ui.commons.layout:MatrixLayout
-				layoutFixed="true" columns="2" widths="30%,50%">
+			
+			
+			
 				<sap.ui.commons.layout:MatrixLayoutRow>
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 						<sap.ui.commons:TextView text="{i18n>Section}"></sap.ui.commons:TextView>
@@ -182,6 +193,70 @@
 			</sap.ui.commons.layout:MatrixLayout>
 			
 			<html:br />
+		</VBox>
+		<VBox id="idTemporaryBusinessTypeVBox" visible="false">
+			
+			<sap.ui.commons.layout:MatrixLayout columns="2" widths="37.5%">
+			
+			  <sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+
+					<sap.ui.commons:TextView text="{i18n>LicenseType}"></sap.ui.commons:TextView>
+		
+				</sap.ui.commons.layout:MatrixLayoutCell>
+				<sap.ui.commons.layout:MatrixLayoutCell>
+					<Input type="Text" width="50%" id="idTemporaryLicenseTypeInputText" enabled="false" ></Input>
+				</sap.ui.commons.layout:MatrixLayoutCell>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			
+			
+			        <sap.ui.commons.layout:MatrixLayoutRow>
+			        <sap.ui.commons.layout:cells>
+			        <sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+			        <sap.ui.commons:TextView text="{i18n>ChooseBuisnessType}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*"
+							class="textcolorred"></sap.ui.commons:TextView>
+			        
+			        </sap.ui.commons.layout:MatrixLayoutCell>
+			        <sap.ui.commons.layout:MatrixLayoutCell>
+			        
+			        		<ComboBox width="50%" 
+								id="idTemporaryBizTypeComboBox" selectionChange="">
+								<sap.ui.core:ListItem key="CA" text="{i18n>CivilAviation}" />
+								<sap.ui.core:ListItem key="CO" text="{i18n>Contracting}" />
+								<sap.ui.core:ListItem key="MC" text="{i18n>ManagementConsultancy}" />
+								<sap.ui.core:ListItem key="ST" text="{i18n>SupplyTraining}" />
+								
+							</ComboBox>
+							
+			        <!-- <VBox>
+				<RadioButton groupName="TemporaryBizGroup" text="{i18n>CivilAviation}" />
+				<RadioButton groupName="TemporaryBizGroup" text="{i18n>Contracting}" />
+				<RadioButton groupName="TemporaryBizGroup" text="{i18n>ManagementConsultancy}" />
+				<RadioButton groupName="TemporaryBizGroup" text="{i18n>SupplyTraining}" />
+			</VBox> -->
+			        </sap.ui.commons.layout:MatrixLayoutCell>
+			        </sap.ui.commons.layout:cells>
+			        </sap.ui.commons.layout:MatrixLayoutRow>
+			        
+			      
+			
+			
+					<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+						<sap.ui.commons:TextView text="{i18n>ActivityDescription}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*"
+							class="textcolorred"></sap.ui.commons:TextView>
+
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<TextArea width="50%" id="idTemporaryBizActivityDescriptionTextArea" />
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+			</sap.ui.commons.layout:MatrixLayout>
 		</VBox>
 
 		<VBox id="idProductsTableVBox" visible="false" alignItems="Center">

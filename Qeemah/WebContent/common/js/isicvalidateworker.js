@@ -5,18 +5,7 @@ com.sagia.common.js.isicvalidateworker = {
     validateISICPresence : function(othis){
     	othis.oValidationLILIStatus = true;
     	
-    	if(othis.oLicenseTypeInputText.getValue() === ""){
-    		othis.oValidationLILIStatus = false;
-	  		 
-    		//othis.oLicenseTypeInputText.setValueState("Error");
-    		//othis.oLicenseTypeInputText.setShowValueStateMessage(false);
-	  		
-			 if(!othis.oShowAlertDialog.isOpen())
-			 {
-				 othis.oAlertTextView.setText(othis.oModelHelper.getText("LicenseTypeIsMand"));
-				 othis.oShowAlertDialog.open();
-			 }
-	   }else if(othis.oLILIBusinessTypeComboBox.getSelectedKey() === ""){
+    	if(othis.oLILIBusinessTypeComboBox.getSelectedKey() === ""){
     		othis.oValidationLILIStatus = false;
 	  		 
     		othis.oLILIBusinessTypeComboBox.setValueState("Error");
@@ -28,8 +17,20 @@ com.sagia.common.js.isicvalidateworker = {
 				 othis.oShowAlertDialog.open();
 			 }
 	   }else if(othis.oLILIBusinessTypeComboBox.getSelectedKey() === "N"){
-			
-		   if(othis.oLILISectionComboBox.getSelectedKey() === ""){
+		   
+
+	    	if(othis.oLicenseTypeInputText.getValue() === ""){
+	    		othis.oValidationLILIStatus = false;
+		  		 
+	    		//othis.oLicenseTypeInputText.setValueState("Error");
+	    		//othis.oLicenseTypeInputText.setShowValueStateMessage(false);
+		  		
+				 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					 othis.oAlertTextView.setText(othis.oModelHelper.getText("LicenseTypeIsMand"));
+					 othis.oShowAlertDialog.open();
+				 }
+		   }else if(othis.oLILISectionComboBox.getSelectedKey() === ""){
 			   othis.oValidationLILIStatus = false;
 			    	 
 			   othis.oLILISectionComboBox.setValueState("Error");
@@ -85,6 +86,67 @@ com.sagia.common.js.isicvalidateworker = {
 					 othis.oShowAlertDialog.open();
 				 }
 		   }
+	   }else if(othis.oLILIBusinessTypeComboBox.getSelectedKey() === "T"){
+		   /*if(othis.oTempLicenseType.getValue() === ""){
+			   othis.oValidationLILIStatus = false;
+			    	 
+			   othis.oTempLicenseType.setValueState("Error");
+			   othis.oTempLicenseType.setShowValueStateMessage(false);
+				
+				 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					 othis.oAlertTextView.setText(othis.oModelHelper.getText("TempLicenseTypeMand"));
+					 othis.oShowAlertDialog.open();
+				 }
+		   }else*/ if(othis.oTempBusinessType.getSelectedKey() === ""){
+			   othis.oValidationLILIStatus = false;
+			    	 
+			   othis.oTempBusinessType.setValueState("Error");
+			   othis.oTempBusinessType.setShowValueStateMessage(false);
+				
+				 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					 othis.oAlertTextView.setText(othis.oModelHelper.getText("TempBizTypepeMand"));
+					 othis.oShowAlertDialog.open();
+				 }
+		   }else if(othis.oTempActivityDescription.getValue() === ""){
+			   othis.oValidationLILIStatus = false;
+			    	 
+			   othis.oTempActivityDescription.setValueState("Error");
+			   othis.oTempActivityDescription.setShowValueStateMessage(false);
+				
+				 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					 othis.oAlertTextView.setText(othis.oModelHelper.getText("TempActivityDesceMand"));
+					 othis.oShowAlertDialog.open();
+				 }
+		   }else if(!(/^[a-zA-Z0-9 ]*$/.test( othis.oTempActivityDescription.getValue() ))){
+		   		othis.oValidationLILIStatus = false;
+		   		
+				 
+				 
+				 othis.oTempActivityDescription.setValueState("Error");
+				 othis.oTempActivityDescription.setShowValueStateMessage(false);
+
+				 if(!othis.oShowAlertDialog.isOpen())
+				 {
+					othis.oAlertTextView.setText(othis.oModelHelper.getText("TempActivtyDescInvalidData"));
+					othis.oShowAlertDialog.open();
+				 }
+		   	 }else if(othis.oTempActivityDescription.getValue().length > 300 === ""){
+			   		othis.oValidationLILIStatus = false;
+			   		
+					 
+					 
+					 othis.oTempActivityDescription.setValueState("Error");
+					 othis.oTempActivityDescription.setShowValueStateMessage(false);
+
+					 if(!othis.oShowAlertDialog.isOpen())
+					 {
+						othis.oAlertTextView.setText(othis.oModelHelper.getText("TempActivtyDescExceed"));
+						othis.oShowAlertDialog.open();
+					 }
+			   }
 	   }
 		   
 		   return othis.oValidationLILIStatus;

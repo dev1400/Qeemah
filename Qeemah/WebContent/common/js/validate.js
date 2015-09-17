@@ -449,6 +449,14 @@ com.sagia.common.js.validate = {
 				thisContext.oBICICommMethodComboBox.attachBrowserEvent("mouseover", function() {
 		        	thisContext.oBICICommMethodComboBox.setValueState("None");
 				});
+				
+				thisContext.oTempBusinessType.attachBrowserEvent("mouseover", function() {
+		        	thisContext.oTempBusinessType.setValueState("None");
+				});
+				thisContext.oTempActivityDescription.attachBrowserEvent("mouseover", function() {
+		        	thisContext.oTempActivityDescription.setValueState("None");
+				});
+				
 				/*thisContext..attachChange(function(){
 		        	thisContext..setValueState("None");
 				});
