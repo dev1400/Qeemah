@@ -1276,7 +1276,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 					     				that.oNSHOrgCountryComboBox.getSelectedKey(),
 					     				that.oNSHOrgName2tText.getValue(),
 					     				that.oNSHOrgCityNameInputText.getValue(),
-					     				that.oNSHOrgIndustrySectorComboBox.getSelectedKey(),
+					     				that.oNSHOrgSectionComboBox.getSelectedKey(),
 					     				that.oNSHOrgPOBoxInputText.getValue(),
 					     				"",//that.oNSHMaritalStatusComboBox.getSelectedKey(),
 					     				that.oNSHOrgPostalCodeInputText.getValue(),
@@ -1298,8 +1298,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 					     				"",
 					     				"", 
 					     				"", 
-					     				"", 
-					     				this.oNSHOrgSubSctorInputText.getValue(), 
+					     				"",
+					     				that.oNSHOrgDivisionComboBox.getSelectedKey(),
+					     				//this.oNSHOrgSubSctorInputText.getValue(), 
 					     				this.oNSHOrgMultiNationalCompanyCombobox.getSelectedKey(), 
 					     				this.oOriginalNSHPersonLaborSizeInputTextValue, //this.oNSHOrgLaborSizeInputText.getValue(),
 					     				this.oNSHOrgLegalStatusComboBox.getSelectedKey(), 
@@ -1486,6 +1487,7 @@ sap.ui.controller("com.sagia.view.Overview", {
 									 							        	
 									 							        	that.oShareHolderTypeComboBox.setValue("");
 									 							        	that.oNSHFirstNameInputText.setValue("");
+									 							        	that.oNSHMiddleNameInputText.setValue("");
 									 										that.oNSHCountryComboBox.setSelectedKey("");
 									 										that.oNSHLastNameInputText.setValue("");
 									 										that.oNSHCityNameInputText.setValue("");
@@ -1711,9 +1713,10 @@ that.closeBusyDialog();
 									 							        	that.oNSHOrgCountryComboBox.setSelectedKey("");
 									 							        	that.oNSHOrgName2tText.setValue("");
 									 							        	that.oNSHOrgCityNameInputText.setValue("");
-									 							        	that.oNSHOrgIndustrySectorComboBox.setSelectedKey("");
+									 							        	that.oNSHOrgSectionComboBox.setSelectedKey("");
 									 							        	that.oNSHOrgPostalCodeInputText.setValue("");
-									 							        	that.oNSHOrgSubSctorInputText.setValue("");
+									 							        	that.oNSHOrgDivisionComboBox.setSelectedKey("");
+									 							        	//that.oNSHOrgSubSctorInputText.setValue("");
 									 							        	that.oNSHOrgPOBoxInputText.setValue("");
 									 							        	that.oNSHOrgMultiNationalCompanyCombobox.setSelectedKey("");
 									 							        	that.oNSHOrgStreetInputText.setValue("");
@@ -1731,7 +1734,7 @@ that.closeBusyDialog();
 									 										that.oNSHOrgFaxCountryCodeInputText.setValue("");
 									 										that.oNSHOrgMobilephoneCountryCodeInputText.setValue("");
 									 										
-									 										that.oNSHOrgSubSctorInputText.setEnabled(false);
+									 										//that.oNSHOrgSubSctorInputText.setEnabled(false);
 									 					     				
 									 					     				for(var i=0; i < that.oTotalFinancialQuestions; i++){
 									 										
@@ -1940,6 +1943,7 @@ that.closeBusyDialog();
 		
 	    that.oShareHolderTypeComboBox.setValue("");
 		that.oNSHFirstNameInputText.setValue("");
+		that.oNSHMiddleNameInputText.setValue("");
 		that.oNSHCountryComboBox.setValue("");
 		that.oNSHLastNameInputText.setValue("");
 		that.oNSHCityNameInputText.setValue("");
@@ -5300,6 +5304,26 @@ that.closeBusyDialog();
 		
 	},
 	
+	handleCountrySelectionComboBoxReg : function(oControlEvent){
+		
+		
+		//console.log(oControlEvent.getParameters('selectedItem').selectedItem.mProperties.key);
+		this.openBusyDialog();
+		var oRequestFinishedDeferred = this.oModelHelper.readCountryCode(this._oRegCountryCombobox.getSelectedKey());
+
+		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+			this.closeBusyDialog();
+
+			this.getView().setModel(oResponse,"CCModel");
+			this.oTelephoneCountryCodeInputText = this.getView().byId("idRegTelephoneCountryCodeInputText");
+
+			this.oTelephoneCountryCodeInputText.setValue(oResponse.oData.CountryCodeCollection.TelNo);
+//			this.oBICIMobileCountryCodeInputText.setValue(oResponse.oData.CountryCodeCollection.TelNo);
+//			this.oBICIFaxCountryCodeInputText.setValue(oResponse.oData.CountryCodeCollection.TelNo);
+			
+		}, this));	
+	},
+	
 	handleCountrySelectionComboBox : function(oControlEvent){
 		
 		
@@ -6706,7 +6730,7 @@ that.closeBusyDialog();
 		
 		
 				
-		var oRequestFinishedDeferred = this.oModelHelper.readCountry(oLanguage);
+		/*var oRequestFinishedDeferred = this.oModelHelper.readCountry(oLanguage);
 
 		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
 			
@@ -6725,7 +6749,7 @@ that.closeBusyDialog();
 			
 			this.getView().setModel(oResponse,"CC");
 			
-		}, this));	
+		}, this));*/	
 		
 		var oRequestFinishedDeferredLILI = this.oModelHelper.readLILISection();
 
@@ -7471,8 +7495,42 @@ that.closeBusyDialog();
 	onBeforeRendering : function() {
 		/*this._oLanguageSelectionComboBox.setSelectedKey("E");*/
 		console.log("onBeforeRendering");
-		
+		this.readCountryToModel(this.oLanguageSelect.getSelectedKey());
+	},
+	
+	readCountryToModel : function(oLanguage){
 
+		var oRequestFinishedDeferred = this.oModelHelper.readCountry(oLanguage);
+
+		jQuery.when(oRequestFinishedDeferred).then(jQuery.proxy(function(oResponse) {
+			
+			var arr = [];
+			for(var i = 0; i < oResponse.oData.DetailsCollection.length ; i++){
+				if(oResponse.oData.DetailsCollection[i].Bezei_reg !== "")
+				{//console.log(oResponse.oData.DetailsCollection[i].Bezei_reg);}
+					arr.push(oResponse.oData.DetailsCollection[i].Bezei_reg);
+					
+				}
+				
+				
+			}
+			
+			this.getView().setModel(oResponse);
+			
+			this.getView().setModel(oResponse,"CC");
+			
+			this.bindCountryListModelToComboBoxInRegistration();
+			
+		}, this));	
+	},
+	
+	/*Setting Model for country list and changing the selected country to 
+	  */
+	bindCountryListModelToComboBoxInRegistration : function(){
+		this._oRegCountryCombobox = this.getView().byId("idRegCountryComboBox");
+		var oBICICountryFilter = new sap.ui.model.Filter("Landx50", sap.ui.model.FilterOperator.NE, "");
+		var oBICICountryKeyFilter = new sap.ui.model.Filter("Land1", sap.ui.model.FilterOperator.NE, "");
+		this._oRegCountryCombobox.getBinding("items").filter([oBICICountryFilter,oBICICountryKeyFilter]);
 	},
 
 	/**
@@ -8095,9 +8153,10 @@ handleRegisterUserButtonPress : function() {
 			othis.oNSHOrgCountryComboBox.setSelectedKey("");
 			othis.oNSHOrgName2tText.setValue("");
 			othis.oNSHOrgCityNameInputText.setValue("");
-			othis.oNSHOrgIndustrySectorComboBox.setSelectedKey("");
+			othis.oNSHOrgSectionComboBox.setSelectedKey("");
 			othis.oNSHOrgPostalCodeInputText.setValue("");
-			othis.oNSHOrgSubSctorInputText.setValue("");
+			othis.oNSHOrgDivisionComboBox.setSelectedKey("");			
+			//othis.oNSHOrgSubSctorInputText.setValue("");
 			othis.oNSHOrgPOBoxInputText.setValue("");
 			othis.oNSHOrgMultiNationalCompanyCombobox.setSelectedKey("");
 			othis.oNSHOrgStreetInputText.setValue("");
@@ -8115,7 +8174,7 @@ handleRegisterUserButtonPress : function() {
 			othis.oNSHOrgFaxCountryCodeInputText.setValue("");
 			othis.oNSHOrgMobilephoneCountryCodeInputText.setValue("");
 			
-			othis.oNSHOrgSubSctorInputText.setEnabled(false);
+//			othis.oNSHOrgSubSctorInputText.setEnabled(false);
 			
 			
 			
@@ -8127,6 +8186,7 @@ handleRegisterUserButtonPress : function() {
 			
 		   // that.oShareHolderTypeComboBox.setValue("");
 			that.oNSHFirstNameInputText.setValue("");
+			that.oNSHMiddleNameInputText.setValue("");
 			that.oNSHCountryComboBox.setSelectedKey("");
 			that.oNSHLastNameInputText.setValue("");
 			that.oNSHCityNameInputText.setValue("");
@@ -8148,13 +8208,22 @@ handleRegisterUserButtonPress : function() {
 			that.oNSHDOBDate.setValue("");
 		}
 	},
-	handleIndustrialSectarSelectionChange : function(){
+	/*handleIndustrialSectarSelectionChange : function(){
 		if(this.oNSHOrgIndustrySectorComboBox.getSelectedKey() === "9"){
 			this.oNSHOrgSubSctorInputText.setEnabled(true);
 		}else{
 			this.oNSHOrgSubSctorInputText.setValue("");
 			this.oNSHOrgSubSctorInputText.setEnabled(false);
 		}
+	},*/
+	handleNSHOrgSectionChange : function(){
+		this.oNSHOrgDivisionComboBox.setModel(null);
+		this.oNSHOrgDivisionComboBox.setValue("");
+		var oRequestFinishedDeferredLILIDivision = that.oModelHelper.readLILIDivision(this.oNSHOrgSectionComboBox.getSelectedKey());
+
+		jQuery.when(oRequestFinishedDeferredLILIDivision).then(jQuery.proxy(function(oResponse) {			
+			this.oNSHOrgDivisionComboBox.setModel(oResponse);
+		}, that));
 	},
 	handleShareholderInfoButtonClick : function(){
 		
@@ -8199,6 +8268,7 @@ handleRegisterUserButtonPress : function() {
 				.getController());
 		this.oShareHolderTypeComboBox = this.getView().byId("idNSHTypeComboBox");
 		this.oNSHFirstNameInputText = this.getView().byId("idNSHFirstNameInputText");
+		this.oNSHMiddleNameInputText = this.getView().byId("idNSHMiddleNameInputText");
 		this.oNSHCountryComboBox = this.getView().byId("idNSHCountryComboBox");
 		
 		this.oNSHPersonTelephoneCountryCodeInputText = this.getView().byId("idNSHPersonTelephoneCountryCodeInputText");
@@ -8292,11 +8362,19 @@ handleRegisterUserButtonPress : function() {
 		this.oNSHValidateworker.instantiateOrgNSH(this);
 		this.oValidationHelper.addNSHAttachChangeEvent(this);
 		
-		var oRequestFinishedDeferredReadIndustrySectar = this.oModelHelper.readIndustrySector(this.oLanguageSelect.getSelectedKey());
+		/*var oRequestFinishedDeferredReadIndustrySectar = this.oModelHelper.readIndustrySector(this.oLanguageSelect.getSelectedKey());
 
 		jQuery.when(oRequestFinishedDeferredReadIndustrySectar).then(jQuery.proxy(function(oResponse) {
 			this.oNSHOrgIndustrySectorComboBox.setModel(oResponse);
-		},this));
+		},this));*/
+		
+		var oRequestFinishedDeferredLILI = this.oModelHelper.readLILISection();
+
+		jQuery.when(oRequestFinishedDeferredLILI).then(jQuery.proxy(function(oResponse) {			
+			this.oNSHOrgSectionComboBox.setModel(oResponse);
+		}, this));	
+		
+		
 		
 		
 		

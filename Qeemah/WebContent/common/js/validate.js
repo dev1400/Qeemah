@@ -510,6 +510,9 @@ com.sagia.common.js.validate = {
 			thisContext.oNSHFirstNameInputText.attachBrowserEvent("mouseover", function() {
 	        	thisContext.oNSHFirstNameInputText.setValueState("None");
 			});
+			thisContext.oNSHMiddleNameInputText.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oNSHMiddleNameInputText.setValueState("None");
+			});
 			thisContext.oNSHLastNameInputText.attachBrowserEvent("mouseover", function() {
 	        	thisContext.oNSHLastNameInputText.setValueState("None");
 			});
@@ -621,7 +624,46 @@ com.sagia.common.js.validate = {
 		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHFirstNameLength"));
 		  				thisContext.oShowAlertDialog.open();
 		  			 }			 							  				
-	  	   	 }else if(thisContext.oNSHLastNameInputText.getValue().length > 40){
+	  	   	 }
+  	   	     
+  	   	     
+  	   	     else if(!(/^[a-zA-Z ]*$/.test( thisContext.oNSHMiddleNameInputText.getValue() ))){
+					thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHMiddleNameInputText.setValueState("Error");
+					thisContext.oNSHMiddleNameInputText.setShowValueStateMessage(false);				
+
+					 if(!thisContext.oShowAlertDialog.isOpen())
+					 {
+						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("MiddleNameValid"));
+						 thisContext.oShowAlertDialog.open();
+					 }
+			   	 }else if(thisContext.oNSHMiddleNameInputText.getValue() === ""){
+						thisContext.oNewShareHolderValidation = false;
+						
+						thisContext.oNSHMiddleNameInputText.setValueState("Error");
+						thisContext.oNSHMiddleNameInputText.setShowValueStateMessage(false);	
+						
+		  			 if(!thisContext.oShowAlertDialog.isOpen())
+		  			 {
+		  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("MiddleNameMand"));
+		  				thisContext.oShowAlertDialog.open();
+		  			 }			 							  				
+	  	   	     }else if(thisContext.oNSHMiddleNameInputText.getValue().length > 40){
+						thisContext.oNewShareHolderValidation = false;
+						
+						thisContext.oNSHMiddleNameInputText.setValueState("Error");
+						thisContext.oNSHMiddleNameInputText.setShowValueStateMessage(false);	
+						
+			  			 if(!thisContext.oShowAlertDialog.isOpen())
+			  			 {
+			  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("MiddleNameExced"));
+			  				thisContext.oShowAlertDialog.open();
+			  			 }			 							  				
+		  	   	 }
+			 
+  	   	     
+  	   	     else if(thisContext.oNSHLastNameInputText.getValue().length > 40){
 					thisContext.oNewShareHolderValidation = false;
 					
 					thisContext.oNSHLastNameInputText.setValueState("Error");

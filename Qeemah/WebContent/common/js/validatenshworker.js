@@ -8,9 +8,10 @@ com.sagia.common.js.validatenshworker = {
 		othis.oNSHOrgCountryComboBox = othis.getView().byId("idNSHOrgCountryComboBox");
 		othis.oNSHOrgName2tText = othis.getView().byId("idNSHOrgName2tText");
 		othis.oNSHOrgCityNameInputText = othis.getView().byId("idNSHOrgCityNameInputText");
-		othis.oNSHOrgIndustrySectorComboBox = othis.getView().byId("idNSHOrgIndustrySectorInputText");
+		othis.oNSHOrgSectionComboBox = othis.getView().byId("idNSHOrgSectionComboBox");
+		othis.oNSHOrgDivisionComboBox = othis.getView().byId("idNSHOrgDivisionComboBox");
 		othis.oNSHOrgPostalCodeInputText = othis.getView().byId("idNSHOrgPostalCodeInputText");
-		othis.oNSHOrgSubSctorInputText = othis.getView().byId("idNSHOrgSubSctorInputText");
+		//othis.oNSHOrgSubSctorInputText = othis.getView().byId("idNSHOrgSubSctorInputText");
 		othis.oNSHOrgPOBoxInputText = othis.getView().byId("idNSHOrgPOBoxInputText");
 		othis.oNSHOrgMultiNationalCompanyCombobox = othis.getView().byId("idNSHOrgMultiNationalCompanyCombobox");
 		othis.oNSHOrgStreetInputText = othis.getView().byId("idNSHOrgStreetInputText");
@@ -61,15 +62,18 @@ com.sagia.common.js.validatenshworker = {
 		othis.oNSHOrgCityNameInputText.attachBrowserEvent("mouseover", function() {
 			othis.oNSHOrgCityNameInputText.setValueState("None");
 		});
-		othis.oNSHOrgIndustrySectorComboBox.attachBrowserEvent("mouseover", function() {
-			othis.oNSHOrgIndustrySectorComboBox.setValueState("None");
+		othis.oNSHOrgSectionComboBox.attachBrowserEvent("mouseover", function() {
+			othis.oNSHOrgSectionComboBox.setValueState("None");
+		});
+		othis.oNSHOrgDivisionComboBox.attachBrowserEvent("mouseover", function() {
+			othis.oNSHOrgDivisionComboBox.setValueState("None");
 		});
 		othis.oNSHOrgPostalCodeInputText.attachBrowserEvent("mouseover", function() {
 			othis.oNSHOrgPostalCodeInputText.setValueState("None");
 		});
-		othis.oNSHOrgSubSctorInputText.attachBrowserEvent("mouseover", function() {
+		/*othis.oNSHOrgSubSctorInputText.attachBrowserEvent("mouseover", function() {
 			othis.oNSHOrgSubSctorInputText.setValueState("None");
-		});
+		});*/
 		othis.oNSHOrgPOBoxInputText.attachBrowserEvent("mouseover", function() {
 			othis.oNSHOrgPOBoxInputText.setValueState("None");
 		});
@@ -203,15 +207,26 @@ com.sagia.common.js.validatenshworker = {
 						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHShareHolderCountryRequired"));
 						 thisContext.oShowAlertDialog.open();
 					 }
-			 }else if(thisContext.oNSHOrgIndustrySectorComboBox.getSelectedKey() === ""){
+			 }else if(thisContext.oNSHOrgSectionComboBox.getSelectedKey() === ""){
 					thisContext.oNewShareHolderValidation = false;
 					
-					thisContext.oNSHOrgIndustrySectorComboBox.setValueState("Error");
-					thisContext.oNSHOrgIndustrySectorComboBox.setShowValueStateMessage(false);	
+					thisContext.oNSHOrgSectionComboBox.setValueState("Error");
+					thisContext.oNSHOrgSectionComboBox.setShowValueStateMessage(false);	
 					
 					 if(!thisContext.oShowAlertDialog.isOpen())
 					 {
 						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("IndustrySectorRequired"));
+						 thisContext.oShowAlertDialog.open();
+					 }
+			 }else if(thisContext.oNSHOrgDivisionComboBox.getSelectedKey() === ""){
+					thisContext.oNewShareHolderValidation = false;
+					
+					thisContext.oNSHOrgDivisionComboBox.setValueState("Error");
+					thisContext.oNSHOrgDivisionComboBox.setShowValueStateMessage(false);	
+					
+					 if(!thisContext.oShowAlertDialog.isOpen())
+					 {
+						 thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("IndustryDivisionRequired"));
 						 thisContext.oShowAlertDialog.open();
 					 }
 			 }else if(thisContext.oNSHOrgCityNameInputText.getValue().length > 40){
@@ -735,7 +750,7 @@ thisContext.NSHOrgOtherAttachment.setValueState("Error");
 		 
 		 
 		 
- 	else if(thisContext.oNSHOrgIndustrySectorComboBox.getSelectedKey() === "9" ){
+/* 	else if(thisContext.oNSHOrgIndustrySectorComboBox.getSelectedKey() === "9" ){
 	   		 
  	   	 if( thisContext.oNSHOrgSubSctorInputText.getValue() === ""){
 				thisContext.oNewShareHolderValidation = false;
@@ -773,7 +788,7 @@ thisContext.NSHOrgOtherAttachment.setValueState("Error");
 				 }
 		 }
  	   	 
- 	   	 }
+ 	   	 }*/
 		 
 		 return thisContext.oNewShareHolderValidation;
 	}

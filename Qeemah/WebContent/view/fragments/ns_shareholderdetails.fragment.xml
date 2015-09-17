@@ -108,7 +108,22 @@
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					
-					<sap.ui.commons.layout:MatrixLayoutCell
+				<sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>MiddleName}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+							
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+								<Input id="idNSHMiddleNameInputText" type="Text" width="100%" />
+
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>	
+					
+					<!-- <sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>Email}"></sap.ui.commons:TextView>
@@ -120,7 +135,7 @@
 						<sap.ui.commons.layout:content>
 								<Input id="idNSHEmailInputText" type="Text" width="100%" />
 						</sap.ui.commons.layout:content>
-					</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:MatrixLayoutCell> -->
 					
 					
 					<!-- <sap.ui.commons.layout:MatrixLayoutCell
@@ -468,21 +483,35 @@
 								<Input id="idNSHFaxInputText" type="Text" width="80%" />
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					
-					
 					<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
-							<!-- <sap.ui.commons:TextView text="{i18n>Percentage}"></sap.ui.commons:TextView>
-							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView> -->
+							<sap.ui.commons:TextView text="{i18n>Email}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell
 						vAlign="Middle" hAlign="End">
 						<sap.ui.commons.layout:content>
-<!-- 								<Input id="idNSHPercentageInputText" type="Text" width="25em" />
- -->							
+								<Input id="idNSHEmailInputText" type="Text" width="100%" />
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+					<!-- <sap.ui.commons.layout:MatrixLayoutCell
+						hAlign="End">
+						<sap.ui.commons.layout:content>
+							<sap.ui.commons:TextView text="{i18n>Percentage}"></sap.ui.commons:TextView>
+							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						vAlign="Middle" hAlign="End">
+						<sap.ui.commons.layout:content>
+								<Input id="idNSHPercentageInputText" type="Text" width="25em" />
+							
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell> -->
 					
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow>
@@ -694,20 +723,33 @@
 		<sap.ui.commons.layout:rows>
 		<sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:cells>
-					<sap.ui.commons.layout:MatrixLayoutCell
+				<!-- 	<sap.ui.commons.layout:MatrixLayoutCell
 						hAlign="End">
 						<sap.ui.commons.layout:content>
 							<sap.ui.commons:TextView text="{i18n>IndustrySector}"></sap.ui.commons:TextView>
 							<sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 							
 						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell> -->
+					
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+						<sap.ui.commons:TextView text="{i18n>Section}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*"
+							class="textcolorred"></sap.ui.commons:TextView>
+
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					<sap.ui.commons.layout:MatrixLayoutCell>
 						<sap.ui.commons.layout:content>
 						
-						<ComboBox width="100%" items="{/IndustrySectarCollection}" id="idNSHOrgIndustrySectorInputText" selectionChange="handleIndustrialSectarSelectionChange">
+						<!-- <ComboBox width="100%" items="{/IndustrySectarCollection}" id="idNSHOrgIndustrySectorInputText" selectionChange="handleIndustrialSectarSelectionChange">
 							<sap.ui.core:ListItem key="{ind}" text="{desc}"/>
-						 </ComboBox>
+						 </ComboBox> -->
+						 
+						 <ComboBox width="100%" items="{/LILISectionCollection}"
+							id="idNSHOrgSectionComboBox" selectionChange="handleNSHOrgSectionChange">
+							<sap.ui.core:ListItem key="{IsicSection}"
+								text="{IsicDescription}"/>
+						</ComboBox>
 								
 						</sap.ui.commons.layout:content>
 					</sap.ui.commons.layout:MatrixLayoutCell>
@@ -734,13 +776,34 @@
 		<sap.ui.commons.layout:rows>
 		<sap.ui.commons.layout:MatrixLayoutRow>
 		<sap.ui.commons.layout:cells>
-		<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+<!-- 		<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
 		<sap.ui.commons:TextView text="{i18n>SubSector}"></sap.ui.commons:TextView>
                             <sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
 		</sap.ui.commons.layout:MatrixLayoutCell>
 		<sap.ui.commons.layout:MatrixLayoutCell>
 		<Input id="idNSHOrgSubSctorInputText" enabled="false" type="Text" width="100%" />
-		</sap.ui.commons.layout:MatrixLayoutCell>
+		</sap.ui.commons.layout:MatrixLayoutCell> -->
+		
+			<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+	
+						<sap.ui.commons:TextView text="{i18n>Division}"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*"
+							class="textcolorred"></sap.ui.commons:TextView>
+		
+
+
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<ComboBox width="100%" 
+							items="{/LILIDivisionCollection}" id="idNSHOrgDivisionComboBox"
+							
+							>
+							<sap.ui.core:ListItem key="{IsicDivision}"
+								text="{IsicDescription}" />
+						</ComboBox>
+						<sap.ui.commons:TextView text="{i18n>SelectionSection}" enabled="false" design="Italic"></sap.ui.commons:TextView>
+			
+					</sap.ui.commons.layout:MatrixLayoutCell>
 		
 		
 		<sap.ui.commons.layout:MatrixLayoutCell
