@@ -57,11 +57,35 @@
 					</sap.ui.commons.layout:MatrixLayoutRow>
 					
 				</sap.ui.commons.layout:MatrixLayout>
-				
-
 
 			</VBox>
 
+			<sap.ui.commons.layout:MatrixLayout  layoutFixed="true" columns="1" widths="80%">
+				<sap.ui.commons.layout:MatrixLayoutRow>
+				    
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center">
+					<sap.ui.commons:TextView text="{i18n>BrowserMessage}"
+					class="textcolorwhite browserMessageTextViewSize"></sap.ui.commons:TextView>
+										
+					<html:span>&#160;</html:span>
+					<Link text="{i18n>DownloadIE}"
+												href="https://www.microsoft.com/en-in/download/internet-explorer.aspx"
+												class="linkColor BrowserMessagelinkSize" target="_blank" />
+					
+					
+		
+					<html:span>&#160;</html:span>
+					<Link text="{i18n>DownloadChrome}"
+												href="http://www.google.com/chrome/"
+												class="linkColor BrowserMessagelinkSize" target="_blank" />
+					<html:span>&#160;</html:span>
+					<Link text="{i18n>DownloadFF}"
+												href="https://www.mozilla.org/en-US/firefox/new/"
+												class="linkColor BrowserMessagelinkSize" target="_blank" />
+					
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+			</sap.ui.commons.layout:MatrixLayout>
 
 		</VBox>
 

@@ -4,7 +4,7 @@
 	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 	xmlns:html="http://www.w3.org/1999/xhtml">
 
-	<VBox id="idVBoxRegistration" justifyContent="Center" alignItems="Center">
+	<VBox id="idVBoxRegistration" class="aaa" justifyContent="Center" alignItems="Center">
 		<items>
 
 
@@ -101,8 +101,35 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
 				
-				
+				<!-- Country selection -->
+				<sap.ui.commons.layout:MatrixLayoutRow>
 
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
+						
+						<sap.ui.commons:TextView text="{i18n>Country}"
+							class="textcolorwhite"></sap.ui.commons:TextView>
+						<sap.ui.commons:TextView text="*"
+							class="redcolortext"></sap.ui.commons:TextView>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>
+							<ComboBox width="30%" items="{/DetailsCollection}" id="idRegCountryComboBox" selectionChange="handleCountrySelectionComboBoxReg">
+								<core:ListItem key="{Land1}" text="{Landx50}" />
+							</ComboBox>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+
+				</sap.ui.commons.layout:MatrixLayoutRow>
+				
+				
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:MatrixLayoutCell
+						colSpan="2" vAlign="Middle" hAlign="Center">
+						<sap.ui.commons:TextView visible="false"
+							id="idRegCountryErrorMsg" class="textcolorred"></sap.ui.commons:TextView>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:MatrixLayoutRow>
 				<sap.ui.commons.layout:MatrixLayoutRow>
 
 					<sap.ui.commons.layout:MatrixLayoutCell hAlign="End">
@@ -114,7 +141,7 @@
 					</sap.ui.commons.layout:MatrixLayoutCell>
 
 					<sap.ui.commons.layout:MatrixLayoutCell>
-					    <Input  width="8%" type="Text" value="966" enabled="false"/>
+					    <Input  width="8%" type="Text" id="idRegTelephoneCountryCodeInputText" enabled="false"/>
 						<Input  width="22%" type="Text" id="idContactNumberInputText" /><!--liveChange="handleContactNumberEntryLiveChange"  -->
 					</sap.ui.commons.layout:MatrixLayoutCell>
 				</sap.ui.commons.layout:MatrixLayoutRow>
@@ -225,7 +252,7 @@
 			
 
 
-			<VBox id="idLoginVBoxLayout" justifyContent="Center" alignItems="Center"
+			<VBox id="idLoginVBoxLayout" class="bbb" justifyContent="Center" alignItems="Center"
 				width="100%">
 				
 				<VBox id="idSignInMatrixLayout">
@@ -301,7 +328,7 @@
 			<sap.ui.commons.layout:MatrixLayout layoutFixed="true">
 								<sap.ui.commons.layout:MatrixLayoutRow>
 									<sap.ui.commons.layout:MatrixLayoutCell
-										hAlign="End" >
+										hAlign="Center" >
 											<Image src="common/mime/dot.png" class="homePageRadioButtonsImage"></Image>
 											<html:span>&#160;</html:span>
 											<Link text="{i18n>ServiceGuide}"
@@ -310,15 +337,15 @@
 										
 
 									</sap.ui.commons.layout:MatrixLayoutCell>
-									<sap.ui.commons.layout:MatrixLayoutCell
+									<!-- <sap.ui.commons.layout:MatrixLayoutCell
 										hAlign="Begin">
 											<Image src="common/mime/dot.png" class="homePageRadioButtonsImage"></Image>
 											<html:span>&#160;</html:span>
 											<Link text="{i18n>DownloadForms}"
-												href="https://www.sagia.gov.sa/en/Investor-tools/E--Servoce-/Renew-Investment-license/Download-Forms-renew/"
+												href="https://www.sagia.gov.sa/en/Investor-tools/E-Servoce-/Renew-Investment-license/Download-Forms-renew/"
 												class="linkColor" target="_blank" />
 										
-									</sap.ui.commons.layout:MatrixLayoutCell>
+									</sap.ui.commons.layout:MatrixLayoutCell> -->
 
 
 								</sap.ui.commons.layout:MatrixLayoutRow>
@@ -326,10 +353,10 @@
 							</sap.ui.commons.layout:MatrixLayout>
 								<html:br></html:br>
 							
-				<sap.ui.commons.layout:MatrixLayout layoutFixed="true" columns="2" widths="40%">
+				<!-- <sap.ui.commons.layout:MatrixLayout layoutFixed="true" columns="2" widths="40%">
 				<sap.ui.commons.layout:MatrixLayoutRow>
 				    
-					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center" colSpan="2">
+					<sap.ui.commons.layout:MatrixLayoutCell vAlign="Bottom" hAlign="Center" colSpan="2">
 					<sap.ui.commons:TextView text="*"
 							class="redcolortext"></sap.ui.commons:TextView>
 					<sap.ui.commons:TextView text="{i18n>BrowserMessage}"
@@ -383,7 +410,7 @@
 					
 					</sap.ui.commons.layout:MatrixLayoutCell>
 					</sap.ui.commons.layout:MatrixLayoutRow>
-				</sap.ui.commons.layout:MatrixLayout>
+				</sap.ui.commons.layout:MatrixLayout> -->
 				
 				
 				</VBox>

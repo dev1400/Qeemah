@@ -261,6 +261,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 	/*handleSHTableDeleteButtonPress : function(){
 		
 	},*/
+	handleOwnCompanySelectionChange : function(){
+	
+		if(this.oOwnCompanyQComboBox.getSelectedKey() === "Y"){
+			this.oShareholderQuestionarieVBox.setVisible(true);
+		}else if(this.oOwnCompanyQComboBox.getSelectedKey() === "N"){
+			this.oShareholderQuestionarieVBox.setVisible(false);
+		}
+
+	},
 	handleLicenseTypeChange : function(){
 		var oLanguage;
 		if(this.oLanguageSelect.getSelectedKey() === "EN")
@@ -1020,352 +1029,34 @@ sap.ui.controller("com.sagia.view.Overview", {
 
 			 
 		     }else{
-		    	 var actvityQuestions = [];
-					var activityAnswers = [];
-					for(var j=0; j < this.oTotalActivityQuestions; j++){
-						 var oAQAnswer = sap.ui.getCore().byId("idAQAnswer"+j);
-						 var oAQuestion = sap.ui.getCore().byId("idAQuestion"+j);
-						 
-						 oAQAnswer.attachBrowserEvent("mouseover", function() {
-							 oAQAnswer.setValueState("None");
-						 });						 
-						 
-						 if(oAQAnswer.getSelectedKey() !== ""){
-							 actvityQuestions.push(oAQuestion.data("idAQuestion"+j));
-							 activityAnswers.push(oAQAnswer.getSelectedItem().getText()); 
-						 }else{
-							 if(!this.oShowAlertDialog.isOpen())
-							 {
-								this.oAlertTextView.setText(this.oModelHelper.getText("AllAQareMandatory"));
-								this.oShowAlertDialog.open();
-							 }
-							 this.closeBusyDialog();
-							 
-							 oAQAnswer.setValueState("Error");
-							 oAQAnswer.setShowValueStateMessage(false);
-							
-							 return;
-						 }
-					}
-					
-					var experienceQuestions = [];
-					var experienceAnswers = [];
-					for(var j=0; j < this.oTotalExperienceQuestions; j++){
-						 var oEQAnswer = sap.ui.getCore().byId("idEQAnswer"+j);
-						 var oEQuestion = sap.ui.getCore().byId("idEQuestion"+j);
-						 
-						 oEQAnswer.attachBrowserEvent("mouseover", function() {
-							 oEQAnswer.setValueState("None");
-						 });
-						 
-						 if(oEQAnswer.getSelectedKey() !== ""){
-						 experienceQuestions.push(oEQuestion.data("idEQuestion"+j));
-						 experienceAnswers.push(oEQAnswer.getSelectedItem().getText());
-						 }else{
-							 if(!this.oShowAlertDialog.isOpen())
-							 {
-								this.oAlertTextView.setText(this.oModelHelper.getText("AllEQareMandatory"));
-								this.oShowAlertDialog.open();
-							 }
-							 this.closeBusyDialog();
-							 
-							 oEQAnswer.setValueState("Error");
-							 oEQAnswer.setShowValueStateMessage(false);
-							 
-							 return;
-						 }
-					}
-					
-					
-	  	   	    var questions = [];
-				var answers1 = [];
-				var answers2 = [];
-				var answers3 = [];
-				for(var i=0; i < this.oTotalFinancialQuestions; i++){
-					 
-					 var oFinancialQuestion = sap.ui.getCore().byId("idFinancialQuestion"+i);
-					 var oFinancialAnswer1 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+1);
-					 var oFinancialAnswer2 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+2);
-					 var oFinancialAnswer3 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+3);
-					 
-					 oFinancialAnswer1.attachBrowserEvent("mouseover", function() {
-				        	oFinancialAnswer1.setValueState("None");
-					 });
-					 oFinancialAnswer2.attachBrowserEvent("mouseover", function() {
-				        	oFinancialAnswer2.setValueState("None");
-					 });
-					 oFinancialAnswer3.attachBrowserEvent("mouseover", function() {
-				        	oFinancialAnswer3.setValueState("None");
-					 });
-					 
-					 if(oFinancialAnswer1.getValue().length === 0){		
-
-				  		 if(!this.oShowAlertDialog.isOpen())
-						 {
-							this.oAlertTextView.setText(this.oModelHelper.getText("AllFinancialAnswerAreMandatory"));
-							this.oShowAlertDialog.open();
-						 }
-				  		 this.closeBusyDialog();
-				  		 
-				  		oFinancialAnswer1.setValueState("Error");
-				  		oFinancialAnswer1.setShowValueStateMessage(false);
-						
-				  		 return;								
-				  	 }
-					 if(oFinancialAnswer2.getValue().length === 0){		
-
-				  		 if(!this.oShowAlertDialog.isOpen())
-						 {
-							this.oAlertTextView.setText(this.oModelHelper.getText("AllFinancialAnswerAreMandatory"));
-							this.oShowAlertDialog.open();
-						 }
-				  		 this.closeBusyDialog();
-				  		oFinancialAnswer2.setValueState("Error");
-				  		oFinancialAnswer2.setShowValueStateMessage(false);
-				  		 return;								
-				  	 }
-					 if(oFinancialAnswer3.getValue().length === 0){		
-
-				  		 if(!this.oShowAlertDialog.isOpen())
-						 {
-							this.oAlertTextView.setText(this.oModelHelper.getText("AllFinancialAnswerAreMandatory"));
-							this.oShowAlertDialog.open();
-						 }
-				  		 this.closeBusyDialog();
-				  		 
-				  		oFinancialAnswer3.setValueState("Error");
-				  		oFinancialAnswer3.setShowValueStateMessage(false);
-				  		
-				  		 return;								
-				  	 }
-					 
-					 
-					 
-					 if(oFinancialAnswer1.getValue().length > 10){		
-
-				  		 if(!this.oShowAlertDialog.isOpen())
-						 {
-							this.oAlertTextView.setText(this.oModelHelper.getText("FinancialAnswersLength"));
-							this.oShowAlertDialog.open();
-						 }
-				  		 this.closeBusyDialog();
-				  		oFinancialAnswer1.setValueState("Error");
-				  		oFinancialAnswer1.setShowValueStateMessage(false);
-				  		 return;								
-				  	 }if(oFinancialAnswer2.getValue().length > 10){		
-
-				  		 if(!this.oShowAlertDialog.isOpen())
-						 {
-							this.oAlertTextView.setText(this.oModelHelper.getText("FinancialAnswersLength"));
-							this.oShowAlertDialog.open();
-						 }
-				  		 this.closeBusyDialog();
-				  		oFinancialAnswer2.setValueState("Error");
-				  		oFinancialAnswer2.setShowValueStateMessage(false);
-				  		 return;								
-				  	 }if(oFinancialAnswer3.getValue().length > 10){		
-
-				  		 if(!this.oShowAlertDialog.isOpen())
-						 {
-							this.oAlertTextView.setText(this.oModelHelper.getText("FinancialAnswersLength"));
-							this.oShowAlertDialog.open();
-						 }
-				  		 this.closeBusyDialog();
-				  		oFinancialAnswer3.setValueState("Error");
-				  		oFinancialAnswer3.setShowValueStateMessage(false);
-				  		 return;								
-				  	 }else if(!(/^\d*$/.test( oFinancialAnswer1.getValue() ))){		
-
-				  		 if(!this.oShowAlertDialog.isOpen())
-						 {
-							this.oAlertTextView.setText(this.oModelHelper.getText("FinancialAnswersInvalid"));
-							this.oShowAlertDialog.open();
-						 }
-				  		 this.closeBusyDialog();
-				  		oFinancialAnswer1.setValueState("Error");
-				  		oFinancialAnswer1.setShowValueStateMessage(false);
-				  		 return;								
-				  	 }else if(!(/^\d*$/.test( oFinancialAnswer2.getValue() ))){		
-
-				  		 if(!this.oShowAlertDialog.isOpen())
-						 {
-							this.oAlertTextView.setText(this.oModelHelper.getText("FinancialAnswersInvalid"));
-							this.oShowAlertDialog.open();
-						 }
-				  		 this.closeBusyDialog();
-				  		oFinancialAnswer2.setValueState("Error");
-				  		oFinancialAnswer2.setShowValueStateMessage(false);
-				  		 return;								
-				  	 }else if(!(/^\d*$/.test( oFinancialAnswer3.getValue() ))){		
-
-				  		 if(!this.oShowAlertDialog.isOpen())
-						 {
-							this.oAlertTextView.setText(this.oModelHelper.getText("FinancialAnswersInvalid"));
-							this.oShowAlertDialog.open();
-						 }
-				  		 this.closeBusyDialog();
-				  		oFinancialAnswer3.setValueState("Error");
-				  		oFinancialAnswer3.setShowValueStateMessage(false);
-				  		 return;								
-				  	 }else{
-				  		 questions.push(oFinancialQuestion.data("idFinancialQuestion"+i));
-						 answers1.push(oFinancialAnswer1.getValue());
-						 answers2.push(oFinancialAnswer2.getValue());
-						 answers3.push(oFinancialAnswer3.getValue());
-				  	 }
-					 
-
-				}
+		    	 this.actvityQuestions = [];
+		    	 this.activityAnswers = [];
+		    	 this.experienceQuestions = [];
+		    	 this.experienceAnswers = [];
+		    	 this.questions = [];
+		    	 this.answers1 = [];
+		    	 this.answers2 = [];
+		    	 this.answers3 = [];
+		    	 
+		    	 if(this.oShareHolderTypeComboBox.getSelectedKey() === "1" && this.oOwnCompanyQComboBox.getSelectedKey() === "Y"){
+		    		if(this.doShareHolderQuestionaireValidation()){
+		    			this.shareholderCreationOperation();
+		    		}
+		    	 }else if(this.oShareHolderTypeComboBox.getSelectedKey() === "1" && this.oOwnCompanyQComboBox.getSelectedKey() === "N"){
+			    		//if(this.doShareHolderQuestionaireValidation()){
+			    			this.shareholderCreationOperation();
+			    		//}
+			    	 }
+		    	 
+		    	 if(this.oShareHolderTypeComboBox.getSelectedKey() === "2"){
+		    		 if(this.doShareHolderQuestionaireValidation()){
+			    			this.shareholderCreationOperation();
+			    		}
+		    		 }
+		    	 
 				
 				//console.log(that.oNSHDOBDate.getDateValue());
 				
-				sap.m.MessageToast.show(this.oModelHelper.getText("CreatingNewSH"), {duration : 10000});
-				var oRequestFinishedDeferredNSH;
-				if(this.oShareHolderTypeComboBox.getSelectedKey() === "1")
-					{
-					var oDOBSplitted =that.oNSHDOBDate.getDateValue().toLocaleDateString().split("/");
-					if(oDOBSplitted[1] < 10){
-						oDOBSplitted[1] = "0"+oDOBSplitted[1];
-					}
-					if(oDOBSplitted[0] < 10){
-						oDOBSplitted[0] = "0"+oDOBSplitted[0];
-					}
-					oDOBSplittedString = oDOBSplitted[2]+""+oDOBSplitted[0]+""+oDOBSplitted[1];
-					
-					  oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(
-								that.oRef_id,
-			            		that.oShareHolderTypeComboBox.getSelectedItem().getText(),
-			     				that.oNSHFirstNameInputText.getValue(),
-			     				that.oNSHCountryComboBox.getSelectedKey(),
-			     				that.oNSHLastNameInputText.getValue(),
-			     				that.oNSHCityNameInputText.getValue(),
-			     				that.oNSHGenderComboBox.getSelectedKey(),
-			     				that.oNSHPOBoxInputText.getValue(),
-			     				that.oNSHMaritalStatusComboBox.getSelectedKey(),
-			     				that.oNSHPostalCodeInputText.getValue(),
-			     				that.oNSHAcademicTitleComboBox.getSelectedKey(),
-			     				that.oNSHStreetInputText.getValue(),
-			     				oDOBSplittedString,
-			     				//that.oNSHDOBDate.getDateValue().toISOString().substring(0,10).replace(/-/g,""),
-			     				"http://"+that.oNSHWebsiteInputText.getValue(),
-			     				that.oNSHTelephoneInputText.getValue(),
-			     				that.oNSHNationalityComboBox.getSelectedKey(),
-			     				that.oNSHMobilePhoneInputText.getValue(),
-			     				that.oNSHPreviousNationalityInputText.getSelectedKey(),
-			     				that.oNSHFaxInputText.getValue(),
-			     				that.oNSHCommMethodInputText.getSelectedKey(),
-			     				that.oNSHEmailInputText.getValue(),
-			     				that.oNSHPercentageInputText.getValue(),
-			     				"", "", "", "", "", "", "",
-			     		        "", "", "", "", "", "", "",
-			     		        "", "", "", "", "", "", "",
-			     		        "", "", "", "", "", "", "",
-			     		        "", "", "", "", "", "", "", "", "", "",
-			     		       that.oNSHPersonTelephoneCountryCodeInputText.getValue(),
-			     		       that.oNSHPersonFaxCountryCodeInputText.getValue(),
-			     		       that.oNSHPersonMobilephoneCountryCodeInputText.getValue());
-					   
-					  
-				
-					}else{
-						
-							  oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(
-										that.oRef_id,
-					            		that.oShareHolderTypeComboBox.getSelectedItem().getText(),
-					     				that.oNSHOrganizationName.getValue(),
-					     				that.oNSHOrgCountryComboBox.getSelectedKey(),
-					     				that.oNSHOrgName2tText.getValue(),
-					     				that.oNSHOrgCityNameInputText.getValue(),
-					     				that.oNSHOrgSectionComboBox.getSelectedKey(),
-					     				that.oNSHOrgPOBoxInputText.getValue(),
-					     				"",//that.oNSHMaritalStatusComboBox.getSelectedKey(),
-					     				that.oNSHOrgPostalCodeInputText.getValue(),
-					     				"",//that.oNSHAcademicTitleComboBox.getSelectedKey(),
-					     				that.oNSHOrgStreetInputText.getValue(),
-					     				"",//oDOBSplittedString,					     				
-					     				"http://"+that.oNSHOrgWebsiteInputText.getValue(),
-					     				that.oNSHOrgTelephoneInputText.getValue(),
-					     				"",//that.oNSHNationalityComboBox.getSelectedKey(),
-					     				that.oNSHOrgMobilephoneInputText.getValue(),
-					     				"",//that.oNSHPreviousNationalityInputText.getSelectedKey(),
-					     				that.oNSHOrgFaxInputText.getValue(),
-					     				"",//that.oNSHCommMethodInputText.getSelectedKey(),
-					     				that.oNSHOrgEmailInputText.getValue(),
-					     				that.oNSHOrgPercentageInputText.getValue(),
-					     				"", 
-					     				"", 
-					     				"", 
-					     				"",
-					     				"", 
-					     				"", 
-					     				"",
-					     				that.oNSHOrgDivisionComboBox.getSelectedKey(),
-					     				//this.oNSHOrgSubSctorInputText.getValue(), 
-					     				this.oNSHOrgMultiNationalCompanyCombobox.getSelectedKey(), 
-					     				this.oOriginalNSHPersonLaborSizeInputTextValue, //this.oNSHOrgLaborSizeInputText.getValue(),
-					     				this.oNSHOrgLegalStatusComboBox.getSelectedKey(), 
-					     				this.oNSHOrgBuildingNoInputText.getValue(), 
-					     				this.oOriginalNSHOrgCapitalInputTextValue,//this.oNSHOrgCapitalInputText.getValue(), 
-					     				
-					     				"",
-					     		        "", "", "", "", "", "", "",
-					     		        "", "", "", "", "", "", "",
-					     		        "", "", "", "", "", "", "", "", "", "",
-					     		       this.oNSHOrgTelephoneCountryCodeInputText.getValue(),
-					     		       this.oNSHOrgFaxCountryCodeInputText.getValue(),
-					     		       this.oNSHOrgMobilephoneCountryCodeInputText.getValue()
-					     		        );
-							  
-						
-							
-					}
-					
-				
-					
-
-		     		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {
-		     			
-		     		
-		     			
-	     			 try{
-	     				
-	     				that.oSHTable.unbindItems();
-
-			            that.oSavedSHData.SavedShareHolderCollection.push({			    	
-			            	"ShareHolderName":oResponse.EntityFname+" "+oResponse.EntityLname,
-							"Nationalty" : oResponse.CurrNationalty,			    	 			
-		    	 			"Percentage" : oResponse.Percentage,
-		    	 			"EntityNo" : oResponse.EntityNo	            	
-			            });
-			             
-			            that.oSHJSONModel.setData(that.oSavedSHData, true);
-			    		that.oSHTable.setModel(that.oSHJSONModel);
-			    		that.oSHTable.bindItems("/SavedShareHolderCollection",new sap.m.ColumnListItem({
-			    			cells : [ new sap.ui.commons.TextView({
-		    			          text : "{ShareHolderName}"
-		    			        }),new sap.ui.commons.TextView({
-		    			          text : "{Percentage}"
-		    			        }),  new sap.ui.commons.TextView({
-		    			          text : "{Nationalty}"
-		    			        })]
-			    		      }));
-			    		
-		    		if(this.oShareHolderTypeComboBox.getSelectedKey() === "1"){
-			   	   		 this.createPersonShareHolderOperations(oResponse, actvityQuestions, activityAnswers, experienceQuestions, experienceAnswers, questions, answers1, answers2, answers3);
-			   		 }else{
-			   			 this.createOrganizationShareHolderOperations(oResponse, actvityQuestions, activityAnswers, experienceQuestions, experienceAnswers, questions, answers1, answers2, answers3);
-			   		 }
-			             
-
-				            
-				   
-		     				 
-		 }catch(error){
-			 console.log(error);
- 			 that.closeBusyDialog();
-		 }
-			 }, this));//end of create new share holder
-  	   	 //    }//end of else
 		     }
 		}catch(err){
 			console.log(err);
@@ -1374,6 +1065,366 @@ sap.ui.controller("com.sagia.view.Overview", {
 			
 		}
 		
+	},
+	shareholderCreationOperation : function(){
+		try{
+			
+		
+var that = this;
+		sap.m.MessageToast.show(this.oModelHelper.getText("CreatingNewSH"), {duration : 10000});
+		var oRequestFinishedDeferredNSH;
+		if(this.oShareHolderTypeComboBox.getSelectedKey() === "1")
+			{
+			var oDOBSplitted =that.oNSHDOBDate.getDateValue().toLocaleDateString().split("/");
+			if(oDOBSplitted[1] < 10){
+				oDOBSplitted[1] = "0"+oDOBSplitted[1];
+			}
+			if(oDOBSplitted[0] < 10){
+				oDOBSplitted[0] = "0"+oDOBSplitted[0];
+			}
+			oDOBSplittedString = oDOBSplitted[2]+""+oDOBSplitted[0]+""+oDOBSplitted[1];
+			
+			  oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(
+						that.oRef_id,
+	            		that.oShareHolderTypeComboBox.getSelectedItem().getText(),
+	     				that.oNSHFirstNameInputText.getValue(),
+	     				that.oNSHCountryComboBox.getSelectedKey(),
+	     				that.oNSHLastNameInputText.getValue(),
+	     				that.oNSHCityNameInputText.getValue(),
+	     				that.oNSHGenderComboBox.getSelectedKey(),
+	     				that.oNSHPOBoxInputText.getValue(),
+	     				that.oNSHMaritalStatusComboBox.getSelectedKey(),
+	     				that.oNSHPostalCodeInputText.getValue(),
+	     				that.oNSHAcademicTitleComboBox.getSelectedKey(),
+	     				that.oNSHStreetInputText.getValue(),
+	     				oDOBSplittedString,
+	     				//that.oNSHDOBDate.getDateValue().toISOString().substring(0,10).replace(/-/g,""),
+	     				"http://"+that.oNSHWebsiteInputText.getValue(),
+	     				that.oNSHTelephoneInputText.getValue(),
+	     				that.oNSHNationalityComboBox.getSelectedKey(),
+	     				that.oNSHMobilePhoneInputText.getValue(),
+	     				that.oNSHPreviousNationalityInputText.getSelectedKey(),
+	     				that.oNSHFaxInputText.getValue(),
+	     				that.oNSHCommMethodInputText.getSelectedKey(),
+	     				that.oNSHEmailInputText.getValue(),
+	     				that.oNSHPercentageInputText.getValue(),
+	     				"", "", "", "", "", "", "",
+	     		        "", "", "", "", "", "", "",
+	     		        "", "", "", "", "", "", "",
+	     		        "", "", "", "", "", "", "",
+	     		        "", "", "", "", "", "", "", "", "", "",
+	     		       that.oNSHPersonTelephoneCountryCodeInputText.getValue(),
+	     		       that.oNSHPersonFaxCountryCodeInputText.getValue(),
+	     		       that.oNSHPersonMobilephoneCountryCodeInputText.getValue());
+			   
+			  
+		
+			}else{
+				
+					  oRequestFinishedDeferredNSH = that.oModelHelper.createNewShareHolder(
+								that.oRef_id,
+			            		that.oShareHolderTypeComboBox.getSelectedItem().getText(),
+			     				that.oNSHOrganizationName.getValue(),
+			     				that.oNSHOrgCountryComboBox.getSelectedKey(),
+			     				that.oNSHOrgName2tText.getValue(),
+			     				that.oNSHOrgCityNameInputText.getValue(),
+			     				that.oNSHOrgSectionComboBox.getSelectedKey(),
+			     				that.oNSHOrgPOBoxInputText.getValue(),
+			     				"",//that.oNSHMaritalStatusComboBox.getSelectedKey(),
+			     				that.oNSHOrgPostalCodeInputText.getValue(),
+			     				"",//that.oNSHAcademicTitleComboBox.getSelectedKey(),
+			     				that.oNSHOrgStreetInputText.getValue(),
+			     				"",//oDOBSplittedString,					     				
+			     				"http://"+that.oNSHOrgWebsiteInputText.getValue(),
+			     				that.oNSHOrgTelephoneInputText.getValue(),
+			     				"",//that.oNSHNationalityComboBox.getSelectedKey(),
+			     				that.oNSHOrgMobilephoneInputText.getValue(),
+			     				"",//that.oNSHPreviousNationalityInputText.getSelectedKey(),
+			     				that.oNSHOrgFaxInputText.getValue(),
+			     				"",//that.oNSHCommMethodInputText.getSelectedKey(),
+			     				that.oNSHOrgEmailInputText.getValue(),
+			     				that.oNSHOrgPercentageInputText.getValue(),
+			     				"", 
+			     				"", 
+			     				"", 
+			     				"",
+			     				"", 
+			     				"", 
+			     				"",
+			     				that.oNSHOrgDivisionComboBox.getSelectedKey(),
+			     				//this.oNSHOrgSubSctorInputText.getValue(), 
+			     				this.oNSHOrgMultiNationalCompanyCombobox.getSelectedKey(), 
+			     				this.oOriginalNSHPersonLaborSizeInputTextValue, //this.oNSHOrgLaborSizeInputText.getValue(),
+			     				this.oNSHOrgLegalStatusComboBox.getSelectedKey(), 
+			     				this.oNSHOrgBuildingNoInputText.getValue(), 
+			     				this.oOriginalNSHOrgCapitalInputTextValue,//this.oNSHOrgCapitalInputText.getValue(), 
+			     				
+			     				"",
+			     		        "", "", "", "", "", "", "",
+			     		        "", "", "", "", "", "", "",
+			     		        "", "", "", "", "", "", "", "", "", "",
+			     		       this.oNSHOrgTelephoneCountryCodeInputText.getValue(),
+			     		       this.oNSHOrgFaxCountryCodeInputText.getValue(),
+			     		       this.oNSHOrgMobilephoneCountryCodeInputText.getValue()
+			     		        );
+					  
+				
+					
+			}
+			
+		
+			
+
+     		jQuery.when(oRequestFinishedDeferredNSH).then(jQuery.proxy(function(oResponse) {
+     			
+     		
+     			
+ 			 try{
+ 				
+ 				that.oSHTable.unbindItems();
+
+	            that.oSavedSHData.SavedShareHolderCollection.push({			    	
+	            	"ShareHolderName":oResponse.EntityFname+" "+oResponse.EntityLname,
+					"Nationalty" : oResponse.CurrNationalty,			    	 			
+    	 			"Percentage" : oResponse.Percentage,
+    	 			"EntityNo" : oResponse.EntityNo	            	
+	            });
+	             
+	            that.oSHJSONModel.setData(that.oSavedSHData, true);
+	    		that.oSHTable.setModel(that.oSHJSONModel);
+	    		that.oSHTable.bindItems("/SavedShareHolderCollection",new sap.m.ColumnListItem({
+	    			cells : [ new sap.ui.commons.TextView({
+    			          text : "{ShareHolderName}"
+    			        }),new sap.ui.commons.TextView({
+    			          text : "{Percentage}"
+    			        }),  new sap.ui.commons.TextView({
+    			          text : "{Nationalty}"
+    			        })]
+	    		      }));
+	    		
+    		if(this.oShareHolderTypeComboBox.getSelectedKey() === "1"){
+	   	   		 this.createPersonShareHolderOperations(oResponse, this.actvityQuestions, this.activityAnswers, this.experienceQuestions, this.experienceAnswers, this.questions, this.answers1, this.answers2, this.answers3);
+	   		 }else{
+	   			 this.createOrganizationShareHolderOperations(oResponse, this.actvityQuestions, this.activityAnswers, this.experienceQuestions, this.experienceAnswers, this.questions, this.answers1, this.answers2, this.answers3);
+	   		 }
+	             
+
+		            
+		   
+     				 
+ }catch(error){
+	 console.log(error);
+		 that.closeBusyDialog();
+ }
+	 }, this));//end of create new share holder
+ 	 //    }//end of else
+		}catch(error){
+			console.log(error);
+			this.closeBusyDialog();
+		}
+	},
+
+	doShareHolderQuestionaireValidation : function(){
+   	  /*  var actvityQuestions = [];
+		var activityAnswers = [];*/
+		var oValidationStatus = true;
+		for(var j=0; j < this.oTotalActivityQuestions; j++){
+			 var oAQAnswer = sap.ui.getCore().byId("idAQAnswer"+j);
+			 var oAQuestion = sap.ui.getCore().byId("idAQuestion"+j);
+			 
+			 oAQAnswer.attachBrowserEvent("mouseover", function() {
+				 oAQAnswer.setValueState("None");
+			 });						 
+			 
+			 if(oAQAnswer.getSelectedKey() !== ""){
+				 this.actvityQuestions.push(oAQuestion.data("idAQuestion"+j));
+				 this.activityAnswers.push(oAQAnswer.getSelectedItem().getText()); 
+			 }else{
+				 oValidationStatus = false;
+				 if(!this.oShowAlertDialog.isOpen())
+				 {
+					this.oAlertTextView.setText(this.oModelHelper.getText("AllAQareMandatory"));
+					this.oShowAlertDialog.open();
+				 }
+				 this.closeBusyDialog();
+				 
+				 oAQAnswer.setValueState("Error");
+				 oAQAnswer.setShowValueStateMessage(false);
+				
+				 return oValidationStatus;
+			 }
+		}
+		
+		/*var experienceQuestions = [];
+		var experienceAnswers = [];*/
+		for(var j=0; j < this.oTotalExperienceQuestions; j++){
+			 var oEQAnswer = sap.ui.getCore().byId("idEQAnswer"+j);
+			 var oEQuestion = sap.ui.getCore().byId("idEQuestion"+j);
+			 
+			 oEQAnswer.attachBrowserEvent("mouseover", function() {
+				 oEQAnswer.setValueState("None");
+			 });
+			 
+			 if(oEQAnswer.getSelectedKey() !== ""){
+				 this.experienceQuestions.push(oEQuestion.data("idEQuestion"+j));
+				 this.experienceAnswers.push(oEQAnswer.getSelectedItem().getText());
+			 }else{
+				 oValidationStatus = false;
+				 if(!this.oShowAlertDialog.isOpen())
+				 {
+					this.oAlertTextView.setText(this.oModelHelper.getText("AllEQareMandatory"));
+					this.oShowAlertDialog.open();
+				 }
+				 this.closeBusyDialog();
+				 
+				 oEQAnswer.setValueState("Error");
+				 oEQAnswer.setShowValueStateMessage(false);
+				 
+				 return oValidationStatus;
+			 }
+		}
+		
+		
+	  /*  var questions = [];
+	var answers1 = [];
+	var answers2 = [];
+	var answers3 = [];*/
+	for(var i=0; i < this.oTotalFinancialQuestions; i++){
+		 
+		 var oFinancialQuestion = sap.ui.getCore().byId("idFinancialQuestion"+i);
+		 var oFinancialAnswer1 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+1);
+		 var oFinancialAnswer2 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+2);
+		 var oFinancialAnswer3 = sap.ui.getCore().byId("idFinancialQAnswer"+i+""+3);
+		 
+		 oFinancialAnswer1.attachBrowserEvent("mouseover", function() {
+	        	oFinancialAnswer1.setValueState("None");
+		 });
+		 oFinancialAnswer2.attachBrowserEvent("mouseover", function() {
+	        	oFinancialAnswer2.setValueState("None");
+		 });
+		 oFinancialAnswer3.attachBrowserEvent("mouseover", function() {
+	        	oFinancialAnswer3.setValueState("None");
+		 });
+		 
+		 if(oFinancialAnswer1.getValue().length === 0){		
+			 oValidationStatus = false;
+	  		 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("AllFinancialAnswerAreMandatory"));
+				this.oShowAlertDialog.open();
+			 }
+	  		 this.closeBusyDialog();
+	  		 
+	  		oFinancialAnswer1.setValueState("Error");
+	  		oFinancialAnswer1.setShowValueStateMessage(false);
+			
+	  		 return oValidationStatus;								
+	  	 }
+		 if(oFinancialAnswer2.getValue().length === 0){		
+			 oValidationStatus = false;
+	  		 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("AllFinancialAnswerAreMandatory"));
+				this.oShowAlertDialog.open();
+			 }
+	  		 this.closeBusyDialog();
+	  		oFinancialAnswer2.setValueState("Error");
+	  		oFinancialAnswer2.setShowValueStateMessage(false);
+	  		 return oValidationStatus;								
+	  	 }
+		 if(oFinancialAnswer3.getValue().length === 0){		
+			 oValidationStatus = false;
+	  		 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("AllFinancialAnswerAreMandatory"));
+				this.oShowAlertDialog.open();
+			 }
+	  		 this.closeBusyDialog();
+	  		 
+	  		oFinancialAnswer3.setValueState("Error");
+	  		oFinancialAnswer3.setShowValueStateMessage(false);
+	  		
+	  		 return oValidationStatus;								
+	  	 }
+		 
+		 
+		 
+		 if(oFinancialAnswer1.getValue().length > 10){		
+			 oValidationStatus = false;
+	  		 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("FinancialAnswersLength"));
+				this.oShowAlertDialog.open();
+			 }
+	  		 this.closeBusyDialog();
+	  		oFinancialAnswer1.setValueState("Error");
+	  		oFinancialAnswer1.setShowValueStateMessage(false);
+	  		 return oValidationStatus;								
+	  	 }if(oFinancialAnswer2.getValue().length > 10){		
+	  		oValidationStatus = false;
+	  		 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("FinancialAnswersLength"));
+				this.oShowAlertDialog.open();
+			 }
+	  		 this.closeBusyDialog();
+	  		oFinancialAnswer2.setValueState("Error");
+	  		oFinancialAnswer2.setShowValueStateMessage(false);
+	  		 return oValidationStatus;								
+	  	 }if(oFinancialAnswer3.getValue().length > 10){		
+	  		oValidationStatus = false;
+	  		 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("FinancialAnswersLength"));
+				this.oShowAlertDialog.open();
+			 }
+	  		 this.closeBusyDialog();
+	  		oFinancialAnswer3.setValueState("Error");
+	  		oFinancialAnswer3.setShowValueStateMessage(false);
+	  		 return oValidationStatus;								
+	  	 }else if(!(/^\d*$/.test( oFinancialAnswer1.getValue() ))){		
+	  		oValidationStatus = false;
+	  		 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("FinancialAnswersInvalid"));
+				this.oShowAlertDialog.open();
+			 }
+	  		 this.closeBusyDialog();
+	  		oFinancialAnswer1.setValueState("Error");
+	  		oFinancialAnswer1.setShowValueStateMessage(false);
+	  		 return oValidationStatus;								
+	  	 }else if(!(/^\d*$/.test( oFinancialAnswer2.getValue() ))){		
+	  		oValidationStatus = false;
+	  		 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("FinancialAnswersInvalid"));
+				this.oShowAlertDialog.open();
+			 }
+	  		 this.closeBusyDialog();
+	  		oFinancialAnswer2.setValueState("Error");
+	  		oFinancialAnswer2.setShowValueStateMessage(false);
+	  		 return oValidationStatus;								
+	  	 }else if(!(/^\d*$/.test( oFinancialAnswer3.getValue() ))){		
+	  		oValidationStatus = false;
+	  		 if(!this.oShowAlertDialog.isOpen())
+			 {
+				this.oAlertTextView.setText(this.oModelHelper.getText("FinancialAnswersInvalid"));
+				this.oShowAlertDialog.open();
+			 }
+	  		 this.closeBusyDialog();
+	  		oFinancialAnswer3.setValueState("Error");
+	  		oFinancialAnswer3.setShowValueStateMessage(false);
+	  		 return oValidationStatus;								
+	  	 }else{
+	  		this.questions.push(oFinancialQuestion.data("idFinancialQuestion"+i));
+	  		this.answers1.push(oFinancialAnswer1.getValue());
+	  		this.answers2.push(oFinancialAnswer2.getValue());
+	  		this.answers3.push(oFinancialAnswer3.getValue());
+	  	 }
+		 
+
+	}
+	return oValidationStatus;
 	},
   createPersonShareHolderOperations : function(oResponse, actvityQuestions, activityAnswers, experienceQuestions, experienceAnswers, questions, answers1, answers2, answers3){
 	     that.NSHEntityNo = oResponse.EntityNo;
@@ -1410,8 +1461,9 @@ sap.ui.controller("com.sagia.view.Overview", {
 				}else{
 					oLanguage="A";
 				}
-			sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHEQA"), {duration : 10000});
-	        var oRequestFinishedDeferredExperienceQ = that.oModelHelper.createShareHolderExperienceAnswers
+				if(this.oOwnCompanyQComboBox.getSelectedKey() === "Y"){
+					sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHEQA"), {duration : 10000});
+				}	        var oRequestFinishedDeferredExperienceQ = that.oModelHelper.createShareHolderExperienceAnswers
 	        (that.oRef_id, experienceQuestions, experienceAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(), this.oBusinessTypeSurveyID, oLanguage);
 			jQuery.when(oRequestFinishedDeferredExperienceQ).then(jQuery.proxy(function(oResponse) {
 			    try{
@@ -1441,15 +1493,18 @@ sap.ui.controller("com.sagia.view.Overview", {
 										}else{
 											oLanguage="A";
 										}
-										sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHAQA"), {duration : 10000});
-						             var oRequestFinishedDeferredcreateSHActivityAnswers = that.oModelHelper.createShareHolderActivityAnswers
+										if(this.oOwnCompanyQComboBox.getSelectedKey() === "Y"){
+											sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHAQA"), {duration : 10000});
+										}
+										var oRequestFinishedDeferredcreateSHActivityAnswers = that.oModelHelper.createShareHolderActivityAnswers
 						 			(that.oRef_id, actvityQuestions, activityAnswers, that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue(),oLanguage);
 						  
 						     			jQuery.when(oRequestFinishedDeferredcreateSHActivityAnswers).then(jQuery.proxy(function(oResponse) {
 						     				
 						 	                try{
-						 	                	sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHFQA"), {duration : 15000});
-						 					var oRequestFinishedDeferredcreateFinancialAnswers1 = that.oModelHelper.createFinancialAnswers
+						 	                	if(this.oOwnCompanyQComboBox.getSelectedKey() === "Y"){
+						 	                		sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHFQA"), {duration : 25000});
+												}						 					var oRequestFinishedDeferredcreateFinancialAnswers1 = that.oModelHelper.createFinancialAnswers
 						 					(that.oRef_id, questions, answers1, "Year 1", that.oNSHFirstNameInputText.getValue(),that.oNSHLastNameInputText.getValue());
 		
 						 					jQuery.when(oRequestFinishedDeferredcreateFinancialAnswers1).then(jQuery.proxy(function(oResponse) {
@@ -1482,10 +1537,15 @@ sap.ui.controller("com.sagia.view.Overview", {
 									 							        jQuery.when.apply($, getarray).done(function () {
 									 							        	that.closeBusyDialog();
 									 							        	
+									 							        	that.oNSHOrganizationVBox.setVisible(false);
+									 										that.oNSHPersonVBox.setVisible(false);
+									 										that.oShareholderQuestionarieVBox.setVisible(false);
+									 							        	
 									 							        	that.oSavedSHData.SavedShareHolderCollection.length = 0;
 									 							        	that.loadSavedShareHolderDetails();
 									 							        	
-									 							        	that.oShareHolderTypeComboBox.setValue("");
+									 							        	that.oShareHolderTypeComboBox.setSelectedKey("");
+									 							        	that.oOwnCompanyQComboBox.setSelectedKey("");
 									 							        	that.oNSHFirstNameInputText.setValue("");
 									 							        	that.oNSHMiddleNameInputText.setValue("");
 									 										that.oNSHCountryComboBox.setSelectedKey("");
@@ -1635,6 +1695,7 @@ that.closeBusyDialog();
 				}
 			
 			sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHEQA"), {duration : 10000});
+
 	        var oRequestFinishedDeferredExperienceQ = that.oModelHelper.createShareHolderExperienceAnswers
 	        (that.oRef_id, experienceQuestions, experienceAnswers, that.oNSHOrganizationName.getValue(),that.oNSHOrgName2tText.getValue(), this.oBusinessTypeSurveyID, oLanguage);
 			jQuery.when(oRequestFinishedDeferredExperienceQ).then(jQuery.proxy(function(oResponse) {
@@ -1665,14 +1726,20 @@ that.closeBusyDialog();
 										}else{
 											oLanguage="A";
 										}
+										
 										sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHAQA"), {duration : 10000});
+
+										
 						             var oRequestFinishedDeferredcreateSHActivityAnswers = that.oModelHelper.createShareHolderActivityAnswers
 						 			(that.oRef_id, actvityQuestions, activityAnswers, that.oNSHOrganizationName.getValue(),that.oNSHOrgName2tText.getValue(),oLanguage);
 						  
 						     			jQuery.when(oRequestFinishedDeferredcreateSHActivityAnswers).then(jQuery.proxy(function(oResponse) {
 						     				
 						 	                try{
-						 	                	sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHFQA"), {duration : 25000});
+						 	                	
+						 	                	
+						 	                	sap.m.MessageToast.show(this.oModelHelper.getText("SavingNSHFQA"), {duration : 15000});
+
 						 					var oRequestFinishedDeferredcreateFinancialAnswers1 = that.oModelHelper.createFinancialAnswers
 						 					(that.oRef_id, questions, answers1, "Year 1", that.oNSHOrganizationName.getValue(),that.oNSHOrgName2tText.getValue());
 		
@@ -1709,6 +1776,11 @@ that.closeBusyDialog();
 									 							        	that.oSavedSHData.SavedShareHolderCollection.length = 0;
 									 							        	that.loadSavedShareHolderDetails();
 									 							        	
+									 							        	that.oNSHOrganizationVBox.setVisible(false);
+									 										that.oNSHPersonVBox.setVisible(false);
+									 										that.oShareholderQuestionarieVBox.setVisible(false);
+									 										
+									 							        	that.oShareHolderTypeComboBox.setSelectedKey("");
 									 							        	that.oNSHOrganizationName.setValue("");
 									 							        	that.oNSHOrgCountryComboBox.setSelectedKey("");
 									 							        	that.oNSHOrgName2tText.setValue("");
@@ -8174,14 +8246,17 @@ handleRegisterUserButtonPress : function() {
 			othis.oNSHOrgFaxCountryCodeInputText.setValue("");
 			othis.oNSHOrgMobilephoneCountryCodeInputText.setValue("");
 			
+			othis.oOwnCompanyQComboBox.setSelectedKey("");
+			this.oShareholderQuestionarieVBox.setVisible(false);
+			
 //			othis.oNSHOrgSubSctorInputText.setEnabled(false);
 			
+			this.oCreateShareHolderButtonVBox.setVisible(true);
 			
-			
-		}else{
+		}else if(this.oShareHolderTypeComboBox.getSelectedKey() === "2"){
 			this.oNSHPersonVBox.setVisible(false);
 			this.oNSHOrganizationVBox.setVisible(true);
-			
+			this.oShareholderQuestionarieVBox.setVisible(true);
 			var that = this;
 			
 		   // that.oShareHolderTypeComboBox.setValue("");
@@ -8206,6 +8281,9 @@ handleRegisterUserButtonPress : function() {
 			that.oNSHEmailInputText.setValue("");
 			that.oNSHPercentageInputText.setValue("");
 			that.oNSHDOBDate.setValue("");
+			this.oCreateShareHolderButtonVBox.setVisible(true);
+		}else{
+			this.oCreateShareHolderButtonVBox.setVisible(false);
 		}
 	},
 	/*handleIndustrialSectarSelectionChange : function(){
@@ -8264,8 +8342,8 @@ handleRegisterUserButtonPress : function() {
 		if (!this.oShareHolderNewShareHolderFragment) {
 		this.oShareHolderNewShareHolderFragment = sap.ui.xmlfragment("com.sagia.view.fragments.ns_shareholderdetails", this.getView()
 				.getController());
-		this.oShareHolderNewShareHolderFinancialQuestionsFragment = sap.ui.xmlfragment("com.sagia.view.fragments.ns_p_financialquestions", this.getView()
-				.getController());
+		/*this.oShareHolderNewShareHolderFinancialQuestionsFragment = sap.ui.xmlfragment("com.sagia.view.fragments.ns_p_financialquestions", this.getView()
+				.getController());*/
 		this.oShareHolderTypeComboBox = this.getView().byId("idNSHTypeComboBox");
 		this.oNSHFirstNameInputText = this.getView().byId("idNSHFirstNameInputText");
 		this.oNSHMiddleNameInputText = this.getView().byId("idNSHMiddleNameInputText");
@@ -8358,6 +8436,9 @@ handleRegisterUserButtonPress : function() {
 		
 		this.oNSHPersonVBox = this.getView().byId("idPersonVBox");
 		this.oNSHOrganizationVBox = this.getView().byId("idOrganizationVBox");
+		this.oShareholderQuestionarieVBox = this.getView().byId("idShareholderQuestionarieVBox");
+		this.oOwnCompanyQComboBox = this.getView().byId("idOwnCompanyQComboBox");
+		this.oCreateShareHolderButtonVBox = this.getView().byId("idCreateShareHolderButtonVBox");
 
 		this.oNSHValidateworker.instantiateOrgNSH(this);
 		this.oValidationHelper.addNSHAttachChangeEvent(this);

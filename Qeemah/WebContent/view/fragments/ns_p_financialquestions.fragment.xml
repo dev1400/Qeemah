@@ -56,44 +56,6 @@
 			
 		</sap.ui.commons.layout:rows>
 	</sap.ui.commons.layout:MatrixLayout>
-	<sap.ui.commons.layout:MatrixLayout layoutFixed="true" width="100%">
-	<sap.ui.commons.layout:rows>
-		<sap.ui.commons.layout:MatrixLayoutRow>
-				<sap.ui.commons.layout:cells>
-					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center" colSpan="4"
-						>
-						<sap.ui.commons.layout:content>
-							<Button id="idCreateNewShareHolderButton" style="Accept" text="{i18n>CreateShareHolder}" press="handleCreateNewShareHolder">
-							</Button>
-							<!-- <Button id="idUpdateNewShareHolderButton" style="Accept" text="{i18n>CreateShareHolder}" press="handleUpdateNewShareHolderButtonPress">
-							</Button>
-							<Button id="idCancelNewShareHolderButton" style="Accept" text="{i18n>CreateShareHolder}" press="handleCancelNewShareHolderButtonPressPress">
-							</Button> -->
-						</sap.ui.commons.layout:content>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					
-					
-					
-				</sap.ui.commons.layout:cells>
-			</sap.ui.commons.layout:MatrixLayoutRow>
-			<sap.ui.commons.layout:MatrixLayoutRow>
-				<sap.ui.commons.layout:cells>
-					<sap.ui.commons.layout:MatrixLayoutCell>
-						<sap.ui.commons.layout:content>							
-							<Button id="idUpdateNewShareHolderButton" visible="false" style="Accept" text="{i18n>UpdateNewShareHolder}" press="handleUpdateNewShareHolderButtonPress">
-							</Button>							
-						</sap.ui.commons.layout:content>
-					</sap.ui.commons.layout:MatrixLayoutCell>
-					<sap.ui.commons.layout:MatrixLayoutCell>
-						<sap.ui.commons.layout:content>					
-							<Button id="idCancelNewShareHolderButton" visible="false" style="Accept" text="{i18n>Cancel}" press="handleCancelNewShareHolderButtonPress">
-							</Button>
-						</sap.ui.commons.layout:content>
-					</sap.ui.commons.layout:MatrixLayoutCell>					
-				</sap.ui.commons.layout:cells>
-			</sap.ui.commons.layout:MatrixLayoutRow>
 	
-	</sap.ui.commons.layout:rows>
-	</sap.ui.commons.layout:MatrixLayout>
 
 </sap.ui.core:FragmentDefinition>

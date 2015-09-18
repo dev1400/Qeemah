@@ -791,5 +791,7 @@ thisContext.NSHOrgOtherAttachment.setValueState("Error");
  	   	 }*/
 		 
 		 return thisContext.oNewShareHolderValidation;
-	}
+	},
+	
+	
 };

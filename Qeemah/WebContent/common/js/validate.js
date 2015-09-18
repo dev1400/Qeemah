@@ -582,6 +582,9 @@ com.sagia.common.js.validate = {
 			thisContext.NSHBankStatementAttachment.attachBrowserEvent("mouseover", function() {
 	        	thisContext.NSHBankStatementAttachment.setValueState("None");
 			});
+			thisContext.oOwnCompanyQComboBox.attachBrowserEvent("mouseover", function() {
+	        	thisContext.oOwnCompanyQComboBox.setValueState("None");
+			});
 			/*thisContext.NSHBalanceSheetAttachment.attachBrowserEvent("mouseover", function() {
 	        	thisContext.NSHBalanceSheetAttachment.setValueState("None");
 			});*/
@@ -1159,6 +1162,19 @@ com.sagia.common.js.validate = {
 	  			 if(!thisContext.oShowAlertDialog.isOpen())
 	  			 {
 	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("NSHBSCopyRequired"));
+	  				thisContext.oShowAlertDialog.open();
+	  			 }			 							  				
+		    }
+		    else if(thisContext.oOwnCompanyQComboBox.getSelectedKey() === ""){	
+				thisContext.oNewShareHolderValidation = false;
+				
+				thisContext.oOwnCompanyQComboBox.setValueState("Error");
+				//thisContext.NSHBankStatementAttachment.setShowValueStateMessage(false);	
+				
+
+	  			 if(!thisContext.oShowAlertDialog.isOpen())
+	  			 {
+	  				thisContext.oAlertTextView.setText(thisContext.oModelHelper.getText("DUHOCmandatory"));
 	  				thisContext.oShowAlertDialog.open();
 	  			 }			 							  				
 		    }/*else if(thisContext.NSHBalanceSheetAttachment.getValue() === ""){	

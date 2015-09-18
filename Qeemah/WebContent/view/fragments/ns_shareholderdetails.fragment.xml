@@ -516,6 +516,10 @@
 				</sap.ui.commons.layout:cells>
 			</sap.ui.commons.layout:MatrixLayoutRow>
 		</sap.ui.commons.layout:rows>		
+		
+		
+		
+		
 
 	</sap.ui.commons.layout:MatrixLayout>
 	
@@ -630,6 +634,45 @@
 
 
 	</sap.ui.commons.layout:MatrixLayout>
+	
+	
+		
+		
+		
+				
+				<sap.ui.commons.layout:MatrixLayout
+		layoutFixed="true" columns="2" widths="25%">
+		
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>			
+				<sap.ui.commons.layout:MatrixLayoutCell colSpan="4">
+				<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
+			     </sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		
+		<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:MatrixLayoutCell>
+				  <sap.ui.commons:TextView text="{i18n>DoUhaveOwnCompany}" ></sap.ui.commons:TextView>
+				  <sap.ui.commons:TextView text="*" class="textcolorred"></sap.ui.commons:TextView>
+			     </sap.ui.commons.layout:MatrixLayoutCell>
+			     <sap.ui.commons.layout:MatrixLayoutCell >
+				  <ComboBox width="40%" id="idOwnCompanyQComboBox" selectionChange="handleOwnCompanySelectionChange">
+				  	<sap.ui.core:ListItem key="Y" text="{i18n>Yes}"/>
+				  	<sap.ui.core:ListItem key="N" text="{i18n>No}"/>
+				  </ComboBox>
+			     </sap.ui.commons.layout:MatrixLayoutCell>
+			     </sap.ui.commons.layout:MatrixLayoutRow>
+			     
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>			
+				<sap.ui.commons.layout:MatrixLayoutCell colSpan="4">
+				<sap.ui.commons:HorizontalDivider></sap.ui.commons:HorizontalDivider>
+			     </sap.ui.commons.layout:MatrixLayoutCell>
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+		
+			     </sap.ui.commons.layout:MatrixLayout>
 	
 	</VBox>
 	<VBox id="idOrganizationVBox" visible="false">
@@ -1275,6 +1318,118 @@
 	
 	
 	
+	</VBox>
+	<VBox id="idShareholderQuestionarieVBox" visible="false">
+	<sap.ui.commons.layout:MatrixLayout>
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							hAlign="Center">
+							<sap.ui.commons.layout:content>
+								<VBox id="idAddShareHolderActivityAnswersVBoxFragment"
+									visible="true" >
+									<sap.ui.core:Fragment
+										fragmentName="com.sagia.view.fragments.ns_activityquestions"
+										type="XML" />
+								</VBox>
+
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+
+
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							hAlign="Center">
+							<sap.ui.commons.layout:content>
+								<VBox id="idAddShareHolderExperienceAnswersVBoxFragment"
+									visible="true" >
+									<sap.ui.core:Fragment
+										fragmentName="com.sagia.view.fragments.ns_p_experiencequestions"
+										type="XML" />
+								</VBox>
+
+								<sap.ui.commons.layout:MatrixLayout
+									id="idNewShareHolderExperienceQuestionsMatrixLayout"
+									layoutFixed="false">
+									<sap.ui.commons.layout:rows>
+									</sap.ui.commons.layout:rows>
+								</sap.ui.commons.layout:MatrixLayout>
+
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+
+
+
+
+				<sap.ui.commons.layout:MatrixLayoutRow>
+					<sap.ui.commons.layout:cells>
+						<sap.ui.commons.layout:MatrixLayoutCell
+							hAlign="Center">
+							<sap.ui.commons.layout:content>
+								<VBox id="idAddShareHolderFinancialAnswersVBoxFragment"
+									visible="true" >
+									<sap.ui.core:Fragment
+										fragmentName="com.sagia.view.fragments.ns_p_financialquestions"
+										type="XML" />
+								</VBox>
+
+							</sap.ui.commons.layout:content>
+						</sap.ui.commons.layout:MatrixLayoutCell>
+					</sap.ui.commons.layout:cells>
+				</sap.ui.commons.layout:MatrixLayoutRow>
+	
+	
+	</sap.ui.commons.layout:MatrixLayout>
+	
+	</VBox>
+	
+	<VBox id="idCreateShareHolderButtonVBox" visible="false">
+	<sap.ui.commons.layout:MatrixLayout layoutFixed="true" width="100%">
+	<sap.ui.commons.layout:rows>
+		<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell hAlign="Center" colSpan="4"
+						>
+						<sap.ui.commons.layout:content>
+							<Button id="idCreateNewShareHolderButton" style="Accept" text="{i18n>CreateShareHolder}" press="handleCreateNewShareHolder">
+							</Button>
+							<!-- <Button id="idUpdateNewShareHolderButton" style="Accept" text="{i18n>CreateShareHolder}" press="handleUpdateNewShareHolderButtonPress">
+							</Button>
+							<Button id="idCancelNewShareHolderButton" style="Accept" text="{i18n>CreateShareHolder}" press="handleCancelNewShareHolderButtonPressPress">
+							</Button> -->
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					
+					
+					
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+			<sap.ui.commons.layout:MatrixLayoutRow>
+				<sap.ui.commons.layout:cells>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>							
+							<Button id="idUpdateNewShareHolderButton" visible="false" style="Accept" text="{i18n>UpdateNewShareHolder}" press="handleUpdateNewShareHolderButtonPress">
+							</Button>							
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>
+					<sap.ui.commons.layout:MatrixLayoutCell>
+						<sap.ui.commons.layout:content>					
+							<Button id="idCancelNewShareHolderButton" visible="false" style="Accept" text="{i18n>Cancel}" press="handleCancelNewShareHolderButtonPress">
+							</Button>
+						</sap.ui.commons.layout:content>
+					</sap.ui.commons.layout:MatrixLayoutCell>					
+				</sap.ui.commons.layout:cells>
+			</sap.ui.commons.layout:MatrixLayoutRow>
+	
+	</sap.ui.commons.layout:rows>
+	</sap.ui.commons.layout:MatrixLayout>
 	</VBox>
 	</VBox>
 </sap.ui.core:FragmentDefinition>
